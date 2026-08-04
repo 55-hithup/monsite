@@ -64,7 +64,7 @@ export default function Contact() {
           <div className="eyebrow reveal justify-center">Contact</div>
           <h2 className="section-title reveal">Parlons de votre projet.</h2>
           <p className="section-sub reveal" style={{ margin: '20px auto 0', maxWidth: '480px' }}>
-            Réponse garantie sous 24h. Premier échange offert, sans engagement.
+            Réponse garantie sous 24h.
           </p>
         </div>
 
@@ -88,6 +88,16 @@ export default function Contact() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="reveal bg-[#121729] border border-[rgba(245,246,250,0.08)] rounded-[16px] p-6 md:p-10" id="contactForm">
+            {/* Steps / Onboarding text block */}
+            <div className="mb-8 p-5 bg-[#0B0F1E]/50 border border-[rgba(245,246,250,0.04)] rounded-[10px] text-sm text-text-secondary leading-relaxed text-left">
+              <h4 className="text-text-primary font-bold text-sm mb-2 flex items-center gap-2">
+                <span className="text-[#2E8FE0]">✦</span> Votre projet commence simplement
+              </h4>
+              <p>
+                Nous échangeons gratuitement sur vos besoins, puis je réalise une première proposition visuelle pour vous permettre de vous projeter. Si elle vous convainc, nous validons le devis, un acompte lance officiellement le projet, puis je conçois les maquettes finales avant de développer votre site.
+              </p>
+            </div>
+
             {error && (
               <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-xs px-4 py-3 rounded-[6px] label-mono mb-6 space-y-1 text-left">
                 <div>{error}</div>
