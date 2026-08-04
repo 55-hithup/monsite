@@ -1,3 +1,5 @@
+import nodemailer from 'nodemailer';
+
 export default async function handler(req, res) {
   // Allow CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -24,10 +26,29 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, message: 'Veuillez remplir tous les champs obligatoires.' });
     }
 
-    const brevoApiKey = process.env.BREVO_API_KEY;
-    if (!brevoApiKey) {
-      return res.status(500).json({ success: false, message: 'La clé d\'API Brevo n\'est pas configurée.' });
+    // Configuration variables from Vercel Environment Settings
+    const smtpHost = process.env.ZIMBRA_SMTP_HOST || 'mail.devsupai.fr'; // default to mail.devsupai.fr
+    const smtpPort = parseInt(process.env.ZIMBRA_SMTP_PORT || '465', 10);
+    const zimbraEmail = process.env.ZIMBRA_EMAIL || 'contact@devsupai.fr';
+    const zimbraPassword = process.env.ZIMBRA_PASSWORD;
+
+    if (!zimbraPassword) {
+      return res.status(500).json({
+        success: false,
+        message: 'La variable d\'environnement ZIMBRA_PASSWORD n\'est pas configurée sur Vercel.',
+      });
     }
+
+    // Create the Nodemailer SMTP transporter
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465, // true for port 465, false for other ports (like 587)
+      auth: {
+        user: zimbraEmail,
+        pass: zimbraPassword,
+      },
+    });
 
     // Construct HTML email content
     const htmlContent = `
@@ -45,7 +66,7 @@ export default async function handler(req, res) {
       </head>
       <body>
         <div class='container'>
-          <div class='header'>Nouveau contact depuis le site DevSupAi (Vercel)</div>
+          <div class='header'>Nouveau contact depuis le site DevSupAi (Zimbra SMTP)</div>
           <div class='field'>
             <div class='label'>Nom :</div>
             <div class='value'>${name}</div>
@@ -71,33 +92,23 @@ export default async function handler(req, res) {
       </html>
     `;
 
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'api-key': brevoApiKey,
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        sender: { name: 'Contact DevSupAi', email: 'contact@devsupai.fr' },
-        to: [{ email: 'contact@devsupai.fr', name: 'DevSupAi Team' }],
-        replyTo: { email: email, name: name },
-        subject: `[DevSupAi] Nouveau message de contact - ${name}`,
-        htmlContent: htmlContent,
-      }),
+    // Send the email
+    await transporter.sendMail({
+      from: `"Contact DevSupAi" <${zimbraEmail}>`,
+      to: zimbraEmail,
+      replyTo: `"${name}" <${email}>`,
+      subject: `[DevSupAi] Nouveau message de contact - ${name}`,
+      html: htmlContent,
     });
 
-    const responseData = await response.json();
+    return res.status(200).json({ success: true, message: 'Message envoyé avec succès.' });
 
-    if (response.ok) {
-      return res.status(200).json({ success: true, message: 'Message envoyé avec succès.' });
-    } else {
-      return res.status(response.status).json({
-        success: false,
-        message: responseData.message || 'Une erreur est survenue lors de l\'envoi via Brevo.',
-      });
-    }
   } catch (error) {
-    return res.status(500).json({ success: false, message: 'Erreur interne du serveur.' });
+    console.error('SMTP Error:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Une erreur est survenue lors de l\'envoi de l\'email via le serveur SMTP.',
+      debug: error.message,
+    });
   }
 }
