@@ -104,7 +104,9 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none">
         <img
           src="/hero-bg-mockup.png"
-          alt=""
+          alt="DevSupAi 3D Showcase Widescreen Background"
+          fetchPriority="high"
+          loading="eager"
           className="w-full h-full object-cover object-center md:object-right"
         />
         {/* Soft gradient masks to guarantee high contrast on all screens */}
