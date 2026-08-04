@@ -109,10 +109,11 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('SMTP Error:', error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return res.status(500).json({
       success: false,
       message: 'Une erreur est survenue lors de l\'envoi de l\'email via le serveur SMTP.',
-      debug: error.message,
+      debug: errorMessage,
     });
   }
 }
