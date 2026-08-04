@@ -20,18 +20,18 @@ I have successfully transformed the single-page HTML portfolio into a modern, mo
 * **API Route Hook:** Adjusted [Contact.tsx](file:///c:/Users/Alex/Desktop/Pro/devsupai%20new%20site/src/components/Contact.tsx) to POST data to `/api/contact`.
 * **Clean-up:** Deleted the deprecated `public/contact.php` file from the repository.
 
-### 4. Portfolio Showcase Customization
+### 4. Quality Pillars Section (Replacing Stats)
+* **Pillars Layout:** Replaced the fake numerical statistics counters with 4 Quality Pillars (*Zéro Template*, *Performance d'Élite*, *Évolutivité Garantie*, and *Accompagnement Direct*) in [Stats.tsx](file:///c:/Users/Alex/Desktop/Pro/devsupai%20new%20site/src/components/Stats.tsx).
+* **Kinetic SVG Outline Draw (Option B):** Implemented GSAP ScrollTrigger to measure paths dynamically via `getTotalLength()` and animate them to draw themselves outline-by-outline when scrolled into view.
+* **Spotlight Mouse Tracking:** Added a radial spotlight glow mask (`.glow-spotlight`) that follows the mouse pointer inside the active card on hover.
+* **3D Physical Tilt Effect:** Configured cards to tilt on rotation axes X and Y dynamically relative to mouse coordinates. Applied `transformStyle: 'preserve-3d'` with nested `translateZ` offsets on the icon (`25px`), title (`15px`), and description (`8px`) to render a floating, multilayered depth effect.
+
+### 5. Portfolio Showcase Customization
 * **New Case Studies:** Replaced mock projects with real client showcases:
-  1. **Les Jumeaux** (Restauration)
-     * **Image:** Screenshot `/public/les-jumeaux.png`
-     * **Details:** *Site vitrine immersif et système de réservation en ligne sur-mesure pour un restaurant-brasserie.*
-  2. **LocaTool** (Entreprise)
-     * **Image:** Screenshot `/public/locatool.png`
-     * **Details:** *Logiciel de gestion de location tout-en-un pour simplifier le suivi du matériel, des clients et des devis.*
-  3. **Abogame** (Application Streamer)
-     * **Animated Placeholder:** Designed a premium interactive in-progress loader placeholder (spinning dashed circle icon with `</>` and pulsing monospace `En cours` text) overlaying a deep purple-to-black gradient box.
-     * **Details:** *Plateforme innovante pour les créateurs de contenu et leur communauté.*
-* **Pruned Showcase:** Kept only three high-end case studies (*Les Jumeaux*, *LocaTool*, and *Abogame*) displayed in a balanced single row.
+  1. **Les Jumeaux** (Restauration) - Screenshot `/public/les-jumeaux.png`
+  2. **LocaTool** (Entreprise) - Screenshot `/public/locatool.png`
+  3. **Abogame** (Application Streamer) - Animated `En cours` placeholder.
+* **Pruned Showcase:** Kept only three high-end case studies displayed in a balanced single row.
 
 ---
 
