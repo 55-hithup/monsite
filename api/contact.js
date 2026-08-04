@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     }
 
     // Configuration variables from Vercel Environment Settings
-    const smtpHost = process.env.ZIMBRA_SMTP_HOST || 'smtpng.dfinet.ch';
+    const smtpHost = process.env.ZIMBRA_SMTP_HOST || 'ssl0.ovh.net';
     const smtpPort = parseInt(process.env.ZIMBRA_SMTP_PORT || '465', 10);
     const zimbraEmail = process.env.ZIMBRA_EMAIL || 'contact@devsupai.fr';
     const zimbraPassword = process.env.ZIMBRA_PASSWORD;
