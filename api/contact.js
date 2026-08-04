@@ -48,6 +48,10 @@ export default async function handler(req, res) {
         user: zimbraEmail,
         pass: zimbraPassword,
       },
+      tls: {
+        // Do not fail on invalid / self-signed certificates
+        rejectUnauthorized: false
+      }
     });
 
     // Construct HTML email content

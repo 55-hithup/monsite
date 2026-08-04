@@ -1,6 +1,6 @@
 # Walkthrough: Modular React Website Migration for DevSupAi
 
-I have successfully transformed the single-page HTML portfolio into a modern, modular React + Vite + Tailwind CSS (v4) + TypeScript web application, fully customized for **DevSupAi** and prepared for deployment on **Vercel** with a **Brevo API** transactional mail dispatcher.
+I have successfully transformed the single-page HTML portfolio into a modern, modular React + Vite + Tailwind CSS (v4) + TypeScript web application, fully customized for **DevSupAi** and prepared for deployment on **Vercel** with a **Zimbra SMTP** (dfinet.ch) mailer.
 
 ## Changes Made
 
@@ -12,11 +12,12 @@ I have successfully transformed the single-page HTML portfolio into a modern, mo
 * **Mockup Image Visual:** Set the high-end 3D widescreen mockup image (`media_1785855522414.png`) as the full background of the Hero section.
 * **Liquid Ripple Effect (Option 3):** Added an interactive SVG liquid distortion filter (`#liquid-filter`) to the hero title.
 
-### 3. Contact Form & Info Card Refactoring (Vercel Serverless + Brevo API)
+### 3. Contact Form & Info Card Refactoring (Vercel Serverless + Zimbra SMTP)
 * **Details Removed:** Omitted all static contact cards showing email, phone number, and physical localization details.
 * **Form Simplification:** Removed the `Entreprise` (Company) and `Budget` fields, and added an optional `Téléphone (facultatif)` input.
-* **Vercel Serverless Function:** Created `/api/contact.js` using Node.js. It safely processes user inputs, calls Brevo's SMTP API (`https://api.brevo.com/v3/smtp/email`), and relays contact messages to `contact@devsupai.fr` securely.
-* **API Route Hook:** Adjusted [Contact.tsx](file:///c:/Users/Alex/Desktop/Pro/devsupai%20new%20site/src/components/Contact.tsx) to POST data to `/api/contact` instead of the deprecated PHP file.
+* **Vercel Serverless Function:** Created `/api/contact.js` using Node.js and **Nodemailer**.
+* **Zimbra SMTP Configuration:** Configured the mailer to connect directly to the Zimbra SMTP host **`smtpng.dfinet.ch`** on port **`465`** (SSL/TLS secure connection).
+* **API Route Hook:** Adjusted [Contact.tsx](file:///c:/Users/Alex/Desktop/Pro/devsupai%20new%20site/src/components/Contact.tsx) to POST data to `/api/contact`.
 * **Clean-up:** Deleted the deprecated `public/contact.php` file from the repository.
 
 ### 4. Portfolio Showcase Customization

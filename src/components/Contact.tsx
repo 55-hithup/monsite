@@ -14,6 +14,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [debugError, setDebugError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ export default function Contact() {
 
     setLoading(true);
     setError('');
+    setDebugError('');
 
     try {
       const response = await fetch('/api/contact', {
@@ -44,9 +46,11 @@ export default function Contact() {
         });
       } else {
         setError(data.message || 'Une erreur est survenue lors de l\'envoi du message.');
+        setDebugError(data.debug || '');
       }
-    } catch (err) {
+    } catch (err: any) {
       setError('Impossible de contacter le serveur d\'envoi. Veuillez réessayer plus tard.');
+      setDebugError(err.message || '');
     } finally {
       setLoading(false);
     }
@@ -72,7 +76,11 @@ export default function Contact() {
               Merci pour votre intérêt. L'équipe DevSupAi a bien reçu votre demande et vous recontactera rapidement.
             </p>
             <button
-              onClick={() => setSubmitted(false)}
+              onClick={() => {
+                setSubmitted(false);
+                setError('');
+                setDebugError('');
+              }}
               className="label-mono text-xs text-accent hover:text-accent-hover transition-colors cursor-pointer"
             >
               envoyer un autre message
@@ -81,8 +89,13 @@ export default function Contact() {
         ) : (
           <form onSubmit={handleSubmit} className="reveal bg-[#121729] border border-[rgba(245,246,250,0.08)] rounded-[16px] p-6 md:p-10" id="contactForm">
             {error && (
-              <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-xs px-4 py-3 rounded-[6px] label-mono mb-6">
-                {error}
+              <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-xs px-4 py-3 rounded-[6px] label-mono mb-6 space-y-1 text-left">
+                <div>{error}</div>
+                {debugError && (
+                  <div className="text-[10px] text-red-400/70 font-mono mt-1 pt-1 border-t border-red-500/10 break-all">
+                    Détails de l'erreur : {debugError}
+                  </div>
+                )}
               </div>
             )}
             
@@ -151,7 +164,7 @@ export default function Contact() {
             
             <div className="flex justify-end pt-2">
               <MagneticWrapper range={40} strength={0.3}>
-                <button type="submit" className="submit-btn cursor-pointer">
+                <button type="submit" className="submit-btn cursor-pointer" disabled={loading}>
                   {loading ? 'Envoi en cours...' : 'Envoyer ma demande'}
                 </button>
               </MagneticWrapper>
