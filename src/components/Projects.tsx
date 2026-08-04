@@ -36,7 +36,7 @@ export default function Projects() {
         
         <div className="portfolio-grid">
           {projects.map((project, idx) => (
-            <div key={idx} className="proj-card reveal">
+            <div key={idx} className="cursor-target proj-card reveal">
               <div 
                 className="proj-bg" 
                 style={{ 

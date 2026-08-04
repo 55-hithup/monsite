@@ -80,28 +80,6 @@ html.lenis {
   pointer-events: none;
 }
 
-/* Custom styles for cursor and interactions */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-  border: 1.5px solid var(--color-accent);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
-  will-change: transform, width, height;
-}
-
-.custom-cursor.hovering {
-  width: 48px;
-  height: 48px;
-  background-color: rgba(46, 143, 224, 0.1);
-  border-color: var(--color-accent-hover);
-}
 
 /* Signature brand gradient */
 .brand-gradient-text {

@@ -85,7 +85,7 @@ export default function Offers() {
         
         <div className="services-grid">
           {services.map((service) => (
-            <div key={service.num} className="service-card reveal">
+            <div key={service.num} className="cursor-target service-card reveal">
               <div className="service-num">{service.num}</div>
               <div className="service-icon">{service.icon}</div>
               <h3>{service.title}</h3>

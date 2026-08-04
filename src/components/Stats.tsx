@@ -172,7 +172,7 @@ export default function Stats() {
               onMouseMove={handleMouseMove}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="p-6 bg-[#121729]/40 border border-[rgba(245,246,250,0.06)] rounded-[12px] transition-shadow duration-300 hover:border-[#2E8FE0]/40 hover:bg-[#121729]/80 relative overflow-hidden group text-left"
+              className="cursor-target p-6 bg-[#121729]/40 border border-[rgba(245,246,250,0.06)] rounded-[12px] transition-shadow duration-300 hover:border-[#2E8FE0]/40 hover:bg-[#121729]/80 relative overflow-hidden group text-left"
               style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
             >
               {/* Spotlight mouse tracker radial glow */}

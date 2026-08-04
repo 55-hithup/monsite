@@ -15,7 +15,7 @@ import FAQ from './components/FAQ';
 import Stack from './components/Stack';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
+import GlowOrbCursor from './components/GlowOrbCursor';
 import Ferrofluid from './components/Ferrofluid';
 import 'lenis/dist/lenis.css';
 
@@ -62,7 +62,7 @@ function App() {
 
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
-      <CustomCursor />
+      <GlowOrbCursor />
       
       {/* Fixed global background container with OGL WebGL Ferrofluid shader */}
       <div 

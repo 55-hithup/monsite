@@ -76,7 +76,7 @@ export default function Process() {
           <div className="timeline-progress" id="tlProgress"></div>
           
           {steps.map((step) => (
-            <div key={step.num} className="tl-item reveal" data-tl>
+            <div key={step.num} className="cursor-target tl-item reveal" data-tl>
               <div className="tl-num">{step.num}</div>
               <div className="tl-body">
                 <h3>{step.title}</h3>
