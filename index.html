@@ -11,25 +11,46 @@
     <meta name="author" content="DevSupAi" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical URL to prevent duplicate content indexation -->
+    <link rel="canonical" href="https://devsupai.fr/" />
+
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://monsite-sage-beta.vercel.app/" />
+    <meta property="og:url" content="https://devsupai.fr/" />
     <meta property="og:title" content="DevSupAi | Développeur Web & Applications Sur-Mesure" />
     <meta property="og:description" content="Conception de sites internet et d'applications web de haute performance. Donnez vie à vos projets numériques avec une architecture sur-mesure." />
-    <meta property="og:image" content="https://monsite-sage-beta.vercel.app/hero-bg-mockup.png" />
+    <meta property="og:image" content="https://devsupai.fr/hero-bg-mockup.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://monsite-sage-beta.vercel.app/" />
+    <meta property="twitter:url" content="https://devsupai.fr/" />
     <meta property="twitter:title" content="DevSupAi | Développeur Web & Applications Sur-Mesure" />
     <meta property="twitter:description" content="Conception de sites internet et d'applications web de haute performance. Donnez vie à vos projets de développement." />
-    <meta property="twitter:image" content="https://monsite-sage-beta.vercel.app/hero-bg-mockup.png" />
+    <meta property="twitter:image" content="https://devsupai.fr/hero-bg-mockup.png" />
 
     <!-- Performance Optimizations (Preloading Largest Contentful Paint) -->
     <link rel="preload" href="/hero-bg-mockup.png" as="image" type="image/png" fetchpriority="high" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- JSON-LD Structured Data (Schema.org) for search engine rich snippets -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "DevSupAi",
+        "url": "https://devsupai.fr",
+        "logo": "https://devsupai.fr/logo.png",
+        "image": "https://devsupai.fr/hero-bg-mockup.png",
+        "description": "DevSupAi, développeur web freelance spécialisé dans la création de sites internet modernes et d'applications web sur-mesure de haute performance.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "FR"
+        },
+        "priceRange": "$$"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
