@@ -11,7 +11,16 @@ export default defineConfig({
     sitemap({
       hostname: 'https://devsupai.fr',
       readable: true,
-      dynamicRoutes: [], // If you add more client routes, append them here
+      dynamicRoutes: [
+        '/a-propos',
+        '/blog',
+        '/blog/pourquoi-eviter-les-templates',
+        '/blog/performance-web-sur-mesure',
+        '/projets/les-jumeaux',
+        '/projets/locatool',
+        '/mentions-legales',
+        '/politique-de-confidentialite',
+      ],
     }),
   ],
 })

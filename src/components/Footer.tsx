@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -17,8 +19,8 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-6 text-xs text-text-secondary">
-          <a href="#" className="hover:text-text-primary transition-colors">mentions légales</a>
-          <a href="#" className="hover:text-text-primary transition-colors">politique de confidentialité</a>
+          <Link to="/mentions-legales" className="cursor-target hover:text-text-primary transition-colors">mentions légales</Link>
+          <Link to="/politique-de-confidentialite" className="cursor-target hover:text-text-primary transition-colors">politique de confidentialité</Link>
         </div>
 
         <div className="label-mono text-[10px] text-text-secondary">
