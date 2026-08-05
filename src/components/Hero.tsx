@@ -115,7 +115,7 @@ export default function Hero() {
       </div>
       
       {/* Overlay Text Content */}
-      <div className="wrap relative z-10 w-full" style={{ paddingLeft: 'var(--space-xl)', paddingRight: 'var(--space-xl)' }}>
+      <div className="wrap relative z-10 w-full" style={{ maxWidth: '1440px', paddingLeft: 'var(--space-xl)', paddingRight: 'var(--space-xl)' }}>
         <div className="max-w-[620px] text-left">
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-[10px] label-mono text-purple-300 mb-6 reveal">
