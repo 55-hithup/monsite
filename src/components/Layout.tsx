@@ -55,12 +55,12 @@ export default function Layout() {
           height: '100vh', 
           zIndex: 0, 
           pointerEvents: 'none',
-          backgroundColor: '#0B0F1E',
+          backgroundColor: '#03050d',
           overflow: 'hidden'
         }}
       >
         <Ferrofluid
-          colors={["#061050","#7f8ded","#ffffff"]}
+          colors={["#03050d","#00F2FE","#7F00FF"]}
           speed={0.5}
           scale={1.6}
           turbulence={1}
@@ -70,7 +70,7 @@ export default function Layout() {
           shimmer={1.5}
           glow={2}
           flowDirection="down"
-          opacity={0.4}
+          opacity={0.45}
           mouseInteraction
           mouseStrength={1}
           mouseRadius={0.35}

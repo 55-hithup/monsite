@@ -147,7 +147,7 @@ export default function Hero() {
           {/* CTAs */}
           <div className="hero-ctas flex flex-wrap items-center gap-4">
             <MagneticWrapper range={40} strength={0.3}>
-              <a href="#realisations" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <a href="#realisations" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #00F2FE, #7F00FF)', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                 Voir mes projets <span className="text-sm">→</span>
               </a>
             </MagneticWrapper>
