@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import GlowOrbCursor from './GlowOrbCursor';
-import Ferrofluid from './Ferrofluid';
 import 'lenis/dist/lenis.css';
 
 export default function Layout() {
@@ -45,38 +44,6 @@ export default function Layout() {
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
       <GlowOrbCursor />
       
-      {/* Fixed global background container with OGL WebGL Ferrofluid shader */}
-      <div 
-        style={{ 
-          position: 'fixed', 
-          top: 0, 
-          left: 0, 
-          width: '100vw', 
-          height: '100vh', 
-          zIndex: 0, 
-          pointerEvents: 'none',
-          backgroundColor: '#03050d',
-          overflow: 'hidden'
-        }}
-      >
-        <Ferrofluid
-          colors={["#03050d","#00F2FE","#7F00FF"]}
-          speed={0.5}
-          scale={1.6}
-          turbulence={1}
-          fluidity={0.1}
-          rimWidth={0.2}
-          sharpness={2.5}
-          shimmer={1.5}
-          glow={2}
-          flowDirection="down"
-          opacity={0.45}
-          mouseInteraction
-          mouseStrength={1}
-          mouseRadius={0.35}
-        />
-      </div>
-
       <Navbar />
 
       <AnimatePresence mode="wait">

@@ -110,8 +110,8 @@ export default function Hero() {
           className="w-full h-full object-cover object-center md:object-right"
         />
         {/* Soft gradient masks to guarantee high contrast on all screens */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1E] via-[#0B0F1E]/60 to-transparent md:block hidden"></div>
-        <div className="absolute inset-0 bg-[#0B0F1E]/70 md:hidden block"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B122C] via-[#0B122C]/60 to-transparent md:block hidden"></div>
+        <div className="absolute inset-0 bg-[#0B122C]/70 md:hidden block"></div>
       </div>
       
       {/* Overlay Text Content */}
@@ -147,7 +147,7 @@ export default function Hero() {
           {/* CTAs */}
           <div className="hero-ctas flex flex-wrap items-center gap-4">
             <MagneticWrapper range={40} strength={0.3}>
-              <a href="#realisations" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #00F2FE, #7F00FF)', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <a href="#realisations" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                 Voir mes projets <span className="text-sm">→</span>
               </a>
             </MagneticWrapper>
