@@ -553,16 +553,17 @@ nav {
 .hero-title {
   font-size: clamp(40px, 6.2vw, 80px);
   margin-bottom: var(--space-md);
-  line-height: 1.05;
+  line-height: 1.2;
 }
 .hero-title .line {
   overflow: hidden;
   display: block;
-  padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
+  padding-bottom: 0.25em;
+  margin-bottom: -0.25em;
 }
 .hero-title .line span {
   display: block;
+  padding-bottom: 0.25em;
 }
 .hero-title .grad {
   background: var(--grad-main);
