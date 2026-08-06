@@ -72,7 +72,12 @@ export default function Projects() {
             );
 
             return project.href ? (
-              <Link key={idx} to={project.href} className="cursor-target proj-card reveal">
+              <Link 
+                key={idx} 
+                to={project.href} 
+                onClick={() => window.history.replaceState(null, '', '/#realisations')}
+                className="cursor-target proj-card reveal"
+              >
                 {cardContent}
               </Link>
             ) : (
