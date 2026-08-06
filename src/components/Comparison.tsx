@@ -133,17 +133,17 @@ export default function Comparison() {
             onMouseDown={handleMouseDown}
             onTouchStart={handleMouseDown}
           >
-            {/* Before Image (underneath) */}
-            <img 
-              src="/compare_before.webp" 
-              alt="Site internet lent et surchargé avant optimisation" 
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-            />
-
-            {/* After Image (overlay, clipped) */}
+            {/* After Image (underneath) */}
             <img 
               src="/compare_after.webp" 
               alt="Site sur-mesure et performant après optimisation" 
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            />
+
+            {/* Before Image (overlay, clipped) */}
+            <img 
+              src="/compare_before.webp" 
+              alt="Site internet lent et surchargé avant optimisation" 
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             />
