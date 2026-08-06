@@ -51,7 +51,7 @@ export default function About() {
               <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-accent to-purple-600 flex items-center justify-center text-white font-bold text-xl mb-4">
                 A
               </div>
-              <h3 className="text-base font-bold text-text-primary mb-1">Alex</h3>
+              <h3 className="text-base font-bold text-text-primary mb-1">Alexandre Pabst</h3>
               <span className="text-xs label-mono text-purple-300 block">FONDATEUR & DÉVELOPPEUR</span>
               <span className="text-[10px] block text-text-secondary mt-1">Saint-Mihiel, Meuse (Grand Est)</span>
               

@@ -38,8 +38,8 @@ export default function Footer() {
                 contact@devsupai.fr
               </a>
               <span className="text-text-primary block font-medium mb-1">Localisation :</span>
-              <span className="text-text-secondary block">
-                Saint-Mihiel (Meuse, Grand Est)
+              <span className="text-text-secondary block leading-relaxed">
+                13 Allée des Roses,<br />55300 Saint-Mihiel (Meuse)
               </span>
             </div>
           </div>

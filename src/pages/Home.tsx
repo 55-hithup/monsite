@@ -21,7 +21,7 @@ export default function Home() {
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "",
+      "streetAddress": "13 Allée des Roses",
       "addressLocality": "Saint-Mihiel",
       "postalCode": "55300",
       "addressCountry": "FR",

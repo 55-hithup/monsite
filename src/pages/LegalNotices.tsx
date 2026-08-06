@@ -14,9 +14,11 @@ export default function LegalNotices() {
               En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet <strong>devsupai.fr</strong> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
             </p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Propriétaire / Éditeur :</strong> DevSupAi (Alex), Développeur Web Indépendant, résidant à Saint-Mihiel (55300), Meuse, Lorraine, Grand Est.</li>
+              <li><strong>Propriétaire / Éditeur :</strong> Alexandre PABST EI (sous le nom commercial DevSupAi), entrepreneur individuel, domicilié au 13 Allée des Roses, 55300 Saint-Mihiel, France.</li>
+              <li><strong>SIRET :</strong> 106 295 678 00010 (Immatriculé au Registre National des Entreprises - RNE).</li>
+              <li><strong>TVA :</strong> TVA non applicable, article 293 B du CGI.</li>
               <li><strong>Contact Email :</strong> contact@devsupai.fr</li>
-              <li><strong>Responsable de la publication :</strong> Alex — contact@devsupai.fr</li>
+              <li><strong>Responsable de la publication :</strong> Alexandre PABST — contact@devsupai.fr</li>
             </ul>
           </section>
 
