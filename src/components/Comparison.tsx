@@ -150,10 +150,10 @@ export default function Comparison() {
 
             {/* Labels */}
             <div className="absolute bottom-4 left-4 bg-red-950/80 border border-red-500/20 px-3 py-1 rounded-md text-[10px] label-mono text-red-400 font-bold pointer-events-none">
-              Avant (Template lent : 34%)
+              Avant<span className="hidden sm:inline"> (Template lent)</span>
             </div>
             <div className="absolute bottom-4 right-4 bg-cyan-950/80 border border-cyan-500/20 px-3 py-1 rounded-md text-[10px] label-mono text-cyan-400 font-bold pointer-events-none">
-              Après (Sur-mesure : 100%)
+              Après<span className="hidden sm:inline"> (Sur-mesure)</span>
             </div>
 
             {/* Divider Line */}
