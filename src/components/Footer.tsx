@@ -30,17 +30,11 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-text-secondary leading-relaxed">
-              Création de plateformes web sur-mesure de haute performance. Nous concevons des produits digitaux qui convertissent, optimisés pour le SEO et le LCP.
+              Création de plateformes web sur-mesure de haute performance. Nous concevons des produits digitaux qui convertissent, optimisés pour le SEO et l'expérience utilisateur.
             </p>
-            <div className="text-xs text-text-secondary mt-2">
-              <span className="text-text-primary block font-medium mb-1">Contact :</span>
-              <a href="mailto:contact@devsupai.fr" className="hover:text-primary-bg transition-colors cursor-target text-[#2E8FE0] block mb-2">
-                contact@devsupai.fr
-              </a>
-              <span className="text-text-primary block font-medium mb-1">Localisation :</span>
-              <span className="text-text-secondary block leading-relaxed">
-                13 Allée des Roses,<br />55300 Saint-Mihiel (Meuse)
-              </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(245,246,250,0.06)] bg-[rgba(245,246,250,0.02)] text-[10px] label-mono text-text-secondary self-start">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+              Disponible pour vos projets
             </div>
           </div>
 
@@ -66,6 +60,26 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Contact & Localisation */}
+          <div>
+            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">Contact & Adresse</h4>
+            <div className="flex flex-col gap-4 text-xs text-text-secondary">
+              <div>
+                <span className="text-text-primary block font-medium mb-1">Email :</span>
+                <a href="mailto:contact@devsupai.fr" className="hover:text-text-primary transition-colors cursor-target text-[#2E8FE0]">
+                  contact@devsupai.fr
+                </a>
+              </div>
+              <div>
+                <span className="text-text-primary block font-medium mb-1">Siège social :</span>
+                <span className="leading-relaxed block">
+                  13 Allée des Roses,<br />
+                  55300 Saint-Mihiel (Meuse)
+                </span>
+              </div>
+            </div>
+          </div>
+
           {/* Horaires Section */}
           <div>
             <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">Horaires d'ouverture</h4>
@@ -83,18 +97,6 @@ export default function Footer() {
                 <span className="text-red-400 font-semibold uppercase text-[10px] tracking-wider">Fermé</span>
               </li>
             </ul>
-          </div>
-
-          {/* Services & Engagement */}
-          <div>
-            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">Notre philosophie</h4>
-            <p className="text-xs text-text-secondary leading-relaxed mb-4">
-              Zéro modèle préconçu (no-template), vitesse de chargement instantanée et optimisation SEO poussée. Conçu pour maximiser votre taux de conversion.
-            </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(245,246,250,0.06)] bg-[rgba(245,246,250,0.02)] text-[10px] label-mono text-text-secondary">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-              Disponible pour de nouveaux projets
-            </div>
           </div>
         </div>
 
