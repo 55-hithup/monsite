@@ -101,13 +101,13 @@ export default function Hero() {
   return (
     <section className="hero" id="accueil" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
       {/* Widescreen Background Mockup Image */}
-      <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none">
+      <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none overflow-hidden">
         <img
           src="/hero-bg-mockup.png"
           alt="DevSupAi 3D Showcase Widescreen Background"
           fetchPriority="high"
           loading="eager"
-          className="w-full h-full object-cover object-right max-md:scale-130 max-md:origin-right"
+          className="w-full h-full object-cover object-right max-md:object-[82%_center] max-md:scale-[1.8] max-md:origin-[82%_center]"
         />
         {/* Soft gradient masks to guarantee high contrast on all screens */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B122C] via-[#0B122C]/60 to-transparent md:block hidden"></div>
