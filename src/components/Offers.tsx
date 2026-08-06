@@ -78,7 +78,7 @@ export default function Offers() {
         <div className="head-row">
           <div>
             <div className="eyebrow reveal">Services</div>
-            <h2 className="section-title reveal">Ce que nous pouvons<br />construire pour vous.</h2>
+            <h2 className="section-title reveal">Ce que je peux<br />construire pour vous.</h2>
           </div>
           <p className="section-sub reveal">De la vitrine élégante à l'application web sur mesure, chaque projet est pensé pour votre croissance.</p>
         </div>

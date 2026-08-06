@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
               Dans le cadre de l'utilisation du site internet <strong>devsupai.fr</strong>, notamment via le formulaire de contact, certaines données à caractère personnel sont collectées :
             </p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Nom et prénom</strong> (pour vous identifier et vous adresser nos réponses)</li>
+              <li><strong>Nom et prénom</strong> (pour vous identifier et vous adresser mes réponses)</li>
               <li><strong>Adresse e-mail</strong> (pour pouvoir vous répondre directement)</li>
               <li><strong>Numéro de téléphone</strong> (optionnel, pour vous recontacter si demandé)</li>
               <li><strong>Message</strong> (contenant les détails de votre demande de projet)</li>
@@ -53,14 +53,14 @@ export default function PrivacyPolicy() {
               <li>Droit à la limitation du traitement.</li>
             </ul>
             <p>
-              Vous pouvez exercer ces droits à tout moment en envoyant simplement un e-mail à : <strong>contact@devsupai.fr</strong>. Nous traiterons votre demande sous 30 jours.
+              Vous pouvez exercer ces droits à tout moment en envoyant simplement un e-mail à : <strong>contact@devsupai.fr</strong>. Je traiterai votre demande sous 30 jours.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-text-primary">5. Sécurité des données</h2>
             <p>
-              Toutes les connexions vers le site sont cryptées via le protocole SSL/TLS (HTTPS). Vos messages sont acheminés de manière sécurisée vers notre boîte de réception OVH protégée, afin de prévenir tout accès non autorisé à vos données.
+              Toutes les connexions vers le site sont cryptées via le protocole SSL/TLS (HTTPS). Vos messages sont acheminés de manière sécurisée vers ma boîte de réception OVH protégée, afin de prévenir tout accès non autorisé à vos données.
             </p>
           </section>
         </div>

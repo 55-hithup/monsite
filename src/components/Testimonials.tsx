@@ -34,7 +34,7 @@ export default function Testimonials() {
       <div className="wrap">
         <div className="text-center mb-[70px]">
           <div className="eyebrow reveal justify-center">Témoignages</div>
-          <h2 className="section-title reveal">Ils nous ont fait confiance.</h2>
+          <h2 className="section-title reveal">Ils m'ont fait confiance.</h2>
         </div>
         
         <div className="testi-wrap reveal">

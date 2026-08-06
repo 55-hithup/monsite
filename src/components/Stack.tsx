@@ -36,10 +36,10 @@ export default function Stack() {
         {/* Confident AI production statement */}
         <div className="max-w-3xl mx-auto text-center border-t border-[rgba(245,246,250,0.04)] pt-8">
           <span className="label-mono text-[9px] bg-accent-hover/10 text-accent-hover px-2 py-1 rounded-full border border-accent-hover/20 inline-block mb-4">
-            notre philosophie de production
+            ma philosophie de production
           </span>
           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-sans">
-            Nous intégrons l'intelligence artificielle générative au cœur de notre processus de développement. Loin d'être un raccourci, l'IA agit comme un amplificateur cognitif : elle accélère la rédaction du code structurel, optimise les tests et réduit les cycles de production. Le résultat ? Plus de temps alloué à l'expérience utilisateur, au peaufinage de l'interface et à la valeur métier réelle de votre produit.
+            J'intègre l'intelligence artificielle générative au cœur de mon processus de développement. Loin d'être un raccourci, l'IA agit comme un amplificateur cognitif : elle accélère la rédaction du code structurel, optimise les tests et réduit les cycles de production. Le résultat ? Plus de temps alloué à l'expérience utilisateur, au peaufinage de l'interface et à la valeur métier réelle de votre produit.
           </p>
         </div>
       </div>

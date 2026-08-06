@@ -50,9 +50,9 @@ export default function CaseLocaTool() {
             Les professionnels de la location de matériel perdent souvent un temps précieux à cause d'outils administratifs éparpillés (tableurs Excel, devis papier, calendriers papier). *LocaTool* a été conçu pour regrouper en une seule interface réactive le suivi du stock en temps réel, l'historique des clients, la planification des locations et la facturation.
           </p>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Notre Approche</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">Mon Approche</h2>
           <p>
-            Nous avons conçu une application web monopage (SPA) extrêmement réactive. L'accent a été mis sur l'ergonomie : recherche instantanée parmi des milliers d'équipements, tableau de bord visuel de type calendrier interactif (Drag & Drop), et génération automatisée des contrats de location en PDF en un clic.
+            J'ai conçu une application web monopage (SPA) extrêmement réactive. L'accent a été mis sur l'ergonomie : recherche instantanée parmi des milliers d'équipements, tableau de bord visuel de type calendrier interactif (Drag & Drop), et génération automatisée des contrats de location en PDF en un clic.
           </p>
           <p>
             Afin de garantir un fonctionnement sans coupure sur le terrain, le logiciel intègre un système de cache local permettant aux techniciens de consulter l'état des machines même dans des zones de chantiers mal couvertes par le réseau 4G.

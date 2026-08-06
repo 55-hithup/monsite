@@ -30,7 +30,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-text-secondary leading-relaxed">
-              Création de plateformes web sur-mesure de haute performance. Nous concevons des produits digitaux qui convertissent, optimisés pour le SEO et l'expérience utilisateur.
+              Création de plateformes web sur-mesure de haute performance. Je conçois des produits digitaux qui convertissent, optimisés pour le SEO et l'expérience utilisateur.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(245,246,250,0.06)] bg-[rgba(245,246,250,0.02)] text-[10px] label-mono text-text-secondary self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>

@@ -94,7 +94,7 @@ export default function Contact() {
                 <span className="text-[#2E8FE0]">✦</span> Votre projet commence simplement
               </h4>
               <p>
-                Nous échangeons gratuitement sur vos besoins, puis je réalise une première proposition visuelle pour vous permettre de vous projeter. Si elle vous convainc, nous validons le devis, un acompte lance officiellement le projet, puis je conçois les maquettes finales avant de développer votre site.
+                J'échange gratuitement avec vous sur vos besoins, puis je réalise une première proposition visuelle pour vous permettre de vous projeter. Si elle vous convainc, nous validons ensemble le devis, un acompte lance officiellement le projet, puis je conçois les maquettes finales avant de développer votre site.
               </p>
             </div>
 

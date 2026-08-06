@@ -50,12 +50,12 @@ export default function CaseLesJumeaux() {
             Le restaurant *Les Jumeaux* souhaitait moderniser sa présence en ligne avec deux objectifs majeurs : valoriser l'ambiance chaleureuse du lieu à travers un univers visuel premium, et simplifier la prise de réservation pour les clients tout en libérant le personnel des appels téléphoniques pendant le service.
           </p>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Notre Approche</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">Mon Approche</h2>
           <p>
-            Nous avons opté pour une approche "Zéro Template". Le site intègre de superbes transitions fluides animées par GSAP et des visuels optimisés compressés en formats modernes (WebP). 
+            J'ai opté pour une approche "Zéro Template". Le site intègre de superbes transitions fluides animées par GSAP et des visuels optimisés compressés en formats modernes (WebP). 
           </p>
           <p>
-            Pour la réservation, au lieu d'intégrer une solution tierce lourde qui ralentirait le site (comme les widgets iframe standards), nous avons codé un formulaire de réservation sur-mesure ultra-léger communiquant directement avec une API de gestion de table en temps réel.
+            Pour la réservation, au lieu d'intégrer une solution tierce lourde qui ralentirait le site (comme les widgets iframe standards), j'ai codé un formulaire de réservation sur-mesure ultra-léger communiquant directement avec une API de gestion de table en temps réel.
           </p>
 
           <h2 className="text-lg font-bold text-text-primary pt-4">Les Résultats</h2>

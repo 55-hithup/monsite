@@ -9,7 +9,7 @@ export default function FAQ() {
     },
     {
       q: 'Quel est votre budget de départ ?',
-      a: 'Chaque projet est unique. Un devis détaillé est établi après notre premier échange, sans engagement.',
+      a: 'Chaque projet est unique. Un devis détaillé est établi après un premier échange, sans engagement.',
     },
     {
       q: 'Proposez-vous la maintenance après livraison ?',

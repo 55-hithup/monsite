@@ -8,7 +8,7 @@ export default function Process() {
     {
       num: '01',
       title: 'Découverte',
-      desc: 'Nous échangeons sur vos objectifs, votre marché et vos utilisateurs pour poser des bases solides.',
+      desc: "J'échange avec vous sur vos objectifs, votre marché et vos utilisateurs pour poser des bases solides.",
     },
     {
       num: '02',

@@ -49,7 +49,7 @@ export default function ArticlePerformance() {
 
           <h2 className="text-lg font-bold text-text-primary pt-4">Comment optimiser vos performances ?</h2>
           <p>
-            Pour atteindre l'excellence, nous combinons plusieurs techniques avancées :
+            Pour atteindre l'excellence, je combine plusieurs techniques avancées :
           </p>
           <ul className="list-decimal pl-5 space-y-1">
             <li>Compression des images de nouvelle génération (WebP/AVIF).</li>
