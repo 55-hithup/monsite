@@ -107,7 +107,7 @@ export default function Hero() {
           alt="DevSupAi 3D Showcase Widescreen Background"
           fetchPriority="high"
           loading="eager"
-          className="w-full h-full object-cover object-center md:object-right"
+          className="w-full h-full object-cover object-right max-md:scale-130 max-md:origin-right"
         />
         {/* Soft gradient masks to guarantee high contrast on all screens */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B122C] via-[#0B122C]/60 to-transparent md:block hidden"></div>
