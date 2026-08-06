@@ -34,9 +34,13 @@ export default function Footer() {
             </p>
             <div className="text-xs text-text-secondary mt-2">
               <span className="text-text-primary block font-medium mb-1">Contact :</span>
-              <a href="mailto:contact@devsupai.fr" className="hover:text-primary-bg transition-colors cursor-target text-[#2E8FE0]">
+              <a href="mailto:contact@devsupai.fr" className="hover:text-primary-bg transition-colors cursor-target text-[#2E8FE0] block mb-2">
                 contact@devsupai.fr
               </a>
+              <span className="text-text-primary block font-medium mb-1">Localisation :</span>
+              <span className="text-text-secondary block">
+                Saint-Mihiel (Meuse, Grand Est)
+              </span>
             </div>
           </div>
 
