@@ -1,3 +1,7 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLenis } from 'lenis/react';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
 import Offers from '../components/Offers';
@@ -10,6 +14,55 @@ import Stack from '../components/Stack';
 import Contact from '../components/Contact';
 
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lenis = useLenis();
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const reveals = containerRef.current?.querySelectorAll('.reveal');
+      reveals?.forEach((el) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+        });
+      });
+    }, containerRef);
+
+    // Handle scroll to hash on mount (useful when navigating back from project description)
+    if (window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          if (lenis) {
+            lenis.scrollTo(element, { duration: 1.2 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 300); // Wait for transition exit animation to complete and GSAP to settle
+      }
+    }
+
+    // Refresh triggers after DOM settles
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 200);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
+  }, [lenis]);
+
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -58,7 +111,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main ref={containerRef}>
       <script type="application/ld+json">
         {JSON.stringify(schemaMarkup)}
       </script>

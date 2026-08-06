@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -61,29 +60,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  useEffect(() => {
-    // Register scroll reveal for elements with .reveal class
-    // Run this logic on initial page render. Router child pages use their own triggers.
-    const reveals = document.querySelectorAll('.reveal');
-    const ctx = gsap.context(() => {
-      reveals.forEach((el) => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-            toggleActions: 'play none none none',
-          },
-        });
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return <RouterProvider router={router} />;
 }
 
