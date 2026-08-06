@@ -11,6 +11,7 @@ import LegalNotices from './pages/LegalNotices';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CaseLesJumeaux from './pages/projects/CaseLesJumeaux';
 import CaseLocaTool from './pages/projects/CaseLocaTool';
+import CaseAbogame from './pages/projects/CaseAbogame';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: 'projets/locatool',
         element: <CaseLocaTool />,
+      },
+      {
+        path: 'projets/abogame',
+        element: <CaseAbogame />,
       },
       {
         path: 'mentions-legales',

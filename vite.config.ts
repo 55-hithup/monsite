@@ -18,6 +18,7 @@ export default defineConfig({
         '/blog/performance-web-sur-mesure',
         '/projets/les-jumeaux',
         '/projets/locatool',
+        '/projets/abogame',
         '/mentions-legales',
         '/politique-de-confidentialite',
       ],

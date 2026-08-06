@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom';
 import SectionReveal from './SectionReveal';
 
+interface ProjectItem {
+  tag: string;
+  title: string;
+  desc: string;
+  img?: string;
+  bg?: string;
+  href?: string;
+  inProgress?: boolean;
+}
+
 export default function Projects() {
-  const projects = [
+  const projects: ProjectItem[] = [
     {
       tag: 'Restauration',
       title: 'Les Jumeaux',
@@ -20,9 +30,9 @@ export default function Projects() {
     {
       tag: 'Application Streamer',
       title: 'Abogame',
-      desc: 'Plateforme innovante pour les créateurs de contenu et leur communauté.',
-      bg: 'linear-gradient(155deg,#0e0a1a,#05030a)',
-      inProgress: true,
+      desc: 'Plateforme interactive mobile-first pour streamers : roue de sélection en temps réel et planification de live.',
+      img: '/abogame.webp',
+      href: '/projets/abogame',
     },
   ];
 

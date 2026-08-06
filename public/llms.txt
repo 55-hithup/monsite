@@ -9,12 +9,13 @@
 
 ## Plan du Site (URLs)
 
-- [/](https://devsupai.fr/) : Page d'accueil officielle présentant nos services de développement web sur-mesure, nos réalisations clés, nos piliers de performance et notre formulaire de contact.
-- [/a-propos](https://devsupai.fr/a-propos) : Notre histoire, notre philosophie de code propre sans compromis et la présentation du fondateur Alexandre Pabst.
-- [/blog](https://devsupai.fr/blog) : Index de nos articles techniques sur la performance web, la conversion et le développement.
+- [/](https://devsupai.fr/) : Page d'accueil officielle présentant mes services de développement web sur-mesure, mes réalisations clés, mes piliers de performance et mon formulaire de contact.
+- [/a-propos](https://devsupai.fr/a-propos) : Mon histoire, ma philosophie de code propre sans compromis et la présentation du fondateur Alexandre Pabst.
+- [/blog](https://devsupai.fr/blog) : Index de mes articles techniques sur la performance web, la conversion et le développement.
   - [/blog/pourquoi-eviter-les-templates](https://devsupai.fr/blog/pourquoi-eviter-les-templates) : Article détaillé sur l'intérêt d'opter pour le sur-mesure face aux CMS lourds (WordPress, Page Builders) en 2026.
   - [/blog/performance-web-sur-mesure](https://devsupai.fr/blog/performance-web-sur-mesure) : Article expliquant l'impact de la vitesse de chargement (LCP, Lighthouse) sur les taux de conversion et l'acquisition client.
 - [/projets/les-jumeaux](https://devsupai.fr/projets/les-jumeaux) : Étude de cas détaillée sur le site vitrine du restaurant "Les Jumeaux" (temps de chargement ultra-rapide et hausse des réservations).
 - [/projets/locatool](https://devsupai.fr/projets/locatool) : Étude de cas sur l'application de gestion de parc matériel "LocaTool" (optimisation d'interface, tableau de bord réactif et réduction du taux de rebond).
+- [/projets/abogame](https://devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive de streaming "Abogame" (intégration de roue de tirage animée et planification en direct).
 - [/mentions-legales](https://devsupai.fr/mentions-legales) : Mentions légales de l'entreprise individuelle Alexandre Pabst EI (SIRET, RNE, hébergement).
 - [/politique-de-confidentialite](https://devsupai.fr/politique-de-confidentialite) : Politique de protection des données (RGPD) du site.
