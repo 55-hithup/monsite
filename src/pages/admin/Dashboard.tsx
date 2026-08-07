@@ -22,6 +22,10 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!auth) {
+      navigate('/admin/login');
+      return;
+    }
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       if (!user) {
         navigate('/admin/login');
@@ -33,7 +37,7 @@ export default function Dashboard() {
   }, [navigate]);
 
   useEffect(() => {
-    if (checkingAuth) return;
+    if (checkingAuth || !db) return;
 
     const q = query(collection(db, 'testimonials'), orderBy('created_at', 'desc'));
     const unsubscribeSnapshot = onSnapshot(
@@ -56,6 +60,7 @@ export default function Dashboard() {
   }, [checkingAuth]);
 
   const handleApprove = async (id: string, approve: boolean) => {
+    if (!db) return;
     try {
       const docRef = doc(db, 'testimonials', id);
       await updateDoc(docRef, { approved: approve });
@@ -66,6 +71,7 @@ export default function Dashboard() {
   };
 
   const handleDelete = async (id: string) => {
+    if (!db) return;
     if (!window.confirm('Voulez-vous vraiment supprimer définitivement cet avis ?')) return;
     try {
       const docRef = doc(db, 'testimonials', id);
@@ -77,6 +83,7 @@ export default function Dashboard() {
   };
 
   const handleLogout = async () => {
+    if (!auth) return;
     try {
       await signOut(auth);
       navigate('/admin/login');
@@ -85,9 +92,22 @@ export default function Dashboard() {
     }
   };
 
+  if (!auth || !db) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs p-4 text-center">
+        <div className="max-w-md p-6 rounded-2xl bg-[#121729]/60 border border-red-500/20 shadow-2xl backdrop-blur-md">
+          <p className="mb-4 text-sm font-bold text-text-primary">⚠️ Configuration Firebase manquante</p>
+          <p className="text-[11px] text-text-secondary leading-relaxed">
+            Le tableau de bord ne peut pas se connecter car les variables d'environnement Firebase ne sont pas définies sur votre projet.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   if (checkingAuth || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-var(--color-bg-deep) text-text-secondary font-mono text-xs">
+      <div className="min-h-screen flex items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs">
         Chargement de la session...
       </div>
     );

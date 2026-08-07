@@ -46,6 +46,10 @@ export default function Testimonials() {
 
   useEffect(() => {
     async function loadTestimonials() {
+      if (!db) {
+        console.log("Firebase DB not initialized. Using static testimonials.");
+        return;
+      }
       try {
         const q = query(
           collection(db, 'testimonials'),
@@ -87,6 +91,10 @@ export default function Testimonials() {
     e.preventDefault();
     if (!name || !role || !quote) {
       alert('Veuillez remplir tous les champs.');
+      return;
+    }
+    if (!db) {
+      alert("La base de données n'est pas initialisée pour le moment.");
       return;
     }
     setSubmitting(true);
