@@ -19,3 +19,4 @@
 - [/projets/abogame](https://devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive de streaming "Abogame" (intégration de roue de tirage animée et planification en direct).
 - [/mentions-legales](https://devsupai.fr/mentions-legales) : Mentions légales de l'entreprise individuelle Alexandre Pabst EI (SIRET, RNE, hébergement).
 - [/politique-de-confidentialite](https://devsupai.fr/politique-de-confidentialite) : Politique de protection des données (RGPD) du site.
+- [/admin/login](https://devsupai.fr/admin/login) : Espace d'administration privé (modération des avis clients).

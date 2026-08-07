@@ -12,6 +12,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CaseLesJumeaux from './pages/projects/CaseLesJumeaux';
 import CaseLocaTool from './pages/projects/CaseLocaTool';
 import CaseAbogame from './pages/projects/CaseAbogame';
+import Login from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
       {
         path: 'politique-de-confidentialite',
         element: <PrivacyPolicy />,
+      },
+      {
+        path: 'admin/login',
+        element: <Login />,
+      },
+      {
+        path: 'admin/avis',
+        element: <Dashboard />,
       },
     ],
   },
