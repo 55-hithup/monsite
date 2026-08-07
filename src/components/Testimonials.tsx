@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, query, where, orderBy, getDocs, addDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import SectionReveal from './SectionReveal';
 
@@ -8,6 +8,7 @@ interface TestimonialItem {
   name: string;
   role: string;
   rating: number;
+  created_at?: any;
 }
 
 const defaultTestimonials: TestimonialItem[] = [
@@ -53,8 +54,7 @@ export default function Testimonials() {
       try {
         const q = query(
           collection(db, 'testimonials'),
-          where('approved', '==', true),
-          orderBy('created_at', 'desc')
+          where('approved', '==', true)
         );
         const snapshot = await getDocs(q);
         const dynamicList: TestimonialItem[] = [];
@@ -65,7 +65,15 @@ export default function Testimonials() {
             name: data.name,
             role: data.role,
             rating: data.rating || 5,
+            created_at: data.created_at || null
           });
+        });
+        
+        // Sort dynamic testimonials client-side by date descending
+        dynamicList.sort((a, b) => {
+          const timeA = a.created_at?.seconds || 0;
+          const timeB = b.created_at?.seconds || 0;
+          return timeB - timeA;
         });
         
         // Combine dynamic reviews from Firestore with our original static ones
