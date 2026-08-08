@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
@@ -39,8 +39,8 @@ export default function Testimonials() {
   const [list, setList] = useState<TestimonialItem[]>(defaultTestimonials);
   const [current, setCurrent] = useState(0);
   
-  // Form modal states
-  const [showModal, setShowModal] = useState(false);
+  // Form inline states
+  const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   const [quote, setQuote] = useState('');
@@ -50,28 +50,34 @@ export default function Testimonials() {
 
   // Anti-bot security states
   const [honeypot, setHoneypot] = useState('');
-  const [modalOpenTime, setModalOpenTime] = useState<number>(0);
+  const [formOpenTime, setFormOpenTime] = useState<number>(0);
   const [isHuman, setIsHuman] = useState(false);
 
   const lenis = useLenis();
+  const formRef = useRef<HTMLDivElement>(null);
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const handleCloseForm = () => {
+    setShowForm(false);
     setSubmitted(false);
-    if (typeof window !== 'undefined') {
-      document.body.style.overflow = '';
-      lenis?.start();
-    }
   };
 
   useEffect(() => {
-    return () => {
-      if (typeof window !== 'undefined') {
-        document.body.style.overflow = '';
-        lenis?.start();
-      }
-    };
-  }, [lenis]);
+    if (showForm && formRef.current) {
+      setTimeout(() => {
+        if (formRef.current) {
+          if (lenis) {
+            const element = formRef.current;
+            const rect = element.getBoundingClientRect();
+            // Center the card in the viewport
+            const offset = -(window.innerHeight / 2) + (rect.height / 2);
+            lenis.scrollTo(element, { offset, duration: 1.2 });
+          } else {
+            formRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }, 150);
+    }
+  }, [showForm, lenis]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -124,19 +130,15 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, [list.length]);
 
-  const handleOpenModal = () => {
+  const handleOpenForm = () => {
     setName('');
     setRole('');
     setQuote('');
     setRating(5);
     setHoneypot('');
     setIsHuman(false);
-    setModalOpenTime(Date.now());
-    setShowModal(true);
-    if (typeof window !== 'undefined') {
-      document.body.style.overflow = 'hidden';
-      lenis?.stop();
-    }
+    setFormOpenTime(Date.now());
+    setShowForm(true);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -147,18 +149,18 @@ export default function Testimonials() {
       console.warn('Bot submission blocked via honeypot.');
       setSubmitted(true);
       setTimeout(() => {
-        handleCloseModal();
+        handleCloseForm();
       }, 2000);
       return;
     }
 
     // 2. Time-lock check (reject if submission is too fast, < 2 seconds)
-    const timeElapsed = Date.now() - modalOpenTime;
+    const timeElapsed = Date.now() - formOpenTime;
     if (timeElapsed < 2000) {
       console.warn('Bot submission blocked via time-lock.');
       setSubmitted(true);
       setTimeout(() => {
-        handleCloseModal();
+        handleCloseForm();
       }, 2000);
       return;
     }
@@ -190,7 +192,7 @@ export default function Testimonials() {
       });
       setSubmitted(true);
       setTimeout(() => {
-        handleCloseModal();
+        handleCloseForm();
         setName('');
         setRole('');
         setQuote('');
@@ -259,166 +261,163 @@ export default function Testimonials() {
         </div>
 
         {/* Submit Review Button */}
-        <div className="text-center mt-10 reveal">
-          <button 
-            onClick={handleOpenModal} 
-            className="btn btn-ghost text-xs px-5 py-2.5 inline-flex items-center gap-2"
-            style={{ border: '1px solid rgba(245,246,250,0.12)', cursor: 'pointer' }}
-          >
-            <PenSquare size={13} className="text-[#2E8FE0]" /> Laisser un avis
-          </button>
-        </div>
+        {!showForm && (
+          <div className="text-center mt-10 reveal">
+            <button 
+              onClick={handleOpenForm} 
+              className="btn btn-ghost text-xs px-5 py-2.5 inline-flex items-center gap-2"
+              style={{ border: '1px solid rgba(245,246,250,0.12)', cursor: 'pointer' }}
+            >
+              <PenSquare size={13} className="text-[#2E8FE0]" /> Laisser un avis
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Review Submission Modal Dialog */}
+      {/* Review Submission Inline Card */}
       <AnimatePresence>
-        {showModal && (
+        {showForm && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-start sm:items-center justify-center p-4 overflow-y-auto"
+            ref={formRef}
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: 'auto', marginTop: 40 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden w-full max-w-lg mx-auto"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-              className="w-full max-w-lg rounded-2xl bg-[#121729]/95 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative"
-            >
-            <button 
-              onClick={handleCloseModal}
-              className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-            >
-              <X size={18} />
-            </button>
+            <div className="w-full rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative mb-12">
+              <button 
+                onClick={handleCloseForm}
+                className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+              >
+                <X size={18} />
+              </button>
 
-            {submitted ? (
-              <div className="text-center py-8">
-                <div className="w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-emerald-400 text-lg">✓</span>
+              {submitted ? (
+                <div className="text-center py-8">
+                  <div className="w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
+                    <span className="text-emerald-400 text-lg">✓</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-text-primary mb-2">Avis enregistré !</h3>
+                  <p className="text-xs text-text-secondary leading-relaxed">
+                    Merci pour votre retour. Votre témoignage sera visible sur le site dès sa modération par Alexandre.
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-text-primary mb-2">Avis enregistré !</h3>
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  Merci pour votre retour. Votre témoignage sera visible sur le site dès sa modération par Alexandre.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <h3 className="text-xl font-extrabold text-text-primary">Partagez votre expérience</h3>
-                  <p className="text-xs text-text-secondary mt-1">Votre avis sera relu et validé avant d'être publié.</p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Nom / Prénom</label>
-                    <input
-                      type="text"
+                    <h3 className="text-xl font-extrabold text-text-primary">Partagez votre expérience</h3>
+                    <p className="text-xs text-text-secondary mt-1">Votre avis sera relu et validé avant d'être publié.</p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Nom / Prénom</label>
+                      <input
+                        type="text"
+                        required
+                        autoFocus
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Claire Dubosc"
+                        className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Rôle / Entreprise</label>
+                      <input
+                        type="text"
+                        required
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
+                        placeholder="Fondatrice, Studio Verrière"
+                        className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Rating selection */}
+                  <div>
+                    <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Note globale</label>
+                    <div className="flex gap-1.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setRating(i + 1)}
+                          className="cursor-pointer transition-transform hover:scale-110"
+                        >
+                          <Star
+                            size={22}
+                            fill={i < rating ? '#F5C451' : 'transparent'}
+                            stroke={i < rating ? '#F5C451' : 'rgba(245, 246, 250, 0.3)'}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Témoignage</label>
+                    <textarea
                       required
-                      autoFocus
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Claire Dubosc"
-                      className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                      rows={4}
+                      value={quote}
+                      onChange={(e) => setQuote(e.target.value)}
+                      placeholder="Le résultat dépasse largement mes attentes..."
+                      className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors resize-none"
                     />
                   </div>
-                  <div>
-                    <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Rôle / Entreprise</label>
+
+                  {/* Honeypot field (hidden from users) */}
+                  <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
                     <input
                       type="text"
-                      required
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
-                      placeholder="Fondatrice, Studio Verrière"
-                      className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                      name="user_website_verification"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
                     />
                   </div>
-                </div>
 
-                {/* Rating selection */}
-                <div>
-                  <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Note globale</label>
-                  <div className="flex gap-1.5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => setRating(i + 1)}
-                        className="cursor-pointer transition-transform hover:scale-110"
-                      >
-                        <Star
-                          size={22}
-                          fill={i < rating ? '#F5C451' : 'transparent'}
-                          stroke={i < rating ? '#F5C451' : 'rgba(245, 246, 250, 0.3)'}
-                        />
-                      </button>
-                    ))}
+                  {/* Human verification checkbox */}
+                  <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#070913]/40 border border-[rgba(245,246,250,0.06)]">
+                    <input
+                      id="human-verify"
+                      type="checkbox"
+                      checked={isHuman}
+                      onChange={(e) => setIsHuman(e.target.checked)}
+                      className="w-4 h-4 rounded bg-[#070913]/60 border border-[rgba(245,246,250,0.12)] text-[#2E8FE0] focus:ring-0 focus:ring-offset-0 cursor-pointer"
+                    />
+                    <label htmlFor="human-verify" className="text-[10px] label-mono text-text-secondary cursor-pointer select-none">
+                      Je certifie que je suis un être humain
+                    </label>
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Témoignage</label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={quote}
-                    onChange={(e) => setQuote(e.target.value)}
-                    placeholder="Le résultat dépasse largement mes attentes..."
-                    className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors resize-none"
-                  />
-                </div>
-
-                {/* Honeypot field (hidden from users) */}
-                <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
-                  <input
-                    type="text"
-                    name="user_website_verification"
-                    value={honeypot}
-                    onChange={(e) => setHoneypot(e.target.value)}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-
-                {/* Human verification checkbox */}
-                <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#070913]/40 border border-[rgba(245,246,250,0.06)]">
-                  <input
-                    id="human-verify"
-                    type="checkbox"
-                    checked={isHuman}
-                    onChange={(e) => setIsHuman(e.target.checked)}
-                    className="w-4 h-4 rounded bg-[#070913]/60 border border-[rgba(245,246,250,0.12)] text-[#2E8FE0] focus:ring-0 focus:ring-offset-0 cursor-pointer"
-                  />
-                  <label htmlFor="human-verify" className="text-[10px] label-mono text-text-secondary cursor-pointer select-none">
-                    Je certifie que je suis un être humain
-                  </label>
-                </div>
-
-                <div className="flex gap-3 justify-end pt-4 border-t border-[rgba(245,246,250,0.04)]">
-                  <button
-                    type="button"
-                    onClick={handleCloseModal}
-                    className="px-4 py-2 text-xs font-bold text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-                  >
-                    Annuler
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="px-4 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer"
-                    style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
-                  >
-                    {submitting ? 'Envoi...' : 'Envoyer mon avis'}
-                  </button>
-                </div>
-              </form>
-            )}
+                  <div className="flex gap-3 justify-end pt-4 border-t border-[rgba(245,246,250,0.04)]">
+                    <button
+                      type="button"
+                      onClick={handleCloseForm}
+                      className="px-4 py-2 text-xs font-bold text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+                    >
+                      Annuler
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="px-4 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer"
+                      style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
+                    >
+                      {submitting ? 'Envoi...' : 'Envoyer mon avis'}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
     </SectionReveal>
   );
 }
