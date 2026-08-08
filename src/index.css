@@ -159,20 +159,6 @@ small {
   letter-spacing: 0.05em;
 }
 
-/* Hide default cursor on desktops if not prefers-reduced-motion */
-@media (hover: hover) and (pointer: fine) {
-  body:not(.reduced-motion) {
-    cursor: none;
-  }
-  body:not(.reduced-motion) a,
-  body:not(.reduced-motion) button,
-  body:not(.reduced-motion) input,
-  body:not(.reduced-motion) select,
-  body:not(.reduced-motion) textarea,
-  body:not(.reduced-motion) [role="button"] {
-    cursor: none;
-  }
-}
 
 
 /* ==========================================================================
@@ -940,7 +926,7 @@ nav {
   overflow: hidden;
   aspect-ratio: 16/10;
   border: 1px solid var(--color-border);
-  cursor: none;
+  cursor: pointer;
 }
 .proj-bg {
   position: absolute;

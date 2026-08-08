@@ -4,7 +4,6 @@ import { ReactLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import GlowOrbCursor from './GlowOrbCursor';
 import 'lenis/dist/lenis.css';
 
 export default function Layout() {
@@ -42,8 +41,6 @@ export default function Layout() {
 
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
-      <GlowOrbCursor />
-      
       <Navbar />
 
       <AnimatePresence mode="wait">
