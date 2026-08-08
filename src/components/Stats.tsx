@@ -198,12 +198,12 @@ export default function Stats() {
               </span>
               
               {/* Title */}
-              <h3 
+              <h2 
                 className="text-base font-bold text-text-primary mt-1.5 mb-2.5 group-hover:text-[#2E8FE0] transition-colors"
                 style={{ transform: 'translateZ(15px)', willChange: 'transform' }}
               >
                 {pillar.title}
-              </h3>
+              </h2>
               
               {/* Description */}
               <p 

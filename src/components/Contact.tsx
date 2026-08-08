@@ -90,9 +90,9 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="reveal bg-[#121729] border border-[rgba(245,246,250,0.08)] rounded-[16px] p-6 md:p-10" id="contactForm">
             {/* Steps / Onboarding text block */}
             <div className="mb-8 p-5 bg-[#0B0F1E]/50 border border-[rgba(245,246,250,0.04)] rounded-[10px] text-sm text-text-secondary leading-relaxed text-left">
-              <h4 className="text-text-primary font-bold text-sm mb-2 flex items-center gap-2">
+              <h3 className="text-text-primary font-bold text-sm mb-2 flex items-center gap-2">
                 <span className="text-[#2E8FE0]">✦</span> Votre projet commence simplement
-              </h4>
+              </h3>
               <p>
                 J'échange gratuitement avec vous sur vos besoins, puis je réalise une première proposition visuelle pour vous permettre de vous projeter. Si elle vous convainc, nous validons ensemble le devis, un acompte lance officiellement le projet, puis je conçois les maquettes finales avant de développer votre site.
               </p>

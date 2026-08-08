@@ -181,7 +181,7 @@ export default function Process() {
         {/* Global Progress HUD */}
         <div className="hud reveal">
           <span className="hud-label">PROGRESSION</span>
-          <div className="hud-bar" role="progressbar" aria-valuenow={unlockedCount} aria-valuemin={0} aria-valuemax={steps.length}>
+          <div className="hud-bar" role="progressbar" aria-label="Progression du parcours de la méthode de travail" aria-valuenow={unlockedCount} aria-valuemin={0} aria-valuemax={steps.length}>
             <div className="hud-fill" style={{ width: `${progressPercent}%` }}></div>
           </div>
           <span className="hud-count">{unlockedCount}/{steps.length}</span>
