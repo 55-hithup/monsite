@@ -46,6 +46,11 @@ export default function Testimonials() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  // Anti-bot security states
+  const [honeypot, setHoneypot] = useState('');
+  const [modalOpenTime, setModalOpenTime] = useState<number>(0);
+  const [isHuman, setIsHuman] = useState(false);
+
   useEffect(() => {
     async function loadTestimonials() {
       if (!db) {
@@ -96,8 +101,49 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, [list.length]);
 
+  const handleOpenModal = () => {
+    setName('');
+    setRole('');
+    setQuote('');
+    setRating(5);
+    setHoneypot('');
+    setIsHuman(false);
+    setModalOpenTime(Date.now());
+    setShowModal(true);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 1. Honeypot check (reject if hidden bot field is filled)
+    if (honeypot.trim() !== '') {
+      console.warn('Bot submission blocked via honeypot.');
+      setSubmitted(true);
+      setTimeout(() => {
+        setShowModal(false);
+        setSubmitted(false);
+      }, 2000);
+      return;
+    }
+
+    // 2. Time-lock check (reject if submission is too fast, < 2 seconds)
+    const timeElapsed = Date.now() - modalOpenTime;
+    if (timeElapsed < 2000) {
+      console.warn('Bot submission blocked via time-lock.');
+      setSubmitted(true);
+      setTimeout(() => {
+        setShowModal(false);
+        setSubmitted(false);
+      }, 2000);
+      return;
+    }
+
+    // 3. User human certification check
+    if (!isHuman) {
+      alert("Veuillez cocher la case de certification humaine pour envoyer votre avis.");
+      return;
+    }
+
     if (!name || !role || !quote) {
       alert('Veuillez remplir tous les champs.');
       return;
@@ -106,6 +152,7 @@ export default function Testimonials() {
       alert("La base de données n'est pas initialisée pour le moment.");
       return;
     }
+
     setSubmitting(true);
     try {
       await addDoc(collection(db, 'testimonials'), {
@@ -190,7 +237,7 @@ export default function Testimonials() {
         {/* Submit Review Button */}
         <div className="text-center mt-10 reveal">
           <button 
-            onClick={() => setShowModal(true)} 
+            onClick={handleOpenModal} 
             className="btn btn-ghost text-xs px-5 py-2.5 inline-flex items-center gap-2"
             style={{ border: '1px solid rgba(245,246,250,0.12)', cursor: 'pointer' }}
           >
@@ -283,6 +330,32 @@ export default function Testimonials() {
                     placeholder="Le résultat dépasse largement mes attentes..."
                     className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors resize-none"
                   />
+                </div>
+
+                {/* Honeypot field (hidden from users) */}
+                <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
+                  <input
+                    type="text"
+                    name="user_website_verification"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                {/* Human verification checkbox */}
+                <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#070913]/40 border border-[rgba(245,246,250,0.06)]">
+                  <input
+                    id="human-verify"
+                    type="checkbox"
+                    checked={isHuman}
+                    onChange={(e) => setIsHuman(e.target.checked)}
+                    className="w-4 h-4 rounded bg-[#070913]/60 border border-[rgba(245,246,250,0.12)] text-[#2E8FE0] focus:ring-0 focus:ring-offset-0 cursor-pointer"
+                  />
+                  <label htmlFor="human-verify" className="text-[10px] label-mono text-text-secondary cursor-pointer select-none">
+                    Je certifie que je suis un être humain
+                  </label>
                 </div>
 
                 <div className="flex gap-3 justify-end pt-4 border-t border-[rgba(245,246,250,0.04)]">
