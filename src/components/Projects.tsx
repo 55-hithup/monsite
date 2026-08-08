@@ -17,14 +17,14 @@ export default function Projects() {
       tag: 'Restauration',
       title: 'Les Jumeaux',
       desc: 'Site vitrine immersif et système de réservation en ligne sur-mesure pour un restaurant-brasserie.',
-      img: '/les-jumeaux.png',
+      img: '/les-jumeaux.webp',
       href: '/projets/les-jumeaux',
     },
     {
       tag: 'Entreprise',
       title: 'LocaTool',
       desc: 'Logiciel de gestion de location tout-en-un pour simplifier le suivi du matériel, des clients et des devis.',
-      img: '/locatool.png',
+      img: '/locatool.webp',
       href: '/projets/locatool',
     },
     {

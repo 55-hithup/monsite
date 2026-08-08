@@ -73,9 +73,9 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "DevSupAi",
-    "image": "https://devsupai.fr/logo.png",
-    "@id": "https://devsupai.fr/#website",
-    "url": "https://devsupai.fr",
+    "image": "https://www.devsupai.fr/logo.png",
+    "@id": "https://www.devsupai.fr/#website",
+    "url": "https://www.devsupai.fr",
     "telephone": "",
     "priceRange": "$$",
     "address": {

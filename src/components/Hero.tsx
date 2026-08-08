@@ -103,7 +103,7 @@ export default function Hero() {
       {/* Widescreen Background Mockup Image */}
       <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none overflow-hidden">
         <img
-          src="/hero-bg-mockup.png"
+          src="/hero-bg-mockup.webp"
           alt="DevSupAi 3D Showcase Widescreen Background"
           fetchPriority="high"
           loading="eager"
