@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLenis } from 'lenis/react';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 import { Star, PenSquare, X } from 'lucide-react';
 import { db } from '../lib/firebase';
@@ -50,6 +51,22 @@ export default function Testimonials() {
   const [honeypot, setHoneypot] = useState('');
   const [modalOpenTime, setModalOpenTime] = useState<number>(0);
   const [isHuman, setIsHuman] = useState(false);
+
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+      lenis?.stop();
+    } else {
+      document.body.style.overflow = '';
+      lenis?.start();
+    }
+    return () => {
+      document.body.style.overflow = '';
+      lenis?.start();
+    };
+  }, [showModal, lenis]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -249,7 +266,7 @@ export default function Testimonials() {
 
       {/* Review Submission Modal Dialog */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-start sm:items-center justify-center p-4 overflow-y-auto">
           <div className="w-full max-w-lg rounded-2xl bg-[#121729]/95 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative">
             <button 
               onClick={() => setShowModal(false)}
@@ -281,6 +298,7 @@ export default function Testimonials() {
                     <input
                       type="text"
                       required
+                      autoFocus
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Claire Dubosc"
