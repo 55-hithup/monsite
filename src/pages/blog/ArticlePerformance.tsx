@@ -1,7 +1,13 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
+import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function ArticlePerformance() {
+  useDocumentMetadata(
+    "L'impact de la performance web sur votre business | Blog DevSupAi",
+    "Découvrez comment la vitesse de chargement et le score Google PageSpeed influencent directement vos ventes, votre taux de conversion et votre référencement Google."
+  );
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-2xl">

@@ -1,7 +1,13 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
+import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function CaseAbogame() {
+  useDocumentMetadata(
+    "Étude de cas : Abogame | Portfolio DevSupAi",
+    "Découvrez Abogame, une application mobile-first de planification en temps réel développée pour les streamers et leurs communautés."
+  );
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-3xl">

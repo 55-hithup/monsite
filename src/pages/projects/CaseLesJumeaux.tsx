@@ -1,7 +1,13 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
+import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function CaseLesJumeaux() {
+  useDocumentMetadata(
+    "Étude de cas : Les Jumeaux | Portfolio DevSupAi",
+    "Découvrez le projet Les Jumeaux, une plateforme de click & collect et de commande en ligne sur-mesure ayant augmenté le taux de conversion et les ventes de 40%."
+  );
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-3xl">

@@ -1,7 +1,13 @@
 import SectionReveal from '../components/SectionReveal';
 import MagneticWrapper from '../components/MagneticWrapper';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export default function About() {
+  useDocumentMetadata(
+    "À Propos de DevSupAi | Développeur Web de Confiance",
+    "Découvrez le parcours d'Alex, fondateur de DevSupAi, et sa méthode de développement sans compromis pour concevoir des sites web rapides et entièrement sur-mesure."
+  );
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-4xl">

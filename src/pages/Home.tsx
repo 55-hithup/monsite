@@ -12,8 +12,14 @@ import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Stack from '../components/Stack';
 import Contact from '../components/Contact';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export default function Home() {
+  useDocumentMetadata(
+    "DevSupAi | Création de Plateformes Web Sur-Mesure de Haute Performance",
+    "Développeur freelance spécialisé dans la création d'applications et de sites web sur-mesure de haute performance, optimisés pour le SEO et le taux de conversion."
+  );
+
   const containerRef = useRef<HTMLDivElement>(null);
   const lenis = useLenis();
 

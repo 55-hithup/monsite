@@ -1,7 +1,13 @@
 import SectionReveal from '../components/SectionReveal';
 import { Link } from 'react-router-dom';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export default function Blog() {
+  useDocumentMetadata(
+    "Le Blog Performance Web | DevSupAi",
+    "Conseils de développeur, guides SEO, et astuces d'optimisation pour maximiser la vitesse et la conversion de vos applications web."
+  );
+
   const articles = [
     {
       slug: 'pourquoi-eviter-les-templates',

@@ -1,7 +1,13 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
+import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function CaseLocaTool() {
+  useDocumentMetadata(
+    "Étude de cas : LocaTool | Portfolio DevSupAi",
+    "Découvrez comment j'ai conçu LocaTool, une application web SaaS de gestion de stocks et de réservations de matériel en temps réel."
+  );
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-3xl">

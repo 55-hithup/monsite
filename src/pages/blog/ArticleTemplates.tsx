@@ -1,7 +1,13 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
+import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function ArticleTemplates() {
+  useDocumentMetadata(
+    "Pourquoi éviter les templates en 2026 ? | Blog DevSupAi",
+    "Les thèmes pré-conçus pénalisent votre vitesse de chargement et nuisent à votre référencement naturel. Découvrez pourquoi le développement sur-mesure est devenu incontournable."
+  );
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-2xl">

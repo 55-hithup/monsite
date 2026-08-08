@@ -1,6 +1,12 @@
 import SectionReveal from '../components/SectionReveal';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export default function PrivacyPolicy() {
+  useDocumentMetadata(
+    "Politique de Confidentialité | DevSupAi",
+    "Découvrez notre politique de confidentialité, le traitement de vos données personnelles et vos droits relatifs aux RGPD."
+  );
+
   return (
     <SectionReveal className="section-pad" style={{ background: 'var(--color-bg-deep)', minHeight: '80vh', paddingTop: '140px' }}>
       <div className="wrap max-w-3xl">
