@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /admin/login
 Disallow: /admin/avis
 
-Sitemap: https://devsupai.fr/sitemap.xml
+Sitemap: https://www.devsupai.fr/sitemap.xml

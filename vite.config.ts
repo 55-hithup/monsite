@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     sitemap({
-      hostname: 'https://devsupai.fr',
+      hostname: 'https://www.devsupai.fr',
       readable: true,
       dynamicRoutes: [
         '/a-propos',
