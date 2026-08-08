@@ -77,7 +77,7 @@ export default function Home() {
     "@id": "https://www.devsupai.fr/#website",
     "url": "https://www.devsupai.fr",
     "telephone": "",
-    "priceRange": "$$",
+    "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "13 Allée des Roses",
