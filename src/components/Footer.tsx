@@ -108,6 +108,7 @@ export default function Footer() {
           <div className="flex flex-wrap gap-6 text-xs text-text-secondary">
             <Link to="/mentions-legales" className="cursor-target hover:text-text-primary transition-colors">Mentions légales</Link>
             <Link to="/politique-de-confidentialite" className="cursor-target hover:text-text-primary transition-colors">Politique de confidentialité</Link>
+            <Link to="/admin/login" className="cursor-target hover:text-text-primary transition-colors opacity-25 hover:opacity-100">Espace Pro</Link>
           </div>
         </div>
       </div>
