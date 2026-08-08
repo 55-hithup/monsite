@@ -2,8 +2,8 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
-// Try to load custom Firebase credentials from localStorage
 const getSavedConfig = () => {
+  if (typeof window === 'undefined') return null;
   try {
     const saved = localStorage.getItem('devsupai_firebase_config');
     if (saved) {

@@ -24,4 +24,13 @@ export default defineConfig({
       ],
     }),
   ],
-})
+  resolve: {
+    alias: {
+      'react-router-dom/server.js': 'react-router-dom/server',
+    },
+  },
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+  },
+} as any)

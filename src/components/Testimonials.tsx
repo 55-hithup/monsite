@@ -52,6 +52,7 @@ export default function Testimonials() {
   const [isHuman, setIsHuman] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     async function loadTestimonials() {
       if (!db) {
         console.log("Firebase DB not initialized. Using static testimonials.");
