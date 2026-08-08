@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!assets/|public/|.*\\.).*)",
+      "source": "/admin/:path*",
       "destination": "/index.html"
     }
   ]

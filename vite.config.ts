@@ -30,7 +30,7 @@ export default defineConfig({
     },
   },
   ssgOptions: {
-    script: 'async',
+    script: 'defer',
     formatting: 'minify',
   },
 } as any)
