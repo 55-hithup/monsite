@@ -2,6 +2,14 @@
 
 Ces règles s'appliquent automatiquement à chaque tâche de modification, d'ajout ou de suppression d'éléments sur le site DevSupAi.
 
+## 0. Architecture Static Site Generation (SSG)
+Le projet est configuré en SSG hybride via `vite-react-ssg` combiné à `react-router-dom` v7.
+* **Dépendances :** Toujours conserver `.npmrc` avec `legacy-peer-deps=true` pour résoudre le conflit nominal de dépendances entre React 19 et React Router v7.
+* **Patch Post-installation :** Le package `vite-react-ssg` cherche à importer `react-router-dom/server` ou `react-router-dom/server.js` (qui ne sont pas exportés sous cette forme en v7). Le script de post-installation `scripts/patch-ssg.js` doit être configuré dans `package.json` et maintenu pour corriger l'import dynamiquement vers `react-router`.
+* **Sécurisation SSR (Server-Side Rendering) :**
+  * Interdiction d'accéder directement à `window`, `document`, ou aux API navigateurs au niveau du module ou dans les constructeurs/corps de composants. Tous les accès doivent se faire dans un hook `useEffect` ou être gardés par un test `typeof window !== 'undefined'`.
+  * Les hooks d'appels réseau (ex : Firestore dans `Testimonials.tsx` ou localStorage dans `firebase.ts`) doivent être immédiatement court-circuités avec `if (typeof window === 'undefined') return;` pour éviter des blocages ou ralentissements pendant le build.
+
 ## 1. Synchronisation SEO & Sitemaps
 Pour toute modification affectant les routes du site ou le contenu d'une page :
 * Mettre à jour les métadonnées SEO dans les pages concernées (titre, meta descriptions, Open Graph, Twitter Cards).
