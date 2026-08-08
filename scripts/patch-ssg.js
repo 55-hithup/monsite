@@ -20,6 +20,22 @@ function patchFile(filePath) {
       content = content.replace(/react-router-dom\/server/g, 'react-router');
       modified = true;
     }
+
+    const searchManifest = "window.__VITE_REACT_SSG_STATIC_LOADER_MANIFEST__ = await (await fetch(withLeadingSlash(manifestUrl))).json();";
+    const replaceManifest = "window.__VITE_REACT_SSG_STATIC_LOADER_MANIFEST__ = await (async () => { try { const r = await fetch(withLeadingSlash(manifestUrl)); return r.ok ? await r.json() : {}; } catch { return {}; } })();";
+    
+    if (content.includes(searchManifest)) {
+      content = content.replace(searchManifest, replaceManifest);
+      modified = true;
+    }
+
+    const searchData = "window.__VITE_REACT_SSG_STATIC_LOADER_DATA__[pathname] = await (await fetch(withLeadingSlash(dataUrl))).json();";
+    const replaceData = "window.__VITE_REACT_SSG_STATIC_LOADER_DATA__[pathname] = await (async () => { try { const r = await fetch(withLeadingSlash(dataUrl)); return r.ok ? await r.json() : {}; } catch { return {}; } })();";
+
+    if (content.includes(searchData)) {
+      content = content.replace(searchData, replaceData);
+      modified = true;
+    }
     
     if (modified) {
       fs.writeFileSync(filePath, content, 'utf8');
