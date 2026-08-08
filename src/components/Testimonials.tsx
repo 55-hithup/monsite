@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLenis } from 'lenis/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 import { Star, PenSquare, X } from 'lucide-react';
 import { db } from '../lib/firebase';
@@ -270,9 +271,22 @@ export default function Testimonials() {
       </div>
 
       {/* Review Submission Modal Dialog */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-start sm:items-center justify-center p-4 overflow-y-auto">
-          <div className="w-full max-w-lg rounded-2xl bg-[#121729]/95 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative">
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-start sm:items-center justify-center p-4 overflow-y-auto"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+              className="w-full max-w-lg rounded-2xl bg-[#121729]/95 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative"
+            >
             <button 
               onClick={handleCloseModal}
               className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
@@ -401,9 +415,10 @@ export default function Testimonials() {
                 </div>
               </form>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
+    </AnimatePresence>
     </SectionReveal>
   );
 }
