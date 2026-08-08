@@ -54,19 +54,23 @@ export default function Testimonials() {
 
   const lenis = useLenis();
 
-  useEffect(() => {
-    if (showModal) {
-      document.body.style.overflow = 'hidden';
-      lenis?.stop();
-    } else {
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSubmitted(false);
+    if (typeof window !== 'undefined') {
       document.body.style.overflow = '';
       lenis?.start();
     }
+  };
+
+  useEffect(() => {
     return () => {
-      document.body.style.overflow = '';
-      lenis?.start();
+      if (typeof window !== 'undefined') {
+        document.body.style.overflow = '';
+        lenis?.start();
+      }
     };
-  }, [showModal, lenis]);
+  }, [lenis]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -128,6 +132,10 @@ export default function Testimonials() {
     setIsHuman(false);
     setModalOpenTime(Date.now());
     setShowModal(true);
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+      lenis?.stop();
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -138,8 +146,7 @@ export default function Testimonials() {
       console.warn('Bot submission blocked via honeypot.');
       setSubmitted(true);
       setTimeout(() => {
-        setShowModal(false);
-        setSubmitted(false);
+        handleCloseModal();
       }, 2000);
       return;
     }
@@ -150,8 +157,7 @@ export default function Testimonials() {
       console.warn('Bot submission blocked via time-lock.');
       setSubmitted(true);
       setTimeout(() => {
-        setShowModal(false);
-        setSubmitted(false);
+        handleCloseModal();
       }, 2000);
       return;
     }
@@ -183,8 +189,7 @@ export default function Testimonials() {
       });
       setSubmitted(true);
       setTimeout(() => {
-        setShowModal(false);
-        setSubmitted(false);
+        handleCloseModal();
         setName('');
         setRole('');
         setQuote('');
@@ -269,7 +274,7 @@ export default function Testimonials() {
         <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-start sm:items-center justify-center p-4 overflow-y-auto">
           <div className="w-full max-w-lg rounded-2xl bg-[#121729]/95 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative">
             <button 
-              onClick={() => setShowModal(false)}
+              onClick={handleCloseModal}
               className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
             >
               <X size={18} />
@@ -380,7 +385,7 @@ export default function Testimonials() {
                 <div className="flex gap-3 justify-end pt-4 border-t border-[rgba(245,246,250,0.04)]">
                   <button
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={handleCloseModal}
                     className="px-4 py-2 text-xs font-bold text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
                   >
                     Annuler
