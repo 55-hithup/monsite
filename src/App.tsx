@@ -17,7 +17,7 @@ import Dashboard from './pages/admin/Dashboard';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const routes = [
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
@@ -72,9 +72,10 @@ export const routes = [
       },
     ],
   },
-];
+]);
 
-export default function App() {
-  const router = createBrowserRouter(routes);
+function App() {
   return <RouterProvider router={router} />;
 }
+
+export default App;
