@@ -76,7 +76,7 @@ async function getCroppedImg(
     120
   );
 
-  return canvas.toDataURL('image/jpeg', 0.85);
+  return canvas.toDataURL('image/webp', 0.75);
 }
 
 export default function Testimonials() {
