@@ -27,7 +27,7 @@ export default function About() {
               Chez <strong>DevSupAi</strong>, je conçois des architectures sur-mesure basées sur les meilleures technologies modernes (React, TypeScript, GSAP, Tailwind CSS). Chaque ligne de code est écrite spécifiquement pour servir votre image de marque et maximiser vos taux de conversion.
             </p>
             <div className="pt-6">
-              <h3 className="text-lg font-bold text-text-primary mb-3">Mes principes fondamentaux</h3>
+              <h2 className="text-lg font-bold text-text-primary mb-3">Mes principes fondamentaux</h2>
               <ul className="space-y-4">
                 <li className="flex gap-3">
                   <span className="text-accent font-bold">01/</span>
