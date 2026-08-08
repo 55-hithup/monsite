@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { LogOut, Clock, Check, CheckCircle2, Trash2, EyeOff, AlertTriangle, Star } from 'lucide-react';
 import { auth, db } from '../../lib/firebase';
 import SectionReveal from '../../components/SectionReveal';
 
@@ -95,8 +96,9 @@ export default function Dashboard() {
   if (!auth || !db) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs p-4 text-center">
-        <div className="max-w-md p-6 rounded-2xl bg-[#121729]/60 border border-red-500/20 shadow-2xl backdrop-blur-md">
-          <p className="mb-4 text-sm font-bold text-text-primary">⚠️ Configuration Firebase manquante</p>
+        <div className="max-w-md p-6 rounded-2xl bg-[#121729]/60 border border-red-500/20 shadow-2xl backdrop-blur-md flex flex-col items-center">
+          <AlertTriangle size={20} className="text-red-400 mb-3" />
+          <p className="mb-2 text-sm font-bold text-text-primary">Configuration Firebase manquante</p>
           <p className="text-[11px] text-text-secondary leading-relaxed">
             Le tableau de bord ne peut pas se connecter car les variables d'environnement Firebase ne sont pas définies sur votre projet.
           </p>
@@ -130,10 +132,11 @@ export default function Dashboard() {
           </div>
           <button
             onClick={handleLogout}
-            className="btn btn-ghost text-xs px-4 py-2 flex items-center gap-2"
-            style={{ border: '1px solid rgba(245,246,250,0.12)', cursor: 'pointer' }}
+            className="btn btn-ghost text-xs px-4 py-2 flex items-center gap-2 cursor-pointer"
+            style={{ border: '1px solid rgba(245,246,250,0.12)' }}
           >
-            Se déconnecter 🚪
+            <LogOut size={13} />
+            <span>Se déconnecter</span>
           </button>
         </div>
 
@@ -142,7 +145,8 @@ export default function Dashboard() {
           {/* COLUMN 1: PENDING REVIEWS */}
           <div>
             <h2 className="text-sm font-bold label-mono text-purple-300 uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span>⏳ En attente de validation</span>
+              <Clock size={14} className="text-purple-400" />
+              <span>En attente de validation</span>
               <span className="px-2 py-0.5 rounded-full bg-[#1b223d] text-[10px] text-purple-200">
                 {pendingReviews.length}
               </span>
@@ -162,9 +166,14 @@ export default function Dashboard() {
                           <div className="text-sm font-bold text-text-primary">{review.name}</div>
                           <div className="text-[11px] text-text-secondary">{review.role}</div>
                         </div>
-                        <div className="flex gap-0.5 text-yellow-400 text-xs">
-                          {Array.from({ length: review.rating || 5 }).map((_, i) => (
-                            <span key={i}>★</span>
+                        <div className="flex gap-0.5">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star 
+                              key={i} 
+                              size={11} 
+                              fill={i < (review.rating || 5) ? '#F5C451' : 'transparent'} 
+                              stroke={i < (review.rating || 5) ? '#F5C451' : 'rgba(245,246,250,0.15)'} 
+                            />
                           ))}
                         </div>
                       </div>
@@ -176,15 +185,17 @@ export default function Dashboard() {
                     <div className="flex gap-2 justify-end border-t border-[rgba(245,246,250,0.04)] pt-3">
                       <button
                         onClick={() => handleApprove(review.id, true)}
-                        className="px-3 py-1.5 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-[10px] font-bold text-white rounded-lg transition-colors cursor-pointer"
+                        className="px-3 py-1.5 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-[10px] font-bold text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
                       >
-                        ✔ Approuver
+                        <Check size={11} />
+                        <span>Approuver</span>
                       </button>
                       <button
                         onClick={() => handleDelete(review.id)}
-                        className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600/40 text-[10px] font-bold text-red-400 rounded-lg transition-colors cursor-pointer"
+                        className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600/40 text-[10px] font-bold text-red-400 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
                       >
-                        🗑 Supprimer
+                        <Trash2 size={11} />
+                        <span>Supprimer</span>
                       </button>
                     </div>
                   </div>
@@ -196,7 +207,8 @@ export default function Dashboard() {
           {/* COLUMN 2: APPROVED REVIEWS */}
           <div>
             <h2 className="text-sm font-bold label-mono text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span>🟢 Avis en ligne</span>
+              <CheckCircle2 size={14} className="text-emerald-400" />
+              <span>Avis en ligne</span>
               <span className="px-2 py-0.5 rounded-full bg-[#1b223d] text-[10px] text-emerald-300">
                 {approvedReviews.length}
               </span>
@@ -216,9 +228,14 @@ export default function Dashboard() {
                           <div className="text-sm font-bold text-text-primary">{review.name}</div>
                           <div className="text-[11px] text-text-secondary">{review.role}</div>
                         </div>
-                        <div className="flex gap-0.5 text-yellow-400 text-xs">
-                          {Array.from({ length: review.rating || 5 }).map((_, i) => (
-                            <span key={i}>★</span>
+                        <div className="flex gap-0.5">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star 
+                              key={i} 
+                              size={11} 
+                              fill={i < (review.rating || 5) ? '#F5C451' : 'transparent'} 
+                              stroke={i < (review.rating || 5) ? '#F5C451' : 'rgba(245,246,250,0.15)'} 
+                            />
                           ))}
                         </div>
                       </div>
@@ -230,15 +247,17 @@ export default function Dashboard() {
                     <div className="flex gap-2 justify-end border-t border-[rgba(245,246,250,0.04)] pt-3">
                       <button
                         onClick={() => handleApprove(review.id, false)}
-                        className="px-3 py-1.5 bg-[#1b223d] hover:bg-[#1b223d]/80 text-[10px] font-bold text-purple-300 rounded-lg transition-colors cursor-pointer"
+                        className="px-3 py-1.5 bg-[#1b223d] hover:bg-[#1b223d]/80 text-[10px] font-bold text-purple-300 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
                       >
-                        ⏸ Masquer
+                        <EyeOff size={11} />
+                        <span>Masquer</span>
                       </button>
                       <button
                         onClick={() => handleDelete(review.id)}
-                        className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600/40 text-[10px] font-bold text-red-400 rounded-lg transition-colors cursor-pointer"
+                        className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600/40 text-[10px] font-bold text-red-400 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
                       >
-                        🗑 Supprimer
+                        <Trash2 size={11} />
+                        <span>Supprimer</span>
                       </button>
                     </div>
                   </div>

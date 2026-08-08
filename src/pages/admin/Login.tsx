@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { AlertCircle } from 'lucide-react';
 import { auth } from '../../lib/firebase';
 import SectionReveal from '../../components/SectionReveal';
 
@@ -72,8 +73,9 @@ export default function Login() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-xs text-red-400 font-medium leading-relaxed">
-              ⚠️ {error}
+            <div className="mb-4 p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-xs text-red-400 font-medium leading-relaxed flex items-center gap-2">
+              <AlertCircle size={14} className="flex-shrink-0" />
+              <span>{error}</span>
             </div>
           )}
 

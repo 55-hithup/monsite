@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import { Star, PenSquare, X } from 'lucide-react';
 import { db } from '../lib/firebase';
 import SectionReveal from './SectionReveal';
 
@@ -65,7 +66,7 @@ export default function Testimonials() {
             name: data.name,
             role: data.role,
             rating: data.rating || 5,
-            created_at: data.created_at || null
+            created_at: data.created_at || null,
           });
         });
         
@@ -150,9 +151,14 @@ export default function Testimonials() {
                 <div key={idx} className="testi-slide w-full flex-shrink-0">
                   <div className="testi-card">
                     {/* Stars rating indicator */}
-                    <div className="flex gap-0.5 text-yellow-400 text-xs mb-3 justify-center">
-                      {Array.from({ length: testi.rating || 5 }).map((_, i) => (
-                        <span key={i}>★</span>
+                    <div className="flex gap-0.5 mb-3 justify-center">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star 
+                          key={i} 
+                          size={12} 
+                          fill={i < testi.rating ? '#F5C451' : 'transparent'} 
+                          stroke={i < testi.rating ? '#F5C451' : 'rgba(245,246,250,0.15)'} 
+                        />
                       ))}
                     </div>
                     <p className="testi-quote">{testi.quote}</p>
@@ -188,7 +194,7 @@ export default function Testimonials() {
             className="btn btn-ghost text-xs px-5 py-2.5 inline-flex items-center gap-2"
             style={{ border: '1px solid rgba(245,246,250,0.12)', cursor: 'pointer' }}
           >
-            ✍️ Laisser un avis
+            <PenSquare size={13} className="text-[#2E8FE0]" /> Laisser un avis
           </button>
         </div>
       </div>
@@ -199,14 +205,16 @@ export default function Testimonials() {
           <div className="w-full max-w-lg rounded-2xl bg-[#121729]/95 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative">
             <button 
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-text-secondary hover:text-text-primary text-lg cursor-pointer"
+              className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
             >
-              ✕
+              <X size={18} />
             </button>
 
             {submitted ? (
               <div className="text-center py-8">
-                <div className="text-3xl mb-4">🎉</div>
+                <div className="w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-emerald-400 text-lg">✓</span>
+                </div>
                 <h3 className="text-lg font-bold text-text-primary mb-2">Avis enregistré !</h3>
                 <p className="text-xs text-text-secondary leading-relaxed">
                   Merci pour votre retour. Votre témoignage sera visible sur le site dès sa modération par Alexandre.
@@ -247,15 +255,19 @@ export default function Testimonials() {
                 {/* Rating selection */}
                 <div>
                   <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Note globale</label>
-                  <div className="flex gap-1.5 text-lg">
+                  <div className="flex gap-1.5">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <button
                         key={i}
                         type="button"
                         onClick={() => setRating(i + 1)}
-                        className={`cursor-pointer transition-colors ${i < rating ? 'text-yellow-400' : 'text-gray-600'}`}
+                        className="cursor-pointer transition-transform hover:scale-110"
                       >
-                        ★
+                        <Star
+                          size={22}
+                          fill={i < rating ? '#F5C451' : 'transparent'}
+                          stroke={i < rating ? '#F5C451' : 'rgba(245, 246, 250, 0.3)'}
+                        />
                       </button>
                     ))}
                   </div>
