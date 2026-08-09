@@ -8,6 +8,7 @@ interface ProjectItem {
   img?: string;
   bg?: string;
   href?: string;
+  externalHref?: string;
   inProgress?: boolean;
 }
 
@@ -26,6 +27,7 @@ export default function Projects() {
       desc: 'Logiciel de gestion de location tout-en-un pour simplifier le suivi du matériel, des clients et des devis.',
       img: '/locatool.webp',
       href: '/projets/locatool',
+      externalHref: 'https://locatool.devsupai.fr',
     },
     {
       tag: 'Application Streamer',
@@ -33,6 +35,7 @@ export default function Projects() {
       desc: 'Plateforme interactive mobile-first pour streamers : roue de sélection en temps réel et planification de live.',
       img: '/abogame.webp',
       href: '/projets/abogame',
+      externalHref: 'https://abogame.devsupai.fr',
     },
   ];
 
@@ -89,6 +92,23 @@ export default function Projects() {
                 className="cursor-target proj-card reveal"
               >
                 {cardContent}
+                {project.externalHref && (
+                  <a
+                    href={project.externalHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] label-mono font-bold text-white transition-all duration-200 hover:scale-105"
+                    style={{ background: 'rgba(46,143,224,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.15)' }}
+                  >
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                    Voir le site
+                  </a>
+                )}
               </Link>
             ) : (
               <div key={idx} className="cursor-target proj-card reveal">

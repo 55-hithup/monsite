@@ -985,20 +985,25 @@ nav {
   position: absolute;
   top: var(--space-md);
   right: var(--space-md);
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: hsla(0, 0%, 100%, 0.08);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0) rotate(-45deg);
-  transition: transform var(--transition-normal);
+  transform: scale(0.85) rotate(-45deg);
+  opacity: 0.75;
+  transition: transform var(--transition-normal), opacity var(--transition-normal), background var(--transition-normal);
 }
 .proj-card:hover .proj-arrow {
   transform: scale(1) rotate(0deg);
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.30);
 }
 
 /* --- Timeline/Process --- */
