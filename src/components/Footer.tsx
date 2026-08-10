@@ -36,6 +36,35 @@ export default function Footer() {
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
               Disponible pour vos projets
             </div>
+            
+            <div className="flex items-center gap-2.5 mt-1">
+              <a 
+                href="https://www.facebook.com/people/Devsupai/61593272035287" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:opacity-80 transition-opacity duration-150 cursor-target"
+                title="Suivez-nous sur Facebook"
+              >
+                <img 
+                  src="/logo-facebook.webp" 
+                  alt="Facebook Logo" 
+                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.08)] bg-[#070913]/60" 
+                />
+              </a>
+              <a 
+                href="https://www.pagesjaunes.fr/pros/65267281" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:opacity-80 transition-opacity duration-150 cursor-target"
+                title="Retrouvez-nous sur les Pages Jaunes"
+              >
+                <img 
+                  src="/logo-pagesjaunes.webp" 
+                  alt="Pages Jaunes Logo" 
+                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.08)] bg-[#070913]/60" 
+                />
+              </a>
+            </div>
           </div>
 
           {/* Navigation Links */}
