@@ -76,7 +76,7 @@ export default function Home() {
     "image": "https://www.devsupai.fr/logo.png",
     "@id": "https://www.devsupai.fr/#website",
     "url": "https://www.devsupai.fr",
-    "telephone": "",
+    "telephone": "+33783666098",
     "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",

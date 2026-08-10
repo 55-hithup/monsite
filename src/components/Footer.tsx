@@ -65,6 +65,12 @@ export default function Footer() {
             <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">Contact & Adresse</h4>
             <div className="flex flex-col gap-4 text-xs text-text-secondary">
               <div>
+                <span className="text-text-primary block font-medium mb-1">Téléphone :</span>
+                <a href="tel:0783666098" className="hover:text-text-primary transition-colors cursor-target text-[#2E8FE0]">
+                  07 83 66 60 98
+                </a>
+              </div>
+              <div>
                 <span className="text-text-primary block font-medium mb-1">Email :</span>
                 <a href="mailto:contact@devsupai.fr" className="hover:text-text-primary transition-colors cursor-target text-[#2E8FE0]">
                   contact@devsupai.fr
