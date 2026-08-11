@@ -52,6 +52,19 @@ export default function Footer() {
                 />
               </a>
               <a 
+                href="https://www.youtube.com/@devsupai" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:opacity-80 transition-opacity duration-150 cursor-target"
+                title="Suivez-nous sur YouTube"
+              >
+                <img 
+                  src="/logo-youtube.webp" 
+                  alt="YouTube Logo" 
+                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.08)] bg-[#070913]/60" 
+                />
+              </a>
+              <a 
                 href="https://www.pagesjaunes.fr/pros/65267281" 
                 target="_blank" 
                 rel="noopener noreferrer" 
