@@ -18,7 +18,7 @@ export default function About() {
           {/* Main Story Column */}
           <div className="md:col-span-2 space-y-6 text-text-secondary leading-relaxed text-sm">
             <p className="text-base text-text-primary font-medium">
-              Je suis Alex, développeur web freelance et fondateur de DevSupAi. Mon crédo est simple : bannir les templates pré-conçus et les architectures lourdes pour concevoir des sites d'une vitesse et d'une fluidité exceptionnelles.
+              Je suis Alex, développeur web freelance et fondateur de DevSupAi. Mon approche repose sur une conviction : privilégier le développement sur-mesure et des architectures épurées pour offrir aux utilisateurs une navigation fluide et rapide.
             </p>
             <p>
               Trop souvent, les projets web sont ralentis par l'utilisation abusive de générateurs de pages (page builders) ou de thèmes surchargés. Ces solutions de facilité pénalisent votre vitesse de chargement, nuisent à votre référencement sur Google et limitent votre liberté graphique.
