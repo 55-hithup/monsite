@@ -42,6 +42,7 @@ export default function Navbar() {
   ];
 
   const mainLinks = [
+    { label: 'nos prestations', href: '/nos-services' },
     { label: 'pme & assos', href: '/#solutions' },
     { label: 'offres', href: '/#services' },
     { label: 'comparatif', href: '/#faq' },

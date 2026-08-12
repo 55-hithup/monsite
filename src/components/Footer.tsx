@@ -88,10 +88,13 @@ export default function Footer() {
                 <Link to="/" onClick={() => window.scrollTo(0,0)} className="hover:text-text-primary transition-colors cursor-target">Accueil</Link>
               </li>
               <li>
-                <Link to="/#services" onClick={() => handleNavClick('services')} className="hover:text-text-primary transition-colors cursor-target">Services</Link>
+                <Link to="/nos-services" className="hover:text-text-primary transition-colors cursor-target text-[#38BDF8] font-bold">Catalogue Prestations (47)</Link>
               </li>
               <li>
-                <Link to="/#realisations" onClick={() => handleNavClick('realisations')} className="hover:text-text-primary transition-colors cursor-target">Projets</Link>
+                <Link to="/#services" onClick={() => handleNavClick('services')} className="hover:text-text-primary transition-colors cursor-target">Offres & Forfaits</Link>
+              </li>
+              <li>
+                <Link to="/#realisations" onClick={() => handleNavClick('realisations')} className="hover:text-text-primary transition-colors cursor-target">Projets & Réalisations</Link>
               </li>
               <li>
                 <Link to="/a-propos" className="hover:text-text-primary transition-colors cursor-target">À Propos</Link>

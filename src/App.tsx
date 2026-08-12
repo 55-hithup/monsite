@@ -7,6 +7,7 @@ import Home from './pages/Home';
 
 // Eagerly loaded for instant LCP on homepage
 // Lazy loaded routes for optimal bundle splitting
+const Services = lazy(() => import('./pages/Services'));
 const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
 const ArticleTemplates = lazy(() => import('./pages/blog/ArticleTemplates'));
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Home />,
+      },
+      {
+        path: 'nos-services',
+        element: renderLazy(Services),
       },
       {
         path: 'a-propos',

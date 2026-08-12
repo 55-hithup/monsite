@@ -12,6 +12,7 @@ export default defineConfig({
       hostname: 'https://www.devsupai.fr',
       readable: true,
       dynamicRoutes: [
+        '/nos-services',
         '/a-propos',
         '/blog',
         '/blog/site-web-pme-association',
