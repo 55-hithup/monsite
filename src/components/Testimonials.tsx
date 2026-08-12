@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 import { Star, PenSquare, X } from 'lucide-react';
 import Cropper from 'react-easy-crop';
 import type { Area, Point } from 'react-easy-crop';
-import { db } from '../lib/firebase';
 import SectionReveal from './SectionReveal';
 
 interface TestimonialItem {
@@ -133,11 +131,13 @@ export default function Testimonials() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     async function loadTestimonials() {
-      if (!db) {
-        console.log("Firebase DB not initialized. Using static testimonials.");
-        return;
-      }
       try {
+        const { db } = await import('../lib/firebase');
+        if (!db) {
+          console.log("Firebase DB not initialized. Using static testimonials.");
+          return;
+        }
+        const { collection, query, where, getDocs } = await import('firebase/firestore');
         const q = query(
           collection(db, 'testimonials'),
           where('approved', '==', true)
@@ -257,13 +257,16 @@ export default function Testimonials() {
       alert('Veuillez remplir tous les champs.');
       return;
     }
-    if (!db) {
-      alert("La base de données n'est pas initialisée pour le moment.");
-      return;
-    }
 
     setSubmitting(true);
     try {
+      const { db } = await import('../lib/firebase');
+      if (!db) {
+        alert("La base de données n'est pas initialisée pour le moment.");
+        setSubmitting(false);
+        return;
+      }
+      const { collection, addDoc } = await import('firebase/firestore');
       await addDoc(collection(db, 'testimonials'), {
         name,
         role,
@@ -284,8 +287,8 @@ export default function Testimonials() {
         setCroppedImage(null);
       }, 2500);
     } catch (err) {
-      console.error('Error adding testimonial:', err);
-      alert("Une erreur est survenue lors de l'enregistrement de votre avis.");
+      console.error('Error submitting testimonial:', err);
+      alert("Une erreur est survenue lors de l'envoi de votre avis.");
     } finally {
       setSubmitting(false);
     }
