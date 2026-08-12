@@ -26,4 +26,19 @@ export default defineConfig({
       ],
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('lucide-react')) return 'vendor-lucide';
+            if (id.includes('firebase')) return 'vendor-firebase';
+            if (id.includes('three') || id.includes('@react-three') || id.includes('ogl')) return 'vendor-3d';
+            if (id.includes('framer-motion')) return 'vendor-motion';
+            if (id.includes('gsap') || id.includes('lenis')) return 'vendor-animation';
+          }
+        },
+      },
+    },
+  },
 })
