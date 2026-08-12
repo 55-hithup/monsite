@@ -138,8 +138,8 @@ export default function Hero() {
 
           {/* Subtitle / QFO Direct Answer Box */}
           <div className="hero-sub mt-6 mb-8 p-4 md:p-5 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed backdrop-blur-sm shadow-[0_0_30px_rgba(46,143,224,0.1)]">
-            <p className="font-semibold text-text-primary mb-1 flex items-center gap-2">
-              <span className="text-accent text-base">⚡</span> <strong>Réponse directe DevSupAi :</strong>
+            <p className="font-semibold text-text-primary mb-1">
+              <strong>Réponse directe DevSupAi :</strong>
             </p>
             <p>
               Je crée des sites web, applications et plateformes SaaS sur-mesure ultra-rapides (<span className="text-text-primary font-bold">Lighthouse 100%</span>, temps d'affichage <span className="text-text-primary font-bold">&lt; 600ms</span>), <span className="text-text-primary font-bold">sans aucune dette technique ni dépendances lourdes</span>, spécialement pensés pour développer l'acquisition client des PME et la visibilité des Associations.
@@ -156,7 +156,7 @@ export default function Hero() {
             
             <MagneticWrapper range={35} strength={0.25}>
               <a href="#solutions" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(245,246,250,0.15)' }}>
-                🔍 Voir les solutions PME & Asso
+                Voir les solutions PME & Asso
               </a>
             </MagneticWrapper>
           </div>

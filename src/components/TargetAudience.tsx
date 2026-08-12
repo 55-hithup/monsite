@@ -10,7 +10,7 @@ export default function TargetAudience() {
             Comment DevSupAi répond-il aux besoins des PME et Associations ?
           </h2>
           <div className="p-4 rounded-xl bg-[#121729]/90 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed reveal text-left">
-            <strong className="text-text-primary">⚡ Réponse directe :</strong> DevSupAi crée des architectures web et applications SaaS sur-mesure qui résolvent les problèmes concrets des PME (génération de leads, crédibilité, automatisation) et des Associations (gestion d'adhérents, formulaires de dons, visibilité locale) avec des exemples concrets mesurables.
+            <strong className="text-text-primary">Réponse directe :</strong> DevSupAi crée des architectures web et applications SaaS sur-mesure qui résolvent les problèmes concrets des PME (génération de leads, crédibilité, automatisation) et des Associations (gestion d'adhérents, formulaires de dons, visibilité locale) avec des exemples concrets mesurables.
           </div>
         </div>
 
@@ -36,7 +36,7 @@ export default function TargetAudience() {
               </h3>
 
               <div className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-xs text-text-primary font-medium mb-4">
-                💡 <strong>Exemple réel :</strong> Le restaurant <em>Les Jumeaux</em> a remplacé sa solution tiers par un système de réservation sur-mesure ultra-rapide (chargement en 0.4s) et a enregistré une <strong>hausse de +40% des réservations directes</strong> en moins de 3 mois.
+                <strong>Exemple réel :</strong> Le restaurant <em>Les Jumeaux</em> a remplacé sa solution tiers par un système de réservation sur-mesure ultra-rapide (chargement en 0.4s) et a enregistré une <strong>hausse de +40% des réservations directes</strong> en moins de 3 mois.
               </div>
 
               <p className="text-xs text-text-secondary leading-relaxed mb-6">
@@ -86,7 +86,7 @@ export default function TargetAudience() {
               </h3>
 
               <div className="p-3 rounded-lg bg-[#6B4FE0]/10 border border-[#6B4FE0]/20 text-xs text-text-primary font-medium mb-4">
-                💡 <strong>Exemple réel :</strong> Pour un club sportif et culturel associatif, la mise en place d'un portail avec formulaires d'adhésion en ligne a divisé par 3 le temps de traitement administratif des bénévoles lors de la rentrée.
+                <strong>Exemple réel :</strong> Pour un club sportif et culturel associatif, la mise en place d'un portail avec formulaires d'adhésion en ligne a divisé par 3 le temps de traitement administratif des bénévoles lors de la rentrée.
               </div>
 
               <p className="text-xs text-text-secondary leading-relaxed mb-6">

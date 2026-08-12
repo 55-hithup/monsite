@@ -34,7 +34,7 @@ export default function ArticleAssociationPme() {
 
           <h2 className="text-lg font-bold text-text-primary pt-4">Quels sont les besoins digitaux prioritaires d'une PME ?</h2>
           <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
-            ⚡ <strong>Réponse rapide :</strong> Une PME a besoin d'un site web qui génère des prospects qualifiés (leads), affiche des preuves sociales (avis, cas clients), charge instantanément sur mobile et bénéficie d'un SEO local irréprochable.
+            <strong>Réponse rapide :</strong> Une PME a besoin d'un site web qui génère des prospects qualifiés (leads), affiche des preuves sociales (avis, cas clients), charge instantanément sur mobile et bénéficie d'un SEO local irréprochable.
           </p>
           <p>
             Pour une petite ou moyenne entreprise, chaque visiteur compte. Un site sur-mesure permet de structurer le parcours d'achat, de valoriser l'expertise de l'équipe et de rassurer les prospects avec des temps de réponse immédiats. Il offre également une indépendance totale sans abonnements logiciels récurrents.
@@ -42,7 +42,7 @@ export default function ArticleAssociationPme() {
 
           <h2 className="text-lg font-bold text-text-primary pt-4">Quelles sont les spécificités d'un site web pour une Association ?</h2>
           <p className="p-3 rounded-lg bg-[#6B4FE0]/10 border border-[#6B4FE0]/20 text-text-primary text-xs font-medium">
-            ⚡ <strong>Réponse rapide :</strong> Les associations nécessitent une vitrine claire pour présenter leurs actions, des formulaires simples pour les adhésions/dons, une excellente accessibilité et une administration facile pour les bénévoles.
+            <strong>Réponse rapide :</strong> Les associations nécessitent une vitrine claire pour présenter leurs actions, des formulaires simples pour les adhésions/dons, une excellente accessibilité et une administration facile pour les bénévoles.
           </p>
           <p>
             Contrairement aux entreprises commerciales, l'association doit inspirer confiance, valoriser ses bénévoles et faciliter les démarches administratives ou d'adhésion. La légèreté technique du sur-mesure permet au site d'être consulté sans ralentissement, même avec une faible connexion réseau.

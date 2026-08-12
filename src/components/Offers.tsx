@@ -94,7 +94,7 @@ export default function Offers() {
           </div>
           <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
             <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-              <strong className="text-text-primary">⚡ Réponse directe :</strong> DevSupAi conçoit 6 types de projets sur-mesure (site vitrine, portail association, e-commerce, application SaaS métier, SEO/GEO IA et maintenance) formulés sous forme de questions-réponses concrètes et accompagnés d'exemples réels.
+              <strong className="text-text-primary">Réponse directe :</strong> DevSupAi conçoit 6 types de projets sur-mesure (site vitrine, portail association, e-commerce, application SaaS métier, SEO/GEO IA et maintenance) formulés sous forme de questions-réponses concrètes et accompagnés d'exemples réels.
             </p>
           </div>
         </div>
@@ -123,7 +123,7 @@ export default function Offers() {
               </div>
 
               <div className="pt-3 border-t border-[rgba(245,246,250,0.06)] bg-[#2E8FE0]/5 p-3 rounded-lg border border-[#2E8FE0]/10 text-[11px] text-cyan-300 font-medium">
-                📌 {service.example}
+                {service.example}
               </div>
             </div>
           ))}

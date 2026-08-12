@@ -49,7 +49,7 @@ export default function Projects() {
           </div>
           <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
             <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-              <strong className="text-text-primary">⚡ Réponse directe :</strong> Découvrez nos études de cas concrètes (restaurant Les Jumeaux +40% de résas, logiciel SaaS LocaTool, plateforme interactive Abogame) démontrant les résultats chiffrés du développement sur-mesure.
+              <strong className="text-text-primary">Réponse directe :</strong> Découvrez nos études de cas concrètes (restaurant Les Jumeaux +40% de résas, logiciel SaaS LocaTool, plateforme interactive Abogame) démontrant les résultats chiffrés du développement sur-mesure.
             </p>
           </div>
         </div>

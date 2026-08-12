@@ -385,7 +385,9 @@ export default function Testimonials() {
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-emerald-400 text-lg">✓</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6 text-emerald-400">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
                   </div>
                   <h3 className="text-lg font-bold text-text-primary mb-2">Avis enregistré !</h3>
                   <p className="text-xs text-text-secondary leading-relaxed">

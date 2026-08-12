@@ -54,7 +54,7 @@ export default function Comparison() {
           </div>
           <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
             <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-              <strong className="text-text-primary">⚡ Réponse directe :</strong> Les templates pré-conçus et CMS génériques souffrent d'une lourdeur technique qui fait fuir vos prospects sur mobile. Le sur-mesure et les applications SaaS DevSupAi vous apportent une vitesse extrême (<span className="text-text-primary font-bold">0.3s</span>), un design unique et une optimisation idéale pour Google et les IA.
+              <strong className="text-text-primary">Réponse directe :</strong> Les templates pré-conçus et CMS génériques souffrent d'une lourdeur technique qui fait fuir vos prospects sur mobile. Le sur-mesure et les applications SaaS DevSupAi vous apportent une vitesse extrême (<span className="text-text-primary font-bold">0.3s</span>), un design unique et une optimisation idéale pour Google et les IA.
             </p>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function Comparison() {
         {/* Comparison Lists */}
         <div className="compare-wrap reveal">
           <div className="compare-col before">
-            <span className="compare-label text-red-400">❌ Templates pré-conçus & CMS génériques</span>
+            <span className="compare-label text-red-400">Templates pré-conçus & CMS génériques</span>
             <ul className="compare-list">
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
@@ -92,7 +92,7 @@ export default function Comparison() {
           </div>
 
           <div className="compare-col after">
-            <span className="compare-label text-[#2E8FE0]">✓ Développement & SaaS Sur-Mesure DevSupAi</span>
+            <span className="compare-label text-[#2E8FE0]">Développement & SaaS Sur-Mesure DevSupAi</span>
             <ul className="compare-list">
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#2E8FE0" strokeWidth="2">

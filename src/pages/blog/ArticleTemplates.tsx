@@ -34,7 +34,7 @@ export default function ArticleTemplates() {
           
           <h2 className="text-lg font-bold text-text-primary pt-4">Pourquoi les templates WordPress ou Wix ralentissent-ils votre site ?</h2>
           <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
-            ⚡ <strong>Réponse rapide :</strong> Les templates généralistes chargent des dizaines de scripts et règles CSS inutiles pour couvrir tous les cas d'usage, ce qui alourdit le code et détruit le temps de chargement sur mobile.
+            <strong>Réponse rapide :</strong> Les templates généralistes chargent des dizaines de scripts et règles CSS inutiles pour couvrir tous les cas d'usage, ce qui alourdit le code et détruit le temps de chargement sur mobile.
           </p>
           <p>
             Les templates sont conçus pour plaire au plus grand nombre. Ils embarquent donc des dizaines d'options, de scripts, de thèmes et de plugins que vous n'utiliserez jamais. Résultat : une surcharge de code inutile (code bloat) qui augmente considérablement le temps de chargement de vos pages. Sur mobile, cela se traduit par des utilisateurs qui quittent votre site avant même qu'il ne s'affiche.

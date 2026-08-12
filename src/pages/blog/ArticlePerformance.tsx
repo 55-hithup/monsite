@@ -34,7 +34,7 @@ export default function ArticlePerformance() {
           
           <h2 className="text-lg font-bold text-text-primary pt-4">Combien coûte une seconde de retard sur le site d'une PME ?</h2>
           <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
-            ⚡ <strong>Réponse rapide :</strong> Selon Google, passer de 1 à 3 secondes de chargement augmente le taux de rebond de 32%, et détruit jusqu'à 20% de vos opportunités de conversion.
+            <strong>Réponse rapide :</strong> Selon Google, passer de 1 à 3 secondes de chargement augmente le taux de rebond de 32%, et détruit jusqu'à 20% de vos opportunités de conversion.
           </p>
           <p>
             Selon des analyses menées par Google et Cloudflare, un temps de chargement qui passe de 1 à 3 secondes augmente le taux de rebond (le pourcentage de visiteurs qui quittent immédiatement le site) de 32%. Si ce temps atteint 5 secondes, la probabilité de rebond explose de 90%.

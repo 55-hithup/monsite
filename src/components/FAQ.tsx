@@ -92,7 +92,7 @@ export default function FAQ() {
                 >
                   <div className="faq-a-in pt-4 mt-3 border-t border-[rgba(245,246,250,0.06)] text-xs md:text-sm text-text-secondary space-y-2">
                     <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary font-medium">
-                      ⚡ <strong>Réponse rapide :</strong> {item.short}
+                      <strong>Réponse rapide :</strong> {item.short}
                     </p>
                     <p className="leading-relaxed pt-1">
                       {item.detail}

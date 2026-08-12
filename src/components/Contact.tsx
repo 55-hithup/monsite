@@ -70,7 +70,11 @@ export default function Contact() {
 
         {submitted ? (
           <div className="text-center py-12 bg-[#121729] rounded-[12px] border border-[rgba(245,246,250,0.08)] p-8">
-            <span className="text-4xl inline-block animate-bounce mb-4">✉️</span>
+            <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg>
+            </div>
             <h3 className="text-xl font-medium text-text-primary mb-2">Message envoyé avec succès</h3>
             <p className="text-sm text-text-secondary max-w-sm mx-auto mb-6">
               Merci pour votre intérêt. L'équipe DevSupAi a bien reçu votre demande et vous recontactera rapidement.
@@ -90,8 +94,8 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="reveal bg-[#121729] border border-[rgba(245,246,250,0.08)] rounded-[16px] p-6 md:p-10" id="contactForm">
             {/* Steps / Onboarding text block */}
             <div className="mb-8 p-5 bg-[#0B0F1E]/50 border border-[rgba(245,246,250,0.04)] rounded-[10px] text-sm text-text-secondary leading-relaxed text-left">
-              <h3 className="text-text-primary font-bold text-sm mb-2 flex items-center gap-2">
-                <span className="text-[#2E8FE0]">✦</span> Votre projet commence simplement
+              <h3 className="text-text-primary font-bold text-sm mb-2">
+                Votre projet commence simplement
               </h3>
               <p>
                 J'échange gratuitement avec vous sur vos besoins, puis je réalise une première proposition visuelle pour vous permettre de vous projeter. Si elle vous convainc, nous validons ensemble le devis, un acompte lance officiellement le projet, puis je conçois les maquettes finales avant de développer votre site.
