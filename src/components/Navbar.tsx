@@ -53,10 +53,17 @@ export default function Navbar() {
   return (
     <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
       <nav className="flex items-center justify-between px-6 py-3 bg-[#121729]/85 backdrop-blur-md rounded-full border border-[rgba(245,246,250,0.08)] shadow-2xl">
-        {/* Logo */}
-        <Link to="/" className="cursor-target flex items-center gap-2 label-mono font-bold text-sm tracking-normal text-text-primary hover:text-accent transition-colors duration-150">
-          <img src="/logo.png" alt="DevSupAi Logo" className="h-7 w-7 object-contain rounded-full border border-[rgba(245,246,250,0.08)]" />
-          <span>devsup<span className="brand-gradient-text">ai</span></span>
+        {/* Overflowing Logo */}
+        <Link 
+          to="/" 
+          className="cursor-target relative flex items-center shrink-0 -my-4 -ml-4 group z-20"
+          title="DevSupAi - Accueil"
+        >
+          <img 
+            src="/logo.png" 
+            alt="DevSupAi Logo" 
+            className="h-14 w-14 md:h-20 md:w-20 object-contain drop-shadow-[0_8px_24px_rgba(46,143,224,0.4)] -translate-x-3 translate-y-3.5 transition-transform duration-300 group-hover:scale-105" 
+          />
         </Link>
 
         {/* Desktop Main Links */}
