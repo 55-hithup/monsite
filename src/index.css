@@ -540,6 +540,9 @@ nav {
   font-size: clamp(40px, 6.2vw, 80px);
   margin-bottom: var(--space-md);
   line-height: 1.2;
+  hyphens: none;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 .hero-title .line {
   overflow: hidden;

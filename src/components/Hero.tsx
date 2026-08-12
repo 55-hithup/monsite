@@ -129,7 +129,9 @@ export default function Hero() {
             className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight"
             style={{ filter: 'url(#liquid-filter)', willChange: 'filter' }}
           >
-            <span className="line"><span>Le site web sur-mesure</span></span>
+            <span className="line">
+              <span>Création de sites web <span className="inline-block whitespace-nowrap">sur&#8209;mesure</span></span>
+            </span>
             <span className="line">
               <span className="grad">pour PME & Associations</span>
             </span>
