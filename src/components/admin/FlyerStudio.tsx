@@ -24,7 +24,6 @@ export default function FlyerStudio() {
           theme: 'dark',
           ui: {
             elements: {
-              view: 'default',
               navigation: {
                 action: {
                   export: {
@@ -39,14 +38,16 @@ export default function FlyerStudio() {
 
         cesdkInstance = await CreativeEditorSDK.create(containerRef.current, config as any);
 
-        // Load default Flyer design scene (A5 format, 148 x 210 mm)
-        await cesdkInstance.createDesignScene([
-          {
-            width: 148,
-            height: 210,
-            unit: 'mm',
-          },
-        ]);
+        if (cesdkInstance.ui && typeof cesdkInstance.ui.setView === 'function') {
+          cesdkInstance.ui.setView('default');
+        }
+
+        // Initialize design scene using CE.SDK v1.79+ API action
+        if (cesdkInstance.actions && typeof cesdkInstance.actions.run === 'function') {
+          await cesdkInstance.actions.run('scene.create', { mode: 'Design' });
+        } else if (typeof cesdkInstance.createDesignScene === 'function') {
+          await cesdkInstance.createDesignScene();
+        }
 
         setStatus('ready');
       } catch (err: any) {
