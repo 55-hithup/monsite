@@ -42,39 +42,39 @@ export default function Footer() {
                 href="https://www.facebook.com/people/Devsupai/61593272035287" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:opacity-80 transition-opacity duration-150 cursor-target"
+                className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
                 title="Suivez-nous sur Facebook"
               >
                 <img 
                   src="/logo-facebook.webp" 
                   alt="Facebook Logo" 
-                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.08)] bg-[#070913]/60" 
+                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.12)] bg-[#070913]" 
                 />
               </a>
               <a 
                 href="https://www.youtube.com/@devsupai" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:opacity-80 transition-opacity duration-150 cursor-target"
+                className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
                 title="Suivez-nous sur YouTube"
               >
                 <img 
                   src="/logo-youtube.webp" 
                   alt="YouTube Logo" 
-                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.08)] bg-[#070913]/60" 
+                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.12)] bg-[#070913]" 
                 />
               </a>
               <a 
                 href="https://www.pagesjaunes.fr/pros/65267281" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:opacity-80 transition-opacity duration-150 cursor-target"
+                className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
                 title="Retrouvez-nous sur les Pages Jaunes"
               >
                 <img 
                   src="/logo-pagesjaunes.webp" 
                   alt="Pages Jaunes Logo" 
-                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.08)] bg-[#070913]/60" 
+                  className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.12)] bg-[#070913]" 
                 />
               </a>
             </div>
@@ -108,13 +108,13 @@ export default function Footer() {
             <div className="flex flex-col gap-4 text-xs text-text-secondary">
               <div>
                 <span className="text-text-primary block font-medium mb-1">Téléphone :</span>
-                <a href="tel:0783666098" className="hover:text-text-primary transition-colors cursor-target text-[#2E8FE0]">
+                <a href="tel:0783666098" className="hover:text-text-primary transition-colors cursor-target text-[#38BDF8] font-medium">
                   07 83 66 60 98
                 </a>
               </div>
               <div>
                 <span className="text-text-primary block font-medium mb-1">Email :</span>
-                <a href="mailto:contact@devsupai.fr" className="hover:text-text-primary transition-colors cursor-target text-[#2E8FE0]">
+                <a href="mailto:contact@devsupai.fr" className="hover:text-text-primary transition-colors cursor-target text-[#38BDF8] font-medium">
                   contact@devsupai.fr
                 </a>
               </div>
@@ -156,7 +156,7 @@ export default function Footer() {
           <div className="flex flex-wrap gap-6 text-xs text-text-secondary">
             <Link to="/mentions-legales" className="cursor-target hover:text-text-primary transition-colors">Mentions légales</Link>
             <Link to="/politique-de-confidentialite" className="cursor-target hover:text-text-primary transition-colors">Politique de confidentialité</Link>
-            <Link to="/admin/login" className="cursor-target hover:text-text-primary transition-colors opacity-25 hover:opacity-100">Espace Pro</Link>
+            <Link to="/admin/login" className="cursor-target hover:text-text-primary transition-colors">Espace Pro</Link>
           </div>
         </div>
       </div>
