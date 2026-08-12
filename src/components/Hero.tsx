@@ -4,23 +4,13 @@ import MagneticWrapper from './MagneticWrapper';
 
 export default function Hero() {
   useEffect(() => {
-    // 1. Initial load reveal animation
+    // 1. Initial load reveal animation (GPU accelerated CSS transforms)
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .fromTo('.hero-title .line span', { y: '110%' }, { y: 0, duration: 1, stagger: 0.12 }, 0)
-      .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8 }, 0.5)
-      .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.8 }, 0.65);
+      .fromTo('.hero-title .line span', { y: '110%', opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.12 }, 0)
+      .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8 }, 0.4)
+      .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.8 }, 0.55);
 
     gsap.set('.hero-sub, .hero-ctas', { opacity: 0, y: 20 });
-
-    // 2. Liquid filter load animation
-    const displacementMap = document.getElementById('displacement-map');
-    
-    if (displacementMap) {
-      gsap.fromTo(displacementMap,
-        { attr: { scale: 80 } },
-        { attr: { scale: 0 }, duration: 2.2, ease: 'power2.out' }
-      );
-    }
 
     return () => {
       tl.kill();
@@ -53,10 +43,7 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1
-            className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight"
-            style={{ filter: 'url(#liquid-filter)', willChange: 'filter' }}
-          >
+          <h1 className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">
             <span className="line">
               <span>Création de sites web <span className="inline-block whitespace-nowrap">sur&#8209;mesure</span></span>
             </span>
@@ -93,29 +80,6 @@ export default function Hero() {
       </div>
       
       <div className="scroll-cue"><span>Scroll</span><div className="scroll-line"></div></div>
-
-      {/* SVG Liquid Filter Definition */}
-      <svg className="absolute w-0 h-0 pointer-events-none" style={{ visibility: 'hidden' }}>
-        <defs>
-          <filter id="liquid-filter">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.02 0.02"
-              numOctaves="3"
-              result="noise"
-              id="fe-turbulence"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="noise"
-              scale="0"
-              xChannelSelector="R"
-              yChannelSelector="G"
-              id="displacement-map"
-            />
-          </filter>
-        </defs>
-      </svg>
     </section>
   );
 }
