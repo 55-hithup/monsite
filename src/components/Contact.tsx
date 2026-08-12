@@ -156,12 +156,11 @@ export default function Contact() {
                   value={form.projectType}
                   onChange={(e) => setForm({ ...form, projectType: e.target.value })}
                 >
-                  <option>PME / TPE — Site Vitrine Acquisition</option>
-                  <option>Association Loi 1901 — Portail & Dons</option>
-                  <option>PME — E-Commerce Sur-Mesure</option>
-                  <option>PME — Application Web & Outil Métier</option>
-                  <option>Audit Performance & SEO / GEO</option>
-                  <option>Autre projet sur-mesure</option>
+                  <option>PME / TPE — Site Vitrine Sur-Mesure</option>
+                  <option>Association — Site ou Portail d'Information</option>
+                  <option>E-Commerce — Boutique en Ligne Sur-Mesure</option>
+                  <option>Application Web & SaaS Métier</option>
+                  <option>Autre projet de développement sur-mesure</option>
                 </select>
               </div>
             </div>

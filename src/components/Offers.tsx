@@ -55,9 +55,9 @@ export default function Offers() {
     },
     {
       num: '05',
-      question: 'Comment améliorer son positionnement sur Google et les moteurs de recherche IA ?',
-      answer: 'En rédigeant des contenus clairs, bien structurés avec des réponses directes aux questions fréquentes des utilisateurs.',
-      badge: 'Référencement SEO',
+      question: 'Comment assurer la visibilité d\'un site sur Google ?',
+      answer: 'En concevant une structure de code épurée et des contenus bien organisés pour faciliter l\'indexation par les moteurs de recherche.',
+      badge: 'Structure & Visibilité',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <circle cx="11" cy="11" r="7" />
