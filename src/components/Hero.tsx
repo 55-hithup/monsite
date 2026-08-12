@@ -1,10 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import gsap from 'gsap';
 import MagneticWrapper from './MagneticWrapper';
 
 export default function Hero() {
-  const h1Ref = useRef<HTMLHeadingElement>(null);
-
   useEffect(() => {
     // 1. Initial load reveal animation
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
@@ -16,81 +14,12 @@ export default function Hero() {
 
     // 2. Liquid filter load animation
     const displacementMap = document.getElementById('displacement-map');
-    const feTurbulence = document.getElementById('fe-turbulence');
     
     if (displacementMap) {
       gsap.fromTo(displacementMap,
         { attr: { scale: 80 } },
         { attr: { scale: 0 }, duration: 2.2, ease: 'power2.out' }
       );
-    }
-
-    // 3. Liquid hover interaction
-    const h1 = h1Ref.current;
-    if (h1 && displacementMap && feTurbulence) {
-      const turb = { x: 0.02, y: 0.02 };
-      
-      let hoverTween: gsap.core.Tween | null = null;
-      let waveTween: gsap.core.Tween | null = null;
-
-      const handleMouseEnter = () => {
-        if (hoverTween) hoverTween.kill();
-        if (waveTween) waveTween.kill();
-
-        // Wave scale distortion
-        hoverTween = gsap.to(displacementMap, {
-          attr: { scale: 22 },
-          duration: 0.4,
-          ease: 'power1.out',
-        });
-
-        // Loop turbulence frequency to animate fluid waves
-        waveTween = gsap.to(turb, {
-          x: 0.05,
-          y: 0.08,
-          duration: 1.8,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          onUpdate: () => {
-            feTurbulence.setAttribute('baseFrequency', `${turb.x} ${turb.y}`);
-          },
-        });
-      };
-
-      const handleMouseLeave = () => {
-        if (hoverTween) hoverTween.kill();
-        if (waveTween) waveTween.kill();
-
-        // Return scale back to zero smoothly
-        hoverTween = gsap.to(displacementMap, {
-          attr: { scale: 0 },
-          duration: 0.8,
-          ease: 'power2.out',
-        });
-
-        // Reset frequency to default
-        waveTween = gsap.to(turb, {
-          x: 0.02,
-          y: 0.02,
-          duration: 0.8,
-          ease: 'power2.out',
-          onUpdate: () => {
-            feTurbulence.setAttribute('baseFrequency', `${turb.x} ${turb.y}`);
-          },
-        });
-      };
-
-      h1.addEventListener('mouseenter', handleMouseEnter);
-      h1.addEventListener('mouseleave', handleMouseLeave);
-
-      return () => {
-        tl.kill();
-        if (hoverTween) hoverTween.kill();
-        if (waveTween) waveTween.kill();
-        h1.removeEventListener('mouseenter', handleMouseEnter);
-        h1.removeEventListener('mouseleave', handleMouseLeave);
-      };
     }
 
     return () => {
@@ -123,9 +52,8 @@ export default function Hero() {
             <span>CRÉATION WEB & SAAS SUR-MESURE : PME, TPE & ASSOCIATIONS</span>
           </div>
 
-          {/* Heading with Liquid Filter style applied */}
+          {/* Heading */}
           <h1
-            ref={h1Ref}
             className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight"
             style={{ filter: 'url(#liquid-filter)', willChange: 'filter' }}
           >
