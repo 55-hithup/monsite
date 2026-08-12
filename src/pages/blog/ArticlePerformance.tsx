@@ -32,15 +32,18 @@ export default function ArticlePerformance() {
             Dans l'écosystème du web, la vitesse n'est plus seulement une commodité : c'est un facteur financier direct. De nombreuses études prouvent qu'une seule seconde d'attente supplémentaire peut ruiner l'expérience client et baisser vos ventes.
           </p>
           
-          <h2 className="text-lg font-bold text-text-primary pt-4">Le coût d'une seconde de retard</h2>
-          <p>
-            Selon des analyses menées par Google et Cloudflare, un temps de chargement qui passe de 1 à 3 secondes augmente le taux de rebond (le pourcentage de visiteurs qui quittent immédiatement le site) de **32%**. Si ce temps atteint 5 secondes, la probabilité de rebond explose de **90%**.
+          <h2 className="text-lg font-bold text-text-primary pt-4">Combien coûte une seconde de retard sur le site d'une PME ?</h2>
+          <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
+            ⚡ <strong>Réponse rapide :</strong> Selon Google, passer de 1 à 3 secondes de chargement augmente le taux de rebond de 32%, et détruit jusqu'à 20% de vos opportunités de conversion.
           </p>
           <p>
-            À l'inverse, accélérer votre site permet d'observer une hausse immédiate de vos objectifs commerciaux. Par exemple, Walmart a constaté qu'en réduisant d'une seconde le temps de chargement de son site, ses taux de conversion augmentaient de **2%**.
+            Selon des analyses menées par Google et Cloudflare, un temps de chargement qui passe de 1 à 3 secondes augmente le taux de rebond (le pourcentage de visiteurs qui quittent immédiatement le site) de 32%. Si ce temps atteint 5 secondes, la probabilité de rebond explose de 90%.
+          </p>
+          <p>
+            À l'inverse, accélérer votre site permet d'observer une hausse immédiate de vos objectifs commerciaux. Par exemple, Walmart a constaté qu'en réduisant d'une seconde le temps de chargement de son site, ses taux de conversion augmentaient de 2%.
           </p>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Pourquoi la performance d'élite fait la différence ?</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">Pourquoi la vitesse web est-elle décisive pour les PME et Associations ?</h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>
               <strong className="text-text-primary">Expérience mobile optimale :</strong> Plus de 60% du trafic s'effectue sur smartphone, souvent avec une connexion 4G instable. Un site léger et optimisé performe là où les autres échouent.
@@ -53,7 +56,7 @@ export default function ArticlePerformance() {
             </li>
           </ul>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Comment optimiser vos performances ?</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">Comment optimiser la performance web sur-mesure ?</h2>
           <p>
             Pour atteindre l'excellence, je combine plusieurs techniques avancées :
           </p>
@@ -63,7 +66,7 @@ export default function ArticlePerformance() {
             <li>Hébergement distribué sur un CDN mondial ultra-rapide (Vercel Edge).</li>
           </ul>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Conclusion</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">Quel est le bilan financier de la performance web ?</h2>
           <p>
             Améliorer la vitesse de votre site est l'optimisation la plus rentable que vous puissiez faire pour augmenter votre chiffre d'affaires sans dépenser un euro de plus en publicité.
           </p>

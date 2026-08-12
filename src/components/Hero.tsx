@@ -118,43 +118,45 @@ export default function Hero() {
       <div className="wrap relative z-10 w-full" style={{ maxWidth: '1440px', paddingLeft: 'var(--space-xl)', paddingRight: 'var(--space-xl)' }}>
         <div className="max-w-[620px] text-left">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-[10px] label-mono text-purple-300 mb-6 reveal">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2E8FE0]/40 bg-[#2E8FE0]/10 text-[10px] label-mono text-cyan-300 mb-6 reveal">
             <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
-            <span>DÉVELOPPEUR WEB</span>
+            <span>CRÉATION WEB & SAAS SUR-MESURE : PME, TPE & ASSOCIATIONS</span>
           </div>
 
           {/* Heading with Liquid Filter style applied */}
           <h1
             ref={h1Ref}
-            className="hero-title cursor-default"
+            className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight"
             style={{ filter: 'url(#liquid-filter)', willChange: 'filter' }}
           >
-            <span className="line"><span>Je transforme</span></span>
-            <span className="line"><span>vos idées en</span></span>
+            <span className="line"><span>Le site sur-mesure</span></span>
+            <span className="line"><span>conçu pour votre</span></span>
             <span className="line">
-              <span className="grad">expériences</span>
-            </span>
-            <span className="line">
-              <span className="grad">digitales</span>
+              <span className="grad">PME ou Association</span>
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="hero-sub" style={{ marginTop: '20px', marginBottom: '35px' }}>
-            Développeur web passionné, j'aide les entreprises à se démarquer avec des sites performants, modernes et sur-mesure.
-          </p>
+          {/* Subtitle / QFO Direct Answer Box */}
+          <div className="hero-sub mt-6 mb-8 p-4 md:p-5 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed backdrop-blur-sm shadow-[0_0_30px_rgba(46,143,224,0.1)]">
+            <p className="font-semibold text-text-primary mb-1 flex items-center gap-2">
+              <span className="text-accent text-base">⚡</span> <strong>Réponse directe DevSupAi :</strong>
+            </p>
+            <p>
+              Je crée des sites web, applications et plateformes SaaS sur-mesure ultra-rapides (<span className="text-text-primary font-bold">Lighthouse 100%</span>, temps d'affichage <span className="text-text-primary font-bold">&lt; 600ms</span>), <span className="text-text-primary font-bold">sans aucune dette technique ni dépendances lourdes</span>, spécialement pensés pour développer l'acquisition client des PME et la visibilité des Associations.
+            </p>
+          </div>
 
           {/* CTAs */}
           <div className="hero-ctas flex flex-wrap items-center gap-4">
             <MagneticWrapper range={40} strength={0.3}>
-              <a href="#realisations" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                Voir mes projets <span className="text-sm">→</span>
+              <a href="#contact" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                Demander un devis PME / Asso →
               </a>
             </MagneticWrapper>
             
             <MagneticWrapper range={35} strength={0.25}>
-              <a href="#contact" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(245,246,250,0.12)' }}>
-                💬 Me contacter
+              <a href="#solutions" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(245,246,250,0.15)' }}>
+                🔍 Voir les solutions PME & Asso
               </a>
             </MagneticWrapper>
           </div>

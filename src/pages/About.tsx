@@ -18,13 +18,13 @@ export default function About() {
           {/* Main Story Column */}
           <div className="md:col-span-2 space-y-6 text-text-secondary leading-relaxed text-sm">
             <p className="text-base text-text-primary font-medium">
-              Je suis Alex, développeur web freelance et fondateur de DevSupAi. Mon approche repose sur une conviction : privilégier le développement sur-mesure et des architectures épurées pour offrir aux utilisateurs une navigation fluide et rapide.
+              Je suis Alex, développeur web freelance et fondateur de DevSupAi. Mon approche repose sur une conviction : concevoir des applications et des sites web sur-mesure ultra-performants spécialement taillés pour les <strong>PME</strong>, <strong>TPE</strong> et <strong>Associations</strong>.
             </p>
             <p>
               Trop souvent, les projets web sont ralentis par l'utilisation abusive de générateurs de pages (page builders) ou de thèmes surchargés. Ces solutions de facilité pénalisent votre vitesse de chargement, nuisent à votre référencement sur Google et limitent votre liberté graphique.
             </p>
             <p>
-              Chez <strong>DevSupAi</strong>, je conçois des architectures sur-mesure basées sur les meilleures technologies modernes (React, TypeScript, GSAP, Tailwind CSS). Chaque ligne de code est écrite spécifiquement pour servir votre image de marque et maximiser vos taux de conversion.
+              Chez <strong>DevSupAi</strong>, je conçois des architectures sur-mesure basées sur les meilleures technologies modernes (React, TypeScript, GSAP, Tailwind CSS). Chaque ligne de code est écrite spécifiquement pour servir l'acquisition de vos clients ou l'engagement de vos adhérents.
             </p>
             <div className="pt-6">
               <h2 className="text-lg font-bold text-text-primary mb-3">Mes principes fondamentaux</h2>

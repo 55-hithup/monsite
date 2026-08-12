@@ -1,22 +1,28 @@
-# DevSupAi - Agence de Développement Web sur-mesure de Haute Performance
+# DevSupAi - Création de Sites Web & Applications Sur-Mesure pour PME et Associations
 
-> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, spécialisée dans la création d'applications et de sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP). Notre crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée et optimisation SEO maximale.
+> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, spécialisée dans la création d'applications, plateformes SaaS et sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP) pour les PME, TPE et Associations. Notre crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée (<600ms), absence de dette technique et optimisation SEO / GEO maximale.
 
 ## Informations de contact
 - Site officiel : https://www.devsupai.fr
 - E-mail : contact@devsupai.fr
 - Adresse : 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, France)
 
+## Services principaux pour PME et Associations
+- **Sites vitrines et e-commerce sur-mesure pour PME** : Développement d'outils d'acquisition de clients haute vitesse, optimisés pour le SEO local et la conversion.
+- **Plateformes et portails pour Associations loi 1901** : Formulaires d'adhésion, gestion d'événements, collectes de dons et présentation claire des actions associatives.
+- **Développement d'applications web métier** : Interfaces réactives sur-mesure pour automatiser la gestion quotidienne.
+
 ## Plan du Site (URLs)
 
-- [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant mes services de développement web sur-mesure, mes réalisations clés, mes piliers de performance et mon formulaire de contact.
-- [/a-propos](https://www.devsupai.fr/a-propos) : Mon histoire, ma philosophie de code propre sans compromis et la présentation du fondateur Alexandre Pabst.
-- [/blog](https://www.devsupai.fr/blog) : Index de mes articles techniques sur la performance web, la conversion et le développement.
-  - [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Article détaillé sur l'intérêt d'opter pour le sur-mesure face aux CMS lourds (WordPress, Page Builders) en 2026.
+- [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant mes services de développement web pour PME et Associations, mes offres, le comparatif sur-mesure vs templates et la FAQ ciblée.
+- [/a-propos](https://www.devsupai.fr/a-propos) : Philosophie de code propre sans compromis, engagement envers l'indépendance numérique des PME et associations et présentation du fondateur Alexandre Pabst.
+- [/blog](https://www.devsupai.fr/blog) : Index des articles et guides sur la performance web, la conversion et le SEO/GEO.
+  - [/blog/site-web-pme-association](https://www.devsupai.fr/blog/site-web-pme-association) : Guide complet sur la création et la numérisation d'un site web efficace pour PME, TPE et Associations.
+  - [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Article détaillé sur l'intérêt d'opter pour le sur-mesure face aux CMS lourds (WordPress, Wix, Page Builders) en 2026.
   - [/blog/performance-web-sur-mesure](https://www.devsupai.fr/blog/performance-web-sur-mesure) : Article expliquant l'impact de la vitesse de chargement (LCP, Lighthouse) sur les taux de conversion et l'acquisition client.
-- [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas détaillée sur le site vitrine du restaurant "Les Jumeaux" (temps de chargement ultra-rapide et hausse des réservations).
-- [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas sur l'application de gestion de parc matériel "LocaTool" (optimisation d'interface, tableau de bord réactif et réduction du taux de rebond).
-- [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive de streaming "Abogame" (intégration de roue de tirage animée et planification en direct).
-- [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Mentions légales de l'entreprise individuelle Alexandre Pabst EI (SIRET, RNE, hébergement).
+- [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas sur le site vitrine du restaurant "Les Jumeaux" (+40% de réservations).
+- [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas sur l'application de gestion de parc matériel "LocaTool".
+- [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive "Abogame".
+- [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Mentions légales de l'entreprise individuelle Alexandre Pabst EI.
 - [/politique-de-confidentialite](https://www.devsupai.fr/politique-de-confidentialite) : Politique de protection des données (RGPD) du site.
 - [/admin/login](https://www.devsupai.fr/admin/login) : Espace d'administration privé (modération des avis clients).

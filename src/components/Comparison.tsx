@@ -47,71 +47,76 @@ export default function Comparison() {
   return (
     <SectionReveal className="section-pad" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
       <div className="wrap">
-        <div className="head-row mb-12">
+        <div className="head-row mb-10">
           <div>
-            <div className="eyebrow reveal">Pourquoi investir</div>
-            <h2 className="section-title reveal">L'écart se voit<br />immédiatement.</h2>
+            <div className="eyebrow reveal">COMPARATIF PME & ASSOCIATIONS</div>
+            <h2 className="section-title reveal">Pourquoi choisir le sur-mesure<br />face aux templates pré-conçus ?</h2>
+          </div>
+          <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
+            <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
+              <strong className="text-text-primary">⚡ Réponse directe :</strong> Les templates pré-conçus et CMS génériques souffrent d'une lourdeur technique qui fait fuir vos prospects sur mobile. Le sur-mesure et les applications SaaS DevSupAi vous apportent une vitesse extrême (<span className="text-text-primary font-bold">0.3s</span>), un design unique et une optimisation idéale pour Google et les IA.
+            </p>
           </div>
         </div>
 
         {/* Comparison Lists */}
         <div className="compare-wrap reveal">
           <div className="compare-col before">
-            <span className="compare-label">Avant (Template standard)</span>
+            <span className="compare-label text-red-400">❌ Templates pré-conçus & CMS génériques</span>
             <ul className="compare-list">
               <li>
-                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#767676" strokeWidth="2">
+                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
-                Un site générique qui ne reflète pas votre valeur
+                Code lourd et plugins inutiles (6 à 9s de chargement sur mobile)
               </li>
               <li>
-                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#767676" strokeWidth="2">
+                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
-                Des visiteurs qui repartent sans agir (taux de rebond élevé)
+                Design générique peu différenciant pour votre marque ou association
               </li>
               <li>
-                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#767676" strokeWidth="2">
+                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
-                Un design daté, lourd et lent sur mobile (8.7s de chargement)
+                Dette technique importante et difficultés d'évolution
               </li>
               <li>
-                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#767676" strokeWidth="2">
+                <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
-                Une image amateur qui freine la confiance des clients
+                Invisible ou mal indexé sur les moteurs IA (Google AI Overviews, Perplexity)
               </li>
             </ul>
           </div>
 
           <div className="compare-col after">
-            <span className="compare-label text-[#2E8FE0]">Après (Sur-mesure DevSupAi)</span>
+            <span className="compare-label text-[#2E8FE0]">✓ Développement & SaaS Sur-Mesure DevSupAi</span>
             <ul className="compare-list">
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#2E8FE0" strokeWidth="2">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Une identité forte, sur-mesure et haut de gamme
+                Affichage instantané (&lt; 600ms, score Lighthouse 100/100)
               </li>
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#2E8FE0" strokeWidth="2">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Un parcours optimisé pensé pour maximiser les conversions
+                Design et fonctionnalités taillés exactement pour vos besoins métiers
               </li>
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#2E8FE0" strokeWidth="2">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Une expérience instantanée et fluide (0.3s de chargement, 100/100 Lighthouse)
+                Code épuré et architectures réactives (React, TypeScript, Vercel Edge)
               </li>
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#2E8FE0" strokeWidth="2">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Une crédibilité immédiate, à la hauteur de vos ambitions
+                Optimisé pour le SEO local et la recommandation par les IA (Query Fan-Out / GEO)
               </li>
             </ul>
           </div>
@@ -150,10 +155,10 @@ export default function Comparison() {
 
             {/* Labels */}
             <div className="absolute bottom-4 left-4 bg-red-950/80 border border-red-500/20 px-3 py-1 rounded-md text-[10px] label-mono text-red-400 font-bold pointer-events-none">
-              Avant<span className="hidden sm:inline"> (Template lent)</span>
+              Avant<span className="hidden sm:inline"> (Template / Abonnement)</span>
             </div>
             <div className="absolute bottom-4 right-4 bg-cyan-950/80 border border-cyan-500/20 px-3 py-1 rounded-md text-[10px] label-mono text-cyan-400 font-bold pointer-events-none">
-              Après<span className="hidden sm:inline"> (Sur-mesure)</span>
+              Après<span className="hidden sm:inline"> (Sur-mesure DevSupAi)</span>
             </div>
 
             {/* Divider Line */}

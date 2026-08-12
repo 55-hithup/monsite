@@ -10,28 +10,28 @@ interface SkillStep {
 const steps: SkillStep[] = [
   {
     num: '01',
-    title: 'Découverte',
-    desc: "J'échange avec vous sur vos objectifs, votre marché et vos utilisateurs pour poser des bases solides.",
+    title: 'Étape 1 : Comment cadrer les besoins d\'une PME ou d\'une Association ?',
+    desc: "Réponse : Par un échange direct sans jargon pour analyser vos objectifs métiers, vos cibles et définir un cahier des charges précis.",
   },
   {
     num: '02',
-    title: 'Conception',
-    desc: "Architecture de l'information, maquettes et direction artistique sont validées avant tout développement.",
+    title: 'Étape 2 : Comment sont conçues la direction artistique et les maquettes ?',
+    desc: "Réponse : Création d'une identité visuelle sur-mesure et de prototypes interactifs testés avant tout développement.",
   },
   {
     num: '03',
-    title: 'Développement',
-    desc: "Un code propre, performant et évolutif donne vie au design au pixel près, animations comprises.",
+    title: 'Étape 3 : Comment est développé un code ultra-rapide (<600ms) ?',
+    desc: "Réponse : Développement en React, TypeScript et Tailwind CSS sans dépendances lourdes pour garantir 100/100 sur Google Lighthouse.",
   },
   {
     num: '04',
-    title: 'Livraison',
-    desc: "Tests, optimisation des performances et mise en ligne accompagnée, en toute sérénité.",
+    title: 'Étape 4 : Comment valider l\'optimisation SEO et la citabilité par l\'IA (GEO) ?',
+    desc: "Réponse : Audit technique complet, tests de charge mobile, balisage Schema.org JSON-LD et génération du fichier llms.txt.",
   },
   {
     num: '05',
-    title: 'Suivi',
-    desc: "Un accompagnement continu pour faire évoluer votre site avec votre activité.",
+    title: 'Étape 5 : Quel accompagnement est assuré après la mise en ligne ?',
+    desc: "Réponse : Prise en main personnalisée, suivi des performances et évolutions sur-mesure pour accompagner votre croissance.",
   },
 ];
 

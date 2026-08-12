@@ -3,11 +3,11 @@ import MagneticWrapper from './MagneticWrapper';
 
 export default function Navbar() {
   const links = [
-    { label: 'à propos', href: '/a-propos' },
+    { label: 'pme & assos', href: '/#solutions' },
     { label: 'offres', href: '/#services' },
-    { label: 'process', href: '/#process' },
+    { label: 'comparatif', href: '/#faq' },
     { label: 'projets', href: '/#realisations' },
-    { label: 'stack', href: '/#stack' },
+    { label: 'à propos', href: '/a-propos' },
     { label: 'blog', href: '/blog' },
   ];
 

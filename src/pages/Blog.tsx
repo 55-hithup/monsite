@@ -10,6 +10,14 @@ export default function Blog() {
 
   const articles = [
     {
+      slug: 'site-web-pme-association',
+      title: 'Comment réussir le site web d\'une PME ou d\'une Association ?',
+      excerpt: 'Guide complet pour concevoir une vitrine web sur-mesure efficace, haute vitesse et sans abonnement récurrent pour PME et Associations.',
+      date: '10 Août 2026',
+      readTime: '6 min read',
+      tag: 'PME & Asso',
+    },
+    {
       slug: 'pourquoi-eviter-les-templates',
       title: 'Pourquoi éviter les templates en 2026 ?',
       excerpt: 'Les thèmes pré-conçus pénalisent votre vitesse et brident votre référencement Google. Découvrez pourquoi le sur-mesure est devenu incontournable.',

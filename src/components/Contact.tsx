@@ -146,17 +146,18 @@ export default function Contact() {
                 />
               </div>
               <div className="field">
-                <label htmlFor="projet-type">Type de projet</label>
+                <label htmlFor="projet-type">Vous êtes / Type de projet</label>
                 <select
                   id="projet-type"
                   value={form.projectType}
                   onChange={(e) => setForm({ ...form, projectType: e.target.value })}
                 >
-                  <option>Site vitrine</option>
-                  <option>E-commerce</option>
-                  <option>Application web</option>
-                  <option>Développement sur mesure</option>
-                  <option>Autre</option>
+                  <option>PME / TPE — Site Vitrine Acquisition</option>
+                  <option>Association Loi 1901 — Portail & Dons</option>
+                  <option>PME — E-Commerce Sur-Mesure</option>
+                  <option>PME — Application Web & Outil Métier</option>
+                  <option>Audit Performance & SEO / GEO</option>
+                  <option>Autre projet sur-mesure</option>
                 </select>
               </div>
             </div>

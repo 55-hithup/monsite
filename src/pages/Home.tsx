@@ -5,6 +5,7 @@ import { useLenis } from 'lenis/react';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
 import Offers from '../components/Offers';
+import TargetAudience from '../components/TargetAudience';
 import Projects from '../components/Projects';
 import Process from '../components/Process';
 import Comparison from '../components/Comparison';
@@ -16,8 +17,8 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export default function Home() {
   useDocumentMetadata(
-    "DevSupAi | Création de Plateformes Web Sur-Mesure de Haute Performance",
-    "Développeur freelance spécialisé dans la création d'applications et de sites web sur-mesure de haute performance, optimisés pour le SEO et le taux de conversion."
+    "DevSupAi | Création de Sites Web & Applications Sur-Mesure pour PME et Associations",
+    "Développeur web spécialisé dans la création de sites et d'applications sur-mesure pour PME, TPE et Associations. Vitesse extrême, zéro abonnement captif et référencement SEO optimal."
   );
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,6 +79,7 @@ export default function Home() {
     "url": "https://www.devsupai.fr",
     "telephone": "+33783666098",
     "priceRange": "€€",
+    "description": "Création de sites web et d'applications sur-mesure de haute performance pour PME, TPE et Associations.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "13 Allée des Roses",
@@ -90,6 +92,28 @@ export default function Home() {
       "@type": "GeoCoordinates",
       "latitude": 48.8897,
       "longitude": 5.5414
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services de développement web",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Création de site web sur-mesure pour PME & TPE",
+            "description": "Site vitrine ou e-commerce haute performance optimisé pour l'acquisition de clients et le référencement local."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Développement web pour Associations",
+            "description": "Plateforme web avec formulaires d'adhésion, gestion d'événements et présentation des actions associatives."
+          }
+        }
+      ]
     },
     "openingHoursSpecification": [
       {
@@ -124,6 +148,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <Offers />
+      <TargetAudience />
       <Projects />
       <Process />
       <Comparison />

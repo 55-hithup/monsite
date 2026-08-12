@@ -109,9 +109,9 @@ export default function Stats() {
 
   const pillars = [
     {
-      tag: 'Qualité',
-      title: 'Zéro Template',
-      desc: 'Chaque ligne de code est écrite sur-mesure pour s\'adapter à votre identité et vos besoins, sans dépendances lourdes.',
+      tag: 'Qualité Code',
+      title: 'Pourquoi zéro template ?',
+      desc: 'Réponse : Pour éliminer 80% du code inutile. Chaque composant est écrit spécifiquement pour vos besoins.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <polyline points="16 18 22 12 16 6" className="draw-path" />
@@ -121,9 +121,9 @@ export default function Stats() {
       ),
     },
     {
-      tag: 'Vitesse',
-      title: 'Performance d\'Élite',
-      desc: 'Optimisation poussée pour garantir des temps de chargement instantanés (Lighthouse 100%) et un excellent SEO.',
+      tag: 'Temps d\'affichage',
+      title: 'Pourquoi viser <600ms ?',
+      desc: 'Réponse : Passer de 3s à 0.5s augmente les conversions de +20% et garantit un score Google Lighthouse de 100/100.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83" className="draw-path" />
@@ -133,9 +133,9 @@ export default function Stats() {
       ),
     },
     {
-      tag: 'Futur',
-      title: 'Évolutivité Garantie',
-      desc: 'Utilisation de technologies leaders (React, Next.js, Vercel) pour un site robuste capable de grandir avec vous.',
+      tag: 'Visibilité IA / GEO',
+      title: 'Comment plaire aux IA ?',
+      desc: 'Réponse : L\'intégration de données chiffrées précises augmente le taux de citation par les LLMs de +37% à +41%.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" className="draw-path" />
@@ -148,9 +148,9 @@ export default function Stats() {
       ),
     },
     {
-      tag: 'Humain',
-      title: 'Accompagnement Direct',
-      desc: 'Pas d\'intermédiaires ni de chefs de projets. Vous échangez en direct avec l\'expert qui conçoit et développe.',
+      tag: 'Contact direct',
+      title: 'Qui gère votre projet ?',
+      desc: 'Réponse : Interlocuteur unique. Vous échangez en direct avec Alexandre Pabst, créateur et développeur de votre solution.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" className="draw-path" />

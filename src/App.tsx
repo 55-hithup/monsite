@@ -7,6 +7,7 @@ import About from './pages/About';
 import Blog from './pages/Blog';
 import ArticleTemplates from './pages/blog/ArticleTemplates';
 import ArticlePerformance from './pages/blog/ArticlePerformance';
+import ArticleAssociationPme from './pages/blog/ArticleAssociationPme';
 import LegalNotices from './pages/LegalNotices';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CaseLesJumeaux from './pages/projects/CaseLesJumeaux';
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: 'blog/performance-web-sur-mesure',
         element: <ArticlePerformance />,
+      },
+      {
+        path: 'blog/site-web-pme-association',
+        element: <ArticleAssociationPme />,
       },
       {
         path: 'projets/les-jumeaux',

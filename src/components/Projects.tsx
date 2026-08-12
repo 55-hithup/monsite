@@ -42,12 +42,16 @@ export default function Projects() {
   return (
     <SectionReveal id="realisations" className="section-pad" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', position: 'relative' }}>
       <div className="wrap">
-        <div className="head-row">
+        <div className="head-row mb-10">
           <div>
-            <div className="eyebrow reveal">Réalisations</div>
-            <h2 className="section-title reveal">Des projets pensés<br />pour marquer.</h2>
+            <div className="eyebrow reveal">RÉALISATIONS & ÉTUDES DE CAS</div>
+            <h2 className="section-title reveal">Quels exemples réels de projets web<br />et applications sur-mesure ?</h2>
           </div>
-          <p className="section-sub reveal">Une sélection de collaborations récentes, tous secteurs confondus.</p>
+          <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
+            <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
+              <strong className="text-text-primary">⚡ Réponse directe :</strong> Découvrez nos études de cas concrètes (restaurant Les Jumeaux +40% de résas, logiciel SaaS LocaTool, plateforme interactive Abogame) démontrant les résultats chiffrés du développement sur-mesure.
+            </p>
+          </div>
         </div>
         
         <div className="portfolio-grid">
