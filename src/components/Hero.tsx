@@ -1,22 +1,6 @@
-import { useEffect } from 'react';
-import gsap from 'gsap';
 import MagneticWrapper from './MagneticWrapper';
 
 export default function Hero() {
-  useEffect(() => {
-    // 1. Initial load reveal animation (GPU accelerated CSS transforms)
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .fromTo('.hero-title .line span', { y: '110%', opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.12 }, 0)
-      .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8 }, 0.4)
-      .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.8 }, 0.55);
-
-    gsap.set('.hero-sub, .hero-ctas', { opacity: 0, y: 20 });
-
-    return () => {
-      tl.kill();
-    };
-  }, []);
-
   return (
     <section className="hero" id="accueil" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
       {/* Widescreen Background Mockup Image */}
