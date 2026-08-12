@@ -6,7 +6,7 @@ export default function Navbar() {
     { label: 'pme & assos', href: '/#solutions' },
     { label: 'offres', href: '/#services' },
     { label: 'comparatif', href: '/#faq' },
-    { label: 'projets', href: '/#realisations' },
+    { label: 'réalisations', href: '/realisations' },
     { label: 'à propos', href: '/a-propos' },
     { label: 'blog', href: '/blog' },
   ];
@@ -33,14 +33,23 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Navigation Action */}
-        <div>
+        {/* Header Action Buttons */}
+        <div className="flex items-center gap-2">
+          <MagneticWrapper range={25} strength={0.2}>
+            <Link
+              to="/realisations"
+              className="cursor-target label-mono text-[10px] px-3.5 py-1.5 border border-[rgba(245,246,250,0.15)] rounded-full text-text-secondary hover:text-text-primary hover:border-text-primary transition-all duration-150 inline-block"
+            >
+              réalisations
+            </Link>
+          </MagneticWrapper>
+
           <MagneticWrapper range={30} strength={0.25}>
             <Link
               to="/#contact"
-              className="cursor-target label-mono text-[10px] px-4 py-2 border border-accent rounded-full text-text-primary hover:bg-accent hover:border-accent transition-all duration-150 inline-block"
+              className="cursor-target label-mono text-[10px] px-4 py-1.5 border border-accent rounded-full text-text-primary bg-accent/20 hover:bg-accent hover:border-accent transition-all duration-150 inline-block font-bold"
             >
-              let's talk
+              contact
             </Link>
           </MagneticWrapper>
         </div>

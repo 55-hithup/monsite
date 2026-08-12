@@ -92,7 +92,6 @@ export default function Projects() {
               <Link 
                 key={idx} 
                 to={project.href} 
-                onClick={() => window.history.replaceState(null, '', '/#realisations')}
                 className="cursor-target proj-card reveal"
               >
                 {cardContent}
@@ -120,6 +119,16 @@ export default function Projects() {
               </div>
             );
           })}
+        </div>
+
+        {/* Action Button to Standalone Projects Page */}
+        <div className="mt-12 text-center">
+          <Link
+            to="/realisations"
+            className="btn btn-ghost text-xs inline-flex items-center gap-2 border border-[rgba(245,246,250,0.15)] px-6 py-3 rounded-full hover:border-accent hover:text-text-primary transition-all duration-200"
+          >
+            Découvrir toutes les études de cas détaillées →
+          </Link>
         </div>
       </div>
     </SectionReveal>
