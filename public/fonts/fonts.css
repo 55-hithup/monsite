@@ -525,36 +525,28 @@
 /* General Sans */
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/fontshare_108.woff2') format('woff2'),
-       url('/fonts/fontshare_108.woff') format('woff'),
-       url('/fonts/fontshare_111.ttf') format('truetype');
+  src: url('/fonts/fontshare_108.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/fontshare_103.woff2') format('woff2'),
-       url('/fonts/fontshare_103.woff') format('woff'),
-       url('/fonts/fontshare_110.ttf') format('truetype');
+  src: url('/fonts/fontshare_103.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/fontshare_101.woff2') format('woff2'),
-       url('/fonts/fontshare_102.woff') format('woff'),
-       url('/fonts/fontshare_105.ttf') format('truetype');
+  src: url('/fonts/fontshare_101.woff2') format('woff2');
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/fontshare_106.woff2') format('woff2'),
-       url('/fonts/fontshare_107.woff') format('woff'),
-       url('/fonts/fontshare_104.ttf') format('truetype');
+  src: url('/fonts/fontshare_106.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
