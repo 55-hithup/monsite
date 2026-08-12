@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { LogOut, Clock, Check, CheckCircle2, Trash2, EyeOff, AlertTriangle, Star, Printer, MessageSquare } from 'lucide-react';
+import { LogOut, Clock, Check, CheckCircle2, Trash2, EyeOff, AlertTriangle, Star } from 'lucide-react';
 import { auth, db } from '../../lib/firebase';
 import SectionReveal from '../../components/SectionReveal';
-import FlyerStudio from '../../components/admin/FlyerStudio';
 
 interface TestimonialDoc {
   id: string;
@@ -21,7 +20,6 @@ export default function Dashboard() {
   const [reviews, setReviews] = useState<TestimonialDoc[]>([]);
   const [loading, setLoading] = useState(true);
   const [checkingAuth, setCheckingAuth] = useState(true);
-  const [activeTab, setActiveTab] = useState<'reviews' | 'flyers'>('reviews');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -124,13 +122,13 @@ export default function Dashboard() {
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-6xl">
         {/* Admin Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[rgba(245,246,250,0.06)] pb-6 mb-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[rgba(245,246,250,0.06)] pb-6 mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-[10px] label-mono text-purple-300 mb-2">
               <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
-              <span>CONSOLE D'ADMINISTRATION</span>
+              <span>CONSOLE MODÉRATEUR</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-text-primary">Tableau de bord Admin</h1>
+            <h1 className="text-3xl font-extrabold text-text-primary">Gestion des Témoignages</h1>
           </div>
           <button
             onClick={handleLogout}
@@ -142,39 +140,8 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          <button
-            onClick={() => setActiveTab('reviews')}
-            className={`px-4 py-2 rounded-xl text-xs label-mono font-bold transition-all cursor-pointer flex items-center gap-2 ${
-              activeTab === 'reviews'
-                ? 'bg-accent/20 border border-accent text-white shadow-lg shadow-accent/20'
-                : 'bg-[#121729]/60 border border-[rgba(245,246,250,0.08)] text-text-secondary hover:text-text-primary'
-            }`}
-          >
-            <MessageSquare size={14} />
-            <span>Gestion des Avis ({reviews.length})</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('flyers')}
-            className={`px-4 py-2 rounded-xl text-xs label-mono font-bold transition-all cursor-pointer flex items-center gap-2 ${
-              activeTab === 'flyers'
-                ? 'bg-accent/20 border border-accent text-white shadow-lg shadow-accent/20'
-                : 'bg-[#121729]/60 border border-[rgba(245,246,250,0.08)] text-text-secondary hover:text-text-primary'
-            }`}
-          >
-            <Printer size={14} />
-            <span>Studio Flyers & Visuels (Canva Clone)</span>
-          </button>
-        </div>
-
-        {/* Tab Content */}
-        {activeTab === 'flyers' ? (
-          <FlyerStudio />
-        ) : (
-          /* Dashboard Grid for Reviews */
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Dashboard Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* COLUMN 1: PENDING REVIEWS */}
           <div>
             <h2 className="text-sm font-bold label-mono text-purple-300 uppercase tracking-wider mb-4 flex items-center gap-2">
@@ -299,7 +266,6 @@ export default function Dashboard() {
             )}
           </div>
         </div>
-        )}
       </div>
     </SectionReveal>
   );
