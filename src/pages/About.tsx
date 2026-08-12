@@ -4,8 +4,9 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export default function About() {
   useDocumentMetadata(
-    "À Propos de DevSupAi | Développeur Web de Confiance",
-    "Découvrez le parcours d'Alex, fondateur de DevSupAi, et sa méthode de développement sans compromis pour concevoir des sites web rapides et entièrement sur-mesure."
+    "À Propos | Alexandre Pabst — Développeur Web Sur-Mesure | DevSupAi",
+    "Découvrez le parcours d'Alex, fondateur de DevSupAi, et sa méthode de développement sans compromis pour concevoir des sites web rapides et entièrement sur-mesure.",
+    "/a-propos"
   );
 
   return (

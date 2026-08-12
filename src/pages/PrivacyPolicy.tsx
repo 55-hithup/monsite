@@ -4,7 +4,8 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 export default function PrivacyPolicy() {
   useDocumentMetadata(
     "Politique de Confidentialité | DevSupAi",
-    "Découvrez notre politique de confidentialité, le traitement de vos données personnelles et vos droits relatifs aux RGPD."
+    "Découvrez notre politique de confidentialité, le traitement de vos données personnelles et vos droits relatifs aux RGPD.",
+    "/politique-de-confidentialite"
   );
 
   return (

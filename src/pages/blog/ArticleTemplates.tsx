@@ -4,8 +4,9 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function ArticleTemplates() {
   useDocumentMetadata(
-    "Pourquoi éviter les templates en 2026 ? | Blog DevSupAi",
-    "Les thèmes pré-conçus pénalisent votre vitesse de chargement et nuisent à votre référencement naturel. Découvrez pourquoi le développement sur-mesure est devenu incontournable."
+    "Pourquoi éviter les templates ? | Le sur-mesure pour PME & Asso | DevSupAi",
+    "Les thèmes pré-conçus pénalisent votre vitesse de chargement et nuisent à votre référencement naturel. Découvrez pourquoi le développement sur-mesure est devenu incontournable.",
+    "/blog/pourquoi-eviter-les-templates"
   );
 
   return (

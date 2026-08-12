@@ -4,8 +4,9 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export default function Blog() {
   useDocumentMetadata(
-    "Le Blog Performance Web | DevSupAi",
-    "Conseils de développeur, guides SEO, et astuces d'optimisation pour maximiser la vitesse et la conversion de vos applications web."
+    "Blog & Actualités Développement Web Sur-Mesure | DevSupAi",
+    "Conseils, guides techniques et bonnes pratiques sur le développement web sur-mesure, la performance, l'accessibilité et le référencement SEO pour PME et Associations.",
+    "/blog"
   );
 
   const articles = [

@@ -4,8 +4,9 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function ArticlePerformance() {
   useDocumentMetadata(
-    "L'impact de la performance web sur votre business | Blog DevSupAi",
-    "Découvrez comment la vitesse de chargement et le score Google PageSpeed influencent directement vos ventes, votre taux de conversion et votre référencement Google."
+    "Performance Web & SEO Sur-Mesure : Le Guide | DevSupAi",
+    "Découvrez les piliers de la vitesse web et de l'optimisation SEO pour propulser votre site internet PME ou association au sommet des résultats Google.",
+    "/blog/performance-web-sur-mesure"
   );
 
   return (

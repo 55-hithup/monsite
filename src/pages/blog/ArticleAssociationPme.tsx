@@ -4,8 +4,9 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function ArticleAssociationPme() {
   useDocumentMetadata(
-    "Création web pour PME & Associations : Le guide complet | Blog DevSupAi",
-    "Découvrez comment concevoir un site internet performant et sur-mesure adapté aux besoins spécifiques des PME, TPE et Associations loi 1901."
+    "Quel site web créer pour une PME ou une Association ? | DevSupAi",
+    "Découvrez comment concevoir un site internet performant et sur-mesure adapté aux besoins spécifiques des PME, TPE et Associations loi 1901.",
+    "/blog/site-web-pme-association"
   );
 
   return (

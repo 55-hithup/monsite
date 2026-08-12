@@ -5,7 +5,8 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 export default function CaseLocaTool() {
   useDocumentMetadata(
     "Étude de cas : LocaTool | Application Web SaaS Sur-Mesure | DevSupAi",
-    "Découvrez comment l'application web métier LocaTool a été conçue pour optimiser la gestion de location de matériel et gagner 30% d'efficacité administrative."
+    "Découvrez comment l'application web métier LocaTool a été conçue pour optimiser la gestion de location de matériel et gagner 30% d'efficacité administrative.",
+    "/projets/locatool"
   );
 
   const schemaMarkup = {

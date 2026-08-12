@@ -5,7 +5,8 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 export default function CaseLesJumeaux() {
   useDocumentMetadata(
     "Étude de cas : Les Jumeaux | Site Vitrine & Réservation Sur-Mesure | DevSupAi",
-    "Découvrez l'étude de cas du restaurant Les Jumeaux : création d'un site vitrine sur-mesure et d'un système de réservation directe sans widget tiers."
+    "Découvrez l'étude de cas du restaurant Les Jumeaux : création d'un site vitrine sur-mesure et d'un système de réservation directe sans widget tiers.",
+    "/projets/les-jumeaux"
   );
 
   const schemaMarkup = {

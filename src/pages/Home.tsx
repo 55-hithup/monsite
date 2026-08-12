@@ -18,7 +18,8 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 export default function Home() {
   useDocumentMetadata(
     "DevSupAi | Création de Sites Web & Applications Sur-Mesure pour PME et Associations",
-    "Développeur web spécialisé dans la création de sites et d'applications sur-mesure pour PME, TPE et Associations. Vitesse extrême, zéro abonnement captif et référencement SEO optimal."
+    "Développeur web spécialisé dans la création de sites et d'applications sur-mesure pour PME, TPE et Associations. Vitesse extrême, zéro abonnement captif et référencement SEO optimal.",
+    "/"
   );
 
   const containerRef = useRef<HTMLDivElement>(null);

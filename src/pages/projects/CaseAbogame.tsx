@@ -5,7 +5,8 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 export default function CaseAbogame() {
   useDocumentMetadata(
     "Étude de cas : Abogame | Plateforme Web Interactive Live | DevSupAi",
-    "Découvrez comment la plateforme interactive mobile-first Abogame a permis de dynamiser les animations en direct et d'augmenter l'engagement de 50%."
+    "Découvrez comment la plateforme interactive mobile-first Abogame a permis de dynamiser les animations en direct et d'augmenter l'engagement de 50%.",
+    "/projets/abogame"
   );
 
   const schemaMarkup = {

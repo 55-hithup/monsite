@@ -4,7 +4,8 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 export default function LegalNotices() {
   useDocumentMetadata(
     "Mentions Légales | DevSupAi",
-    "Consultez les informations légales et les mentions réglementaires de l'entreprise individuelle DevSupAi dirigée par Alexandre."
+    "Consultez les informations légales et les mentions réglementaires de l'entreprise individuelle DevSupAi dirigée par Alexandre.",
+    "/mentions-legales"
   );
 
   return (
