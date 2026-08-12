@@ -1,22 +1,38 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import ArticleTemplates from './pages/blog/ArticleTemplates';
-import ArticlePerformance from './pages/blog/ArticlePerformance';
-import ArticleAssociationPme from './pages/blog/ArticleAssociationPme';
-import LegalNotices from './pages/LegalNotices';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import CaseLesJumeaux from './pages/projects/CaseLesJumeaux';
-import CaseLocaTool from './pages/projects/CaseLocaTool';
-import CaseAbogame from './pages/projects/CaseAbogame';
-import Login from './pages/admin/Login';
-import Dashboard from './pages/admin/Dashboard';
+
+// Eagerly loaded for instant LCP on homepage
+// Lazy loaded routes for optimal bundle splitting
+const About = lazy(() => import('./pages/About'));
+const Blog = lazy(() => import('./pages/Blog'));
+const ArticleTemplates = lazy(() => import('./pages/blog/ArticleTemplates'));
+const ArticlePerformance = lazy(() => import('./pages/blog/ArticlePerformance'));
+const ArticleAssociationPme = lazy(() => import('./pages/blog/ArticleAssociationPme'));
+const LegalNotices = lazy(() => import('./pages/LegalNotices'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const CaseLesJumeaux = lazy(() => import('./pages/projects/CaseLesJumeaux'));
+const CaseLocaTool = lazy(() => import('./pages/projects/CaseLocaTool'));
+const CaseAbogame = lazy(() => import('./pages/projects/CaseAbogame'));
+const Login = lazy(() => import('./pages/admin/Login'));
+const Dashboard = lazy(() => import('./pages/admin/Dashboard'));
 
 gsap.registerPlugin(ScrollTrigger);
+
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs">
+    Chargement...
+  </div>
+);
+
+const renderLazy = (Component: React.ComponentType) => (
+  <Suspense fallback={<PageLoader />}>
+    <Component />
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
@@ -29,51 +45,51 @@ const router = createBrowserRouter([
       },
       {
         path: 'a-propos',
-        element: <About />,
+        element: renderLazy(About),
       },
       {
         path: 'blog',
-        element: <Blog />,
+        element: renderLazy(Blog),
       },
       {
         path: 'blog/pourquoi-eviter-les-templates',
-        element: <ArticleTemplates />,
+        element: renderLazy(ArticleTemplates),
       },
       {
         path: 'blog/performance-web-sur-mesure',
-        element: <ArticlePerformance />,
+        element: renderLazy(ArticlePerformance),
       },
       {
         path: 'blog/site-web-pme-association',
-        element: <ArticleAssociationPme />,
+        element: renderLazy(ArticleAssociationPme),
       },
       {
         path: 'projets/les-jumeaux',
-        element: <CaseLesJumeaux />,
+        element: renderLazy(CaseLesJumeaux),
       },
       {
         path: 'projets/locatool',
-        element: <CaseLocaTool />,
+        element: renderLazy(CaseLocaTool),
       },
       {
         path: 'projets/abogame',
-        element: <CaseAbogame />,
+        element: renderLazy(CaseAbogame),
       },
       {
         path: 'mentions-legales',
-        element: <LegalNotices />,
+        element: renderLazy(LegalNotices),
       },
       {
         path: 'politique-de-confidentialite',
-        element: <PrivacyPolicy />,
+        element: renderLazy(PrivacyPolicy),
       },
       {
         path: 'admin/login',
-        element: <Login />,
+        element: renderLazy(Login),
       },
       {
         path: 'admin/avis',
-        element: <Dashboard />,
+        element: renderLazy(Dashboard),
       },
     ],
   },
