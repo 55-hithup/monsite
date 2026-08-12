@@ -4,34 +4,29 @@ import SectionReveal from './SectionReveal';
 export default function FAQ() {
   const faqData = [
     {
-      q: 'Combien coûte la création d\'un site web sur-mesure pour une PME ou une association ?',
-      short: 'Le tarif dépend des fonctionnalités dont vous avez réellement besoin. Un devis clair et détaillé est établi après notre premier échange.',
-      detail: 'Chaque projet fait l\'objet d\'une étude personnalisée sans engagement. Vous êtes propriétaire de votre site et de votre nom de domaine.',
+      q: 'Comment est défini le tarif d\'un projet sur-mesure ?',
+      short: 'Chaque projet (site vitrine, application métier, logiciel SaaS) ayant un périmètre spécifique, un devis clair et détaillé est établi sur-mesure après un premier échange gratuit.',
+      detail: 'Cela permet de chiffrer uniquement ce dont vous avez réellement besoin, sans vous imposer de packs génériques inutiles.',
     },
     {
-      q: 'Pourquoi choisir un site web sur-mesure plutôt qu\'un modèle pré-conçu ?',
-      short: 'Un site sur-mesure s\'affiche rapidement sur mobile, ne contient aucun fichier inutile et offre un visuel unique adapté à votre image.',
-      detail: 'Les modèles pré-conçus (WordPress, Wix, thèmes génériques) intègrent souvent des options lourdes que vous n\'utiliserez jamais. Le sur-mesure vous garantit un site épuré, sécurisé et facile à faire évoluer.',
+      q: 'Pourquoi privilégier le sur-mesure par rapport à un modèle pré-conçu ?',
+      short: 'Le sur-mesure offre une structure épurée et réactive, sans fonctions inutiles ni ralentissements sur smartphone.',
+      detail: 'Votre site ou application répond exactement à l\'image de votre entreprise ou association et reste facile à faire évoluer au fil des ans.',
     },
     {
-      q: 'Puis-je modifier le contenu de mon site moi-même sans connaissances techniques ?',
-      short: 'Oui, une interface simple est mise en place pour que vous puissiez mettre à jour vos textes, actualités et visuels en toute autonomie.',
-      detail: 'Je vous forme lors de la livraison et vous fournis des explications claires pour modifier vos informations en quelques clics.',
+      q: 'Puis-je administrer moi-même les contenus ou les données de mon projet ?',
+      short: 'Selon la nature de votre projet et vos besoins, une interface d\'administration ou un système de gestion adapté peut être développé sur-mesure.',
+      detail: 'Si votre activité nécessite de mettre à jour des actualités, des réservations ou du matériel (comme pour le logiciel LocaTool), l\'outil est conçu pour être simple d\'utilisation.',
     },
     {
-      q: 'Proposez-vous des solutions adaptées aux budgets des associations ?',
-      short: 'Oui, nous étudions ensemble les fonctionnalités essentielles pour proposer un outil efficace adapté aux capacités de votre association.',
-      detail: 'L\'objectif est de doter votre association d\'un site clair (présentation des activités, formulaires de contact ou d\'adhésion) sans alourdir vos charges.',
+      q: 'Combien de temps dure le développement d\'un projet web ?',
+      short: 'Le délai dépend directement de l\'ampleur et de la complexité des fonctionnalités à créer.',
+      detail: 'Un planning clair et des étapes de validation sont fixés dès le départ lors de la signature du devis.',
     },
     {
-      q: 'Combien de temps prend la réalisation d\'un projet web ?',
-      short: 'La création dure généralement quelques semaines, selon la complexité du projet et la validation des contenus.',
-      detail: 'Un planning clair est défini au lancement pour vous permettre de suivre l\'avancement à chaque étape (conception graphique, développement, tests).',
-    },
-    {
-      q: 'Comment se passe le suivi et la sécurité après la mise en ligne ?',
-      short: 'Des solutions d\'accompagnement sont prévues pour assurer la tranquillité d\'esprit, la sécurité et la mise à jour de votre site.',
-      detail: 'Grâce à une structure épurée et moderne, le site reste très stable dans le temps et demande peu de maintenance lourde.',
+      q: 'Quel suivi ou accompagnement est proposé après la mise en ligne ?',
+      short: 'Selon la nature du projet et vos souhaits, des solutions de suivi, de maintenance ou de prise en main peuvent être intégrées.',
+      detail: 'L\'objectif est de vous garantir un outil stable et durable dans le temps.',
     },
   ];
 
@@ -63,9 +58,9 @@ export default function FAQ() {
       <div className="wrap max-w-4xl">
         <div className="text-center mb-[50px]">
           <div className="eyebrow reveal justify-center">QUESTIONS FRÉQUENTES</div>
-          <h2 className="section-title reveal mt-2">Questions posées par les PME & Associations.</h2>
+          <h2 className="section-title reveal mt-2">Questions posées sur les projets sur-mesure.</h2>
           <p className="text-sm text-text-secondary mt-3 reveal max-w-2xl mx-auto">
-            Retrouvez des réponses simples et directes aux interrogations les plus courantes sur la création de site internet.
+            Des réponses claires et réalistes sur le déroulement et la conception de votre site ou application.
           </p>
         </div>
         
