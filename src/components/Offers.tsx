@@ -84,7 +84,7 @@ export default function Offers() {
         <div className="head-row mb-10">
           <div>
             <div className="eyebrow reveal">SERVICES & SOLUTIONS</div>
-            <h2 className="section-title reveal">Quels types de projets web créons-nous pour vous ?</h2>
+            <h2 className="section-title reveal">Nos prestations web et applications sur-mesure</h2>
           </div>
           <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
             <p className="text-xs md:text-sm text-text-secondary leading-relaxed">

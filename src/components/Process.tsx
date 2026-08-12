@@ -174,7 +174,7 @@ export default function Process() {
         <div className="head-row">
           <div>
             <div className="eyebrow reveal">MÉTHODE DE TRAVAIL</div>
-            <h2 className="section-title reveal">Comment se déroule la création<br />de votre projet web ?</h2>
+            <h2 className="section-title reveal">Les étapes de création de votre projet web</h2>
           </div>
         </div>
 

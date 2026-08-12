@@ -7,7 +7,7 @@ export default function TargetAudience() {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="eyebrow reveal justify-center">SOLUTIONS PME & ASSOCIATIONS</div>
           <h2 className="section-title reveal mt-2 mb-4">
-            Comment adapter un site web aux contraintes des PME et des Associations ?
+            Solutions web adaptées aux PME et Associations
           </h2>
           <p className="text-sm md:text-base text-text-secondary leading-relaxed reveal bg-[#121729]/90 p-4 rounded-xl border border-[#2E8FE0]/30 text-left">
             Chaque secteur a ses propres priorités : une entreprise cherche à rassurer ses prospects et recevoir des demandes de devis, tandis qu'une association souhaite simplifier l'inscription de ses membres et valoriser ses actions. DevSupAi conçoit des outils sur-mesure pour répondre précisément à ces objectifs, sans bloquer l'utilisateur avec des menus complexes ou des lenteurs d'affichage.

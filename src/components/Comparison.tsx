@@ -50,7 +50,7 @@ export default function Comparison() {
         <div className="head-row mb-10">
           <div>
             <div className="eyebrow reveal">COMPARATIF PME & ASSOCIATIONS</div>
-            <h2 className="section-title reveal">Pourquoi privilégier le sur-mesure<br />face aux modèles pré-conçus ?</h2>
+            <h2 className="section-title reveal">Développement sur-mesure vs Modèles pré-conçus</h2>
           </div>
           <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
             <p className="text-xs md:text-sm text-text-secondary leading-relaxed">

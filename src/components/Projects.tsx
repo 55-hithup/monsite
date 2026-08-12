@@ -45,7 +45,7 @@ export default function Projects() {
         <div className="head-row mb-10">
           <div>
             <div className="eyebrow reveal">RÉALISATIONS & ÉTUDES DE CAS</div>
-            <h2 className="section-title reveal">Quels exemples réels de projets web<br />et applications sur-mesure ?</h2>
+            <h2 className="section-title reveal">Nos réalisations et études de cas sur-mesure</h2>
           </div>
           <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
             <p className="text-xs md:text-sm text-text-secondary leading-relaxed">

@@ -58,9 +58,9 @@ export default function FAQ() {
       <div className="wrap max-w-4xl">
         <div className="text-center mb-[50px]">
           <div className="eyebrow reveal justify-center">QUESTIONS FRÉQUENTES</div>
-          <h2 className="section-title reveal mt-2">Questions posées sur les projets sur-mesure.</h2>
+          <h2 className="section-title reveal mt-2 whitespace-normal md:whitespace-nowrap">Questions fréquentes sur vos projets web</h2>
           <p className="text-sm text-text-secondary mt-3 reveal max-w-2xl mx-auto">
-            Des réponses claires et réalistes sur le déroulement et la conception de votre site ou application.
+            Des réponses claires et réalistes sur la réalisation de votre site ou application.
           </p>
         </div>
         
