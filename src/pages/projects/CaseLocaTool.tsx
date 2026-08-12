@@ -49,9 +49,29 @@ export default function CaseLocaTool() {
           LocaTool — Application SaaS de gestion de parc matériel
         </h1>
 
-        <p className="text-base text-text-secondary leading-relaxed mb-10">
+        <p className="text-base text-text-secondary leading-relaxed mb-6">
           Développement d'une application web métier (SaaS) complète pour centraliser la réservation, le suivi de stock et la facturation de matériel pour les professionnels du BTP.
         </p>
+
+        {/* Live Demo CTA */}
+        <div className="flex flex-wrap items-center gap-4 mb-10">
+          <a
+            href="https://locatool.devsupai.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-target label-mono text-xs font-bold px-5 py-2.5 rounded-full text-white bg-accent hover:bg-accent-hover transition-all duration-150 inline-flex items-center gap-2 shadow-lg shadow-accent/20 hover:scale-105"
+          >
+            <span>Visiter la démo LocaTool</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+          <span className="text-[11px] label-mono text-text-secondary">
+            • Application en direct
+          </span>
+        </div>
 
         {/* Project Facts Box */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-10">
@@ -106,8 +126,30 @@ export default function CaseLocaTool() {
           </div>
         </div>
 
+        {/* Live Demo Banner */}
+        <div className="p-6 rounded-2xl bg-gradient-to-r from-[#2E8FE0]/15 via-[#6B4FE0]/15 to-[#121729] border border-[rgba(245,246,250,0.12)] mt-10 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="text-[10px] label-mono font-bold text-accent mb-1 tracking-widest uppercase">DÉMO INTERACTIVE</div>
+            <div className="text-sm font-bold text-text-primary">Tester l'application LocaTool en direct</div>
+            <div className="text-xs text-text-secondary mt-0.5">Explorez l'interface et ses fonctionnalités en temps réel.</div>
+          </div>
+          <a
+            href="https://locatool.devsupai.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-target label-mono text-xs font-bold px-5 py-2.5 rounded-full text-white bg-accent hover:bg-accent-hover transition-all duration-150 inline-flex items-center justify-center gap-2 shadow-lg shadow-accent/25 shrink-0 hover:scale-105"
+          >
+            <span>Accéder à LocaTool</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
+
         {/* Back Link */}
-        <div className="mt-12 pt-6 border-t border-[rgba(245,246,250,0.06)]">
+        <div className="mt-8 pt-6 border-t border-[rgba(245,246,250,0.06)]">
           <Link to="/realisations" className="btn btn-ghost text-xs inline-flex items-center gap-2 border border-[rgba(245,246,250,0.12)]">
             ← Voir toutes les réalisations
           </Link>
