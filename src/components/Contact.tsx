@@ -8,6 +8,7 @@ export default function Contact() {
     email: '',
     phone: '',
     projectType: 'Site vitrine',
+    googleBusinessOption: false,
     message: '',
   });
 
@@ -42,6 +43,7 @@ export default function Contact() {
           email: '',
           phone: '',
           projectType: 'Site vitrine',
+          googleBusinessOption: false,
           message: '',
         });
       } else {
@@ -160,9 +162,30 @@ export default function Contact() {
                   <option>Association — Site ou Portail d'Information</option>
                   <option>E-Commerce — Boutique en Ligne Sur-Mesure</option>
                   <option>Application Web & SaaS Métier</option>
+                  <option>Gestion Google Business & SEO Local (dès 49 €/mois)</option>
                   <option>Autre projet de développement sur-mesure</option>
                 </select>
               </div>
+            </div>
+
+            {/* Optional Add-on Checkbox */}
+            <div className="p-4 rounded-xl bg-[#0B0F1E]/60 border border-[rgba(245,246,250,0.08)] mb-6 text-left">
+              <label className="flex items-start gap-3 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={form.googleBusinessOption}
+                  onChange={(e) => setForm({ ...form, googleBusinessOption: e.target.checked })}
+                  className="mt-1 w-4 h-4 accent-[#2E8FE0] rounded cursor-pointer"
+                />
+                <div>
+                  <div className="text-xs font-bold text-text-primary">
+                    Ajouter l'option Gestion & Animation Google Business Profile (dès 49 €/mois)
+                  </div>
+                  <div className="text-[11px] text-text-secondary mt-0.5 leading-snug">
+                    Optimisation de votre fiche Google Maps, réponse aux avis, publications mensuelles et suivi des statistiques.
+                  </div>
+                </div>
+              </label>
             </div>
             
             <div className="field">

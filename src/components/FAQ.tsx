@@ -28,6 +28,11 @@ export default function FAQ() {
       short: 'Selon la nature du projet et vos souhaits, des solutions de suivi, de maintenance ou de prise en main peuvent être intégrées.',
       detail: 'L\'objectif est de vous garantir un outil stable et durable dans le temps.',
     },
+    {
+      q: 'Proposez-vous un accompagnement pour la gestion de ma fiche Google Business et le référencement local ?',
+      short: 'Oui, une prestation facultative mensuelle est proposée dès 49 €/mois pour optimiser et animer votre fiche d\'établissement Google Maps.',
+      detail: 'La Formule Starter (49 €/mois) comprend l\'optimisation initiale de la fiche, la publication d\'actualités (2 à 4/mois), la modération des avis et l\'ajout de vos photos. Pour une stratégie de visibilité locale plus poussée (mots-clés ciblés, positionnement Maps), une Formule Boost (149 à 250 €/mois) est également disponible.',
+    },
   ];
 
   const [activeIndex, setActiveIndex] = useState<number | null>(0);

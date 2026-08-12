@@ -118,6 +118,62 @@ export default function Offers() {
             </div>
           ))}
         </div>
+
+        {/* Optional Add-on Service Banner: Google Business & SEO Local */}
+        <div className="mt-12 p-6 md:p-8 rounded-2xl bg-gradient-to-r from-[#121729] via-[#0B0F1E] to-[#121729] border border-[#2E8FE0]/30 shadow-[0_0_30px_rgba(46,143,224,0.08)] reveal text-left">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2E8FE0]/10 border border-[#2E8FE0]/30 text-[10px] label-mono text-cyan-300 font-bold mb-3 uppercase tracking-wider">
+                <span>⚡ Prestation Facultative</span>
+                <span>•</span>
+                <span>Visibilité Locale</span>
+              </div>
+              <h3 className="text-xl md:text-2xl font-extrabold text-text-primary mb-2">
+                Gestion & Animation Google Business Profile
+              </h3>
+              <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
+                Boostez votre présence sur Google Maps et attirez plus de clients locaux grâce à une gestion mensuelle clé en main de votre fiche d'établissement.
+              </p>
+            </div>
+            
+            <a
+              href="#contact"
+              className="cursor-target label-mono text-xs font-bold px-6 py-3 rounded-full text-white bg-accent hover:bg-accent-hover transition-all duration-150 inline-flex items-center justify-center gap-2 shadow-lg shadow-accent/25 shrink-0 hover:scale-105"
+            >
+              <span>Demander cette option</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          {/* Formulas Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 pt-6 border-t border-[rgba(245,246,250,0.08)]">
+            <div className="p-4 rounded-xl bg-[#121729]/80 border border-[rgba(245,246,250,0.08)]">
+              <div className="flex items-baseline justify-between mb-2">
+                <span className="text-sm font-bold text-text-primary">Formule Starter</span>
+                <span className="text-sm label-mono font-extrabold text-accent">49 € <span className="text-[10px] text-text-secondary font-normal">/ mois</span></span>
+              </div>
+              <ul className="text-xs text-text-secondary space-y-1.5 list-disc list-inside">
+                <li>Optimisation initiale complète de la fiche Google</li>
+                <li>2 à 4 publications / mois & ajouts de photos client</li>
+                <li>Modération et réponse aux avis clients</li>
+                <li>Suivi mensuel simple des statistiques de visites</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20">
+              <div className="flex items-baseline justify-between mb-2">
+                <span className="text-sm font-bold text-text-primary">Formule Boost SEO Local</span>
+                <span className="text-sm label-mono font-extrabold text-cyan-300">149 – 250 € <span className="text-[10px] text-text-secondary font-normal">/ mois</span></span>
+              </div>
+              <ul className="text-xs text-text-secondary space-y-1.5 list-disc list-inside">
+                <li>Publications renforcées & visuels sur-mesure</li>
+                <li>Recherche approfondie de mots-clés locaux</li>
+                <li>Optimisation SEO locale continue et positionnement Maps</li>
+                <li>Rapport de performance et recommandations personnalisées</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </SectionReveal>
   );
