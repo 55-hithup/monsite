@@ -26,3 +26,6 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
 ## 4. Structure sémantique des titres (Headings)
 * Valider que chaque page possède **exactement un seul** titre `<h1>`.
 * Veiller à ce que la hiérarchie des balises de titres soit strictement séquentielle (`<h1>` ➔ `<h2>` ➔ `<h3>` ➔ `<h4>`), sans jamais sauter de niveau intermédiaire (par exemple, pas d'élément `<h4>` directement sous un `<h2>`).
+
+## 5. Interdiction stricte des Emojis
+* **Zero Emoji :** Aucun emoji (caractère ou symbole Unicode de type 🔨, 🏢, ⚡, 🛒, 🌐, etc.) ne doit être présent sur l'ensemble du site DevSupAi (composants, libellés, boutons, balises ou commentaires). Utiliser exclusivement des icônes vectorielles SVG ou `lucide-react`.

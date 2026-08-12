@@ -53,7 +53,7 @@ export default function Services() {
   const [activeProfile, setActiveProfile] = useState<string>('all');
 
   const services: ServiceItem[] = [
-    // 🌐 1. Développement de sites internet (Vitrines & Présentation)
+    // 1. Développement de sites internet (Vitrines & Présentation)
     {
       id: 'site-vitrine',
       title: 'Création de sites vitrines',
@@ -199,7 +199,7 @@ export default function Services() {
       icon: Code2
     },
 
-    // 🛒 2. E-commerce & Applications Web / SaaS
+    // 2. E-commerce & Applications Web / SaaS
     {
       id: 'site-ecommerce',
       title: 'Développement de sites e-commerce',
@@ -318,7 +318,7 @@ export default function Services() {
       icon: Cpu
     },
 
-    // 📱 3. Applications et logiciels
+    // 3. Applications et logiciels
     {
       id: 'apps-mobiles',
       title: 'Développement d\'applications mobiles',
@@ -401,7 +401,7 @@ export default function Services() {
       icon: Server
     },
 
-    // 🔧 4. Maintenance et prestations informatiques
+    // 4. Maintenance et prestations informatiques
     {
       id: 'maintenance-technique',
       title: 'Maintenance technique de sites internet',
@@ -622,12 +622,12 @@ export default function Services() {
               <div className="flex flex-wrap gap-2">
                 {[
                   { id: 'all', label: 'Tous les profils' },
-                  { id: 'artisans', label: '🔨 Artisans' },
-                  { id: 'commerces', label: '🏪 Commerçants' },
-                  { id: 'restaurants', label: '🍽️ Restaurants & Cafés' },
-                  { id: 'pme', label: '🏢 PME & Entreprises' },
-                  { id: 'professions-liberales', label: '⚖️ Professions Libérales' },
-                  { id: 'associations', label: '🤝 Associations & Écoles' }
+                  { id: 'artisans', label: 'Artisans' },
+                  { id: 'commerces', label: 'Commerçants' },
+                  { id: 'restaurants', label: 'Restaurants & Cafés' },
+                  { id: 'pme', label: 'PME & Entreprises' },
+                  { id: 'professions-liberales', label: 'Professions Libérales' },
+                  { id: 'associations', label: 'Associations & Écoles' }
                 ].map((prof) => (
                   <button
                     key={prof.id}

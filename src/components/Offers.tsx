@@ -124,7 +124,7 @@ export default function Offers() {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2E8FE0]/10 border border-[#2E8FE0]/30 text-[10px] label-mono text-cyan-300 font-bold mb-3 uppercase tracking-wider">
-                <span>⚡ Prestation Facultative</span>
+                <span>Prestation Facultative</span>
                 <span>•</span>
                 <span>Visibilité Locale</span>
               </div>
