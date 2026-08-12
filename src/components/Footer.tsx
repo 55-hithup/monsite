@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <img 
-                src="/logo.png" 
+                src="/logo.webp" 
                 alt="DevSupAi Logo" 
                 className="h-7 w-7 object-contain rounded-full border border-[rgba(245,246,250,0.08)]" 
               />
