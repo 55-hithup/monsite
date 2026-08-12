@@ -136,13 +136,13 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* Subtitle / QFO Direct Answer Box */}
+          {/* Subtitle / Key Information Box */}
           <div className="hero-sub mt-6 mb-8 p-4 md:p-5 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed backdrop-blur-sm shadow-[0_0_30px_rgba(46,143,224,0.1)]">
             <p className="font-semibold text-text-primary mb-1">
-              <strong>Réponse directe DevSupAi :</strong>
+              <strong>Des sites rapides, clairs et efficaces :</strong>
             </p>
             <p>
-              Je crée des sites web, applications et plateformes SaaS sur-mesure ultra-rapides (<span className="text-text-primary font-bold">Lighthouse 100%</span>, temps d'affichage <span className="text-text-primary font-bold">&lt; 600ms</span>), <span className="text-text-primary font-bold">sans aucune dette technique ni dépendances lourdes</span>, spécialement pensés pour développer l'acquisition client des PME et la visibilité des Associations.
+              Je conçois des sites internet, des applications et des outils web sur-mesure spécialement adaptés aux besoins des PME, TPE et Associations. Mon objectif : vous offrir une présence en ligne moderne, rapide à charger et facile à utiliser pour vos visiteurs.
             </p>
           </div>
 

@@ -32,9 +32,9 @@ export default function ArticleTemplates() {
             Dans le monde du développement web, la tentation d'utiliser un modèle (template) WordPress, Shopify ou Webflow pré-conçu est forte. Pourtant, en 2026, cette décision peut s'avérer lourde de conséquences pour les entreprises qui cherchent à se démarquer.
           </p>
           
-          <h2 className="text-lg font-bold text-text-primary pt-4">Pourquoi les templates WordPress ou Wix ralentissent-ils votre site ?</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">Pourquoi les modèles pré-conçus peuvent-ils ralentir votre site ?</h2>
           <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
-            <strong>Réponse rapide :</strong> Les templates généralistes chargent des dizaines de scripts et règles CSS inutiles pour couvrir tous les cas d'usage, ce qui alourdit le code et détruit le temps de chargement sur mobile.
+            Les modèles tout faits intègrent de nombreux éléments et scripts inutiles pour couvrir tous les métiers, ce qui alourdit la page et rallonge le temps d'affichage sur mobile.
           </p>
           <p>
             Les templates sont conçus pour plaire au plus grand nombre. Ils embarquent donc des dizaines d'options, de scripts, de thèmes et de plugins que vous n'utiliserez jamais. Résultat : une surcharge de code inutile (code bloat) qui augmente considérablement le temps de chargement de vos pages. Sur mobile, cela se traduit par des utilisateurs qui quittent votre site avant même qu'il ne s'affiche.

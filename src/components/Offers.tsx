@@ -4,10 +4,9 @@ export default function Offers() {
   const services = [
     {
       num: '01',
-      question: 'Comment un site vitrine sur-mesure génère-t-il des clients pour une PME ?',
-      answer: 'Un site vitrine sur-mesure élimine la lenteur des templates. Il charge en 0.4s et guide l\'utilisateur vers la prise de contact instantanée.',
-      example: 'Exemple : Un artisan du bâtiment a augmenté ses demandes de devis de +35% après refonte de son site vitrine sur-mesure.',
-      badge: 'Acquisition PME',
+      question: 'Comment un site vitrine permet-il à une PME de gagner la confiance de ses clients ?',
+      answer: 'En proposant une navigation fluide, une présentation claire de vos services et un formulaire de contact accessible en un clic.',
+      badge: 'Site Vitrine PME',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <path d="M3 5h18v14H3z" />
@@ -18,9 +17,8 @@ export default function Offers() {
     },
     {
       num: '02',
-      question: 'Comment un portail web simplifie-t-il la gestion d\'une association ?',
-      answer: 'En centralisant les formulaires d\'adhésion, les appels à cotisations et la présentation des projets sur une interface réactive accessible sur mobile.',
-      example: 'Exemple : Une association culturelle a numérisé 100% de ses formulaires et libéré ses bénévoles de la saisie manuelle.',
+      question: 'Comment un portail web aide-t-il une association à informer et rassembler ses membres ?',
+      answer: 'En centralisant la présentation des projets, l\'agenda des événements et les formulaires d\'adhésion sur une interface simple à utiliser.',
       badge: 'Portail Association',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
@@ -32,10 +30,9 @@ export default function Offers() {
     },
     {
       num: '03',
-      question: 'Pourquoi une boutique e-commerce sur-mesure convertit-elle mieux ?',
-      answer: 'Parce que 53% des acheteurs abandonnent leur panier si le paiement ou la page produit met plus de 3 secondes à répondre.',
-      example: 'Exemple : Un commerce local a réduit son temps de passage en caisse web sous la seconde, augmentant son panier moyen de +22%.',
-      badge: 'E-Commerce Ventes',
+      question: 'Pourquoi une boutique en ligne sur-mesure facilite-t-elle le parcours d\'achat ?',
+      answer: 'Parce que les pages de produits et les étapes de paiement s\'affichent sans lenteur, évitant de perdre le client avant la validation du panier.',
+      badge: 'Vente en Ligne',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <path d="M6 6h15l-1.5 9h-12z" />
@@ -46,9 +43,8 @@ export default function Offers() {
     },
     {
       num: '04',
-      question: 'Comment une application SaaS métier fait-elle gagner du temps à une PME ?',
-      answer: 'En remplaçant les fichiers Excel complexes par un outil web sur-mesure qui automatise les tâches quotidiennes et les plannings.',
-      example: 'Exemple : L\'application LocaTool a permis d\'automatiser le suivi de parc matériel et d\'économiser 10h de gestion par semaine.',
+      question: 'Comment une application web métier simplifie-t-elle l\'organisation d\'une entreprise ?',
+      answer: 'En remplaçant les documents éparpillés par un outil unique pour suivre l\'activité, gérer les plannings ou suivre le matériel (comme le logiciel LocaTool).',
       badge: 'Application & SaaS',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
@@ -59,10 +55,9 @@ export default function Offers() {
     },
     {
       num: '05',
-      question: 'Comment faire recommander son site par les IA (Google AI Overviews) ?',
-      answer: 'En structurant les données en JSON-LD (FAQPage, ProfessionalService) et en appliquant les préceptes de l\'étude GEO de Princeton.',
-      example: 'Statistique : Intégrer des données chiffrées précises augmente le taux de citation par les LLMs de +37% à +41%.',
-      badge: 'SEO & GEO IA',
+      question: 'Comment améliorer son positionnement sur Google et les moteurs de recherche IA ?',
+      answer: 'En rédigeant des contenus clairs, bien structurés avec des réponses directes aux questions fréquentes des utilisateurs.',
+      badge: 'Référencement SEO',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <circle cx="11" cy="11" r="7" />
@@ -72,9 +67,8 @@ export default function Offers() {
     },
     {
       num: '06',
-      question: 'Comment assurer la sécurité et le suivi de son site sans bugs ?',
-      answer: 'Une architecture sur-mesure en React / TypeScript est nativement sécurisée et nécessite 80% de maintenance en moins qu\'un site WordPress.',
-      example: 'Résultat : 0 vulnérabilité de plugins et une disponibilité garantie à 99.9% sur les serveurs EDGE de Vercel.',
+      question: 'Comment maintenir un site web sécurisé et à jour sur la durée ?',
+      answer: 'En choisissant une structure propre et légère qui demande peu d\'interventions complexes tout en restant parfaitement protégée.',
       badge: 'Suivi & Sérénité',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
@@ -89,12 +83,12 @@ export default function Offers() {
       <div className="wrap">
         <div className="head-row mb-10">
           <div>
-            <div className="eyebrow reveal">OFFRES & RÉPONSES AUX BESOINS</div>
-            <h2 className="section-title reveal">Quels services web répondent<br />aux enjeux des PME et Associations ?</h2>
+            <div className="eyebrow reveal">SERVICES & SOLUTIONS</div>
+            <h2 className="section-title reveal">Quels types de projets web créons-nous pour vous ?</h2>
           </div>
           <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
             <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-              <strong className="text-text-primary">Réponse directe :</strong> DevSupAi conçoit 6 types de projets sur-mesure (site vitrine, portail association, e-commerce, application SaaS métier, SEO/GEO IA et maintenance) formulés sous forme de questions-réponses concrètes et accompagnés d'exemples réels.
+              DevSupAi propose 6 prestations principales adaptées aux entreprises et associations : création de site vitrine, portail associatif, boutique en ligne, application web métier, optimisation du référencement et maintenance régulière.
             </p>
           </div>
         </div>
@@ -117,13 +111,9 @@ export default function Offers() {
                   {service.question}
                 </h3>
 
-                <p className="text-xs text-text-secondary leading-relaxed mb-4">
-                  <strong className="text-text-primary">Réponse :</strong> {service.answer}
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  {service.answer}
                 </p>
-              </div>
-
-              <div className="pt-3 border-t border-[rgba(245,246,250,0.06)] bg-[#2E8FE0]/5 p-3 rounded-lg border border-[#2E8FE0]/10 text-[11px] text-cyan-300 font-medium">
-                {service.example}
               </div>
             </div>
           ))}

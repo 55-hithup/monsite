@@ -5,20 +5,20 @@ export default function TargetAudience() {
     <SectionReveal id="solutions" className="section-pad bg-[#090D1E]/60 border-t border-b border-[rgba(245,246,250,0.06)]">
       <div className="wrap">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="eyebrow reveal justify-center">SOLUTIONS & CAS RÉELS</div>
+          <div className="eyebrow reveal justify-center">SOLUTIONS PME & ASSOCIATIONS</div>
           <h2 className="section-title reveal mt-2 mb-4">
-            Comment DevSupAi répond-il aux besoins des PME et Associations ?
+            Comment adapter un site web aux contraintes des PME et des Associations ?
           </h2>
-          <div className="p-4 rounded-xl bg-[#121729]/90 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed reveal text-left">
-            <strong className="text-text-primary">Réponse directe :</strong> DevSupAi crée des architectures web et applications SaaS sur-mesure qui résolvent les problèmes concrets des PME (génération de leads, crédibilité, automatisation) et des Associations (gestion d'adhérents, formulaires de dons, visibilité locale) avec des exemples concrets mesurables.
-          </div>
+          <p className="text-sm md:text-base text-text-secondary leading-relaxed reveal bg-[#121729]/90 p-4 rounded-xl border border-[#2E8FE0]/30 text-left">
+            Chaque secteur a ses propres priorités : une entreprise cherche à rassurer ses prospects et recevoir des demandes de devis, tandis qu'une association souhaite simplifier l'inscription de ses membres et valoriser ses actions. DevSupAi conçoit des outils sur-mesure pour répondre précisément à ces objectifs, sans bloquer l'utilisateur avec des menus complexes ou des lenteurs d'affichage.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Card PME */}
           <div className="reveal p-8 rounded-2xl bg-[#121729]/70 border border-[#2E8FE0]/30 hover:border-[#2E8FE0]/60 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
             <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#2E8FE0]/20 border-b border-l border-[#2E8FE0]/40 text-[10px] label-mono text-[#2E8FE0] rounded-bl-xl font-bold">
-              CAS PME & TPE
+              POUR LES PME & TPE
             </div>
 
             <div>
@@ -32,37 +32,37 @@ export default function TargetAudience() {
               </div>
 
               <h3 className="text-xl font-bold text-text-primary mb-3">
-                Comment une PME accélère-t-elle sa croissance avec un site sur-mesure ?
+                Comment développer la visibilité et les demandes de devis d'une PME ?
               </h3>
 
               <div className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-xs text-text-primary font-medium mb-4">
-                <strong>Exemple réel :</strong> Le restaurant <em>Les Jumeaux</em> a remplacé sa solution tiers par un système de réservation sur-mesure ultra-rapide (chargement en 0.4s) et a enregistré une <strong>hausse de +40% des réservations directes</strong> en moins de 3 mois.
+                <strong>Cas réel :</strong> Pour le restaurant <em>Les Jumeaux</em>, la création d'un système de réservation sur-mesure a permis d'enregistrer une hausse de 40% des réservations directes en ligne et de réduire de 50% la charge d'appels pendant le service.
               </div>
 
               <p className="text-xs text-text-secondary leading-relaxed mb-6">
-                Selon une étude Google, 73% des utilisateurs quittent un site PME s'il met plus de 3 secondes à charger. En concevant un site sur-mesure léger, sans dépendances lourdes, votre PME gagne des positions sur Google et convertit plus de visiteurs en clients.
+                Selon les données Google, un site qui met plus de 3 secondes à s'afficher perd une part importante de ses visiteurs mobiles. En créant un site léger et clair, votre entreprise installe sa crédibilité dès les premières secondes et simplifie la prise de contact pour vos futurs clients.
               </p>
 
               <div className="space-y-2 mb-8 text-xs text-text-secondary">
-                <div className="font-bold text-text-primary mb-2 label-mono text-[10px] text-purple-300 uppercase">Bénéfices chiffrés PME :</div>
+                <div className="font-bold text-text-primary mb-2 label-mono text-[10px] text-purple-300 uppercase">Solutions apportées aux PME :</div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#2E8FE0] font-bold">✓</span>
-                  <span>Temps d'affichage sous les <strong>600ms</strong> sur smartphone (4G)</span>
+                  <span className="text-[#2E8FE0] font-bold">-</span>
+                  <span>Chargement instantané de la page sur smartphone</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#2E8FE0] font-bold">✓</span>
-                  <span>Score <strong>Google PageSpeed / Lighthouse de 100/100</strong></span>
+                  <span className="text-[#2E8FE0] font-bold">-</span>
+                  <span>Formulaires de contact et de demande de devis clairs</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#2E8FE0] font-bold">✓</span>
-                  <span>Formulaires de devis interactifs réduisant le temps de relance</span>
+                  <span className="text-[#2E8FE0] font-bold">-</span>
+                  <span>Structure optimisée pour le référencement naturel sur Google</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 border-t border-[rgba(245,246,250,0.06)]">
               <a href="#contact" className="btn btn-primary text-xs w-full text-center py-3" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff' }}>
-                Demander une étude gratuite pour votre PME →
+                Échanger sur votre projet de PME →
               </a>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function TargetAudience() {
           {/* Card Associations */}
           <div className="reveal p-8 rounded-2xl bg-[#121729]/70 border border-[#6B4FE0]/30 hover:border-[#6B4FE0]/60 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
             <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#6B4FE0]/20 border-b border-l border-[#6B4FE0]/40 text-[10px] label-mono text-purple-300 rounded-bl-xl font-bold">
-              CAS ASSOCIATIONS
+              POUR LES ASSOCIATIONS
             </div>
 
             <div>
@@ -82,30 +82,30 @@ export default function TargetAudience() {
               </div>
 
               <h3 className="text-xl font-bold text-text-primary mb-3">
-                Comment une Association digitalise-t-elle ses adhésions et ses événements ?
+                Comment faciliter l'engagement et l'inscription des membres d'une association ?
               </h3>
 
               <div className="p-3 rounded-lg bg-[#6B4FE0]/10 border border-[#6B4FE0]/20 text-xs text-text-primary font-medium mb-4">
-                <strong>Exemple réel :</strong> Pour un club sportif et culturel associatif, la mise en place d'un portail avec formulaires d'adhésion en ligne a divisé par 3 le temps de traitement administratif des bénévoles lors de la rentrée.
+                <strong>Objectif :</strong> Doter l'association d'un outil simple pour présenter ses activités, collecter des inscriptions et partager l'agenda des événements sans nécessiter d'équipe technique dédiée.
               </div>
 
               <p className="text-xs text-text-secondary leading-relaxed mb-6">
-                Les associations manquent souvent de temps et de budget. Une plateforme web sur-mesure permet de présenter clairement les actions, de centraliser les inscriptions et de collecter des dons sans bug technique.
+                Les membres et adhérents recherchent des informations simples : horaires, tarifs, formulaires d'inscription ou démarches de don. Une structure épurée permet d'accéder directement à ces informations indispensables.
               </p>
 
               <div className="space-y-2 mb-8 text-xs text-text-secondary">
-                <div className="font-bold text-text-primary mb-2 label-mono text-[10px] text-purple-300 uppercase">Bénéfices chiffrés Association :</div>
+                <div className="font-bold text-text-primary mb-2 label-mono text-[10px] text-purple-300 uppercase">Solutions apportées aux Associations :</div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#6B4FE0] font-bold">✓</span>
-                  <span>Formulaires d'adhésion et de don simplifiés à 100%</span>
+                  <span className="text-[#6B4FE0] font-bold">-</span>
+                  <span>Présentation claire des événements et actualités</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#6B4FE0] font-bold">✓</span>
-                  <span>Mise en valeur claire des événements et assemblées générales</span>
+                  <span className="text-[#6B4FE0] font-bold">-</span>
+                  <span>Formulaires en ligne pour les adhésions et prises de contact</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#6B4FE0] font-bold">✓</span>
-                  <span>Administration facile utilisable par tout bénévole sans compétence technique</span>
+                  <span className="text-[#6B4FE0] font-bold">-</span>
+                  <span>Prise en main facile pour la mise à jour des contenus</span>
                 </div>
               </div>
             </div>

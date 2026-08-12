@@ -10,28 +10,28 @@ interface SkillStep {
 const steps: SkillStep[] = [
   {
     num: '01',
-    title: 'Étape 1 : Comment cadrer les besoins d\'une PME ou d\'une Association ?',
-    desc: "Réponse : Par un échange direct sans jargon pour analyser vos objectifs métiers, vos cibles et définir un cahier des charges précis.",
+    title: 'Étape 1 : Échange et étude de vos besoins',
+    desc: "Nous échangeons sans jargon sur vos objectifs, vos utilisateurs et les fonctionnalités indispensables pour votre activité.",
   },
   {
     num: '02',
-    title: 'Étape 2 : Comment sont conçues la direction artistique et les maquettes ?',
-    desc: "Réponse : Création d'une identité visuelle sur-mesure et de prototypes interactifs testés avant tout développement.",
+    title: 'Étape 2 : Conception visuelle et maquettes',
+    desc: "Création d'un design sur-mesure adapté à votre identité visuelle, validé avec vous avant d'écrire la moindre ligne de code.",
   },
   {
     num: '03',
-    title: 'Étape 3 : Comment est développé un code ultra-rapide (<600ms) ?',
-    desc: "Réponse : Développement en React, TypeScript et Tailwind CSS sans dépendances lourdes pour garantir 100/100 sur Google Lighthouse.",
+    title: 'Étape 3 : Développement et optimisation',
+    desc: "Programmation épurée de votre site pour garantir une navigation fluide et un affichage rapide sur ordinateur et smartphone.",
   },
   {
     num: '04',
-    title: 'Étape 4 : Comment valider l\'optimisation SEO et la citabilité par l\'IA (GEO) ?',
-    desc: "Réponse : Audit technique complet, tests de charge mobile, balisage Schema.org JSON-LD et génération du fichier llms.txt.",
+    title: 'Étape 4 : Tests et mise en ligne',
+    desc: "Vérification complète du fonctionnement des formulaires, de l'affichage mobile et de la préparation au référencement sur Google.",
   },
   {
     num: '05',
-    title: 'Étape 5 : Quel accompagnement est assuré après la mise en ligne ?',
-    desc: "Réponse : Prise en main personnalisée, suivi des performances et évolutions sur-mesure pour accompagner votre croissance.",
+    title: 'Étape 5 : Prise en main et suivi',
+    desc: "Explications simples pour vous permettre de mettre à jour vos contenus en toute autonomie et accompagnement dans la durée.",
   },
 ];
 
@@ -134,7 +134,7 @@ function SkillNode({
         data-index={index}
       >
         {!reducedMotion && isUnlocked && (
-          <div className="toast" role="status" aria-live="polite">COMPÉTENCE DÉBLOQUÉE</div>
+          <div className="toast" role="status" aria-live="polite">ÉTAPE EFFECTUÉE</div>
         )}
         <div className="node-ring"></div>
         <div className="node">{step.num}</div>
@@ -173,8 +173,8 @@ export default function Process() {
       <div className="wrap">
         <div className="head-row">
           <div>
-            <div className="eyebrow reveal">Process</div>
-            <h2 className="section-title reveal">Une méthode claire,<br />du premier échange<br />à la mise en ligne.</h2>
+            <div className="eyebrow reveal">MÉTHODE DE TRAVAIL</div>
+            <h2 className="section-title reveal">Comment se déroule la création<br />de votre projet web ?</h2>
           </div>
         </div>
 

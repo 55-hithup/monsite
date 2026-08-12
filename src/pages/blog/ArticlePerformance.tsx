@@ -32,9 +32,9 @@ export default function ArticlePerformance() {
             Dans l'écosystème du web, la vitesse n'est plus seulement une commodité : c'est un facteur financier direct. De nombreuses études prouvent qu'une seule seconde d'attente supplémentaire peut ruiner l'expérience client et baisser vos ventes.
           </p>
           
-          <h2 className="text-lg font-bold text-text-primary pt-4">Combien coûte une seconde de retard sur le site d'une PME ?</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">Quel est l'impact de la vitesse de chargement sur vos visiteurs ?</h2>
           <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
-            <strong>Réponse rapide :</strong> Selon Google, passer de 1 à 3 secondes de chargement augmente le taux de rebond de 32%, et détruit jusqu'à 20% de vos opportunités de conversion.
+            Selon les études Google, la majorité des utilisateurs sur smartphone quittent un site s'il met plus de 3 secondes à s'affichier.
           </p>
           <p>
             Selon des analyses menées par Google et Cloudflare, un temps de chargement qui passe de 1 à 3 secondes augmente le taux de rebond (le pourcentage de visiteurs qui quittent immédiatement le site) de 32%. Si ce temps atteint 5 secondes, la probabilité de rebond explose de 90%.
