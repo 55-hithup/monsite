@@ -17,7 +17,6 @@ export default defineConfig({
         '/blog/site-web-pme-association',
         '/blog/pourquoi-eviter-les-templates',
         '/blog/performance-web-sur-mesure',
-        '/realisations',
         '/projets/les-jumeaux',
         '/projets/locatool',
         '/projets/abogame',

@@ -78,7 +78,6 @@ export default function Navbar() {
             ref={dropdownRef} 
             className="relative"
             onMouseEnter={() => {
-              // Only auto-open on mouse hover if device has fine pointer (mouse)
               if (window.matchMedia('(pointer: fine)').matches) {
                 setIsDropdownOpen(true);
               }
@@ -142,16 +141,6 @@ export default function Navbar() {
                       </div>
                     </Link>
                   ))}
-                </div>
-
-                <div className="mt-2 pt-2 border-t border-[rgba(245,246,250,0.06)]">
-                  <Link
-                    to="/realisations"
-                    onClick={() => setIsDropdownOpen(false)}
-                    className="block px-3 py-2 text-center rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-[11px] label-mono text-[#2E8FE0] font-bold hover:bg-accent hover:text-white transition-all duration-150"
-                  >
-                    Toutes les réalisations →
-                  </Link>
                 </div>
               </div>
             )}

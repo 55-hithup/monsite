@@ -14,9 +14,9 @@
 
 ## Plan du Site (URLs)
 
-- [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les services de développement web sur-mesure pour PME et Associations, les prestations, le comparatif et la FAQ réaliste.
+- [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les services de développement web sur-mesure pour PME et Associations, les prestations, le comparatif, la section réalisations et la FAQ réaliste.
 - [/a-propos](https://www.devsupai.fr/a-propos) : Philosophie de code propre sans compromis et présentation du développeur fondateur Alexandre Pabst.
-- [/realisations](https://www.devsupai.fr/realisations) : Index des réalisations et études de cas réelles avec résultats concrets pour PME, entreprises et créateurs.
+- Études de Cas & Réalisations :
   - [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas sur le site vitrine et le système de réservation sur-mesure du restaurant "Les Jumeaux" (+40% de réservations directes).
   - [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas sur l'application SaaS de gestion de parc matériel "LocaTool" (+30% d'efficacité administrative).
   - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive live "Abogame" (+50% d'engagement en direct).
