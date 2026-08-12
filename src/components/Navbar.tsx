@@ -77,13 +77,25 @@ export default function Navbar() {
           <div 
             ref={dropdownRef} 
             className="relative"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
+            onMouseEnter={() => {
+              // Only auto-open on mouse hover if device has fine pointer (mouse)
+              if (window.matchMedia('(pointer: fine)').matches) {
+                setIsDropdownOpen(true);
+              }
+            }}
+            onMouseLeave={() => {
+              if (window.matchMedia('(pointer: fine)').matches) {
+                setIsDropdownOpen(false);
+              }
+            }}
           >
             <MagneticWrapper range={25} strength={0.2}>
               <button
                 type="button"
-                onClick={() => setIsDropdownOpen((prev) => !prev)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsDropdownOpen((prev) => !prev);
+                }}
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
                 className={`cursor-target label-mono text-[10px] px-3.5 py-1.5 border rounded-full text-text-primary transition-all duration-150 inline-flex items-center gap-1.5 cursor-pointer ${
@@ -119,6 +131,7 @@ export default function Navbar() {
                     <Link
                       key={proj.href}
                       to={proj.href}
+                      onClick={() => setIsDropdownOpen(false)}
                       className="block p-2.5 rounded-xl hover:bg-[#121729] border border-transparent hover:border-[rgba(245,246,250,0.08)] transition-all duration-150 group"
                     >
                       <div className="text-xs font-bold text-text-primary group-hover:text-accent transition-colors">
@@ -134,6 +147,7 @@ export default function Navbar() {
                 <div className="mt-2 pt-2 border-t border-[rgba(245,246,250,0.06)]">
                   <Link
                     to="/realisations"
+                    onClick={() => setIsDropdownOpen(false)}
                     className="block px-3 py-2 text-center rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-[11px] label-mono text-[#2E8FE0] font-bold hover:bg-accent hover:text-white transition-all duration-150"
                   >
                     Toutes les réalisations →
