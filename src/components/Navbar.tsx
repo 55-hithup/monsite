@@ -77,16 +77,6 @@ export default function Navbar() {
           <div 
             ref={dropdownRef} 
             className="relative"
-            onMouseEnter={() => {
-              if (window.matchMedia('(pointer: fine)').matches) {
-                setIsDropdownOpen(true);
-              }
-            }}
-            onMouseLeave={() => {
-              if (window.matchMedia('(pointer: fine)').matches) {
-                setIsDropdownOpen(false);
-              }
-            }}
           >
             <MagneticWrapper range={25} strength={0.2}>
               <button
@@ -119,28 +109,30 @@ export default function Navbar() {
             {/* Dropdown Menu Content */}
             {isDropdownOpen && (
               <div 
-                className="absolute top-full right-0 mt-2 w-72 p-3 bg-[#0B0F1E]/95 border border-[rgba(245,246,250,0.12)] rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl z-50 text-left animate-in fade-in slide-in-from-top-2 duration-200"
+                className="absolute top-full right-0 pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
               >
-                <div className="px-3 py-1.5 text-[9px] label-mono text-purple-300 font-bold tracking-widest uppercase border-b border-[rgba(245,246,250,0.06)] mb-2">
-                  NOS ÉTUDES DE CAS
-                </div>
+                <div className="w-72 p-3 bg-[#0B0F1E]/95 border border-[rgba(245,246,250,0.12)] rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl text-left">
+                  <div className="px-3 py-1.5 text-[9px] label-mono text-purple-300 font-bold tracking-widest uppercase border-b border-[rgba(245,246,250,0.06)] mb-2">
+                    NOS ÉTUDES DE CAS
+                  </div>
 
-                <div className="space-y-1">
-                  {projectLinks.map((proj) => (
-                    <Link
-                      key={proj.href}
-                      to={proj.href}
-                      onClick={() => setIsDropdownOpen(false)}
-                      className="block p-2.5 rounded-xl hover:bg-[#121729] border border-transparent hover:border-[rgba(245,246,250,0.08)] transition-all duration-150 group"
-                    >
-                      <div className="text-xs font-bold text-text-primary group-hover:text-accent transition-colors">
-                        {proj.title}
-                      </div>
-                      <div className="text-[10px] text-text-secondary mt-0.5 leading-snug">
-                        {proj.sub}
-                      </div>
-                    </Link>
-                  ))}
+                  <div className="space-y-1">
+                    {projectLinks.map((proj) => (
+                      <Link
+                        key={proj.href}
+                        to={proj.href}
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="block p-2.5 rounded-xl hover:bg-[#121729] border border-transparent hover:border-[rgba(245,246,250,0.08)] transition-all duration-150 group"
+                      >
+                        <div className="text-xs font-bold text-text-primary group-hover:text-accent transition-colors">
+                          {proj.title}
+                        </div>
+                        <div className="text-[10px] text-text-secondary mt-0.5 leading-snug">
+                          {proj.sub}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
