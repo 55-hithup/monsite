@@ -18,8 +18,8 @@ import StructuredData from '../components/StructuredData';
 
 export default function Home() {
   useDocumentMetadata(
-    "DevSupAi | Création de Sites Web & Applications Sur-Mesure pour PME et Associations",
-    "Développeur web spécialisé dans la création de sites et d'applications sur-mesure pour PME, TPE et Associations. Vitesse extrême, zéro abonnement captif et référencement SEO optimal.",
+    "DevSupAi | Développeur Web Freelance en Meuse (55)",
+    "DevSupAi, développeur web freelance basé en Meuse (Grand Est). Sites vitrines, e-commerce et applications sur-mesure pour PME et associations, en France.",
     "/"
   );
 
@@ -85,7 +85,20 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Stack />
+      <ZoneIntervention />
       <Contact />
     </main>
+  );
+}
+
+function ZoneIntervention() {
+  return (
+    <section className="section-pad border-t border-[rgba(245,246,250,0.06)] bg-[#070913]/30">
+      <div className="wrap text-center">
+        <p className="text-xs md:text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed reveal">
+          Basé à Saint-Mihiel (Meuse), j'interviens en présentiel dans le Grand Est et à distance partout en France.
+        </p>
+      </div>
+    </section>
   );
 }

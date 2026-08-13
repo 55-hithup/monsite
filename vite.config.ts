@@ -53,7 +53,12 @@ export default defineConfig({
     onPageRendered(route: string, html: string) {
       if (route === '/' || route === '') {
         const scriptTag = `<script type="application/ld+json" id="structured-data-org-ssg">${JSON.stringify(organizationData)}</script>`;
-        return html.replace('</head>', `${scriptTag}</head>`);
+        let cleanHtml = html.replace('</head>', `${scriptTag}</head>`);
+        // Hoist correct title and social titles for homepage SEO signal
+        cleanHtml = cleanHtml.replace(/<title>.*?<\/title>/, '<title>DevSupAi | Développeur Web Freelance en Meuse (55)</title>');
+        cleanHtml = cleanHtml.replace(/<meta property="og:title" content=".*?"/, '<meta property="og:title" content="DevSupAi | Développeur Web Freelance en Meuse (55)"');
+        cleanHtml = cleanHtml.replace(/<meta (property|name)="twitter:title" content=".*?"/, '<meta property="twitter:title" content="DevSupAi | Développeur Web Freelance en Meuse (55)"');
+        return cleanHtml;
       }
       return html;
     },

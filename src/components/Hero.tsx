@@ -42,7 +42,7 @@ export default function Hero() {
               <strong>Des sites rapides, clairs et efficaces :</strong>
             </p>
             <p>
-              Je conçois des sites internet, des applications et des outils web sur-mesure spécialement adaptés aux besoins des PME, TPE et Associations. Mon objectif : vous offrir une présence en ligne moderne, rapide à charger et facile à utiliser pour vos visiteurs.
+              Développeur web freelance basé en Meuse, j'accompagne les PME et associations partout en France dans la conception d'expériences digitales sur-mesure.
             </p>
           </div>
 
