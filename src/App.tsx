@@ -5,21 +5,43 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 
+// Helper to auto-retry and refresh upon new Vercel deployments (stale chunks)
+function lazyWithRetry<T extends React.ComponentType<any>>(
+  factory: () => Promise<{ default: T }>
+) {
+  return lazy(async () => {
+    try {
+      return await factory();
+    } catch (error) {
+      if (typeof window !== 'undefined') {
+        const hasRefreshed = sessionStorage.getItem('chunk_reload');
+        if (!hasRefreshed) {
+          sessionStorage.setItem('chunk_reload', 'true');
+          window.location.reload();
+          return new Promise<{ default: T }>(() => {});
+        }
+        sessionStorage.removeItem('chunk_reload');
+      }
+      throw error;
+    }
+  });
+}
+
 // Eagerly loaded for instant LCP on homepage
-// Lazy loaded routes for optimal bundle splitting
-const Services = lazy(() => import('./pages/Services'));
-const About = lazy(() => import('./pages/About'));
-const Blog = lazy(() => import('./pages/Blog'));
-const ArticleTemplates = lazy(() => import('./pages/blog/ArticleTemplates'));
-const ArticlePerformance = lazy(() => import('./pages/blog/ArticlePerformance'));
-const ArticleAssociationPme = lazy(() => import('./pages/blog/ArticleAssociationPme'));
-const LegalNotices = lazy(() => import('./pages/LegalNotices'));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const CaseLesJumeaux = lazy(() => import('./pages/projects/CaseLesJumeaux'));
-const CaseLocaTool = lazy(() => import('./pages/projects/CaseLocaTool'));
-const CaseAbogame = lazy(() => import('./pages/projects/CaseAbogame'));
-const Login = lazy(() => import('./pages/admin/Login'));
-const Dashboard = lazy(() => import('./pages/admin/Dashboard'));
+// Lazy loaded routes with auto-reload protection for optimal bundle splitting
+const Services = lazyWithRetry(() => import('./pages/Services'));
+const About = lazyWithRetry(() => import('./pages/About'));
+const Blog = lazyWithRetry(() => import('./pages/Blog'));
+const ArticleTemplates = lazyWithRetry(() => import('./pages/blog/ArticleTemplates'));
+const ArticlePerformance = lazyWithRetry(() => import('./pages/blog/ArticlePerformance'));
+const ArticleAssociationPme = lazyWithRetry(() => import('./pages/blog/ArticleAssociationPme'));
+const LegalNotices = lazyWithRetry(() => import('./pages/LegalNotices'));
+const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy'));
+const CaseLesJumeaux = lazyWithRetry(() => import('./pages/projects/CaseLesJumeaux'));
+const CaseLocaTool = lazyWithRetry(() => import('./pages/projects/CaseLocaTool'));
+const CaseAbogame = lazyWithRetry(() => import('./pages/projects/CaseAbogame'));
+const Login = lazyWithRetry(() => import('./pages/admin/Login'));
+const Dashboard = lazyWithRetry(() => import('./pages/admin/Dashboard'));
 
 gsap.registerPlugin(ScrollTrigger);
 
