@@ -45,7 +45,7 @@ export default function Navbar() {
     { label: 'nos prestations', href: '/nos-services' },
     { label: 'pme & assos', href: '/#solutions' },
     { label: 'offres', href: '/#services' },
-    { label: 'comparatif', href: '/#faq' },
+    { label: 'comparatif', href: '/#comparatif' },
     { label: 'à propos', href: '/a-propos' },
     { label: 'blog', href: '/blog' },
   ];
@@ -72,6 +72,15 @@ export default function Navbar() {
             <Link
               key={link.label}
               to={link.href}
+              onClick={() => {
+                if (link.href.startsWith('/#') && location.pathname === '/') {
+                  const id = link.href.replace('/#', '');
+                  const element = document.getElementById(id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }
+              }}
               className="cursor-target label-mono text-[11px] text-text-secondary hover:text-text-primary transition-colors duration-150"
             >
               {link.label}
@@ -150,6 +159,14 @@ export default function Navbar() {
           <MagneticWrapper range={30} strength={0.25}>
             <Link
               to="/#contact"
+              onClick={() => {
+                if (location.pathname === '/') {
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }
+              }}
               className="cursor-target label-mono text-[10px] px-4 py-1.5 border border-accent rounded-full text-text-primary bg-accent/20 hover:bg-accent hover:border-accent transition-all duration-150 inline-block font-bold"
             >
               contact
