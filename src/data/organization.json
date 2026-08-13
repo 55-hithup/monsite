@@ -7,6 +7,7 @@
   "image": "https://www.devsupai.fr/hero-bg-mockup.webp",
   "description": "Développeur web freelance spécialisé dans la création de sites internet modernes, vitrines, e-commerce et applications web sur-mesure.",
   "priceRange": "€€",
+  "telephone": "+33783666098",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Saint-Mihiel",
