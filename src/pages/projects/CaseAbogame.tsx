@@ -23,7 +23,10 @@ export default function CaseAbogame() {
       "name": "DevSupAi",
       "url": "https://www.devsupai.fr",
     },
-    "mainEntityOfPage": "https://www.devsupai.fr/projets/abogame",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.devsupai.fr/projets/abogame"
+    },
   };
 
   return (

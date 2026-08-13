@@ -1,12 +1,12 @@
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["ProfessionalService", "LocalBusiness"],
   "@id": "https://www.devsupai.fr/#organization",
   "name": "DevSupAi",
   "url": "https://www.devsupai.fr/",
   "image": "https://www.devsupai.fr/hero-bg-mockup.webp",
-  "description": "Développeur web freelance spécialisé dans la création de sites internet modernes, vitrines, e-commerce et applications web sur-mesure.",
-  "priceRange": "€€",
+  "description": "Développeur web freelance spécialisé dans la création de sites internet modernes, vitrines, e-commerce et applications web sur-mesure pour PME et associations.",
+  "priceRange": "950€ - 5000€+",
   "telephone": "+33783666098",
   "address": {
     "@type": "PostalAddress",
@@ -26,6 +26,7 @@
     "name": "Alexandre Pabst"
   },
   "sameAs": [
+    "https://maps.app.goo.gl/8YXpdiyL6YEgEoYe7",
     "https://www.youtube.com/@devsupai",
     "https://www.facebook.com/people/Devsupai/61593272035287",
     "https://www.pagesjaunes.fr/pros/65267281",

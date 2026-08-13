@@ -23,7 +23,10 @@ export default function CaseLocaTool() {
       "name": "DevSupAi",
       "url": "https://www.devsupai.fr",
     },
-    "mainEntityOfPage": "https://www.devsupai.fr/projets/locatool",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.devsupai.fr/projets/locatool"
+    },
   };
 
   return (

@@ -9,8 +9,39 @@ export default function ArticleTemplates() {
     "/blog/pourquoi-eviter-les-templates"
   );
 
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Pourquoi éviter les templates en 2026 ?",
+    "description": "Les thèmes pré-conçus pénalisent votre vitesse de chargement et nuisent à votre référencement naturel. Découvrez pourquoi le développement sur-mesure est devenu incontournable.",
+    "image": "https://www.devsupai.fr/hero-bg-mockup.webp",
+    "datePublished": "2026-08-04T08:00:00+02:00",
+    "dateModified": "2026-08-14T00:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandre Pabst",
+      "url": "https://www.devsupai.fr/a-propos"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevSupAi",
+      "url": "https://www.devsupai.fr",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.devsupai.fr/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.devsupai.fr/blog/pourquoi-eviter-les-templates"
+    }
+  };
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
+      <script type="application/ld+json">
+        {JSON.stringify(schemaMarkup)}
+      </script>
       <div className="wrap max-w-2xl">
         <Link to="/blog" className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
           <span>←</span> Retour au blog

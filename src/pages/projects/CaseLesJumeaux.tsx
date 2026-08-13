@@ -23,7 +23,10 @@ export default function CaseLesJumeaux() {
       "name": "DevSupAi",
       "url": "https://www.devsupai.fr",
     },
-    "mainEntityOfPage": "https://www.devsupai.fr/projets/les-jumeaux",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.devsupai.fr/projets/les-jumeaux"
+    },
   };
 
   return (

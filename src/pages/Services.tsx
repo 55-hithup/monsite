@@ -522,9 +522,26 @@ export default function Services() {
             Toutes nos activités & solutions informatiques sur‑mesure
           </h1>
 
-          <p className="text-sm md:text-base text-text-secondary max-w-3xl leading-relaxed mb-10">
+          <p className="text-sm md:text-base text-text-secondary max-w-3xl leading-relaxed mb-6">
             De la création de votre site internet à la maintenance de vos applications métier, découvrez l'ensemble des prestations assurées par <strong className="text-text-primary">DevSupAi</strong>. Utilisez le moteur de recherche ou filtrez selon votre besoin pour trouver la solution exacte.
           </p>
+
+          {/* Transparent Pricing Info Banner */}
+          <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-[#121729]/90 border border-[#2E8FE0]/25 mb-10 text-left">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+              <p className="text-xs text-text-secondary leading-snug">
+                <strong className="text-text-primary">Tarification transparente & sans abonnement captif :</strong> Forfaits dès <span className="text-accent font-bold">950 €</span> (One-page), <span className="text-accent font-bold">1 850 €</span> (Site vitrine 3-5 pages) ou sur devis <span className="text-cyan-300 font-bold">TJM 450 €</span> (Applications & SaaS).
+              </p>
+            </div>
+            <Link 
+              to="/#services" 
+              className="text-xs label-mono text-[#2E8FE0] hover:underline font-bold inline-flex items-center gap-1 shrink-0"
+            >
+              <span>Découvrir nos 3 forfaits clés</span>
+              <ArrowRight size={13} />
+            </Link>
+          </div>
 
           {/* SEARCH BAR & QUICK FILTERS */}
           <div className="p-6 rounded-2xl bg-[#121729]/80 border border-[rgba(245,246,250,0.08)] shadow-2xl backdrop-blur-md mb-12">
