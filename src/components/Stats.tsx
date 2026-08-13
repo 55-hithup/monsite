@@ -10,29 +10,30 @@ export default function Stats() {
     gsap.registerPlugin(ScrollTrigger);
 
     const paths = statsRef.current?.querySelectorAll('.draw-path');
-    if (!paths) return;
+    if (!paths || paths.length === 0) return;
+
+    // Normalize pathLength to 100 on all SVG elements to prevent calling getTotalLength() (forced reflow)
+    paths.forEach((path) => {
+      (path as SVGGeometryElement).setAttribute('pathLength', '100');
+    });
 
     const ctx = gsap.context(() => {
-      paths.forEach((path) => {
-        const p = path as SVGPathElement;
-        const length = p.getTotalLength();
-        
-        // Initial state: hide the stroke
-        gsap.set(p, {
-          strokeDasharray: length,
-          strokeDashoffset: length,
-        });
+      gsap.set(paths, {
+        strokeDasharray: 100,
+        strokeDashoffset: 100,
+      });
 
-        // ScrollTrigger self-drawing path animation
-        gsap.to(p, {
-          strokeDashoffset: 0,
-          duration: 1.6,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: p,
-            start: 'top 92%',
-          },
-        });
+      // Single batched scroll trigger for the entire stats container
+      gsap.to(paths, {
+        strokeDashoffset: 0,
+        duration: 1.4,
+        ease: 'power2.out',
+        stagger: 0.04,
+        scrollTrigger: {
+          trigger: statsRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
       });
     }, statsRef);
 

@@ -1,6 +1,4 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenis } from 'lenis/react';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
@@ -27,28 +25,22 @@ export default function Home() {
   const lenis = useLenis();
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    const reveals = containerRef.current?.querySelectorAll('.reveal');
+    if (!reveals || reveals.length === 0) return;
 
-    const ctx = gsap.context(() => {
-      const reveals = containerRef.current?.querySelectorAll('.reveal');
-      reveals?.forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 88%',
-              toggleActions: 'play none none none',
-            },
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
           }
-        );
-      });
-    }, containerRef);
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
 
     // Handle scroll to hash on mount (useful when navigating back from project description)
     if (window.location.hash) {
@@ -61,18 +53,12 @@ export default function Home() {
           } else {
             element.scrollIntoView({ behavior: 'smooth' });
           }
-        }, 300); // Wait for transition exit animation to complete and GSAP to settle
+        }, 300);
       }
     }
 
-    // Refresh triggers after DOM settles
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 200);
-
     return () => {
-      ctx.revert();
-      clearTimeout(timer);
+      observer.disconnect();
     };
   }, [lenis]);
 

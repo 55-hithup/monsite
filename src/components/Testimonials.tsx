@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, PenSquare, X } from 'lucide-react';
-import Cropper from 'react-easy-crop';
 import type { Area, Point } from 'react-easy-crop';
 import SectionReveal from './SectionReveal';
+
+const Cropper = lazy(() => import('react-easy-crop'));
 
 interface TestimonialItem {
   quote: string;
@@ -134,7 +135,6 @@ export default function Testimonials() {
       try {
         const { db } = await import('../lib/firebase');
         if (!db) {
-          console.log("Firebase DB not initialized. Using static testimonials.");
           return;
         }
         const { collection, query, where, getDocs } = await import('firebase/firestore');
@@ -171,7 +171,12 @@ export default function Testimonials() {
         console.error('Error fetching testimonials:', err);
       }
     }
-    loadTestimonials();
+
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(() => loadTestimonials(), { timeout: 2500 });
+    } else {
+      setTimeout(loadTestimonials, 1500);
+    }
   }, []);
 
   useEffect(() => {
@@ -470,17 +475,19 @@ export default function Testimonials() {
                       <div className="space-y-4">
                         {!croppedImage ? (
                           <div className="relative w-full h-48 rounded-lg overflow-hidden bg-black/50 border border-[rgba(245,246,250,0.08)]">
-                            <Cropper
-                              image={imageSrc}
-                              crop={crop}
-                              zoom={zoom}
-                              aspect={1}
-                              cropShape="round"
-                              showGrid={false}
-                              onCropChange={setCrop}
-                              onCropComplete={onCropComplete}
-                              onZoomChange={setZoom}
-                            />
+                            <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-text-secondary">Chargement de l'outil de recadrage...</div>}>
+                              <Cropper
+                                image={imageSrc}
+                                crop={crop}
+                                zoom={zoom}
+                                aspect={1}
+                                cropShape="round"
+                                showGrid={false}
+                                onCropChange={setCrop}
+                                onCropComplete={onCropComplete}
+                                onZoomChange={setZoom}
+                              />
+                            </Suspense>
                           </div>
                         ) : (
                           <div className="flex items-center gap-4 py-2 px-3 rounded-lg bg-[#070913]/40 border border-[rgba(245,246,250,0.06)]">

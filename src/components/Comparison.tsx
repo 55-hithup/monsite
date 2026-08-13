@@ -142,6 +142,9 @@ export default function Comparison() {
             <img 
               src="/compare_after.webp" 
               alt="Site sur-mesure et performant après optimisation" 
+              width="1280"
+              height="720"
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             />
 
@@ -149,6 +152,9 @@ export default function Comparison() {
             <img 
               src="/compare_before.webp" 
               alt="Site internet lent et surchargé avant optimisation" 
+              width="1280"
+              height="720"
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             />

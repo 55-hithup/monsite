@@ -107,6 +107,7 @@ export default function Projects() {
                     href={project.externalHref}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Consulter le site officiel ${project.title}`}
                     className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] label-mono font-bold text-white transition-all duration-200 hover:scale-105"
                     style={{ background: 'rgba(46,143,224,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.15)' }}
                   >
@@ -115,7 +116,7 @@ export default function Projects() {
                       <polyline points="15 3 21 3 21 9" />
                       <line x1="10" y1="14" x2="21" y2="3" />
                     </svg>
-                    Voir le site
+                    <span>Voir le site</span>
                   </a>
                 )}
               </div>
