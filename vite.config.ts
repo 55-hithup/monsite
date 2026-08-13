@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import sitemap from 'vite-plugin-sitemap'
+import organizationData from './src/data/organization.json' with { type: 'json' }
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -51,14 +52,8 @@ export default defineConfig({
     formatting: 'minify',
     onPageRendered(route: string, html: string) {
       if (route === '/' || route === '') {
-        const scriptRegex = /<script type="application\/ld\+json" id="structured-data-org-ssg">.*?<\/script>/s;
-        const match = html.match(scriptRegex);
-        if (match) {
-          const scriptTag = match[0];
-          let cleanHtml = html.replace(scriptRegex, '');
-          cleanHtml = cleanHtml.replace('</head>', `${scriptTag}</head>`);
-          return cleanHtml;
-        }
+        const scriptTag = `<script type="application/ld+json" id="structured-data-org-ssg">${JSON.stringify(organizationData)}</script>`;
+        return html.replace('</head>', `${scriptTag}</head>`);
       }
       return html;
     },

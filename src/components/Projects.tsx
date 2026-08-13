@@ -88,19 +88,25 @@ export default function Projects() {
               </>
             );
 
-            return project.href ? (
-              <Link 
+            return (
+              <div 
                 key={idx} 
-                to={project.href} 
                 className="cursor-target proj-card reveal"
               >
+                {project.href && (
+                  <Link 
+                    to={project.href} 
+                    className="absolute inset-0 z-10"
+                  >
+                    <span className="sr-only">Voir {project.title}</span>
+                  </Link>
+                )}
                 {cardContent}
                 {project.externalHref && (
                   <a
                     href={project.externalHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
                     className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] label-mono font-bold text-white transition-all duration-200 hover:scale-105"
                     style={{ background: 'rgba(46,143,224,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.15)' }}
                   >
@@ -112,10 +118,6 @@ export default function Projects() {
                     Voir le site
                   </a>
                 )}
-              </Link>
-            ) : (
-              <div key={idx} className="cursor-target proj-card reveal">
-                {cardContent}
               </div>
             );
           })}

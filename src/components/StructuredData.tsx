@@ -14,17 +14,8 @@ export default function StructuredData() {
     }
   }, []);
 
-  // Return null on client to match the server-rendered DOM (where the script is moved to the head)
-  if (typeof window !== 'undefined') {
-    return null;
-  }
-
-  // Render script block during SSG, to be caught and hoisted to the head in vite.config.ts
-  return (
-    <script
-      type="application/ld+json"
-      id="structured-data-org-ssg"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
-    />
-  );
+  // Always return null to prevent hydration mismatch.
+  // The script tag is injected post-render at build-time via vite.config.ts for SSG,
+  // and dynamically injected via useEffect above for client-side navigation.
+  return null;
 }
