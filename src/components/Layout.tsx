@@ -43,10 +43,10 @@ export default function Layout() {
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
       <Navbar />
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={pathname}
-          initial="initial"
+          initial={false}
           animate="animate"
           exit="initial"
           variants={pageVariants}

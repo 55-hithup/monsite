@@ -1673,8 +1673,8 @@ footer {
 
 /* --- Reveal Utility --- */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: none;
 }
 [data-magnetic] {
   will-change: transform;

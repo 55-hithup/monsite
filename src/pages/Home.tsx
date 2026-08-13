@@ -32,17 +32,21 @@ export default function Home() {
     const ctx = gsap.context(() => {
       const reveals = containerRef.current?.querySelectorAll('.reveal');
       reveals?.forEach((el) => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-            toggleActions: 'play none none none',
-          },
-        });
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
       });
     }, containerRef);
 
