@@ -26,10 +26,15 @@ export default defineConfig({
       ],
     }),
   ],
+  resolve: {
+    alias: {
+      'react-router-dom/server.js': 'react-router-dom/server',
+    },
+  },
   build: {
     rollupOptions: {
       output: {
-        manualChunks(id) {
+        manualChunks(id: string) {
           if (id.includes('node_modules')) {
             if (id.includes('lucide-react')) return 'vendor-lucide';
             if (id.includes('firebase')) return 'vendor-firebase';
@@ -41,4 +46,21 @@ export default defineConfig({
       },
     },
   },
-})
+  ssgOptions: {
+    script: 'defer',
+    formatting: 'minify',
+    onPageRendered(route: string, html: string) {
+      if (route === '/' || route === '') {
+        const scriptRegex = /<script type="application\/ld\+json" id="structured-data-org-ssg">.*?<\/script>/s;
+        const match = html.match(scriptRegex);
+        if (match) {
+          const scriptTag = match[0];
+          let cleanHtml = html.replace(scriptRegex, '');
+          cleanHtml = cleanHtml.replace('</head>', `${scriptTag}</head>`);
+          return cleanHtml;
+        }
+      }
+      return html;
+    },
+  },
+} as any)

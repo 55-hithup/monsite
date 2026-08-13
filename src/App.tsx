@@ -35,7 +35,7 @@ const renderLazy = (Component: React.ComponentType) => (
   </Suspense>
 );
 
-const router = createBrowserRouter([
+export const routes = [
   {
     path: '/',
     element: <Layout />,
@@ -98,10 +98,9 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
 
-function App() {
+export default function App() {
+  const router = createBrowserRouter(routes);
   return <RouterProvider router={router} />;
 }
-
-export default App;
