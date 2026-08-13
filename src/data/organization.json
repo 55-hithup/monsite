@@ -10,6 +10,7 @@
   "telephone": "+33783666098",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "13 Allée des Roses",
     "addressLocality": "Saint-Mihiel",
     "postalCode": "55300",
     "addressRegion": "Grand Est",
