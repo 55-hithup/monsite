@@ -39,6 +39,7 @@ export const routes = [
   {
     path: '/',
     element: <Layout />,
+    hydrateFallbackElement: <></>,
     children: [
       {
         path: '',
