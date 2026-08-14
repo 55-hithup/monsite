@@ -2,7 +2,7 @@ import SectionReveal from './SectionReveal';
 
 export default function TargetAudience() {
   return (
-    <SectionReveal id="solutions" className="section-pad bg-[#090D1E]/60 border-t border-b border-[rgba(245,246,250,0.06)]">
+    <SectionReveal id="solutions" className="section-pad">
       <div className="wrap">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="eyebrow reveal justify-center">SOLUTIONS PME & ASSOCIATIONS</div>

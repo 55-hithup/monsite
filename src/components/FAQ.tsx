@@ -65,7 +65,7 @@ export default function FAQ() {
   };
 
   return (
-    <SectionReveal id="faq" className="section-pad" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+    <SectionReveal id="faq" className="section-pad">
       <script type="application/ld+json">
         {JSON.stringify(faqSchemaMarkup)}
       </script>

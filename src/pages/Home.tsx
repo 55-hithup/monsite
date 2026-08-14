@@ -77,16 +77,36 @@ export default function Home() {
     <main ref={containerRef}>
       <StructuredData />
       <Hero />
-      <Stats />
-      <Offers />
-      <TargetAudience />
-      <Projects />
-      <Process />
-      <Comparison />
-      <Testimonials />
-      <FAQ />
-      <Stack />
-      <Contact />
+      <div className="bg-primary-bg border-t border-border-color">
+        <Stats />
+      </div>
+      <div className="bg-raised-bg border-t border-border-color">
+        <Offers />
+      </div>
+      <div className="bg-primary-bg border-t border-border-color">
+        <TargetAudience />
+      </div>
+      <div className="bg-primary-bg border-t border-border-color">
+        <Projects />
+      </div>
+      <div className="bg-raised-bg border-t border-border-color">
+        <Process />
+      </div>
+      <div className="bg-primary-bg border-t border-border-color">
+        <Comparison />
+      </div>
+      <div className="bg-primary-bg border-t border-border-color">
+        <Testimonials />
+      </div>
+      <div className="bg-primary-bg border-t border-border-color">
+        <FAQ />
+      </div>
+      <div className="bg-primary-bg border-t border-border-color">
+        <Stack />
+      </div>
+      <div className="bg-raised-bg border-t border-border-color">
+        <Contact />
+      </div>
     </main>
   );
 }

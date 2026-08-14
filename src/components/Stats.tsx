@@ -164,7 +164,7 @@ export default function Stats() {
   ];
 
   return (
-    <SectionReveal className="stats-section" style={{ background: 'var(--color-bg-deep)', padding: '80px 0' }}>
+    <SectionReveal className="stats-section" style={{ padding: '80px 0' }}>
       <div className="wrap" ref={statsRef}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style={{ perspective: '1000px' }}>
           {pillars.map((pillar, idx) => (

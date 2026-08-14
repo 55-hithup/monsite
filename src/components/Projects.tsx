@@ -40,7 +40,7 @@ export default function Projects() {
   ];
 
   return (
-    <SectionReveal id="realisations" className="section-pad" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', position: 'relative' }}>
+    <SectionReveal id="realisations" className="section-pad" style={{ position: 'relative' }}>
       <div className="wrap">
         <div className="head-row mb-10">
           <div>

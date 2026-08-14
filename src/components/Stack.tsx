@@ -11,7 +11,7 @@ export default function Stack() {
   ];
 
   return (
-    <SectionReveal id="stack" className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-[rgba(245,246,250,0.04)]">
+    <SectionReveal id="stack" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="bg-[#121729] rounded-[20px] p-8 md:p-12 border border-[rgba(245,246,250,0.08)]">
         {/* Header */}
         <div className="text-center mb-12">

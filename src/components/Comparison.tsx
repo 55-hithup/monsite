@@ -45,7 +45,7 @@ export default function Comparison() {
   }, []);
 
   return (
-    <SectionReveal id="comparatif" className="section-pad" style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+    <SectionReveal id="comparatif" className="section-pad">
       <div className="wrap">
         <div className="head-row mb-10">
           <div>
