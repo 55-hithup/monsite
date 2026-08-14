@@ -83,7 +83,7 @@ export default function FAQ() {
           {faqData.map((item, idx) => {
             const isActive = activeIndex === idx;
             return (
-              <div key={idx} className={`faq-item reveal rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.08)] p-5 transition-colors ${isActive ? 'active border-[#2E8FE0]/40' : ''}`}>
+              <div key={idx} className={`faq-item reveal rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.08)] transition-colors ${isActive ? 'active border-[#2E8FE0]/40' : ''}`}>
                 <button
                   className="faq-q w-full text-left flex items-center justify-between cursor-pointer focus:outline-none gap-4"
                   onClick={() => toggleIndex(idx)}
@@ -100,7 +100,7 @@ export default function FAQ() {
                     overflow: 'hidden',
                   }}
                 >
-                  <div className="faq-a-in pt-4 mt-3 border-t border-[rgba(245,246,250,0.06)] text-xs md:text-sm text-text-secondary space-y-2">
+                  <div className="faq-a-in pt-4 pb-5 px-6 border-t border-[rgba(245,246,250,0.06)] text-xs md:text-sm text-text-secondary space-y-2">
                     <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary font-medium">
                       {item.short}
                     </p>
