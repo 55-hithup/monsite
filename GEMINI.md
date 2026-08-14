@@ -27,5 +27,10 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
 * Valider que chaque page possède **exactement un seul** titre `<h1>`.
 * Veiller à ce que la hiérarchie des balises de titres soit strictement séquentielle (`<h1>` ➔ `<h2>` ➔ `<h3>` ➔ `<h4>`), sans jamais sauter de niveau intermédiaire (par exemple, pas d'élément `<h4>` directement sous un `<h2>`).
 
-## 5. Interdiction stricte des Emojis
+## 5. Règles d'accessibilité (A11y) & Contraste
+* **Spécificité et contraste des liens :** Pour tout bouton ou lien interactif sur fond de couleur vive (ex: `bg-accent`), s'assurer que la couleur du texte n'est pas surchargée par une règle globale (comme `a { color: #fff }`). Utiliser des styles en ligne explicites (ex: `style={{ color: '#020617' }}`) ou des classes hautement spécifiques pour garantir un ratio de contraste >= 4.5:1 (conforme aux normes WCAG AA).
+* **Pagination & Zones tactiles (Carrousels) :** Les boutons de pagination circulaires (ex: `.testi-dot`) doivent conserver leur design visuel minimaliste (8x8px) mais avoir une zone cliquable agrandie à au moins 24x24px (recommandé 32x32px) à l'aide d'un pseudo-élément `::after` transparent positionné en absolu. L'espacement (`gap`) entre ces boutons voisins doit être de 16px minimum pour éviter les chevauchements tactiles.
+* **Contrôles de formulaires :** Tous les champs de saisie (y compris les cases à cocher type `checkbox`) doivent impérativement posséder une association d'identifiant unique (`id` sur l'input et `htmlFor` sur le `label`) ou un attribut `aria-label` descriptif pour les lecteurs d'écran.
+
+## 6. Interdiction stricte des Emojis
 * **Zero Emoji :** Aucun emoji (caractère ou symbole Unicode de type 🔨, 🏢, ⚡, 🛒, 🌐, etc.) ne doit être présent sur l'ensemble du site DevSupAi (composants, libellés, boutons, balises ou commentaires). Utiliser exclusivement des icônes vectorielles SVG ou `lucide-react`.
