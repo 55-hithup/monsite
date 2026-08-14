@@ -62,7 +62,7 @@ export default function Comparison() {
         {/* Comparison Lists */}
         <div className="compare-wrap reveal">
           <div className="compare-col before">
-            <span className="compare-label text-red-300">Modèles pré-conçus & thèmes génériques</span>
+            <span className="compare-label" style={{ color: '#fca5a5' }}>Modèles pré-conçus & thèmes génériques</span>
             <ul className="compare-list">
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
@@ -92,7 +92,7 @@ export default function Comparison() {
           </div>
 
           <div className="compare-col after">
-            <span className="compare-label text-[#2E8FE0]">Développement Sur-Mesure DevSupAi</span>
+            <span className="compare-label" style={{ color: '#2E8FE0' }}>Développement Sur-Mesure DevSupAi</span>
             <ul className="compare-list">
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#2E8FE0" strokeWidth="2">

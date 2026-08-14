@@ -322,10 +322,11 @@ export default function Offers() {
             
             <a
               href="#contact"
-              className="cursor-target label-mono text-xs font-bold px-6 py-3 rounded-full text-slate-950 bg-accent hover:bg-cyan-200 transition-all duration-150 inline-flex items-center justify-center gap-2 shadow-lg shadow-accent/25 shrink-0 hover:scale-105"
+              className="cursor-target label-mono text-xs font-bold px-6 py-3 rounded-full bg-accent hover:bg-cyan-200 transition-all duration-150 inline-flex items-center justify-center gap-2 shadow-lg shadow-accent/25 shrink-0 hover:scale-105"
+              style={{ backgroundColor: '#2E8FE0', color: '#0b122c' }}
             >
-              <span>Demander cette option</span>
-              <ArrowRight size={13} />
+              <span style={{ color: '#0b122c' }}>Demander cette option</span>
+              <ArrowRight size={13} style={{ color: '#0b122c' }} />
             </a>
           </div>
 
