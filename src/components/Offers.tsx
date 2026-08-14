@@ -200,7 +200,7 @@ export default function Offers() {
                 </div>
 
                 {/* Features List */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-3">
                   <span className="text-[10px] label-mono uppercase text-purple-300 font-bold tracking-wider block">
                     Inclus dans cette offre :
                   </span>
@@ -214,18 +214,6 @@ export default function Offers() {
                   </ul>
                 </div>
               </div>
-
-              <a
-                href={`#contact?pack=${pkg.id}`}
-                className={`cursor-target w-full py-3 px-4 rounded-xl text-xs label-mono font-bold text-center transition-all duration-150 inline-flex items-center justify-center gap-2 ${
-                  pkg.popular
-                    ? 'bg-[#2E8FE0] text-white hover:bg-[#2576b9] shadow-lg shadow-[#2E8FE0]/25'
-                    : 'bg-[#1b223d] text-text-primary hover:bg-[#2E8FE0] hover:text-white border border-[rgba(245,246,250,0.08)]'
-                }`}
-              >
-                <span>{pkg.ctaText}</span>
-                <ArrowRight size={13} />
-              </a>
             </div>
           ))}
         </div>
