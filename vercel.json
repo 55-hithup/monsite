@@ -1,7 +1,9 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/assets/:match*", "destination": "/assets/:match*" },
-    { "source": "/(.*)", "destination": "/" }
+  "trailingSlash": false,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

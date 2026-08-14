@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SectionReveal from './SectionReveal';
 import MagneticWrapper from './MagneticWrapper';
 
@@ -7,10 +7,27 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    projectType: 'Site vitrine',
+    projectType: 'PME / TPE — Site Vitrine Sur-Mesure',
     googleBusinessOption: false,
     message: '',
   });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkHashOrParams = () => {
+      const fullUrl = window.location.href;
+      if (fullUrl.includes('pack=presence') || fullUrl.includes('pack=croissance')) {
+        setForm((prev) => ({ ...prev, projectType: 'PME / TPE — Site Vitrine Sur-Mesure' }));
+      } else if (fullUrl.includes('pack=saas')) {
+        setForm((prev) => ({ ...prev, projectType: 'Application Web & SaaS Métier' }));
+      }
+    };
+
+    checkHashOrParams();
+    window.addEventListener('hashchange', checkHashOrParams);
+    return () => window.removeEventListener('hashchange', checkHashOrParams);
+  }, []);
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);

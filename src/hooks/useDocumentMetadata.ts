@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 export function useDocumentMetadata(title: string, description: string, path?: string) {
   useEffect(() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
     // Update document title
     document.title = title;
     

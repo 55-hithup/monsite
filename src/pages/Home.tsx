@@ -25,41 +25,52 @@ export default function Home() {
   const lenis = useLenis();
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const reveals = containerRef.current?.querySelectorAll('.reveal');
-    if (!reveals || reveals.length === 0) return;
+    if (reveals && reveals.length > 0) {
+      // Immediate fallback safety: ensure all items activate smoothly
+      const fallbackTimer = setTimeout(() => {
+        reveals.forEach((el) => el.classList.add('active'));
+      }, 1000);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
-    );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.01, rootMargin: '50px 0px 50px 0px' }
+      );
 
-    reveals.forEach((el) => observer.observe(el));
+      reveals.forEach((el) => observer.observe(el));
 
-    // Handle scroll to hash on mount (useful when navigating back from project description)
-    if (window.location.hash) {
-      const id = window.location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          if (lenis) {
-            lenis.scrollTo(element, { duration: 1.2 });
-          } else {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 300);
+      // Cleanup
+      const observerDisconnect = () => {
+        clearTimeout(fallbackTimer);
+        observer.disconnect();
+      };
+
+      // Handle scroll to hash on mount (useful when navigating back from project description or offers)
+      if (window.location.hash) {
+        const rawId = window.location.hash.replace('#', '').split('?')[0];
+        const element = document.getElementById(rawId);
+        if (element) {
+          setTimeout(() => {
+            if (lenis) {
+              lenis.scrollTo(element, { duration: 1.2 });
+            } else {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 300);
+        }
       }
-    }
 
-    return () => {
-      observer.disconnect();
-    };
+      return observerDisconnect;
+    }
   }, [lenis]);
 
   return (

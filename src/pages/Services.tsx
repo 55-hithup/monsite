@@ -41,18 +41,7 @@ interface ServiceItem {
   icon: any;
 }
 
-export default function Services() {
-  useDocumentMetadata(
-    'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
-    'Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS sur-mesure et maintenance technique.',
-    '/nos-services'
-  );
-
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [activeProfile, setActiveProfile] = useState<string>('all');
-
-  const services: ServiceItem[] = [
+const services: ServiceItem[] = [
     // 1. Développement de sites internet (Vitrines & Présentation)
     {
       id: 'site-vitrine',
@@ -484,6 +473,17 @@ export default function Services() {
       icon: RefreshCw
     }
   ];
+
+export default function Services() {
+  useDocumentMetadata(
+    'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
+    'Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS sur-mesure et maintenance technique.',
+    '/nos-services'
+  );
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeProfile, setActiveProfile] = useState<string>('all');
 
   // Filtered Services based on search, category and profile
   const filteredServices = useMemo(() => {

@@ -6,13 +6,19 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import 'lenis/dist/lenis.css';
 
-export default function Layout() {
+interface LayoutProps {
+  children?: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   const { pathname, hash } = useLocation();
 
   // Scroll to top or to hash on page change
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     if (hash) {
-      const id = hash.replace('#', '');
+      const id = hash.replace('#', '').split('?')[0];
       const element = document.getElementById(id);
       if (element) {
         setTimeout(() => {
@@ -27,14 +33,14 @@ export default function Layout() {
   const pageVariants = {
     initial: {
       opacity: 0,
-      y: 16,
+      y: 12,
     },
     animate: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.4,
-        ease: [0.65, 0, 0.35, 1] as const, // ease-in-out cubic-bezier
+        duration: 0.35,
+        ease: [0.65, 0, 0.35, 1] as const,
       },
     },
   };
@@ -52,7 +58,7 @@ export default function Layout() {
           variants={pageVariants}
           className="min-h-screen bg-transparent text-text-primary selection:bg-accent/30 relative z-10"
         >
-          <Outlet />
+          {children || <Outlet />}
           <Footer />
         </motion.div>
       </AnimatePresence>

@@ -11,6 +11,7 @@ export default function SectionReveal({ children, className = '', id, style }: S
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const el = containerRef.current;
     if (!el) return;
 
@@ -21,22 +22,31 @@ export default function SectionReveal({ children, className = '', id, style }: S
       return;
     }
 
+    // Safety fallback: ensure visibility even if intersection observer is delayed
+    const safetyTimer = setTimeout(() => {
+      el.classList.add('section-visible');
+    }, 1000);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add('section-visible');
+          clearTimeout(safetyTimer);
           observer.unobserve(el);
         }
       },
-      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.01, rootMargin: '50px 0px 50px 0px' }
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(safetyTimer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <div ref={containerRef} className={`section-reveal ${className}`} id={id} style={style}>
+    <div ref={containerRef} className={`section-reveal section-visible ${className}`} id={id} style={style}>
       {children}
     </div>
   );
