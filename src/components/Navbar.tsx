@@ -173,7 +173,8 @@ export default function Navbar() {
                     }
                   }
                 }}
-                className="cursor-target label-mono text-[10px] px-4 py-1.5 border border-accent rounded-full text-slate-950 bg-accent hover:bg-cyan-200 transition-all duration-150 inline-block font-bold"
+                className="cursor-target label-mono text-[10px] px-4 py-1.5 border border-accent rounded-full bg-accent hover:bg-cyan-200 transition-all duration-150 inline-block font-bold"
+                style={{ color: '#020617' }}
               >
                 contact
               </Link>
