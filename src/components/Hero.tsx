@@ -44,7 +44,7 @@ export default function Hero() {
               <strong>Des sites rapides, clairs et efficaces :</strong>
             </p>
             <p>
-              Développeur web freelance basé en Meuse, j'accompagne les PME et associations partout en France dans la conception d'expériences digitales sur-mesure.
+              Développeur freelance basé à Saint-Mihiel (Meuse), je me déplace à votre rencontre dans tout le Grand Est et collabore à distance avec des PME et associations dans toute la France pour créer des solutions web sur-mesure.
             </p>
           </div>
 

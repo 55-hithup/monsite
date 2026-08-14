@@ -63,7 +63,7 @@ export default function About() {
               <span className="text-[10px] block text-text-secondary mt-1">Saint-Mihiel, Meuse (Grand Est)</span>
               
               <p className="text-xs text-text-secondary mt-4 leading-relaxed">
-                Interlocuteur direct pour l'intégralité de vos projets web, de l'étude des besoins au développement final.
+                Interlocuteur direct pour l'intégralité de vos projets web, de l'étude des besoins au développement final. Basé à Saint-Mihiel, j'interviens en présentiel dans le Grand Est et à distance dans toute la France.
               </p>
             </div>
             

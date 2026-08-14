@@ -86,20 +86,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Stack />
-      <ZoneIntervention />
       <Contact />
     </main>
-  );
-}
-
-function ZoneIntervention() {
-  return (
-    <section className="section-pad border-t border-[rgba(245,246,250,0.06)] bg-[#070913]/30">
-      <div className="wrap text-center">
-        <p className="text-xs md:text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed reveal">
-          Basé à Saint-Mihiel (Meuse), j'interviens en présentiel dans le Grand Est et à distance partout en France.
-        </p>
-      </div>
-    </section>
   );
 }
