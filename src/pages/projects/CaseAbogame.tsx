@@ -5,7 +5,7 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 export default function CaseAbogame() {
   useDocumentMetadata(
     "Étude de cas : Abogame | Plateforme Web Interactive Live | DevSupAi",
-    "Découvrez comment la plateforme interactive mobile-first Abogame a permis de dynamiser les animations en direct et d'augmenter l'engagement de 50%.",
+    "Découvrez comment la plateforme interactive mobile-first Abogame dynamise les animations en direct grâce à une roue de tirage visuelle et interactive en temps réel.",
     "/projets/abogame"
   );
 
@@ -93,7 +93,7 @@ export default function CaseAbogame() {
           </div>
           <div>
             <div className="text-[10px] label-mono text-purple-300">RÉSULTAT</div>
-            <div className="text-sm font-bold text-text-primary mt-1">+50% Engagement</div>
+            <div className="text-sm font-bold text-text-primary mt-1">Tirage Visuel</div>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ export default function CaseAbogame() {
               3. Quels sont les résultats d'engagement observés pendant les directs ?
             </h2>
             <div className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium mb-3">
-              <strong>Bilan :</strong> L'aspect visuel et la réactivité de la roue interactive ont permis de faire progresser le taux d'engagement des spectateurs de plus de 50% par rapport aux tirages textuels ordinaires.
+              <strong>Bilan :</strong> L'aspect visuel et la réactivité en temps réel de la roue interactive offrent une expérience d'animation beaucoup plus ludique et captivante que les simples tirages au sort textuels.
             </div>
             <p>
               La plateforme se charge immédiatement et garantit un confort d'utilisation optimal pour le streamer comme pour ses spectateurs.

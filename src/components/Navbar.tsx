@@ -1,15 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import MagneticWrapper from './MagneticWrapper';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   // Close dropdown on route change
   useEffect(() => {
     setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
   }, [location]);
 
   // Close dropdown when clicking outside
@@ -90,10 +93,10 @@ export default function Navbar() {
 
         {/* Header Action Buttons & Dropdown */}
         <div className="flex items-center gap-2">
-          {/* Dropdown Button for Réalisations */}
+          {/* Desktop Dropdown Button for Réalisations */}
           <div 
             ref={dropdownRef} 
-            className="relative"
+            className="relative hidden md:block"
           >
             <MagneticWrapper range={25} strength={0.2}>
               <button
@@ -155,24 +158,114 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Contact CTA Button */}
-          <MagneticWrapper range={30} strength={0.25}>
-            <Link
-              to="/#contact"
-              onClick={() => {
-                if (location.pathname === '/') {
-                  const element = document.getElementById('contact');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          {/* Desktop Contact CTA Button */}
+          <div className="hidden md:block">
+            <MagneticWrapper range={30} strength={0.25}>
+              <Link
+                to="/#contact"
+                onClick={() => {
+                  if (location.pathname === '/') {
+                    const element = document.getElementById('contact');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                   }
-                }
-              }}
-              className="cursor-target label-mono text-[10px] px-4 py-1.5 border border-accent rounded-full text-text-primary bg-accent/20 hover:bg-accent hover:border-accent transition-all duration-150 inline-block font-bold"
+                }}
+                className="cursor-target label-mono text-[10px] px-4 py-1.5 border border-accent rounded-full text-slate-950 bg-accent hover:bg-cyan-200 transition-all duration-150 inline-block font-bold"
+              >
+                contact
+              </Link>
+            </MagneticWrapper>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="cursor-target p-2 text-text-primary hover:text-accent transition-colors cursor-pointer flex items-center justify-center rounded-full border border-[rgba(245,246,250,0.15)] bg-[#121729]/60"
+              aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
-              contact
-            </Link>
-          </MagneticWrapper>
+              {isMobileMenuOpen ? <X size={15} /> : <Menu size={15} />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu Panel */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-[calc(100%+12px)] left-0 right-0 z-40 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
+            <div className="p-6 bg-[#0B0F1E]/95 border border-[rgba(245,246,250,0.12)] rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl space-y-6">
+              {/* Main Links */}
+              <div className="flex flex-col gap-4 text-left">
+                {mainLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      if (link.href.startsWith('/#') && location.pathname === '/') {
+                        const id = link.href.replace('/#', '');
+                        const element = document.getElementById(id);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }
+                    }}
+                    className="text-xs font-bold text-text-secondary hover:text-text-primary transition-colors label-mono uppercase"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-[rgba(245,246,250,0.06)]" />
+
+              {/* Case Studies */}
+              <div className="space-y-3 text-left">
+                <div className="text-[9px] label-mono text-purple-300 font-bold tracking-widest uppercase">
+                  Nos Réalisations
+                </div>
+                <div className="grid grid-cols-1 gap-2">
+                  {projectLinks.map((proj) => (
+                    <Link
+                      key={proj.href}
+                      to={proj.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block p-3 rounded-xl bg-[#121729]/50 border border-[rgba(245,246,250,0.04)] hover:bg-[#121729] transition-all"
+                    >
+                      <div className="text-xs font-bold text-text-primary">
+                        {proj.title}
+                      </div>
+                      <div className="text-[10px] text-text-secondary mt-0.5 leading-snug">
+                        {proj.sub}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Contact Button */}
+              <div className="pt-2">
+                <Link
+                  to="/#contact"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    if (location.pathname === '/') {
+                      const element = document.getElementById('contact');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }
+                  }}
+                  className="block w-full text-center py-3 rounded-full bg-accent text-slate-950 font-bold text-xs label-mono uppercase hover:bg-cyan-200 transition-colors"
+                >
+                  nous contacter
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
