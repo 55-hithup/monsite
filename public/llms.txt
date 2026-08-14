@@ -8,10 +8,10 @@
 - Adresse : 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, France)
 
 ## Forfaits et Tarifs Transparent
-- **Pack Présence (One-Page / Landing Page)** : Dès 950 € (vitesse 100/100, formulaire sécurisé, SEO initial, sans abonnement captif).
-- **Pack Croissance (Site Vitrine 3 à 5 pages)** : Dès 1 850 € (design moderne sur-mesure, animations GSAP, référencement local, avis clients).
-- **Pack SaaS & Outils Métiers** : Dès 3 500 € ou sur devis basé sur un TJM de 450 € (gestion de parc, systèmes de réservation, tableaux de bord).
-- **Gestion Google Business Profile & SEO Local (Mensuel)** : Formule Starter à 49 €/mois, Formule Boost à 149-250 €/mois.
+- **Pack Présence (One-Page / Landing Page)** : Dès 690 € (vitesse 100/100, formulaire sécurisé, SEO initial, sans abonnement captif).
+- **Pack Croissance (Site Vitrine 3 à 5 pages)** : Dès 1 350 € (design moderne sur-mesure, animations GSAP, référencement local, avis clients).
+- **Pack SaaS & Outils Métiers** : Dès 2 450 € ou sur devis basé sur un TJM de 350 € (gestion de parc, systèmes de réservation, tableaux de bord).
+- **Gestion Google Business Profile & SEO Local (Mensuel)** : Formule Starter à 29 €/mois, Formule Boost à 99-179 €/mois.
 
 ## Services principaux pour PME et Associations
 - **Sites vitrines et e-commerce sur-mesure pour PME** : Développement de sites légers à affichage rapide, optimisés pour la prise de contact et la conversion.

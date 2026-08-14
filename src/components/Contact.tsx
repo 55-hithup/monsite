@@ -179,7 +179,7 @@ export default function Contact() {
                   <option>Association — Site ou Portail d'Information</option>
                   <option>E-Commerce — Boutique en Ligne Sur-Mesure</option>
                   <option>Application Web & SaaS Métier</option>
-                  <option>Gestion Google Business & SEO Local (dès 49 €/mois)</option>
+                  <option>Gestion Google Business & SEO Local (dès 29 €/mois)</option>
                   <option>Autre projet de développement sur-mesure</option>
                 </select>
               </div>
@@ -196,7 +196,7 @@ export default function Contact() {
                 />
                 <div>
                   <div className="text-xs font-bold text-text-primary">
-                    Ajouter l'option Gestion & Animation Google Business Profile (dès 49 €/mois)
+                    Ajouter l'option Gestion & Animation Google Business Profile (dès 29 €/mois)
                   </div>
                   <div className="text-[11px] text-text-secondary mt-0.5 leading-snug">
                     Optimisation de votre fiche Google Maps, réponse aux avis, publications mensuelles et suivi des statistiques.

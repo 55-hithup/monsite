@@ -31,7 +31,7 @@ const steps: SkillStep[] = [
   {
     num: '05',
     title: 'Étape 5 : Prise en main et suivi',
-    desc: "Explications simples pour vous permettre de mettre à jour vos contenus en toute autonomie et possibilité d'accompagnement mensuel facultatif (maintenance, gestion Google Business dès 49 €/mois).",
+    desc: "Explications simples pour vous permettre de mettre à jour vos contenus en toute autonomie et possibilité d'accompagnement mensuel facultatif (maintenance, gestion Google Business dès 29 €/mois).",
   },
 ];
 

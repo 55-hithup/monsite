@@ -531,7 +531,7 @@ export default function Services() {
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
               <p className="text-xs text-text-secondary leading-snug">
-                <strong className="text-text-primary">Tarification transparente & sans abonnement captif :</strong> Forfaits dès <span className="text-accent font-bold">950 €</span> (One-page), <span className="text-accent font-bold">1 850 €</span> (Site vitrine 3-5 pages) ou sur devis <span className="text-cyan-300 font-bold">TJM 450 €</span> (Applications & SaaS).
+                <strong className="text-text-primary">Tarification transparente & sans abonnement captif :</strong> Forfaits dès <span className="text-accent font-bold">690 €</span> (One-page), <span className="text-accent font-bold">1 350 €</span> (Site vitrine 3-5 pages) ou sur devis <span className="text-cyan-300 font-bold">TJM 350 €</span> (Applications & SaaS).
               </p>
             </div>
             <Link 

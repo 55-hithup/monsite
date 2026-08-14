@@ -7,7 +7,7 @@ export default function Offers() {
       id: 'presence',
       name: 'Pack Présence',
       badge: 'Lancement & Visibilité',
-      price: '950 €',
+      price: '690 €',
       priceSub: 'Forfait sur-mesure',
       desc: 'Idéal pour les artisans, indépendants et associations souhaitant une vitrine professionnelle claire et percutante.',
       popular: false,
@@ -25,7 +25,7 @@ export default function Offers() {
       id: 'croissance',
       name: 'Pack Croissance',
       badge: 'Le plus choisi par les PME',
-      price: '1 850 €',
+      price: '1 350 €',
       priceSub: 'Forfait sur-mesure',
       desc: 'La solution complète pour les PME et commerces voulant valoriser leur offre et convertir leurs visiteurs en clients.',
       popular: true,
@@ -43,8 +43,8 @@ export default function Offers() {
       id: 'saas',
       name: 'Pack SaaS & Métier',
       badge: 'Outils & Plateformes',
-      price: '3 500 €',
-      priceSub: 'Dès 3 500 € (Base TJM 450 €)',
+      price: '2 450 €',
+      priceSub: 'Dès 2 450 € (Base TJM 350 €)',
       desc: 'Pour les applications sur-mesure, outils de réservation (Les Jumeaux) ou gestion de parc matériel (LocaTool).',
       popular: false,
       features: [
@@ -334,7 +334,7 @@ export default function Offers() {
             <div className="p-4 rounded-xl bg-[#121729]/80 border border-[rgba(245,246,250,0.08)]">
               <div className="flex items-baseline justify-between mb-2">
                 <span className="text-sm font-bold text-text-primary">Formule Starter</span>
-                <span className="text-sm label-mono font-extrabold text-accent">49 € <span className="text-[10px] text-text-secondary font-normal">/ mois</span></span>
+                <span className="text-sm label-mono font-extrabold text-accent">29 € <span className="text-[10px] text-text-secondary font-normal">/ mois</span></span>
               </div>
               <ul className="text-xs text-text-secondary space-y-1.5 list-disc list-inside">
                 <li>Optimisation initiale complète de la fiche Google</li>
@@ -347,7 +347,7 @@ export default function Offers() {
             <div className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20">
               <div className="flex items-baseline justify-between mb-2">
                 <span className="text-sm font-bold text-text-primary">Formule Boost SEO Local</span>
-                <span className="text-sm label-mono font-extrabold text-cyan-300">149 – 250 € <span className="text-[10px] text-text-secondary font-normal">/ mois</span></span>
+                <span className="text-sm label-mono font-extrabold text-cyan-300">99 – 179 € <span className="text-[10px] text-text-secondary font-normal">/ mois</span></span>
               </div>
               <ul className="text-xs text-text-secondary space-y-1.5 list-disc list-inside">
                 <li>Publications renforcées & visuels sur-mesure</li>

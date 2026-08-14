@@ -5,7 +5,7 @@ export default function FAQ() {
   const faqData = [
     {
       q: 'Comment est défini le tarif d\'un projet sur-mesure ?',
-      short: 'Nos forfaits sont transparents et adaptés à vos besoins réels : dès 950 € pour le Pack Présence (One-Page), dès 1 850 € pour le Pack Croissance (site vitrine 3 à 5 pages), et dès 3 500 € pour une application web ou un outil SaaS sur-mesure (base TJM 450 €).',
+      short: 'Nos forfaits sont transparents et adaptés à vos besoins réels : dès 690 € pour le Pack Présence (One-Page), dès 1 350 € pour le Pack Croissance (site vitrine 3 à 5 pages), et dès 2 450 € pour une application web ou un outil SaaS sur-mesure (base TJM 350 €).',
       detail: 'Chaque projet fait l\'objet d\'un devis détaillé chiffrant exactement ce dont vous avez besoin, sans frais cachés ni abonnements obligatoires de plugins.',
     },
     {
@@ -36,12 +36,12 @@ export default function FAQ() {
     {
       q: 'Quel suivi ou accompagnement est proposé après la mise en ligne ?',
       short: 'Chaque livraison s\'accompagne d\'une période de garantie technique et d\'une assistance à la prise en main.',
-      detail: 'Pour assurer une sérénité maximale, des forfaits d\'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles à partir de 49 €/mois, ou via des interventions ponctuelles à la demande.',
+      detail: 'Pour assurer une sérénité maximale, des forfaits d\'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles à partir de 29 €/mois, ou via des interventions ponctuelles à la demande.',
     },
     {
       q: 'Proposez-vous un accompagnement pour la gestion de ma fiche Google Business et le référencement local ?',
-      short: 'Oui, une prestation mensuelle dédiée est proposée dès 49 €/mois pour animer, optimiser et référencer votre fiche d\'établissement sur Google Maps.',
-      detail: 'La Formule Starter (49 €/mois) assure l\'optimisation initiale, les posts réguliers et la réponse aux avis clients. La Formule Boost (149 à 250 €/mois) intègre une stratégie de positionnement local avancée sur les requêtes ciblées de votre secteur.',
+      short: 'Oui, une prestation mensuelle dédiée est proposée dès 29 €/mois pour animer, optimiser et référencer votre fiche d\'établissement sur Google Maps.',
+      detail: 'La Formule Starter (29 €/mois) assure l\'optimisation initiale, les posts réguliers et la réponse aux avis clients. La Formule Boost (99 à 179 €/mois) intègre une stratégie de positionnement local avancée sur les requêtes ciblées de votre secteur.',
     },
   ];
 
