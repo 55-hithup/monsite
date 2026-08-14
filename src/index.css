@@ -310,7 +310,7 @@ section {
   font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: hsl(var(--accent-cyan));
+  color: hsl(251, 85%, 75%);
   font-weight: 600;
   margin-bottom: var(--space-md);
 }
@@ -318,7 +318,7 @@ section {
   content: "";
   width: 20px;
   height: 1px;
-  background-color: hsl(var(--accent-cyan));
+  background-color: hsl(251, 85%, 75%);
 }
 h1, h2, h3 {
   font-family: var(--sans);

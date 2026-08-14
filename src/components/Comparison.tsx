@@ -62,7 +62,7 @@ export default function Comparison() {
         {/* Comparison Lists */}
         <div className="compare-wrap reveal">
           <div className="compare-col before">
-            <span className="compare-label text-red-400">Modèles pré-conçus & thèmes génériques</span>
+            <span className="compare-label text-red-300">Modèles pré-conçus & thèmes génériques</span>
             <ul className="compare-list">
               <li>
                 <svg className="compare-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
@@ -160,7 +160,7 @@ export default function Comparison() {
             />
 
             {/* Labels */}
-            <div className="absolute bottom-4 left-4 bg-red-950/80 border border-red-500/20 px-3 py-1 rounded-md text-[10px] label-mono text-red-400 font-bold pointer-events-none">
+            <div className="absolute bottom-4 left-4 bg-red-950/80 border border-red-500/20 px-3 py-1 rounded-md text-[10px] label-mono text-red-200 font-bold pointer-events-none">
               Avant<span className="hidden sm:inline"> (Modèle générique)</span>
             </div>
             <div className="absolute bottom-4 right-4 bg-cyan-950/80 border border-cyan-500/20 px-3 py-1 rounded-md text-[10px] label-mono text-cyan-400 font-bold pointer-events-none">

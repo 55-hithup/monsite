@@ -17,7 +17,7 @@ export default function TargetAudience() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Card PME */}
           <div className="reveal p-8 rounded-2xl bg-[#121729]/70 border border-[#2E8FE0]/30 hover:border-[#2E8FE0]/60 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#2E8FE0]/20 border-b border-l border-[#2E8FE0]/40 text-[10px] label-mono text-[#2E8FE0] rounded-bl-xl font-bold">
+            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#2E8FE0]/20 border-b border-l border-[#2E8FE0]/40 text-[10px] label-mono text-cyan-300 rounded-bl-xl font-bold">
               POUR LES PME & TPE
             </div>
 

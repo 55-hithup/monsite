@@ -164,7 +164,7 @@ export default function Offers() {
               }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#2E8FE0] text-white text-[10px] label-mono font-bold tracking-wider uppercase shadow-md flex items-center gap-1.5">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#2E8FE0] text-[#0B122C] text-[10px] label-mono font-bold tracking-wider uppercase shadow-md flex items-center gap-1.5">
                   <Sparkles size={11} />
                   <span>Recommandé PME</span>
                 </div>
@@ -282,7 +282,7 @@ export default function Offers() {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs label-mono text-purple-300 font-bold">{service.num}</span>
-                    <span className="text-[10px] label-mono px-2.5 py-1 rounded-full bg-[#2E8FE0]/15 text-[#2E8FE0] border border-[#2E8FE0]/30 font-bold">
+                    <span className="text-[10px] label-mono px-2.5 py-1 rounded-full bg-[#2E8FE0]/15 text-cyan-300 border border-[#2E8FE0]/30 font-bold">
                       {service.badge}
                     </span>
                   </div>
@@ -322,7 +322,7 @@ export default function Offers() {
             
             <a
               href="#contact"
-              className="cursor-target label-mono text-xs font-bold px-6 py-3 rounded-full text-white bg-accent hover:bg-accent-hover transition-all duration-150 inline-flex items-center justify-center gap-2 shadow-lg shadow-accent/25 shrink-0 hover:scale-105"
+              className="cursor-target label-mono text-xs font-bold px-6 py-3 rounded-full text-slate-950 bg-accent hover:bg-cyan-200 transition-all duration-150 inline-flex items-center justify-center gap-2 shadow-lg shadow-accent/25 shrink-0 hover:scale-105"
             >
               <span>Demander cette option</span>
               <ArrowRight size={13} />
