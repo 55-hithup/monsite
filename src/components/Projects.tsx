@@ -97,6 +97,7 @@ export default function Projects() {
                   <Link 
                     to={project.href} 
                     className="absolute inset-0 z-10"
+                    aria-label={`Lire l'étude de cas : ${project.title}`}
                   >
                     <span className="sr-only">Voir {project.title}</span>
                   </Link>

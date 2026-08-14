@@ -65,6 +65,8 @@ export default function Navbar() {
           <img 
             src="/logo.webp" 
             alt="DevSupAi Logo" 
+            width="96"
+            height="96"
             className="h-18 w-18 md:h-24 md:w-24 object-contain drop-shadow-[0_8px_28px_rgba(46,143,224,0.5)] -translate-x-4 md:-translate-x-5 translate-y-0 md:translate-y-0.5 transition-transform duration-300 group-hover:scale-105" 
           />
         </Link>

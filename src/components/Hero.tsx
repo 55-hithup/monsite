@@ -5,15 +5,19 @@ export default function Hero() {
     <section className="hero" id="accueil" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
       {/* Widescreen Background Mockup Image */}
       <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none overflow-hidden">
-        <img
-          src="/hero-bg-mockup.webp"
-          alt="DevSupAi 3D Showcase Widescreen Background"
-          width="1920"
-          height="1080"
-          fetchPriority="high"
-          loading="eager"
-          className="w-full h-full object-cover object-right max-md:object-[82%_center] max-md:scale-[1.8] max-md:origin-[82%_center]"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/hero-bg-mockup-mobile.webp" type="image/webp" />
+          <img
+            src="/hero-bg-mockup.webp"
+            alt="DevSupAi 3D Showcase Widescreen Background"
+            width="1672"
+            height="941"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover object-right max-md:object-[82%_center] max-md:scale-[1.8] max-md:origin-[82%_center]"
+          />
+        </picture>
         {/* Soft gradient masks to guarantee high contrast on all screens */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B122C] via-[#0B122C]/60 to-transparent md:block hidden"></div>
         <div className="absolute inset-0 bg-[#0B122C]/70 md:hidden block"></div>
@@ -51,7 +55,7 @@ export default function Hero() {
           {/* CTAs */}
           <div className="hero-ctas flex flex-wrap items-center gap-4">
             <MagneticWrapper range={40} strength={0.3}>
-              <a href="#contact" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <a href="#contact" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                 Demander un devis PME / Asso →
               </a>
             </MagneticWrapper>

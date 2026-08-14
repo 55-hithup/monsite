@@ -23,6 +23,8 @@ export default function Footer() {
               <img 
                 src="/logo.webp" 
                 alt="DevSupAi Logo" 
+                width="28"
+                height="28"
                 className="h-7 w-7 object-contain rounded-full border border-[rgba(245,246,250,0.08)]" 
               />
               <span className="label-mono font-bold text-sm tracking-normal text-text-primary">
@@ -48,6 +50,8 @@ export default function Footer() {
                 <img 
                   src="/logo-facebook.webp" 
                   alt="Facebook Logo" 
+                  width="24"
+                  height="24"
                   className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.12)] bg-[#070913]" 
                 />
               </a>
@@ -61,6 +65,8 @@ export default function Footer() {
                 <img 
                   src="/logo-youtube.webp" 
                   alt="YouTube Logo" 
+                  width="24"
+                  height="24"
                   className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.12)] bg-[#070913]" 
                 />
               </a>

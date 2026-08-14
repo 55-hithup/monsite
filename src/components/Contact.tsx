@@ -187,12 +187,14 @@ export default function Contact() {
 
             {/* Optional Add-on Checkbox */}
             <div className="p-4 rounded-xl bg-[#0B0F1E]/60 border border-[rgba(245,246,250,0.08)] mb-6 text-left">
-              <label className="flex items-start gap-3 cursor-pointer select-none">
+              <label htmlFor="googleBusinessOption" className="flex items-start gap-3 cursor-pointer select-none">
                 <input
                   type="checkbox"
+                  id="googleBusinessOption"
                   checked={form.googleBusinessOption}
                   onChange={(e) => setForm({ ...form, googleBusinessOption: e.target.checked })}
                   className="mt-1 w-4 h-4 accent-[#2E8FE0] rounded cursor-pointer"
+                  aria-label="Ajouter l'option Gestion & Animation Google Business Profile"
                 />
                 <div>
                   <div className="text-xs font-bold text-text-primary">

@@ -45,7 +45,7 @@ export default function Offers() {
       badge: 'Outils & Plateformes',
       price: '2 450 €',
       priceSub: 'Dès 2 450 € (Base TJM 350 €)',
-      desc: 'Pour les applications sur-mesure, outils de réservation (Les Jumeaux) ou gestion de parc matériel (LocaTool).',
+      desc: 'Pour les applications sur-mesure, outils de réservation en ligne ou gestion de parc matériel (LocaTool).',
       popular: false,
       features: [
         'Développement full-stack sur-mesure (React / TypeScript)',

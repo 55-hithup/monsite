@@ -36,7 +36,7 @@ export default function CaseLesJumeaux() {
       </script>
 
       <div className="wrap max-w-3xl">
-        <Link to="/realisations" className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
+        <Link to="/#realisations" className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
           <span>←</span> Retour aux réalisations
         </Link>
 
@@ -112,7 +112,7 @@ export default function CaseLesJumeaux() {
 
         {/* Back Link */}
         <div className="mt-12 pt-6 border-t border-[rgba(245,246,250,0.06)]">
-          <Link to="/realisations" className="btn btn-ghost text-xs inline-flex items-center gap-2 border border-[rgba(245,246,250,0.12)]">
+          <Link to="/#realisations" className="btn btn-ghost text-xs inline-flex items-center gap-2 border border-[rgba(245,246,250,0.12)]">
             ← Voir toutes les réalisations
           </Link>
         </div>
