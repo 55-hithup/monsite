@@ -26,14 +26,8 @@ export default function Hero() {
       {/* Overlay Text Content */}
       <div className="wrap relative z-10 w-full" style={{ maxWidth: '1440px', paddingLeft: 'var(--space-xl)', paddingRight: 'var(--space-xl)' }}>
         <div className="max-w-[620px] text-left">
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2E8FE0]/40 bg-[#2E8FE0]/10 text-[10px] label-mono text-cyan-300 mb-6 reveal">
-            <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
-            <span>CRÉATION WEB & SAAS SUR-MESURE : PME, TPE & ASSOCIATIONS</span>
-          </div>
-
           {/* Heading */}
-          <h1 className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">
+          <h1 className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.01] tracking-tight">
             <span className="line">
               <span>Création de sites web <span className="inline-block whitespace-nowrap">sur&#8209;mesure</span></span>
             </span>
@@ -43,7 +37,7 @@ export default function Hero() {
           </h1>
 
           {/* Subtitle / Key Information Box */}
-          <div className="hero-sub mt-6 mb-8 p-4 md:p-5 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed backdrop-blur-sm shadow-[0_0_30px_rgba(46,143,224,0.1)]">
+          <div className="hero-sub mt-3 mb-5 p-3.5 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed backdrop-blur-sm shadow-[0_0_30px_rgba(46,143,224,0.1)]">
             <p className="font-semibold text-text-primary mb-1">
               <strong>Des sites rapides, clairs et efficaces :</strong>
             </p>
