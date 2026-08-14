@@ -125,6 +125,11 @@ export default defineConfig({
       const canonicalUrl = `https://www.devsupai.fr${cleanRoute === '/' ? '/' : cleanRoute}`;
       
       let cleanHtml = html;
+
+      // Remove hero image preloads on subpages to avoid console warnings about unused preloaded resources
+      if (cleanRoute !== '/') {
+        cleanHtml = cleanHtml.replace(/<link rel="preload" href="\/hero-bg-mockup.*?"\s*\/?>/g, '');
+      }
       
       // Inject organization data on homepage
       if (cleanRoute === '/') {

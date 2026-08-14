@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import 'lenis/dist/lenis.css';
@@ -29,39 +28,14 @@ export default function Layout({ children }: LayoutProps) {
       window.scrollTo(0, 0);
     }
   }, [pathname, hash]);
-
-  const pageVariants = {
-    initial: {
-      opacity: 0,
-      y: 12,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.35,
-        ease: [0.65, 0, 0.35, 1] as const,
-      },
-    },
-  };
-
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
       <Navbar />
 
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={pathname}
-          initial={false}
-          animate="animate"
-          exit="initial"
-          variants={pageVariants}
-          className="min-h-screen bg-transparent text-text-primary selection:bg-accent/30 relative z-10"
-        >
-          {children || <Outlet />}
-          <Footer />
-        </motion.div>
-      </AnimatePresence>
+      <div className="min-h-screen bg-transparent text-text-primary selection:bg-accent/30 relative z-10">
+        {children || <Outlet />}
+        <Footer />
+      </div>
     </ReactLenis>
   );
 }
