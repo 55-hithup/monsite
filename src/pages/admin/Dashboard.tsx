@@ -39,21 +39,21 @@ const initialDefaultReviews = [
     role: "Fondateur, Mercier Rénovation & Bois",
     quote: "« Passer d'un ancien template WordPress lent à un site sur-mesure développé par Alexandre a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement. Un investissement très vite rentabilisé. »",
     rating: 5,
-    approved: true,
+    approved: false,
   },
   {
     name: "Dr. Sophie Laurent",
     role: "Chirurgien-Dentiste, Cabinet Dentaire",
     quote: "« Alexandre a su concevoir un site à la fois épuré, rassurant et ultra-rapide pour nos patients. La navigation sur smartphone est parfaite, les informations sont claires et nous avons d'excellents retours au quotidien. Un professionnalisme rare et un suivi exemplaire. »",
     rating: 5,
-    approved: true,
+    approved: false,
   },
   {
     name: "Julien Caron",
     role: "Directeur Général, LogiMat Outils",
     quote: "« Nous avions besoin d'une interface sur-mesure performante et d'une vitrine moderne pour nos clients professionnels. Le site charge en un clin d'œil et nos équipes gagnent un temps précieux dans le suivi des demandes. Alexandre a parfaitement cerné nos enjeux. »",
     rating: 5,
-    approved: true,
+    approved: false,
   },
   {
     name: "Claire Dubosc",
@@ -341,25 +341,30 @@ export default function Dashboard() {
     }
   };
 
-  // Sync the 3 target reviews directly into Firestore
+  // Sync the 3 target reviews directly into Firestore as PENDING (en attente)
   const handleSyncThreeReviews = async () => {
     if (!db) return;
     setIsImporting(true);
     try {
       const targetThree = initialDefaultReviews.slice(0, 3);
-      let addedCount = 0;
       for (const item of targetThree) {
-        const alreadyExists = reviews.some((r) => r.name.toLowerCase() === item.name.toLowerCase());
-        if (!alreadyExists) {
+        const existing = reviews.find((r) => r.name.toLowerCase() === item.name.toLowerCase());
+        if (existing) {
+          // If already in Firestore, update approved to false to move it to 'En attente'
+          const docRef = doc(db, 'testimonials', existing.id);
+          await updateDoc(docRef, { approved: false });
+        } else {
+          // Otherwise, insert as new pending review
           await addDoc(collection(db, 'testimonials'), {
             ...item,
+            approved: false,
             avatar: null,
             created_at: new Date(),
           });
-          addedCount++;
         }
       }
-      showNotification(addedCount > 0 ? `${addedCount} avis injecté(s) dans le Dashboard !` : 'Les 3 avis sont déjà présents dans le Dashboard.');
+      setFilter('pending');
+      showNotification('3 avis placés dans l\'onglet « En attente » !');
     } catch (err) {
       console.error('Error syncing 3 reviews:', err);
       alert("Une erreur est survenue lors de l'ajout des avis.");
@@ -465,10 +470,10 @@ export default function Dashboard() {
             <button
               onClick={handleSyncThreeReviews}
               disabled={isImporting}
-              className="px-3.5 py-2 bg-[#1b223d] hover:bg-[#232c4f] border border-[rgba(245,246,250,0.1)] text-xs font-medium text-purple-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-3.5 py-2 bg-yellow-500/15 hover:bg-yellow-500/25 border border-yellow-500/30 text-xs font-semibold text-yellow-300 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
             >
-              <DownloadCloud size={14} className="text-[#2E8FE0]" />
-              <span>{isImporting ? 'Injection...' : 'Injecter les 3 avis'}</span>
+              <DownloadCloud size={14} className="text-yellow-400" />
+              <span>{isImporting ? 'Injection...' : 'Injecter 3 avis en attente'}</span>
             </button>
 
             {reviews.length === 0 && (
