@@ -61,7 +61,9 @@ const createImage = (url: string): Promise<HTMLImageElement> =>
     const image = new Image();
     image.addEventListener('load', () => resolve(image));
     image.addEventListener('error', (err) => reject(err));
-    image.setAttribute('crossOrigin', 'anonymous');
+    if (!url.startsWith('data:') && !url.startsWith('blob:')) {
+      image.setAttribute('crossOrigin', 'anonymous');
+    }
     image.src = url;
   });
 
@@ -170,13 +172,10 @@ function TestimonialCard({
       {/* Author information */}
       <div className="testi-person flex items-center gap-3.5 mt-6 pt-4 border-t border-[rgba(245,246,250,0.06)]">
         {testi.avatar ? (
-          <div
-            className="testi-avatar w-10 h-10 rounded-full flex-shrink-0 border border-[rgba(245,246,250,0.12)]"
-            style={{
-              backgroundImage: `url(${testi.avatar})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+          <img
+            src={testi.avatar}
+            alt={testi.name}
+            className="w-10 h-10 rounded-full flex-shrink-0 object-cover border border-[rgba(245,246,250,0.15)] bg-[#1b223d]"
           />
         ) : (
           <div className="w-10 h-10 rounded-full flex-shrink-0 bg-gradient-to-br from-[#2E8FE0]/40 to-[#6B4FE0]/40 border border-[rgba(245,246,250,0.12)] flex items-center justify-center text-xs font-bold text-text-primary">

@@ -14,7 +14,9 @@ import {
   Pencil, 
   Plus, 
   X, 
-  DownloadCloud 
+  DownloadCloud,
+  Camera,
+  Check
 } from 'lucide-react';
 import type { Area, Point } from 'react-easy-crop';
 import { auth, db } from '../../lib/firebase';
@@ -84,11 +86,13 @@ const createImage = (url: string): Promise<HTMLImageElement> =>
     const image = new Image();
     image.addEventListener('load', () => resolve(image));
     image.addEventListener('error', (err) => reject(err));
-    image.setAttribute('crossOrigin', 'anonymous');
+    if (!url.startsWith('data:') && !url.startsWith('blob:')) {
+      image.setAttribute('crossOrigin', 'anonymous');
+    }
     image.src = url;
   });
 
-async function getCroppedImg(imageSrc: string, pixelCrop: Area): Promise<string> {
+async function getCroppedImg(imageSrc: string, pixelCrop: Area | null): Promise<string> {
   const image = await createImage(imageSrc);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -98,19 +102,24 @@ async function getCroppedImg(imageSrc: string, pixelCrop: Area): Promise<string>
   canvas.width = 120;
   canvas.height = 120;
 
+  const cropX = pixelCrop ? Math.max(0, pixelCrop.x) : 0;
+  const cropY = pixelCrop ? Math.max(0, pixelCrop.y) : 0;
+  const cropW = pixelCrop && pixelCrop.width ? pixelCrop.width : (image.naturalWidth || image.width);
+  const cropH = pixelCrop && pixelCrop.height ? pixelCrop.height : (image.naturalHeight || image.height);
+
   ctx.drawImage(
     image,
-    pixelCrop.x,
-    pixelCrop.y,
-    pixelCrop.width,
-    pixelCrop.height,
+    cropX,
+    cropY,
+    cropW,
+    cropH,
     0,
     0,
     120,
     120
   );
 
-  return canvas.toDataURL('image/webp', 0.75);
+  return canvas.toDataURL('image/webp', 0.8);
 }
 
 export default function Dashboard() {
@@ -257,7 +266,7 @@ export default function Dashboard() {
 
   const applyCroppedImage = async () => {
     try {
-      if (imageSrc && croppedAreaPixels) {
+      if (imageSrc) {
         const cropped = await getCroppedImg(imageSrc, croppedAreaPixels);
         setFormAvatar(cropped);
         setImageSrc(null);
@@ -279,6 +288,17 @@ export default function Dashboard() {
 
     setIsSaving(true);
     try {
+      let finalAvatar = formAvatar;
+
+      // If an image was loaded in the cropper, auto-crop it before saving!
+      if (imageSrc) {
+        try {
+          finalAvatar = await getCroppedImg(imageSrc, croppedAreaPixels);
+        } catch (cropErr) {
+          console.error('Error auto-cropping avatar on save:', cropErr);
+        }
+      }
+
       const formattedQuote = `« ${formQuote.trim()} »`;
       if (editingReview) {
         // Update existing review
@@ -289,9 +309,9 @@ export default function Dashboard() {
           quote: formattedQuote,
           rating: formRating,
           approved: formApproved,
-          avatar: formAvatar || null,
+          avatar: finalAvatar || null,
         });
-        showNotification('Avis mis à jour avec succès !');
+        showNotification('Avis et photo enregistrés avec succès !');
       } else {
         // Create new review
         await addDoc(collection(db, 'testimonials'), {
@@ -300,7 +320,7 @@ export default function Dashboard() {
           quote: formattedQuote,
           rating: formRating,
           approved: formApproved,
-          avatar: formAvatar || null,
+          avatar: finalAvatar || null,
           created_at: new Date(),
         });
         showNotification('Nouvel avis ajouté avec succès !');
@@ -515,7 +535,7 @@ export default function Dashboard() {
               onClick={() => setFilter('pending')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
                 filter === 'pending' 
-                  ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30' 
+                  ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 font-bold' 
                   : 'text-text-secondary hover:text-text-primary'
               }`}
             >
@@ -535,7 +555,7 @@ export default function Dashboard() {
             </button>
           </div>
 
-          {reviews.length > 0 && reviews.length < 5 && (
+          {reviews.length > 0 && reviews.length < 6 && (
             <button
               onClick={handleImportDefaults}
               disabled={isImporting}
@@ -551,16 +571,14 @@ export default function Dashboard() {
         {filteredReviews.length === 0 ? (
           <div className="p-12 rounded-2xl bg-[#121729]/30 border border-dashed border-[rgba(245,246,250,0.06)] text-center text-text-secondary text-sm">
             <p className="mb-3">Aucun avis trouvé dans cette catégorie.</p>
-            {reviews.length === 0 && (
-              <button
-                onClick={handleImportDefaults}
-                disabled={isImporting}
-                className="px-4 py-2 bg-[#2E8FE0] text-xs font-bold text-white rounded-lg transition-colors cursor-pointer inline-flex items-center gap-2"
-              >
-                <DownloadCloud size={14} />
-                <span>Importer les 5 avis initiaux dans Firestore</span>
-              </button>
-            )}
+            <button
+              onClick={handleSyncThreeReviews}
+              disabled={isImporting}
+              className="px-4 py-2 bg-yellow-500/20 hover:bg-yellow-500/30 border border-yellow-500/40 text-xs font-bold text-yellow-300 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-2"
+            >
+              <DownloadCloud size={14} />
+              <span>Injecter 3 avis en attente de modération</span>
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -578,9 +596,10 @@ export default function Dashboard() {
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex items-center gap-3">
                       {review.avatar ? (
-                        <div 
-                          className="w-10 h-10 rounded-full border border-[rgba(245,246,250,0.12)] flex-shrink-0"
-                          style={{ backgroundImage: `url(${review.avatar})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                        <img 
+                          src={review.avatar}
+                          alt={review.name}
+                          className="w-10 h-10 rounded-full object-cover border border-[rgba(245,246,250,0.15)] flex-shrink-0 bg-[#1b223d]"
                         />
                       ) : (
                         <div className="w-10 h-10 rounded-full flex-shrink-0 bg-gradient-to-br from-[#2E8FE0]/40 to-[#6B4FE0]/40 border border-[rgba(245,246,250,0.12)] flex items-center justify-center text-xs font-bold text-text-primary">
@@ -643,7 +662,7 @@ export default function Dashboard() {
                       className={`px-2.5 py-1.5 text-[11px] font-semibold rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
                         review.approved
                           ? 'bg-[#1b223d] hover:bg-[#232c4f] text-purple-300'
-                          : 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300'
+                          : 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-bold'
                       }`}
                       aria-label={review.approved ? "Masquer cet avis" : "Publier cet avis"}
                     >
@@ -744,37 +763,49 @@ export default function Dashboard() {
 
               {/* Avatar management */}
               <div>
-                <label className="block text-[10px] label-mono text-purple-300 uppercase mb-1">Photo / Avatar</label>
+                <label className="block text-[10px] label-mono text-purple-300 uppercase mb-1">Photo de profil / Avatar</label>
                 {!imageSrc ? (
                   <div className="flex items-center gap-4 p-3 rounded-xl bg-[#070913]/60 border border-[rgba(245,246,250,0.08)]">
                     {formAvatar ? (
-                      <div 
-                        className="w-12 h-12 rounded-full border border-[rgba(245,246,250,0.2)] flex-shrink-0"
-                        style={{ backgroundImage: `url(${formAvatar})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                      />
+                      <div className="relative flex-shrink-0">
+                        <img 
+                          src={formAvatar}
+                          alt="Avatar sélectionné"
+                          className="w-14 h-14 rounded-full object-cover border-2 border-emerald-400 shadow-md"
+                        />
+                        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] shadow">
+                          <Check size={12} strokeWidth={3} />
+                        </div>
+                      </div>
                     ) : (
-                      <div className="w-12 h-12 rounded-full bg-[#1b223d] border border-[rgba(245,246,250,0.1)] flex items-center justify-center text-xs font-bold text-text-secondary">
-                        Aucun
+                      <div className="w-14 h-14 rounded-full bg-[#1b223d] border border-dashed border-[rgba(245,246,250,0.2)] flex flex-col items-center justify-center text-text-secondary flex-shrink-0">
+                        <Camera size={18} />
                       </div>
                     )}
                     
-                    <div className="flex flex-wrap gap-2">
-                      <button
-                        type="button"
-                        onClick={() => fileInputRef.current?.click()}
-                        className="px-3 py-1.5 bg-[#1b223d] hover:bg-[#232c4f] border border-[rgba(245,246,250,0.1)] text-xs text-text-primary rounded-lg transition-colors cursor-pointer"
-                      >
-                        {formAvatar ? 'Changer de photo' : 'Importer une photo'}
-                      </button>
-                      {formAvatar && (
+                    <div className="flex-1 space-y-1.5">
+                      <div className="flex flex-wrap gap-2">
                         <button
                           type="button"
-                          onClick={() => setFormAvatar(null)}
-                          className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 transition-colors cursor-pointer"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="px-3 py-1.5 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
                         >
-                          Supprimer la photo
+                          <Camera size={13} />
+                          <span>{formAvatar ? 'Changer de photo' : 'Importer une photo'}</span>
                         </button>
-                      )}
+                        {formAvatar && (
+                          <button
+                            type="button"
+                            onClick={() => setFormAvatar(null)}
+                            className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 transition-colors cursor-pointer"
+                          >
+                            Supprimer la photo
+                          </button>
+                        )}
+                      </div>
+                      <p className="text-[10px] label-mono text-text-secondary">
+                        {formAvatar ? 'Photo configurée et prête à être enregistrée' : 'JPG, PNG ou WebP. La photo sera automatiquement recadrée et optimisée.'}
+                      </p>
                     </div>
                     <input 
                       ref={fileInputRef} 
@@ -785,8 +816,12 @@ export default function Dashboard() {
                     />
                   </div>
                 ) : (
-                  <div className="space-y-3 p-3 rounded-xl bg-[#070913]/90 border border-[rgba(245,246,250,0.15)]">
-                    <div className="relative w-full h-44 rounded-lg overflow-hidden bg-black/60">
+                  <div className="space-y-3 p-3 rounded-xl bg-[#070913]/90 border border-[#2E8FE0]/40 shadow-inner">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-purple-300">Ajustez et cadrez la photo :</span>
+                      <span className="text-[10px] label-mono text-text-secondary">Le cadrage sera validé automatiquement</span>
+                    </div>
+                    <div className="relative w-full h-44 rounded-lg overflow-hidden bg-black/60 border border-[rgba(245,246,250,0.1)]">
                       <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-text-secondary">Chargement...</div>}>
                         <Cropper
                           image={imageSrc}
@@ -814,7 +849,7 @@ export default function Dashboard() {
                         aria-label="Zoom photo"
                       />
                     </div>
-                    <div className="flex justify-end gap-2">
+                    <div className="flex justify-end gap-2 pt-1">
                       <button
                         type="button"
                         onClick={() => setImageSrc(null)}
@@ -825,9 +860,10 @@ export default function Dashboard() {
                       <button
                         type="button"
                         onClick={applyCroppedImage}
-                        className="px-3 py-1.5 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-xs font-bold text-white rounded-lg cursor-pointer"
+                        className="px-3 py-1.5 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-xs font-bold text-white rounded-lg cursor-pointer flex items-center gap-1"
                       >
-                        Valider le recadrage
+                        <Check size={13} />
+                        <span>Valider le cadrage</span>
                       </button>
                     </div>
                   </div>
@@ -876,7 +912,7 @@ export default function Dashboard() {
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="px-5 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer shadow-md"
+                  className="px-5 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer shadow-md flex items-center gap-1.5"
                   style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
                 >
                   {isSaving ? 'Enregistrement...' : editingReview ? 'Enregistrer les modifications' : 'Créer le témoignage'}
