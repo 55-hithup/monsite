@@ -73,10 +73,16 @@ export async function getFirebaseDb() {
     const app = await getFirebaseApp();
     if (!app) return null;
     try {
-      const { getFirestore } = await import('firebase/firestore');
-      dbInstance = getFirestore(app);
+      const { initializeFirestore, memoryLocalCache, getFirestore } = await import('firebase/firestore');
+      try {
+        dbInstance = initializeFirestore(app, { localCache: memoryLocalCache() });
+      } catch (initErr) {
+        // Fallback in case initializeFirestore was already called on this app instance
+        console.warn('initializeFirestore fallback to getFirestore:', initErr);
+        dbInstance = getFirestore(app);
+      }
     } catch (err) {
-      console.error('Failed to get Firestore dynamically:', err);
+      console.error('Failed to initialize Firestore with memory cache dynamically:', err);
       return null;
     }
   }
