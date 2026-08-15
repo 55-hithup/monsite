@@ -276,12 +276,15 @@ export default function Testimonials() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    async function loadTestimonials() {
+    
+    let observer: IntersectionObserver | null = null;
+    const sectionEl = document.getElementById('apropos');
+
+    const fetchReviews = async () => {
       try {
-        const { db } = await import('../lib/firebase');
-        if (!db) {
-          return;
-        }
+        const { getFirebaseDb } = await import('../lib/firebase');
+        const db = await getFirebaseDb();
+        if (!db) return;
         const { collection, query, where, getDocs } = await import('firebase/firestore');
         const q = query(
           collection(db, 'testimonials'),
@@ -315,13 +318,28 @@ export default function Testimonials() {
       } catch (err) {
         console.error('Error fetching testimonials:', err);
       }
+    };
+
+    if (sectionEl) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if ('requestIdleCallback' in window) {
+              (window as any).requestIdleCallback(fetchReviews, { timeout: 3000 });
+            } else {
+              setTimeout(fetchReviews, 1000);
+            }
+            if (observer) observer.disconnect();
+          }
+        },
+        { rootMargin: '200px' }
+      );
+      observer.observe(sectionEl);
     }
 
-    if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(() => loadTestimonials(), { timeout: 2500 });
-    } else {
-      setTimeout(loadTestimonials, 1500);
-    }
+    return () => {
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   const totalItems = list.length;
@@ -483,7 +501,8 @@ export default function Testimonials() {
 
     setSubmitting(true);
     try {
-      const { db } = await import('../lib/firebase');
+      const { getFirebaseDb } = await import('../lib/firebase');
+      const db = await getFirebaseDb();
       if (!db) {
         alert("La base de données n'est pas initialisée pour le moment.");
         setSubmitting(false);

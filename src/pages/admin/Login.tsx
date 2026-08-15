@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { AlertCircle } from 'lucide-react';
-import { auth } from '../../lib/firebase';
+import { getFirebaseAuth } from '../../lib/firebase';
 import SectionReveal from '../../components/SectionReveal';
 
 export default function Login() {
@@ -13,18 +12,34 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!auth) {
-      setError("Le service d'authentification Firebase n'est pas configuré. Veuillez renseigner vos variables d'environnement dans Vercel.");
-      return;
-    }
-    setError('');
-    // If already logged in, redirect straight to dashboard
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate('/admin/avis');
+    let unsubscribe: (() => void) | undefined;
+    let isMounted = true;
+
+    async function initAuth() {
+      const auth = await getFirebaseAuth();
+      if (!isMounted) return;
+      if (!auth) {
+        setError("Le service d'authentification Firebase n'est pas configuré. Veuillez renseigner vos variables d'environnement dans Vercel.");
+        return;
       }
-    });
-    return () => unsubscribe();
+      setError('');
+      try {
+        const { onAuthStateChanged } = await import('firebase/auth');
+        unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user && isMounted) {
+            navigate('/admin/avis');
+          }
+        });
+      } catch (err) {
+        console.error('Error listening to auth state:', err);
+      }
+    }
+
+    initAuth();
+    return () => {
+      isMounted = false;
+      if (unsubscribe) unsubscribe();
+    };
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -33,14 +48,17 @@ export default function Login() {
       setError('Veuillez remplir tous les champs.');
       return;
     }
-    if (!auth) {
-      setError("Le service d'authentification n'est pas disponible.");
-      return;
-    }
-    setError('');
+
     setLoading(true);
+    setError('');
 
     try {
+      const auth = await getFirebaseAuth();
+      if (!auth) {
+        setError("Le service d'authentification n'est pas disponible.");
+        return;
+      }
+      const { signInWithEmailAndPassword } = await import('firebase/auth');
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/admin/avis');
     } catch (err: any) {

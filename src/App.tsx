@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider, useRouteError, Link } from 'react-
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Layout from './components/Layout';
-import Home from './pages/Home';
 
 // Global Error Boundary to catch any rendering errors without crashing the entire app
 interface ErrorBoundaryProps {
@@ -95,8 +94,8 @@ function lazyWithRetry<T extends React.ComponentType<any>>(
   });
 }
 
-// Eagerly loaded for instant LCP on homepage
 // Lazy loaded routes with auto-reload protection for optimal bundle splitting
+const Home = lazyWithRetry(() => import('./pages/Home'));
 const Services = lazyWithRetry(() => import('./pages/Services'));
 const About = lazyWithRetry(() => import('./pages/About'));
 const Blog = lazyWithRetry(() => import('./pages/Blog'));
@@ -146,7 +145,7 @@ export const routes = [
     children: [
       {
         index: true,
-        element: <Home />,
+        element: renderLazy(Home),
       },
       {
         path: 'nos-services',
@@ -202,7 +201,7 @@ export const routes = [
       },
       {
         path: '*',
-        element: <Home />,
+        element: renderLazy(Home),
       },
     ],
   },

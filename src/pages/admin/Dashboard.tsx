@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signOut, onAuthStateChanged } from 'firebase/auth';
-import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { 
   LogOut, 
   Clock, 
@@ -19,7 +17,7 @@ import {
   Check
 } from 'lucide-react';
 import type { Area, Point } from 'react-easy-crop';
-import { auth, db } from '../../lib/firebase';
+import { getFirebaseAuth, getFirebaseDb } from '../../lib/firebase';
 import SectionReveal from '../../components/SectionReveal';
 
 const Cropper = lazy(() => import('react-easy-crop'));
@@ -160,60 +158,105 @@ export default function Dashboard() {
     }, 4000);
   };
 
+  const [configError, setConfigError] = useState(false);
+
   useEffect(() => {
-    if (!auth) {
-      navigate('/admin/login');
-      return;
-    }
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        navigate('/admin/login');
-      } else {
+    let unsubscribeAuth: (() => void) | undefined;
+    let isMounted = true;
+
+    async function initAuth() {
+      const auth = await getFirebaseAuth();
+      if (!isMounted) return;
+      if (!auth) {
+        setConfigError(true);
         setCheckingAuth(false);
+        return;
       }
-    });
-    return () => unsubscribeAuth();
+      try {
+        const { onAuthStateChanged } = await import('firebase/auth');
+        unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+          if (!isMounted) return;
+          if (!user) {
+            navigate('/admin/login');
+          } else {
+            setCheckingAuth(false);
+          }
+        });
+      } catch (err) {
+        console.error('Error in onAuthStateChanged:', err);
+        if (isMounted) setCheckingAuth(false);
+      }
+    }
+
+    initAuth();
+    return () => {
+      isMounted = false;
+      if (unsubscribeAuth) unsubscribeAuth();
+    };
   }, [navigate]);
 
   useEffect(() => {
-    if (checkingAuth || !db) return;
+    if (checkingAuth) return;
+    let unsubscribeSnapshot: (() => void) | undefined;
+    let isMounted = true;
 
-    const q = query(collection(db, 'testimonials'), orderBy('created_at', 'desc'));
-    const unsubscribeSnapshot = onSnapshot(
-      q,
-      async (snapshot) => {
-        const list: TestimonialDoc[] = [];
-        snapshot.forEach((docSnap) => {
-          list.push({ id: docSnap.id, ...docSnap.data() } as TestimonialDoc);
-        });
-
-        // Auto-seed initial reviews into Firestore if the collection is empty
-        if (list.length === 0 && !autoSeededRef.current) {
-          autoSeededRef.current = true;
-          try {
-            for (const item of initialDefaultReviews) {
-              await addDoc(collection(db, 'testimonials'), {
-                ...item,
-                avatar: null,
-                created_at: new Date(),
-              });
-            }
-            return;
-          } catch (err) {
-            console.error('Error auto-seeding testimonials:', err);
-          }
-        }
-
-        setReviews(list);
+    async function initReviews() {
+      const db = await getFirebaseDb();
+      if (!isMounted) return;
+      if (!db) {
+        setConfigError(true);
         setLoading(false);
-      },
-      (error) => {
-        console.error('Error fetching testimonials:', error);
-        setLoading(false);
+        return;
       }
-    );
 
-    return () => unsubscribeSnapshot();
+      try {
+        const { collection, query, orderBy, onSnapshot, addDoc } = await import('firebase/firestore');
+        const q = query(collection(db, 'testimonials'), orderBy('created_at', 'desc'));
+        unsubscribeSnapshot = onSnapshot(
+          q,
+          async (snapshot) => {
+            if (!isMounted) return;
+            const list: TestimonialDoc[] = [];
+            snapshot.forEach((docSnap) => {
+              list.push({ id: docSnap.id, ...docSnap.data() } as TestimonialDoc);
+            });
+
+            // Auto-seed initial reviews into Firestore if the collection is empty
+            if (list.length === 0 && !autoSeededRef.current) {
+              autoSeededRef.current = true;
+              try {
+                for (const item of initialDefaultReviews) {
+                  await addDoc(collection(db, 'testimonials'), {
+                    ...item,
+                    avatar: null,
+                    created_at: new Date(),
+                  });
+                }
+                return;
+              } catch (err) {
+                console.error('Error auto-seeding testimonials:', err);
+              }
+            }
+
+            setReviews(list);
+            setLoading(false);
+          },
+          (error) => {
+            console.error('Error fetching testimonials:', error);
+            if (isMounted) setLoading(false);
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Firestore modules:', err);
+        if (isMounted) setLoading(false);
+      }
+    }
+
+    initReviews();
+    return () => {
+      isMounted = false;
+      if (unsubscribeSnapshot) unsubscribeSnapshot();
+    };
   }, [checkingAuth]);
 
   // Open Edit Modal
@@ -280,7 +323,6 @@ export default function Dashboard() {
   // Save changes (Create or Update)
   const handleSaveReview = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!db) return;
     if (!formName.trim() || !formRole.trim() || !formQuote.trim()) {
       alert('Veuillez renseigner tous les champs obligatoires.');
       return;
@@ -288,6 +330,11 @@ export default function Dashboard() {
 
     setIsSaving(true);
     try {
+      const db = await getFirebaseDb();
+      if (!db) throw new Error("Base de données indisponible.");
+
+      const { doc, updateDoc, collection, addDoc } = await import('firebase/firestore');
+
       let finalAvatar = formAvatar;
 
       // If an image was loaded in the cropper, auto-crop it before saving!
@@ -336,8 +383,10 @@ export default function Dashboard() {
 
   // Toggle approval
   const handleToggleApprove = async (id: string, currentApproved: boolean) => {
-    if (!db) return;
     try {
+      const db = await getFirebaseDb();
+      if (!db) return;
+      const { doc, updateDoc } = await import('firebase/firestore');
       const docRef = doc(db, 'testimonials', id);
       await updateDoc(docRef, { approved: !currentApproved });
       showNotification(!currentApproved ? 'Avis publié sur le site !' : 'Avis masqué du site.');
@@ -349,9 +398,11 @@ export default function Dashboard() {
 
   // Delete review
   const handleDelete = async (id: string) => {
-    if (!db) return;
     if (!window.confirm('Voulez-vous vraiment supprimer définitivement cet avis ?')) return;
     try {
+      const db = await getFirebaseDb();
+      if (!db) return;
+      const { doc, deleteDoc } = await import('firebase/firestore');
       const docRef = doc(db, 'testimonials', id);
       await deleteDoc(docRef);
       showNotification('Avis supprimé définitivement.');
@@ -363,9 +414,12 @@ export default function Dashboard() {
 
   // Sync the 3 target reviews directly into Firestore as PENDING (en attente)
   const handleSyncThreeReviews = async () => {
-    if (!db) return;
     setIsImporting(true);
     try {
+      const db = await getFirebaseDb();
+      if (!db) throw new Error("Base de données indisponible.");
+      const { doc, updateDoc, collection, addDoc } = await import('firebase/firestore');
+
       const targetThree = initialDefaultReviews.slice(0, 3);
       for (const item of targetThree) {
         const existing = reviews.find((r) => r.name.toLowerCase() === item.name.toLowerCase());
@@ -395,11 +449,14 @@ export default function Dashboard() {
 
   // Import initial default reviews into Firestore
   const handleImportDefaults = async () => {
-    if (!db) return;
     if (!window.confirm('Voulez-vous importer les avis initiaux dans la base de données Firestore pour pouvoir les éditer ?')) return;
     
     setIsImporting(true);
     try {
+      const db = await getFirebaseDb();
+      if (!db) throw new Error("Base de données indisponible.");
+      const { collection, addDoc } = await import('firebase/firestore');
+
       for (const item of initialDefaultReviews) {
         await addDoc(collection(db, 'testimonials'), {
           ...item,
@@ -417,16 +474,19 @@ export default function Dashboard() {
   };
 
   const handleLogout = async () => {
-    if (!auth) return;
     try {
-      await signOut(auth);
+      const auth = await getFirebaseAuth();
+      if (auth) {
+        const { signOut } = await import('firebase/auth');
+        await signOut(auth);
+      }
       navigate('/admin/login');
     } catch (err) {
       console.error('Error signing out:', err);
     }
   };
 
-  if (!auth || !db) {
+  if (configError) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs p-4 text-center">
         <div className="max-w-md p-6 rounded-2xl bg-[#121729]/60 border border-red-500/20 shadow-2xl backdrop-blur-md flex flex-col items-center">

@@ -1,8 +1,17 @@
-import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+/**
+ * Lazy Firebase / Firestore Loader for DevSupAi
+ * 
+ * Guarantees zero Firebase SDK code and zero IndexedDB overhead on static pages
+ * (like case studies, blog articles, etc.). Firebase SDK modules (app, auth, firestore)
+ * are only imported dynamically when an explicit action (e.g. submitting a review,
+ * logging in, or opening the admin dashboard) actually requests them.
+ */
 
-const getSavedConfig = () => {
+let appInstance: any = null;
+let authInstance: any = null;
+let dbInstance: any = null;
+
+export const getFirebaseConfig = () => {
   if (typeof window === 'undefined') return null;
   try {
     const saved = localStorage.getItem('devsupai_firebase_config');
@@ -15,36 +24,66 @@ const getSavedConfig = () => {
   } catch (e) {
     console.error('Error reading Firebase config from localStorage:', e);
   }
-  return null;
+  return {
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyAiuLFD7qoQIP7V2Dd5bqIPv49fcmZ48O4',
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'site-devsupai.firebaseapp.com',
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'site-devsupai',
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'site-devsupai.firebasestorage.app',
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '201980154348',
+    appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:201980154348:web:417b16adb5ae1885efb0c9',
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || 'G-DDENM5JMMN',
+  };
 };
 
-const savedConfig = getSavedConfig();
-
-const firebaseConfig = savedConfig || {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyAiuLFD7qoQIP7V2Dd5bqIPv49fcmZ48O4',
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'site-devsupai.firebaseapp.com',
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'site-devsupai',
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'site-devsupai.firebasestorage.app',
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '201980154348',
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:201980154348:web:417b16adb5ae1885efb0c9',
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || 'G-DDENM5JMMN',
-};
-
-let app: any = null;
-let auth: any = null;
-let db: any = null;
-
-if (firebaseConfig.apiKey) {
-  try {
-    app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-    auth = getAuth(app);
-    db = getFirestore(app);
-  } catch (error) {
-    console.error('Failed to initialize Firebase:', error);
+export async function getFirebaseApp() {
+  if (typeof window === 'undefined') return null;
+  if (!appInstance) {
+    const config = getFirebaseConfig();
+    if (!config || !config.apiKey) return null;
+    try {
+      const { initializeApp, getApps, getApp } = await import('firebase/app');
+      appInstance = getApps().length === 0 ? initializeApp(config) : getApp();
+    } catch (err) {
+      console.error('Failed to initialize Firebase App dynamically:', err);
+      return null;
+    }
   }
-} else {
-  console.warn('Firebase environment variables are missing. Testimonial DB features will be disabled.');
+  return appInstance;
 }
 
-export { auth, db };
-export default app;
+export async function getFirebaseAuth() {
+  if (typeof window === 'undefined') return null;
+  if (!authInstance) {
+    const app = await getFirebaseApp();
+    if (!app) return null;
+    try {
+      const { getAuth } = await import('firebase/auth');
+      authInstance = getAuth(app);
+    } catch (err) {
+      console.error('Failed to get Firebase Auth dynamically:', err);
+      return null;
+    }
+  }
+  return authInstance;
+}
+
+export async function getFirebaseDb() {
+  if (typeof window === 'undefined') return null;
+  if (!dbInstance) {
+    const app = await getFirebaseApp();
+    if (!app) return null;
+    try {
+      const { getFirestore } = await import('firebase/firestore');
+      dbInstance = getFirestore(app);
+    } catch (err) {
+      console.error('Failed to get Firestore dynamically:', err);
+      return null;
+    }
+  }
+  return dbInstance;
+}
+
+// Fallback getters for backward compatibility
+export const auth = null;
+export const db = null;
+export default null;
