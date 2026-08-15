@@ -33,7 +33,7 @@ export default function About() {
                 <li className="flex gap-3">
                   <span className="text-accent font-bold">01/</span>
                   <div>
-                    <strong className="text-text-primary">Performance Absolue :</strong> Des sites qui chargent en moins de 500ms, visant un score parfait de 100/100 sur Lighthouse.
+                    <strong className="text-text-primary">Performance Absolue :</strong> Des sites qui chargent en moins de 500ms, bâtis sur une architecture ultra-légère pour maximiser vos scores Google.
                   </div>
                 </li>
                 <li className="flex gap-3">

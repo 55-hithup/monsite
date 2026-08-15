@@ -10,7 +10,7 @@ export default function FAQ() {
   const faqColumnLeft = [
     {
       q: 'Comment est défini le tarif d\'un projet sur-mesure ?',
-      short: 'Nos forfaits sont transparents et adaptés à vos besoins réels : dès 690 € pour le Pack Présence (One-Page), dès 1 350 € pour le Pack Croissance (site vitrine 3 à 5 pages), et dès 2 450 € pour une application web ou un outil SaaS sur-mesure (base TJM 350 €).',
+      short: 'Mes forfaits sont transparents et adaptés à vos besoins réels : dès 690 € pour le Pack Présence (One-Page), dès 1 350 € pour le Pack Croissance (site vitrine 3 à 5 pages), et dès 2 450 € pour une application web ou un outil SaaS sur-mesure (base TJM 350 €).',
       detail: 'Chaque projet fait l\'objet d\'un devis détaillé chiffrant exactement ce dont vous avez besoin, sans frais cachés ni abonnements obligatoires de plugins.',
     },
     {
@@ -38,7 +38,7 @@ export default function FAQ() {
     },
     {
       q: 'Quels sont les frais récurrents à prévoir (hébergement & domaine) ?',
-      short: 'L\'hébergement sécurisé haute performance et votre nom de domaine sont inclus la première année dans nos forfaits.',
+      short: 'L\'hébergement sécurisé haute performance et votre nom de domaine sont inclus la première année dans chaque forfait.',
       detail: 'Par la suite, le coût technique direct de renouvellement reste minime (généralement entre 40 € et 90 € par an selon l\'envergure du projet), sans surcoût imposé.',
     },
     {
@@ -79,7 +79,7 @@ export default function FAQ() {
           <div className="eyebrow reveal justify-center">FOIRE AUX QUESTIONS</div>
           <h2 className="section-title reveal mt-2">Questions fréquentes</h2>
           <p className="text-sm text-text-secondary mt-3 reveal max-w-2xl mx-auto">
-            Retrouvez nos réponses claires sur les tarifs, la propriété du code, les délais et le suivi de vos projets.
+            Retrouvez des réponses claires sur les tarifs, la propriété du code, les délais et le suivi de vos projets.
           </p>
         </div>
 

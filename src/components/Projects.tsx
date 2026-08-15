@@ -49,11 +49,11 @@ export default function Projects() {
             <div className="eyebrow">RÉALISATIONS & ÉTUDES DE CAS</div>
             
             <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight">
-              Nos réalisations et études de cas sur-mesure
+              Réalisations et études de cas sur-mesure
             </h2>
 
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
-              Découvrez comment nous concevons des outils et des sites adaptés aux besoins réels de chaque activité : du logiciel SaaS métier à la vitrine de restaurant avec réservation en ligne, en passant par des plateformes interactives en direct.
+              Découvrez comment je conçois des outils et des sites adaptés aux besoins réels de chaque activité : du logiciel SaaS métier à la vitrine de restaurant avec réservation en ligne, en passant par des plateformes interactives en direct.
             </p>
 
             <div className="space-y-2.5 sm:space-y-3 pt-2 border-y border-[rgba(245,246,250,0.08)] py-4">

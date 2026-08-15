@@ -10,7 +10,7 @@ const steps: StepItem[] = [
   {
     num: '01',
     title: 'Échange & Besoins',
-    desc: 'Nous échangeons sans jargon sur vos objectifs, vos utilisateurs et les fonctionnalités indispensables pour votre activité.',
+    desc: 'J\'échange sans jargon avec vous sur vos objectifs, vos utilisateurs et les fonctionnalités indispensables pour votre activité.',
   },
   {
     num: '02',

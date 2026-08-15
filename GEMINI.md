@@ -40,3 +40,11 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
 
 ## 8. Modération des Avis et Témoignages par défaut
 * **Validation humaine préalable :** Tout avis client généré, injecté ou créé dans le cadre d'exemples doit impérativement être configuré avec `approved: false` (statut « En attente de modération ») pour garantir un contrôle humain exclusif par l'administrateur avant toute mise en ligne publique.
+
+## 9. Standards Typographiques & Tailles Minimales de Police (Font-Size & A11y)
+* **Taille minimale absolue :** Interdiction stricte d'utiliser des tailles de police inférieures à `11px` ou `12px` (bannir définitivement `text-[9px]`, `text-[10px]` ou équivalents en CSS).
+* **Paliers d'accessibilité mobile & desktop :**
+  * **Badges, labels mono, métadonnées, surtitres :** Minimum `12px` (`text-xs` / `0.75rem`), tolérance `11px` (`text-[11px]`) exclusivement pour les tags très courts en majuscules d'appoint.
+  * **Corps de texte / paragraphes courants :** `14px` (`text-sm`) à `16px` (`text-base` / `text-text-primary`) avec un `line-height` aéré (>= 1.6).
+  * **Titres & Sous-titres :** Typographie soignée avec tracking calibré (lettrage resserré sur les grands titres `<h1>`/`<h2>`, tracking positif sur les labels mono).
+

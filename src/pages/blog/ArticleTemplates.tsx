@@ -74,7 +74,7 @@ export default function ArticleTemplates() {
 
           <h2 className="text-lg font-bold text-text-primary pt-4">Comment un template pénalise-t-il le référencement SEO de votre PME ?</h2>
           <p>
-            Depuis le déploiement des Core Web Vitals, Google utilise la vitesse de chargement et la réactivité de l'interface comme critères de positionnement majeurs. Un site bâti sur un template lourd a très peu de chances d'atteindre un score Lighthouse de 100%. En choisissant le sur-mesure, vous donnez à votre site une structure ultra-légère et sémantiquement irréprochable pour séduire l'algorithme de Google.
+            Depuis le déploiement des Core Web Vitals, Google utilise la vitesse de chargement et la réactivité de l'interface comme critères de positionnement majeurs. Un site bâti sur un template lourd a très peu de chances d'obtenir d'excellents scores de performance. En choisissant le sur-mesure, vous donnez à votre site une structure ultra-légère et sémantiquement irréprochable pour séduire l'algorithme de Google.
           </p>
 
           <h2 className="text-lg font-bold text-text-primary pt-4">Pourquoi le design d'un template nuit-il à l'image de votre entreprise ?</h2>

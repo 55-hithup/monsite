@@ -1,6 +1,6 @@
 # DevSupAi - Création de Sites Web & Applications Sur-Mesure pour PME et Associations
 
-> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, spécialisée dans la création d'applications, plateformes SaaS et sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP) pour les PME, TPE et Associations. Notre crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée, absence de dette technique et structure de code épurée pour les moteurs de recherche.
+> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, développeur web freelance spécialisé dans la création d'applications, plateformes SaaS et sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP) pour les PME, TPE et Associations. Son crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée, absence de dette technique et structure de code épurée pour les moteurs de recherche.
 
 ## Informations de contact
 - Site officiel : https://www.devsupai.fr
@@ -8,7 +8,7 @@
 - Adresse : 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, France)
 
 ## Forfaits et Tarifs Transparent
-- **Pack Présence (One-Page / Landing Page)** : Dès 690 € (vitesse 100/100, formulaire sécurisé, SEO initial, sans abonnement captif).
+- **Pack Présence (One-Page / Landing Page)** : Dès 690 € (vitesse éclair, formulaire sécurisé, SEO initial, sans abonnement captif).
 - **Pack Croissance (Site Vitrine 3 à 5 pages)** : Dès 1 350 € (design moderne sur-mesure, animations GSAP, référencement local, avis clients).
 - **Pack SaaS & Outils Métiers** : Dès 2 450 € ou sur devis basé sur un TJM de 350 € (gestion de parc, systèmes de réservation, tableaux de bord).
 - **Gestion Google Business Profile & SEO Local (Mensuel)** : Formule Starter à 29 €/mois, Formule Boost à 99-179 €/mois.
@@ -21,7 +21,7 @@
 ## Plan du Site (URLs)
 
 - [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les services de développement web sur-mesure pour PME et Associations, les prestations, le comparatif, la section réalisations et la FAQ réaliste.
-- [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 prestations et solutions informatiques (sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS, maintenance et refonte) avec filtrage interactif par catégorie et profil métier.
+- [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 prestations et solutions informatiques (sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS, maintenance et refonte) avec 4 pôles stratégiques, filtrage interactif par catégorie et profil métier, méthodologie en 4 étapes et FAQ détaillée.
 - [/a-propos](https://www.devsupai.fr/a-propos) : Philosophie de code propre sans compromis et présentation du développeur fondateur Alexandre Pabst.
 - Études de Cas & Réalisations :
   - [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas sur le site vitrine et le système de réservation sur-mesure du restaurant "Les Jumeaux".

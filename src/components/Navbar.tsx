@@ -45,7 +45,7 @@ export default function Navbar() {
   ];
 
   const mainLinks = [
-    { label: 'nos prestations', href: '/nos-services' },
+    { label: 'prestations', href: '/nos-services' },
     { label: 'réalisations', href: '/#projets' },
     { label: 'offres', href: '/#services' },
     { label: 'comparatif', href: '/#comparatif' },
@@ -134,8 +134,8 @@ export default function Navbar() {
                 className="absolute top-full right-0 pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
               >
                 <div className="w-72 p-3 bg-[#0B0F1E]/95 border border-[rgba(245,246,250,0.12)] rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl text-left">
-                  <div className="px-3 py-1.5 text-[11px] label-mono text-purple-300 font-bold tracking-wider uppercase border-b border-[rgba(245,246,250,0.06)] mb-2">
-                    NOS ÉTUDES DE CAS
+                  <div className="px-3 py-1.5 text-[11px] label-mono text-[#38BDF8] font-bold tracking-wider uppercase border-b border-[rgba(245,246,250,0.06)] mb-2">
+                    ÉTUDES DE CAS & PROJETS
                   </div>
 
                   <div className="space-y-1">
@@ -226,8 +226,8 @@ export default function Navbar() {
 
               {/* Case Studies */}
               <div className="space-y-3 text-left">
-                <div className="text-[11px] label-mono text-purple-300 font-bold tracking-wider uppercase">
-                  Nos Réalisations
+                <div className="text-[11px] label-mono text-[#38BDF8] font-bold tracking-wider uppercase">
+                  Réalisations & Projets
                 </div>
                 <div className="grid grid-cols-1 gap-2">
                   {projectLinks.map((proj) => (
@@ -263,7 +263,7 @@ export default function Navbar() {
                   }}
                   className="block w-full text-center py-3 rounded-full bg-accent text-slate-950 font-bold text-xs label-mono uppercase hover:bg-cyan-200 transition-colors"
                 >
-                  nous contacter
+                  me contacter
                 </Link>
               </div>
             </div>

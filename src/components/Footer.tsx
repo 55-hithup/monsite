@@ -45,12 +45,12 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
-                title="Suivez-nous sur Facebook"
+                title="Suivre DevSupAi sur Facebook"
               >
                 <img 
                   src="/logo-facebook.webp" 
                   alt="Facebook Logo" 
-                  width="24"
+                  width="24" 
                   height="24"
                   className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.12)] bg-[#070913]" 
                 />
@@ -60,12 +60,12 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
-                title="Suivez-nous sur YouTube"
+                title="Suivre DevSupAi sur YouTube"
               >
                 <img 
                   src="/logo-youtube.webp" 
                   alt="YouTube Logo" 
-                  width="24"
+                  width="24" 
                   height="24"
                   className="h-6 w-6 object-contain rounded-lg border border-[rgba(245,246,250,0.12)] bg-[#070913]" 
                 />
@@ -75,7 +75,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
-                title="Retrouvez-nous sur les Pages Jaunes"
+                title="Retrouver DevSupAi sur les Pages Jaunes"
               >
                 <img 
                   src="/logo-pagesjaunes.webp" 
