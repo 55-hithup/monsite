@@ -34,7 +34,7 @@ export default function Footer() {
             <p className="text-xs text-text-secondary leading-relaxed">
               Création de plateformes web sur-mesure de haute performance. Je conçois des produits digitaux qui convertissent, optimisés pour le SEO et l'expérience utilisateur.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(245,246,250,0.06)] bg-[rgba(245,246,250,0.02)] text-[10px] label-mono text-text-secondary self-start">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(245,246,250,0.06)] bg-[rgba(245,246,250,0.02)] text-xs label-mono text-text-secondary self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
               Disponible pour vos projets
             </div>
@@ -151,7 +151,7 @@ export default function Footer() {
               </li>
               <li className="flex justify-between pb-1.5">
                 <span>Dimanche</span>
-                <span className="text-red-400 font-semibold uppercase text-[10px] tracking-wider">Fermé</span>
+                <span className="text-red-400 font-semibold uppercase text-xs tracking-wider">Fermé</span>
               </li>
             </ul>
           </div>

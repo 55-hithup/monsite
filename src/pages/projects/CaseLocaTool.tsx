@@ -40,7 +40,7 @@ export default function CaseLocaTool() {
           <span>←</span> Retour aux réalisations
         </Link>
 
-        <div className="flex items-center gap-3 text-[10px] label-mono text-purple-300 mb-4">
+        <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
           <span>Étude de cas</span>
           <span>•</span>
           <span>BTP & Entreprise</span>
@@ -72,7 +72,7 @@ export default function CaseLocaTool() {
               <line x1="10" y1="14" x2="21" y2="3" />
             </svg>
           </a>
-          <span className="text-[11px] label-mono text-text-secondary">
+          <span className="text-xs label-mono text-text-secondary">
             • Application en direct
           </span>
         </div>
@@ -80,19 +80,19 @@ export default function CaseLocaTool() {
         {/* Project Facts Box */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-10">
           <div>
-            <div className="text-[10px] label-mono text-purple-300">TYPE</div>
+            <div className="text-xs label-mono text-purple-300">TYPE</div>
             <div className="text-sm font-bold text-text-primary mt-1">Logiciel SaaS</div>
           </div>
           <div>
-            <div className="text-[10px] label-mono text-purple-300">USAGE</div>
+            <div className="text-xs label-mono text-purple-300">USAGE</div>
             <div className="text-sm font-bold text-text-primary mt-1">Gestion de parc</div>
           </div>
           <div>
-            <div className="text-[10px] label-mono text-purple-300">ACCÈS</div>
+            <div className="text-xs label-mono text-purple-300">ACCÈS</div>
             <div className="text-sm font-bold text-text-primary mt-1">Tableau de bord</div>
           </div>
           <div>
-            <div className="text-[10px] label-mono text-purple-300">RÉSULTAT</div>
+            <div className="text-xs label-mono text-purple-300">RÉSULTAT</div>
             <div className="text-sm font-bold text-text-primary mt-1">Gestion centralisée</div>
           </div>
         </div>
@@ -133,7 +133,7 @@ export default function CaseLocaTool() {
         {/* Live Demo Banner */}
         <div className="p-6 rounded-2xl bg-gradient-to-r from-[#2E8FE0]/15 via-[#6B4FE0]/15 to-[#121729] border border-[rgba(245,246,250,0.12)] mt-10 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="text-[10px] label-mono font-bold text-accent mb-1 tracking-widest uppercase">DÉMO INTERACTIVE</div>
+            <div className="text-xs label-mono font-bold text-accent mb-1 tracking-wider uppercase">DÉMO INTERACTIVE</div>
             <div className="text-sm font-bold text-text-primary">Tester l'application LocaTool en direct</div>
             <div className="text-xs text-text-secondary mt-0.5">Explorez l'interface et ses fonctionnalités en temps réel.</div>
           </div>

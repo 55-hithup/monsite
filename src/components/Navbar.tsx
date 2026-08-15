@@ -86,7 +86,7 @@ export default function Navbar() {
                   }
                 }
               }}
-              className="cursor-target label-mono text-[11px] text-text-secondary hover:text-text-primary transition-colors duration-150"
+              className="cursor-target label-mono text-xs text-text-secondary hover:text-text-primary transition-colors duration-150"
             >
               {link.label}
             </Link>
@@ -100,7 +100,7 @@ export default function Navbar() {
             ref={dropdownRef} 
             className="relative hidden md:block"
           >
-            <MagneticWrapper range={25} strength={0.2}>
+            <MagneticWrapper range={20} strength={0.2}>
               <button
                 type="button"
                 onClick={(e) => {
@@ -109,7 +109,7 @@ export default function Navbar() {
                 }}
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
-                className={`cursor-target label-mono text-[10px] px-3.5 py-1.5 border rounded-full text-text-primary transition-all duration-150 inline-flex items-center gap-1.5 cursor-pointer ${
+                className={`cursor-target label-mono text-xs px-3.5 py-1.5 border rounded-full text-text-primary transition-all duration-150 inline-flex items-center gap-1.5 cursor-pointer ${
                   isDropdownOpen 
                     ? 'border-accent bg-accent/20 text-white' 
                     : 'border-[rgba(245,246,250,0.15)] bg-[#121729]/60 hover:border-text-primary'
@@ -134,7 +134,7 @@ export default function Navbar() {
                 className="absolute top-full right-0 pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
               >
                 <div className="w-72 p-3 bg-[#0B0F1E]/95 border border-[rgba(245,246,250,0.12)] rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl text-left">
-                  <div className="px-3 py-1.5 text-[9px] label-mono text-purple-300 font-bold tracking-widest uppercase border-b border-[rgba(245,246,250,0.06)] mb-2">
+                  <div className="px-3 py-1.5 text-[11px] label-mono text-purple-300 font-bold tracking-wider uppercase border-b border-[rgba(245,246,250,0.06)] mb-2">
                     NOS ÉTUDES DE CAS
                   </div>
 
@@ -149,7 +149,7 @@ export default function Navbar() {
                         <div className="text-xs font-bold text-text-primary group-hover:text-accent transition-colors">
                           {proj.title}
                         </div>
-                        <div className="text-[10px] text-text-secondary mt-0.5 leading-snug">
+                        <div className="text-xs text-text-secondary mt-0.5 leading-snug">
                           {proj.sub}
                         </div>
                       </Link>
@@ -173,7 +173,7 @@ export default function Navbar() {
                     }
                   }
                 }}
-                className="cursor-target label-mono text-[10px] px-4 py-1.5 border border-accent rounded-full bg-accent hover:bg-cyan-200 transition-all duration-150 inline-block font-bold"
+                className="cursor-target label-mono text-xs px-4 py-1.5 border border-accent rounded-full bg-accent hover:bg-cyan-200 transition-all duration-150 inline-block font-bold"
                 style={{ color: '#020617' }}
               >
                 contact
@@ -226,7 +226,7 @@ export default function Navbar() {
 
               {/* Case Studies */}
               <div className="space-y-3 text-left">
-                <div className="text-[9px] label-mono text-purple-300 font-bold tracking-widest uppercase">
+                <div className="text-[11px] label-mono text-purple-300 font-bold tracking-wider uppercase">
                   Nos Réalisations
                 </div>
                 <div className="grid grid-cols-1 gap-2">
@@ -240,7 +240,7 @@ export default function Navbar() {
                       <div className="text-xs font-bold text-text-primary">
                         {proj.title}
                       </div>
-                      <div className="text-[10px] text-text-secondary mt-0.5 leading-snug">
+                      <div className="text-xs text-text-secondary mt-0.5 leading-snug">
                         {proj.sub}
                       </div>
                     </Link>

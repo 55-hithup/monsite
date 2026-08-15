@@ -47,7 +47,7 @@ export default function ArticlePerformance() {
           <span>←</span> Retour au blog
         </Link>
         
-        <div className="flex items-center gap-3 text-[10px] label-mono text-purple-300 mb-4">
+        <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
           <span>02 Août 2026</span>
           <span>•</span>
           <span>5 min read</span>

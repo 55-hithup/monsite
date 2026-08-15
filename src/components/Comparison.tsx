@@ -95,7 +95,7 @@ export default function Comparison() {
               {/* Contenu textuel (disparaît au hover et revient au roll-out) */}
               <div className="relative z-10 transition-all duration-500 ease-out group-hover:opacity-0 group-hover:translate-y-2 group-hover:pointer-events-none">
                 <div className="flex items-center justify-between gap-3 mb-3">
-                  <span className="text-[10px] label-mono px-2.5 py-0.5 rounded-full font-bold uppercase bg-[#2E8FE0]/25 text-cyan-300 border border-[#2E8FE0]/50 flex items-center gap-1.5 backdrop-blur-md">
+                  <span className="text-xs label-mono px-3 py-1 rounded-full font-bold uppercase bg-[#2E8FE0]/25 text-cyan-300 border border-[#2E8FE0]/50 flex items-center gap-1.5 backdrop-blur-md">
                     <ShieldCheck size={12} />
                     <span>100% Optimisé & Pérenne</span>
                   </span>
@@ -150,7 +150,7 @@ export default function Comparison() {
               {/* Contenu textuel (disparaît au hover et revient au roll-out) */}
               <div className="relative z-10 transition-all duration-500 ease-out group-hover:opacity-0 group-hover:translate-y-2 group-hover:pointer-events-none">
                 <div className="flex items-center justify-between gap-3 mb-3">
-                  <span className="text-[10px] label-mono px-2.5 py-0.5 rounded-full font-bold uppercase bg-red-500/20 text-red-300 border border-red-500/40 backdrop-blur-md">
+                  <span className="text-xs label-mono px-3 py-1 rounded-full font-bold uppercase bg-red-500/20 text-red-300 border border-red-500/40 backdrop-blur-md">
                     Lenteurs & Contraintes
                   </span>
                   <span className="text-xs text-red-400 font-medium drop-shadow">À éviter</span>

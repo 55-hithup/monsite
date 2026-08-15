@@ -531,7 +531,7 @@ export default function Dashboard() {
         {/* Admin Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-[rgba(245,246,250,0.06)] pb-6 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-[10px] label-mono text-purple-300 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-xs label-mono text-purple-300 mb-2">
               <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
               <span>CONSOLE MODÉRATEUR</span>
             </div>
@@ -668,12 +668,12 @@ export default function Dashboard() {
                       )}
                       <div>
                         <div className="text-sm font-bold text-text-primary">{review.name}</div>
-                        <div className="text-[11px] text-text-secondary">{review.role}</div>
+                        <div className="text-xs text-text-secondary">{review.role}</div>
                       </div>
                     </div>
 
                     <div className="flex flex-col items-end gap-1.5">
-                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
                         review.approved 
                           ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
                           : 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
@@ -702,7 +702,7 @@ export default function Dashboard() {
 
                 {/* Actions Footer */}
                 <div className="flex items-center justify-between border-t border-[rgba(245,246,250,0.06)] pt-3 mt-1">
-                  <span className="text-[10px] label-mono text-text-secondary">
+                  <span className="text-xs label-mono text-text-secondary">
                     ID: {review.id.slice(0, 8)}...
                   </span>
 
@@ -710,7 +710,7 @@ export default function Dashboard() {
                     <button
                       type="button"
                       onClick={() => handleOpenEdit(review)}
-                      className="px-2.5 py-1.5 bg-[#2E8FE0]/15 hover:bg-[#2E8FE0]/30 text-[11px] font-semibold text-[#2E8FE0] rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                      className="px-2.5 py-1.5 bg-[#2E8FE0]/15 hover:bg-[#2E8FE0]/30 text-xs font-semibold text-[#2E8FE0] rounded-lg transition-colors cursor-pointer flex items-center gap-1"
                       aria-label={`Modifier l'avis de ${review.name}`}
                     >
                       <Pencil size={12} />
@@ -720,7 +720,7 @@ export default function Dashboard() {
                     <button
                       type="button"
                       onClick={() => handleToggleApprove(review.id, review.approved)}
-                      className={`px-2.5 py-1.5 text-[11px] font-semibold rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
+                      className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
                         review.approved
                           ? 'bg-[#1b223d] hover:bg-[#232c4f] text-purple-300'
                           : 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-bold'
@@ -734,7 +734,7 @@ export default function Dashboard() {
                     <button
                       type="button"
                       onClick={() => handleDelete(review.id)}
-                      className="px-2 py-1.5 bg-red-600/15 hover:bg-red-600/30 text-[11px] font-semibold text-red-400 rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                      className="px-2 py-1.5 bg-red-600/15 hover:bg-red-600/30 text-xs font-semibold text-red-400 rounded-lg transition-colors cursor-pointer flex items-center gap-1"
                       aria-label={`Supprimer l'avis de ${review.name}`}
                     >
                       <Trash2 size={12} />
@@ -770,7 +770,7 @@ export default function Dashboard() {
             <form onSubmit={handleSaveReview} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="edit-name" className="block text-[10px] label-mono text-purple-300 uppercase mb-1">
+                  <label htmlFor="edit-name" className="block text-xs label-mono text-purple-300 uppercase mb-1">
                     Nom & Prénom
                   </label>
                   <input
@@ -784,7 +784,7 @@ export default function Dashboard() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="edit-role" className="block text-[10px] label-mono text-purple-300 uppercase mb-1">
+                  <label htmlFor="edit-role" className="block text-xs label-mono text-purple-300 uppercase mb-1">
                     Fonction / Entreprise
                   </label>
                   <input
@@ -801,7 +801,7 @@ export default function Dashboard() {
 
               {/* Rating selection */}
               <div>
-                <label className="block text-[10px] label-mono text-purple-300 uppercase mb-1">Note attribuée</label>
+                <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Note attribuée</label>
                 <div className="flex gap-2 items-center">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <button
@@ -824,7 +824,7 @@ export default function Dashboard() {
 
               {/* Avatar management */}
               <div>
-                <label className="block text-[10px] label-mono text-purple-300 uppercase mb-1">Photo de profil / Avatar</label>
+                <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Photo de profil / Avatar</label>
                 {!imageSrc ? (
                   <div className="flex items-center gap-4 p-3 rounded-xl bg-[#070913]/60 border border-[rgba(245,246,250,0.08)]">
                     {formAvatar ? (
@@ -834,7 +834,7 @@ export default function Dashboard() {
                           alt="Avatar sélectionné"
                           className="w-14 h-14 rounded-full object-cover border-2 border-emerald-400 shadow-md"
                         />
-                        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] shadow">
+                        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shadow">
                           <Check size={12} strokeWidth={3} />
                         </div>
                       </div>
@@ -864,7 +864,7 @@ export default function Dashboard() {
                           </button>
                         )}
                       </div>
-                      <p className="text-[10px] label-mono text-text-secondary">
+                      <p className="text-xs label-mono text-text-secondary">
                         {formAvatar ? 'Photo configurée et prête à être enregistrée' : 'JPG, PNG ou WebP. La photo sera automatiquement recadrée et optimisée.'}
                       </p>
                     </div>
@@ -879,8 +879,8 @@ export default function Dashboard() {
                 ) : (
                   <div className="space-y-3 p-3 rounded-xl bg-[#070913]/90 border border-[#2E8FE0]/40 shadow-inner">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-purple-300">Ajustez et cadrez la photo :</span>
-                      <span className="text-[10px] label-mono text-text-secondary">Le cadrage sera validé automatiquement</span>
+                      <span className="text-xs font-bold text-purple-300">Ajustez et cadrez la photo :</span>
+                      <span className="text-xs label-mono text-text-secondary">Le cadrage sera validé automatiquement</span>
                     </div>
                     <div className="relative w-full h-44 rounded-lg overflow-hidden bg-black/60 border border-[rgba(245,246,250,0.1)]">
                       <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-text-secondary">Chargement...</div>}>
@@ -898,7 +898,7 @@ export default function Dashboard() {
                       </Suspense>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] label-mono text-text-secondary">Zoom:</span>
+                      <span className="text-xs label-mono text-text-secondary">Zoom:</span>
                       <input 
                         type="range" 
                         min={1} 
@@ -933,7 +933,7 @@ export default function Dashboard() {
 
               {/* Quote text */}
               <div>
-                <label htmlFor="edit-quote" className="block text-[10px] label-mono text-purple-300 uppercase mb-1">
+                <label htmlFor="edit-quote" className="block text-xs label-mono text-purple-300 uppercase mb-1">
                   Texte du Témoignage
                 </label>
                 <textarea

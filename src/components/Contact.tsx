@@ -125,7 +125,7 @@ export default function Contact() {
               <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-xs px-4 py-3 rounded-[6px] label-mono mb-6 space-y-1 text-left">
                 <div>{error}</div>
                 {debugError && (
-                  <div className="text-[10px] text-red-400/70 font-mono mt-1 pt-1 border-t border-red-500/10 break-all">
+                  <div className="text-xs text-red-400/70 font-mono mt-1 pt-1 border-t border-red-500/10 break-all">
                     Détails de l'erreur : {debugError}
                   </div>
                 )}
@@ -200,7 +200,7 @@ export default function Contact() {
                   <div className="text-xs font-bold text-text-primary">
                     Ajouter l'option Gestion & Animation Google Business Profile (dès 29 €/mois)
                   </div>
-                  <div className="text-[11px] text-text-secondary mt-0.5 leading-snug">
+                  <div className="text-xs text-text-secondary mt-0.5 leading-snug">
                     Optimisation de votre fiche Google Maps, réponse aux avis, publications mensuelles et suivi des statistiques.
                   </div>
                 </div>

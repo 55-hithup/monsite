@@ -191,7 +191,7 @@ function TestimonialCard({
           <div className="testi-name text-xs sm:text-sm font-bold text-text-primary truncate">
             {testi.name}
           </div>
-          <div className="testi-role text-[11px] sm:text-xs text-text-secondary truncate">
+          <div className="testi-role text-xs text-text-secondary truncate">
             {testi.role}
           </div>
         </div>
@@ -681,7 +681,7 @@ export default function Testimonials() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="testi-author-name" className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Nom / Prénom</label>
+                      <label htmlFor="testi-author-name" className="block text-xs label-mono text-purple-300 uppercase mb-1">Votre Nom / Prénom</label>
                       <input
                         id="testi-author-name"
                         type="text"
@@ -694,7 +694,7 @@ export default function Testimonials() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="testi-author-role" className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Profession / Rôle / Entreprise</label>
+                      <label htmlFor="testi-author-role" className="block text-xs label-mono text-purple-300 uppercase mb-1">Profession / Rôle / Entreprise</label>
                       <input
                         id="testi-author-role"
                         type="text"
@@ -709,7 +709,7 @@ export default function Testimonials() {
 
                   {/* Rating selection */}
                   <div>
-                    <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Note globale</label>
+                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Note globale</label>
                     <div className="flex gap-1.5">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <button
@@ -731,7 +731,7 @@ export default function Testimonials() {
 
                   {/* Avatar Upload with Cropping */}
                   <div>
-                    <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Photo de profil (facultatif)</label>
+                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Photo de profil (facultatif)</label>
                     {!imageSrc ? (
                       <div className="flex items-center justify-center w-full">
                         <label className="flex flex-col items-center justify-center w-full h-24 border border-dashed border-[rgba(245,246,250,0.12)] rounded-lg cursor-pointer bg-[#070913]/30 hover:bg-[#070913]/50 transition-colors">
@@ -739,7 +739,7 @@ export default function Testimonials() {
                             <svg className="w-6 h-6 mb-2 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
                             </svg>
-                            <p className="text-[10px] label-mono text-text-secondary">Ajouter une photo (JPG, PNG, WebP)</p>
+                            <p className="text-xs label-mono text-text-secondary">Ajouter une photo (JPG, PNG, WebP)</p>
                           </div>
                           <input type="file" accept="image/*" className="hidden" onChange={onFileChange} />
                         </label>
@@ -769,12 +769,12 @@ export default function Testimonials() {
                               style={{ backgroundImage: `url(${croppedImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
                             <div className="flex-1">
-                              <p className="text-[10px] label-mono text-emerald-400">Photo recadrée avec succès</p>
+                              <p className="text-xs label-mono text-emerald-400">Photo recadrée avec succès</p>
                             </div>
                             <button 
                               type="button"
                               onClick={() => { setImageSrc(null); setCroppedImage(null); }}
-                              className="text-[10px] label-mono text-red-400 hover:text-red-300 cursor-pointer"
+                              className="text-xs label-mono text-red-400 hover:text-red-300 cursor-pointer"
                             >
                               Supprimer
                             </button>
@@ -784,7 +784,7 @@ export default function Testimonials() {
                         {!croppedImage && (
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
-                              <span className="text-[9px] label-mono text-text-secondary flex-shrink-0">Zoom :</span>
+                              <span className="text-xs label-mono text-text-secondary flex-shrink-0">Zoom :</span>
                               <input 
                                 type="range" 
                                 min={1} 
@@ -800,14 +800,14 @@ export default function Testimonials() {
                               <button
                                 type="button"
                                 onClick={() => { setImageSrc(null); setCroppedImage(null); }}
-                                className="px-3 py-1.5 text-[10px] label-mono text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+                                className="px-3 py-1.5 text-xs label-mono text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
                               >
                                 Annuler
                               </button>
                               <button
                                 type="button"
                                 onClick={showCroppedImage}
-                                className="px-3 py-1.5 text-[10px] label-mono text-white rounded-md transition-colors cursor-pointer"
+                                className="px-3 py-1.5 text-xs label-mono text-white rounded-md transition-colors cursor-pointer"
                                 style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
                               >
                                 Recadrer la photo
@@ -820,7 +820,7 @@ export default function Testimonials() {
                   </div>
 
                   <div>
-                    <label htmlFor="testi-comment" className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Témoignage</label>
+                    <label htmlFor="testi-comment" className="block text-xs label-mono text-purple-300 uppercase mb-1">Votre Témoignage</label>
                     <textarea
                       id="testi-comment"
                       required
@@ -853,7 +853,7 @@ export default function Testimonials() {
                       onChange={(e) => setIsHuman(e.target.checked)}
                       className="w-4 h-4 rounded bg-[#070913]/60 border border-[rgba(245,246,250,0.12)] text-[#2E8FE0] focus:ring-0 focus:ring-offset-0 cursor-pointer"
                     />
-                    <label htmlFor="human-verify" className="text-[10px] label-mono text-text-secondary cursor-pointer select-none">
+                    <label htmlFor="human-verify" className="text-xs label-mono text-text-secondary cursor-pointer select-none">
                       Je certifie que je suis un être humain
                     </label>
                   </div>

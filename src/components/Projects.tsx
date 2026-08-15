@@ -135,13 +135,13 @@ export default function Projects() {
 
                   {/* Card Content (Left aligned) */}
                   <div className="relative z-20 p-4 sm:p-5 md:p-6 text-left max-w-[78%] sm:max-w-[72%]">
-                    <div className="text-[9px] sm:text-[10px] label-mono font-bold text-cyan-300 uppercase tracking-widest mb-0.5 sm:mb-1">
+                    <div className="text-xs label-mono font-bold text-cyan-300 uppercase tracking-wider mb-0.5 sm:mb-1">
                       {project.tag}
                     </div>
                     <div className="text-lg sm:text-xl md:text-2xl font-black text-text-primary mb-0.5 sm:mb-1 tracking-tight group-hover:text-cyan-300 transition-colors">
                       {project.title}
                     </div>
-                    <div className="text-[11px] sm:text-xs text-text-secondary leading-snug font-light line-clamp-2">
+                    <div className="text-xs text-text-secondary leading-snug font-light line-clamp-2">
                       {project.desc}
                     </div>
                   </div>

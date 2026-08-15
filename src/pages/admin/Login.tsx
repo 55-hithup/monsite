@@ -82,7 +82,7 @@ export default function Login() {
       <div className="wrap max-w-md w-full">
         <div className="p-8 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] shadow-2xl backdrop-blur-md">
           <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-[10px] label-mono text-purple-300 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-xs label-mono text-purple-300 mb-3">
               <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
               <span>ADMINISTRATION</span>
             </div>
@@ -99,7 +99,7 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-[10px] label-mono text-purple-300 uppercase mb-1">Email</label>
+              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Email</label>
               <input
                 type="email"
                 value={email}
@@ -111,7 +111,7 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-[10px] label-mono text-purple-300 uppercase mb-1">Mot de passe</label>
+              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Mot de passe</label>
               <input
                 type="password"
                 value={password}

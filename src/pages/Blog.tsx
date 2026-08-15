@@ -49,7 +49,7 @@ export default function Blog() {
               to={`/blog/${article.slug}`}
               className="cursor-target block p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] hover:border-accent/40 hover:bg-[#121729]/80 transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="flex items-center gap-3 text-[10px] label-mono text-purple-300 mb-4">
+              <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
                 <span>{article.date}</span>
                 <span>•</span>
                 <span>{article.readTime}</span>
@@ -64,7 +64,7 @@ export default function Blog() {
               </p>
               
               <div className="flex items-center justify-between mt-auto">
-                <span className="px-2.5 py-1 text-[10px] label-mono font-semibold rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-300">
+                <span className="px-3 py-1 text-xs label-mono font-semibold rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-300">
                   {article.tag}
                 </span>
                 

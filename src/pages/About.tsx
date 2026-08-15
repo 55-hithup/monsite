@@ -60,7 +60,7 @@ export default function About() {
               </div>
               <h3 className="text-base font-bold text-text-primary mb-1">Alexandre Pabst</h3>
               <span className="text-xs label-mono text-purple-300 block">FONDATEUR & DÉVELOPPEUR</span>
-              <span className="text-[10px] block text-text-secondary mt-1">Saint-Mihiel, Meuse (Grand Est)</span>
+              <span className="text-xs block text-text-secondary mt-1">Saint-Mihiel, Meuse (Grand Est)</span>
               
               <p className="text-xs text-text-secondary mt-4 leading-relaxed">
                 Interlocuteur direct pour l'intégralité de vos projets web, de l'étude des besoins au développement final. Basé à Saint-Mihiel, j'interviens en présentiel dans le Grand Est et à distance dans toute la France.

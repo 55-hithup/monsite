@@ -35,7 +35,7 @@ export default function Stack() {
 
         {/* Confident AI production statement */}
         <div className="max-w-3xl mx-auto text-center border-t border-[rgba(245,246,250,0.04)] pt-8">
-          <span className="label-mono text-[9px] bg-accent-hover/10 text-purple-300 px-2 py-1 rounded-full border border-accent-hover/20 inline-block mb-4">
+          <span className="label-mono text-xs font-medium bg-accent-hover/10 text-purple-300 px-3 py-1 rounded-full border border-accent-hover/20 inline-block mb-4">
             ma philosophie de production
           </span>
           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-sans">

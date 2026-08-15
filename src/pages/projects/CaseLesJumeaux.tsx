@@ -40,7 +40,7 @@ export default function CaseLesJumeaux() {
           <span>←</span> Retour aux réalisations
         </Link>
 
-        <div className="flex items-center gap-3 text-[10px] label-mono text-purple-300 mb-4">
+        <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
           <span>Étude de cas</span>
           <span>•</span>
           <span>Restauration</span>
@@ -60,19 +60,19 @@ export default function CaseLesJumeaux() {
         {/* Project Facts Box */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-10">
           <div>
-            <div className="text-[10px] label-mono text-purple-300">SECTEUR</div>
+            <div className="text-xs label-mono text-purple-300">SECTEUR</div>
             <div className="text-sm font-bold text-text-primary mt-1">Restauration</div>
           </div>
           <div>
-            <div className="text-[10px] label-mono text-purple-300">LIVRABLES</div>
+            <div className="text-xs label-mono text-purple-300">LIVRABLES</div>
             <div className="text-sm font-bold text-text-primary mt-1">Site & Réservation</div>
           </div>
           <div>
-            <div className="text-[10px] label-mono text-purple-300">AFFICHAGE</div>
+            <div className="text-xs label-mono text-purple-300">AFFICHAGE</div>
             <div className="text-sm font-bold text-text-primary mt-1">Instantané mobile</div>
           </div>
           <div>
-            <div className="text-[10px] label-mono text-purple-300">RÉSULTAT</div>
+            <div className="text-xs label-mono text-purple-300">RÉSULTAT</div>
             <div className="text-sm font-bold text-text-primary mt-1">Réservations directes</div>
           </div>
         </div>

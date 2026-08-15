@@ -106,13 +106,13 @@ export default function Offers() {
             {/* Option Google Business Profile */}
             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left">
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[10px] label-mono text-cyan-300 font-bold uppercase tracking-wider">
+                <span className="text-xs label-mono text-cyan-300 font-bold uppercase tracking-wider">
                   Option Mensuelle
                 </span>
                 <span className="text-xs text-slate-400">•</span>
                 <span className="text-xs font-bold text-text-primary">Dès 29 € / mois</span>
               </div>
-              <p className="text-[11px] text-text-secondary leading-relaxed font-light">
+              <p className="text-xs text-text-secondary leading-relaxed font-light">
                 Gestion & animation de votre fiche Google Maps pour maximiser votre référencement local et répondre aux avis clients.
               </p>
             </div>
@@ -151,7 +151,7 @@ export default function Offers() {
                 }`}
               >
                 {pkg.popular && (
-                  <div className="absolute -top-3 right-6 px-3.5 py-0.5 rounded-full bg-[#2E8FE0] text-[#0B122C] text-[10px] label-mono font-bold tracking-wider uppercase shadow-md flex items-center gap-1.5">
+                  <div className="absolute -top-3 right-6 px-3.5 py-0.5 rounded-full bg-[#2E8FE0] text-[#0B122C] text-xs label-mono font-bold tracking-wider uppercase shadow-md flex items-center gap-1.5">
                     <Sparkles size={11} />
                     <span>Recommandé PME</span>
                   </div>
@@ -163,7 +163,7 @@ export default function Offers() {
                   <div className="sm:col-span-5 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center gap-2 mb-1.5">
-                        <span className={`text-[10px] label-mono px-2.5 py-0.5 rounded-full font-bold uppercase ${
+                        <span className={`text-xs label-mono px-3 py-1 rounded-full font-bold uppercase ${
                           pkg.popular
                             ? 'bg-[#2E8FE0]/20 text-cyan-300 border border-[#2E8FE0]/40'
                             : 'bg-white/[0.04] text-text-secondary border border-white/5'
@@ -199,7 +199,7 @@ export default function Offers() {
                   {/* Partie Droite : Fonctionnalités & GRAND TARIF en bas à droite (7 cols) */}
                   <div className="sm:col-span-7 sm:border-l sm:border-[rgba(245,246,250,0.06)] sm:pl-5 pt-3 sm:pt-0 flex flex-col justify-between">
                     <div>
-                      <span className="text-[10px] label-mono uppercase text-purple-300 font-bold tracking-wider block mb-2.5">
+                      <span className="text-xs label-mono uppercase text-purple-300 font-bold tracking-wider block mb-2.5">
                         Inclus dans ce forfait :
                       </span>
                       <ul className="space-y-1.5 mb-4">

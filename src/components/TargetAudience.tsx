@@ -17,7 +17,7 @@ export default function TargetAudience() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Card PME */}
           <div className="reveal p-8 rounded-2xl bg-[#121729]/70 border border-[#2E8FE0]/30 hover:border-[#2E8FE0]/60 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#2E8FE0]/20 border-b border-l border-[#2E8FE0]/40 text-[10px] label-mono text-cyan-300 rounded-bl-xl font-bold">
+            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#2E8FE0]/20 border-b border-l border-[#2E8FE0]/40 text-xs label-mono text-cyan-300 rounded-bl-xl font-bold">
               POUR LES PME & TPE
             </div>
 
@@ -44,7 +44,7 @@ export default function TargetAudience() {
               </p>
 
               <div className="space-y-2 mb-8 text-xs text-text-secondary">
-                <div className="font-bold text-text-primary mb-2 label-mono text-[10px] text-purple-300 uppercase">Solutions apportées aux PME :</div>
+                <div className="font-bold text-text-primary mb-2 label-mono text-xs text-purple-300 uppercase">Solutions apportées aux PME :</div>
                 <div className="flex items-center gap-2">
                   <span className="text-[#2E8FE0] font-bold">-</span>
                   <span>Chargement instantané de la page sur smartphone</span>
@@ -69,7 +69,7 @@ export default function TargetAudience() {
 
           {/* Card Associations */}
           <div className="reveal p-8 rounded-2xl bg-[#121729]/70 border border-[#6B4FE0]/30 hover:border-[#6B4FE0]/60 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#6B4FE0]/20 border-b border-l border-[#6B4FE0]/40 text-[10px] label-mono text-purple-300 rounded-bl-xl font-bold">
+            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#6B4FE0]/20 border-b border-l border-[#6B4FE0]/40 text-xs label-mono text-purple-300 rounded-bl-xl font-bold">
               POUR LES ASSOCIATIONS
             </div>
 
@@ -94,7 +94,7 @@ export default function TargetAudience() {
               </p>
 
               <div className="space-y-2 mb-8 text-xs text-text-secondary">
-                <div className="font-bold text-text-primary mb-2 label-mono text-[10px] text-purple-300 uppercase">Solutions apportées aux Associations :</div>
+                <div className="font-bold text-text-primary mb-2 label-mono text-xs text-purple-300 uppercase">Solutions apportées aux Associations :</div>
                 <div className="flex items-center gap-2">
                   <span className="text-[#6B4FE0] font-bold">-</span>
                   <span>Présentation claire des événements et actualités</span>

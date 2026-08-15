@@ -711,7 +711,7 @@ export default function Services() {
                         <div className="w-10 h-10 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/30 flex items-center justify-center text-[#2E8FE0] group-hover:scale-105 transition-transform">
                           <IconComponent size={20} />
                         </div>
-                        <span className="text-[10px] label-mono px-2.5 py-1 rounded-full bg-[#1b223d] text-purple-300 font-semibold border border-purple-500/20">
+                        <span className="text-xs label-mono px-3 py-1 rounded-full bg-[#1b223d] text-purple-300 font-semibold border border-purple-500/20">
                           {service.category === 'vitrines' && 'Sites Vitrines'}
                           {service.category === 'ecommerce' && 'E-Commerce & SaaS'}
                           {service.category === 'apps' && 'Apps & API'}
@@ -732,7 +732,7 @@ export default function Services() {
                         {service.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="text-[10px] px-2 py-0.5 rounded bg-[rgba(245,246,250,0.04)] border border-[rgba(245,246,250,0.06)] text-text-secondary"
+                            className="text-xs px-2.5 py-0.5 rounded bg-[rgba(245,246,250,0.04)] border border-[rgba(245,246,250,0.06)] text-text-secondary"
                           >
                             #{tag}
                           </span>
@@ -741,7 +741,7 @@ export default function Services() {
                     </div>
 
                     <div className="pt-4 border-t border-[rgba(245,246,250,0.06)] flex items-center justify-between">
-                      <span className="text-[11px] text-emerald-400 font-medium flex items-center gap-1">
+                      <span className="text-xs text-emerald-400 font-medium flex items-center gap-1">
                         <CheckCircle2 size={12} />
                         <span>Prestation garantie</span>
                       </span>

@@ -192,7 +192,7 @@ export default function Stats() {
               
               {/* Category tag */}
               <span 
-                className="text-[10px] label-mono text-purple-300/80 uppercase tracking-widest block"
+                className="text-xs label-mono text-purple-300/80 uppercase tracking-wider block"
                 style={{ transform: 'translateZ(10px)', willChange: 'transform' }}
               >
                 {pillar.tag}
