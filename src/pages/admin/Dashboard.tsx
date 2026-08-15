@@ -35,13 +35,6 @@ interface TestimonialDoc {
 
 const initialDefaultReviews = [
   {
-    name: "Claire Dubosc",
-    role: "Fondatrice, Studio Verrière",
-    quote: "« Le résultat dépasse largement mes attentes. Mon taux de conversion a doublé en deux mois et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
-    rating: 5,
-    approved: true,
-  },
-  {
     name: "Thomas Mercier",
     role: "Fondateur, Mercier Rénovation & Bois",
     quote: "« Passer d'un ancien template WordPress lent à un site sur-mesure développé par Alexandre a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement. Un investissement très vite rentabilisé. »",
@@ -59,6 +52,13 @@ const initialDefaultReviews = [
     name: "Julien Caron",
     role: "Directeur Général, LogiMat Outils",
     quote: "« Nous avions besoin d'une interface sur-mesure performante et d'une vitrine moderne pour nos clients professionnels. Le site charge en un clin d'œil et nos équipes gagnent un temps précieux dans le suivi des demandes. Alexandre a parfaitement cerné nos enjeux. »",
+    rating: 5,
+    approved: true,
+  },
+  {
+    name: "Claire Dubosc",
+    role: "Fondatrice, Studio Verrière",
+    quote: "« Le résultat dépasse largement mes attentes. Mon taux de conversion a doublé en deux mois et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
     rating: 5,
     approved: true,
   },
@@ -142,6 +142,7 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const autoSeededRef = useRef(false);
 
   const showNotification = (msg: string) => {
     setNotification(msg);
@@ -171,11 +172,29 @@ export default function Dashboard() {
     const q = query(collection(db, 'testimonials'), orderBy('created_at', 'desc'));
     const unsubscribeSnapshot = onSnapshot(
       q,
-      (snapshot) => {
+      async (snapshot) => {
         const list: TestimonialDoc[] = [];
         snapshot.forEach((docSnap) => {
           list.push({ id: docSnap.id, ...docSnap.data() } as TestimonialDoc);
         });
+
+        // Auto-seed initial reviews into Firestore if the collection is empty
+        if (list.length === 0 && !autoSeededRef.current) {
+          autoSeededRef.current = true;
+          try {
+            for (const item of initialDefaultReviews) {
+              await addDoc(collection(db, 'testimonials'), {
+                ...item,
+                avatar: null,
+                created_at: new Date(),
+              });
+            }
+            return;
+          } catch (err) {
+            console.error('Error auto-seeding testimonials:', err);
+          }
+        }
+
         setReviews(list);
         setLoading(false);
       },
@@ -322,6 +341,33 @@ export default function Dashboard() {
     }
   };
 
+  // Sync the 3 target reviews directly into Firestore
+  const handleSyncThreeReviews = async () => {
+    if (!db) return;
+    setIsImporting(true);
+    try {
+      const targetThree = initialDefaultReviews.slice(0, 3);
+      let addedCount = 0;
+      for (const item of targetThree) {
+        const alreadyExists = reviews.some((r) => r.name.toLowerCase() === item.name.toLowerCase());
+        if (!alreadyExists) {
+          await addDoc(collection(db, 'testimonials'), {
+            ...item,
+            avatar: null,
+            created_at: new Date(),
+          });
+          addedCount++;
+        }
+      }
+      showNotification(addedCount > 0 ? `${addedCount} avis injecté(s) dans le Dashboard !` : 'Les 3 avis sont déjà présents dans le Dashboard.');
+    } catch (err) {
+      console.error('Error syncing 3 reviews:', err);
+      alert("Une erreur est survenue lors de l'ajout des avis.");
+    } finally {
+      setIsImporting(false);
+    }
+  };
+
   // Import initial default reviews into Firestore
   const handleImportDefaults = async () => {
     if (!db) return;
@@ -416,14 +462,23 @@ export default function Dashboard() {
               <span>Ajouter un avis</span>
             </button>
 
+            <button
+              onClick={handleSyncThreeReviews}
+              disabled={isImporting}
+              className="px-3.5 py-2 bg-[#1b223d] hover:bg-[#232c4f] border border-[rgba(245,246,250,0.1)] text-xs font-medium text-purple-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+            >
+              <DownloadCloud size={14} className="text-[#2E8FE0]" />
+              <span>{isImporting ? 'Injection...' : 'Injecter les 3 avis'}</span>
+            </button>
+
             {reviews.length === 0 && (
               <button
                 onClick={handleImportDefaults}
                 disabled={isImporting}
                 className="px-3.5 py-2 bg-[#1b223d] hover:bg-[#232c4f] border border-[rgba(245,246,250,0.1)] text-xs font-medium text-purple-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                <DownloadCloud size={14} className="text-[#2E8FE0]" />
-                <span>{isImporting ? 'Importation...' : 'Importer les avis par défaut'}</span>
+                <DownloadCloud size={14} className="text-emerald-400" />
+                <span>{isImporting ? 'Importation...' : 'Importer tous les avis'}</span>
               </button>
             )}
 
