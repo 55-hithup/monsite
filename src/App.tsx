@@ -3,6 +3,18 @@ import { createBrowserRouter, RouterProvider, useRouteError, Link } from 'react-
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Layout from './components/Layout';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import ArticleTemplates from './pages/blog/ArticleTemplates';
+import ArticlePerformance from './pages/blog/ArticlePerformance';
+import ArticleAssociationPme from './pages/blog/ArticleAssociationPme';
+import LegalNotices from './pages/LegalNotices';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import CaseLesJumeaux from './pages/projects/CaseLesJumeaux';
+import CaseLocaTool from './pages/projects/CaseLocaTool';
+import CaseAbogame from './pages/projects/CaseAbogame';
 
 // Global Error Boundary to catch any rendering errors without crashing the entire app
 interface ErrorBoundaryProps {
@@ -94,19 +106,7 @@ function lazyWithRetry<T extends React.ComponentType<any>>(
   });
 }
 
-// Lazy loaded routes with auto-reload protection for optimal bundle splitting
-const Home = lazyWithRetry(() => import('./pages/Home'));
-const Services = lazyWithRetry(() => import('./pages/Services'));
-const About = lazyWithRetry(() => import('./pages/About'));
-const Blog = lazyWithRetry(() => import('./pages/Blog'));
-const ArticleTemplates = lazyWithRetry(() => import('./pages/blog/ArticleTemplates'));
-const ArticlePerformance = lazyWithRetry(() => import('./pages/blog/ArticlePerformance'));
-const ArticleAssociationPme = lazyWithRetry(() => import('./pages/blog/ArticleAssociationPme'));
-const LegalNotices = lazyWithRetry(() => import('./pages/LegalNotices'));
-const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy'));
-const CaseLesJumeaux = lazyWithRetry(() => import('./pages/projects/CaseLesJumeaux'));
-const CaseLocaTool = lazyWithRetry(() => import('./pages/projects/CaseLocaTool'));
-const CaseAbogame = lazyWithRetry(() => import('./pages/projects/CaseAbogame'));
+// Lazy loaded admin routes with auto-reload protection for chunk management
 const Login = lazyWithRetry(() => import('./pages/admin/Login'));
 const Dashboard = lazyWithRetry(() => import('./pages/admin/Dashboard'));
 
@@ -145,51 +145,99 @@ export const routes = [
     children: [
       {
         index: true,
-        element: renderLazy(Home),
+        element: (
+          <ErrorBoundary>
+            <Home />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'nos-services',
-        element: renderLazy(Services),
+        element: (
+          <ErrorBoundary>
+            <Services />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'a-propos',
-        element: renderLazy(About),
+        element: (
+          <ErrorBoundary>
+            <About />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'blog',
-        element: renderLazy(Blog),
+        element: (
+          <ErrorBoundary>
+            <Blog />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'blog/pourquoi-eviter-les-templates',
-        element: renderLazy(ArticleTemplates),
+        element: (
+          <ErrorBoundary>
+            <ArticleTemplates />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'blog/performance-web-sur-mesure',
-        element: renderLazy(ArticlePerformance),
+        element: (
+          <ErrorBoundary>
+            <ArticlePerformance />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'blog/site-web-pme-association',
-        element: renderLazy(ArticleAssociationPme),
+        element: (
+          <ErrorBoundary>
+            <ArticleAssociationPme />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'projets/les-jumeaux',
-        element: renderLazy(CaseLesJumeaux),
+        element: (
+          <ErrorBoundary>
+            <CaseLesJumeaux />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'projets/locatool',
-        element: renderLazy(CaseLocaTool),
+        element: (
+          <ErrorBoundary>
+            <CaseLocaTool />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'projets/abogame',
-        element: renderLazy(CaseAbogame),
+        element: (
+          <ErrorBoundary>
+            <CaseAbogame />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'mentions-legales',
-        element: renderLazy(LegalNotices),
+        element: (
+          <ErrorBoundary>
+            <LegalNotices />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'politique-de-confidentialite',
-        element: renderLazy(PrivacyPolicy),
+        element: (
+          <ErrorBoundary>
+            <PrivacyPolicy />
+          </ErrorBoundary>
+        ),
       },
       {
         path: 'admin/login',
@@ -201,7 +249,11 @@ export const routes = [
       },
       {
         path: '*',
-        element: renderLazy(Home),
+        element: (
+          <ErrorBoundary>
+            <Home />
+          </ErrorBoundary>
+        ),
       },
     ],
   },
