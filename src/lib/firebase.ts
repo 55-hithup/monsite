@@ -21,13 +21,13 @@ const getSavedConfig = () => {
 const savedConfig = getSavedConfig();
 
 const firebaseConfig = savedConfig || {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyAiuLFD7qoQIP7V2Dd5bqIPv49fcmZ48O4',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'site-devsupai.firebaseapp.com',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'site-devsupai',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'site-devsupai.firebasestorage.app',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '201980154348',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:201980154348:web:417b16adb5ae1885efb0c9',
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || 'G-DDENM5JMMN',
 };
 
 let app: any = null;
