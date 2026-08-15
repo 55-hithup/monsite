@@ -5,7 +5,7 @@ import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 export default function CaseLocaTool() {
   useDocumentMetadata(
     "Étude de cas : LocaTool | Application Web SaaS Sur-Mesure | DevSupAi",
-    "Découvrez comment l'application web métier LocaTool a été conçue pour optimiser la gestion de location de matériel et gagner 30% d'efficacité administrative.",
+    "Découvrez comment l'application web métier LocaTool a été conçue pour centraliser et simplifier la gestion de location de matériel professionnel.",
     "/projets/locatool"
   );
 
@@ -93,7 +93,7 @@ export default function CaseLocaTool() {
           </div>
           <div>
             <div className="text-[10px] label-mono text-purple-300">RÉSULTAT</div>
-            <div className="text-sm font-bold text-text-primary mt-1">+30% Efficacité</div>
+            <div className="text-sm font-bold text-text-primary mt-1">Gestion centralisée</div>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ export default function CaseLocaTool() {
               3. Quels sont les gains réels d'efficacité constatés ?
             </h2>
             <div className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium mb-3">
-              <strong>Bilan :</strong> La centralisation de l'activité sur un outil unique a permis de réduire de 30% le temps de traitement administratif des dossiers et de supprimer totalement les erreurs de sur-réservation de matériel.
+              <strong>Bilan :</strong> La centralisation de l'activité sur un outil unique permet de simplifier le traitement des dossiers, de fluidifier le suivi du matériel et d'éviter les erreurs de disponibilité.
             </div>
             <p>
               L'interface réactive s'utilise facilement sur ordinateur comme sur tablette sur le terrain.

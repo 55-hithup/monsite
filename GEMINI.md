@@ -34,3 +34,9 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
 
 ## 6. Interdiction stricte des Emojis
 * **Zero Emoji :** Aucun emoji (caractère ou symbole Unicode de type 🔨, 🏢, ⚡, 🛒, 🌐, etc.) ne doit être présent sur l'ensemble du site DevSupAi (composants, libellés, boutons, balises ou commentaires). Utiliser exclusivement des icônes vectorielles SVG ou `lucide-react`.
+
+## 7. Interdiction stricte des chiffres et statistiques inventés (No Fake Stats)
+* **Zero Fake Stats :** Interdiction absolue d'inventer des pourcentages marketing ou des statistiques arbitraires (ex : `+40%`, `+30%`, `+50%`, `doublé en deux mois`). Les études de cas, descriptions de projets, argumentaires et témoignages doivent être strictement factuels, réalistes et centrés sur les fonctionnalités concrètes livrées et la valeur d'usage réelle.
+
+## 8. Modération des Avis et Témoignages par défaut
+* **Validation humaine préalable :** Tout avis client généré, injecté ou créé dans le cadre d'exemples doit impérativement être configuré avec `approved: false` (statut « En attente de modération ») pour garantir un contrôle humain exclusif par l'administrateur avant toute mise en ligne publique.

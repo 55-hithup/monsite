@@ -73,7 +73,7 @@ export default function CaseLesJumeaux() {
           </div>
           <div>
             <div className="text-[10px] label-mono text-purple-300">RÉSULTAT</div>
-            <div className="text-sm font-bold text-text-primary mt-1">+40% Résas directes</div>
+            <div className="text-sm font-bold text-text-primary mt-1">Réservations directes</div>
           </div>
         </div>
 
@@ -102,7 +102,7 @@ export default function CaseLesJumeaux() {
               3. Quels sont les résultats concrets mesurés après la mise en ligne ?
             </h2>
             <div className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium mb-3">
-              <strong>Bilan :</strong> La simplicité de réservation en ligne a permis au restaurant d'enregistrer une augmentation de 40% des réservations directes via son site, tout en réduisant de 50% la charge d'appels téléphoniques pendant les services.
+              <strong>Bilan :</strong> La simplicité de réservation en ligne permet aux clients de réserver directement depuis leur smartphone et soulage l'équipe des prises de réservations par téléphone pendant le service.
             </div>
             <p>
               Grâce à un code épuré, le site se charge immédiatement, même sur un téléphone connecté en réseau mobile.

@@ -39,7 +39,7 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
   },
   '/projets/locatool': {
     title: 'Étude de cas : LocaTool | Application Web SaaS Sur-Mesure | DevSupAi',
-    description: "Découvrez comment l'application web métier LocaTool a été conçue pour optimiser la gestion de location de matériel et gagner 30% d'efficacité administrative."
+    description: "Découvrez comment l'application web métier LocaTool a été conçue pour centraliser et simplifier la gestion de location de matériel professionnel."
   },
   '/projets/abogame': {
     title: 'Étude de cas : Abogame | Plateforme Web Interactive Live | DevSupAi',

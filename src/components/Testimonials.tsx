@@ -18,7 +18,7 @@ interface TestimonialItem {
 
 const defaultTestimonials: TestimonialItem[] = [
   {
-    quote: "« Le résultat dépasse largement mes attentes. Mon taux de conversion a doublé en deux mois et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
+    quote: "« Le résultat dépasse largement mes attentes. Les demandes de contact sont régulières et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
     name: "Claire Dubosc",
     role: "Fondatrice, Studio Verrière",
     rating: 5,

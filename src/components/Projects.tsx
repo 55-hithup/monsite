@@ -33,7 +33,7 @@ export default function Projects() {
     {
       tag: 'Restauration & Gastronomie',
       title: 'Les Jumeaux',
-      desc: 'Site vitrine immersif et système de réservation en ligne (+40% de réservations).',
+      desc: 'Site vitrine immersif et système de réservation directe en ligne.',
       img: '/les-jumeaux.webp',
       href: '/projets/les-jumeaux',
     },

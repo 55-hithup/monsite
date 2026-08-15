@@ -36,7 +36,7 @@ export default function TargetAudience() {
               </h3>
 
               <div className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-xs text-text-primary font-medium mb-4">
-                <strong>Cas réel :</strong> Pour le restaurant <em>Les Jumeaux</em>, la création d'un système de réservation sur-mesure a permis d'enregistrer une hausse de 40% des réservations directes en ligne et de réduire de 50% la charge d'appels pendant le service.
+                <strong>Cas concret :</strong> Pour le restaurant <em>Les Jumeaux</em>, la mise en place d'un système de réservation directe sur-mesure a permis de fluidifier les prises de réservations en ligne et de libérer du temps pour l'équipe pendant les services.
               </div>
 
               <p className="text-xs text-text-secondary leading-relaxed mb-6">
