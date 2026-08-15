@@ -3,7 +3,6 @@ import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import type { Area, Point } from 'react-easy-crop';
-import SectionReveal from './SectionReveal';
 
 const Cropper = lazy(() => import('react-easy-crop'));
 
@@ -231,6 +230,7 @@ export default function Testimonials() {
   const [isHuman, setIsHuman] = useState(false);
 
   const lenis = useLenis();
+  const sectionRef = useRef<HTMLElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
   const touchDeltaX = useRef<number>(0);
@@ -274,13 +274,17 @@ export default function Testimonials() {
     }
   }, [showForm, lenis]);
 
+  // Load Firestore reviews ONLY when user approaches the testimonials section
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
-    let observer: IntersectionObserver | null = null;
-    const sectionEl = document.getElementById('apropos');
+    const el = sectionRef.current;
+    if (!el) return;
+
+    let hasFetched = false;
 
     const fetchReviews = async () => {
+      if (hasFetched) return;
+      hasFetched = true;
       try {
         const { getFirebaseDb } = await import('../lib/firebase');
         const db = await getFirebaseDb();
@@ -311,34 +315,29 @@ export default function Testimonials() {
           return timeB - timeA;
         });
         
-        // If reviews exist in Firestore, use them directly
+        // If reviews exist in Firestore, seamlessly update the displayed list
         if (dynamicList.length > 0) {
           setList(dynamicList);
         }
       } catch (err) {
-        console.error('Error fetching testimonials:', err);
+        console.error('Error fetching testimonials from Firestore:', err);
       }
     };
 
-    if (sectionEl) {
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            if ('requestIdleCallback' in window) {
-              (window as any).requestIdleCallback(fetchReviews, { timeout: 3000 });
-            } else {
-              setTimeout(fetchReviews, 1000);
-            }
-            if (observer) observer.disconnect();
-          }
-        },
-        { rootMargin: '200px' }
-      );
-      observer.observe(sectionEl);
-    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          fetchReviews();
+        }
+      },
+      { threshold: 0.05, rootMargin: '200px 0px 200px 0px' }
+    );
+
+    observer.observe(el);
 
     return () => {
-      if (observer) observer.disconnect();
+      observer.disconnect();
     };
   }, []);
 
@@ -539,7 +538,7 @@ export default function Testimonials() {
   const slideWidthPercent = 100 / visibleCount;
 
   return (
-    <SectionReveal id="apropos" className="section-pad" style={{ position: 'relative' }}>
+    <section ref={sectionRef} id="apropos" className="section-pad" style={{ position: 'relative' }}>
       <div className="wrap">
         <div className="text-center mb-[50px] sm:mb-[70px]">
           <div className="eyebrow reveal justify-center">Témoignages</div>
@@ -882,6 +881,6 @@ export default function Testimonials() {
           </motion.div>
         )}
       </AnimatePresence>
-    </SectionReveal>
+    </section>
   );
 }
