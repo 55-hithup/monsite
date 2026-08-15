@@ -1,128 +1,176 @@
 import { Link } from 'react-router-dom';
 import SectionReveal from './SectionReveal';
+import MagneticWrapper from './MagneticWrapper';
+import { ArrowRight, CheckCircle2, ExternalLink } from 'lucide-react';
 
 interface ProjectItem {
   tag: string;
   title: string;
   desc: string;
-  img?: string;
-  bg?: string;
-  href?: string;
+  img: string;
+  href: string;
   externalHref?: string;
-  inProgress?: boolean;
 }
 
 export default function Projects() {
   const projects: ProjectItem[] = [
     {
-      tag: 'Restauration',
-      title: 'Les Jumeaux',
-      desc: 'Site vitrine immersif et système de réservation en ligne sur-mesure pour un restaurant-brasserie.',
-      img: '/les-jumeaux.webp',
-      href: '/projets/les-jumeaux',
-    },
-    {
-      tag: 'Entreprise',
+      tag: 'Application SaaS & Entreprise',
       title: 'LocaTool',
-      desc: 'Logiciel de gestion de location tout-en-un pour simplifier le suivi du matériel, des clients et des devis.',
+      desc: 'Logiciel de gestion de parc matériel, devis et facturation tout-en-un.',
       img: '/locatool.webp',
       href: '/projets/locatool',
       externalHref: 'https://locatool.devsupai.fr',
     },
     {
-      tag: 'Application Streamer',
+      tag: 'Application Interactive',
       title: 'Abogame',
-      desc: 'Plateforme interactive mobile-first pour streamers : roue de sélection en temps réel et planification de live.',
+      desc: 'Plateforme interactive en direct : tirages au sort dynamiques et roue animée.',
       img: '/abogame.webp',
       href: '/projets/abogame',
       externalHref: 'https://abogame.devsupai.fr',
     },
+    {
+      tag: 'Restauration & Gastronomie',
+      title: 'Les Jumeaux',
+      desc: 'Site vitrine immersif et système de réservation en ligne (+40% de réservations).',
+      img: '/les-jumeaux.webp',
+      href: '/projets/les-jumeaux',
+    },
   ];
 
   return (
-    <SectionReveal id="realisations" className="section-pad" style={{ position: 'relative' }}>
-      <div className="wrap">
-        <div className="head-row mb-10">
-          <div>
-            <div className="eyebrow reveal">RÉALISATIONS & ÉTUDES DE CAS</div>
-            <h2 className="section-title reveal">Nos réalisations et études de cas sur-mesure</h2>
-          </div>
-          <div className="section-sub reveal bg-[#121729]/80 p-4 rounded-xl border border-[rgba(245,246,250,0.08)]">
-            <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-              Découvrez nos études de cas concrètes (restaurant Les Jumeaux, logiciel SaaS de location LocaTool, plateforme interactive Abogame) démontrant les résultats du développement sur-mesure.
+    <SectionReveal id="projets" className="py-16 sm:py-20 md:py-28 lg:py-36" style={{ position: 'relative' }}>
+      <div className="wrap-wide">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Colonne Gauche : Uniquement du texte structuré et aéré (sans cartes) */}
+          <div className="lg:col-span-5 text-left space-y-4 sm:space-y-5 reveal">
+            <div className="eyebrow">RÉALISATIONS & ÉTUDES DE CAS</div>
+            
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight">
+              Nos réalisations et études de cas sur-mesure
+            </h2>
+
+            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
+              Découvrez comment nous concevons des outils et des sites adaptés aux besoins réels de chaque activité : du logiciel SaaS métier à la vitrine de restaurant avec réservation en ligne, en passant par des plateformes interactives en direct.
             </p>
-          </div>
-        </div>
-        
-        <div className="portfolio-grid">
-          {projects.map((project, idx) => {
-            const cardContent = (
-              <>
-                <div 
-                  className="proj-bg" 
-                  style={{ 
-                    background: project.img ? `url(${project.img}) center top / cover no-repeat` : project.bg 
+
+            <div className="space-y-2.5 sm:space-y-3 pt-2 border-y border-[rgba(245,246,250,0.08)] py-4">
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  <strong className="text-text-primary font-semibold">Conception sur-mesure :</strong> Pensée pour refléter fidèlement votre identité et vos objectifs.
+                </p>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  <strong className="text-text-primary font-semibold">Résultats concrets :</strong> Gain de temps, augmentation des contacts et fidélisation.
+                </p>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  <strong className="text-text-primary font-semibold">Autonomie totale :</strong> Code 100% propriétaire sans abonnement logiciel imposé.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <MagneticWrapper range={25} strength={0.2}>
+                <a
+                  href="#contact"
+                  className="btn btn-primary w-full sm:w-auto justify-center"
+                  style={{
+                    background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)',
+                    color: '#0B122C',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontWeight: 700,
                   }}
-                ></div>
-                <div className="proj-shade"></div>
-                
-                {project.inProgress && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-radial from-[#6B4FE0]/15 to-transparent z-10 select-none">
-                    <div className="w-12 h-12 rounded-full border border-dashed border-[#6B4FE0]/40 flex items-center justify-center animate-spin" style={{ animationDuration: '6s' }}>
-                      <span className="text-[#6B4FE0] text-xs font-bold">&lt;/&gt;</span>
-                    </div>
-                    <div className="text-[10px] label-mono text-[#6B4FE0] mt-3 uppercase tracking-widest animate-pulse">En cours</div>
-                  </div>
-                )}
+                >
+                  <span>Discuter de votre projet</span>
+                  <ArrowRight size={14} className="text-[#0B122C]" />
+                </a>
+              </MagneticWrapper>
+            </div>
+          </div>
 
-                <div className="proj-arrow">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-                    <path d="M7 17L17 7M7 7h10v10" />
-                  </svg>
-                </div>
-                <div className="proj-content">
-                  <div className="proj-tag">{project.tag}</div>
-                  <div className="proj-title">{project.title}</div>
-                  <div className="proj-desc">{project.desc}</div>
-                </div>
-              </>
-            );
+          {/* Colonne Droite : 3 Cartes compactes empilées parfaitement adaptées mobile et PC */}
+          <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-4">
+            {projects.map((project, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="cursor-target proj-card reveal group relative rounded-2xl overflow-hidden border border-[rgba(245,246,250,0.08)] hover:border-[#2E8FE0]/50 transition-all duration-300 shadow-lg flex items-center min-h-[140px] sm:min-h-[155px] md:h-[165px] w-full"
+                >
+                  {/* Background Image with Zoom */}
+                  <div
+                    className="proj-bg absolute inset-0 transition-transform duration-500 group-hover:scale-105"
+                    style={{
+                      background: `url(${project.img}) center top / cover no-repeat`,
+                    }}
+                  />
 
-            return (
-              <div 
-                key={idx} 
-                className="cursor-target proj-card reveal"
-              >
-                {project.href && (
-                  <Link 
-                    to={project.href} 
+                  {/* Dark horizontal gradient shade for high contrast */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-300"
+                    style={{
+                      background: 'linear-gradient(to right, rgba(7, 9, 19, 0.95) 0%, rgba(7, 9, 19, 0.78) 55%, rgba(7, 9, 19, 0.35) 100%)',
+                    }}
+                  />
+
+                  {/* Main Link to Case Study */}
+                  <Link
+                    to={project.href}
                     className="absolute inset-0 z-10"
                     aria-label={`Lire l'étude de cas : ${project.title}`}
                   >
                     <span className="sr-only">Voir {project.title}</span>
                   </Link>
-                )}
-                {cardContent}
-                {project.externalHref && (
-                  <a
-                    href={project.externalHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Consulter le site officiel ${project.title}`}
-                    className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] label-mono font-bold text-white transition-all duration-200 hover:scale-105"
-                    style={{ background: 'rgba(46,143,224,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.15)' }}
-                  >
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                    <span>Voir le site</span>
-                  </a>
-                )}
-              </div>
-            );
-          })}
+
+                  {/* Card Content (Left aligned) */}
+                  <div className="relative z-20 p-4 sm:p-5 md:p-6 text-left max-w-[78%] sm:max-w-[72%]">
+                    <div className="text-[9px] sm:text-[10px] label-mono font-bold text-cyan-300 uppercase tracking-widest mb-0.5 sm:mb-1">
+                      {project.tag}
+                    </div>
+                    <div className="text-lg sm:text-xl md:text-2xl font-black text-text-primary mb-0.5 sm:mb-1 tracking-tight group-hover:text-cyan-300 transition-colors">
+                      {project.title}
+                    </div>
+                    <div className="text-[11px] sm:text-xs text-text-secondary leading-snug font-light line-clamp-2">
+                      {project.desc}
+                    </div>
+                  </div>
+
+                  {/* Action Buttons & Arrow on the Right */}
+                  <div className="absolute right-3.5 sm:right-5 top-1/2 -translate-y-1/2 z-20 flex items-center gap-2 sm:gap-3">
+                    {project.externalHref && (
+                      <a
+                        href={project.externalHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Consulter le site officiel ${project.title}`}
+                        className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-[#2E8FE0] text-white hover:text-[#0B122C] border border-white/20 transition-all duration-200 hidden sm:flex items-center justify-center"
+                        onClick={(e) => e.stopPropagation()}
+                        title="Visiter le site en ligne"
+                      >
+                        <ExternalLink size={13} />
+                      </a>
+                    )}
+
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#2E8FE0] group-hover:text-[#0B122C] group-hover:rotate-45">
+                      <ArrowRight size={14} className="sm:w-4 sm:h-4" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       </div>
     </SectionReveal>

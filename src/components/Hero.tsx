@@ -39,10 +39,10 @@ export default function Hero() {
           {/* Subtitle / Key Information Box */}
           <div className="hero-sub mt-3 mb-5 p-3.5 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed backdrop-blur-sm shadow-[0_0_30px_rgba(46,143,224,0.1)]">
             <p className="font-semibold text-text-primary mb-1">
-              <strong>Des sites rapides, clairs et efficaces :</strong>
+              <strong>Valorisez votre savoir-faire et gagnez la confiance de vos clients :</strong>
             </p>
             <p>
-              Développeur freelance basé à Saint-Mihiel (Meuse), je me déplace à votre rencontre dans tout le Grand Est et collabore à distance avec des PME et associations dans toute la France pour créer des solutions web sur-mesure.
+              Développeur freelance basé en Meuse, j'accompagne les PME, artisans et associations dans le Grand Est et toute la France pour créer des sites internet élégants, fiables et conçus pour durer.
             </p>
           </div>
 
@@ -55,8 +55,8 @@ export default function Hero() {
             </MagneticWrapper>
             
             <MagneticWrapper range={35} strength={0.25}>
-              <a href="#solutions" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(245,246,250,0.15)' }}>
-                Voir les solutions PME & Asso
+              <a href="#projets" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(245,246,250,0.15)' }}>
+                Découvrir les réalisations →
               </a>
             </MagneticWrapper>
           </div>

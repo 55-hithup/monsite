@@ -20,12 +20,12 @@ const steps: StepItem[] = [
   {
     num: '03',
     title: 'Développement',
-    desc: 'Programmation épurée de votre site pour garantir une navigation fluide et un affichage rapide sur ordinateur et smartphone.',
+    desc: 'Développement sur-mesure soigné pour vous assurer une navigation fluide, une sécurité renforcée et une grande durabilité.',
   },
   {
     num: '04',
     title: 'Tests & SEO',
-    desc: 'Vérification complète du fonctionnement des formulaires, de l\'affichage mobile et de la préparation au référencement sur Google.',
+    desc: 'Contrôle rigoureux des formulaires, de l\'ergonomie sur tous les écrans et optimisation de la visibilité sur Google.',
   },
   {
     num: '05',

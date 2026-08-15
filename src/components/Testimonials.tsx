@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, PenSquare, X } from 'lucide-react';
+import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import type { Area, Point } from 'react-easy-crop';
 import SectionReveal from './SectionReveal';
 
@@ -18,21 +18,33 @@ interface TestimonialItem {
 
 const defaultTestimonials: TestimonialItem[] = [
   {
-    quote: "« Le résultat dépasse largement mes attentes. Mon taux de conversion a doublé en deux mois et mes clients me complimentent sur le site à chaque échange. »",
+    quote: "« Le résultat dépasse largement mes attentes. Mon taux de conversion a doublé en deux mois et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
     name: "Claire Dubosc",
     role: "Fondatrice, Studio Verrière",
     rating: 5,
   },
   {
-    quote: "« Un vrai partenaire, pas juste un prestataire. Chaque détail a été pensé pour ma marque, du premier pixel jusqu'à la mise en ligne. »",
+    quote: "« Un vrai partenaire, pas juste un prestataire. Chaque détail a été pensé pour ma marque, avec un sens de la performance et une réactivité exemplaires. Le site est un véritable levier de croissance. »",
     name: "Karim Belaïd",
     role: "CEO, Neuron Labs",
     rating: 5,
   },
   {
-    quote: "« Rapide, réactif et incroyablement précis. Le site est aujourd'hui mon meilleur commercial, disponible 24h/24. »",
+    quote: "« Rapide, réactif et incroyablement précis. Le site est aujourd'hui mon meilleur commercial, disponible 24h/24 avec des temps de chargement instantanés. Je recommande sans la moindre hésitation. »",
     name: "Léa Fontaine",
     role: "Directrice, Maison Lucine",
+    rating: 5,
+  },
+  {
+    quote: "« Une refonte complète réalisée dans des délais records avec une fluidité irréprochable. Nos utilisateurs adorent la nouvelle interface et nous avons gagné un temps précieux au quotidien. »",
+    name: "Marc Vignal",
+    role: "Co-fondateur, Solis Tech",
+    rating: 5,
+  },
+  {
+    quote: "« Professionnalisme et écoute au rendez-vous. La structure du site et l'optimisation SEO nous ont permis de capter de nouveaux clients qualifiés dès les premières semaines de lancement. »",
+    name: "Émilie Renard",
+    role: "Gérante, Apex Conseil",
     rating: 5,
   },
 ];
@@ -78,9 +90,118 @@ async function getCroppedImg(
   return canvas.toDataURL('image/webp', 0.75);
 }
 
+// Individual Testimonial Card with 3-line clamp and "Lire la suite" toggle
+function TestimonialCard({
+  testi,
+  isExpanded,
+  onToggleExpand,
+}: {
+  testi: TestimonialItem;
+  isExpanded: boolean;
+  onToggleExpand: () => void;
+}) {
+  const quoteRef = useRef<HTMLParagraphElement>(null);
+  const [canExpand, setCanExpand] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (quoteRef.current) {
+      const isOverflowing = quoteRef.current.scrollHeight > quoteRef.current.clientHeight + 1;
+      setCanExpand(isOverflowing || testi.quote.length > 105);
+    } else {
+      setCanExpand(testi.quote.length > 105);
+    }
+  }, [testi.quote]);
+
+  return (
+    <div className="testi-card h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-2xl bg-[#121729]/70 backdrop-blur-sm border border-[rgba(245,246,250,0.08)] hover:border-[rgba(46,143,224,0.3)] transition-all duration-300 shadow-lg">
+      <div>
+        {/* Rating Stars */}
+        <div className="flex gap-1 mb-3.5 items-center" aria-label={`Note : ${testi.rating} sur 5`}>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star
+              key={i}
+              size={13}
+              fill={i < testi.rating ? '#F5C451' : 'transparent'}
+              stroke={i < testi.rating ? '#F5C451' : 'rgba(245,246,250,0.15)'}
+            />
+          ))}
+        </div>
+
+        {/* Quote text (clamped to 3 lines or fully expanded) */}
+        <p
+          ref={quoteRef}
+          className={`testi-quote text-text-primary text-sm sm:text-[14.5px] leading-relaxed tracking-normal font-normal ${
+            isExpanded ? '' : 'line-clamp-3'
+          }`}
+          style={{
+            display: isExpanded ? 'block' : '-webkit-box',
+            WebkitLineClamp: isExpanded ? 'unset' : 3,
+            WebkitBoxOrient: 'vertical',
+            overflow: isExpanded ? 'visible' : 'hidden',
+          }}
+        >
+          {testi.quote}
+        </p>
+
+        {/* Expand / Collapse Button */}
+        {canExpand && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleExpand();
+            }}
+            className="mt-2.5 text-xs font-semibold text-[#2E8FE0] hover:text-[#52a5ec] inline-flex items-center gap-1 cursor-pointer transition-colors focus:outline-none focus:underline"
+            aria-expanded={isExpanded}
+          >
+            <span>{isExpanded ? 'Voir moins' : 'Lire la suite'}</span>
+            {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+          </button>
+        )}
+      </div>
+
+      {/* Author information */}
+      <div className="testi-person flex items-center gap-3.5 mt-6 pt-4 border-t border-[rgba(245,246,250,0.06)]">
+        {testi.avatar ? (
+          <div
+            className="testi-avatar w-10 h-10 rounded-full flex-shrink-0 border border-[rgba(245,246,250,0.12)]"
+            style={{
+              backgroundImage: `url(${testi.avatar})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+        ) : (
+          <div className="w-10 h-10 rounded-full flex-shrink-0 bg-gradient-to-br from-[#2E8FE0]/40 to-[#6B4FE0]/40 border border-[rgba(245,246,250,0.12)] flex items-center justify-center text-xs font-bold text-text-primary">
+            {testi.name
+              .split(' ')
+              .map((n) => n[0])
+              .join('')
+              .toUpperCase()
+              .slice(0, 2)}
+          </div>
+        )}
+        <div className="min-w-0 flex-1">
+          <div className="testi-name text-xs sm:text-sm font-bold text-text-primary truncate">
+            {testi.name}
+          </div>
+          <div className="testi-role text-[11px] sm:text-xs text-text-secondary truncate">
+            {testi.role}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
   const [list, setList] = useState<TestimonialItem[]>(defaultTestimonials);
-  const [current, setCurrent] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(3);
   
   // Form inline states
   const [showForm, setShowForm] = useState(false);
@@ -105,6 +226,25 @@ export default function Testimonials() {
 
   const lenis = useLenis();
   const formRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchDeltaX = useRef<number>(0);
+
+  // Responsive items count calculation
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const updateVisible = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+    updateVisible();
+    window.addEventListener('resize', updateVisible);
+    return () => window.removeEventListener('resize', updateVisible);
+  }, []);
 
   const handleCloseForm = () => {
     setShowForm(false);
@@ -118,7 +258,6 @@ export default function Testimonials() {
           if (lenis) {
             const element = formRef.current;
             const rect = element.getBoundingClientRect();
-            // Center the card in the viewport
             const offset = -(window.innerHeight / 2) + (rect.height / 2);
             lenis.scrollTo(element, { offset, duration: 1.2 });
           } else {
@@ -163,9 +302,9 @@ export default function Testimonials() {
           return timeB - timeA;
         });
         
-        // Combine dynamic reviews from Firestore with our original static ones
+        // If reviews exist in Firestore, use them directly
         if (dynamicList.length > 0) {
-          setList([...dynamicList, ...defaultTestimonials]);
+          setList(dynamicList);
         }
       } catch (err) {
         console.error('Error fetching testimonials:', err);
@@ -179,13 +318,86 @@ export default function Testimonials() {
     }
   }, []);
 
+  const totalItems = list.length;
+  const needsLoop = totalItems > visibleCount;
+
+  // Extended list with duplicates at the end to create seamless continuous looping
+  const displayList = needsLoop ? [...list, ...list.slice(0, visibleCount)] : list;
+
+  const handleNext = useCallback(() => {
+    if (!needsLoop) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  }, [needsLoop]);
+
+  const handlePrev = useCallback(() => {
+    if (!needsLoop) return;
+    if (currentIndex === 0) {
+      // Seamlessly jump to the duplicate end without transition, then slide to previous
+      setIsTransitioning(false);
+      setCurrentIndex(totalItems);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+          setCurrentIndex(totalItems - 1);
+        });
+      });
+    } else {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev - 1);
+    }
+  }, [currentIndex, needsLoop, totalItems]);
+
+  const handleTransitionEnd = () => {
+    // When reaching the duplicated start at the end, jump back to index 0 invisibly
+    if (needsLoop && currentIndex >= totalItems) {
+      setIsTransitioning(false);
+      setCurrentIndex(0);
+    }
+  };
+
+  // Re-enable transition after seamless instant jump
   useEffect(() => {
-    if (list.length <= 1) return;
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
+
+  // Automatic looping interval
+  useEffect(() => {
+    if (!needsLoop || isPaused || expandedIndex !== null) return;
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % list.length);
-    }, 6000);
+      handleNext();
+    }, 5000);
     return () => clearInterval(timer);
-  }, [list.length]);
+  }, [needsLoop, isPaused, expandedIndex, handleNext]);
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current !== null) {
+      touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (Math.abs(touchDeltaX.current) > 40) {
+      if (touchDeltaX.current < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
+  };
 
   const handleOpenForm = () => {
     setName('');
@@ -299,61 +511,94 @@ export default function Testimonials() {
     }
   };
 
+  const slideWidthPercent = 100 / visibleCount;
+
   return (
     <SectionReveal id="apropos" className="section-pad" style={{ position: 'relative' }}>
       <div className="wrap">
-        <div className="text-center mb-[70px]">
+        <div className="text-center mb-[50px] sm:mb-[70px]">
           <div className="eyebrow reveal justify-center">Témoignages</div>
           <h2 className="section-title reveal">Ils m'ont fait confiance.</h2>
         </div>
         
-        <div className="testi-wrap reveal">
-          <div className="testi-track">
+        <div 
+          className="testi-wrap reveal"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}
+        >
+          <div 
+            className="testi-track"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
-              className="testi-slides transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${current * 100}%)`, display: 'flex' }}
+              className="testi-slides"
+              onTransitionEnd={handleTransitionEnd}
+              style={{
+                transform: `translateX(-${currentIndex * slideWidthPercent}%)`,
+                transition: isTransitioning ? 'transform 500ms cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
+                display: 'flex',
+                alignItems: 'stretch',
+              }}
             >
-              {list.map((testi, idx) => (
-                <div key={idx} className="testi-slide w-full flex-shrink-0">
-                  <div className="testi-card">
-                    {/* Stars rating indicator */}
-                    <div className="flex gap-0.5 mb-3 justify-center">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star 
-                          key={i} 
-                          size={12} 
-                          fill={i < testi.rating ? '#F5C451' : 'transparent'} 
-                          stroke={i < testi.rating ? '#F5C451' : 'rgba(245,246,250,0.15)'} 
-                        />
-                      ))}
-                    </div>
-                    <p className="testi-quote">{testi.quote}</p>
-                    <div className="testi-person">
-                      <div 
-                        className="testi-avatar"
-                        style={testi.avatar ? { backgroundImage: `url(${testi.avatar})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
-                      ></div>
-                      <div>
-                        <div className="testi-name">{testi.name}</div>
-                        <div className="testi-role">{testi.role}</div>
-                      </div>
-                    </div>
-                  </div>
+              {displayList.map((testi, idx) => (
+                <div 
+                  key={`${idx}-${testi.name}`} 
+                  className="testi-slide flex-shrink-0 px-2 sm:px-3 box-border"
+                  style={{ width: `${slideWidthPercent}%` }}
+                >
+                  <TestimonialCard
+                    testi={testi}
+                    isExpanded={expandedIndex === idx}
+                    onToggleExpand={() => {
+                      setExpandedIndex(expandedIndex === idx ? null : idx);
+                    }}
+                  />
                 </div>
               ))}
             </div>
           </div>
           
-          <div className="testi-dots">
-            {list.map((_, idx) => (
+          {/* Navigation Controls (Arrows + Dots) */}
+          {needsLoop && (
+            <div className="flex items-center justify-center gap-4 mt-8">
               <button
-                key={idx}
-                className={`testi-dot ${current === idx ? 'active' : ''}`}
-                onClick={() => setCurrent(idx)}
-                aria-label={`Aller au témoignage ${idx + 1}`}
-              />
-            ))}
-          </div>
+                type="button"
+                onClick={handlePrev}
+                className="w-9 h-9 rounded-full flex items-center justify-center bg-[#121729]/80 border border-[rgba(245,246,250,0.12)] text-text-secondary hover:text-text-primary hover:border-[#2E8FE0] transition-all cursor-pointer shadow-sm"
+                aria-label="Avis précédent"
+              >
+                <ChevronLeft size={16} />
+              </button>
+
+              <div className="testi-dots flex items-center gap-3">
+                {list.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`testi-dot ${currentIndex % totalItems === idx ? 'active' : ''}`}
+                    onClick={() => {
+                      setIsTransitioning(true);
+                      setCurrentIndex(idx);
+                    }}
+                    aria-label={`Aller à l'avis ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleNext}
+                className="w-9 h-9 rounded-full flex items-center justify-center bg-[#121729]/80 border border-[rgba(245,246,250,0.12)] text-text-secondary hover:text-text-primary hover:border-[#2E8FE0] transition-all cursor-pointer shadow-sm"
+                aria-label="Avis suivant"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Submit Review Button */}
@@ -386,6 +631,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={handleCloseForm}
                 className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+                aria-label="Fermer le formulaire"
               >
                 <X size={18} />
               </button>
@@ -411,8 +657,9 @@ export default function Testimonials() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Nom / Prénom</label>
+                      <label htmlFor="testi-author-name" className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Nom / Prénom</label>
                       <input
+                        id="testi-author-name"
                         type="text"
                         required
                         autoFocus
@@ -423,8 +670,9 @@ export default function Testimonials() {
                       />
                     </div>
                     <div>
-                      <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Profession / Rôle / Entreprise</label>
+                      <label htmlFor="testi-author-role" className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Profession / Rôle / Entreprise</label>
                       <input
+                        id="testi-author-role"
                         type="text"
                         required
                         value={role}
@@ -445,6 +693,7 @@ export default function Testimonials() {
                           type="button"
                           onClick={() => setRating(i + 1)}
                           className="cursor-pointer transition-transform hover:scale-110"
+                          aria-label={`Attribuer la note de ${i + 1} étoile${i > 0 ? 's' : ''}`}
                         >
                           <Star
                             size={22}
@@ -520,6 +769,7 @@ export default function Testimonials() {
                                 value={zoom} 
                                 onChange={(e) => setZoom(Number(e.target.value))}
                                 className="w-full h-1 bg-[#070913] rounded-lg appearance-none cursor-pointer accent-[#2E8FE0]"
+                                aria-label="Niveau de zoom du recadrage"
                               />
                             </div>
                             <div className="flex gap-2 justify-end">
@@ -546,8 +796,9 @@ export default function Testimonials() {
                   </div>
 
                   <div>
-                    <label className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Témoignage</label>
+                    <label htmlFor="testi-comment" className="block text-[9px] label-mono text-purple-300 uppercase mb-1">Votre Témoignage</label>
                     <textarea
+                      id="testi-comment"
                       required
                       rows={4}
                       value={quote}

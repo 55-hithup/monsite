@@ -179,8 +179,6 @@ small {
 
 .label-mono {
   font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
@@ -326,6 +324,16 @@ button {
 }
 @media (max-width: 768px) {
   .wrap { padding: 0 var(--space-md); }
+}
+
+.wrap-wide {
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+@media (max-width: 768px) {
+  .wrap-wide { padding: 0 var(--space-md); }
 }
 section {
   position: relative;
@@ -1373,62 +1381,73 @@ nav {
 /* --- Testimonials --- */
 .testi-wrap {
   position: relative;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .testi-track {
   overflow: hidden;
+  width: 100%;
 }
 .testi-slides {
   display: flex;
-  transition: transform var(--transition-normal);
+  align-items: stretch;
 }
 .testi-slide {
-  min-width: 100%;
-  padding: 10px;
+  box-sizing: border-box;
 }
 .testi-card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  text-align: center;
+  padding: 1.5rem;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 @media (max-width: 640px) {
-  .testi-card { padding: var(--space-lg) var(--space-sm); }
+  .testi-card { padding: 1.25rem; }
+}
+.testi-card:hover {
+  border-color: rgba(46, 143, 224, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 .testi-quote {
-  font-size: 21px;
+  font-size: 14px;
   line-height: 1.6;
-  font-weight: 500;
-  margin-bottom: var(--space-lg);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
   letter-spacing: -0.01em;
+}
+@media (min-width: 640px) {
+  .testi-quote {
+    font-size: 14.5px;
+  }
 }
 .testi-person {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
 }
 .testi-avatar {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--grad-main);
+  flex-shrink: 0;
 }
 .testi-name {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
+  color: var(--color-text-primary);
 }
 .testi-role {
   color: var(--color-text-muted);
-  font-size: 13.5px;
+  font-size: 12px;
 }
 .testi-dots {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 16px;
-  margin-top: var(--space-lg);
 }
 .testi-dot {
   width: 8px;
@@ -1438,6 +1457,8 @@ nav {
   cursor: pointer;
   transition: all var(--transition-normal);
   position: relative;
+  border: none;
+  padding: 0;
 }
 .testi-dot::after {
   content: "";
