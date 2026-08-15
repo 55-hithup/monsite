@@ -125,13 +125,14 @@ function TestimonialCard({
     <div className="testi-card h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-2xl bg-[#121729]/70 backdrop-blur-sm border border-[rgba(245,246,250,0.08)] hover:border-[rgba(46,143,224,0.3)] transition-all duration-300 shadow-lg">
       <div>
         {/* Rating Stars */}
-        <div className="flex gap-1 mb-3.5 items-center" aria-label={`Note : ${testi.rating} sur 5`}>
+        <div className="flex gap-1 mb-3.5 items-center" role="img" aria-label={`Note : ${testi.rating} sur 5 étoiles`}>
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
               size={13}
               fill={i < testi.rating ? '#F5C451' : 'transparent'}
               stroke={i < testi.rating ? '#F5C451' : 'rgba(245,246,250,0.15)'}
+              aria-hidden="true"
             />
           ))}
         </div>

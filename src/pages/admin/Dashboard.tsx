@@ -620,13 +620,14 @@ export default function Dashboard() {
                       }`}>
                         {review.approved ? 'En ligne' : 'En attente'}
                       </span>
-                      <div className="flex gap-0.5">
+                      <div className="flex gap-0.5" role="img" aria-label={`Note : ${review.rating || 5} sur 5 étoiles`}>
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star 
                             key={i} 
                             size={12} 
                             fill={i < (review.rating || 5) ? '#F5C451' : 'transparent'} 
                             stroke={i < (review.rating || 5) ? '#F5C451' : 'rgba(245,246,250,0.15)'} 
+                            aria-hidden="true"
                           />
                         ))}
                       </div>
