@@ -24,6 +24,24 @@ const defaultTestimonials: TestimonialItem[] = [
     rating: 5,
   },
   {
+    quote: "« Passer d'un ancien template WordPress lent à un site sur-mesure développé par Alexandre a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement. Un investissement très vite rentabilisé. »",
+    name: "Thomas Mercier",
+    role: "Fondateur, Mercier Rénovation & Bois",
+    rating: 5,
+  },
+  {
+    quote: "« Alexandre a su concevoir un site à la fois épuré, rassurant et ultra-rapide pour nos patients. La navigation sur smartphone est parfaite, les informations sont claires et nous avons d'excellents retours au quotidien. Un professionnalisme rare et un suivi exemplaire. »",
+    name: "Dr. Sophie Laurent",
+    role: "Chirurgien-Dentiste, Cabinet Dentaire",
+    rating: 5,
+  },
+  {
+    quote: "« Nous avions besoin d'une interface sur-mesure performante et d'une vitrine moderne pour nos clients professionnels. Le site charge en un clin d'œil et nos équipes gagnent un temps précieux dans le suivi des demandes. Alexandre a parfaitement cerné nos enjeux. »",
+    name: "Julien Caron",
+    role: "Directeur Général, LogiMat Outils",
+    rating: 5,
+  },
+  {
     quote: "« Un vrai partenaire, pas juste un prestataire. Chaque détail a été pensé pour ma marque, avec un sens de la performance et une réactivité exemplaires. Le site est un véritable levier de croissance. »",
     name: "Karim Belaïd",
     role: "CEO, Neuron Labs",
@@ -33,18 +51,6 @@ const defaultTestimonials: TestimonialItem[] = [
     quote: "« Rapide, réactif et incroyablement précis. Le site est aujourd'hui mon meilleur commercial, disponible 24h/24 avec des temps de chargement instantanés. Je recommande sans la moindre hésitation. »",
     name: "Léa Fontaine",
     role: "Directrice, Maison Lucine",
-    rating: 5,
-  },
-  {
-    quote: "« Une refonte complète réalisée dans des délais records avec une fluidité irréprochable. Nos utilisateurs adorent la nouvelle interface et nous avons gagné un temps précieux au quotidien. »",
-    name: "Marc Vignal",
-    role: "Co-fondateur, Solis Tech",
-    rating: 5,
-  },
-  {
-    quote: "« Professionnalisme et écoute au rendez-vous. La structure du site et l'optimisation SEO nous ont permis de capter de nouveaux clients qualifiés dès les premières semaines de lancement. »",
-    name: "Émilie Renard",
-    role: "Gérante, Apex Conseil",
     rating: 5,
   },
 ];
