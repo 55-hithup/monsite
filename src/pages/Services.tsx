@@ -488,7 +488,7 @@ const strategicPillars = [
     title: 'Sites Vitrines & Portails Professionnels',
     subtitle: 'Conception sur-mesure pour PME, artisans et indépendants',
     desc: 'Des sites ultra-rapides, élégants et conçus sans aucun constructeur de page lourd. Chaque page valorise vos compétences et guide le visiteur vers la prise de contact.',
-    pricing: 'Dès 690 € (One-Page) ou 1 350 € (3-5 pages)',
+    pricing: 'À partir de 950 € (One-Page) ou 1 850 € (3-5 pages)',
     deliverables: [
       'Design exclusif adapté à votre identité visuelle',
       'Architecture légère & temps de chargement éclair (< 500ms)',
@@ -520,7 +520,7 @@ const strategicPillars = [
     title: 'Applications Web, Mobiles & Outils SaaS',
     subtitle: 'Logiciels métier sur-mesure et applications iOS / Android',
     desc: 'Automatisez vos processus internes ou lancez votre produit digital avec une application sur-mesure rapide, accessible sur tous les supports sans contrainte d\'installation.',
-    pricing: 'Sur devis basé sur un TJM de 350 €',
+    pricing: 'Sur devis basé sur un TJM indicatif de 400 € / jour',
     deliverables: [
       'Tableaux de bord dynamiques et gestion de données en direct',
       'Espaces membres sécurisés avec gestion fine des permissions',
@@ -573,7 +573,7 @@ const faqs = [
 
 export default function Services() {
   useDocumentMetadata(
-    'Prestations & Solutions Web Sur-Mesure | DevSupAi',
+    'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
     'Découvrez les 47 solutions informatiques et web sur-mesure conçues par Alexandre Pabst (DevSupAi) : création de sites vitrines, e-commerce, applications web et mobiles, SaaS et maintenance technique.',
     '/nos-services'
   );

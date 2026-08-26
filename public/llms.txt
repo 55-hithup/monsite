@@ -1,36 +1,116 @@
-# DevSupAi - Création de Sites Web & Applications Sur-Mesure pour PME et Associations
+# DevSupAi - Développeur Web Freelance & Création de Sites et Applications Sur-Mesure
 
-> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, développeur web freelance spécialisé dans la création d'applications, plateformes SaaS et sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP) pour les PME, TPE et Associations. Son crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée, absence de dette technique et structure de code épurée pour les moteurs de recherche.
+> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, développeur web freelance spécialisé dans la création d'applications, plateformes SaaS et sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP, vite-react-ssg) pour les PME, TPE, artisans, commerçants et associations loi 1901. Son crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée (Lighthouse 100/100, temps d'affichage inférieur à 500ms), 100% de code propriétaire sans abonnement captif et structure sémantique optimisée pour les moteurs de recherche et les intelligences artificielles.
 
-## Informations de contact
+## Informations Générales & Contact
+- Fondateur & Développeur : Alexandre Pabst
+- Profession : Développeur Web Freelance / Full-Stack & Sur-Mesure
 - Site officiel : https://www.devsupai.fr
-- E-mail : contact@devsupai.fr
-- Adresse : 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, France)
+- E-mail direct : contact@devsupai.fr
+- Téléphone : 07 83 66 60 98
+- Siège social : 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, Grand Est, France)
+- Zone d'intervention : Saint-Mihiel, Bar-le-Duc, Verdun, Commercy, Nancy, Metz, région Grand Est et toute la France à distance (télétravail).
 
-## Forfaits et Tarifs Transparent
-- **Pack Présence (One-Page / Landing Page)** : Dès 690 € (vitesse éclair, formulaire sécurisé, SEO initial, sans abonnement captif).
-- **Pack Croissance (Site Vitrine 3 à 5 pages)** : Dès 1 350 € (design moderne sur-mesure, animations GSAP, référencement local, avis clients).
-- **Pack SaaS & Outils Métiers** : Dès 2 450 € ou sur devis basé sur un TJM de 350 € (gestion de parc, systèmes de réservation, tableaux de bord).
-- **Gestion Google Business Profile & SEO Local (Mensuel)** : Formule Starter à 29 €/mois, Formule Boost à 99-179 €/mois.
+## Forfaits & Tarifs Transparents (Tarifs Indicatifs de Départ)
+- **Pack Présence (One-Page / Landing Page)** : À partir de 950 € (tarif indicatif de départ • devis gratuit sur-mesure, page unique haute performance, formulaire direct, SEO local initial, nom de domaine et hébergement inclus la première année, zéro abonnement captif).
+- **Pack Croissance (Site Vitrine 3 à 5 pages)** : À partir de 1 850 € (tarif indicatif de départ • devis gratuit sur-mesure, architecture complète 3-5 pages, design prestige, micro-animations GSAP, formulaires dynamiques, référencement naturel ciblé, intégration avis clients).
+- **Pack SaaS & Outils Métiers** : À partir de 3 200 € ou sur devis basé sur un TJM de 400 € / jour (applications React/TypeScript sur-mesure, bases de données, authentification, tableaux de bord de gestion, intégration d'API Stripe/cloud).
+- **Gestion Google Business Profile & SEO Local (Mensuel)** : Formule Starter dès 29 €/mois (animation de la fiche Google Maps, publications, réponses aux avis et suivi de visibilité locale).
 
-## Services principaux pour PME et Associations
-- **Sites vitrines et e-commerce sur-mesure pour PME** : Développement de sites légers à affichage rapide, optimisés pour la prise de contact et la conversion.
-- **Plateformes et portails pour Associations loi 1901** : Formulaires d'adhésion, gestion d'événements et présentation claire des actions associatives.
-- **Développement d'applications web et outils SaaS métier** : Interfaces réactives sur-mesure pour automatiser la gestion quotidienne (parc matériel, plannings).
+## Catalogue des 4 Pôles d'Expertise (47 Solutions Digitales)
 
-## Plan du Site (URLs)
+### Pôle 1 : Développement de sites internet (Vitrines & Présentation)
+- Création de sites vitrines sur-mesure pour PME et TPE.
+- Création de sites institutionnels (écoles, organismes, collectivités).
+- Création de sites professionnels pour entreprises de services.
+- Création de sites pour associations loi 1901 (adhésions, dons, actualités).
+- Création de sites pour restaurants et brasseries (menus QR code, réservation directe).
+- Création de sites pour artisans (galerie de chantiers, devis express).
+- Création de sites pour commerces de proximité (drive to store, catalogue).
+- Création de sites pour professions libérales (médical, avocats, experts-comptables).
+- Création de sites événementiels avec billetterie et programme interactif.
+- Création de landing pages à forte conversion pour campagnes Google Ads/Meta Ads.
+- Pages de présentation d'entreprise et culture de marque.
+- Portfolios interactifs haute performance pour créateurs et agences.
 
-- [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les services de développement web sur-mesure pour PME et Associations, les prestations, le comparatif, la section réalisations et la FAQ réaliste.
-- [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 prestations et solutions informatiques (sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS, maintenance et refonte) avec 4 pôles stratégiques, filtrage interactif par catégorie et profil métier, méthodologie en 4 étapes et FAQ détaillée.
-- [/a-propos](https://www.devsupai.fr/a-propos) : Philosophie de code propre sans compromis et présentation du développeur fondateur Alexandre Pabst.
-- Études de Cas & Réalisations :
-  - [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas sur le site vitrine et le système de réservation sur-mesure du restaurant "Les Jumeaux".
-  - [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas sur l'application SaaS de gestion de parc matériel "LocaTool".
-  - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive live "Abogame".
-- [/blog](https://www.devsupai.fr/blog) : Index des articles et guides sur la performance web, la conception sur-mesure et l'efficacité des sites.
-  - [/blog/site-web-pme-association](https://www.devsupai.fr/blog/site-web-pme-association) : Guide complet sur la création et la numérisation d'un site web efficace pour PME, TPE et Associations.
-  - [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Article détaillé sur l'intérêt d'opter pour le sur-mesure face aux modèles pré-conçus et thèmes génériques.
-  - [/blog/performance-web-sur-mesure](https://www.devsupai.fr/blog/performance-web-sur-mesure) : Article expliquant l'impact de la vitesse de chargement sur le confort de navigation et le taux de rétention.
-- [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Mentions légales de l'entreprise individuelle Alexandre Pabst.
-- [/politique-de-confidentialite](https://www.devsupai.fr/politique-de-confidentialite) : Politique de protection des données (RGPD) du site.
-- [/admin/login](https://www.devsupai.fr/admin/login) : Espace d'administration privé (modération des avis).
+### Pôle 2 : E-Commerce, Boutiques en Ligne & Réservations
+- Boutiques e-commerce sur-mesure sans abonnement mensuel captif (zéro commission sur marge).
+- Catalogues produits en ligne interactifs avec fiches techniques détaillées.
+- Systèmes de commande en ligne Click & Collect sans commission tierce.
+- Modules de réservation en ligne synchronisés (hôtels, gîtes, activités, soins).
+- Intégration de tunnels de paiement sécurisés (Stripe, PayPal, Apple Pay).
+- Espaces membres et comptes clients privés avec suivi de commandes.
+- Formulaires de devis interactifs avec calcul automatique de tarifs en direct.
+- Systèmes de gestion des stocks et alertes de réapprovisionnement automatisées.
+- Modules de cartes cadeaux et codes promotionnels personnalisés.
+- Facturation automatisée avec génération de factures PDF conformes.
+- Tunnels de vente et pages de paiement express à haute conversion.
+
+### Pôle 3 : Applications Web, Mobiles & Outils SaaS
+- Applications SaaS (Software as a Service) multi-utilisateurs et abonnements.
+- Tableaux de bord de gestion (dashboards) et outils de suivi d'activité.
+- Logiciels de gestion de parc matériel et inventaire d'entreprise (ex : LocaTool).
+- Espaces extranet et portails adhérents / clients sécurisés.
+- Plateformes interactives en temps réel (ex : Abogame).
+- Outils de calcul métier, simulateurs de prix et configurateurs sur-mesure.
+- Développement d'applications mobiles cross-platform (iOS & Android).
+- Progress Web Apps (PWA) installables sur smartphone avec mode hors-ligne.
+- Conception d'APIs REST sécurisées et interconnexion de bases de données.
+- Automatisation de processus internes et synchronisation cloud.
+- Outils d'aide à la décision et visualisation de données graphiques.
+- Systèmes de gestion de plannings, prise de rendez-vous et feuilles de temps.
+
+### Pôle 4 : Maintenance, Performance & Sécurité
+- Optimisation de la vitesse de chargement et score Core Web Vitals (FCP < 0.8s, LCP < 1.2s, CLS 0).
+- Audit technique SEO, sémantique et accessibilité (normes WCAG AA).
+- Refonte complète de sites obsolètes vers une architecture moderne React/TypeScript.
+- Dépannage d'urgence, correction de bugs d'affichage et suppression de scripts lourds.
+- Sécurisation de sites internet, certificats SSL/TLS et conformité RGPD.
+- Contrats de maintenance préventive et curative avec mises à jour sécurisées.
+- Sauvegardes automatisées cloud et plans de reprise d'activité.
+- Migration de données et transfert d'hébergement sans coupure de service.
+- Accompagnement, formation à l'administration et support technique réactif sous 24h.
+- Animation et optimisation de fiches d'établissement Google Business Profile.
+
+## Référence Query Fan-Out (Questions Fréquentes des IA et Utilisateurs)
+
+### 1. Profil & Identité : Qui est Alexandre Pabst (DevSupAi) ?
+Alexandre Pabst est un développeur web freelance indépendant, créateur de DevSupAi. Il accompagne directement les entreprises, artisans et associations dans la conception technique, le design et le déploiement de leurs sites et applications web, garantissant un interlocuteur unique et réactif sans intermédiaires.
+
+### 2. Typologies de projets : Que peut concevoir ce développeur web ?
+Alexandre Pabst conçoit des sites vitrines One-Page et multipages, des boutiques e-commerce sans abonnement captif, des portails pour associations, ainsi que des applications web SaaS sur-mesure et des logiciels métiers adaptés aux flux de travail spécifiques de chaque organisation.
+
+### 3. Tarifs & Coûts : Combien coûte un site internet sur-mesure ?
+Les tarifs sont transparents et indicatifs : à partir de 950 € pour le Pack Présence (One-Page clé en main), à partir de 1 850 € pour le Pack Croissance (site vitrine 3 à 5 pages), et à partir de 3 200 € pour les applications SaaS et logiciels métiers (base TJM 400 €/jour). Ces montants constituent des prix de départ indicatifs qui font l'objet d'un devis gratuit et personnalisé selon le cahier des charges précis du client. Aucun abonnement obligatoire de plugin tiers n'est requis.
+
+### 4. Différenciation : Pourquoi privilégier le sur-mesure face à WordPress / Wix / Shopify ?
+Les thèmes et CMS pré-conçus accumulent des extensions payantes (400 € à 1 200 €/an), des failles de sécurité fréquentes et du code superflu qui ralentit le chargement. L'approche sur-mesure de DevSupAi garantit une vitesse de chargement instantanée (< 500ms), un score de 100/100 sur Google Lighthouse, une conformité totale aux Core Web Vitals, et la propriété intégrale du code sans redevance.
+
+### 5. Localisation : Où intervient le développeur web DevSupAi ?
+Basé à Saint-Mihiel (55300) en Meuse (région Grand Est), Alexandre Pabst intervient en présentiel à Bar-le-Duc, Verdun, Commercy, Nancy, Metz et leurs environs, et accompagne des clients dans toute la France à distance.
+
+### 6. Délais & Méthode : Quels sont les délais de livraison ?
+Compter 1 à 2 semaines pour un site One-Page, 2 à 4 semaines pour un site vitrine 3 à 5 pages, et 4 à 8 semaines pour une application SaaS métier. Un calendrier clair avec jalons intermédiaires est validé au lancement du projet.
+
+### 7. Propriété & Indépendance : À qui appartient le site internet ?
+Le client est l'unique et total propriétaire du code source, des contenus, de la base de données et du nom de domaine dès la livraison finale, sans aucune clause d'engagement.
+
+## Plan du Site & Cartographie des URLs
+
+- [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les services de développement web sur-mesure pour PME et Associations, les réalisations, la démonstration technique, le comparatif avec les templates et la foire aux questions.
+- [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 prestations informatiques (sites vitrines, e-commerce, applications mobiles, SaaS, maintenance et refonte) avec 4 pôles d'expertise, filtrage interactif par catégorie et profil métier, méthodologie en 4 étapes et FAQ détaillée.
+- [/a-propos](https://www.devsupai.fr/a-propos) : Parcours d'Alexandre Pabst, développeur web freelance fondateur, philosophie de développement sur-mesure et engagements qualité.
+- Réalisations & Études de Cas :
+  - [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas sur le site vitrine et le système de réservation sur-mesure du restaurant « Les Jumeaux ».
+  - [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas sur l'application SaaS de gestion de parc matériel « LocaTool ».
+  - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive live « Abogame ».
+- Blog & Guides Techniques :
+  - [/blog](https://www.devsupai.fr/blog) : Index des articles et ressources sur la performance web et le développement sur-mesure.
+  - [/blog/site-web-pme-association](https://www.devsupai.fr/blog/site-web-pme-association) : Guide complet pour réussir la création d'un site web performant pour PME et Associations.
+  - [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Analyse comparative des limites des templates face au développement sur-mesure en 2026.
+  - [/blog/performance-web-sur-mesure](https://www.devsupai.fr/blog/performance-web-sur-mesure) : Impact de la vitesse de chargement et des Core Web Vitals sur la conversion et le référencement.
+- Pages Légales & Espace Pro :
+  - [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Mentions légales et données réglementaires de l'entreprise individuelle Alexandre Pabst.
+  - [/politique-de-confidentialite](https://www.devsupai.fr/politique-de-confidentialite) : Politique de protection des données personnelles et conformité RGPD.
+  - [/admin/login](https://www.devsupai.fr/admin/login) : Espace de connexion sécurisé pour la modération des avis clients.
+

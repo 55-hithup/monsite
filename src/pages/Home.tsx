@@ -13,7 +13,7 @@ import StructuredData from '../components/StructuredData';
 
 export default function Home() {
   useDocumentMetadata(
-    "DevSupAi | Développeur Web Freelance en Meuse (55)",
+    "DevSupAi | Développeur Web Freelance & Applications Sur-Mesure",
     "DevSupAi, développeur web freelance basé en Meuse (Grand Est). Sites vitrines, e-commerce et applications sur-mesure pour PME et associations, en France.",
     "/"
   );

@@ -32,7 +32,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-text-secondary leading-relaxed">
-              Création de plateformes web sur-mesure de haute performance. Je conçois des produits digitaux qui convertissent, optimisés pour le SEO et l'expérience utilisateur.
+              Alexandre Pabst • Développeur web freelance spécialisé dans la création de sites internet et applications sur-mesure de haute performance pour PME, artisans et associations.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(245,246,250,0.06)] bg-[rgba(245,246,250,0.02)] text-xs label-mono text-text-secondary self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>

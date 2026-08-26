@@ -8,8 +8,8 @@ export default function Offers() {
       id: 'presence',
       name: 'Pack Présence',
       badge: 'Artisans & Indépendants',
-      price: '690 €',
-      priceSub: 'Forfait sur-mesure clé en main',
+      price: '950 €',
+      priceSub: 'Tarif indicatif de départ • Devis gratuit sur-mesure',
       desc: 'Idéal pour créer une première vitrine professionnelle claire, percutante et rassurante.',
       popular: false,
       features: [
@@ -24,8 +24,8 @@ export default function Offers() {
       id: 'croissance',
       name: 'Pack Croissance PME',
       badge: 'Le plus plébiscité',
-      price: '1 350 €',
-      priceSub: 'Forfait complet sur-mesure',
+      price: '1 850 €',
+      priceSub: 'Tarif indicatif de départ • Devis gratuit sur-mesure',
       desc: 'La solution complète pour les PME souhaitant valoriser leur offre et convertir leurs visiteurs en clients.',
       popular: true,
       features: [
@@ -41,8 +41,8 @@ export default function Offers() {
       id: 'saas',
       name: 'Pack SaaS & Métier',
       badge: 'Applications & Plateformes',
-      price: '2 450 €',
-      priceSub: 'Dès 2 450 € (Base TJM 350 €)',
+      price: '3 200 €',
+      priceSub: 'Tarif indicatif de départ (Base TJM 400 €/j)',
       desc: 'Pour les applications sur-mesure, outils de réservation en ligne ou gestion de parc matériel.',
       popular: false,
       features: [
@@ -215,7 +215,7 @@ export default function Offers() {
                     {/* Prix élégamment dosé à gauche du texte bleu */}
                     <div className="pt-3 mt-3 border-t border-[rgba(245,246,250,0.08)] flex flex-wrap items-baseline justify-end gap-3">
                       <div className="flex items-baseline gap-1.5">
-                        <span className="text-xs text-slate-400 font-semibold label-mono uppercase">dès</span>
+                        <span className="text-xs text-slate-400 font-semibold label-mono uppercase">à partir de</span>
                         <span className="text-2xl sm:text-3xl font-extrabold text-white label-mono tracking-tight">
                           {pkg.price}
                         </span>

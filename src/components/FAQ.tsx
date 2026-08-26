@@ -11,8 +11,8 @@ export default function FAQ() {
   const faqColumnLeft = [
     {
       q: 'Comment est défini le tarif d\'un projet sur-mesure ?',
-      short: 'Mes forfaits sont transparents et adaptés à vos besoins réels : dès 690 € pour le Pack Présence (One-Page), dès 1 350 € pour le Pack Croissance (site vitrine 3 à 5 pages), et dès 2 450 € pour une application web ou un outil SaaS sur-mesure (base TJM 350 €).',
-      detail: 'Chaque projet fait l\'objet d\'un devis détaillé chiffrant exactement ce dont vous avez besoin, sans frais cachés ni abonnements obligatoires de plugins.',
+      short: 'Mes tarifs sont transparents, indicatifs et adaptés à vos besoins réels : à partir de 950 € pour le Pack Présence (One-Page), à partir de 1 850 € pour le Pack Croissance (site vitrine 3 à 5 pages), et à partir de 3 200 € pour une application web ou un outil SaaS sur-mesure (base TJM 400 €/jour).',
+      detail: 'Ces montants constituent des prix de départ indicatifs. Chaque projet fait l\'objet d\'une étude préalable et d\'un devis gratuit personnalisé chiffrant avec exactitude vos fonctionnalités, sans aucun frais caché ni abonnement logiciel obligatoire.',
     },
     {
       q: 'Pourquoi le sur-mesure est-il plus rentable sur la durée ?',

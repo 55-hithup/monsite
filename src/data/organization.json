@@ -5,9 +5,10 @@
   "name": "DevSupAi",
   "url": "https://www.devsupai.fr/",
   "image": "https://www.devsupai.fr/hero-bg-mockup.webp",
-  "description": "Développeur web freelance spécialisé dans la création de sites internet modernes, vitrines, e-commerce et applications web sur-mesure pour PME et associations.",
-  "priceRange": "690€ - 3500€+",
+  "description": "Alexandre Pabst • DevSupAi, développeur web freelance spécialisé dans la création de sites internet modernes, vitrines, e-commerce et applications web sur-mesure pour PME, TPE et associations.",
+  "priceRange": "950€ - 5000€+",
   "telephone": "+33783666098",
+  "email": "contact@devsupai.fr",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "13 Allée des Roses",
@@ -16,6 +17,11 @@
     "addressRegion": "Grand Est",
     "addressCountry": "FR"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 48.8897,
+    "longitude": 5.5436
+  },
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Meuse" },
     { "@type": "AdministrativeArea", "name": "Grand Est" },
@@ -23,8 +29,31 @@
   ],
   "founder": {
     "@type": "Person",
-    "name": "Alexandre Pabst"
+    "name": "Alexandre Pabst",
+    "jobTitle": "Développeur Web Freelance",
+    "url": "https://www.devsupai.fr/a-propos",
+    "sameAs": [
+      "https://maps.app.goo.gl/8YXpdiyL6YEgEoYe7",
+      "https://www.youtube.com/@devsupai",
+      "https://www.facebook.com/people/Devsupai/61593272035287",
+      "https://www.pagesjaunes.fr/pros/65267281",
+      "https://saint-mihiel.fr/devsupai/"
+    ]
   },
+  "knowsAbout": [
+    "Développeur Web",
+    "Développement Web Sur-Mesure",
+    "Création de sites vitrines",
+    "Applications SaaS sur-mesure",
+    "E-Commerce",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Core Web Vitals",
+    "SEO Local",
+    "Performance Web",
+    "Static Site Generation"
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
@@ -81,8 +110,37 @@
     "https://saint-mihiel.fr/devsupai/"
   ],
   "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site vitrine" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Application web sur-mesure" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce" } }
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Création de sites vitrines sur-mesure",
+        "description": "Conception de sites internet vitrines modernes, rapides et optimisés pour le référencement local des PME, artisans et commerçants."
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Développement d'applications web & outils SaaS sur-mesure",
+        "description": "Développement d'outils métiers, tableaux de bord, plateformes de gestion et solutions logicielles en React et TypeScript."
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Création de sites e-commerce & réservation en ligne",
+        "description": "Boutiques en ligne sans abonnement logiciel captif, catalogues interactifs et systèmes de réservation directe avec paiement sécurisé Stripe."
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Maintenance, audit de performance & SEO local",
+        "description": "Optimisation de la vitesse de chargement Core Web Vitals, dépannage, infogérance et animation de fiches Google Business Profile."
+      }
+    }
   ]
 }

@@ -59,7 +59,7 @@ export default function About() {
                 A
               </div>
               <h3 className="text-base font-bold text-text-primary mb-1">Alexandre Pabst</h3>
-              <span className="text-xs label-mono text-purple-300 block">FONDATEUR & DÉVELOPPEUR</span>
+              <span className="text-xs label-mono text-purple-300 block">FONDATEUR & DÉVELOPPEUR WEB FREELANCE</span>
               <span className="text-xs block text-text-secondary mt-1">Saint-Mihiel, Meuse (Grand Est)</span>
               
               <p className="text-xs text-text-secondary mt-4 leading-relaxed">

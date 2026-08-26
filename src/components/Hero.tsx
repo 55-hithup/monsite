@@ -26,6 +26,7 @@ export default function Hero() {
       {/* Overlay Text Content */}
       <div className="wrap relative z-10 w-full" style={{ maxWidth: '1440px', paddingLeft: 'var(--space-xl)', paddingRight: 'var(--space-xl)' }}>
         <div className="max-w-[620px] text-left">
+          <div className="eyebrow mb-2">DÉVELOPPEUR WEB FREELANCE • MEUSE & GRAND EST</div>
           {/* Heading */}
           <h1 className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.01] tracking-tight">
             <span className="line">
@@ -42,7 +43,7 @@ export default function Hero() {
               <strong>Valorisez votre savoir-faire et gagnez la confiance de vos clients :</strong>
             </p>
             <p>
-              Développeur freelance basé en Meuse, j'accompagne les PME, artisans et associations dans le Grand Est et toute la France pour créer des sites internet élégants, fiables et conçus pour durer.
+              Développeur web freelance basé en Meuse (55), j'accompagne les PME, artisans et associations dans le Grand Est et toute la France pour créer des sites internet élégants, fiables et conçus pour durer.
             </p>
           </div>
 
