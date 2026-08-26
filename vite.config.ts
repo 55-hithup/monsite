@@ -126,15 +126,25 @@ export default defineConfig({
       
       let cleanHtml = html;
 
-      // Remove hero image preloads on subpages to avoid console warnings about unused preloaded resources
-      if (cleanRoute !== '/') {
-        cleanHtml = cleanHtml.replace(/<link rel="preload" href="\/hero-bg-mockup.*?"\s*\/?>/g, '');
-      }
-      
-      // Inject organization data on homepage
+      // Extract any hoisted <link rel="preload" ...> or <script> tags placed inside <div id="root"> and move them to <head>
+      // so that <div id="root"> contains ONLY pure component markup matching client hydration exactly
+      cleanHtml = cleanHtml.replace(/(<div id="root"[^>]*>)([\s\S]*?)(<\/div>)/, (_match: string, openTag: string, innerHtml: string, closeTag: string) => {
+        let extractedHeadTags = '';
+        let cleanedInner = innerHtml.replace(/<link rel="preload"[^>]*>/g, (tagMatch: string) => {
+          extractedHeadTags += tagMatch;
+          return '';
+        });
+        if (extractedHeadTags) {
+          cleanHtml = cleanHtml.replace('</head>', `${extractedHeadTags}</head>`);
+        }
+        return `${openTag}${cleanedInner}${closeTag}`;
+      });
+
+      // Inject organization data and FAQ schema on homepage
       if (cleanRoute === '/') {
-        const scriptTag = `<script type="application/ld+json" id="structured-data-org-ssg">${JSON.stringify(organizationData)}</script>`;
-        cleanHtml = cleanHtml.replace('</head>', `${scriptTag}</head>`);
+        const orgScript = `<script type="application/ld+json" id="structured-data-org-ssg">${JSON.stringify(organizationData)}</script>`;
+        const faqScript = `<script type="application/ld+json" id="faq-schema-ssg">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment est défini le tarif d'un projet sur-mesure ?","acceptedAnswer":{"@type":"Answer","text":"Mes forfaits sont transparents et adaptés à vos besoins réels : dès 690 € pour le Pack Présence (One-Page), dès 1 350 € pour le Pack Croissance (site vitrine 3 à 5 pages), et dès 2 450 € pour une application web ou un outil SaaS sur-mesure (base TJM 350 €). Chaque projet fait l'objet d'un devis détaillé chiffrant exactement ce dont vous avez besoin, sans frais cachés ni abonnements obligatoires de plugins."}},{"@type":"Question","name":"Pourquoi le sur-mesure est-il plus rentable sur la durée ?","acceptedAnswer":{"@type":"Answer","text":"Un site sous modèle générique accumule souvent des abonnements payants de plugins (sécurité, formulaires, thème) générant 400 € à 1 200 € par an. Avec DevSupAi, vous ne payez aucun abonnement tiers obligatoire. Votre code est propre, ne souffre d'aucune obsolescence et conserve un affichage instantané qui maximise vos conversions."}},{"@type":"Question","name":"Combien de temps dure la réalisation d'un projet web ?","acceptedAnswer":{"@type":"Answer","text":"Les délais de livraison varient de 1 à 2 semaines pour un Pack Présence, de 2 à 4 semaines pour un Pack Croissance (vitrine 3-5 pages), et de 4 à 8 semaines pour une application SaaS. Un calendrier précis avec des jalons de validation intermédiaire est fixé dès la signature du devis pour garantir le respect des échéances."}},{"@type":"Question","name":"Proposez-vous la gestion de la fiche Google Business et le référencement local ?","acceptedAnswer":{"@type":"Answer","text":"Oui, une prestation mensuelle dédiée est proposée dès 29 €/mois pour animer, optimiser et référencer votre fiche d'établissement sur Google Maps. Elle comprend l'optimisation initiale, la publication régulière d'actualités/photos, la réponse aux avis clients et le suivi de positionnement local."}},{"@type":"Question","name":"Suis-je propriétaire à 100 % de mon site internet et de mes données ?","acceptedAnswer":{"@type":"Answer","text":"Oui, vous êtes l'unique et total propriétaire de l'intégralité du code source, de vos contenus, de votre base de données et de votre nom de domaine. Aucun contrat d'engagement forcé : vous êtes libre de faire évoluer ou d'héberger votre projet où vous le souhaitez."}},{"@type":"Question","name":"Quels sont les frais récurrents à prévoir (hébergement & domaine) ?","acceptedAnswer":{"@type":"Answer","text":"L'hébergement sécurisé haute performance et votre nom de domaine sont inclus la première année dans chaque forfait. Par la suite, le coût technique direct de renouvellement reste minime (généralement entre 40 € et 90 € par an selon l'envergure du projet), sans surcoût imposé."}},{"@type":"Question","name":"Puis-je administrer moi-même les contenus ou les données de mon site ?","acceptedAnswer":{"@type":"Answer","text":"Selon vos besoins, une interface d'administration intuitive peut être intégrée à votre projet. Si votre activité nécessite de mettre à jour des actualités, des réservations ou du matériel (comme pour LocaTool), l'outil est conçu pour être simple sans compétences techniques."}},{"@type":"Question","name":"Quel suivi ou accompagnement est proposé après la mise en ligne ?","acceptedAnswer":{"@type":"Answer","text":"Chaque livraison s'accompagne d'une période de garantie technique et d'une assistance à la prise en main. Des forfaits d'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles dès 29 €/mois pour assurer votre sérénité."}}]}</script>`;
+        cleanHtml = cleanHtml.replace('</head>', `${orgScript}${faqScript}</head>`);
       }
       
       // Replace title

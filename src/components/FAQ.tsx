@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import SectionReveal from './SectionReveal';
+import { useJsonLd } from '../hooks/useJsonLd';
 
 export default function FAQ() {
   const [isFaqOpen, setIsFaqOpen] = useState(false);
@@ -68,11 +69,10 @@ export default function FAQ() {
     })),
   };
 
+  useJsonLd(faqSchemaMarkup, 'faq-schema');
+
   return (
     <SectionReveal id="faq" className="faq-section">
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchemaMarkup)}
-      </script>
 
       <div className="wrap max-w-6xl">
         <div className="text-center mb-6">

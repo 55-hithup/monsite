@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SectionReveal from '../../components/SectionReveal';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
+import { useJsonLd } from '../../hooks/useJsonLd';
 
 export default function CaseAbogame() {
   useDocumentMetadata(
@@ -29,11 +30,10 @@ export default function CaseAbogame() {
     },
   };
 
+  useJsonLd(schemaMarkup, 'case-abogame-schema');
+
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-      <script type="application/ld+json">
-        {JSON.stringify(schemaMarkup)}
-      </script>
 
       <div className="wrap max-w-3xl">
         <Link to="/#realisations" className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">

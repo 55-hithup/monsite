@@ -36,6 +36,43 @@ function patchFile(filePath) {
       content = content.replace(searchData, replaceData);
       modified = true;
     }
+
+    // Patch React 19 renderToPipeableStream to renderToString in SSG build
+    // This prevents React 19 from injecting hoisted <link rel="preload"> tags inside <div id="root">
+    const searchPipeable = "async function renderStaticApp(app) {";
+    if (content.includes(searchPipeable) && content.includes("renderToPipeableStream")) {
+      const renderStaticAppRegex = /async function renderStaticApp\(app\)\s*\{[\s\S]*?return writableStream\.getPromise\(\);\s*\}/;
+      if (renderStaticAppRegex.test(content)) {
+        content = content.replace(
+          renderStaticAppRegex,
+          "async function renderStaticApp(app) {\n  return ReactDomServer.renderToString(app);\n}"
+        );
+        modified = true;
+      }
+    }
+
+    // Patch React 19 hydrate in client bundle to support safe fallback and clean interop
+    const hydrateRegex = /import\('react-dom\/client'\)\.then\([\s\S]*?\}\);\s*\}\);/;
+    const safeHydrateReplacement = `import('react-dom/client').then((mod) => {
+      const hydrateRoot = mod.hydrateRoot || mod.default?.hydrateRoot;
+      const createRoot = mod.createRoot || mod.default?.createRoot;
+      React.startTransition(() => {
+        try {
+          hydrateRoot(container, app, {
+            onRecoverableError(err) { console.warn('[SSG Hydration Recoverable]', err); }
+          });
+        } catch (e) {
+          console.error('[SSG Hydration Failure, falling back to clean render]:', e);
+          container.innerHTML = '';
+          createRoot(container).render(app);
+        }
+      });
+    });`;
+
+    if (hydrateRegex.test(content) && !content.includes('SSG Hydration Recoverable')) {
+      content = content.replace(hydrateRegex, safeHydrateReplacement);
+      modified = true;
+    }
     
     if (modified) {
       fs.writeFileSync(filePath, content, 'utf8');
