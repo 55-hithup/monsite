@@ -1,25 +1,26 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { caseStudiesData } from '../../i18n/caseStudiesData';
 
-export default function CaseLesJumeaux() {
+export default function CaseAtelierGourmand() {
   const { language } = useLanguage();
-  const t = caseStudiesData[language]?.lesJumeaux || caseStudiesData.fr.lesJumeaux;
+  const t = caseStudiesData[language]?.atelierGourmand || caseStudiesData.fr.atelierGourmand;
   const common = caseStudiesData[language] || caseStudiesData.fr;
 
   useDocumentMetadata(
     {
-      fr: "Étude de cas : Restaurant Les Jumeaux — Site & Réservation | DevSupAi",
-      en: "Case Study: Restaurant Les Jumeaux — Showcase & Online Booking | DevSupAi",
+      fr: "Étude de cas : L'Atelier Gourmand — Site Vitrine & Réservation Directe | DevSupAi",
+      en: "Case Study: L'Atelier Gourmand — Showcase & Online Booking | DevSupAi",
     },
     {
-      fr: "Découvrez comment DevSupAi a conçu le site vitrine et le module de réservation en ligne sur-mesure pour le restaurant Les Jumeaux sans abonnement tiers.",
-      en: "Learn how DevSupAi engineered the custom showcase website and direct online booking engine for restaurant Les Jumeaux with zero third-party subscription fees.",
+      fr: "Découvrez comment DevSupAi a conçu le site vitrine et le module de réservation en ligne sur-mesure pour L'Atelier Gourmand, sans abonnement tiers ni commission.",
+      en: "Learn how DevSupAi engineered the custom showcase website and direct online booking engine for L'Atelier Gourmand with zero third-party subscription fees.",
     },
-    "/projets/les-jumeaux"
+    "/projets/atelier-gourmand"
   );
 
   const schemaMarkup = {
@@ -27,7 +28,7 @@ export default function CaseLesJumeaux() {
     "@type": "Article",
     "headline": t.title,
     "description": t.desc,
-    "image": "https://www.devsupai.fr/les-jumeaux.webp",
+    "image": "https://www.devsupai.fr/atelier-gourmand.webp",
     "datePublished": "2026-08-14T00:00:00+02:00",
     "author": {
       "@type": "Person",
@@ -45,11 +46,11 @@ export default function CaseLesJumeaux() {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": language === 'en' ? "https://www.devsupai.fr/en/projects/les-jumeaux" : "https://www.devsupai.fr/projets/les-jumeaux",
+      "@id": language === 'en' ? "https://www.devsupai.fr/en/projects/atelier-gourmand" : "https://www.devsupai.fr/projets/atelier-gourmand",
     },
   };
 
-  useJsonLd(schemaMarkup, `case-jumeaux-schema-${language}`);
+  useJsonLd(schemaMarkup, `case-atelier-gourmand-schema-${language}`);
 
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
@@ -75,11 +76,26 @@ export default function CaseLesJumeaux() {
           {t.desc}
         </p>
 
+        {/* Live CTA button */}
+        <div className="mb-8">
+          <a
+            href="https://ateliergourmand.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary text-xs label-mono inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', fontWeight: 700 }}
+          >
+            <span>{t.ctaLive}</span>
+            <ExternalLink size={14} />
+          </a>
+          <span className="ml-3 text-xs text-emerald-400 font-mono">{t.liveBadge}</span>
+        </div>
+
         {/* Hero Visual Mockup */}
         <div className="rounded-2xl overflow-hidden border border-[rgba(245,246,250,0.08)] mb-12 shadow-2xl bg-[#121729]">
           <img 
-            src="/les-jumeaux.webp" 
-            alt="Interface du site web et réservation du Restaurant Les Jumeaux" 
+            src="/atelier-gourmand.webp" 
+            alt="Interface du site web et réservation de L'Atelier Gourmand" 
             className="w-full h-auto object-cover"
           />
         </div>
@@ -135,6 +151,24 @@ export default function CaseLesJumeaux() {
               {t.a3}
             </p>
           </section>
+        </div>
+
+        {/* Live CTA Box */}
+        <div className="mt-12 p-6 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 className="text-base font-bold text-text-primary mb-1">{t.bannerTitle}</h3>
+            <p className="text-xs text-text-secondary">{t.bannerDesc}</p>
+          </div>
+          <a
+            href="https://ateliergourmand.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary text-xs label-mono shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', fontWeight: 700 }}
+          >
+            <span>{t.bannerBtn}</span>
+            <ExternalLink size={14} />
+          </a>
         </div>
 
         {/* Back Link bottom */}

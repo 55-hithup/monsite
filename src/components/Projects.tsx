@@ -30,7 +30,7 @@ export default function Projects() {
     },
     {
       ...t.items[2],
-      img: '/les-jumeaux.webp',
+      img: '/atelier-gourmand.webp',
     },
   ];
 

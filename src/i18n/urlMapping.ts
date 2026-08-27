@@ -11,7 +11,7 @@ export const ROUTE_PAIRS: RoutePair[] = [
   { fr: '/blog/site-web-pme-association', en: '/en/blog/site-web-pme-association' },
   { fr: '/blog/pourquoi-eviter-les-templates', en: '/en/blog/pourquoi-eviter-les-templates' },
   { fr: '/blog/performance-web-sur-mesure', en: '/en/blog/performance-web-sur-mesure' },
-  { fr: '/projets/les-jumeaux', en: '/en/projects/les-jumeaux' },
+  { fr: '/projets/atelier-gourmand', en: '/en/projects/atelier-gourmand' },
   { fr: '/projets/locatool', en: '/en/projects/locatool' },
   { fr: '/projets/abogame', en: '/en/projects/abogame' },
   { fr: '/mentions-legales', en: '/en/legal-notices' },

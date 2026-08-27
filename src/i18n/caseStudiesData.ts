@@ -2,14 +2,19 @@ export const caseStudiesData = {
   fr: {
     backBtn: 'Retour aux réalisations',
     backBtnBottom: '← Voir toutes les réalisations',
-    lesJumeaux: {
+    atelierGourmand: {
       meta: {
-        type: 'Étude de cas',
-        sector: 'Restauration',
-        feature: 'Site Sur-Mesure',
+        type: 'Étude de cas & Démo',
+        sector: 'Restauration & Gastronomie',
+        feature: 'Site & Réservation Directe',
       },
-      title: 'Les Jumeaux — Site vitrine & Système de réservation sur-mesure',
-      desc: 'Création d\'un site internet et d\'un module de réservation en ligne sur-mesure pour un restaurant-brasserie traditionnel, facilitant la prise de réservation directe par les clients sans dépendre de widgets externes ralentissant la page.',
+      title: "L'Atelier Gourmand — Site vitrine & Système de réservation en direct",
+      desc: "Création d'un site vitrine moderne et d'un module de réservation en ligne sur-mesure pour un restaurant bistronomique, servant d'exemple concret d'indépendance numérique sans commissions tierces ni abonnement mensuel.",
+      ctaLive: "Visiter la démo L'Atelier Gourmand",
+      liveBadge: '• Site de démonstration en direct',
+      bannerTitle: "Tester le site L'Atelier Gourmand en direct",
+      bannerDesc: "Explorez la carte bistronomique, les animations et testez la réservation de table en direct.",
+      bannerBtn: "Accéder à L'Atelier Gourmand",
       facts: {
         sectorLabel: 'SECTEUR',
         sectorVal: 'Restauration',
@@ -20,13 +25,13 @@ export const caseStudiesData = {
         resultLabel: 'RÉSULTAT',
         resultVal: 'Réservations directes',
       },
-      q1: '1. Quel était le besoin initial du restaurant Les Jumeaux ?',
-      a1: 'Le restaurant Les Jumeaux souhaitait moderniser sa présence sur internet avec deux objectifs clairs : mettre en valeur la carte et l\'ambiance de l\'établissement, tout en proposant aux clients un moyen simple d\'effectuer une réservation en ligne à toute heure.',
-      q2: '2. Quelle solution technique a été mise en place pour la réservation ?',
-      a2: 'Au lieu d\'utiliser des modules tiers intégrés par fenêtres externes (iframes) qui alourdissent l\'affichage du site sur smartphone, un formulaire de réservation sur-mesure ultra-léger a été conçu. L\'interface s\'adapte à tous les écrans et permet de renseigner la date, l\'heure et le nombre de convives en quelques secondes.',
-      q3: '3. Quels sont les résultats concrets mesurés après la mise en ligne ?',
-      highlight3: 'Bilan : La simplicité de réservation en ligne permet aux clients de réserver directement depuis leur smartphone et soulage l\'équipe des prises de réservations par téléphone pendant le service.',
-      a3: 'Grâce à un code épuré, le site se charge immédiatement, même sur un téléphone connecté en réseau mobile.',
+      q1: "1. Quel est l'objectif de cette vitrine de démonstration ?",
+      a1: "Le site de démonstration « L'Atelier Gourmand » illustre comment un restaurant ou une brasserie peut valoriser son savoir-faire culinaire et son ambiance tout en permettant à ses clients de réserver une table directement en ligne, 24h/24, sans dépendre de plateformes intermédiaires payantes.",
+      q2: "2. Quelle solution technique a été mise en place pour la réservation ?",
+      a2: "Au lieu d'utiliser des modules tiers intégrés par fenêtres externes (iframes) qui ralentissent le chargement sur smartphone et imposent des commissions par couvert, un formulaire de réservation sur-mesure ultra-léger a été conçu. L'interface s'adapte à tous les écrans et permet de choisir le service, l'heure et le nombre de convives en quelques secondes.",
+      q3: "3. Quels sont les résultats concrets apportés par ce système ?",
+      highlight3: "Bilan : La simplicité de réservation directe en ligne soulage l'équipe des appels téléphoniques pendant le coup de feu en cuisine et préserve 100% de la marge de l'établissement.",
+      a3: "Grâce à un code épuré et des images optimisées, le site se charge immédiatement, même sur un smartphone connecté en 4G/5G.",
     },
     locatool: {
       meta: {
@@ -94,14 +99,19 @@ export const caseStudiesData = {
   en: {
     backBtn: 'Back to projects',
     backBtnBottom: '← View all projects',
-    lesJumeaux: {
+    atelierGourmand: {
       meta: {
-        type: 'Case Study',
+        type: 'Case Study & Demo',
         sector: 'Hospitality & Dining',
-        feature: 'Custom Website',
+        feature: 'Custom Showcase & Direct Booking',
       },
-      title: 'Les Jumeaux — Showcase Website & Direct Online Booking',
-      desc: 'Creation of a custom showcase website and dedicated direct reservation engine for a traditional French restaurant and brasserie, eliminating slow third-party widget dependencies.',
+      title: "L'Atelier Gourmand — Showcase Website & Direct Online Booking",
+      desc: "Creation of a modern showcase website and dedicated direct reservation engine for a bistronomic restaurant, serving as a live reference for digital independence with zero third-party commissions.",
+      ctaLive: "Visit L'Atelier Gourmand Demo",
+      liveBadge: '• Live Demonstration Website',
+      bannerTitle: "Experience the live L'Atelier Gourmand site",
+      bannerDesc: "Explore the bistronomic menu, fluid design, and test table reservation in real time.",
+      bannerBtn: "Launch L'Atelier Gourmand Demo",
       facts: {
         sectorLabel: 'SECTOR',
         sectorVal: 'Hospitality & Dining',
@@ -112,13 +122,13 @@ export const caseStudiesData = {
         resultLabel: 'RESULTS',
         resultVal: 'Direct reservations',
       },
-      q1: '1. What was the initial need of restaurant Les Jumeaux?',
-      a1: 'Restaurant Les Jumeaux wanted to modernize its digital presence with two clear objectives: elegantly showcase its culinary menu and ambiance, while providing patrons with an effortless way to reserve tables directly 24/7.',
-      q2: '2. What technical solution was engineered for the booking module?',
-      a2: 'Instead of relying on heavy third-party iframe widgets that degrade mobile loading speed, an ultra-lightweight custom reservation workflow was developed. The responsive interface adapts to any screen, allowing guests to select dates, time slots, and guest count in seconds.',
-      q3: '3. What concrete results were measured post-launch?',
-      highlight3: 'Summary: The intuitive online booking flow enables guests to reserve tables instantly from their smartphones and significantly reduces phone interruptions during restaurant service rushes.',
-      a3: 'Thanks to lightweight, clean code, the website loads immediately even over fluctuating cellular networks.',
+      q1: "1. What is the primary objective of this restaurant showcase?",
+      a1: "The demo website \"L'Atelier Gourmand\" demonstrates how a restaurant or brasserie can showcase its culinary craft and ambiance while empowering guests to reserve tables directly online 24/7 without paying third-party booking commissions.",
+      q2: "2. What technical solution was engineered for the booking module?",
+      a2: "Instead of relying on heavy third-party iframe widgets that degrade mobile loading speed and take per-cover fees, an ultra-lightweight custom reservation workflow was developed. The responsive interface adapts to any screen, allowing guests to choose service, time slot, and guest count in seconds.",
+      q3: "3. What concrete results are achieved through this system?",
+      highlight3: "Summary: The intuitive direct online booking flow enables guests to reserve tables instantly from their smartphones, eliminating phone interruptions during dinner service and keeping 100% of profit margins.",
+      a3: "Thanks to lightweight, clean code, the website loads immediately even over fluctuating cellular networks.",
     },
     locatool: {
       meta: {

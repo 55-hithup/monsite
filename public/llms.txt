@@ -104,7 +104,7 @@ Le client est l'unique et total propriétaire du code source, des contenus, de l
 - [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 prestations informatiques (sites vitrines, e-commerce, applications mobiles, SaaS, maintenance et refonte) avec 4 pôles d'expertise, filtrage interactif par catégorie et profil métier, méthodologie en 4 étapes et FAQ détaillée.
 - [/a-propos](https://www.devsupai.fr/a-propos) : Parcours d'Alexandre Pabst, développeur web freelance fondateur, philosophie de développement sur-mesure et engagements qualité.
 - Réalisations & Études de Cas (FR) :
-  - [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas sur le site vitrine et le système de réservation sur-mesure du restaurant « Les Jumeaux ».
+  - [/projets/atelier-gourmand](https://www.devsupai.fr/projets/atelier-gourmand) : Étude de cas sur le site vitrine et le système de réservation directe du restaurant « L'Atelier Gourmand » (démonstration live).
   - [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas sur l'application SaaS de gestion de parc matériel « LocaTool ».
   - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive live « Abogame ».
 - Blog & Guides Techniques (FR) :
@@ -122,7 +122,7 @@ Le client est l'unique et total propriétaire du code source, des contenus, de l
 - [/en/services](https://www.devsupai.fr/en/services) : Comprehensive catalog of 47 custom digital services (showcase sites, e-commerce, mobile apps, SaaS, maintenance, and redesigns) with interactive filters and full process breakdown.
 - [/en/about](https://www.devsupai.fr/en/about) : Background of freelance web developer Alexandre Pabst, custom architecture philosophy, and quality guarantees.
 - Case Studies & Portfolio (EN) :
-  - [/en/projects/les-jumeaux](https://www.devsupai.fr/en/projects/les-jumeaux) : Case study on the custom restaurant showcase website and direct table reservation engine for "Les Jumeaux".
+  - [/en/projects/atelier-gourmand](https://www.devsupai.fr/en/projects/atelier-gourmand) : Case study on the custom restaurant showcase website and direct table reservation engine for "L'Atelier Gourmand" (live demo).
   - [/en/projects/locatool](https://www.devsupai.fr/en/projects/locatool) : Case study on the custom SaaS equipment and fleet tracking software "LocaTool".
   - [/en/projects/abogame](https://www.devsupai.fr/en/projects/abogame) : Case study on the interactive real-time live giveaway platform "Abogame".
 - Blog & Technical Insights (EN) :

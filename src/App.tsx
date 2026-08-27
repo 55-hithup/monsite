@@ -12,7 +12,7 @@ import ArticlePerformance from './pages/blog/ArticlePerformance';
 import ArticleAssociationPme from './pages/blog/ArticleAssociationPme';
 import LegalNotices from './pages/LegalNotices';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import CaseLesJumeaux from './pages/projects/CaseLesJumeaux';
+import CaseAtelierGourmand from './pages/projects/CaseAtelierGourmand';
 import CaseLocaTool from './pages/projects/CaseLocaTool';
 import CaseAbogame from './pages/projects/CaseAbogame';
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
@@ -208,10 +208,10 @@ export const routes = [
         ),
       },
       {
-        path: 'projets/les-jumeaux',
+        path: 'projets/atelier-gourmand',
         element: (
           <ErrorBoundary>
-            <CaseLesJumeaux />
+            <CaseAtelierGourmand />
           </ErrorBoundary>
         ),
       },
@@ -305,10 +305,10 @@ export const routes = [
         ),
       },
       {
-        path: 'en/projects/les-jumeaux',
+        path: 'en/projects/atelier-gourmand',
         element: (
           <ErrorBoundary>
-            <CaseLesJumeaux />
+            <CaseAtelierGourmand />
           </ErrorBoundary>
         ),
       },

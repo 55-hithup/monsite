@@ -34,9 +34,9 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
     title: 'Performance Web & SEO Sur-Mesure : Le Guide | DevSupAi',
     description: "Découvrez les piliers de la vitesse web et de l'optimisation SEO pour propulser votre site internet PME ou association au sommet des résultats Google."
   },
-  '/projets/les-jumeaux': {
-    title: 'Étude de cas : Les Jumeaux | Site Vitrine & Réservation Sur-Mesure | DevSupAi',
-    description: "Découvrez l'étude de cas du restaurant Les Jumeaux : création d'un site vitrine sur-mesure et d'un système de réservation directe sans widget tiers."
+  '/projets/atelier-gourmand': {
+    title: "Étude de cas : L'Atelier Gourmand | Site Vitrine & Réservation Sur-Mesure | DevSupAi",
+    description: "Découvrez l'étude de cas de L'Atelier Gourmand : création d'un site vitrine restaurant sur-mesure et d'un système de réservation directe sans widget tiers ni commission."
   },
   '/projets/locatool': {
     title: 'Étude de cas : LocaTool | Application Web SaaS Sur-Mesure | DevSupAi',
@@ -84,9 +84,9 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
     title: 'Page Speed & Conversion Rates: The Guide | DevSupAi',
     description: 'Every millisecond of delay costs revenue. Data-backed analysis of how top-tier web performance directly drives business growth.'
   },
-  '/en/projects/les-jumeaux': {
-    title: 'Case Study: Les Jumeaux | Restaurant Showcase & Custom Booking | DevSupAi',
-    description: 'Discover how restaurant Les Jumeaux achieved independence with a custom showcase website and direct table booking system without third-party commissions.'
+  '/en/projects/atelier-gourmand': {
+    title: "Case Study: L'Atelier Gourmand | Restaurant Showcase & Custom Booking | DevSupAi",
+    description: "Discover how restaurant L'Atelier Gourmand operates with a custom showcase website and direct table booking system without third-party commissions."
   },
   '/en/projects/locatool': {
     title: 'Case Study: LocaTool | Custom SaaS Equipment Management | DevSupAi',
@@ -124,7 +124,7 @@ const routePairs = [
   { fr: '/blog/site-web-pme-association', en: '/en/blog/site-web-pme-association' },
   { fr: '/blog/pourquoi-eviter-les-templates', en: '/en/blog/pourquoi-eviter-les-templates' },
   { fr: '/blog/performance-web-sur-mesure', en: '/en/blog/performance-web-sur-mesure' },
-  { fr: '/projets/les-jumeaux', en: '/en/projects/les-jumeaux' },
+  { fr: '/projets/atelier-gourmand', en: '/en/projects/atelier-gourmand' },
   { fr: '/projets/locatool', en: '/en/projects/locatool' },
   { fr: '/projets/abogame', en: '/en/projects/abogame' },
   { fr: '/mentions-legales', en: '/en/legal-notices' },
@@ -147,7 +147,7 @@ export default defineConfig({
         '/blog/site-web-pme-association',
         '/blog/pourquoi-eviter-les-templates',
         '/blog/performance-web-sur-mesure',
-        '/projets/les-jumeaux',
+        '/projets/atelier-gourmand',
         '/projets/locatool',
         '/projets/abogame',
         '/mentions-legales',
@@ -161,7 +161,7 @@ export default defineConfig({
         '/en/blog/site-web-pme-association',
         '/en/blog/pourquoi-eviter-les-templates',
         '/en/blog/performance-web-sur-mesure',
-        '/en/projects/les-jumeaux',
+        '/en/projects/atelier-gourmand',
         '/en/projects/locatool',
         '/en/projects/abogame',
         '/en/legal-notices',
