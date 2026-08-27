@@ -1,16 +1,21 @@
 import SectionReveal from './SectionReveal';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function TargetAudience() {
+  const { language } = useLanguage();
+  const t = translations[language].solutions;
+
   return (
     <SectionReveal id="solutions" className="section-pad">
       <div className="wrap">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="eyebrow reveal justify-center">SOLUTIONS PME & ASSOCIATIONS</div>
+          <div className="eyebrow reveal justify-center">{t.eyebrow}</div>
           <h2 className="section-title reveal mt-2 mb-4">
-            Solutions web adaptées aux PME et Associations
+            {t.title}
           </h2>
           <p className="text-sm md:text-base text-text-secondary leading-relaxed reveal bg-[#121729]/90 p-4 rounded-xl border border-[#2E8FE0]/30 text-left">
-            Chaque secteur a ses propres priorités : une entreprise cherche à rassurer ses prospects et recevoir des demandes de devis, tandis qu'une association souhaite simplifier l'inscription de ses membres et valoriser ses actions. DevSupAi conçoit des outils sur-mesure pour répondre précisément à ces objectifs, sans bloquer l'utilisateur avec des menus complexes ou des lenteurs d'affichage.
+            {t.intro}
           </p>
         </div>
 
@@ -18,7 +23,7 @@ export default function TargetAudience() {
           {/* Card PME */}
           <div className="reveal p-8 rounded-2xl bg-[#121729]/70 border border-[#2E8FE0]/30 hover:border-[#2E8FE0]/60 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
             <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#2E8FE0]/20 border-b border-l border-[#2E8FE0]/40 text-xs label-mono text-cyan-300 rounded-bl-xl font-bold">
-              POUR LES PME & TPE
+              {t.pme.badge}
             </div>
 
             <div>
@@ -32,37 +37,33 @@ export default function TargetAudience() {
               </div>
 
               <h3 className="text-xl font-bold text-text-primary mb-3">
-                Comment développer la visibilité et les demandes de devis d'une PME ?
+                {t.pme.title}
               </h3>
 
               <div className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-xs text-text-primary font-medium mb-4">
-                <strong>Cas concret :</strong> Pour le restaurant <em>Les Jumeaux</em>, la mise en place d'un système de réservation directe sur-mesure a permis de fluidifier les prises de réservations en ligne et de libérer du temps pour l'équipe pendant les services.
+                <strong>{t.pme.caseConcrete}</strong> {t.pme.caseText}
               </div>
 
               <p className="text-xs text-text-secondary leading-relaxed mb-6">
-                Selon les données Google, un site qui met plus de 3 secondes à s'afficher perd une part importante de ses visiteurs mobiles. En créant un site léger et clair, votre entreprise installe sa crédibilité dès les premières secondes et simplifie la prise de contact pour vos futurs clients.
+                {t.pme.explanation}
               </p>
 
               <div className="space-y-2 mb-8 text-xs text-text-secondary">
-                <div className="font-bold text-text-primary mb-2 label-mono text-xs text-purple-300 uppercase">Solutions apportées aux PME :</div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#2E8FE0] font-bold">-</span>
-                  <span>Chargement instantané de la page sur smartphone</span>
+                <div className="font-bold text-text-primary mb-2 label-mono text-xs text-purple-300 uppercase">
+                  {t.pme.listTitle}
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#2E8FE0] font-bold">-</span>
-                  <span>Formulaires de contact et de demande de devis clairs</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#2E8FE0] font-bold">-</span>
-                  <span>Structure optimisée pour le référencement naturel sur Google</span>
-                </div>
+                {t.pme.bullets.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <span className="text-[#2E8FE0] font-bold">-</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="pt-4 border-t border-[rgba(245,246,250,0.06)]">
               <a href="#contact" className="btn btn-primary text-xs w-full text-center py-3" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff' }}>
-                Échanger sur votre projet de PME →
+                {t.pme.cta}
               </a>
             </div>
           </div>
@@ -70,7 +71,7 @@ export default function TargetAudience() {
           {/* Card Associations */}
           <div className="reveal p-8 rounded-2xl bg-[#121729]/70 border border-[#6B4FE0]/30 hover:border-[#6B4FE0]/60 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
             <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#6B4FE0]/20 border-b border-l border-[#6B4FE0]/40 text-xs label-mono text-purple-300 rounded-bl-xl font-bold">
-              POUR LES ASSOCIATIONS
+              {t.asso.badge}
             </div>
 
             <div>
@@ -82,37 +83,33 @@ export default function TargetAudience() {
               </div>
 
               <h3 className="text-xl font-bold text-text-primary mb-3">
-                Comment faciliter l'engagement et l'inscription des membres d'une association ?
+                {t.asso.title}
               </h3>
 
               <div className="p-3 rounded-lg bg-[#6B4FE0]/10 border border-[#6B4FE0]/20 text-xs text-text-primary font-medium mb-4">
-                <strong>Objectif :</strong> Doter l'association d'un outil simple pour présenter ses activités, collecter des inscriptions et partager l'agenda des événements sans nécessiter d'équipe technique dédiée.
+                <strong>{t.asso.objectiveLabel}</strong> {t.asso.objectiveText}
               </div>
 
               <p className="text-xs text-text-secondary leading-relaxed mb-6">
-                Les membres et adhérents recherchent des informations simples : horaires, tarifs, formulaires d'inscription ou démarches de don. Une structure épurée permet d'accéder directement à ces informations indispensables.
+                {t.asso.explanation}
               </p>
 
               <div className="space-y-2 mb-8 text-xs text-text-secondary">
-                <div className="font-bold text-text-primary mb-2 label-mono text-xs text-purple-300 uppercase">Solutions apportées aux Associations :</div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#6B4FE0] font-bold">-</span>
-                  <span>Présentation claire des événements et actualités</span>
+                <div className="font-bold text-text-primary mb-2 label-mono text-xs text-purple-300 uppercase">
+                  {t.asso.listTitle}
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#6B4FE0] font-bold">-</span>
-                  <span>Formulaires en ligne pour les adhésions et prises de contact</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#6B4FE0] font-bold">-</span>
-                  <span>Prise en main facile pour la mise à jour des contenus</span>
-                </div>
+                {t.asso.bullets.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <span className="text-[#6B4FE0] font-bold">-</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="pt-4 border-t border-[rgba(245,246,250,0.06)]">
               <a href="#contact" className="btn btn-ghost text-xs w-full text-center py-3 border border-[rgba(245,246,250,0.12)]">
-                Échanger sur votre projet d'association →
+                {t.asso.cta}
               </a>
             </div>
           </div>

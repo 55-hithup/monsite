@@ -3,6 +3,8 @@ import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import type { Area, Point } from 'react-easy-crop';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 const Cropper = lazy(() => import('react-easy-crop'));
 
@@ -15,44 +17,84 @@ interface TestimonialItem {
   created_at?: any;
 }
 
-const defaultTestimonials: TestimonialItem[] = [
-  {
-    quote: "« Le résultat dépasse largement mes attentes. Les demandes de contact sont régulières et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
-    name: "Claire Dubosc",
-    role: "Fondatrice, Studio Verrière",
-    rating: 5,
-  },
-  {
-    quote: "« Passer d'un ancien template WordPress lent à un site sur-mesure développé par Alexandre a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement. Un investissement très vite rentabilisé. »",
-    name: "Thomas Mercier",
-    role: "Fondateur, Mercier Rénovation & Bois",
-    rating: 5,
-  },
-  {
-    quote: "« Alexandre a su concevoir un site à la fois épuré, rassurant et ultra-rapide pour nos patients. La navigation sur smartphone est parfaite, les informations sont claires et nous avons d'excellents retours au quotidien. Un professionnalisme rare et un suivi exemplaire. »",
-    name: "Dr. Sophie Laurent",
-    role: "Chirurgien-Dentiste, Cabinet Dentaire",
-    rating: 5,
-  },
-  {
-    quote: "« Nous avions besoin d'une interface sur-mesure performante et d'une vitrine moderne pour nos clients professionnels. Le site charge en un clin d'œil et nos équipes gagnent un temps précieux dans le suivi des demandes. Alexandre a parfaitement cerné nos enjeux. »",
-    name: "Julien Caron",
-    role: "Directeur Général, LogiMat Outils",
-    rating: 5,
-  },
-  {
-    quote: "« Un vrai partenaire, pas juste un prestataire. Chaque détail a été pensé pour ma marque, avec un sens de la performance et une réactivité exemplaires. Le site est un véritable levier de croissance. »",
-    name: "Karim Belaïd",
-    role: "CEO, Neuron Labs",
-    rating: 5,
-  },
-  {
-    quote: "« Rapide, réactif et incroyablement précis. Le site est aujourd'hui mon meilleur commercial, disponible 24h/24 avec des temps de chargement instantanés. Je recommande sans la moindre hésitation. »",
-    name: "Léa Fontaine",
-    role: "Directrice, Maison Lucine",
-    rating: 5,
-  },
-];
+const defaultTestimonialsData = {
+  fr: [
+    {
+      quote: "« Le résultat dépasse largement mes attentes. Les demandes de contact sont régulières et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
+      name: "Claire Dubosc",
+      role: "Fondatrice, Studio Verrière",
+      rating: 5,
+    },
+    {
+      quote: "« Passer d'un ancien template WordPress lent à un site sur-mesure développé par Alexandre a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement. Un investissement très vite rentabilisé. »",
+      name: "Thomas Mercier",
+      role: "Fondateur, Mercier Rénovation & Bois",
+      rating: 5,
+    },
+    {
+      quote: "« Alexandre a su concevoir un site à la fois épuré, rassurant et ultra-rapide pour nos patients. La navigation sur smartphone est parfaite, les informations sont claires et nous avons d'excellents retours au quotidien. Un professionnalisme rare et un suivi exemplaire. »",
+      name: "Dr. Sophie Laurent",
+      role: "Chirurgien-Dentiste, Cabinet Dentaire",
+      rating: 5,
+    },
+    {
+      quote: "« Nous avions besoin d'une interface sur-mesure performante et d'une vitrine moderne pour nos clients professionnels. Le site charge en un clin d'œil et nos équipes gagnent un temps précieux dans le suivi des demandes. Alexandre a parfaitement cerné nos enjeux. »",
+      name: "Julien Caron",
+      role: "Directeur Général, LogiMat Outils",
+      rating: 5,
+    },
+    {
+      quote: "« Un vrai partenaire, pas juste un prestataire. Chaque détail a été pensé pour ma marque, avec un sens de la performance et une réactivité exemplaires. Le site est un véritable levier de croissance. »",
+      name: "Karim Belaïd",
+      role: "CEO, Neuron Labs",
+      rating: 5,
+    },
+    {
+      quote: "« Rapide, réactif et incroyablement précis. Le site est aujourd'hui mon meilleur commercial, disponible 24h/24 avec des temps de chargement instantanés. Je recommande sans la moindre hésitation. »",
+      name: "Léa Fontaine",
+      role: "Directrice, Maison Lucine",
+      rating: 5,
+    },
+  ],
+  en: [
+    {
+      quote: "« The result exceeded my expectations by far. Customer inquiries arrive regularly and clients compliment our website constantly. Remarkable craftsmanship from the initial concept through to final launch. »",
+      name: "Claire Dubosc",
+      role: "Founder, Studio Verrière",
+      rating: 5,
+    },
+    {
+      quote: "« Transitioning from a slow WordPress template to a custom website engineered by Alexandre changed everything. Our project schedule is booked months in advance thanks to qualified quote requests coming in steadily. An investment that paid for itself very quickly. »",
+      name: "Thomas Mercier",
+      role: "Founder, Mercier Renovation & Wood",
+      rating: 5,
+    },
+    {
+      quote: "« Alexandre designed a clean, reassuring, and ultra-fast website for our patients. Mobile navigation is flawless, information is crystal clear, and patient feedback has been fantastic. Rare professionalism and exemplary support. »",
+      name: "Dr. Sophie Laurent",
+      role: "Dental Surgeon, Dental Clinic",
+      rating: 5,
+    },
+    {
+      quote: "« We needed a high-performance custom interface and a modern showcase for our corporate clients. The site loads in the blink of an eye and our team saves valuable time managing requests. Alexandre grasped our challenges perfectly. »",
+      name: "Julien Caron",
+      role: "Managing Director, LogiMat Tools",
+      rating: 5,
+    },
+    {
+      quote: "« A true partner, not just a contractor. Every detail was crafted for our brand, with outstanding performance standards and exceptional responsiveness. The website has become a key growth driver. »",
+      name: "Karim Belaïd",
+      role: "CEO, Neuron Labs",
+      rating: 5,
+    },
+    {
+      quote: "« Fast, responsive, and incredibly precise. Today our website acts as our best salesperson, working 24/7 with instant load times. I recommend DevSupAi without hesitation. »",
+      name: "Léa Fontaine",
+      role: "Director, Maison Lucine",
+      rating: 5,
+    },
+  ],
+};
 
 // Helper functions for image cropping using canvas
 const createImage = (url: string): Promise<HTMLImageElement> =>
@@ -102,10 +144,14 @@ function TestimonialCard({
   testi,
   isExpanded,
   onToggleExpand,
+  readMoreText,
+  showLessText,
 }: {
   testi: TestimonialItem;
   isExpanded: boolean;
   onToggleExpand: () => void;
+  readMoreText: string;
+  showLessText: string;
 }) {
   const quoteRef = useRef<HTMLParagraphElement>(null);
   const [canExpand, setCanExpand] = useState(false);
@@ -124,7 +170,7 @@ function TestimonialCard({
     <div className="testi-card h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-2xl bg-[#121729]/70 backdrop-blur-sm border border-[rgba(245,246,250,0.08)] hover:border-[rgba(46,143,224,0.3)] transition-all duration-300 shadow-lg">
       <div>
         {/* Rating Stars */}
-        <div className="flex gap-1 mb-3.5 items-center" role="img" aria-label={`Note : ${testi.rating} sur 5 étoiles`}>
+        <div className="flex gap-1 mb-3.5 items-center" role="img" aria-label={`Rating: ${testi.rating} / 5`}>
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
@@ -136,7 +182,7 @@ function TestimonialCard({
           ))}
         </div>
 
-        {/* Quote text (clamped to 3 lines or fully expanded) */}
+        {/* Quote text */}
         <p
           ref={quoteRef}
           className={`testi-quote text-text-primary text-sm sm:text-[14.5px] leading-relaxed tracking-normal font-normal ${
@@ -163,7 +209,7 @@ function TestimonialCard({
             className="mt-2.5 text-xs font-semibold text-[#2E8FE0] hover:text-[#52a5ec] inline-flex items-center gap-1 cursor-pointer transition-colors focus:outline-none focus:underline"
             aria-expanded={isExpanded}
           >
-            <span>{isExpanded ? 'Voir moins' : 'Lire la suite'}</span>
+            <span>{isExpanded ? showLessText : readMoreText}</span>
             {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
           </button>
         )}
@@ -201,7 +247,9 @@ function TestimonialCard({
 }
 
 export default function Testimonials() {
-  const [list, setList] = useState<TestimonialItem[]>(defaultTestimonials);
+  const { language } = useLanguage();
+  const t = translations[language].testimonials;
+  const [list, setList] = useState<TestimonialItem[]>(defaultTestimonialsData[language] || defaultTestimonialsData.fr);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
@@ -234,6 +282,11 @@ export default function Testimonials() {
   const formRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
   const touchDeltaX = useRef<number>(0);
+
+  // Update default reviews when language changes
+  useEffect(() => {
+    setList(defaultTestimonialsData[language] || defaultTestimonialsData.fr);
+  }, [language]);
 
   // Responsive items count calculation
   useEffect(() => {
@@ -308,14 +361,12 @@ export default function Testimonials() {
           });
         });
         
-        // Sort dynamic testimonials client-side by date descending
         dynamicList.sort((a, b) => {
           const timeA = a.created_at?.seconds || 0;
           const timeB = b.created_at?.seconds || 0;
           return timeB - timeA;
         });
         
-        // If reviews exist in Firestore, seamlessly update the displayed list
         if (dynamicList.length > 0) {
           setList(dynamicList);
         }
@@ -356,7 +407,6 @@ export default function Testimonials() {
   const handlePrev = useCallback(() => {
     if (!needsLoop) return;
     if (currentIndex === 0) {
-      // Seamlessly jump to the duplicate end without transition, then slide to previous
       setIsTransitioning(false);
       setCurrentIndex(totalItems);
       requestAnimationFrame(() => {
@@ -372,14 +422,12 @@ export default function Testimonials() {
   }, [currentIndex, needsLoop, totalItems]);
 
   const handleTransitionEnd = () => {
-    // When reaching the duplicated start at the end, jump back to index 0 invisibly
     if (needsLoop && currentIndex >= totalItems) {
       setIsTransitioning(false);
       setCurrentIndex(0);
     }
   };
 
-  // Re-enable transition after seamless instant jump
   useEffect(() => {
     if (!isTransitioning) {
       const timer = setTimeout(() => {
@@ -389,7 +437,6 @@ export default function Testimonials() {
     }
   }, [isTransitioning]);
 
-  // Automatic looping interval
   useEffect(() => {
     if (!needsLoop || isPaused || expandedIndex !== null) return;
     const timer = setInterval(() => {
@@ -398,7 +445,6 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, [needsLoop, isPaused, expandedIndex, handleNext]);
 
-  // Touch handlers for mobile swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchDeltaX.current = 0;
@@ -459,14 +505,14 @@ export default function Testimonials() {
       }
     } catch (e) {
       console.error(e);
-      alert("Une erreur est survenue lors du recadrage de l'image.");
+      alert(language === 'en' ? "An error occurred while cropping the image." : "Une erreur est survenue lors du recadrage de l'image.");
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 1. Honeypot check (reject if hidden bot field is filled)
+    // 1. Honeypot check
     if (honeypot.trim() !== '') {
       console.warn('Bot submission blocked via honeypot.');
       setSubmitted(true);
@@ -476,7 +522,7 @@ export default function Testimonials() {
       return;
     }
 
-    // 2. Time-lock check (reject if submission is too fast, < 2 seconds)
+    // 2. Time-lock check
     const timeElapsed = Date.now() - formOpenTime;
     if (timeElapsed < 2000) {
       console.warn('Bot submission blocked via time-lock.');
@@ -489,12 +535,12 @@ export default function Testimonials() {
 
     // 3. User human certification check
     if (!isHuman) {
-      alert("Veuillez cocher la case de certification humaine pour envoyer votre avis.");
+      alert(language === 'en' ? "Please check the human verification box to submit your review." : "Veuillez cocher la case de certification humaine pour envoyer votre avis.");
       return;
     }
 
     if (!name || !role || !quote) {
-      alert('Veuillez remplir tous les champs.');
+      alert(language === 'en' ? "Please fill in all required fields." : "Veuillez remplir tous les champs.");
       return;
     }
 
@@ -503,7 +549,7 @@ export default function Testimonials() {
       const { getFirebaseDb } = await import('../lib/firebase');
       const db = await getFirebaseDb();
       if (!db) {
-        alert("La base de données n'est pas initialisée pour le moment.");
+        alert(language === 'en' ? "The database is not initialized at the moment." : "La base de données n'est pas initialisée pour le moment.");
         setSubmitting(false);
         return;
       }
@@ -529,7 +575,7 @@ export default function Testimonials() {
       }, 2500);
     } catch (err) {
       console.error('Error submitting testimonial:', err);
-      alert("Une erreur est survenue lors de l'envoi de votre avis.");
+      alert(language === 'en' ? "An error occurred while submitting your review." : "Une erreur est survenue lors de l'envoi de votre avis.");
     } finally {
       setSubmitting(false);
     }
@@ -541,8 +587,8 @@ export default function Testimonials() {
     <section ref={sectionRef} id="apropos" className="section-pad" style={{ position: 'relative' }}>
       <div className="wrap">
         <div className="text-center mb-[50px] sm:mb-[70px]">
-          <div className="eyebrow reveal justify-center">Témoignages</div>
-          <h2 className="section-title reveal">Ils m'ont fait confiance.</h2>
+          <div className="eyebrow reveal justify-center">{t.eyebrow}</div>
+          <h2 className="section-title reveal">{t.title}</h2>
         </div>
         
         <div 
@@ -580,20 +626,22 @@ export default function Testimonials() {
                     onToggleExpand={() => {
                       setExpandedIndex(expandedIndex === idx ? null : idx);
                     }}
+                    readMoreText={t.readMore}
+                    showLessText={t.showLess}
                   />
                 </div>
               ))}
             </div>
           </div>
           
-          {/* Navigation Controls (Arrows + Dots) */}
+          {/* Navigation Controls */}
           {needsLoop && (
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 type="button"
                 onClick={handlePrev}
                 className="w-9 h-9 rounded-full flex items-center justify-center bg-[#121729]/80 border border-[rgba(245,246,250,0.12)] text-text-secondary hover:text-text-primary hover:border-[#2E8FE0] transition-all cursor-pointer shadow-sm"
-                aria-label="Avis précédent"
+                aria-label="Previous"
               >
                 <ChevronLeft size={16} />
               </button>
@@ -608,7 +656,7 @@ export default function Testimonials() {
                       setIsTransitioning(true);
                       setCurrentIndex(idx);
                     }}
-                    aria-label={`Aller à l'avis ${idx + 1}`}
+                    aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
               </div>
@@ -617,7 +665,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={handleNext}
                 className="w-9 h-9 rounded-full flex items-center justify-center bg-[#121729]/80 border border-[rgba(245,246,250,0.12)] text-text-secondary hover:text-text-primary hover:border-[#2E8FE0] transition-all cursor-pointer shadow-sm"
-                aria-label="Avis suivant"
+                aria-label="Next"
               >
                 <ChevronRight size={16} />
               </button>
@@ -633,7 +681,7 @@ export default function Testimonials() {
               className="btn btn-ghost text-xs px-5 py-2.5 inline-flex items-center gap-2"
               style={{ border: '1px solid rgba(245,246,250,0.12)', cursor: 'pointer' }}
             >
-              <PenSquare size={13} className="text-[#2E8FE0]" /> Laisser un avis
+              <PenSquare size={13} className="text-[#2E8FE0]" /> {t.leaveReview}
             </button>
           </div>
         )}
@@ -655,7 +703,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={handleCloseForm}
                 className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-                aria-label="Fermer le formulaire"
+                aria-label="Close"
               >
                 <X size={18} />
               </button>
@@ -667,21 +715,21 @@ export default function Testimonials() {
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-bold text-text-primary mb-2">Avis enregistré !</h3>
+                  <h3 className="text-lg font-bold text-text-primary mb-2">{t.form.successTitle}</h3>
                   <p className="text-xs text-text-secondary leading-relaxed">
-                    Merci pour votre retour. Votre témoignage sera visible sur le site dès sa modération par Alexandre.
+                    {t.form.successText}
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <h3 className="text-xl font-extrabold text-text-primary">Partagez votre expérience</h3>
-                    <p className="text-xs text-text-secondary mt-1">Votre avis sera relu et validé avant d'être publié.</p>
+                    <h3 className="text-xl font-extrabold text-text-primary">{t.form.title}</h3>
+                    <p className="text-xs text-text-secondary mt-1">{t.form.subtitle}</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="testi-author-name" className="block text-xs label-mono text-purple-300 uppercase mb-1">Votre Nom / Prénom</label>
+                      <label htmlFor="testi-author-name" className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.nameLabel}</label>
                       <input
                         id="testi-author-name"
                         type="text"
@@ -689,19 +737,19 @@ export default function Testimonials() {
                         autoFocus
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Claire Dubosc"
+                        placeholder={t.form.namePlaceholder}
                         className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
                       />
                     </div>
                     <div>
-                      <label htmlFor="testi-author-role" className="block text-xs label-mono text-purple-300 uppercase mb-1">Profession / Rôle / Entreprise</label>
+                      <label htmlFor="testi-author-role" className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.roleLabel}</label>
                       <input
                         id="testi-author-role"
                         type="text"
                         required
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
-                        placeholder="Fondatrice, Studio Verrière"
+                        placeholder={t.form.rolePlaceholder}
                         className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
                       />
                     </div>
@@ -709,7 +757,7 @@ export default function Testimonials() {
 
                   {/* Rating selection */}
                   <div>
-                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Note globale</label>
+                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.ratingLabel}</label>
                     <div className="flex gap-1.5">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <button
@@ -717,7 +765,7 @@ export default function Testimonials() {
                           type="button"
                           onClick={() => setRating(i + 1)}
                           className="cursor-pointer transition-transform hover:scale-110"
-                          aria-label={`Attribuer la note de ${i + 1} étoile${i > 0 ? 's' : ''}`}
+                          aria-label={`${i + 1} star`}
                         >
                           <Star
                             size={22}
@@ -731,7 +779,7 @@ export default function Testimonials() {
 
                   {/* Avatar Upload with Cropping */}
                   <div>
-                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Photo de profil (facultatif)</label>
+                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.photoLabel}</label>
                     {!imageSrc ? (
                       <div className="flex items-center justify-center w-full">
                         <label className="flex flex-col items-center justify-center w-full h-24 border border-dashed border-[rgba(245,246,250,0.12)] rounded-lg cursor-pointer bg-[#070913]/30 hover:bg-[#070913]/50 transition-colors">
@@ -739,7 +787,7 @@ export default function Testimonials() {
                             <svg className="w-6 h-6 mb-2 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
                             </svg>
-                            <p className="text-xs label-mono text-text-secondary">Ajouter une photo (JPG, PNG, WebP)</p>
+                            <p className="text-xs label-mono text-text-secondary">{t.form.addPhoto}</p>
                           </div>
                           <input type="file" accept="image/*" className="hidden" onChange={onFileChange} />
                         </label>
@@ -748,7 +796,7 @@ export default function Testimonials() {
                       <div className="space-y-4">
                         {!croppedImage ? (
                           <div className="relative w-full h-48 rounded-lg overflow-hidden bg-black/50 border border-[rgba(245,246,250,0.08)]">
-                            <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-text-secondary">Chargement de l'outil de recadrage...</div>}>
+                            <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-text-secondary">Loading...</div>}>
                               <Cropper
                                 image={imageSrc}
                                 crop={crop}
@@ -769,14 +817,14 @@ export default function Testimonials() {
                               style={{ backgroundImage: `url(${croppedImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
                             <div className="flex-1">
-                              <p className="text-xs label-mono text-emerald-400">Photo recadrée avec succès</p>
+                              <p className="text-xs label-mono text-emerald-400">{t.form.cropSuccess}</p>
                             </div>
                             <button 
                               type="button"
                               onClick={() => { setImageSrc(null); setCroppedImage(null); }}
                               className="text-xs label-mono text-red-400 hover:text-red-300 cursor-pointer"
                             >
-                              Supprimer
+                              {t.form.deletePhoto}
                             </button>
                           </div>
                         )}
@@ -784,7 +832,7 @@ export default function Testimonials() {
                         {!croppedImage && (
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
-                              <span className="text-xs label-mono text-text-secondary flex-shrink-0">Zoom :</span>
+                              <span className="text-xs label-mono text-text-secondary flex-shrink-0">{t.form.zoomLabel}</span>
                               <input 
                                 type="range" 
                                 min={1} 
@@ -793,7 +841,7 @@ export default function Testimonials() {
                                 value={zoom} 
                                 onChange={(e) => setZoom(Number(e.target.value))}
                                 className="w-full h-1 bg-[#070913] rounded-lg appearance-none cursor-pointer accent-[#2E8FE0]"
-                                aria-label="Niveau de zoom du recadrage"
+                                aria-label="Zoom"
                               />
                             </div>
                             <div className="flex gap-2 justify-end">
@@ -802,7 +850,7 @@ export default function Testimonials() {
                                 onClick={() => { setImageSrc(null); setCroppedImage(null); }}
                                 className="px-3 py-1.5 text-xs label-mono text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
                               >
-                                Annuler
+                                {t.form.cancelBtn}
                               </button>
                               <button
                                 type="button"
@@ -810,7 +858,7 @@ export default function Testimonials() {
                                 className="px-3 py-1.5 text-xs label-mono text-white rounded-md transition-colors cursor-pointer"
                                 style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
                               >
-                                Recadrer la photo
+                                {t.form.cropBtn}
                               </button>
                             </div>
                           </div>
@@ -820,14 +868,14 @@ export default function Testimonials() {
                   </div>
 
                   <div>
-                    <label htmlFor="testi-comment" className="block text-xs label-mono text-purple-300 uppercase mb-1">Votre Témoignage</label>
+                    <label htmlFor="testi-comment" className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.quoteLabel}</label>
                     <textarea
                       id="testi-comment"
                       required
                       rows={4}
                       value={quote}
                       onChange={(e) => setQuote(e.target.value)}
-                      placeholder="Le résultat dépasse largement mes attentes..."
+                      placeholder={t.form.quotePlaceholder}
                       className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors resize-none"
                     />
                   </div>
@@ -854,7 +902,7 @@ export default function Testimonials() {
                       className="w-4 h-4 rounded bg-[#070913]/60 border border-[rgba(245,246,250,0.12)] text-[#2E8FE0] focus:ring-0 focus:ring-offset-0 cursor-pointer"
                     />
                     <label htmlFor="human-verify" className="text-xs label-mono text-text-secondary cursor-pointer select-none">
-                      Je certifie que je suis un être humain
+                      {t.form.humanCheckbox}
                     </label>
                   </div>
 
@@ -864,7 +912,7 @@ export default function Testimonials() {
                       onClick={handleCloseForm}
                       className="px-4 py-2 text-xs font-bold text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
                     >
-                      Annuler
+                      {t.form.cancelBtn}
                     </button>
                     <button
                       type="submit"
@@ -872,7 +920,7 @@ export default function Testimonials() {
                       className="px-4 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer"
                       style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
                     >
-                      {submitting ? 'Envoi...' : 'Envoyer mon avis'}
+                      {submitting ? t.form.submitting : t.form.submitBtn}
                     </button>
                   </div>
                 </form>

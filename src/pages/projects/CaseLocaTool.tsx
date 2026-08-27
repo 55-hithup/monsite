@@ -1,161 +1,180 @@
-import { Link } from 'react-router-dom';
 import SectionReveal from '../../components/SectionReveal';
+import { Link } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 import { useJsonLd } from '../../hooks/useJsonLd';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { caseStudiesData } from '../../i18n/caseStudiesData';
 
 export default function CaseLocaTool() {
+  const { language } = useLanguage();
+  const t = caseStudiesData[language]?.locatool || caseStudiesData.fr.locatool;
+  const common = caseStudiesData[language] || caseStudiesData.fr;
+
   useDocumentMetadata(
-    "Étude de cas : LocaTool | Application Web SaaS Sur-Mesure | DevSupAi",
-    "Découvrez comment l'application web métier LocaTool a été conçue pour centraliser et simplifier la gestion de location de matériel professionnel.",
+    {
+      fr: "Étude de cas : LocaTool — Logiciel SaaS de Gestion de Parc Matériel | DevSupAi",
+      en: "Case Study: LocaTool — Equipment Fleet Management SaaS Web App | DevSupAi",
+    },
+    {
+      fr: "Découvrez le développement sur-mesure de l'application SaaS LocaTool : centralisation de flotte d'équipements, réservations temps réel et facturation.",
+      en: "Discover the custom SaaS development of LocaTool: equipment fleet centralization, real-time booking, and automated contract invoicing.",
+    },
     "/projets/locatool"
   );
 
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "LocaTool — Application SaaS de gestion de parc matériel",
-    "description": "Développement d'une application web métier sur-mesure pour la gestion de location de matériel professionnel.",
+    "headline": t.title,
+    "description": t.desc,
+    "image": "https://www.devsupai.fr/locatool.webp",
+    "datePublished": "2026-08-14T00:00:00+02:00",
     "author": {
       "@type": "Person",
       "name": "Alexandre Pabst",
+      "url": language === 'en' ? "https://www.devsupai.fr/en/about" : "https://www.devsupai.fr/a-propos",
     },
     "publisher": {
       "@type": "Organization",
       "name": "DevSupAi",
       "url": "https://www.devsupai.fr",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.devsupai.fr/logo.webp",
+      },
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.devsupai.fr/projets/locatool"
+      "@id": language === 'en' ? "https://www.devsupai.fr/en/projects/locatool" : "https://www.devsupai.fr/projets/locatool",
     },
   };
 
-  useJsonLd(schemaMarkup, 'case-locatool-schema');
+  useJsonLd(schemaMarkup, `case-locatool-schema-${language}`);
 
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-
-      <div className="wrap max-w-3xl">
-        <Link to="/#realisations" className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
-          <span>←</span> Retour aux réalisations
+      <div className="wrap max-w-4xl">
+        <Link to={language === 'en' ? '/en#projets' : '/#projets'} className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
+          <span>←</span> {common.backBtn}
         </Link>
 
-        <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
-          <span>Étude de cas</span>
+        {/* Header Details */}
+        <div className="flex flex-wrap items-center gap-3 text-xs label-mono text-purple-300 mb-4">
+          <span>{t.meta.type}</span>
           <span>•</span>
-          <span>BTP & Entreprise</span>
+          <span>{t.meta.sector}</span>
           <span>•</span>
-          <span>Application SaaS</span>
+          <span className="text-accent">{t.meta.feature}</span>
         </div>
 
-        {/* Single H1 Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-text-primary mb-6 leading-tight">
-          LocaTool — Application SaaS de gestion de parc matériel
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text-primary mb-6 leading-tight">
+          {t.title}
         </h1>
 
-        <p className="text-base text-text-secondary leading-relaxed mb-6">
-          Développement d'une application web métier (SaaS) complète pour centraliser la réservation, le suivi de stock et la facturation de matériel pour les professionnels du BTP.
+        <p className="text-base text-text-secondary leading-relaxed mb-8 max-w-2xl">
+          {t.desc}
         </p>
 
-        {/* Live Demo CTA */}
-        <div className="flex flex-wrap items-center gap-4 mb-10">
+        {/* Live CTA button */}
+        <div className="mb-8">
           <a
             href="https://locatool.devsupai.fr"
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-target label-mono text-xs font-bold px-5 py-2.5 rounded-full text-white bg-accent hover:bg-accent-hover transition-all duration-150 inline-flex items-center gap-2 shadow-lg shadow-accent/20 hover:scale-105"
+            className="btn btn-primary text-xs label-mono inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', fontWeight: 700 }}
           >
-            <span>Visiter la démo LocaTool</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
+            <span>{t.ctaLive}</span>
+            <ExternalLink size={14} />
           </a>
-          <span className="text-xs label-mono text-text-secondary">
-            • Application en direct
-          </span>
+          <span className="ml-3 text-xs text-emerald-400 font-mono">{t.liveBadge}</span>
         </div>
 
-        {/* Project Facts Box */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-10">
-          <div>
-            <div className="text-xs label-mono text-purple-300">TYPE</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Logiciel SaaS</div>
-          </div>
-          <div>
-            <div className="text-xs label-mono text-purple-300">USAGE</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Gestion de parc</div>
-          </div>
-          <div>
-            <div className="text-xs label-mono text-purple-300">ACCÈS</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Tableau de bord</div>
-          </div>
-          <div>
-            <div className="text-xs label-mono text-purple-300">RÉSULTAT</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Gestion centralisée</div>
-          </div>
+        {/* Hero Visual Mockup */}
+        <div className="rounded-2xl overflow-hidden border border-[rgba(245,246,250,0.08)] mb-12 shadow-2xl bg-[#121729]">
+          <img 
+            src="/locatool.webp" 
+            alt="Tableau de bord de l'application SaaS LocaTool" 
+            className="w-full h-auto object-cover"
+          />
         </div>
 
-        {/* Main QFO Content Sections */}
-        <div className="prose text-text-secondary leading-relaxed space-y-8 text-sm">
+        {/* Key Metrics / Context */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-12">
           <div>
-            <h2 className="text-lg font-bold text-text-primary mb-3">
-              1. Quel était le défi administratif rencontré dans la gestion de location ?
-            </h2>
-            <p>
-              Les entreprises de location de matériel perdent souvent un temps précieux à cause d'outils administratifs éparpillés (fichiers tableurs, plannings papier, saisies manuelles répétitives). L'objectif était de regrouper l'intégralité du suivi du parc dans une seule interface claire et sécurisée.
-            </p>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.typeLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.typeVal}</div>
           </div>
-
           <div>
-            <h2 className="text-lg font-bold text-text-primary mb-3">
-              2. Comment l'application SaaS a-t-elle été conçue sur-mesure ?
-            </h2>
-            <p>
-              L'application <em>LocaTool</em> intègre un tableau de bord visuel interactif permettant de rechercher un équipement, de vérifier sa disponibilité en temps réel, de planifier les dates de location et d'éditer automatiquement les contrats en quelques clics.
-            </p>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.usageLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.usageVal}</div>
           </div>
-
           <div>
-            <h2 className="text-lg font-bold text-text-primary mb-3">
-              3. Quels sont les gains réels d'efficacité constatés ?
-            </h2>
-            <div className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium mb-3">
-              <strong>Bilan :</strong> La centralisation de l'activité sur un outil unique permet de simplifier le traitement des dossiers, de fluidifier le suivi du matériel et d'éviter les erreurs de disponibilité.
-            </div>
-            <p>
-              L'interface réactive s'utilise facilement sur ordinateur comme sur tablette sur le terrain.
-            </p>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.accessLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.accessVal}</div>
+          </div>
+          <div>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.resultLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.resultVal}</div>
           </div>
         </div>
 
-        {/* Live Demo Banner */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-[#2E8FE0]/15 via-[#6B4FE0]/15 to-[#121729] border border-[rgba(245,246,250,0.12)] mt-10 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        {/* Case Narrative Content */}
+        <div className="prose text-text-secondary leading-relaxed space-y-8 text-sm max-w-none">
+          <section>
+            <h2 className="text-xl font-bold text-text-primary mb-3">
+              {t.q1}
+            </h2>
+            <p>
+              {t.a1}
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-text-primary mb-3">
+              {t.q2}
+            </h2>
+            <p>
+              {t.a2}
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-text-primary mb-3">
+              {t.q3}
+            </h2>
+            <p className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-sm font-medium mb-3">
+              {t.highlight3}
+            </p>
+            <p>
+              {t.a3}
+            </p>
+          </section>
+        </div>
+
+        {/* Live CTA Box */}
+        <div className="mt-12 p-6 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div className="text-xs label-mono font-bold text-accent mb-1 tracking-wider uppercase">DÉMO INTERACTIVE</div>
-            <div className="text-sm font-bold text-text-primary">Tester l'application LocaTool en direct</div>
-            <div className="text-xs text-text-secondary mt-0.5">Explorez l'interface et ses fonctionnalités en temps réel.</div>
+            <h3 className="text-base font-bold text-text-primary mb-1">{t.bannerTitle}</h3>
+            <p className="text-xs text-text-secondary">{t.bannerDesc}</p>
           </div>
           <a
             href="https://locatool.devsupai.fr"
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-target label-mono text-xs font-bold px-5 py-2.5 rounded-full text-white bg-accent hover:bg-accent-hover transition-all duration-150 inline-flex items-center justify-center gap-2 shadow-lg shadow-accent/25 shrink-0 hover:scale-105"
+            className="btn btn-primary text-xs label-mono shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', fontWeight: 700 }}
           >
-            <span>Accéder à LocaTool</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
+            <span>{t.bannerBtn}</span>
+            <ExternalLink size={14} />
           </a>
         </div>
 
-        {/* Back Link */}
-        <div className="mt-8 pt-6 border-t border-[rgba(245,246,250,0.06)]">
-          <Link to="/#realisations" className="btn btn-ghost text-xs inline-flex items-center gap-2 border border-[rgba(245,246,250,0.12)]">
-            ← Voir toutes les réalisations
+        {/* Back Link bottom */}
+        <div className="mt-14 pt-8 border-t border-[rgba(245,246,250,0.06)]">
+          <Link to={language === 'en' ? '/en#projets' : '/#projets'} className="btn btn-ghost text-xs label-mono">
+            {common.backBtnBottom}
           </Link>
         </div>
       </div>

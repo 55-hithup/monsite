@@ -1,54 +1,41 @@
 import SectionReveal from './SectionReveal';
 import MagneticWrapper from './MagneticWrapper';
 import { Check, X, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function Comparison() {
+  const { language } = useLanguage();
+  const t = translations[language].comparison;
+
   return (
     <SectionReveal id="comparatif" className="py-20 md:py-28 lg:py-36" style={{ position: 'relative' }}>
       <div className="wrap-wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Colonne Gauche : 100% Texte & Argumentaire (sans cartes) */}
+          {/* Left Column: Text & Benefits */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 text-left space-y-5 reveal">
-            <div className="eyebrow">COMPARATIF OBJECTIF</div>
+            <div className="eyebrow">{t.eyebrow}</div>
             
             <h2 className="section-title text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.1] tracking-tight">
-              Développement sur-mesure vs Modèles génériques
+              {t.title}
             </h2>
 
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
-              Les modèles pré-conçus imposent souvent des structures rigides, des fonctions superflues et des abonnements captifs. La création sur-mesure vous garantit une image de marque unique, une autonomie totale et une expérience intuitive qui rassure vos prospects.
+              {t.desc}
             </p>
 
-            {/* Checklist de bénéfices */}
+            {/* Checklist */}
             <div className="space-y-3 pt-2 border-y border-[rgba(245,246,250,0.08)] py-4">
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Identité exclusive :</strong> Une interface sur-mesure qui valorise votre réputation face aux modèles vus partout.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Économies sur la durée :</strong> Zéro abonnement de plugin payant obligatoire (400 € à 1 200 € économisés par an).
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Confort de navigation :</strong> Affichage immédiat pour ne perdre aucun visiteur impatient.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Indexation Google :</strong> Code propre et sémantique pour remonter naturellement dans les recherches.
-                </p>
-              </div>
+              {t.checkpoints.map((cp, idx) => (
+                <div key={idx} className="flex items-start gap-2.5">
+                  <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <p className="text-xs text-text-secondary leading-relaxed">
+                    <strong className="text-text-primary font-semibold">{cp.title} </strong>
+                    {cp.text}
+                  </p>
+                </div>
+              ))}
             </div>
 
             {/* CTA Button */}
@@ -66,17 +53,17 @@ export default function Comparison() {
                     fontWeight: 700,
                   }}
                 >
-                  <span>Demander un devis sur-mesure</span>
+                  <span>{t.cta}</span>
                   <ArrowRight size={14} className="text-[#0B122C]" />
                 </a>
               </MagneticWrapper>
             </div>
           </div>
 
-          {/* Colonne Droite : 2 Cartes avec disparition du texte au roll-on pour révéler l'image nette */}
+          {/* Right Column: 2 Cards */}
           <div className="lg:col-span-7 flex flex-col gap-5 lg:pt-9">
             
-            {/* Carte 1 : Sur-mesure DevSupAi (avec compare_after.webp) */}
+            {/* Card 1: Custom DevSupAi */}
             <div className="group relative rounded-2xl overflow-hidden border-2 border-[#2E8FE0] shadow-[0_0_35px_rgba(46,143,224,0.18)] p-6 sm:p-7 text-left reveal cursor-pointer min-h-[300px] flex flex-col justify-between">
               {/* Background image */}
               <div
@@ -84,7 +71,7 @@ export default function Comparison() {
                 style={{ backgroundImage: 'url(/compare_after.webp)' }}
               />
 
-              {/* High-contrast dark gradient overlay (disparaît au hover) */}
+              {/* High-contrast dark gradient overlay */}
               <div
                 className="absolute inset-0 transition-opacity duration-500 ease-out group-hover:opacity-0 pointer-events-none"
                 style={{
@@ -92,46 +79,36 @@ export default function Comparison() {
                 }}
               />
 
-              {/* Contenu textuel (disparaît au hover et revient au roll-out) */}
+              {/* Text content */}
               <div className="relative z-10 transition-all duration-500 ease-out group-hover:opacity-0 group-hover:translate-y-2 group-hover:pointer-events-none">
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <span className="text-xs label-mono px-3 py-1 rounded-full font-bold uppercase bg-[#2E8FE0]/25 text-cyan-300 border border-[#2E8FE0]/50 flex items-center gap-1.5 backdrop-blur-md">
                     <ShieldCheck size={12} />
-                    <span>100% Optimisé & Pérenne</span>
+                    <span>{t.customCard.badge}</span>
                   </span>
-                  <span className="text-xs font-bold text-cyan-300 drop-shadow">Recommandé</span>
+                  <span className="text-xs font-bold text-cyan-300 drop-shadow">{t.customCard.tag}</span>
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-2 tracking-tight">
-                  Développement Sur-Mesure DevSupAi
+                  {t.customCard.title}
                 </h3>
 
                 <p className="text-xs text-slate-300 leading-relaxed font-light mb-4">
-                  Une solution taillée sur-mesure pour votre activité, sans compromis sur la qualité ni dépendance logicielle.
+                  {t.customCard.desc}
                 </p>
 
                 <ul className="space-y-2.5 pt-2 border-t border-white/10">
-                  <li className="flex items-start gap-2.5 text-xs text-slate-200 leading-snug">
-                    <Check size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>Navigation instantanée :</strong> parcours visiteur fluide et sans friction pour maximiser vos prises de contact.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-xs text-slate-200 leading-snug">
-                    <Check size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>Design exclusif :</strong> identité visuelle unique conçue spécialement pour votre entreprise ou association.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-xs text-slate-200 leading-snug">
-                    <Check size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>Zéro abonnement forcé :</strong> code 100% propriétaire dont vous êtes l'unique et total détenteur.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-xs text-slate-200 leading-snug">
-                    <Check size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>Structure propre :</strong> balisage clair facilitant l'indexation par Google et les moteurs de recherche.</span>
-                  </li>
+                  {t.customCard.items.map((it, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-200 leading-snug">
+                      <Check size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                      <span><strong>{it.bold} </strong>{it.text}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
 
-            {/* Carte 2 : Modèles pré-conçus (avec compare_before.webp) */}
+            {/* Card 2: Generic Templates */}
             <div className="group relative rounded-2xl overflow-hidden border border-[rgba(245,246,250,0.08)] hover:border-red-500/40 p-6 sm:p-7 text-left reveal cursor-pointer min-h-[300px] flex flex-col justify-between">
               {/* Background image */}
               <div
@@ -139,7 +116,7 @@ export default function Comparison() {
                 style={{ backgroundImage: 'url(/compare_before.webp)' }}
               />
 
-              {/* High-contrast dark gradient overlay (disparaît au hover) */}
+              {/* High-contrast dark gradient overlay */}
               <div
                 className="absolute inset-0 transition-opacity duration-500 ease-out group-hover:opacity-0 pointer-events-none"
                 style={{
@@ -147,40 +124,30 @@ export default function Comparison() {
                 }}
               />
 
-              {/* Contenu textuel (disparaît au hover et revient au roll-out) */}
+              {/* Text content */}
               <div className="relative z-10 transition-all duration-500 ease-out group-hover:opacity-0 group-hover:translate-y-2 group-hover:pointer-events-none">
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <span className="text-xs label-mono px-3 py-1 rounded-full font-bold uppercase bg-red-500/20 text-red-300 border border-red-500/40 backdrop-blur-md">
-                    Lenteurs & Contraintes
+                    {t.genericCard.badge}
                   </span>
-                  <span className="text-xs text-red-400 font-medium drop-shadow">À éviter</span>
+                  <span className="text-xs text-red-400 font-medium drop-shadow">{t.genericCard.tag}</span>
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-2 tracking-tight">
-                  Modèles pré-conçus & thèmes génériques
+                  {t.genericCard.title}
                 </h3>
 
                 <p className="text-xs text-slate-300 leading-relaxed font-light mb-4">
-                  Des solutions standardisées qui alourdissent votre site et créent une dépendance à des plugins payants.
+                  {t.genericCard.desc}
                 </p>
 
                 <ul className="space-y-2.5 pt-2 border-t border-white/10">
-                  <li className="flex items-start gap-2.5 text-xs text-slate-300 leading-snug">
-                    <X size={15} className="text-red-400 shrink-0 mt-0.5" />
-                    <span>Fonctionnalités superflues alourdissant le site et dégradant l'expérience de vos visiteurs.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-xs text-slate-300 leading-snug">
-                    <X size={15} className="text-red-400 shrink-0 mt-0.5" />
-                    <span>Mise en page générique déjà utilisée par des dizaines d'autres sites concurrents.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-xs text-slate-300 leading-snug">
-                    <X size={15} className="text-red-400 shrink-0 mt-0.5" />
-                    <span>Dépendance à des abonnements payants de plugins et risques de bugs ou pannes aux mises à jour.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-xs text-slate-300 leading-snug">
-                    <X size={15} className="text-red-400 shrink-0 mt-0.5" />
-                    <span>Référencement naturel plus difficile à optimiser face à des structures concurrentes bien conçues.</span>
-                  </li>
+                  {t.genericCard.items.map((it, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 leading-snug">
+                      <X size={15} className="text-red-400 shrink-0 mt-0.5" />
+                      <span>{it}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

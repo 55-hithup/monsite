@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { language } = useLanguage();
+  const t = translations[language].footer;
 
   const handleNavClick = (anchorId: string) => {
     const element = document.getElementById(anchorId);
@@ -18,7 +22,7 @@ export default function Footer() {
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand Info */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 text-left">
             <div className="flex items-center gap-2">
               <img 
                 src="/logo.webp" 
@@ -32,11 +36,11 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-text-secondary leading-relaxed">
-              Alexandre Pabst • Développeur web freelance spécialisé dans la création de sites internet et applications sur-mesure de haute performance pour PME, artisans et associations.
+              {t.brandDesc}
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(245,246,250,0.06)] bg-[rgba(245,246,250,0.02)] text-xs label-mono text-text-secondary self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-              Disponible pour vos projets
+              {t.status}
             </div>
             
             <div className="flex items-center gap-2.5 mt-1">
@@ -45,7 +49,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
-                title="Suivre DevSupAi sur Facebook"
+                title="Facebook DevSupAi"
               >
                 <img 
                   src="/logo-facebook.webp" 
@@ -60,7 +64,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
-                title="Suivre DevSupAi sur YouTube"
+                title="YouTube DevSupAi"
               >
                 <img 
                   src="/logo-youtube.webp" 
@@ -75,7 +79,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:opacity-100 opacity-90 transition-opacity duration-150 cursor-target"
-                title="Retrouver DevSupAi sur les Pages Jaunes"
+                title="Pages Jaunes DevSupAi"
               >
                 <img 
                   src="/logo-pagesjaunes.webp" 
@@ -87,48 +91,48 @@ export default function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <div>
-            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">Navigation</h4>
+          <div className="text-left">
+            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.navTitle}</h4>
             <ul className="flex flex-col gap-3 text-xs text-text-secondary">
               <li>
-                <Link to="/" onClick={() => window.scrollTo(0,0)} className="hover:text-text-primary transition-colors cursor-target">Accueil</Link>
+                <Link to={language === 'en' ? '/en' : '/'} onClick={() => window.scrollTo(0,0)} className="hover:text-text-primary transition-colors cursor-target">{t.home}</Link>
               </li>
               <li>
-                <Link to="/nos-services" className="hover:text-text-primary transition-colors cursor-target text-[#38BDF8] font-bold">Catalogue Prestations (47)</Link>
+                <Link to={language === 'en' ? '/en/services' : '/nos-services'} className="hover:text-text-primary transition-colors cursor-target text-[#38BDF8] font-bold">{t.services}</Link>
               </li>
               <li>
-                <Link to="/#services" onClick={() => handleNavClick('services')} className="hover:text-text-primary transition-colors cursor-target">Offres & Forfaits</Link>
+                <Link to={language === 'en' ? '/en#services' : '/#services'} onClick={() => handleNavClick('services')} className="hover:text-text-primary transition-colors cursor-target">{t.offers}</Link>
               </li>
               <li>
-                <Link to="/#realisations" onClick={() => handleNavClick('realisations')} className="hover:text-text-primary transition-colors cursor-target">Projets & Réalisations</Link>
+                <Link to={language === 'en' ? '/en#realisations' : '/#realisations'} onClick={() => handleNavClick('realisations')} className="hover:text-text-primary transition-colors cursor-target">{t.projects}</Link>
               </li>
               <li>
-                <Link to="/a-propos" className="hover:text-text-primary transition-colors cursor-target">À Propos</Link>
+                <Link to={language === 'en' ? '/en/about' : '/a-propos'} className="hover:text-text-primary transition-colors cursor-target">{t.about}</Link>
               </li>
               <li>
-                <Link to="/blog" className="hover:text-text-primary transition-colors cursor-target">Blog & Actus</Link>
+                <Link to={language === 'en' ? '/en/blog' : '/blog'} className="hover:text-text-primary transition-colors cursor-target">{t.blog}</Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact & Localisation */}
-          <div>
-            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">Contact & Adresse</h4>
+          {/* Contact & Location */}
+          <div className="text-left">
+            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.contactTitle}</h4>
             <div className="flex flex-col gap-4 text-xs text-text-secondary">
               <div>
-                <span className="text-text-primary block font-medium mb-1">Téléphone :</span>
+                <span className="text-text-primary block font-medium mb-1">{t.phoneLabel}</span>
                 <a href="tel:0783666098" className="hover:text-text-primary transition-colors cursor-target text-[#38BDF8] font-medium">
                   07 83 66 60 98
                 </a>
               </div>
               <div>
-                <span className="text-text-primary block font-medium mb-1">Email :</span>
+                <span className="text-text-primary block font-medium mb-1">{t.emailLabel}</span>
                 <a href="mailto:contact@devsupai.fr" className="hover:text-text-primary transition-colors cursor-target text-[#38BDF8] font-medium">
                   contact@devsupai.fr
                 </a>
               </div>
               <div>
-                <span className="text-text-primary block font-medium mb-1">Siège social :</span>
+                <span className="text-text-primary block font-medium mb-1">{t.headquarters}</span>
                 <span className="leading-relaxed block">
                   13 Allée des Roses,<br />
                   55300 Saint-Mihiel (Meuse)
@@ -137,21 +141,21 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Horaires Section */}
-          <div>
-            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">Horaires d'ouverture</h4>
+          {/* Hours Section */}
+          <div className="text-left">
+            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.hoursTitle}</h4>
             <ul className="flex flex-col gap-2.5 text-xs text-text-secondary">
               <li className="flex justify-between border-b border-[rgba(245,246,250,0.04)] pb-1.5">
-                <span>Lundi - Vendredi</span>
-                <span className="text-text-primary font-medium">08h00 - 18h00</span>
+                <span>{t.weekdays}</span>
+                <span className="text-text-primary font-medium">{t.weekdaysHours}</span>
               </li>
               <li className="flex justify-between border-b border-[rgba(245,246,250,0.04)] pb-1.5">
-                <span>Samedi</span>
-                <span className="text-text-primary font-medium">08h00 - 12h00</span>
+                <span>{t.saturday}</span>
+                <span className="text-text-primary font-medium">{t.saturdayHours}</span>
               </li>
               <li className="flex justify-between pb-1.5">
-                <span>Dimanche</span>
-                <span className="text-red-400 font-semibold uppercase text-xs tracking-wider">Fermé</span>
+                <span>{t.sunday}</span>
+                <span className="text-red-400 font-semibold uppercase text-xs tracking-wider">{t.closed}</span>
               </li>
             </ul>
           </div>
@@ -160,12 +164,12 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-[rgba(245,246,250,0.06)] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-xs text-text-secondary">
-            &copy; {currentYear} devsupai. Tous droits réservés.
+            &copy; {currentYear} devsupai. {t.rights}
           </div>
           <div className="flex flex-wrap gap-6 text-xs text-text-secondary">
-            <Link to="/mentions-legales" className="cursor-target hover:text-text-primary transition-colors">Mentions légales</Link>
-            <Link to="/politique-de-confidentialite" className="cursor-target hover:text-text-primary transition-colors">Politique de confidentialité</Link>
-            <Link to="/admin/login" className="cursor-target hover:text-text-primary transition-colors">Espace Pro</Link>
+            <Link to={language === 'en' ? '/en/legal-notices' : '/mentions-legales'} className="cursor-target hover:text-text-primary transition-colors">{t.legal}</Link>
+            <Link to={language === 'en' ? '/en/privacy-policy' : '/politique-de-confidentialite'} className="cursor-target hover:text-text-primary transition-colors">{t.privacy}</Link>
+            <Link to="/admin/login" className="cursor-target hover:text-text-primary transition-colors">{t.proSpace}</Link>
           </div>
         </div>
       </div>

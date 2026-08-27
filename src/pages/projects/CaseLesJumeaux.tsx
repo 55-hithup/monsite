@@ -1,119 +1,146 @@
-import { Link } from 'react-router-dom';
 import SectionReveal from '../../components/SectionReveal';
+import { Link } from 'react-router-dom';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 import { useJsonLd } from '../../hooks/useJsonLd';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { caseStudiesData } from '../../i18n/caseStudiesData';
 
 export default function CaseLesJumeaux() {
+  const { language } = useLanguage();
+  const t = caseStudiesData[language]?.lesJumeaux || caseStudiesData.fr.lesJumeaux;
+  const common = caseStudiesData[language] || caseStudiesData.fr;
+
   useDocumentMetadata(
-    "Étude de cas : Les Jumeaux | Site Vitrine & Réservation Sur-Mesure | DevSupAi",
-    "Découvrez l'étude de cas du restaurant Les Jumeaux : création d'un site vitrine sur-mesure et d'un système de réservation directe sans widget tiers.",
+    {
+      fr: "Étude de cas : Restaurant Les Jumeaux — Site & Réservation | DevSupAi",
+      en: "Case Study: Restaurant Les Jumeaux — Showcase & Online Booking | DevSupAi",
+    },
+    {
+      fr: "Découvrez comment DevSupAi a conçu le site vitrine et le module de réservation en ligne sur-mesure pour le restaurant Les Jumeaux sans abonnement tiers.",
+      en: "Learn how DevSupAi engineered the custom showcase website and direct online booking engine for restaurant Les Jumeaux with zero third-party subscription fees.",
+    },
     "/projets/les-jumeaux"
   );
 
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Les Jumeaux — Site vitrine & Système de réservation sur-mesure",
-    "description": "Création d'un site vitrine et d'un formulaire de réservation sur-mesure pour le restaurant Les Jumeaux.",
+    "headline": t.title,
+    "description": t.desc,
+    "image": "https://www.devsupai.fr/les-jumeaux.webp",
+    "datePublished": "2026-08-14T00:00:00+02:00",
     "author": {
       "@type": "Person",
       "name": "Alexandre Pabst",
+      "url": language === 'en' ? "https://www.devsupai.fr/en/about" : "https://www.devsupai.fr/a-propos",
     },
     "publisher": {
       "@type": "Organization",
       "name": "DevSupAi",
       "url": "https://www.devsupai.fr",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.devsupai.fr/logo.webp",
+      },
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.devsupai.fr/projets/les-jumeaux"
+      "@id": language === 'en' ? "https://www.devsupai.fr/en/projects/les-jumeaux" : "https://www.devsupai.fr/projets/les-jumeaux",
     },
   };
 
-  useJsonLd(schemaMarkup, 'case-les-jumeaux-schema');
+  useJsonLd(schemaMarkup, `case-jumeaux-schema-${language}`);
 
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-
-      <div className="wrap max-w-3xl">
-        <Link to="/#realisations" className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
-          <span>←</span> Retour aux réalisations
+      <div className="wrap max-w-4xl">
+        <Link to={language === 'en' ? '/en#projets' : '/#projets'} className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
+          <span>←</span> {common.backBtn}
         </Link>
 
-        <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
-          <span>Étude de cas</span>
+        {/* Header Details */}
+        <div className="flex flex-wrap items-center gap-3 text-xs label-mono text-purple-300 mb-4">
+          <span>{t.meta.type}</span>
           <span>•</span>
-          <span>Restauration</span>
+          <span>{t.meta.sector}</span>
           <span>•</span>
-          <span>Site Sur-Mesure</span>
+          <span className="text-accent">{t.meta.feature}</span>
         </div>
 
-        {/* Single H1 Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-text-primary mb-6 leading-tight">
-          Les Jumeaux — Site vitrine & Système de réservation sur-mesure
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text-primary mb-6 leading-tight">
+          {t.title}
         </h1>
 
-        <p className="text-base text-text-secondary leading-relaxed mb-10">
-          Création d'un site internet et d'un module de réservation en ligne sur-mesure pour un restaurant-brasserie traditionnel, facilitant la prise de réservation directe par les clients sans dépendre de widgets externes ralentissant la page.
+        <p className="text-base text-text-secondary leading-relaxed mb-8 max-w-2xl">
+          {t.desc}
         </p>
 
-        {/* Project Facts Box */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-10">
+        {/* Hero Visual Mockup */}
+        <div className="rounded-2xl overflow-hidden border border-[rgba(245,246,250,0.08)] mb-12 shadow-2xl bg-[#121729]">
+          <img 
+            src="/les-jumeaux.webp" 
+            alt="Interface du site web et réservation du Restaurant Les Jumeaux" 
+            className="w-full h-auto object-cover"
+          />
+        </div>
+
+        {/* Key Metrics / Context */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-12">
           <div>
-            <div className="text-xs label-mono text-purple-300">SECTEUR</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Restauration</div>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.sectorLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.sectorVal}</div>
           </div>
           <div>
-            <div className="text-xs label-mono text-purple-300">LIVRABLES</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Site & Réservation</div>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.deliverablesLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.deliverablesVal}</div>
           </div>
           <div>
-            <div className="text-xs label-mono text-purple-300">AFFICHAGE</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Instantané mobile</div>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.speedLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.speedVal}</div>
           </div>
           <div>
-            <div className="text-xs label-mono text-purple-300">RÉSULTAT</div>
-            <div className="text-sm font-bold text-text-primary mt-1">Réservations directes</div>
+            <div className="text-xs label-mono text-text-secondary">{t.facts.resultLabel}</div>
+            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.resultVal}</div>
           </div>
         </div>
 
-        {/* Main QFO Content Sections */}
-        <div className="prose text-text-secondary leading-relaxed space-y-8 text-sm">
-          <div>
-            <h2 className="text-lg font-bold text-text-primary mb-3">
-              1. Quel était le besoin initial du restaurant Les Jumeaux ?
+        {/* Case Narrative Content */}
+        <div className="prose text-text-secondary leading-relaxed space-y-8 text-sm max-w-none">
+          <section>
+            <h2 className="text-xl font-bold text-text-primary mb-3">
+              {t.q1}
             </h2>
             <p>
-              Le restaurant <em>Les Jumeaux</em> souhaitait moderniser sa présence sur internet avec deux objectifs clairs : mettre en valeur la carte et l'ambiance de l'établissement, tout en proposant aux clients un moyen simple d'effectuer une réservation en ligne à toute heure.
+              {t.a1}
             </p>
-          </div>
+          </section>
 
-          <div>
-            <h2 className="text-lg font-bold text-text-primary mb-3">
-              2. Quelle solution technique a été mise en place pour la réservation ?
+          <section>
+            <h2 className="text-xl font-bold text-text-primary mb-3">
+              {t.q2}
             </h2>
             <p>
-              Au lieu d'utiliser des modules tiers intégrés par fenêtres externes (iframes) qui alourdissent l'affichage du site sur smartphone, un formulaire de réservation sur-mesure ultra-léger a été conçu. L'interface s'adapte à tous les écrans et permet de renseigner la date, l'heure et le nombre de convives en quelques secondes.
+              {t.a2}
             </p>
-          </div>
+          </section>
 
-          <div>
-            <h2 className="text-lg font-bold text-text-primary mb-3">
-              3. Quels sont les résultats concrets mesurés après la mise en ligne ?
+          <section>
+            <h2 className="text-xl font-bold text-text-primary mb-3">
+              {t.q3}
             </h2>
-            <div className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium mb-3">
-              <strong>Bilan :</strong> La simplicité de réservation en ligne permet aux clients de réserver directement depuis leur smartphone et soulage l'équipe des prises de réservations par téléphone pendant le service.
-            </div>
-            <p>
-              Grâce à un code épuré, le site se charge immédiatement, même sur un téléphone connecté en réseau mobile.
+            <p className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-sm font-medium mb-3">
+              {t.highlight3}
             </p>
-          </div>
+            <p>
+              {t.a3}
+            </p>
+          </section>
         </div>
 
-        {/* Back Link */}
-        <div className="mt-12 pt-6 border-t border-[rgba(245,246,250,0.06)]">
-          <Link to="/#realisations" className="btn btn-ghost text-xs inline-flex items-center gap-2 border border-[rgba(245,246,250,0.12)]">
-            ← Voir toutes les réalisations
+        {/* Back Link bottom */}
+        <div className="mt-14 pt-8 border-t border-[rgba(245,246,250,0.06)]">
+          <Link to={language === 'en' ? '/en#projets' : '/#projets'} className="btn btn-ghost text-xs label-mono">
+            {common.backBtnBottom}
           </Link>
         </div>
       </div>

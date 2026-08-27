@@ -13,8 +13,14 @@ import StructuredData from '../components/StructuredData';
 
 export default function Home() {
   useDocumentMetadata(
-    "DevSupAi | Développeur Web Freelance & Applications Sur-Mesure",
-    "DevSupAi, développeur web freelance basé en Meuse (Grand Est). Sites vitrines, e-commerce et applications sur-mesure pour PME et associations, en France.",
+    {
+      fr: "DevSupAi | Développeur Web Freelance & Applications Sur-Mesure",
+      en: "DevSupAi | Freelance Web Developer & Custom Web Applications",
+    },
+    {
+      fr: "DevSupAi, développeur web freelance basé en Meuse (Grand Est). Sites vitrines, e-commerce et applications sur-mesure pour PME et associations, en France.",
+      en: "DevSupAi, freelance web developer based in France. Custom showcase websites, e-commerce, and bespoke web apps for SMEs and non-profit organizations.",
+    },
     "/"
   );
 
@@ -26,7 +32,6 @@ export default function Home() {
 
     const reveals = containerRef.current?.querySelectorAll('.reveal');
     if (reveals && reveals.length > 0) {
-      // Immediate fallback safety: ensure all items activate smoothly
       const fallbackTimer = setTimeout(() => {
         reveals.forEach((el) => el.classList.add('active'));
       }, 1000);
@@ -45,13 +50,11 @@ export default function Home() {
 
       reveals.forEach((el) => observer.observe(el));
 
-      // Cleanup
       const observerDisconnect = () => {
         clearTimeout(fallbackTimer);
         observer.disconnect();
       };
 
-      // Handle scroll to hash on mount
       if (window.location.hash) {
         const rawId = window.location.hash.replace('#', '').split('?')[0];
         const element = document.getElementById(rawId);

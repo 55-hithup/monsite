@@ -2,9 +2,13 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionReveal from './SectionReveal';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function Stats() {
   const statsRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
+  const t = translations[language].stats;
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -108,66 +112,46 @@ export default function Stats() {
     }
   };
 
-  const pillars = [
-    {
-      tag: 'Qualité du code',
-      title: 'Pourquoi concevoir du sur-mesure ?',
-      desc: 'Pour éliminer le code superflut des modèles tout faits et proposer une structure légère parfaitement adaptée à votre métier.',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-          <polyline points="16 18 22 12 16 6" className="draw-path" />
-          <polyline points="8 6 2 12 8 18" className="draw-path" />
-          <line x1="14" y1="4" x2="10" y2="20" className="draw-path" />
-        </svg>
-      ),
-    },
-    {
-      tag: 'Confort de visite',
-      title: 'Pourquoi privilégier la rapidité ?',
-      desc: 'Parce qu\'un affichage rapide retient l\'attention des visiteurs sur mobile et améliore le confort de navigation.',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83" className="draw-path" />
-          <line x1="12" y1="12" x2="19" y2="5" className="draw-path" />
-          <circle cx="12" cy="12" r="2.5" className="draw-path" />
-        </svg>
-      ),
-    },
-    {
-      tag: 'Visibilité Google',
-      title: 'Comment être bien référencé ?',
-      desc: 'En proposant des textes structurés, des titres clairs et des réponses directes aux questions que se posent vos clients.',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-          <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" className="draw-path" />
-          <line x1="12" y1="22" x2="12" y2="12" className="draw-path" />
-          <line x1="12" y1="12" x2="22" y2="8.5" className="draw-path" />
-          <line x1="12" y1="12" x2="2" y2="8.5" className="draw-path" />
-          <polyline points="22 8.5 12 15 2 8.5" className="draw-path" />
-          <polyline points="22 15.5 12 22 2 15.5" className="draw-path" />
-        </svg>
-      ),
-    },
-    {
-      tag: 'Contact direct',
-      title: 'Qui réalise votre projet ?',
-      desc: 'Un interlocuteur unique : vous échangez directement avec Alexandre Pabst, créateur et développeur de votre site.',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" className="draw-path" />
-          <circle cx="9" cy="7" r="4" className="draw-path" />
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87" className="draw-path" />
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" className="draw-path" />
-        </svg>
-      ),
-    },
+  const icons = [
+    (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <polyline points="16 18 22 12 16 6" className="draw-path" />
+        <polyline points="8 6 2 12 8 18" className="draw-path" />
+        <line x1="14" y1="4" x2="10" y2="20" className="draw-path" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83" className="draw-path" />
+        <line x1="12" y1="12" x2="19" y2="5" className="draw-path" />
+        <circle cx="12" cy="12" r="2.5" className="draw-path" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" className="draw-path" />
+        <line x1="12" y1="22" x2="12" y2="12" className="draw-path" />
+        <line x1="12" y1="12" x2="22" y2="8.5" className="draw-path" />
+        <line x1="12" y1="12" x2="2" y2="8.5" className="draw-path" />
+        <polyline points="22 8.5 12 15 2 8.5" className="draw-path" />
+        <polyline points="22 15.5 12 22 2 15.5" className="draw-path" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" className="draw-path" />
+        <circle cx="9" cy="7" r="4" className="draw-path" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" className="draw-path" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" className="draw-path" />
+      </svg>
+    ),
   ];
 
   return (
     <SectionReveal className="stats-section" style={{ padding: '80px 0' }}>
       <div className="wrap" ref={statsRef}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style={{ perspective: '1000px' }}>
-          {pillars.map((pillar, idx) => (
+          {t.pillars.map((pillar, idx) => (
             <div 
               key={idx} 
               onMouseMove={handleMouseMove}
@@ -182,12 +166,12 @@ export default function Stats() {
                 style={{ willChange: 'top, left, opacity' }}
               ></div>
 
-              {/* Animated Icon Container (stands out with higher translateZ) */}
+              {/* Animated Icon Container */}
               <div 
                 className="w-12 h-12 rounded-[8px] bg-[#0B0F1E] border border-[rgba(245,246,250,0.06)] flex items-center justify-center mb-5 transition-all duration-300 group-hover:border-[#2E8FE0]/30 group-hover:bg-[#6B4FE0]/10 text-[#2E8FE0] group-hover:text-purple-300"
                 style={{ transform: 'translateZ(25px)', willChange: 'transform' }}
               >
-                {pillar.icon}
+                {icons[idx]}
               </div>
               
               {/* Category tag */}

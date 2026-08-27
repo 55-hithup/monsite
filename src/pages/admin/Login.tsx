@@ -3,8 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import { AlertCircle } from 'lucide-react';
 import { getFirebaseAuth } from '../../lib/firebase';
 import SectionReveal from '../../components/SectionReveal';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { pagesData } from '../../i18n/pagesData';
+import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 
 export default function Login() {
+  const { language } = useLanguage();
+  const t = pagesData[language]?.admin || pagesData.fr.admin;
+
+  useDocumentMetadata(
+    {
+      fr: "Connexion Administration | DevSupAi",
+      en: "Admin Sign In | DevSupAi",
+    },
+    {
+      fr: "Espace d'administration et de modération des avis clients DevSupAi.",
+      en: "DevSupAi admin and testimonial moderation dashboard sign in.",
+    },
+    "/admin/login"
+  );
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,7 +37,7 @@ export default function Login() {
       const auth = await getFirebaseAuth();
       if (!isMounted) return;
       if (!auth) {
-        setError("Le service d'authentification Firebase n'est pas configuré. Veuillez renseigner vos variables d'environnement dans Vercel.");
+        setError(language === 'en' ? "Firebase Authentication service is not configured. Please set environment variables in Vercel." : "Le service d'authentification Firebase n'est pas configuré. Veuillez renseigner vos variables d'environnement dans Vercel.");
         return;
       }
       setError('');
@@ -40,12 +58,12 @@ export default function Login() {
       isMounted = false;
       if (unsubscribe) unsubscribe();
     };
-  }, [navigate]);
+  }, [navigate, language]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) {
-      setError('Veuillez remplir tous les champs.');
+      setError(language === 'en' ? 'Please fill in all fields.' : 'Veuillez remplir tous les champs.');
       return;
     }
 
@@ -55,7 +73,7 @@ export default function Login() {
     try {
       const auth = await getFirebaseAuth();
       if (!auth) {
-        setError("Le service d'authentification n'est pas disponible.");
+        setError(language === 'en' ? "Authentication service is currently unavailable." : "Le service d'authentification n'est pas disponible.");
         return;
       }
       const { signInWithEmailAndPassword } = await import('firebase/auth');
@@ -68,9 +86,9 @@ export default function Login() {
         err.code === 'auth/user-not-found' ||
         err.code === 'auth/wrong-password'
       ) {
-        setError('Identifiants incorrects. Veuillez réessayer.');
+        setError(language === 'en' ? 'Invalid credentials. Please try again.' : 'Identifiants incorrects. Veuillez réessayer.');
       } else {
-        setError('Une erreur est survenue lors de la connexion.');
+        setError(language === 'en' ? 'An error occurred while signing in.' : 'Une erreur est survenue lors de la connexion.');
       }
     } finally {
       setLoading(false);
@@ -84,10 +102,10 @@ export default function Login() {
           <div className="text-center mb-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-xs label-mono text-purple-300 mb-3">
               <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
-              <span>ADMINISTRATION</span>
+              <span>{t.badge}</span>
             </div>
-            <h1 className="text-2xl font-extrabold text-text-primary">Connexion</h1>
-            <p className="text-xs text-text-secondary mt-1">Espace de modération des avis clients</p>
+            <h1 className="text-2xl font-extrabold text-text-primary">{t.loginTitle}</h1>
+            <p className="text-xs text-text-secondary mt-1">{t.loginSubtitle}</p>
           </div>
 
           {error && (
@@ -99,7 +117,7 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Email</label>
+              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.emailLabel}</label>
               <input
                 type="email"
                 value={email}
@@ -111,7 +129,7 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Mot de passe</label>
+              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.passwordLabel}</label>
               <input
                 type="password"
                 value={password}
@@ -124,11 +142,11 @@ export default function Login() {
 
             <button
               type="submit"
-              className="w-full btn btn-primary mt-6 text-sm py-2.5 flex justify-center items-center cursor-pointer"
+              className="w-full btn btn-primary mt-6 text-sm py-2.5 flex justify-center items-center cursor-pointer font-bold"
               style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff', border: 'none' }}
               disabled={loading}
             >
-              {loading ? 'Connexion...' : 'Se connecter'}
+              {loading ? t.connecting : t.loginBtn}
             </button>
           </form>
         </div>

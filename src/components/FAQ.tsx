@@ -2,58 +2,20 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import SectionReveal from './SectionReveal';
 import { useJsonLd } from '../hooks/useJsonLd';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
+import { faqData } from '../i18n/faqData';
 
 export default function FAQ() {
   const [isFaqOpen, setIsFaqOpen] = useState(false);
   const [activeLeftIndex, setActiveLeftIndex] = useState<number | null>(null);
   const [activeRightIndex, setActiveRightIndex] = useState<number | null>(null);
+  const { language } = useLanguage();
+  const t = translations[language].faq;
+  const currentFaq = faqData[language] || faqData.fr;
 
-  const faqColumnLeft = [
-    {
-      q: 'Comment est défini le tarif d\'un projet sur-mesure ?',
-      short: 'Mes tarifs sont transparents, indicatifs et adaptés à vos besoins réels : à partir de 950 € pour le Pack Présence (One-Page), à partir de 1 850 € pour le Pack Croissance (site vitrine 3 à 5 pages), et à partir de 3 200 € pour une application web ou un outil SaaS sur-mesure (base TJM 400 €/jour).',
-      detail: 'Ces montants constituent des prix de départ indicatifs. Chaque projet fait l\'objet d\'une étude préalable et d\'un devis gratuit personnalisé chiffrant avec exactitude vos fonctionnalités, sans aucun frais caché ni abonnement logiciel obligatoire.',
-    },
-    {
-      q: 'Pourquoi le sur-mesure est-il plus rentable sur la durée ?',
-      short: 'Un site sous modèle générique accumule souvent des abonnements payants de plugins (sécurité, formulaires, thème) générant 400 € à 1 200 € par an.',
-      detail: 'Avec DevSupAi, vous ne payez aucun abonnement tiers obligatoire. Votre code est propre, ne souffre d\'aucune obsolescence et conserve un affichage instantané qui maximise vos conversions.',
-    },
-    {
-      q: 'Combien de temps dure la réalisation d\'un projet web ?',
-      short: 'Les délais de livraison varient de 1 à 2 semaines pour un Pack Présence, de 2 à 4 semaines pour un Pack Croissance (vitrine 3-5 pages), et de 4 à 8 semaines pour une application SaaS.',
-      detail: 'Un calendrier précis avec des jalons de validation intermédiaire est fixé dès la signature du devis pour garantir le respect des échéances.',
-    },
-    {
-      q: 'Proposez-vous la gestion de la fiche Google Business et le référencement local ?',
-      short: 'Oui, une prestation mensuelle dédiée est proposée dès 29 €/mois pour animer, optimiser et référencer votre fiche d\'établissement sur Google Maps.',
-      detail: 'Elle comprend l\'optimisation initiale, la publication régulière d\'actualités/photos, la réponse aux avis clients et le suivi de positionnement local.',
-    },
-  ];
-
-  const faqColumnRight = [
-    {
-      q: 'Suis-je propriétaire à 100 % de mon site internet et de mes données ?',
-      short: 'Oui, vous êtes l\'unique et total propriétaire de l\'intégralité du code source, de vos contenus, de votre base de données et de votre nom de domaine.',
-      detail: 'Aucun contrat d\'engagement forcé : vous êtes libre de faire évoluer ou d\'héberger votre projet où vous le souhaitez.',
-    },
-    {
-      q: 'Quels sont les frais récurrents à prévoir (hébergement & domaine) ?',
-      short: 'L\'hébergement sécurisé haute performance et votre nom de domaine sont inclus la première année dans chaque forfait.',
-      detail: 'Par la suite, le coût technique direct de renouvellement reste minime (généralement entre 40 € et 90 € par an selon l\'envergure du projet), sans surcoût imposé.',
-    },
-    {
-      q: 'Puis-je administrer moi-même les contenus ou les données de mon site ?',
-      short: 'Selon vos besoins, une interface d\'administration intuitive peut être intégrée à votre projet.',
-      detail: 'Si votre activité nécessite de mettre à jour des actualités, des réservations ou du matériel (comme pour LocaTool), l\'outil est conçu pour être simple sans compétences techniques.',
-    },
-    {
-      q: 'Quel suivi ou accompagnement est proposé après la mise en ligne ?',
-      short: 'Chaque livraison s\'accompagne d\'une période de garantie technique et d\'une assistance à la prise en main.',
-      detail: 'Des forfaits d\'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles dès 29 €/mois pour assurer votre sérénité.',
-    },
-  ];
-
+  const faqColumnLeft = currentFaq.columnLeft;
+  const faqColumnRight = currentFaq.columnRight;
   const allFaq = [...faqColumnLeft, ...faqColumnRight];
 
   const faqSchemaMarkup = {
@@ -69,21 +31,21 @@ export default function FAQ() {
     })),
   };
 
-  useJsonLd(faqSchemaMarkup, 'faq-schema');
+  useJsonLd(faqSchemaMarkup, `faq-schema-${language}`);
 
   return (
     <SectionReveal id="faq" className="faq-section">
 
       <div className="wrap max-w-6xl">
         <div className="text-center mb-6">
-          <div className="eyebrow reveal justify-center">FOIRE AUX QUESTIONS</div>
-          <h2 className="section-title reveal mt-2">Questions fréquentes</h2>
+          <div className="eyebrow reveal justify-center">{t.eyebrow}</div>
+          <h2 className="section-title reveal mt-2">{t.title}</h2>
           <p className="text-sm text-text-secondary mt-3 reveal max-w-2xl mx-auto">
-            Retrouvez des réponses claires sur les tarifs, la propriété du code, les délais et le suivi de vos projets.
+            {t.desc}
           </p>
         </div>
 
-        {/* Bouton de contrôle global de la FAQ */}
+        {/* Global FAQ Toggle Button */}
         <div className="flex justify-center mb-6 reveal">
           <button
             onClick={() => setIsFaqOpen(!isFaqOpen)}
@@ -91,12 +53,12 @@ export default function FAQ() {
             aria-expanded={isFaqOpen}
           >
             <HelpCircle size={16} />
-            <span>{isFaqOpen ? 'Masquer la foire aux questions' : 'Afficher les questions fréquentes'}</span>
+            <span>{isFaqOpen ? t.toggleHide : t.toggleShow}</span>
             {isFaqOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </button>
         </div>
 
-        {/* Grille Double-Colonne masquable */}
+        {/* Collapsible FAQ Double Column */}
         <div
           className="transition-all duration-500 ease-in-out overflow-hidden text-left"
           style={{
@@ -107,10 +69,10 @@ export default function FAQ() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-4">
             
-            {/* Colonne de Gauche : Tarifs & Délais */}
+            {/* Left Column */}
             <div>
               <h3 className="text-xs label-mono font-bold text-text-primary uppercase tracking-wider mb-6 border-b border-[rgba(245,246,250,0.08)] pb-2">
-                Tarifs, Délais & Visibilité
+                {t.column1Title}
               </h3>
               <div className="faq-list space-y-4">
                 {faqColumnLeft.map((item, idx) => {
@@ -148,10 +110,10 @@ export default function FAQ() {
               </div>
             </div>
 
-            {/* Colonne de Droite : Propriété, Hébergement & Suivi */}
+            {/* Right Column */}
             <div>
               <h3 className="text-xs label-mono font-bold text-text-primary uppercase tracking-wider mb-6 border-b border-[rgba(245,246,250,0.08)] pb-2">
-                Propriété, Hébergement & Suivi
+                {t.column2Title}
               </h3>
               <div className="faq-list space-y-4">
                 {faqColumnRight.map((item, idx) => {

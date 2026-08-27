@@ -1,6 +1,11 @@
 import MagneticWrapper from './MagneticWrapper';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function Hero() {
+  const { language } = useLanguage();
+  const t = translations[language].hero;
+
   return (
     <section className="hero" id="accueil" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
       {/* Widescreen Background Mockup Image */}
@@ -26,24 +31,24 @@ export default function Hero() {
       {/* Overlay Text Content */}
       <div className="wrap relative z-10 w-full" style={{ maxWidth: '1440px', paddingLeft: 'var(--space-xl)', paddingRight: 'var(--space-xl)' }}>
         <div className="max-w-[620px] text-left">
-          <div className="eyebrow mb-2">DÉVELOPPEUR WEB FREELANCE • MEUSE & GRAND EST</div>
+          <div className="eyebrow mb-2">{t.eyebrow}</div>
           {/* Heading */}
           <h1 className="hero-title cursor-default text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.01] tracking-tight">
             <span className="line">
-              <span>Création de sites web <span className="inline-block whitespace-nowrap">sur&#8209;mesure</span></span>
+              <span>{t.titleLine1} <span className="inline-block whitespace-nowrap">{t.titleHighlight}</span></span>
             </span>
             <span className="line">
-              <span className="grad">pour PME & Associations</span>
+              <span className="grad">{t.titleLine2}</span>
             </span>
           </h1>
 
           {/* Subtitle / Key Information Box */}
           <div className="hero-sub mt-3 mb-5 p-3.5 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 text-xs md:text-sm text-text-secondary leading-relaxed backdrop-blur-sm shadow-[0_0_30px_rgba(46,143,224,0.1)]">
             <p className="font-semibold text-text-primary mb-1">
-              <strong>Valorisez votre savoir-faire et gagnez la confiance de vos clients :</strong>
+              <strong>{t.boxTitle}</strong>
             </p>
             <p>
-              Développeur web freelance basé en Meuse (55), j'accompagne les PME, artisans et associations dans le Grand Est et toute la France pour créer des sites internet élégants, fiables et conçus pour durer.
+              {t.boxDesc}
             </p>
           </div>
 
@@ -51,20 +56,20 @@ export default function Hero() {
           <div className="hero-ctas flex flex-wrap items-center gap-4">
             <MagneticWrapper range={40} strength={0.3}>
               <a href="#contact" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                Demander un devis PME / Asso →
+                {t.ctaQuote}
               </a>
             </MagneticWrapper>
             
             <MagneticWrapper range={35} strength={0.25}>
               <a href="#projets" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid rgba(245,246,250,0.15)' }}>
-                Découvrir les réalisations →
+                {t.ctaProjects}
               </a>
             </MagneticWrapper>
           </div>
         </div>
       </div>
       
-      <div className="scroll-cue"><span>Scroll</span><div className="scroll-line"></div></div>
+      <div className="scroll-cue"><span>{t.scroll}</span><div className="scroll-line"></div></div>
     </section>
   );
 }

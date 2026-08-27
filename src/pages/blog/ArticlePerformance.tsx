@@ -2,26 +2,37 @@ import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 import { useJsonLd } from '../../hooks/useJsonLd';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { articlesData } from '../../i18n/articlesData';
 
 export default function ArticlePerformance() {
+  const { language } = useLanguage();
+  const t = articlesData[language]?.articlePerformance || articlesData.fr.articlePerformance;
+
   useDocumentMetadata(
-    "Performance Web & SEO Sur-Mesure : Le Guide | DevSupAi",
-    "Découvrez les piliers de la vitesse web et de l'optimisation SEO pour propulser votre site internet PME ou association au sommet des résultats Google.",
+    {
+      fr: "Vitesse de chargement & Taux de conversion | Guide DevSupAi",
+      en: "Page Speed & Conversion Rates | Technical Guide DevSupAi",
+    },
+    {
+      fr: "Chaque milliseconde compte pour votre chiffre d'affaires. Découvrez comment les performances web d'élite augmentent drastiquement vos ventes.",
+      en: "Every millisecond of latency counts for business revenue. Learn how elite web performance directly increases sales and lowers acquisition costs.",
+    },
     "/blog/performance-web-sur-mesure"
   );
 
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Performance Web & SEO Sur-Mesure : Le Guide Pratique",
-    "description": "Découvrez les piliers de la vitesse web et de l'optimisation SEO pour propulser votre site internet PME ou association au sommet des résultats Google.",
+    "headline": t.title,
+    "description": t.intro,
     "image": "https://www.devsupai.fr/hero-bg-mockup.webp",
-    "datePublished": "2026-08-02T08:00:00+02:00",
+    "datePublished": "2026-08-02T09:00:00+02:00",
     "dateModified": "2026-08-14T00:00:00+02:00",
     "author": {
       "@type": "Person",
       "name": "Alexandre Pabst",
-      "url": "https://www.devsupai.fr/a-propos"
+      "url": language === 'en' ? "https://www.devsupai.fr/en/about" : "https://www.devsupai.fr/a-propos",
     },
     "publisher": {
       "@type": "Organization",
@@ -29,78 +40,78 @@ export default function ArticlePerformance() {
       "url": "https://www.devsupai.fr",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.devsupai.fr/logo.webp"
-      }
+        "url": "https://www.devsupai.fr/logo.webp",
+      },
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.devsupai.fr/blog/performance-web-sur-mesure"
-    }
+      "@id": language === 'en' ? "https://www.devsupai.fr/en/blog/performance-web-sur-mesure" : "https://www.devsupai.fr/blog/performance-web-sur-mesure",
+    },
   };
 
-  useJsonLd(schemaMarkup, 'article-performance-schema');
+  useJsonLd(schemaMarkup, `article-performance-schema-${language}`);
 
   return (
     <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
       <div className="wrap max-w-2xl">
-        <Link to="/blog" className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
-          <span>←</span> Retour au blog
+        <Link to={language === 'en' ? '/en/blog' : '/blog'} className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
+          <span>←</span> {t.backBtn}
         </Link>
         
         <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
-          <span>02 Août 2026</span>
+          <span>{t.meta.date}</span>
           <span>•</span>
-          <span>5 min read</span>
+          <span>{t.meta.readTime}</span>
           <span>•</span>
-          <span>Performance</span>
+          <span>{t.meta.tag}</span>
         </div>
         
         <h1 className="text-3xl md:text-4xl font-extrabold text-text-primary mb-8 leading-tight">
-          Vitesse de chargement & Taux de conversion
+          {t.title}
         </h1>
         
         <div className="prose text-text-secondary leading-relaxed space-y-6 text-sm">
           <p className="text-base text-text-primary font-medium">
-            Dans l'écosystème du web, la vitesse n'est plus seulement une commodité : c'est un facteur financier direct. De nombreuses études prouvent qu'une seule seconde d'attente supplémentaire peut ruiner l'expérience client et baisser vos ventes.
+            {t.intro}
           </p>
           
-          <h2 className="text-lg font-bold text-text-primary pt-4">Quel est l'impact de la vitesse de chargement sur vos visiteurs ?</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_1}</h2>
           <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
-            Selon les études Google, la majorité des utilisateurs sur smartphone quittent un site s'il met plus de 3 secondes à s'affichier.
+            {t.highlight1}
           </p>
           <p>
-            Selon des analyses menées par Google et Cloudflare, un temps de chargement qui passe de 1 à 3 secondes augmente le taux de rebond (le pourcentage de visiteurs qui quittent immédiatement le site) de 32%. Si ce temps atteint 5 secondes, la probabilité de rebond explose de 90%.
+            {t.p1}
           </p>
           <p>
-            À l'inverse, accélérer votre site permet d'observer une hausse immédiate de vos objectifs commerciaux. Par exemple, Walmart a constaté qu'en réduisant d'une seconde le temps de chargement de son site, ses taux de conversion augmentaient de 2%.
+            {t.p1_bis}
           </p>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Pourquoi la vitesse web est-elle décisive pour les PME et Associations ?</h2>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>
-              <strong className="text-text-primary">Expérience mobile optimale :</strong> Plus de 60% du trafic s'effectue sur smartphone, souvent avec une connexion 4G instable. Un site léger et optimisé performe là où les autres échouent.
-            </li>
-            <li>
-              <strong className="text-text-primary">Diminution du coût d'acquisition :</strong> Si vous dépensez en publicité (Google Ads, Facebook Ads) pour amener du trafic sur une page lente, vous payez pour des clics d'utilisateurs qui feront demi-tour. Un site rapide rentabilise vos campagnes d'acquisition.
-            </li>
-            <li>
-              <strong className="text-text-primary">Amélioration de la fidélité :</strong> Les clients se souviennent de la frustration d'un site lent, mais reviennent volontiers sur une application réactive qui respecte leur temps.
-            </li>
+          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_2}</h2>
+          <ul className="space-y-3 pt-2">
+            {t.bullets.map((b, idx) => (
+              <li key={idx} className="flex gap-2">
+                <span className="text-accent font-bold">•</span>
+                <div>
+                  <strong className="text-text-primary">{b.bold} </strong>
+                  {b.text}
+                </div>
+              </li>
+            ))}
           </ul>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Comment optimiser la performance web sur-mesure ?</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_3}</h2>
           <p>
-            Pour atteindre l'excellence, je combine plusieurs techniques avancées :
+            {t.p3}
           </p>
-          <ul className="list-decimal pl-5 space-y-1">
-            <li>Compression des images de nouvelle génération (WebP/AVIF).</li>
-            <li>Minification et découpage intelligent des fichiers JavaScript (code splitting).</li>
-            <li>Hébergement distribué sur un CDN mondial ultra-rapide (Vercel Edge).</li>
+          <ul className="list-disc pl-5 space-y-1 text-text-secondary">
+            {t.steps.map((st, idx) => (
+              <li key={idx}>{st}</li>
+            ))}
           </ul>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">Quel est le bilan financier de la performance web ?</h2>
+          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_4}</h2>
           <p>
-            Améliorer la vitesse de votre site est l'optimisation la plus rentable que vous puissiez faire pour augmenter votre chiffre d'affaires sans dépenser un euro de plus en publicité.
+            {t.p4}
           </p>
         </div>
       </div>

@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import SectionReveal from './SectionReveal';
 import MagneticWrapper from './MagneticWrapper';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const t = translations[language].contact;
+
   const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
-    projectType: 'PME / TPE — Site Vitrine Sur-Mesure',
+    projectType: t.options[0],
     googleBusinessOption: false,
     message: '',
   });
+
+  // Update default projectType when language changes if not custom typed
+  useEffect(() => {
+    setForm((prev) => ({
+      ...prev,
+      projectType: t.options[0],
+    }));
+  }, [language]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -18,16 +31,16 @@ export default function Contact() {
     const checkHashOrParams = () => {
       const fullUrl = window.location.href;
       if (fullUrl.includes('pack=presence') || fullUrl.includes('pack=croissance')) {
-        setForm((prev) => ({ ...prev, projectType: 'PME / TPE — Site Vitrine Sur-Mesure' }));
+        setForm((prev) => ({ ...prev, projectType: t.options[0] }));
       } else if (fullUrl.includes('pack=saas')) {
-        setForm((prev) => ({ ...prev, projectType: 'Application Web & SaaS Métier' }));
+        setForm((prev) => ({ ...prev, projectType: t.options[3] }));
       }
     };
 
     checkHashOrParams();
     window.addEventListener('hashchange', checkHashOrParams);
     return () => window.removeEventListener('hashchange', checkHashOrParams);
-  }, []);
+  }, [t.options]);
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -59,16 +72,16 @@ export default function Contact() {
           name: '',
           email: '',
           phone: '',
-          projectType: 'Site vitrine',
+          projectType: t.options[0],
           googleBusinessOption: false,
           message: '',
         });
       } else {
-        setError(data.message || 'Une erreur est survenue lors de l\'envoi du message.');
+        setError(data.message || (language === 'en' ? 'An error occurred while sending your message.' : 'Une erreur est survenue lors de l\'envoi du message.'));
         setDebugError(data.debug || '');
       }
     } catch (err: any) {
-      setError('Impossible de contacter le serveur d\'envoi. Veuillez réessayer plus tard.');
+      setError(language === 'en' ? 'Unable to reach the mail server. Please try again later.' : 'Impossible de contacter le serveur d\'envoi. Veuillez réessayer plus tard.');
       setDebugError(err.message || '');
     } finally {
       setLoading(false);
@@ -80,10 +93,10 @@ export default function Contact() {
       <div className="wrap max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="eyebrow reveal justify-center">Contact</div>
-          <h2 className="section-title reveal">Parlons de votre projet.</h2>
+          <div className="eyebrow reveal justify-center">{t.eyebrow}</div>
+          <h2 className="section-title reveal">{t.title}</h2>
           <p className="section-sub reveal" style={{ margin: '20px auto 0', maxWidth: '480px' }}>
-            Réponse garantie sous 24h.
+            {t.guarantee}
           </p>
         </div>
 
@@ -94,9 +107,9 @@ export default function Contact() {
                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
               </svg>
             </div>
-            <h3 className="text-xl font-medium text-text-primary mb-2">Message envoyé avec succès</h3>
+            <h3 className="text-xl font-medium text-text-primary mb-2">{t.successTitle}</h3>
             <p className="text-sm text-text-secondary max-w-sm mx-auto mb-6">
-              Merci pour votre intérêt. L'équipe DevSupAi a bien reçu votre demande et vous recontactera rapidement.
+              {t.successText}
             </p>
             <button
               onClick={() => {
@@ -106,7 +119,7 @@ export default function Contact() {
               }}
               className="label-mono text-xs text-accent hover:text-accent-hover transition-colors cursor-pointer"
             >
-              envoyer un autre message
+              {t.sendAnother}
             </button>
           </div>
         ) : (
@@ -114,10 +127,10 @@ export default function Contact() {
             {/* Steps / Onboarding text block */}
             <div className="mb-8 p-5 bg-[#0B0F1E]/50 border border-[rgba(245,246,250,0.04)] rounded-[10px] text-sm text-text-secondary leading-relaxed text-left">
               <h3 className="text-text-primary font-bold text-sm mb-2">
-                Votre projet commence simplement
+                {t.onboardingTitle}
               </h3>
               <p>
-                J'échange gratuitement avec vous sur vos besoins, puis je réalise une première proposition visuelle pour vous permettre de vous projeter. Si elle vous convainc, nous validons ensemble le devis, un acompte lance officiellement le projet, puis je conçois les maquettes finales avant de développer votre site.
+                {t.onboardingText}
               </p>
             </div>
 
@@ -126,7 +139,7 @@ export default function Contact() {
                 <div>{error}</div>
                 {debugError && (
                   <div className="text-xs text-red-400/70 font-mono mt-1 pt-1 border-t border-red-500/10 break-all">
-                    Détails de l'erreur : {debugError}
+                    Error details: {debugError}
                   </div>
                 )}
               </div>
@@ -134,22 +147,22 @@ export default function Contact() {
             
             <div className="form-grid">
               <div className="field">
-                <label htmlFor="nom">Nom</label>
+                <label htmlFor="nom">{t.nameLabel}</label>
                 <input
                   type="text"
                   id="nom"
-                  placeholder="Votre nom"
+                  placeholder={t.namePlaceholder}
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
               </div>
               <div className="field">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t.emailLabel}</label>
                 <input
                   type="email"
                   id="email"
-                  placeholder="vous@entreprise.com"
+                  placeholder={t.emailPlaceholder}
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -159,28 +172,25 @@ export default function Contact() {
             
             <div className="form-grid">
               <div className="field">
-                <label htmlFor="tel">Téléphone (facultatif)</label>
+                <label htmlFor="tel">{t.phoneLabel}</label>
                 <input
                   type="tel"
                   id="tel"
-                  placeholder="06 00 00 00 00"
+                  placeholder={t.phonePlaceholder}
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 />
               </div>
               <div className="field">
-                <label htmlFor="projet-type">Vous êtes / Type de projet</label>
+                <label htmlFor="projet-type">{t.projectTypeLabel}</label>
                 <select
                   id="projet-type"
                   value={form.projectType}
                   onChange={(e) => setForm({ ...form, projectType: e.target.value })}
                 >
-                  <option>PME / TPE — Site Vitrine Sur-Mesure</option>
-                  <option>Association — Site ou Portail d'Information</option>
-                  <option>E-Commerce — Boutique en Ligne Sur-Mesure</option>
-                  <option>Application Web & SaaS Métier</option>
-                  <option>Gestion Google Business & SEO Local (dès 29 €/mois)</option>
-                  <option>Autre projet de développement sur-mesure</option>
+                  {t.options.map((opt, idx) => (
+                    <option key={idx} value={opt}>{opt}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -194,24 +204,24 @@ export default function Contact() {
                   checked={form.googleBusinessOption}
                   onChange={(e) => setForm({ ...form, googleBusinessOption: e.target.checked })}
                   className="mt-1 w-4 h-4 accent-[#2E8FE0] rounded cursor-pointer"
-                  aria-label="Ajouter l'option Gestion & Animation Google Business Profile"
+                  aria-label={t.googleBusinessTitle}
                 />
                 <div>
                   <div className="text-xs font-bold text-text-primary">
-                    Ajouter l'option Gestion & Animation Google Business Profile (dès 29 €/mois)
+                    {t.googleBusinessTitle}
                   </div>
                   <div className="text-xs text-text-secondary mt-0.5 leading-snug">
-                    Optimisation de votre fiche Google Maps, réponse aux avis, publications mensuelles et suivi des statistiques.
+                    {t.googleBusinessDesc}
                   </div>
                 </div>
               </label>
             </div>
             
             <div className="field">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">{t.messageLabel}</label>
               <textarea
                 id="message"
-                placeholder="Parlez-moi de votre projet…"
+                placeholder={t.messagePlaceholder}
                 required
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -221,7 +231,7 @@ export default function Contact() {
             <div className="flex justify-end pt-2">
               <MagneticWrapper range={40} strength={0.3}>
                 <button type="submit" className="submit-btn cursor-pointer" disabled={loading}>
-                  {loading ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                  {loading ? t.submitting : t.submitBtn}
                 </button>
               </MagneticWrapper>
             </div>

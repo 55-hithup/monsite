@@ -15,6 +15,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CaseLesJumeaux from './pages/projects/CaseLesJumeaux';
 import CaseLocaTool from './pages/projects/CaseLocaTool';
 import CaseAbogame from './pages/projects/CaseAbogame';
+import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
+import { translations } from './i18n/translations';
 
 // Global Error Boundary to catch any rendering errors without crashing the entire app
 interface ErrorBoundaryProps {
@@ -41,9 +43,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     if (this.state.hasError) {
       return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-[#070913] text-text-primary px-6 text-center">
-          <h2 className="text-xl font-bold mb-4">Une erreur inattendue est survenue</h2>
+          <h2 className="text-xl font-bold mb-4">Une erreur inattendue est survenue / An unexpected error occurred</h2>
           <p className="text-sm text-text-secondary max-w-md mb-6">
-            La page a rencontré un problème d'affichage temporaire.
+            La page a rencontré un problème d'affichage temporaire. / The page encountered a temporary display issue.
           </p>
           <a
             href="/"
@@ -54,7 +56,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             className="btn btn-primary px-6 py-2.5 rounded-full text-xs font-bold"
             style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff' }}
           >
-            Retourner à l'accueil
+            Retourner à l'accueil / Return to Home
           </a>
         </div>
       );
@@ -66,19 +68,21 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 function RouteErrorFallback() {
   const error: any = useRouteError();
   console.warn('Route error detected:', error);
+  const { language } = useLanguage();
+  const t = translations[language]?.errors || translations.fr.errors;
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-6 pt-28">
-      <h2 className="text-2xl font-bold text-text-primary mb-3">Page non trouvée</h2>
+      <h2 className="text-2xl font-bold text-text-primary mb-3">{t.notFoundTitle}</h2>
       <p className="text-sm text-text-secondary max-w-md mb-8">
-        La page demandée n'existe pas ou a été déplacée.
+        {t.notFoundText}
       </p>
       <Link
         to="/"
         className="btn btn-primary px-6 py-2.5 rounded-full text-xs font-bold"
         style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff' }}
       >
-        Retour à l'accueil
+        {t.returnHome}
       </Link>
     </div>
   );
@@ -114,7 +118,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs">
-    Chargement...
+    Chargement... / Loading...
   </div>
 );
 
@@ -130,16 +134,20 @@ export const routes = [
   {
     path: '/',
     element: (
-      <ErrorBoundary>
-        <Layout />
-      </ErrorBoundary>
+      <LanguageProvider>
+        <ErrorBoundary>
+          <Layout />
+        </ErrorBoundary>
+      </LanguageProvider>
     ),
     errorElement: (
-      <ErrorBoundary>
-        <Layout>
-          <RouteErrorFallback />
-        </Layout>
-      </ErrorBoundary>
+      <LanguageProvider>
+        <ErrorBoundary>
+          <Layout>
+            <RouteErrorFallback />
+          </Layout>
+        </ErrorBoundary>
+      </LanguageProvider>
     ),
     hydrateFallbackElement: <></>,
     children: [
@@ -233,6 +241,103 @@ export const routes = [
       },
       {
         path: 'politique-de-confidentialite',
+        element: (
+          <ErrorBoundary>
+            <PrivacyPolicy />
+          </ErrorBoundary>
+        ),
+      },
+      /* English Routes (Bilingual International SEO) */
+      {
+        path: 'en',
+        element: (
+          <ErrorBoundary>
+            <Home />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/services',
+        element: (
+          <ErrorBoundary>
+            <Services />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/about',
+        element: (
+          <ErrorBoundary>
+            <About />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog',
+        element: (
+          <ErrorBoundary>
+            <Blog />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/site-web-pme-association',
+        element: (
+          <ErrorBoundary>
+            <ArticleAssociationPme />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/pourquoi-eviter-les-templates',
+        element: (
+          <ErrorBoundary>
+            <ArticleTemplates />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/performance-web-sur-mesure',
+        element: (
+          <ErrorBoundary>
+            <ArticlePerformance />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/projects/les-jumeaux',
+        element: (
+          <ErrorBoundary>
+            <CaseLesJumeaux />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/projects/locatool',
+        element: (
+          <ErrorBoundary>
+            <CaseLocaTool />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/projects/abogame',
+        element: (
+          <ErrorBoundary>
+            <CaseAbogame />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/legal-notices',
+        element: (
+          <ErrorBoundary>
+            <LegalNotices />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/privacy-policy',
         element: (
           <ErrorBoundary>
             <PrivacyPolicy />

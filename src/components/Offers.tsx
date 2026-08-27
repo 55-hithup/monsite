@@ -1,119 +1,54 @@
 import SectionReveal from './SectionReveal';
 import MagneticWrapper from './MagneticWrapper';
 import { CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function Offers() {
-  const packages = [
-    {
-      id: 'presence',
-      name: 'Pack Présence',
-      badge: 'Artisans & Indépendants',
-      price: '950 €',
-      priceSub: 'Tarif indicatif de départ • Devis gratuit sur-mesure',
-      desc: 'Idéal pour créer une première vitrine professionnelle claire, percutante et rassurante.',
-      popular: false,
-      features: [
-        'Page unique (One-Page / Landing) pensée pour convaincre',
-        'Formulaire de contact direct & intégration Google Maps',
-        'Optimisation SEO technique initiale & indexation Google',
-        'Nom de domaine, hébergement SSL & code 100% propriétaire',
-      ],
-      ctaText: 'Choisir le Pack Présence',
-    },
-    {
-      id: 'croissance',
-      name: 'Pack Croissance PME',
-      badge: 'Le plus plébiscité',
-      price: '1 850 €',
-      priceSub: 'Tarif indicatif de départ • Devis gratuit sur-mesure',
-      desc: 'La solution complète pour les PME souhaitant valoriser leur offre et convertir leurs visiteurs en clients.',
-      popular: true,
-      features: [
-        'Architecture sur-mesure de 3 à 5 pages dédiées',
-        'Design moderne de prestige & micro-animations GSAP fluides',
-        'Stratégie de référencement naturel (SEO local ciblé)',
-        'Galerie de réalisations, catalogue & formulaires de devis',
-        'Intégration d\'avis clients Google & formation prise en main',
-      ],
-      ctaText: 'Choisir le Pack Croissance',
-    },
-    {
-      id: 'saas',
-      name: 'Pack SaaS & Métier',
-      badge: 'Applications & Plateformes',
-      price: '3 200 €',
-      priceSub: 'Tarif indicatif de départ (Base TJM 400 €/j)',
-      desc: 'Pour les applications sur-mesure, outils de réservation en ligne ou gestion de parc matériel.',
-      popular: false,
-      features: [
-        'Développement full-stack sur-mesure en React & TypeScript',
-        'Base de données sécurisée, authentification & rôles',
-        'Tableaux de bord d\'administration personnalisés',
-        'Intégration d\'API tierces (Stripe, agendas, SMS, cloud)',
-      ],
-      ctaText: 'Étudier mon projet SaaS',
-    },
-  ];
+  const { language } = useLanguage();
+  const t = translations[language].offers;
 
   return (
     <SectionReveal id="services" className="py-20 md:py-28 lg:py-36" style={{ position: 'relative' }}>
       <div className="wrap-wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Colonne Gauche : 100% Texte & Réassurance (sans cartes) */}
+          {/* Left Column: Text & Reassurance Checklist */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 text-left space-y-5 reveal">
-            <div className="eyebrow">FORFAITS & TARIFS SUR-MESURE</div>
+            <div className="eyebrow">{t.eyebrow}</div>
             
             <h2 className="section-title text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.1] tracking-tight">
-              Des tarifs clairs et transparents, adaptés à votre projet
+              {t.title}
             </h2>
 
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
-              Développement sur-mesure pour votre succès, sans frais cachés ni abonnements logiciels captifs. Vous investissez dans une solution pérenne, dont vous êtes le seul propriétaire.
+              {t.desc}
             </p>
 
-            {/* Checklist de réassurance */}
+            {/* Checklist */}
             <div className="space-y-3 pt-2 border-y border-[rgba(245,246,250,0.08)] py-4">
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Solution clé en main :</strong> Conception personnalisée sans modèle pré-conçu générique.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Zéro abonnement imposé :</strong> Vous possédez 100% du code source et de vos données.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Domaine & hébergement inclus :</strong> Inclus la première année, sans surcoût imposé.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Interlocuteur unique :</strong> Alexandre Pabst, développeur freelance dédié, réponse sous 24h.
-                </p>
-              </div>
+              {t.checkpoints.map((cp, idx) => (
+                <div key={idx} className="flex items-start gap-2.5">
+                  <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <p className="text-xs text-text-secondary leading-relaxed">
+                    <strong className="text-text-primary font-semibold">{cp.title} </strong>
+                    {cp.text}
+                  </p>
+                </div>
+              ))}
             </div>
 
-            {/* Option Google Business Profile */}
+            {/* Google Business Profile Addon */}
             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-xs label-mono text-cyan-300 font-bold uppercase tracking-wider">
-                  Option Mensuelle
+                  {t.monthlyOption.badge}
                 </span>
                 <span className="text-xs text-slate-400">•</span>
-                <span className="text-xs font-bold text-text-primary">Dès 29 € / mois</span>
+                <span className="text-xs font-bold text-text-primary">{t.monthlyOption.price}</span>
               </div>
               <p className="text-xs text-text-secondary leading-relaxed font-light">
-                Gestion & animation de votre fiche Google Maps pour maximiser votre référencement local et répondre aux avis clients.
+                {t.monthlyOption.desc}
               </p>
             </div>
 
@@ -132,16 +67,16 @@ export default function Offers() {
                     fontWeight: 700,
                   }}
                 >
-                  <span>Demander un devis gratuit</span>
+                  <span>{t.ctaQuote}</span>
                   <ArrowRight size={14} className="text-[#0B122C]" />
                 </a>
               </MagneticWrapper>
             </div>
           </div>
 
-          {/* Colonne Droite : Les 3 Forfaits empilés verticalement avec Grands Prix en bas à droite */}
+          {/* Right Column: 3 Packages */}
           <div className="lg:col-span-7 flex flex-col gap-4">
-            {packages.map((pkg) => (
+            {t.packages.map((pkg) => (
               <div
                 key={pkg.id}
                 className={`p-6 sm:p-7 rounded-2xl relative transition-all duration-300 reveal text-left ${
@@ -153,13 +88,13 @@ export default function Offers() {
                 {pkg.popular && (
                   <div className="absolute -top-3 right-6 px-3.5 py-0.5 rounded-full bg-[#2E8FE0] text-[#0B122C] text-xs label-mono font-bold tracking-wider uppercase shadow-md flex items-center gap-1.5">
                     <Sparkles size={11} />
-                    <span>Recommandé PME</span>
+                    <span>{pkg.recommendation || 'Recommandé PME'}</span>
                   </div>
                 )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-stretch">
                   
-                  {/* Partie Gauche : Badge, Titre, Description et Bouton (5 cols) */}
+                  {/* Left part: Badge, Title, Description, Button */}
                   <div className="sm:col-span-5 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center gap-2 mb-1.5">
@@ -196,11 +131,11 @@ export default function Offers() {
                     </div>
                   </div>
 
-                  {/* Partie Droite : Fonctionnalités & GRAND TARIF en bas à droite (7 cols) */}
+                  {/* Right part: Features & Grand Price */}
                   <div className="sm:col-span-7 sm:border-l sm:border-[rgba(245,246,250,0.06)] sm:pl-5 pt-3 sm:pt-0 flex flex-col justify-between">
                     <div>
                       <span className="text-xs label-mono uppercase text-purple-300 font-bold tracking-wider block mb-2.5">
-                        Inclus dans ce forfait :
+                        {t.includedTitle}
                       </span>
                       <ul className="space-y-1.5 mb-4">
                         {pkg.features.map((feat, idx) => (
@@ -212,10 +147,10 @@ export default function Offers() {
                       </ul>
                     </div>
 
-                    {/* Prix élégamment dosé à gauche du texte bleu */}
+                    {/* Price in bottom right */}
                     <div className="pt-3 mt-3 border-t border-[rgba(245,246,250,0.08)] flex flex-wrap items-baseline justify-end gap-3">
                       <div className="flex items-baseline gap-1.5">
-                        <span className="text-xs text-slate-400 font-semibold label-mono uppercase">à partir de</span>
+                        <span className="text-xs text-slate-400 font-semibold label-mono uppercase">{t.startingFrom}</span>
                         <span className="text-2xl sm:text-3xl font-extrabold text-white label-mono tracking-tight">
                           {pkg.price}
                         </span>

@@ -1,15 +1,17 @@
 # DevSupAi - Développeur Web Freelance & Création de Sites et Applications Sur-Mesure
+# DevSupAi - Freelance Web Developer & Custom Web Applications (Bilingual FR / EN)
 
-> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, développeur web freelance spécialisé dans la création d'applications, plateformes SaaS et sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP, vite-react-ssg) pour les PME, TPE, artisans, commerçants et associations loi 1901. Son crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée (Lighthouse 100/100, temps d'affichage inférieur à 500ms), 100% de code propriétaire sans abonnement captif et structure sémantique optimisée pour les moteurs de recherche et les intelligences artificielles.
+> DevSupAi est l'entreprise individuelle d'Alexandre Pabst, développeur web freelance spécialisé dans la création d'applications, plateformes SaaS et sites web sur-mesure de haute performance (React, TypeScript, Tailwind CSS, GSAP, vite-react-ssg) pour les PME, TPE, artisans, commerçants et associations loi 1901. Le site est intégralement disponible en français et en anglais avec un sélecteur de langue dynamique dans le header. Son crédo : zéro modèle pré-conçu (no-template), vitesse de chargement instantanée (Lighthouse 100/100, temps d'affichage inférieur à 500ms), 100% de code propriétaire sans abonnement captif et structure sémantique optimisée pour les moteurs de recherche et les intelligences artificielles.
 
-## Informations Générales & Contact
-- Fondateur & Développeur : Alexandre Pabst
-- Profession : Développeur Web Freelance / Full-Stack & Sur-Mesure
-- Site officiel : https://www.devsupai.fr
-- E-mail direct : contact@devsupai.fr
-- Téléphone : 07 83 66 60 98
-- Siège social : 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, Grand Est, France)
-- Zone d'intervention : Saint-Mihiel, Bar-le-Duc, Verdun, Commercy, Nancy, Metz, région Grand Est et toute la France à distance (télétravail).
+## Informations Générales & Contact / General Info
+- Fondateur & Développeur / Founder: Alexandre Pabst
+- Profession: Développeur Web Freelance / Full-Stack & Bespoke Web Developer
+- Site officiel: https://www.devsupai.fr
+- E-mail direct: contact@devsupai.fr
+- Téléphone: +33 7 83 66 60 98 (07 83 66 60 98)
+- Siège social: 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, Grand Est, France)
+- Zone d'intervention: Saint-Mihiel, Bar-le-Duc, Verdun, Commercy, Nancy, Metz, région Grand Est, toute la France et international à distance (remote).
+- Support multilingue: Français (par défaut) et Anglais (accessible via le bouton de bascule FR/EN dans le menu de navigation).
 
 ## Forfaits & Tarifs Transparents (Tarifs Indicatifs de Départ)
 - **Pack Présence (One-Page / Landing Page)** : À partir de 950 € (tarif indicatif de départ • devis gratuit sur-mesure, page unique haute performance, formulaire direct, SEO local initial, nom de domaine et hébergement inclus la première année, zéro abonnement captif).
@@ -95,22 +97,39 @@ Compter 1 à 2 semaines pour un site One-Page, 2 à 4 semaines pour un site vitr
 ### 7. Propriété & Indépendance : À qui appartient le site internet ?
 Le client est l'unique et total propriétaire du code source, des contenus, de la base de données et du nom de domaine dès la livraison finale, sans aucune clause d'engagement.
 
-## Plan du Site & Cartographie des URLs
+## Plan du Site & Cartographie des URLs / Sitemap & URLs Structure
 
+### Version Française (FR)
 - [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les services de développement web sur-mesure pour PME et Associations, les réalisations, la démonstration technique, le comparatif avec les templates et la foire aux questions.
 - [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 prestations informatiques (sites vitrines, e-commerce, applications mobiles, SaaS, maintenance et refonte) avec 4 pôles d'expertise, filtrage interactif par catégorie et profil métier, méthodologie en 4 étapes et FAQ détaillée.
 - [/a-propos](https://www.devsupai.fr/a-propos) : Parcours d'Alexandre Pabst, développeur web freelance fondateur, philosophie de développement sur-mesure et engagements qualité.
-- Réalisations & Études de Cas :
+- Réalisations & Études de Cas (FR) :
   - [/projets/les-jumeaux](https://www.devsupai.fr/projets/les-jumeaux) : Étude de cas sur le site vitrine et le système de réservation sur-mesure du restaurant « Les Jumeaux ».
   - [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas sur l'application SaaS de gestion de parc matériel « LocaTool ».
   - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas sur la plateforme interactive live « Abogame ».
-- Blog & Guides Techniques :
+- Blog & Guides Techniques (FR) :
   - [/blog](https://www.devsupai.fr/blog) : Index des articles et ressources sur la performance web et le développement sur-mesure.
   - [/blog/site-web-pme-association](https://www.devsupai.fr/blog/site-web-pme-association) : Guide complet pour réussir la création d'un site web performant pour PME et Associations.
   - [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Analyse comparative des limites des templates face au développement sur-mesure en 2026.
   - [/blog/performance-web-sur-mesure](https://www.devsupai.fr/blog/performance-web-sur-mesure) : Impact de la vitesse de chargement et des Core Web Vitals sur la conversion et le référencement.
-- Pages Légales & Espace Pro :
+- Pages Légales & Espace Pro (FR) :
   - [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Mentions légales et données réglementaires de l'entreprise individuelle Alexandre Pabst.
   - [/politique-de-confidentialite](https://www.devsupai.fr/politique-de-confidentialite) : Politique de protection des données personnelles et conformité RGPD.
   - [/admin/login](https://www.devsupai.fr/admin/login) : Espace de connexion sécurisé pour la modération des avis clients.
 
+### English Version (EN)
+- [/en](https://www.devsupai.fr/en) : Official English homepage presenting bespoke web development services for SMEs and non-profits, portfolio case studies, live technical demo, and FAQ.
+- [/en/services](https://www.devsupai.fr/en/services) : Comprehensive catalog of 47 custom digital services (showcase sites, e-commerce, mobile apps, SaaS, maintenance, and redesigns) with interactive filters and full process breakdown.
+- [/en/about](https://www.devsupai.fr/en/about) : Background of freelance web developer Alexandre Pabst, custom architecture philosophy, and quality guarantees.
+- Case Studies & Portfolio (EN) :
+  - [/en/projects/les-jumeaux](https://www.devsupai.fr/en/projects/les-jumeaux) : Case study on the custom restaurant showcase website and direct table reservation engine for "Les Jumeaux".
+  - [/en/projects/locatool](https://www.devsupai.fr/en/projects/locatool) : Case study on the custom SaaS equipment and fleet tracking software "LocaTool".
+  - [/en/projects/abogame](https://www.devsupai.fr/en/projects/abogame) : Case study on the interactive real-time live giveaway platform "Abogame".
+- Blog & Technical Insights (EN) :
+  - [/en/blog](https://www.devsupai.fr/en/blog) : Index of articles and insights on web performance, SEO, and bespoke development.
+  - [/en/blog/site-web-pme-association](https://www.devsupai.fr/en/blog/site-web-pme-association) : Practical guide to designing high-impact websites for SMEs and non-profit organizations.
+  - [/en/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/en/blog/pourquoi-eviter-les-templates) : Critical analysis of pre-made template limitations vs. custom web engineering in 2026.
+  - [/en/blog/performance-web-sur-mesure](https://www.devsupai.fr/en/blog/performance-web-sur-mesure) : The direct financial and SEO impact of sub-second load times and Core Web Vitals.
+- Legal & Compliance (EN) :
+  - [/en/legal-notices](https://www.devsupai.fr/en/legal-notices) : Legal notices and business registration disclosures.
+  - [/en/privacy-policy](https://www.devsupai.fr/en/privacy-policy) : Data privacy policy and GDPR compliance terms.

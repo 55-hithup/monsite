@@ -1,6 +1,11 @@
 import SectionReveal from './SectionReveal';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
 export default function Stack() {
+  const { language } = useLanguage();
+  const t = translations[language].stack;
+
   const stack = [
     'React',
     'Vite',
@@ -15,9 +20,9 @@ export default function Stack() {
       <div className="bg-[#121729] rounded-[20px] p-8 md:p-12 border border-[rgba(245,246,250,0.08)]">
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="label-mono text-accent">stack technologique</span>
+          <span className="label-mono text-accent">{t.eyebrow}</span>
           <h2 className="text-2xl md:text-3xl font-medium mt-2 mb-8 text-text-primary">
-            Des technologies modernes pour des performances maximales.
+            {t.title}
           </h2>
         </div>
 
@@ -36,10 +41,10 @@ export default function Stack() {
         {/* Confident AI production statement */}
         <div className="max-w-3xl mx-auto text-center border-t border-[rgba(245,246,250,0.04)] pt-8">
           <span className="label-mono text-xs font-medium bg-accent-hover/10 text-purple-300 px-3 py-1 rounded-full border border-accent-hover/20 inline-block mb-4">
-            ma philosophie de production
+            {t.philosophyBadge}
           </span>
           <p className="text-sm md:text-base text-text-secondary leading-relaxed font-sans">
-            J'intègre l'intelligence artificielle générative au cœur de mon processus de développement. Loin d'être un raccourci, l'IA agit comme un amplificateur cognitif : elle accélère la rédaction du code structurel, optimise les tests et réduit les cycles de production. Le résultat ? Plus de temps alloué à l'expérience utilisateur, au peaufinage de l'interface et à la valeur métier réelle de votre produit.
+            {t.philosophyText}
           </p>
         </div>
       </div>

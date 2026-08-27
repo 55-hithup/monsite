@@ -2,40 +2,35 @@ import { Link } from 'react-router-dom';
 import SectionReveal from './SectionReveal';
 import MagneticWrapper from './MagneticWrapper';
 import { ArrowRight, CheckCircle2, ExternalLink } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { translations } from '../i18n/translations';
 
-interface ProjectItem {
+interface ProjectDisplayItem {
   tag: string;
   title: string;
   desc: string;
   img: string;
   href: string;
   externalHref?: string;
+  externalTitle?: string;
 }
 
 export default function Projects() {
-  const projects: ProjectItem[] = [
+  const { language } = useLanguage();
+  const t = translations[language].projects;
+
+  const projects: ProjectDisplayItem[] = [
     {
-      tag: 'Application SaaS & Entreprise',
-      title: 'LocaTool',
-      desc: 'Logiciel de gestion de parc matériel, devis et facturation tout-en-un.',
+      ...t.items[0],
       img: '/locatool.webp',
-      href: '/projets/locatool',
-      externalHref: 'https://locatool.devsupai.fr',
     },
     {
-      tag: 'Application Interactive',
-      title: 'Abogame',
-      desc: 'Plateforme interactive en direct : tirages au sort dynamiques et roue animée.',
+      ...t.items[1],
       img: '/abogame.webp',
-      href: '/projets/abogame',
-      externalHref: 'https://abogame.devsupai.fr',
     },
     {
-      tag: 'Restauration & Gastronomie',
-      title: 'Les Jumeaux',
-      desc: 'Site vitrine immersif et système de réservation directe en ligne.',
+      ...t.items[2],
       img: '/les-jumeaux.webp',
-      href: '/projets/les-jumeaux',
     },
   ];
 
@@ -47,39 +42,28 @@ export default function Projects() {
       <div className="wrap-wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Colonne Gauche : Uniquement du texte structuré et aéré (sans cartes) */}
+          {/* Left Column: Text & Benefits */}
           <div className="lg:col-span-5 text-left space-y-4 sm:space-y-5 reveal">
-            <div className="eyebrow">RÉALISATIONS & ÉTUDES DE CAS</div>
+            <div className="eyebrow">{t.eyebrow}</div>
             
             <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight">
-              Réalisations et études de cas sur-mesure
+              {t.title}
             </h2>
 
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
-              Découvrez comment je conçois des outils et des sites adaptés aux besoins réels de chaque activité : du logiciel SaaS métier à la vitrine de restaurant avec réservation en ligne, en passant par des plateformes interactives en direct.
+              {t.desc}
             </p>
 
             <div className="space-y-2.5 sm:space-y-3 pt-2 border-y border-[rgba(245,246,250,0.08)] py-4">
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Conception sur-mesure :</strong> Pensée pour refléter fidèlement votre identité et vos objectifs.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Résultats concrets :</strong> Gain de temps, augmentation des contacts et fidélisation.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  <strong className="text-text-primary font-semibold">Autonomie totale :</strong> Code 100% propriétaire sans abonnement logiciel imposé.
-                </p>
-              </div>
+              {t.checkpoints.map((cp, idx) => (
+                <div key={idx} className="flex items-start gap-2.5">
+                  <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <p className="text-xs text-text-secondary leading-relaxed">
+                    <strong className="text-text-primary font-semibold">{cp.title} </strong>
+                    {cp.text}
+                  </p>
+                </div>
+              ))}
             </div>
 
             <div className="pt-2">
@@ -96,14 +80,14 @@ export default function Projects() {
                     fontWeight: 700,
                   }}
                 >
-                  <span>Discuter de votre projet</span>
+                  <span>{t.cta}</span>
                   <ArrowRight size={14} className="text-[#0B122C]" />
                 </a>
               </MagneticWrapper>
             </div>
           </div>
 
-          {/* Colonne Droite : 3 Cartes compactes empilées parfaitement adaptées mobile et PC */}
+          {/* Right Column: 3 Project Cards */}
           <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-4">
             {projects.map((project, idx) => {
               return (
@@ -131,9 +115,9 @@ export default function Projects() {
                   <Link
                     to={project.href}
                     className="absolute inset-0 z-10 focus:outline-none"
-                    aria-label={`Lire l'étude de cas : ${project.title}`}
+                    aria-label={`${project.title}`}
                   >
-                    <span className="sr-only">Lire l'étude de cas : {project.title}</span>
+                    <span className="sr-only">{project.title}</span>
                   </Link>
 
                   {/* Card Content (Left aligned) */}
@@ -156,10 +140,10 @@ export default function Projects() {
                         href={project.externalHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Consulter le site officiel ${project.title} (nouvelle fenêtre)`}
+                        aria-label={`${project.title}`}
                         className="pointer-events-auto p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-[#2E8FE0] text-white hover:text-[#0B122C] border border-white/20 transition-all duration-200 hidden sm:flex items-center justify-center cursor-pointer relative z-30"
                         onClick={(e) => e.stopPropagation()}
-                        title="Visiter le site en ligne"
+                        title={project.externalTitle || 'Visit live site'}
                       >
                         <ExternalLink size={13} />
                       </a>

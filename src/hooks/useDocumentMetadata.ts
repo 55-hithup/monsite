@@ -1,11 +1,23 @@
 import { useEffect } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { getCanonicalAndAlternates } from '../i18n/urlMapping';
 
-export function useDocumentMetadata(title: string, description: string, path?: string) {
+export function useDocumentMetadata(
+  title: string | { fr: string; en: string },
+  description: string | { fr: string; en: string },
+  path?: string
+) {
+  const { language, isEn } = useLanguage();
+
+  const activeTitle = typeof title === 'string' ? title : title[language] || title.fr;
+  const activeDesc = typeof description === 'string' ? description : description[language] || description.fr;
+
   useEffect(() => {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
     // Update document title
-    document.title = title;
-    
+    document.title = activeTitle;
+
     // Update description meta tag
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -13,12 +25,11 @@ export function useDocumentMetadata(title: string, description: string, path?: s
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', description);
+    metaDescription.setAttribute('content', activeDesc);
 
-    // Calculate canonical URL
+    // Calculate canonical & hreflang alternate URLs
     const currentPath = path || (typeof window !== 'undefined' ? window.location.pathname : '');
-    const cleanPath = currentPath === '/' ? '' : currentPath;
-    const fullCanonicalUrl = `https://www.devsupai.fr${cleanPath}`;
+    const { canonicalUrl, hreflangFr, hreflangEn, hreflangDefault } = getCanonicalAndAlternates(currentPath);
 
     // Update Canonical URL
     let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -27,14 +38,30 @@ export function useDocumentMetadata(title: string, description: string, path?: s
       canonicalLink.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalLink);
     }
-    canonicalLink.setAttribute('href', fullCanonicalUrl);
+    canonicalLink.setAttribute('href', canonicalUrl);
 
-    // Update OpenGraph (Facebook/LinkedIn) tags
+    // Helper to update or create alternate hreflang links
+    const setHreflang = (lang: string, href: string) => {
+      let link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'alternate');
+        link.setAttribute('hreflang', lang);
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', href);
+    };
+
+    setHreflang('fr', hreflangFr);
+    setHreflang('en', hreflangEn);
+    setHreflang('x-default', hreflangDefault);
+
+    // Update OpenGraph tags
     const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', title);
-    
+    if (ogTitle) ogTitle.setAttribute('content', activeTitle);
+
     const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', description);
+    if (ogDescription) ogDescription.setAttribute('content', activeDesc);
 
     let ogUrl = document.querySelector('meta[property="og:url"]');
     if (!ogUrl) {
@@ -42,14 +69,22 @@ export function useDocumentMetadata(title: string, description: string, path?: s
       ogUrl.setAttribute('property', 'og:url');
       document.head.appendChild(ogUrl);
     }
-    ogUrl.setAttribute('content', fullCanonicalUrl);
+    ogUrl.setAttribute('content', canonicalUrl);
+
+    let ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (!ogLocale) {
+      ogLocale = document.createElement('meta');
+      ogLocale.setAttribute('property', 'og:locale');
+      document.head.appendChild(ogLocale);
+    }
+    ogLocale.setAttribute('content', isEn ? 'en_US' : 'fr_FR');
 
     // Update Twitter Card tags
     const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', title);
+    if (twitterTitle) twitterTitle.setAttribute('content', activeTitle);
 
     const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) twitterDescription.setAttribute('content', description);
+    if (twitterDescription) twitterDescription.setAttribute('content', activeDesc);
 
     let twitterUrl = document.querySelector('meta[property="twitter:url"]');
     if (!twitterUrl) {
@@ -57,6 +92,7 @@ export function useDocumentMetadata(title: string, description: string, path?: s
       twitterUrl.setAttribute('property', 'twitter:url');
       document.head.appendChild(twitterUrl);
     }
-    twitterUrl.setAttribute('content', fullCanonicalUrl);
-  }, [title, description, path]);
+    twitterUrl.setAttribute('content', canonicalUrl);
+  }, [activeTitle, activeDesc, path, language, isEn]);
 }
+
