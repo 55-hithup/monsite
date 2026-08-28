@@ -10,7 +10,7 @@
 - E-mail direct: contact@devsupai.fr
 - Téléphone: +33 7 83 66 60 98 (07 83 66 60 98)
 - Siège social: 13 Allée des Roses, 55300 Saint-Mihiel (Meuse, Grand Est, France)
-- Zone d'intervention: Saint-Mihiel, Bar-le-Duc, Verdun, Commercy, Nancy, Metz, région Grand Est, toute la France et international à distance (remote).
+- Zone d'intervention: Saint-Mihiel, Commercy, Verdun, Bar-le-Duc, Communauté de Communes Côtes de Meuse Woëvre, département de la Meuse (55), Nancy, Metz, région Grand Est, toute la France et international à distance (remote).
 - Support multilingue: Français (par défaut) et Anglais (accessible via le bouton de bascule FR/EN dans le menu de navigation).
 
 ## Forfaits & Tarifs Transparents (Tarifs Indicatifs de Départ)
@@ -89,7 +89,7 @@ Les tarifs sont transparents et indicatifs : à partir de 950 € pour le Pack P
 Les thèmes et CMS pré-conçus accumulent des extensions payantes (400 € à 1 200 €/an), des failles de sécurité fréquentes et du code superflu qui ralentit le chargement. L'approche sur-mesure de DevSupAi garantit une vitesse de chargement instantanée (< 500ms), un score de 100/100 sur Google Lighthouse, une conformité totale aux Core Web Vitals, et la propriété intégrale du code sans redevance.
 
 ### 5. Localisation : Où intervient le développeur web DevSupAi ?
-Basé à Saint-Mihiel (55300) en Meuse (région Grand Est), Alexandre Pabst intervient en présentiel à Bar-le-Duc, Verdun, Commercy, Nancy, Metz et leurs environs, et accompagne des clients dans toute la France à distance.
+Basé à Saint-Mihiel (55300) en Meuse (région Grand Est), Alexandre Pabst intervient en présentiel à Saint-Mihiel, Commercy, Verdun, Bar-le-Duc, dans le bassin de la Communauté de Communes Côtes de Meuse Woëvre, à Nancy, Metz et dans tout le Grand Est, ainsi qu'à distance pour des clients situés partout en France et à l'international.
 
 ### 6. Délais & Méthode : Quels sont les délais de livraison ?
 Compter 1 à 2 semaines pour un site One-Page, 2 à 4 semaines pour un site vitrine 3 à 5 pages, et 4 à 8 semaines pour une application SaaS métier. Un calendrier clair avec jalons intermédiaires est validé au lancement du projet.

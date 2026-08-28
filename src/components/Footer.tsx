@@ -138,6 +138,12 @@ export default function Footer() {
                   55300 Saint-Mihiel (Meuse)
                 </span>
               </div>
+              <div>
+                <span className="text-text-primary block font-medium mb-1">{t.serviceAreaLabel}</span>
+                <span className="leading-relaxed block text-text-secondary">
+                  {t.serviceAreaText}
+                </span>
+              </div>
             </div>
           </div>
 

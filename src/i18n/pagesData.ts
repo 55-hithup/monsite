@@ -26,7 +26,7 @@ export const pagesData = {
       ],
       founderRole: 'FONDATEUR & DÉVELOPPEUR WEB FREELANCE',
       founderLocation: 'Saint-Mihiel, Meuse (Grand Est)',
-      founderBio: "Interlocuteur direct pour l'intégralité de vos projets web, de l'étude des besoins au développement final. Basé à Saint-Mihiel, j'interviens en présentiel dans le Grand Est et à distance dans toute la France.",
+      founderBio: "Interlocuteur direct pour l'intégralité de vos projets web, de l'étude des besoins au développement final. Basé à Saint-Mihiel, j'interviens en présentiel à Commercy, Verdun, Bar-le-Duc et dans tout le Grand Est, ainsi qu'à distance dans toute la France.",
       discussTitle: "Discuter d'un projet",
       discussText: "Une question ? Une idée de site ou d'application web sur-mesure ?",
       startProjectBtn: 'Commencer un projet',
