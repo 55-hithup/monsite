@@ -4,26 +4,275 @@ export const caseStudiesData = {
     backBtnBottom: '← Voir toutes les réalisations',
     atelierGourmand: {
       meta: {
-        type: 'Étude de cas & Démo',
+        type: 'Étude de cas & Solution Démo',
         sector: 'Restauration & Gastronomie',
         feature: 'Site & Réservation Directe',
       },
-      title: "L'Atelier Gourmand — Site vitrine & Système de réservation en direct",
-      desc: "Création d'un site vitrine moderne et d'un module de réservation en ligne sur-mesure pour un restaurant bistronomique, servant d'exemple concret d'indépendance numérique sans commissions tierces ni abonnement mensuel.",
+      title: "L'Atelier Gourmand — Site vitrine bistronomique & Système de réservation en direct",
+      desc: "Conception intégrale d'un écosystème web pour restaurant bistronomique : expérience visiteur ultra-fluide, moteur de réservation guidé en 4 étapes, 7 langues natives et tableau de bord de pilotage complet sans abonnement ni commission tierce.",
       ctaLive: "Visiter la démo L'Atelier Gourmand",
-      liveBadge: '• Site de démonstration en direct',
+      liveBadge: '• Démonstrateur en ligne actif',
       bannerTitle: "Tester le site L'Atelier Gourmand en direct",
-      bannerDesc: "Explorez la carte bistronomique, les animations et testez la réservation de table en direct.",
+      bannerDesc: "Explorez la carte bistronomique, les animations fluides et testez le moteur de réservation de table en conditions réelles.",
       bannerBtn: "Accéder à L'Atelier Gourmand",
       facts: {
         sectorLabel: 'SECTEUR',
         sectorVal: 'Restauration',
         deliverablesLabel: 'LIVRABLES',
-        deliverablesVal: 'Site & Réservation',
-        speedLabel: 'AFFICHAGE',
-        speedVal: 'Instantané mobile',
-        resultLabel: 'RÉSULTAT',
-        resultVal: 'Réservations directes',
+        deliverablesVal: 'Site & Dashboard',
+        langsLabel: 'LANGUES NATIVES',
+        langsVal: '7 langues (FR, EN, DE...)',
+        modelLabel: 'MODÈLE ÉCONOMIQUE',
+        modelVal: 'Zéro commission',
+      },
+      sectionTabs: {
+        front: '1. Côté Visiteur (Front-Office)',
+        back: '2. Côté Restaurateur (Back-Office)',
+        tech: '3. Architecture & Rentabilité',
+      },
+      frontOffice: {
+        badge: 'EXPÉRIENCE CLIENT IMMERSIVE',
+        title: 'Une vitrine digitale conçue pour séduire et convertir instantanément',
+        subtitle: "Chaque élément du site a été pensé pour refléter l'ambiance chaleureuse du restaurant et guider naturellement le visiteur de la découverte des plats jusqu'à la réservation de table.",
+        modules: [
+          {
+            id: 'presentation',
+            badge: 'Accueil & Storytelling',
+            title: 'Présentation & Immersion Visuelle',
+            desc: 'Une expérience d\'accueil captivante qui met en valeur le savoir-faire culinaire et donne immédiatement les informations clés.',
+            items: [
+              "Bannière Hero immersive optimisée smartphone avec slogan percutant et accès directs vers la réservation et la carte.",
+              "Ardoise du Jour dynamique avec suggestions du chef, formules midi/soir et tarifs mis à jour en temps réel.",
+              "Section « Notre Histoire / À Propos » valorisant la démarche produits frais et viandes françaises avec 3 points forts iconographiques.",
+              "Fiche technique complète de l'établissement : terrasse, climatisation, animaux acceptés, accès PMR, modes de paiement, parking.",
+              "Galerie photos interactive classée par thématiques (salle, plats, terrasse, équipe) avec visionneuse grand format (lightbox).",
+              "Carrousel d'avis certifiés (Google / TripAdvisor / internes) affichant la note globale, les étoiles et les témoignages.",
+              "Indicateur d'ouverture en direct (« Ouvert actuellement » ou « Fermé ») avec horaires détaillés midi et soir.",
+              "Plan Google Maps interactif, coordonnées complètes et bouton d'appel téléphonique direct en un clic.",
+            ],
+          },
+          {
+            id: 'menu',
+            badge: 'Carte Gourmande',
+            title: 'Consultation Intuitive de la Carte & des Boissons',
+            desc: 'Une mise en page aérée permettant aux convives de parcourir l\'ensemble de l\'offre culinaire sans effort sur mobile comme sur ordinateur.',
+            items: [
+              "Navigation fluide par catégories : Burgers, Plats classiques, Grandes salades, Menu enfant, Desserts & Glaces, Boissons chaudes & softs, Cocktails, Vins & Digestifs.",
+              "Fiches produits détaillées : intitulé du plat, descriptif précis des ingrédients, tarif et étiquettes spéciales (suggestions, spécialités de saison).",
+              "Sous-catégories dédiées pour une lecture claire des cartes denses (Vins rouges, blancs, rosés, bières pression).",
+            ],
+          },
+          {
+            id: 'booking',
+            badge: 'Moteur de Réservation',
+            title: 'Réservation de Table en Ligne en 4 Étapes Guidées',
+            desc: 'Un tunnel de réservation direct, sans friction ni compte obligatoire, qui préserve 100% de la marge du restaurateur.',
+            steps: [
+              {
+                num: '01',
+                title: 'Date & Calendrier Intelligent',
+                desc: 'Sélection rapide via un carrousel de dates ou calendrier complet. Les jours de fermeture hebdomadaire ou exceptionnelle sont automatiquement bloqués.',
+              },
+              {
+                num: '02',
+                title: 'Créneau & Jauges en Direct',
+                desc: 'Choix du service (midi / soir) par tranche de 15 minutes avec affichage dynamique du statut (« Disponible », « Presque complet », « Complet »).',
+              },
+              {
+                num: '03',
+                title: 'Nombre de Convives',
+                desc: 'Sélection précise du nombre de couverts avec contrôle instantané de la capacité résiduelle en cuisine.',
+              },
+              {
+                num: '04',
+                title: 'Coordonnées & Demandes Spéciales',
+                desc: 'Saisie simplifiée (nom, email, téléphone) et champ libre pour souhaits particuliers (allergies, table en terrasse, chaise haute, anniversaire).',
+              },
+            ],
+            extraFeatures: [
+              "Suivi autonome du statut : le client peut saisir son adresse email pour vérifier en direct l'état de sa réservation (En attente, Confirmée, Refusée, Annulée).",
+              "Bascule téléphonique de secours : en cas de service complet en ligne, proposition automatique d'un bouton d'appel direct vers le restaurant.",
+            ],
+          },
+          {
+            id: 'multilingual',
+            badge: 'Expérience & Conformité',
+            title: 'Multilinguisme Natif 7 Langues & Respect RGPD',
+            desc: 'Un accueil adapté aux touristes et à la clientèle internationale grâce à des traductions intégrales instantanées.',
+            languages: ['Français (FR)', 'Anglais (EN)', 'Allemand (DE)', 'Néerlandais (NL)', 'Espagnol (ES)', 'Italien (IT)', 'Luxembourgeois (LB)'],
+            items: [
+              "Bascule instantanée par sélecteur de drapeaux sans rechargement de page (carte, boutons, mentions et formulaires traduits).",
+              "Module d'inscription Newsletter avec recueil explicite du consentement conforme RGPD.",
+              "Modale légale intégrée regroupant mentions légales, politique de confidentialité et gestion des données.",
+            ],
+          },
+        ],
+      },
+      backOffice: {
+        badge: 'ESPACE RESTAURATEUR (DASHBOARD)',
+        title: '4 Pôles Métier pour piloter son établissement en toute autonomie',
+        subtitle: 'Une interface d’administration moderne, pensée pour être prise en main en quelques minutes par l’équipe de salle et la direction.',
+        poles: [
+          {
+            id: 'pole1',
+            number: '01',
+            title: 'Pôle Pilotage & Réservations',
+            tagline: 'Gestion du service, alertes en direct et contrôle des flux',
+            features: [
+              {
+                name: 'Tableau de bord centralisé',
+                desc: 'Vue synthétique des réservations du jour, total des couverts attendus et alertes. Notifications sonores et visuelles automatiques à chaque nouvelle réservation en ligne.',
+              },
+              {
+                name: 'Calendrier Multi-échelles',
+                desc: 'Vue Jour chronologique (services midi/soir, liste des tables, coordonnées), vue Semaine et vue Mois pour anticiper la charge de travail globale.',
+              },
+              {
+                name: 'Gestion des statuts en 1 clic',
+                desc: 'Actions instantanées (Confirmer, Refuser, Annuler, Marquer comme Présent / Arrivé, Terminé) avec déclenchement automatique d’emails de notification au client.',
+              },
+              {
+                name: 'Ajout manuel express',
+                desc: 'Module rapide pour consigner en quelques secondes les réservations reçues par téléphone ou sur place.',
+              },
+              {
+                name: 'Contrôle des capacités & jauges',
+                desc: 'Définition d’un nombre maximum de couverts par créneau et par service pour éviter les surcharges en cuisine. Blocage manuel de dates entières (privatisations, congés).',
+              },
+            ],
+          },
+          {
+            id: 'pole2',
+            number: '02',
+            title: 'Pôle Gestion de Contenu',
+            tagline: 'Édition de carte en temps réel et gestion des médias',
+            features: [
+              {
+                name: 'Éditeur de Carte & Menus Drag & Drop',
+                desc: 'Ajout, modification et suppression de plats, boissons et formules avec réorganisation intuitive par glisser-déposer. Saisie multilingue des intitulés et descriptions.',
+              },
+              {
+                name: 'Bouton Rupture de Stock en direct',
+                desc: 'Activation/désactivation immédiate d’un plat en un clic en cas de rupture d’ingrédients pendant le service.',
+              },
+              {
+                name: 'Gestionnaire de l’Ardoise du Jour',
+                desc: 'Mise à jour des suggestions et formules midi en quelques secondes avec enregistrement et réutilisation de modèles types.',
+              },
+              {
+                name: 'Éditeur « À Propos » & Fiche Technique',
+                desc: 'Modification des textes, citations du chef, points forts et caractéristiques de l’établissement (terrasse, parking, etc.).',
+              },
+              {
+                name: 'Médiathèque & Gestionnaire de Galerie',
+                desc: 'Téléversement et hébergement d’images dans le cloud, sélecteur de médias réutilisables et organisation des photos en grille ou liste avec légendes.',
+              },
+              {
+                name: 'FAQ & Mentions Légales éditables',
+                desc: 'Gestion autonome des questions fréquentes multilingues et des mentions juridiques.',
+              },
+            ],
+          },
+          {
+            id: 'pole3',
+            number: '03',
+            title: 'Pôle Marketing & Communication',
+            tagline: 'Traduction IA, fidélisation client et modération',
+            features: [
+              {
+                name: 'Traduction Automatique par IA',
+                desc: 'Module IA intégré permettant de traduire automatiquement en 1 clic les noms de plats et descriptions dans les 7 langues cibles avec suivi des quotas.',
+              },
+              {
+                name: 'Gestionnaire Base Abonnés (Newsletter)',
+                desc: 'Liste complète des contacts avec date d’adhésion, export des données clients et suppression conforme aux exigences RGPD.',
+              },
+              {
+                name: 'Studio d’Emailing (Email Designer)',
+                desc: 'Personnalisation des modèles d’emails automatiques avec variables dynamiques ({{nom}}, {{date}}, {{heure}}, {{couverts}}).',
+              },
+              {
+                name: 'Email de bienvenue & Modération des avis',
+                desc: 'Configuration du message de bienvenue automatique et contrôle préalable des avis clients à afficher publiquement.',
+              },
+            ],
+          },
+          {
+            id: 'pole4',
+            number: '04',
+            title: 'Pôle Outils, Design & Configuration',
+            tagline: 'Personnalisation graphique sans code et sécurité',
+            features: [
+              {
+                name: 'Studio de Personnalisation Typographique & Thèmes',
+                desc: 'Contrôle visuel sans toucher au code : sélection des Google Fonts, tailles, couleurs, graisses, ombres et courbures par élément (Hero, ardoise, carte, boutons).',
+              },
+              {
+                name: 'Paramètres Généraux & Horaires',
+                desc: 'Configuration des plages midi/soir par jour de la semaine, coordonnées officielles, réseaux sociaux et bouton de suspension d’urgence des réservations.',
+              },
+              {
+                name: 'Gestion des Utilisateurs & Rôles',
+                desc: 'Authentification sécurisée (Google Sign-In / Firebase Auth) avec niveaux d’accès adaptés (restaurateur, équipe de service, administrateur technique).',
+              },
+              {
+                name: 'Simulateur de Charge & Stress Test',
+                desc: 'Module de diagnostic technique intégré pour simuler des afflux de réservations simultanées et valider la solidité du système avant le service.',
+              },
+              {
+                name: 'Guide d’Utilisation Intégré',
+                desc: 'Manuel d’aide embarqué dans le tableau de bord pour former rapidement les nouveaux membres du personnel.',
+              },
+            ],
+          },
+        ],
+      },
+      techArchitecture: {
+        badge: 'ARCHITECTURE & PERFORMANCE',
+        title: 'Une fondation technique robuste, moderne et sans dépendance captive',
+        subtitle: 'Développé avec les standards web les plus récents pour garantir une réactivité immédiate et une totale souveraineté sur vos données.',
+        pillars: [
+          {
+            title: 'Front-End Réactif & Ultra-Léger',
+            desc: 'React 19, TypeScript et Tailwind CSS optimisés avec animations matérielles Motion. Aucun composant lourd ni script superflu.',
+          },
+          {
+            title: 'Base de Données Temps Réel',
+            desc: 'Firebase Firestore avec synchronisation instantanée (mise à jour en direct des jauges et des réservations sans aucun rechargement de page).',
+          },
+          {
+            title: 'Hébergement & Médias Cloud',
+            desc: 'Hébergement haute disponibilité avec Firebase Cloud Storage pour les médias et distribution mondiale sur CDN.',
+          },
+          {
+            title: 'SEO Local & Visibilité Maximale',
+            desc: 'Balisage Schema.org enrichi (type Restaurant & LocalBusiness), balises Open Graph, Twitter Cards et métadonnées multilingues dynamiques.',
+          },
+        ],
+        comparisonTitle: 'Pourquoi choisir une solution sur-mesure face aux plateformes tierces ?',
+        comparisonSub: 'Comparatif économique et technique pour un restaurant bistronomique indépendant :',
+        comparisonItems: [
+          {
+            label: 'Commissions par couvert',
+            custom: '0 € (100% de votre chiffre d’affaires préservé)',
+            thirdParty: '2 € à 3 € par couvert (plusieurs milliers d’euros par an)',
+          },
+          {
+            label: 'Abonnement mensuel obligatoire',
+            custom: '0 € / mois (code 100% propriétaire sans abonnement logiciel)',
+            thirdParty: '150 € à 300 € / mois avec engagement contractuel',
+          },
+          {
+            label: 'Propriété du fichier client',
+            custom: 'Propriété intégrale exclusive du restaurateur (RGPD)',
+            thirdParty: 'Données exploitées pour rediriger vos clients vers d’autres restaurants',
+          },
+          {
+            label: 'Vitesse de chargement mobile',
+            custom: 'Instantanée (< 0.8s, score Lighthouse 100/100)',
+            thirdParty: 'Iframes lourdes qui ralentissent le smartphone et font fuir les clients',
+          },
+        ],
       },
       q1: "1. Quel est l'objectif de cette vitrine de démonstration ?",
       a1: "Le site de démonstration « L'Atelier Gourmand » illustre comment un restaurant ou une brasserie peut valoriser son savoir-faire culinaire et son ambiance tout en permettant à ses clients de réserver une table directement en ligne, 24h/24, sans dépendre de plateformes intermédiaires payantes.",
@@ -101,26 +350,275 @@ export const caseStudiesData = {
     backBtnBottom: '← View all projects',
     atelierGourmand: {
       meta: {
-        type: 'Case Study & Demo',
+        type: 'Case Study & Live Solution',
         sector: 'Hospitality & Dining',
-        feature: 'Custom Showcase & Direct Booking',
+        feature: 'Showcase & Direct Booking',
       },
-      title: "L'Atelier Gourmand — Showcase Website & Direct Online Booking",
-      desc: "Creation of a modern showcase website and dedicated direct reservation engine for a bistronomic restaurant, serving as a live reference for digital independence with zero third-party commissions.",
+      title: "L'Atelier Gourmand — Bistronomic Showcase & Direct Reservation Engine",
+      desc: "Complete design and engineering of a bespoke digital ecosystem for a bistronomic restaurant: sub-second mobile guest experience, 4-step guided table reservation workflow, 7 native languages, and an all-in-one management dashboard with zero subscription fees and zero per-cover commissions.",
       ctaLive: "Visit L'Atelier Gourmand Demo",
-      liveBadge: '• Live Demonstration Website',
+      liveBadge: '• Live Online Demonstration',
       bannerTitle: "Experience the live L'Atelier Gourmand site",
-      bannerDesc: "Explore the bistronomic menu, fluid design, and test table reservation in real time.",
+      bannerDesc: "Explore the bistronomic menu, fluid design, and test table reservation in real time under realistic service conditions.",
       bannerBtn: "Launch L'Atelier Gourmand Demo",
       facts: {
         sectorLabel: 'SECTOR',
         sectorVal: 'Hospitality & Dining',
         deliverablesLabel: 'DELIVERABLES',
-        deliverablesVal: 'Showcase & Booking',
-        speedLabel: 'PERFORMANCE',
-        speedVal: 'Sub-second mobile',
-        resultLabel: 'RESULTS',
-        resultVal: 'Direct reservations',
+        deliverablesVal: 'Showcase & Dashboard',
+        langsLabel: 'NATIVE LANGUAGES',
+        langsVal: '7 languages (FR, EN, DE...)',
+        modelLabel: 'PRICING MODEL',
+        modelVal: 'Zero commission',
+      },
+      sectionTabs: {
+        front: '1. Guest Experience (Front-Office)',
+        back: '2. Restaurant Dashboard (Back-Office)',
+        tech: '3. Tech Specs & Profitability',
+      },
+      frontOffice: {
+        badge: 'IMMERSIVE GUEST EXPERIENCE',
+        title: 'A digital showcase designed to captivate and convert visitors',
+        subtitle: "Every element of the interface is crafted to highlight the dining ambiance and guide guests naturally from menu discovery to table booking.",
+        modules: [
+          {
+            id: 'presentation',
+            badge: 'Hero & Storytelling',
+            title: 'Atmosphere & Culinary Identity',
+            desc: 'A captivating introductory experience showcasing kitchen craft and delivering immediate operational information.',
+            items: [
+              "Immersive smartphone-optimized Hero banner with signature slogan and direct quick-action links to booking and menu.",
+              "Dynamic Daily Board (Menu du Jour) showcasing chef suggestions, lunch/dinner specials, and real-time prices.",
+              "« Our Story / About Us » section emphasizing fresh local ingredients and French meats with 3 iconographic strength pillars.",
+              "Comprehensive venue technical sheet: outdoor patio, air conditioning, pet-friendly, PRM accessibility, payment methods, parking.",
+              "Interactive photo gallery categorized by theme (dining room, signature dishes, terrace, team) with high-res lightbox preview.",
+              "Verified customer reviews carousel displaying overall rating, stars, testimonial text, and author attribution.",
+              "Real-time live status indicator (« Currently Open » or « Closed ») with detailed lunch and dinner hours.",
+              "Interactive Google Maps integration, complete address details, and 1-click direct phone call trigger.",
+            ],
+          },
+          {
+            id: 'menu',
+            badge: 'Bistronomic Menu',
+            title: 'Intuitive Menu & Beverage Exploration',
+            desc: 'Clean, airy layout enabling guests to browse the entire culinary catalog effortlessly on mobile and desktop.',
+            items: [
+              "Smooth category navigation: Burgers, Signature Mains, Large Salads, Kids Menu, Desserts & Ice Cream, Hot & Soft Drinks, Cocktails, Wines & Spirits.",
+              "Detailed product cards: dish title, comprehensive ingredient descriptions, accurate pricing, and special badges (chef suggestions, seasonal specialties).",
+              "Dedicated sub-categories for dense wine and beverage lists (Red, White, Rosé wines, draft beers).",
+            ],
+          },
+          {
+            id: 'booking',
+            badge: 'Booking Engine',
+            title: 'Online Table Reservation in 4 Guided Steps',
+            desc: 'A direct, frictionless booking workflow requiring no mandatory account creation, keeping 100% of profit margins with the restaurant owner.',
+            steps: [
+              {
+                num: '01',
+                title: 'Date & Smart Calendar',
+                desc: 'Quick selection via date carousel or full month calendar. Weekly closure and exceptional vacation days are automatically disabled.',
+              },
+              {
+                num: '02',
+                title: 'Time Slot & Live Capacity',
+                desc: 'Selection of service (lunch / dinner) in 15-minute increments with dynamic real-time status (« Available », « Almost Full », « Sold Out »).',
+              },
+              {
+                num: '03',
+                title: 'Guest Count',
+                desc: 'Accurate party size selection with instant verification against available kitchen seat capacity.',
+              },
+              {
+                num: '04',
+                title: 'Contact & Special Requests',
+                desc: 'Streamlined inputs (name, email, phone) with a dedicated field for dietary requirements, outdoor seating, high chairs, or birthday celebrations.',
+              },
+            ],
+            extraFeatures: [
+              "Self-service status tracking: guests can enter their email anytime to check real-time reservation status (Pending, Confirmed, Declined, Cancelled).",
+              "Automatic phone fallback: if online bookings are fully booked for a slot, a 1-click call button is automatically offered.",
+            ],
+          },
+          {
+            id: 'multilingual',
+            badge: 'Global UX & Compliance',
+            title: 'Native 7-Language Support & GDPR Compliance',
+            desc: 'A welcoming experience for international tourists and business travellers with instant full-site translations.',
+            languages: ['French (FR)', 'English (EN)', 'German (DE)', 'Dutch (NL)', 'Spanish (ES)', 'Italian (IT)', 'Luxembourgish (LB)'],
+            items: [
+              "Instant language switch via flag selector without page reloads (menu, UI buttons, notifications, and legal terms).",
+              "Newsletter subscription form with explicit GDPR consent opt-in.",
+              "Built-in legal modal aggregating terms of service, privacy policy, and customer data rights.",
+            ],
+          },
+        ],
+      },
+      backOffice: {
+        badge: 'RESTAURATEUR DASHBOARD',
+        title: '4 Operational Hubs to run your restaurant with total autonomy',
+        subtitle: 'A modern administrative command center designed for immediate adoption by dining room staff and management.',
+        poles: [
+          {
+            id: 'pole1',
+            number: '01',
+            title: 'Hub 1: Operations & Reservations',
+            tagline: 'Service tracking, live alerts, and floor capacity management',
+            features: [
+              {
+                name: 'Centralized Live Dashboard',
+                desc: 'Instant summary of daily reservations, total expected covers, and urgent notices. Automatic audio and visual notifications on every new booking.',
+              },
+              {
+                name: 'Multi-scale Calendar Views',
+                desc: 'Day view (lunch/dinner breakdown, table lists, client contact), Week view, and Month view to forecast staff workload.',
+              },
+              {
+                name: 'One-Click Status Workflow',
+                desc: 'Immediate actions (Confirm, Decline, Cancel, Mark as Arrived/Present, Completed) triggering automated notification emails to guests.',
+              },
+              {
+                name: 'Manual Fast Booking',
+                desc: 'Rapid input module to log walk-ins and phone reservations in seconds.',
+              },
+              {
+                name: 'Capacity Gauges & Closure Controls',
+                desc: 'Set maximum covers per time slot to prevent kitchen overload. Manually block private events or seasonal holiday dates.',
+              },
+            ],
+          },
+          {
+            id: 'pole2',
+            number: '02',
+            title: 'Hub 2: Content & Menu Management',
+            tagline: 'Real-time menu editing and cloud media library',
+            features: [
+              {
+                name: 'Drag & Drop Menu Builder',
+                desc: 'Create, update, and reorder dishes, drinks, and set menus with intuitive drag-and-drop. Multilingual title and description inputs.',
+              },
+              {
+                name: 'Live 86 / Out-of-Stock Switch',
+                desc: 'Instantly toggle dish availability on or off with one tap when ingredients run out during dinner service.',
+              },
+              {
+                name: 'Daily Specials Board Manager',
+                desc: 'Update daily suggestions and lunch menus in seconds with reusable meal templates.',
+              },
+              {
+                name: 'About Section & Facility Spec Editor',
+                desc: 'Edit chef bios, story copy, icon strengths, and venue amenities (patio, parking, accessibility).',
+              },
+              {
+                name: 'Cloud Media & Gallery Hub',
+                desc: 'Upload and organize high-res photos with grid/list modes and multilingual captions.',
+              },
+              {
+                name: 'Editable FAQ & Legal Notices',
+                desc: 'Manage multilingual frequently asked questions and company registration disclosures.',
+              },
+            ],
+          },
+          {
+            id: 'pole3',
+            number: '03',
+            title: 'Hub 3: Marketing & Communication',
+            tagline: 'AI translations, guest loyalty, and review moderation',
+            features: [
+              {
+                name: 'One-Click AI Translation',
+                desc: 'Built-in AI engine translating dish names, descriptions, and site copy into 7 target languages in one click with quota tracking.',
+              },
+              {
+                name: 'Newsletter Subscriber Hub',
+                desc: 'Complete contact list with signup dates, GDPR export, and removal workflows.',
+              },
+              {
+                name: 'Email Designer Studio',
+                desc: 'Customize transactional emails with dynamic variables ({{name}}, {{date}}, {{time}}, {{guests}}).',
+              },
+              {
+                name: 'Welcome Emails & Review Moderation',
+                desc: 'Automated welcome message for new subscribers and pre-publication moderation for customer reviews.',
+              },
+            ],
+          },
+          {
+            id: 'pole4',
+            number: '04',
+            title: 'Hub 4: Tools, Styling & Configuration',
+            tagline: 'Codeless visual theming, staff roles, and stress testing',
+            features: [
+              {
+                name: 'Typography & Theme Studio',
+                desc: 'Complete visual control without touching code: Google Fonts, font sizes, colors, weights, text curves, and shadows across all components.',
+              },
+              {
+                name: 'General Venue Settings',
+                desc: 'Configure lunch/dinner hours by day of the week, official contact info, social links, and emergency booking pause toggle.',
+              },
+              {
+                name: 'User Roles & Authentication',
+                desc: 'Secure Google Sign-In & Firebase Auth with granular permission levels (owner, floor team, technical admin).',
+              },
+              {
+                name: 'Load Simulator & Stress Testing',
+                desc: 'Diagnostic tool simulating simultaneous bookings to guarantee platform resilience before dinner rush.',
+              },
+              {
+                name: 'Embedded User Manual',
+                desc: 'Built-in interactive guide to onboard and train new restaurant staff in minutes.',
+              },
+            ],
+          },
+        ],
+      },
+      techArchitecture: {
+        badge: 'ARCHITECTURE & PERFORMANCE',
+        title: 'A robust, modern, independent technical foundation',
+        subtitle: 'Engineered with cutting-edge web standards to deliver instantaneous responsiveness and complete data sovereignty.',
+        pillars: [
+          {
+            title: 'Ultra-Lightweight Reactive Front-End',
+            desc: 'React 19, TypeScript, and Tailwind CSS accelerated with native Motion animations. Zero bloated dependencies or render-blocking scripts.',
+          },
+          {
+            title: 'Real-Time Synchronized Database',
+            desc: 'Firebase Firestore with live synchronization (instant booking updates and live table gauges without page reloads).',
+          },
+          {
+            title: 'Cloud Media & Global CDN',
+            desc: 'High-availability hosting with Firebase Cloud Storage and sub-second asset delivery over a global edge network.',
+          },
+          {
+            title: 'Local SEO & Structured Data',
+            desc: 'Comprehensive Schema.org Restaurant & LocalBusiness JSON-LD, Open Graph, Twitter Cards, and dynamic translated metadata.',
+          },
+        ],
+        comparisonTitle: 'Why choose a bespoke solution over third-party booking platforms?',
+        comparisonSub: 'Economic and technical comparison for an independent restaurant:',
+        comparisonItems: [
+          {
+            label: 'Per-cover commissions',
+            custom: '€0 (Keep 100% of your revenue)',
+            thirdParty: '€2 to €3 per cover (thousands of euros lost yearly)',
+          },
+          {
+            label: 'Mandatory monthly subscription',
+            custom: '€0 / month (100% proprietary code without captive software fees)',
+            thirdParty: '€150 to €300 / month with locked contracts',
+          },
+          {
+            label: 'Guest data ownership',
+            custom: 'Exclusive full ownership by the restaurant owner (GDPR)',
+            thirdParty: 'Customer data leveraged to advertise competitor restaurants',
+          },
+          {
+            label: 'Mobile page load speed',
+            custom: 'Sub-second (< 0.8s, Lighthouse 100/100 score)',
+            thirdParty: 'Heavy embedded iframes that slow down smartphones and cause drop-offs',
+          },
+        ],
       },
       q1: "1. What is the primary objective of this restaurant showcase?",
       a1: "The demo website \"L'Atelier Gourmand\" demonstrates how a restaurant or brasserie can showcase its culinary craft and ambiance while empowering guests to reserve tables directly online 24/7 without paying third-party booking commissions.",
