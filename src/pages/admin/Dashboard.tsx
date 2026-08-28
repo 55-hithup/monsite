@@ -488,11 +488,11 @@ export default function Dashboard() {
 
   if (configError) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs p-4 text-center">
-        <div className="max-w-md p-6 rounded-2xl bg-[#121729]/60 border border-red-500/20 shadow-2xl backdrop-blur-md flex flex-col items-center">
-          <AlertTriangle size={20} className="text-red-400 mb-3" />
-          <p className="mb-2 text-sm font-bold text-text-primary">Configuration Firebase manquante</p>
-          <p className="text-[11px] text-text-secondary leading-relaxed">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F8F8F8] text-[#555555] font-['Plus_Jakarta_Sans'] text-xs p-4 text-center">
+        <div className="max-w-md p-6 rounded-2xl bg-white border border-red-300 shadow-xl flex flex-col items-center">
+          <AlertTriangle size={24} className="text-red-500 mb-3" />
+          <p className="mb-2 text-sm font-bold font-['Montserrat'] text-[#1A1A1A]">Configuration Firebase manquante</p>
+          <p className="text-xs text-[#666666] leading-relaxed">
             Le tableau de bord ne peut pas se connecter car les variables d'environnement Firebase ne sont pas définies.
           </p>
         </div>
@@ -502,7 +502,7 @@ export default function Dashboard() {
 
   if (checkingAuth || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs">
+      <div className="min-h-screen flex items-center justify-center bg-[#F8F8F8] text-[#555555] font-['Plus_Jakarta_Sans'] text-xs">
         Chargement de la session...
       </div>
     );
@@ -518,30 +518,32 @@ export default function Dashboard() {
     : reviews;
 
   return (
-    <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-      <div className="wrap max-w-6xl">
+    <SectionReveal className="min-h-screen bg-[#F8F8F8] text-left pt-28 pb-20 font-['Plus_Jakarta_Sans']">
+      <div className="container mx-auto px-6 max-w-6xl">
         {/* Toast notification */}
         {notification && (
-          <div className="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl bg-emerald-500/90 text-white font-medium text-xs shadow-2xl backdrop-blur-md flex items-center gap-2 transition-all">
+          <div className="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-2xl flex items-center gap-2 transition-all">
             <CheckCircle2 size={16} />
             <span>{notification}</span>
           </div>
         )}
 
         {/* Admin Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-[rgba(245,246,250,0.06)] pb-6 mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-[#E5E5E5] pb-6 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-xs label-mono text-purple-300 mb-2">
-              <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-2">
+              <Star size={13} className="fill-[#0284C7] text-[#0284C7]" />
               <span>CONSOLE MODÉRATEUR</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-text-primary">Gestion & Édition des Témoignages</h1>
+            <h1 className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight">
+              Gestion & Édition des Témoignages
+            </h1>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
             <button
               onClick={handleOpenCreate}
-              className="px-4 py-2 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
+              className="px-4 py-2 bg-[#0284C7] hover:bg-[#0369A1] text-xs font-bold text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm font-['Montserrat']"
             >
               <Plus size={14} />
               <span>Ajouter un avis</span>
@@ -550,9 +552,9 @@ export default function Dashboard() {
             <button
               onClick={handleSyncThreeReviews}
               disabled={isImporting}
-              className="px-3.5 py-2 bg-yellow-500/15 hover:bg-yellow-500/25 border border-yellow-500/30 text-xs font-semibold text-yellow-300 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-3.5 py-2 bg-amber-50 hover:bg-amber-100 border border-amber-300 text-xs font-bold text-amber-900 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
             >
-              <DownloadCloud size={14} className="text-yellow-400" />
+              <DownloadCloud size={14} className="text-amber-600" />
               <span>{isImporting ? 'Injection...' : 'Injecter 3 avis en attente'}</span>
             </button>
 
@@ -560,17 +562,16 @@ export default function Dashboard() {
               <button
                 onClick={handleImportDefaults}
                 disabled={isImporting}
-                className="px-3.5 py-2 bg-[#1b223d] hover:bg-[#232c4f] border border-[rgba(245,246,250,0.1)] text-xs font-medium text-purple-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+                className="px-3.5 py-2 bg-white hover:bg-slate-50 border border-[#CCCCCC] text-xs font-bold text-[#1A1A1A] rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                <DownloadCloud size={14} className="text-emerald-400" />
+                <DownloadCloud size={14} className="text-[#0284C7]" />
                 <span>{isImporting ? 'Importation...' : 'Importer tous les avis'}</span>
               </button>
             )}
 
             <button
               onClick={handleLogout}
-              className="btn btn-ghost text-xs px-3.5 py-2 flex items-center gap-2 cursor-pointer"
-              style={{ border: '1px solid rgba(245,246,250,0.12)' }}
+              className="px-3.5 py-2 bg-white hover:bg-red-50 border border-[#E5E5E5] hover:border-red-300 text-xs font-bold text-[#555555] hover:text-red-700 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
             >
               <LogOut size={13} />
               <span>Se déconnecter</span>
@@ -580,23 +581,23 @@ export default function Dashboard() {
 
         {/* Filter Bar & Quick Stats */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-2 p-1 rounded-xl bg-[#121729]/80 border border-[rgba(245,246,250,0.06)]">
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white border border-[#E5E5E5] shadow-xs">
             <button
               onClick={() => setFilter('all')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+              className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 filter === 'all' 
-                  ? 'bg-[#2E8FE0] text-white shadow-sm' 
-                  : 'text-text-secondary hover:text-text-primary'
+                  ? 'bg-[#0284C7] text-white shadow-xs' 
+                  : 'text-[#555555] hover:text-[#1A1A1A]'
               }`}
             >
               Tous les avis ({reviews.length})
             </button>
             <button
               onClick={() => setFilter('pending')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 filter === 'pending' 
-                  ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 font-bold' 
-                  : 'text-text-secondary hover:text-text-primary'
+                  ? 'bg-amber-100 text-amber-900 border border-amber-300 shadow-xs' 
+                  : 'text-[#555555] hover:text-[#1A1A1A]'
               }`}
             >
               <Clock size={12} />
@@ -604,10 +605,10 @@ export default function Dashboard() {
             </button>
             <button
               onClick={() => setFilter('approved')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 filter === 'approved' 
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
-                  : 'text-text-secondary hover:text-text-primary'
+                  ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 shadow-xs' 
+                  : 'text-[#555555] hover:text-[#1A1A1A]'
               }`}
             >
               <CheckCircle2 size={12} />
@@ -619,9 +620,9 @@ export default function Dashboard() {
             <button
               onClick={handleImportDefaults}
               disabled={isImporting}
-              className="text-[11px] label-mono text-purple-300 hover:text-purple-200 underline cursor-pointer flex items-center gap-1"
+              className="text-xs font-bold text-[#0284C7] hover:underline cursor-pointer flex items-center gap-1.5"
             >
-              <DownloadCloud size={12} />
+              <DownloadCloud size={13} />
               <span>Importer les avis d'exemple manquants</span>
             </button>
           )}
@@ -629,64 +630,64 @@ export default function Dashboard() {
 
         {/* Reviews List */}
         {filteredReviews.length === 0 ? (
-          <div className="p-12 rounded-2xl bg-[#121729]/30 border border-dashed border-[rgba(245,246,250,0.06)] text-center text-text-secondary text-sm">
-            <p className="mb-3">Aucun avis trouvé dans cette catégorie.</p>
+          <div className="p-12 rounded-2xl bg-white border border-dashed border-[#CCCCCC] text-center text-[#555555] text-sm shadow-xs">
+            <p className="mb-3 font-semibold">Aucun avis trouvé dans cette catégorie.</p>
             <button
               onClick={handleSyncThreeReviews}
               disabled={isImporting}
-              className="px-4 py-2 bg-yellow-500/20 hover:bg-yellow-500/30 border border-yellow-500/40 text-xs font-bold text-yellow-300 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-2"
+              className="px-4 py-2 bg-amber-50 hover:bg-amber-100 border border-amber-300 text-xs font-bold text-amber-900 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-2 shadow-xs"
             >
-              <DownloadCloud size={14} />
+              <DownloadCloud size={14} className="text-amber-700" />
               <span>Injecter 3 avis en attente de modération</span>
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredReviews.map((review) => (
               <div 
                 key={review.id} 
-                className={`p-5 rounded-2xl bg-[#121729]/60 border shadow-lg relative flex flex-col justify-between transition-all ${
+                className={`p-6 sm:p-7 rounded-xl border transition-all duration-300 shadow-sm hover:shadow-md relative flex flex-col justify-between ${
                   review.approved 
-                    ? 'border-[rgba(245,246,250,0.08)] hover:border-[rgba(46,143,224,0.3)]' 
-                    : 'border-yellow-500/30 bg-yellow-950/10'
+                    ? 'bg-white border-[#E5E5E5] hover:border-[#0284C7]' 
+                    : 'bg-amber-50/40 border-amber-300 hover:border-amber-400'
                 }`}
               >
                 <div>
                   {/* Top Bar: Author & Stars & Status */}
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3.5 min-w-0">
                       {review.avatar ? (
                         <img 
                           src={review.avatar}
                           alt={review.name}
-                          className="w-10 h-10 rounded-full object-cover border border-[rgba(245,246,250,0.15)] flex-shrink-0 bg-[#1b223d]"
+                          className="w-12 h-12 rounded-full object-cover border border-[#E5E5E5] flex-shrink-0 shadow-xs"
                         />
                       ) : (
-                        <div className="w-10 h-10 rounded-full flex-shrink-0 bg-gradient-to-br from-[#2E8FE0]/40 to-[#6B4FE0]/40 border border-[rgba(245,246,250,0.12)] flex items-center justify-center text-xs font-bold text-text-primary">
+                        <div className="w-12 h-12 rounded-full flex-shrink-0 bg-gradient-to-br from-[#0284C7]/15 to-[#0284C7]/35 border border-[#0284C7]/30 flex items-center justify-center text-xs font-black text-[#0284C7] font-['Montserrat'] shadow-xs">
                           {review.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)}
                         </div>
                       )}
-                      <div>
-                        <div className="text-sm font-bold text-text-primary">{review.name}</div>
-                        <div className="text-xs text-text-secondary">{review.role}</div>
+                      <div className="min-w-0">
+                        <div className="text-sm font-bold font-['Montserrat'] text-[#1A1A1A] truncate">{review.name}</div>
+                        <div className="text-xs text-[#666666] font-['Plus_Jakarta_Sans'] truncate">{review.role}</div>
                       </div>
                     </div>
 
-                    <div className="flex flex-col items-end gap-1.5">
-                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                    <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider border ${
                         review.approved 
-                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
-                          : 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
+                          ? 'bg-emerald-100 text-emerald-900 border-emerald-300' 
+                          : 'bg-amber-100 text-amber-900 border-amber-300'
                       }`}>
                         {review.approved ? 'En ligne' : 'En attente'}
                       </span>
-                      <div className="flex gap-0.5" role="img" aria-label={`Note : ${review.rating || 5} sur 5 étoiles`}>
+                      <div className="flex gap-1 items-center" role="img" aria-label={`Note : ${review.rating || 5} sur 5 étoiles`}>
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star 
                             key={i} 
-                            size={12} 
-                            fill={i < (review.rating || 5) ? '#F5C451' : 'transparent'} 
-                            stroke={i < (review.rating || 5) ? '#F5C451' : 'rgba(245,246,250,0.15)'} 
+                            size={14} 
+                            fill={i < (review.rating || 5) ? '#F59E0B' : 'transparent'} 
+                            stroke={i < (review.rating || 5) ? '#F59E0B' : '#CBD5E1'} 
                             aria-hidden="true"
                           />
                         ))}
@@ -695,14 +696,14 @@ export default function Dashboard() {
                   </div>
 
                   {/* Quote */}
-                  <p className="text-xs text-text-primary/90 italic leading-relaxed mb-4 bg-[#070913]/30 p-3 rounded-xl border border-[rgba(245,246,250,0.04)]">
+                  <p className="text-sm text-[#333333] font-['Playfair_Display'] italic leading-relaxed mb-5 bg-[#F8FAFC] p-4 rounded-xl border border-[#E5E5E5]">
                     {review.quote}
                   </p>
                 </div>
 
                 {/* Actions Footer */}
-                <div className="flex items-center justify-between border-t border-[rgba(245,246,250,0.06)] pt-3 mt-1">
-                  <span className="text-xs label-mono text-text-secondary">
+                <div className="flex items-center justify-between border-t border-[#E5E5E5] pt-3.5 mt-1">
+                  <span className="text-xs font-mono text-[#888888]">
                     ID: {review.id.slice(0, 8)}...
                   </span>
 
@@ -710,7 +711,7 @@ export default function Dashboard() {
                     <button
                       type="button"
                       onClick={() => handleOpenEdit(review)}
-                      className="px-2.5 py-1.5 bg-[#2E8FE0]/15 hover:bg-[#2E8FE0]/30 text-xs font-semibold text-[#2E8FE0] rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                      className="px-3 py-1.5 bg-[#0284C7]/10 hover:bg-[#0284C7]/20 border border-[#0284C7]/30 text-xs font-bold text-[#0284C7] rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
                       aria-label={`Modifier l'avis de ${review.name}`}
                     >
                       <Pencil size={12} />
@@ -720,10 +721,10 @@ export default function Dashboard() {
                     <button
                       type="button"
                       onClick={() => handleToggleApprove(review.id, review.approved)}
-                      className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
+                      className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 border ${
                         review.approved
-                          ? 'bg-[#1b223d] hover:bg-[#232c4f] text-purple-300'
-                          : 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-bold'
+                          ? 'bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700'
+                          : 'bg-emerald-100 hover:bg-emerald-200 border-emerald-300 text-emerald-900'
                       }`}
                       aria-label={review.approved ? "Masquer cet avis" : "Publier cet avis"}
                     >
@@ -734,7 +735,7 @@ export default function Dashboard() {
                     <button
                       type="button"
                       onClick={() => handleDelete(review.id)}
-                      className="px-2 py-1.5 bg-red-600/15 hover:bg-red-600/30 text-xs font-semibold text-red-400 rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                      className="px-2.5 py-1.5 bg-red-50 hover:bg-red-100 border border-red-200 text-xs font-semibold text-red-600 rounded-lg transition-colors cursor-pointer flex items-center gap-1"
                       aria-label={`Supprimer l'avis de ${review.name}`}
                     >
                       <Trash2 size={12} />
@@ -749,28 +750,28 @@ export default function Dashboard() {
 
       {/* Edit / Create Modal Dialog */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-          <div className="w-full max-w-xl bg-[#121729] border border-[rgba(245,246,250,0.1)] rounded-2xl shadow-2xl p-6 sm:p-8 relative my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto font-['Plus_Jakarta_Sans']">
+          <div className="w-full max-w-xl bg-white border border-[#E5E5E5] rounded-2xl shadow-2xl p-6 sm:p-8 relative my-8 text-left">
             <button
               type="button"
               onClick={handleCloseModal}
-              className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+              className="absolute top-4 right-4 text-[#888888] hover:text-[#1A1A1A] p-2 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
               aria-label="Fermer le dialogue"
             >
               <X size={20} />
             </button>
 
-            <h2 className="text-xl font-bold text-text-primary mb-1">
+            <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] mb-1">
               {editingReview ? "Modifier le témoignage" : "Ajouter un nouveau témoignage"}
             </h2>
-            <p className="text-xs text-text-secondary mb-6">
+            <p className="text-xs text-[#666666] mb-6">
               {editingReview ? "Éditez les informations de cet avis client." : "Remplissez les détails pour créer un avis directement."}
             </p>
 
             <form onSubmit={handleSaveReview} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="edit-name" className="block text-xs label-mono text-purple-300 uppercase mb-1">
+                  <label htmlFor="edit-name" className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-1.5">
                     Nom & Prénom
                   </label>
                   <input
@@ -780,11 +781,11 @@ export default function Dashboard() {
                     value={formName}
                     onChange={(e) => setFormName(e.target.value)}
                     placeholder="Claire Dubosc"
-                    className="w-full px-3 py-2 rounded-lg bg-[#070913]/80 border border-[rgba(245,246,250,0.1)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-xs font-medium text-[#1A1A1A] placeholder:text-[#999999] focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] transition-colors"
                   />
                 </div>
                 <div>
-                  <label htmlFor="edit-role" className="block text-xs label-mono text-purple-300 uppercase mb-1">
+                  <label htmlFor="edit-role" className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-1.5">
                     Fonction / Entreprise
                   </label>
                   <input
@@ -794,14 +795,16 @@ export default function Dashboard() {
                     value={formRole}
                     onChange={(e) => setFormRole(e.target.value)}
                     placeholder="Fondatrice, Studio Verrière"
-                    className="w-full px-3 py-2 rounded-lg bg-[#070913]/80 border border-[rgba(245,246,250,0.1)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-xs font-medium text-[#1A1A1A] placeholder:text-[#999999] focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] transition-colors"
                   />
                 </div>
               </div>
 
               {/* Rating selection */}
               <div>
-                <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Note attribuée</label>
+                <label className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                  Note attribuée
+                </label>
                 <div className="flex gap-2 items-center">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <button
@@ -813,34 +816,36 @@ export default function Dashboard() {
                     >
                       <Star
                         size={22}
-                        fill={i < formRating ? '#F5C451' : 'transparent'}
-                        stroke={i < formRating ? '#F5C451' : 'rgba(245, 246, 250, 0.3)'}
+                        fill={i < formRating ? '#F59E0B' : 'transparent'}
+                        stroke={i < formRating ? '#F59E0B' : '#CBD5E1'}
                       />
                     </button>
                   ))}
-                  <span className="text-xs text-text-secondary ml-2 font-mono">({formRating}/5)</span>
+                  <span className="text-xs text-[#666666] ml-2 font-mono font-bold">({formRating}/5)</span>
                 </div>
               </div>
 
               {/* Avatar management */}
               <div>
-                <label className="block text-xs label-mono text-purple-300 uppercase mb-1">Photo de profil / Avatar</label>
+                <label className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                  Photo de profil / Avatar
+                </label>
                 {!imageSrc ? (
-                  <div className="flex items-center gap-4 p-3 rounded-xl bg-[#070913]/60 border border-[rgba(245,246,250,0.08)]">
+                  <div className="flex items-center gap-4 p-4 rounded-xl bg-[#F8FAFC] border border-[#E5E5E5]">
                     {formAvatar ? (
                       <div className="relative flex-shrink-0">
                         <img 
                           src={formAvatar}
                           alt="Avatar sélectionné"
-                          className="w-14 h-14 rounded-full object-cover border-2 border-emerald-400 shadow-md"
+                          className="w-14 h-14 rounded-full object-cover border-2 border-emerald-500 shadow-md"
                         />
                         <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shadow">
                           <Check size={12} strokeWidth={3} />
                         </div>
                       </div>
                     ) : (
-                      <div className="w-14 h-14 rounded-full bg-[#1b223d] border border-dashed border-[rgba(245,246,250,0.2)] flex flex-col items-center justify-center text-text-secondary flex-shrink-0">
-                        <Camera size={18} />
+                      <div className="w-14 h-14 rounded-full bg-white border border-dashed border-[#CCCCCC] flex flex-col items-center justify-center text-[#888888] flex-shrink-0 shadow-xs">
+                        <Camera size={20} />
                       </div>
                     )}
                     
@@ -849,7 +854,7 @@ export default function Dashboard() {
                         <button
                           type="button"
                           onClick={() => fileInputRef.current?.click()}
-                          className="px-3 py-1.5 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
+                          className="px-3.5 py-1.5 bg-[#0284C7] hover:bg-[#0369A1] text-xs font-bold text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm font-['Montserrat']"
                         >
                           <Camera size={13} />
                           <span>{formAvatar ? 'Changer de photo' : 'Importer une photo'}</span>
@@ -858,13 +863,13 @@ export default function Dashboard() {
                           <button
                             type="button"
                             onClick={() => setFormAvatar(null)}
-                            className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 transition-colors cursor-pointer"
+                            className="px-3 py-1.5 text-xs font-bold text-red-600 hover:text-red-800 transition-colors cursor-pointer"
                           >
                             Supprimer la photo
                           </button>
                         )}
                       </div>
-                      <p className="text-xs label-mono text-text-secondary">
+                      <p className="text-xs text-[#666666]">
                         {formAvatar ? 'Photo configurée et prête à être enregistrée' : 'JPG, PNG ou WebP. La photo sera automatiquement recadrée et optimisée.'}
                       </p>
                     </div>
@@ -877,13 +882,13 @@ export default function Dashboard() {
                     />
                   </div>
                 ) : (
-                  <div className="space-y-3 p-3 rounded-xl bg-[#070913]/90 border border-[#2E8FE0]/40 shadow-inner">
+                  <div className="space-y-3 p-4 rounded-xl bg-[#F8FAFC] border border-[#0284C7]/40 shadow-sm">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-purple-300">Ajustez et cadrez la photo :</span>
-                      <span className="text-xs label-mono text-text-secondary">Le cadrage sera validé automatiquement</span>
+                      <span className="text-xs font-bold font-['Montserrat'] text-[#1A1A1A]">Ajustez et cadrez la photo :</span>
+                      <span className="text-xs text-[#666666]">Le cadrage sera validé automatiquement</span>
                     </div>
-                    <div className="relative w-full h-44 rounded-lg overflow-hidden bg-black/60 border border-[rgba(245,246,250,0.1)]">
-                      <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-text-secondary">Chargement...</div>}>
+                    <div className="relative w-full h-48 rounded-lg overflow-hidden bg-black/70 border border-[#E5E5E5]">
+                      <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-white">Chargement...</div>}>
                         <Cropper
                           image={imageSrc}
                           crop={crop}
@@ -898,7 +903,7 @@ export default function Dashboard() {
                       </Suspense>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs label-mono text-text-secondary">Zoom:</span>
+                      <span className="text-xs text-[#666666]">Zoom:</span>
                       <input 
                         type="range" 
                         min={1} 
@@ -906,7 +911,7 @@ export default function Dashboard() {
                         step={0.1} 
                         value={zoom} 
                         onChange={(e) => setZoom(Number(e.target.value))}
-                        className="w-full h-1 bg-[#070913] rounded-lg appearance-none cursor-pointer accent-[#2E8FE0]"
+                        className="w-full h-1.5 bg-[#CBD5E1] rounded-lg appearance-none cursor-pointer accent-[#0284C7]"
                         aria-label="Zoom photo"
                       />
                     </div>
@@ -914,14 +919,14 @@ export default function Dashboard() {
                       <button
                         type="button"
                         onClick={() => setImageSrc(null)}
-                        className="px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary cursor-pointer"
+                        className="px-3.5 py-1.5 text-xs font-bold text-[#666666] hover:text-[#1A1A1A] cursor-pointer"
                       >
                         Annuler
                       </button>
                       <button
                         type="button"
                         onClick={applyCroppedImage}
-                        className="px-3 py-1.5 bg-[#2E8FE0] hover:bg-[#2E8FE0]/80 text-xs font-bold text-white rounded-lg cursor-pointer flex items-center gap-1"
+                        className="px-4 py-1.5 bg-[#0284C7] hover:bg-[#0369A1] text-xs font-bold text-white rounded-lg cursor-pointer flex items-center gap-1.5 shadow-sm font-['Montserrat']"
                       >
                         <Check size={13} />
                         <span>Valider le cadrage</span>
@@ -933,7 +938,7 @@ export default function Dashboard() {
 
               {/* Quote text */}
               <div>
-                <label htmlFor="edit-quote" className="block text-xs label-mono text-purple-300 uppercase mb-1">
+                <label htmlFor="edit-quote" className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-1.5">
                   Texte du Témoignage
                 </label>
                 <textarea
@@ -943,38 +948,37 @@ export default function Dashboard() {
                   value={formQuote}
                   onChange={(e) => setFormQuote(e.target.value)}
                   placeholder="Le résultat dépasse largement mes attentes..."
-                  className="w-full px-3 py-2 rounded-lg bg-[#070913]/80 border border-[rgba(245,246,250,0.1)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors resize-none leading-relaxed"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-xs font-medium text-[#1A1A1A] placeholder:text-[#999999] focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] transition-colors resize-none leading-relaxed font-['Playfair_Display'] italic"
                 />
               </div>
 
               {/* Publication Status Checkbox */}
-              <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.08)]">
+              <div className="flex items-center gap-3 py-3 px-3.5 rounded-lg bg-[#F8FAFC] border border-[#E5E5E5]">
                 <input
                   id="edit-approved"
                   type="checkbox"
                   checked={formApproved}
                   onChange={(e) => setFormApproved(e.target.checked)}
-                  className="w-4 h-4 rounded bg-[#070913] border border-[rgba(245,246,250,0.2)] text-[#2E8FE0] focus:ring-0 cursor-pointer"
+                  className="w-4 h-4 rounded bg-white border border-[#CCCCCC] text-[#0284C7] focus:ring-0 cursor-pointer"
                 />
-                <label htmlFor="edit-approved" className="text-xs text-text-primary font-medium cursor-pointer select-none">
+                <label htmlFor="edit-approved" className="text-xs text-[#1A1A1A] font-bold cursor-pointer select-none">
                   Publier cet avis immédiatement sur le site (Visible en ligne)
                 </label>
               </div>
 
               {/* Modal Buttons */}
-              <div className="flex gap-3 justify-end pt-4 border-t border-[rgba(245,246,250,0.06)]">
+              <div className="flex gap-3 justify-end pt-4 border-t border-[#E5E5E5]">
                 <button
                   type="button"
                   onClick={handleCloseModal}
-                  className="px-4 py-2 text-xs font-bold text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+                  className="px-4 py-2 text-xs font-bold text-[#666666] hover:text-[#1A1A1A] transition-colors cursor-pointer"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="px-5 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer shadow-md flex items-center gap-1.5"
-                  style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
+                  className="px-5 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer shadow-md flex items-center gap-1.5 bg-[#0284C7] hover:bg-[#0369A1] font-['Montserrat']"
                 >
                   {isSaving ? 'Enregistrement...' : editingReview ? 'Enregistrer les modifications' : 'Créer le témoignage'}
                 </button>
