@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AlertCircle } from 'lucide-react';
 import { getFirebaseAuth } from '../../lib/firebase';
-import SectionReveal from '../../components/SectionReveal';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { pagesData } from '../../i18n/pagesData';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
@@ -96,54 +95,52 @@ export default function Login() {
   };
 
   return (
-    <SectionReveal className="section-pad text-left flex items-center justify-center" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-      <div className="wrap max-w-md w-full">
-        <div className="p-8 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] shadow-2xl backdrop-blur-md">
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6B4FE0]/30 bg-[#6B4FE0]/10 text-xs label-mono text-purple-300 mb-3">
-              <span className="text-[#2E8FE0] font-bold">&lt;/&gt;</span>
-              <span>{t.badge}</span>
+    <div className="min-h-screen bg-[#F8F8F8] flex items-center justify-center px-6 py-24 text-left">
+      <div className="max-w-md w-full">
+        <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#E5E5E5] shadow-xl">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-4">
+              <span>ADMINISTRATION</span>
             </div>
-            <h1 className="text-2xl font-extrabold text-text-primary">{t.loginTitle}</h1>
-            <p className="text-xs text-text-secondary mt-1">{t.loginSubtitle}</p>
+            <h1 className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-[#1A1A1A]">{t.loginTitle}</h1>
+            <p className="text-xs text-[#666666] mt-1 font-['Plus_Jakarta_Sans']">{t.loginSubtitle}</p>
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-xs text-red-400 font-medium leading-relaxed flex items-center gap-2">
-              <AlertCircle size={14} className="flex-shrink-0" />
+            <div className="mb-6 p-4 rounded-xl border border-red-200 bg-red-50 text-xs text-red-700 font-medium leading-relaxed flex items-center gap-2.5">
+              <AlertCircle size={16} className="flex-shrink-0 text-red-600" />
               <span>{error}</span>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.emailLabel}</label>
+              <label className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase mb-1.5">{t.emailLabel}</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@devsupai.fr"
-                className="w-full px-4 py-2.5 rounded-lg bg-[#070913]/80 border border-[rgba(245,246,250,0.08)] text-sm text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                placeholder="contact@devsupai.fr"
+                className="w-full px-4 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-sm text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors"
                 disabled={loading}
               />
             </div>
 
             <div>
-              <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.passwordLabel}</label>
+              <label className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase mb-1.5">{t.passwordLabel}</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-4 py-2.5 rounded-lg bg-[#070913]/80 border border-[rgba(245,246,250,0.08)] text-sm text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                className="w-full px-4 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-sm text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors"
                 disabled={loading}
               />
             </div>
 
             <button
               type="submit"
-              className="w-full btn btn-primary mt-6 text-sm py-2.5 flex justify-center items-center cursor-pointer font-bold"
-              style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff', border: 'none' }}
+              className="w-full btn-glacier-solid mt-6 text-xs py-3 flex justify-center items-center cursor-pointer font-bold"
               disabled={loading}
             >
               {loading ? t.connecting : t.loginBtn}
@@ -151,6 +148,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-    </SectionReveal>
+    </div>
   );
 }

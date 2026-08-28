@@ -20,43 +20,44 @@ export default function LegalNotices() {
   );
 
   return (
-    <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-      <div className="wrap max-w-4xl">
-        <div className="eyebrow">{t.eyebrow}</div>
-        <h1 className="section-title mt-4 mb-10">{t.title}</h1>
-        
-        <div className="prose text-text-secondary leading-relaxed space-y-8 text-sm">
-          <section>
-            <h2 className="text-base font-bold text-text-primary mb-3">{t.s1_title}</h2>
-            <p className="mb-4">
-              {t.s1_desc}
-            </p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li>
-                <strong className="text-text-primary">{t.s1_owner} </strong> 
-                {t.s1_owner_val}
-              </li>
-              <li>
-                <strong className="text-text-primary">{t.s1_siret} </strong> 
-                {t.s1_siret_val}
-              </li>
-              <li>
-                <strong className="text-text-primary">{t.s1_vat} </strong> 
-                {t.s1_vat_val}
-              </li>
-              <li>
-                <strong className="text-text-primary">{t.s1_email} </strong> 
-                <a href="mailto:contact@devsupai.fr" className="text-accent hover:underline">contact@devsupai.fr</a> (ou via le formulaire de contact).
-              </li>
-              <li>
-                <strong className="text-text-primary">{t.s1_pub} </strong> 
-                Alexandre PABST.
-              </li>
-            </ul>
-          </section>
+    <div className="w-full bg-white text-[#4A4A4A] min-h-screen py-16 md:py-24">
+      <SectionReveal className="text-left">
+        <div className="container max-w-4xl mx-auto px-6">
+          <span className="col-pre-title">{t.eyebrow}</span>
+          <h1 className="text-3xl sm:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] mt-2 mb-10">{t.title}</h1>
+          
+          <div className="prose text-[#555555] leading-relaxed space-y-8 text-sm">
+            <section>
+              <h2 className="text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">{t.s1_title}</h2>
+              <p className="mb-4">
+                {t.s1_desc}
+              </p>
+              <ul className="list-disc pl-5 space-y-1.5">
+                <li>
+                  <strong className="text-[#1A1A1A]">{t.s1_owner} </strong> 
+                  {t.s1_owner_val}
+                </li>
+                <li>
+                  <strong className="text-[#1A1A1A]">{t.s1_siret} </strong> 
+                  {t.s1_siret_val}
+                </li>
+                <li>
+                  <strong className="text-[#1A1A1A]">{t.s1_vat} </strong> 
+                  {t.s1_vat_val}
+                </li>
+                <li>
+                  <strong className="text-[#1A1A1A]">{t.s1_email} </strong> 
+                  <a href="mailto:contact@devsupai.fr" className="text-[#0284C7] hover:underline">contact@devsupai.fr</a> (ou via le formulaire de contact).
+                </li>
+                <li>
+                  <strong className="text-[#1A1A1A]">{t.s1_pub} </strong> 
+                  Alexandre PABST.
+                </li>
+              </ul>
+            </section>
 
           <section>
-            <h2 className="text-base font-bold text-text-primary mb-3">{t.s2_title}</h2>
+            <h2 className="text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">{t.s2_title}</h2>
             <p className="mb-3">
               {t.s2_desc1}
             </p>
@@ -66,7 +67,7 @@ export default function LegalNotices() {
           </section>
 
           <section>
-            <h2 className="text-base font-bold text-text-primary mb-3">{t.s3_title}</h2>
+            <h2 className="text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">{t.s3_title}</h2>
             <p className="mb-3">
               {t.s3_desc1}
             </p>
@@ -76,14 +77,14 @@ export default function LegalNotices() {
           </section>
 
           <section>
-            <h2 className="text-base font-bold text-text-primary mb-3">{t.s4_title}</h2>
+            <h2 className="text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">{t.s4_title}</h2>
             <p>
               {t.s4_desc}
             </p>
           </section>
 
           <section>
-            <h2 className="text-base font-bold text-text-primary mb-3">{t.s5_title}</h2>
+            <h2 className="text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">{t.s5_title}</h2>
             <p>
               {t.s5_desc}
             </p>
@@ -91,5 +92,6 @@ export default function LegalNotices() {
         </div>
       </div>
     </SectionReveal>
+    </div>
   );
 }

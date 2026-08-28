@@ -167,16 +167,16 @@ function TestimonialCard({
   }, [testi.quote]);
 
   return (
-    <div className="testi-card h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-2xl bg-[#121729]/70 backdrop-blur-sm border border-[rgba(245,246,250,0.08)] hover:border-[rgba(46,143,224,0.3)] transition-all duration-300 shadow-lg">
+    <div className="testi-card h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-xl bg-white border border-[#E5E5E5] hover:border-[#0284C7] transition-all duration-300 shadow-sm hover:shadow-md">
       <div>
         {/* Rating Stars */}
         <div className="flex gap-1 mb-3.5 items-center" role="img" aria-label={`Rating: ${testi.rating} / 5`}>
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
-              size={13}
-              fill={i < testi.rating ? '#F5C451' : 'transparent'}
-              stroke={i < testi.rating ? '#F5C451' : 'rgba(245,246,250,0.15)'}
+              size={14}
+              fill={i < testi.rating ? '#F59E0B' : 'transparent'}
+              stroke={i < testi.rating ? '#F59E0B' : '#CBD5E1'}
               aria-hidden="true"
             />
           ))}
@@ -185,7 +185,7 @@ function TestimonialCard({
         {/* Quote text */}
         <p
           ref={quoteRef}
-          className={`testi-quote text-text-primary text-sm sm:text-[14.5px] leading-relaxed tracking-normal font-normal ${
+          className={`testi-quote text-[#333333] font-['Playfair_Display'] italic text-sm sm:text-[15px] leading-relaxed tracking-normal ${
             isExpanded ? '' : 'line-clamp-3'
           }`}
           style={{
@@ -206,7 +206,7 @@ function TestimonialCard({
               e.stopPropagation();
               onToggleExpand();
             }}
-            className="mt-2.5 text-xs font-semibold text-[#2E8FE0] hover:text-[#52a5ec] inline-flex items-center gap-1 cursor-pointer transition-colors focus:outline-none focus:underline"
+            className="mt-2.5 text-xs font-bold font-['Montserrat'] text-[#0284C7] hover:text-[#1A1A1A] inline-flex items-center gap-1 cursor-pointer transition-colors focus:outline-none focus:underline"
             aria-expanded={isExpanded}
           >
             <span>{isExpanded ? showLessText : readMoreText}</span>
@@ -216,15 +216,15 @@ function TestimonialCard({
       </div>
 
       {/* Author information */}
-      <div className="testi-person flex items-center gap-3.5 mt-6 pt-4 border-t border-[rgba(245,246,250,0.06)]">
+      <div className="testi-person flex items-center gap-3.5 mt-6 pt-4 border-t border-[#F1F5F9]">
         {testi.avatar ? (
           <img
             src={testi.avatar}
             alt={testi.name}
-            className="w-10 h-10 rounded-full flex-shrink-0 object-cover border border-[rgba(245,246,250,0.15)] bg-[#1b223d]"
+            className="w-10 h-10 rounded-full flex-shrink-0 object-cover border border-[#E5E5E5]"
           />
         ) : (
-          <div className="w-10 h-10 rounded-full flex-shrink-0 bg-gradient-to-br from-[#2E8FE0]/40 to-[#6B4FE0]/40 border border-[rgba(245,246,250,0.12)] flex items-center justify-center text-xs font-bold text-text-primary">
+          <div className="w-10 h-10 rounded-full flex-shrink-0 bg-[#1A1A1A] text-white border border-[#1A1A1A] flex items-center justify-center text-xs font-black font-['Montserrat']">
             {testi.name
               .split(' ')
               .map((n) => n[0])
@@ -234,10 +234,10 @@ function TestimonialCard({
           </div>
         )}
         <div className="min-w-0 flex-1">
-          <div className="testi-name text-xs sm:text-sm font-bold text-text-primary truncate">
+          <div className="testi-name text-xs sm:text-sm font-bold font-['Montserrat'] text-[#1A1A1A] truncate">
             {testi.name}
           </div>
-          <div className="testi-role text-xs text-text-secondary truncate">
+          <div className="testi-role text-xs text-[#777777] font-['Plus_Jakarta_Sans'] truncate">
             {testi.role}
           </div>
         </div>
@@ -584,15 +584,23 @@ export default function Testimonials() {
   const slideWidthPercent = 100 / visibleCount;
 
   return (
-    <section ref={sectionRef} id="apropos" className="section-pad" style={{ position: 'relative' }}>
-      <div className="wrap">
-        <div className="text-center mb-[50px] sm:mb-[70px]">
-          <div className="eyebrow reveal justify-center">{t.eyebrow}</div>
-          <h2 className="section-title reveal">{t.title}</h2>
+    <section ref={sectionRef} id="avis" className="py-20 md:py-28 bg-[#F8F8F8] border-t border-[#E5E5E5] text-left relative">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-4">
+            <Star size={14} className="text-[#0284C7] fill-[#0284C7]" aria-hidden="true" />
+            <span>CONFIANCE &amp; TÉMOIGNAGES</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] mb-3 tracking-tight">
+            {t.title}
+          </h2>
+          <p className="text-sm sm:text-base text-[#666666] font-['Plus_Jakarta_Sans']">
+            Retours d'expérience et avis vérifiés de nos clients PME, artisans et professions libérales.
+          </p>
         </div>
         
         <div 
-          className="testi-wrap reveal"
+          className="testi-wrap"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocus={() => setIsPaused(true)}
@@ -640,8 +648,8 @@ export default function Testimonials() {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="w-9 h-9 rounded-full flex items-center justify-center bg-[#121729]/80 border border-[rgba(245,246,250,0.12)] text-text-secondary hover:text-text-primary hover:border-[#2E8FE0] transition-all cursor-pointer shadow-sm"
-                aria-label="Previous"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-[#E5E5E5] text-[#1A1A1A] hover:border-[#0284C7] hover:text-[#0284C7] transition-all cursor-pointer shadow-sm"
+                aria-label="Avis précédent"
               >
                 <ChevronLeft size={16} />
               </button>
@@ -656,7 +664,7 @@ export default function Testimonials() {
                       setIsTransitioning(true);
                       setCurrentIndex(idx);
                     }}
-                    aria-label={`Go to slide ${idx + 1}`}
+                    aria-label={`Aller au témoignage ${idx + 1}`}
                   />
                 ))}
               </div>
@@ -664,8 +672,8 @@ export default function Testimonials() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="w-9 h-9 rounded-full flex items-center justify-center bg-[#121729]/80 border border-[rgba(245,246,250,0.12)] text-text-secondary hover:text-text-primary hover:border-[#2E8FE0] transition-all cursor-pointer shadow-sm"
-                aria-label="Next"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-[#E5E5E5] text-[#1A1A1A] hover:border-[#0284C7] hover:text-[#0284C7] transition-all cursor-pointer shadow-sm"
+                aria-label="Avis suivant"
               >
                 <ChevronRight size={16} />
               </button>
@@ -675,13 +683,12 @@ export default function Testimonials() {
 
         {/* Submit Review Button */}
         {!showForm && (
-          <div className="text-center mt-10 reveal">
+          <div className="text-center mt-12">
             <button 
               onClick={handleOpenForm} 
-              className="btn btn-ghost text-xs px-5 py-2.5 inline-flex items-center gap-2"
-              style={{ border: '1px solid rgba(245,246,250,0.12)', cursor: 'pointer' }}
+              className="btn-glacier-outline inline-flex items-center gap-2 text-xs cursor-pointer"
             >
-              <PenSquare size={13} className="text-[#2E8FE0]" /> {t.leaveReview}
+              <PenSquare size={14} className="text-[#0284C7]" /> {t.leaveReview}
             </button>
           </div>
         )}
@@ -698,38 +705,38 @@ export default function Testimonials() {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden w-full max-w-lg mx-auto"
           >
-            <div className="w-full rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.08)] shadow-2xl p-6 sm:p-8 text-left relative mb-12">
+            <div className="w-full rounded-2xl bg-white border border-[#E5E5E5] shadow-2xl p-6 sm:p-8 text-left relative mb-12">
               <button 
                 type="button"
                 onClick={handleCloseForm}
-                className="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-                aria-label="Close"
+                className="absolute top-4 right-4 text-[#888888] hover:text-[#1A1A1A] transition-colors cursor-pointer"
+                aria-label="Fermer"
               >
                 <X size={18} />
               </button>
 
               {submitted ? (
                 <div className="text-center py-8">
-                  <div className="w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6 text-emerald-400">
+                  <div className="w-12 h-12 rounded-full border border-emerald-500/30 bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6 text-emerald-600">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-bold text-text-primary mb-2">{t.form.successTitle}</h3>
-                  <p className="text-xs text-text-secondary leading-relaxed">
+                  <h3 className="text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-2">{t.form.successTitle}</h3>
+                  <p className="text-xs text-[#666666] leading-relaxed">
                     {t.form.successText}
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <h3 className="text-xl font-extrabold text-text-primary">{t.form.title}</h3>
-                    <p className="text-xs text-text-secondary mt-1">{t.form.subtitle}</p>
+                    <h3 className="text-xl font-black font-['Montserrat'] text-[#1A1A1A]">{t.form.title}</h3>
+                    <p className="text-xs text-[#666666] mt-1">{t.form.subtitle}</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="testi-author-name" className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.nameLabel}</label>
+                      <label htmlFor="testi-author-name" className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase mb-1">{t.form.nameLabel}</label>
                       <input
                         id="testi-author-name"
                         type="text"
@@ -738,11 +745,11 @@ export default function Testimonials() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder={t.form.namePlaceholder}
-                        className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-xs text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors"
                       />
                     </div>
                     <div>
-                      <label htmlFor="testi-author-role" className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.roleLabel}</label>
+                      <label htmlFor="testi-author-role" className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase mb-1">{t.form.roleLabel}</label>
                       <input
                         id="testi-author-role"
                         type="text"
@@ -750,14 +757,14 @@ export default function Testimonials() {
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
                         placeholder={t.form.rolePlaceholder}
-                        className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-xs text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Rating selection */}
                   <div>
-                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.ratingLabel}</label>
+                    <label className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase mb-1">{t.form.ratingLabel}</label>
                     <div className="flex gap-1.5">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <button
@@ -765,12 +772,12 @@ export default function Testimonials() {
                           type="button"
                           onClick={() => setRating(i + 1)}
                           className="cursor-pointer transition-transform hover:scale-110"
-                          aria-label={`${i + 1} star`}
+                          aria-label={`${i + 1} étoile`}
                         >
                           <Star
                             size={22}
-                            fill={i < rating ? '#F5C451' : 'transparent'}
-                            stroke={i < rating ? '#F5C451' : 'rgba(245, 246, 250, 0.3)'}
+                            fill={i < rating ? '#F59E0B' : 'transparent'}
+                            stroke={i < rating ? '#F59E0B' : '#CBD5E1'}
                           />
                         </button>
                       ))}
@@ -779,15 +786,15 @@ export default function Testimonials() {
 
                   {/* Avatar Upload with Cropping */}
                   <div>
-                    <label className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.photoLabel}</label>
+                    <label className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase mb-1">{t.form.photoLabel}</label>
                     {!imageSrc ? (
                       <div className="flex items-center justify-center w-full">
-                        <label className="flex flex-col items-center justify-center w-full h-24 border border-dashed border-[rgba(245,246,250,0.12)] rounded-lg cursor-pointer bg-[#070913]/30 hover:bg-[#070913]/50 transition-colors">
+                        <label className="flex flex-col items-center justify-center w-full h-24 border border-dashed border-[#CCCCCC] rounded-lg cursor-pointer bg-[#F8FAFC] hover:bg-[#F1F5F9] transition-colors">
                           <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg className="w-6 h-6 mb-2 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg className="w-6 h-6 mb-2 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
                             </svg>
-                            <p className="text-xs label-mono text-text-secondary">{t.form.addPhoto}</p>
+                            <p className="text-xs font-['Montserrat'] text-[#666666]">{t.form.addPhoto}</p>
                           </div>
                           <input type="file" accept="image/*" className="hidden" onChange={onFileChange} />
                         </label>
@@ -795,8 +802,8 @@ export default function Testimonials() {
                     ) : (
                       <div className="space-y-4">
                         {!croppedImage ? (
-                          <div className="relative w-full h-48 rounded-lg overflow-hidden bg-black/50 border border-[rgba(245,246,250,0.08)]">
-                            <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-text-secondary">Loading...</div>}>
+                          <div className="relative w-full h-48 rounded-lg overflow-hidden bg-black/50 border border-[#E5E5E5]">
+                            <Suspense fallback={<div className="flex items-center justify-center h-full text-xs text-[#888888]">Chargement...</div>}>
                               <Cropper
                                 image={imageSrc}
                                 crop={crop}
@@ -811,18 +818,18 @@ export default function Testimonials() {
                             </Suspense>
                           </div>
                         ) : (
-                          <div className="flex items-center gap-4 py-2 px-3 rounded-lg bg-[#070913]/40 border border-[rgba(245,246,250,0.06)]">
+                          <div className="flex items-center gap-4 py-2 px-3 rounded-lg bg-[#F8FAFC] border border-[#E5E5E5]">
                             <div 
-                              className="w-12 h-12 rounded-full border border-[rgba(245,246,250,0.15)] flex-shrink-0"
+                              className="w-12 h-12 rounded-full border border-[#E5E5E5] flex-shrink-0"
                               style={{ backgroundImage: `url(${croppedImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
                             <div className="flex-1">
-                              <p className="text-xs label-mono text-emerald-400">{t.form.cropSuccess}</p>
+                              <p className="text-xs font-bold text-emerald-600">{t.form.cropSuccess}</p>
                             </div>
                             <button 
                               type="button"
                               onClick={() => { setImageSrc(null); setCroppedImage(null); }}
-                              className="text-xs label-mono text-red-400 hover:text-red-300 cursor-pointer"
+                              className="text-xs font-bold text-red-600 hover:text-red-800 cursor-pointer"
                             >
                               {t.form.deletePhoto}
                             </button>
@@ -832,7 +839,7 @@ export default function Testimonials() {
                         {!croppedImage && (
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
-                              <span className="text-xs label-mono text-text-secondary flex-shrink-0">{t.form.zoomLabel}</span>
+                              <span className="text-xs text-[#666666] flex-shrink-0">{t.form.zoomLabel}</span>
                               <input 
                                 type="range" 
                                 min={1} 
@@ -840,7 +847,7 @@ export default function Testimonials() {
                                 step={0.1} 
                                 value={zoom} 
                                 onChange={(e) => setZoom(Number(e.target.value))}
-                                className="w-full h-1 bg-[#070913] rounded-lg appearance-none cursor-pointer accent-[#2E8FE0]"
+                                className="w-full h-1 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#0284C7]"
                                 aria-label="Zoom"
                               />
                             </div>
@@ -848,15 +855,14 @@ export default function Testimonials() {
                               <button
                                 type="button"
                                 onClick={() => { setImageSrc(null); setCroppedImage(null); }}
-                                className="px-3 py-1.5 text-xs label-mono text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+                                className="px-3 py-1.5 text-xs font-bold text-[#666666] hover:text-[#1A1A1A] transition-colors cursor-pointer"
                               >
                                 {t.form.cancelBtn}
                               </button>
                               <button
                                 type="button"
                                 onClick={showCroppedImage}
-                                className="px-3 py-1.5 text-xs label-mono text-white rounded-md transition-colors cursor-pointer"
-                                style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
+                                className="btn-glacier-solid text-xs py-1.5 px-4 cursor-pointer"
                               >
                                 {t.form.cropBtn}
                               </button>
@@ -868,7 +874,7 @@ export default function Testimonials() {
                   </div>
 
                   <div>
-                    <label htmlFor="testi-comment" className="block text-xs label-mono text-purple-300 uppercase mb-1">{t.form.quoteLabel}</label>
+                    <label htmlFor="testi-comment" className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase mb-1">{t.form.quoteLabel}</label>
                     <textarea
                       id="testi-comment"
                       required
@@ -876,7 +882,7 @@ export default function Testimonials() {
                       value={quote}
                       onChange={(e) => setQuote(e.target.value)}
                       placeholder={t.form.quotePlaceholder}
-                      className="w-full px-3 py-2 rounded-lg bg-[#070913]/60 border border-[rgba(245,246,250,0.06)] text-xs text-text-primary focus:outline-none focus:border-[#2E8FE0] transition-colors resize-none"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#CCCCCC] text-xs text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors resize-none"
                     />
                   </div>
 
@@ -893,32 +899,31 @@ export default function Testimonials() {
                   </div>
 
                   {/* Human verification checkbox */}
-                  <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#070913]/40 border border-[rgba(245,246,250,0.06)]">
+                  <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#F8FAFC] border border-[#E5E5E5]">
                     <input
                       id="human-verify"
                       type="checkbox"
                       checked={isHuman}
                       onChange={(e) => setIsHuman(e.target.checked)}
-                      className="w-4 h-4 rounded bg-[#070913]/60 border border-[rgba(245,246,250,0.12)] text-[#2E8FE0] focus:ring-0 focus:ring-offset-0 cursor-pointer"
+                      className="w-4 h-4 rounded bg-white border border-[#CCCCCC] text-[#0284C7] focus:ring-0 focus:ring-offset-0 cursor-pointer"
                     />
-                    <label htmlFor="human-verify" className="text-xs label-mono text-text-secondary cursor-pointer select-none">
+                    <label htmlFor="human-verify" className="text-xs text-[#555555] cursor-pointer select-none">
                       {t.form.humanCheckbox}
                     </label>
                   </div>
 
-                  <div className="flex gap-3 justify-end pt-4 border-t border-[rgba(245,246,250,0.04)]">
+                  <div className="flex gap-3 justify-end pt-4 border-t border-[#E5E5E5]">
                     <button
                       type="button"
                       onClick={handleCloseForm}
-                      className="px-4 py-2 text-xs font-bold text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+                      className="px-4 py-2 text-xs font-bold text-[#666666] hover:text-[#1A1A1A] transition-colors cursor-pointer"
                     >
                       {t.form.cancelBtn}
                     </button>
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="px-4 py-2 text-xs font-bold text-white rounded-lg transition-colors cursor-pointer"
-                      style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)' }}
+                      className="btn-glacier-solid text-xs py-2 px-5 cursor-pointer"
                     >
                       {submitting ? t.form.submitting : t.form.submitBtn}
                     </button>

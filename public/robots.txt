@@ -1,7 +1,14 @@
+# Robots.txt for https://www.devsupai.fr
+# Permitted for search engines and AI assistants (Google, Bing, OpenAI, Anthropic, Perplexity)
+
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /admin/login
 Disallow: /admin/avis
 
+# Direct AI Context Index
+# LLMs.txt: https://www.devsupai.fr/llms.txt
+
+# Official XML Sitemap
 Sitemap: https://www.devsupai.fr/sitemap.xml

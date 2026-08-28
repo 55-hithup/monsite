@@ -7,8 +7,8 @@ import organizationData from './src/data/organization.json' with { type: 'json' 
 const pageMetadata: Record<string, { title: string; description: string }> = {
   // French Pages (FR)
   '/': {
-    title: 'DevSupAi | Développeur Web Freelance & Applications Sur-Mesure',
-    description: "DevSupAi, développeur web freelance basé en Meuse (Grand Est). Sites vitrines, e-commerce et applications sur-mesure pour PME et associations, en France."
+    title: 'DevSupAi • Alexandre Pabst | Développeur Web & Création de Sites Sur-Mesure',
+    description: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, vitesse < 0.4s."
   },
   '/nos-services': {
     title: 'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
@@ -57,8 +57,8 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
 
   // English Pages (EN)
   '/en': {
-    title: 'DevSupAi | Freelance Web Developer & Custom Web Apps',
-    description: 'DevSupAi, bespoke freelance web developer based in France. Custom websites, high-performance web applications, and SaaS for SMEs and organizations worldwide.'
+    title: 'DevSupAi • Alexandre Pabst | Bespoke Web Developer & Engineering',
+    description: 'Handcrafted showcase websites, e-commerce, and custom SaaS web applications for SMEs, artisans, and non-profits in France and worldwide. Zero recurring software fees, < 0.4s LCP.'
   },
   '/en/services': {
     title: 'Our Custom Web Services & Digital Solutions | DevSupAi',

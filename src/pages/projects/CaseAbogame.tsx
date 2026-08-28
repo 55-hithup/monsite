@@ -53,131 +53,142 @@ export default function CaseAbogame() {
   useJsonLd(schemaMarkup, `case-abogame-schema-${language}`);
 
   return (
-    <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-      <div className="wrap max-w-4xl">
-        <Link to={language === 'en' ? '/en#projets' : '/#projets'} className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
-          <span>←</span> {common.backBtn}
-        </Link>
-
-        {/* Header Details */}
-        <div className="flex flex-wrap items-center gap-3 text-xs label-mono text-purple-300 mb-4">
-          <span>{t.meta.type}</span>
-          <span>•</span>
-          <span>{t.meta.sector}</span>
-          <span>•</span>
-          <span className="text-accent">{t.meta.feature}</span>
-        </div>
-
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text-primary mb-6 leading-tight">
-          {t.title}
-        </h1>
-
-        <p className="text-base text-text-secondary leading-relaxed mb-8 max-w-2xl">
-          {t.desc}
-        </p>
-
-        {/* Live CTA button */}
-        <div className="mb-8">
-          <a
-            href="https://abogame.fr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary text-xs label-mono inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
-            style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', fontWeight: 700 }}
+    <div className="w-full bg-[#FFFFFF] text-[#4A4A4A] min-h-screen py-16 md:py-24">
+      <SectionReveal className="text-left">
+        <div className="container max-w-4xl mx-auto px-6">
+          
+          {/* Breadcrumb */}
+          <Link 
+            to="/#realisations" 
+            className="text-xs font-bold font-['Montserrat'] text-[#0284C7] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-1.5 mb-8"
           >
-            <span>{t.ctaLive}</span>
-            <ExternalLink size={14} />
-          </a>
-          <span className="ml-3 text-xs text-emerald-400 font-mono">{t.liveBadge}</span>
-        </div>
-
-        {/* Hero Visual Mockup */}
-        <div className="rounded-2xl overflow-hidden border border-[rgba(245,246,250,0.08)] mb-12 shadow-2xl bg-[#121729]">
-          <img 
-            src="/abogame.webp" 
-            alt="Interface de l'application mobile-first Abogame" 
-            className="w-full h-auto object-cover"
-          />
-        </div>
-
-        {/* Key Metrics / Context */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] mb-12">
-          <div>
-            <div className="text-xs label-mono text-text-secondary">{t.facts.usageLabel}</div>
-            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.usageVal}</div>
-          </div>
-          <div>
-            <div className="text-xs label-mono text-text-secondary">{t.facts.designLabel}</div>
-            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.designVal}</div>
-          </div>
-          <div>
-            <div className="text-xs label-mono text-text-secondary">{t.facts.speedLabel}</div>
-            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.speedVal}</div>
-          </div>
-          <div>
-            <div className="text-xs label-mono text-text-secondary">{t.facts.resultLabel}</div>
-            <div className="text-sm font-bold text-text-primary mt-1">{t.facts.resultVal}</div>
-          </div>
-        </div>
-
-        {/* Case Narrative Content */}
-        <div className="prose text-text-secondary leading-relaxed space-y-8 text-sm max-w-none">
-          <section>
-            <h2 className="text-xl font-bold text-text-primary mb-3">
-              {t.q1}
-            </h2>
-            <p>
-              {t.a1}
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-text-primary mb-3">
-              {t.q2}
-            </h2>
-            <p>
-              {t.a2}
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-text-primary mb-3">
-              {t.q3}
-            </h2>
-            <p className="p-4 rounded-xl bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-sm font-medium mb-3">
-              {t.highlight3}
-            </p>
-            <p>
-              {t.a3}
-            </p>
-          </section>
-        </div>
-
-        {/* Live CTA Box */}
-        <div className="mt-12 p-6 rounded-2xl bg-[#121729]/80 border border-[#2E8FE0]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <h3 className="text-base font-bold text-text-primary mb-1">{t.bannerTitle}</h3>
-            <p className="text-xs text-text-secondary">{t.bannerDesc}</p>
-          </div>
-          <a
-            href="https://abogame.fr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary text-xs label-mono shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
-            style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#0B122C', fontWeight: 700 }}
-          >
-            <span>{t.bannerBtn}</span>
-            <ExternalLink size={14} />
-          </a>
-        </div>
-
-        {/* Back Link bottom */}
-        <div className="mt-14 pt-8 border-t border-[rgba(245,246,250,0.06)]">
-          <Link to={language === 'en' ? '/en#projets' : '/#projets'} className="btn btn-ghost text-xs label-mono">
-            {common.backBtnBottom}
+            <span>←</span> {common.backBtn}
           </Link>
+
+          {/* Header Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-4">
+            <span>{t.meta.type}</span>
+            <span>•</span>
+            <span>{t.meta.sector}</span>
+            <span>•</span>
+            <span>{t.meta.feature}</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-['Montserrat'] text-[#1A1A1A] mb-6 leading-tight tracking-tight">
+            {t.title}
+          </h1>
+
+          <p className="text-base sm:text-lg text-[#555555] leading-relaxed mb-8 max-w-2xl font-['Plus_Jakarta_Sans']">
+            {t.desc}
+          </p>
+
+          {/* Live CTA button */}
+          <div className="mb-10 flex flex-wrap items-center gap-4">
+            <a
+              href="https://abogame.devsupai.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-glacier-solid inline-flex items-center gap-2 text-xs"
+            >
+              <span>{t.ctaLive}</span>
+              <ExternalLink size={14} />
+            </a>
+            <span className="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full font-['Montserrat'] font-bold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              {t.liveBadge}
+            </span>
+          </div>
+
+          {/* Hero Visual Mockup */}
+          <div className="rounded-2xl overflow-hidden border border-[#E5E5E5] mb-12 shadow-xl bg-[#F8F8F8]">
+            <img 
+              src="/abogame.webp" 
+              alt="Interface de l'application mobile-first Abogame" 
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
+          {/* Key Metrics / Context */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-xl bg-[#F8F8F8] border border-[#E5E5E5] mb-12">
+            <div>
+              <div className="text-xs font-bold font-['Montserrat'] text-[#888888] uppercase">{t.facts.usageLabel}</div>
+              <div className="text-sm font-black font-['Montserrat'] text-[#1A1A1A] mt-1">{t.facts.usageVal}</div>
+            </div>
+            <div>
+              <div className="text-xs font-bold font-['Montserrat'] text-[#888888] uppercase">{t.facts.designLabel}</div>
+              <div className="text-sm font-black font-['Montserrat'] text-[#1A1A1A] mt-1">{t.facts.designVal}</div>
+            </div>
+            <div>
+              <div className="text-xs font-bold font-['Montserrat'] text-[#888888] uppercase">{t.facts.speedLabel}</div>
+              <div className="text-sm font-black font-['Montserrat'] text-[#1A1A1A] mt-1">{t.facts.speedVal}</div>
+            </div>
+            <div>
+              <div className="text-xs font-bold font-['Montserrat'] text-[#888888] uppercase">{t.facts.resultLabel}</div>
+              <div className="text-sm font-black font-['Montserrat'] text-[#0284C7] mt-1">{t.facts.resultVal}</div>
+            </div>
+          </div>
+
+          {/* Case Narrative Content */}
+          <div className="space-y-8 text-sm max-w-none text-[#555555] font-['Plus_Jakarta_Sans'] leading-relaxed">
+            <section>
+              <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">
+                {t.q1}
+              </h2>
+              <p>{t.a1}</p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">
+                {t.q2}
+              </h2>
+              <p>{t.a2}</p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] mb-3">
+                {t.q3}
+              </h2>
+              <p className="p-4 rounded-xl bg-[#0284C7]/10 border border-[#0284C7]/20 text-[#1A1A1A] text-sm font-medium mb-3">
+                {t.highlight3}
+              </p>
+              <p>{t.a3}</p>
+            </section>
+          </div>
+
+          {/* Live CTA Box */}
+          <div className="mt-12 p-8 rounded-2xl bg-[#F8F8F8] border border-[#E5E5E5] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+            <div>
+              <h3 className="text-lg sm:text-xl font-black font-['Montserrat'] text-[#1A1A1A] mb-1">{t.bannerTitle}</h3>
+              <p className="text-xs sm:text-sm text-[#666666] font-['Plus_Jakarta_Sans']">{t.bannerDesc}</p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <a
+                href="https://abogame.devsupai.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-glacier-solid text-xs inline-flex items-center gap-2"
+              >
+                <span>{t.bannerBtn}</span>
+                <ExternalLink size={14} />
+              </a>
+              <Link
+                to={language === 'en' ? '/en#contact' : '/#contact'}
+                className="btn-glacier-outline text-xs"
+              >
+                <span>{language === 'en' ? 'Request a Quote' : 'Demander un devis'}</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Back Link bottom */}
+          <div className="mt-14 pt-8 border-t border-[#E5E5E5]">
+            <Link to="/#realisations" className="text-xs font-bold font-['Montserrat'] text-[#0284C7] hover:text-[#1A1A1A]">
+              {common.backBtnBottom}
+            </Link>
+          </div>
+
         </div>
-      </div>
-    </SectionReveal>
+      </SectionReveal>
+    </div>
   );
 }

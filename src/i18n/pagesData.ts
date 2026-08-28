@@ -10,18 +10,18 @@ export const pagesData = {
       principles: [
         {
           num: '01/',
-          title: 'Performance Absolue :',
-          desc: 'Des sites qui chargent en moins de 500ms, bâtis sur une architecture ultra-légère pour maximiser vos scores Google.',
+          title: 'Confort & Ergonomie :',
+          desc: 'Des sites fluides et intuitifs, sans friction pour vos visiteurs, pensés pour maximiser vos demandes de contact sur mobile comme sur ordinateur.',
         },
         {
           num: '02/',
-          title: 'Design Singulier :',
-          desc: 'Des animations fluides et des micro-interactions physiques 3D adaptées à votre identité visuelle.',
+          title: 'Design Valorisé :',
+          desc: 'Une identité visuelle soignée et moderne qui renforce votre crédibilité professionnelle et vous démarque de la concurrence.',
         },
         {
           num: '03/',
-          title: 'Code Propre & Durable :',
-          desc: 'Pas de dette technique ni de dépendances inutiles pour un site facile à faire évoluer au fil des ans.',
+          title: 'Code Propre & Propriétaire :',
+          desc: 'Un outil pérenne sans abonnement logiciel imposé, dont vous conservez l\'entière propriété sans dépendance technique.',
         },
       ],
       founderRole: 'FONDATEUR & DÉVELOPPEUR WEB FREELANCE',
@@ -101,18 +101,18 @@ export const pagesData = {
       principles: [
         {
           num: '01/',
-          title: 'Absolute Performance:',
-          desc: 'Sub-500ms load times built on ultra-lightweight architectures to maximize your Google Lighthouse and Core Web Vitals scores.',
+          title: 'UX & Ease of Navigation:',
+          desc: 'Seamless, intuitive interfaces with zero friction, engineered to maximize inbound client inquiries on both mobile and desktop.',
         },
         {
           num: '02/',
-          title: 'Distinctive Design:',
-          desc: 'Fluid transitions and physical 3D micro-interactions specifically calibrated to elevate your brand identity.',
+          title: 'Brand-Elevating Design:',
+          desc: 'A refined, modern visual identity that reinforces your professional credibility and sets you apart from competitors.',
         },
         {
           num: '03/',
-          title: 'Clean & Sustainable Code:',
-          desc: 'Zero technical debt and no unnecessary dependencies, ensuring effortless scalability for years to come.',
+          title: 'Clean & Proprietary Code:',
+          desc: 'A durable digital asset with zero forced software subscriptions, ensuring total independence and full code ownership.',
         },
       ],
       founderRole: 'FOUNDER & FREELANCE WEB DEVELOPER',

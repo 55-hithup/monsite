@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import GlacierTopBar from './glacier/GlacierTopBar';
+import GlacierHeader from './glacier/GlacierHeader';
+import GlacierFooter from './glacier/GlacierFooter';
 import 'lenis/dist/lenis.css';
 
 interface LayoutProps {
@@ -28,13 +29,16 @@ export default function Layout({ children }: LayoutProps) {
       window.scrollTo(0, 0);
     }
   }, [pathname, hash]);
+
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
-      <Navbar />
-
-      <div className="min-h-screen bg-transparent text-text-primary selection:bg-accent/30 relative z-10">
-        {children || <Outlet />}
-        <Footer />
+      <div className="min-h-screen bg-white text-[#4A4A4A] selection:bg-[#0284C7]/20 relative z-10 flex flex-col">
+        <GlacierTopBar />
+        <GlacierHeader />
+        <div className="flex-grow">
+          {children || <Outlet />}
+        </div>
+        <GlacierFooter />
       </div>
     </ReactLenis>
   );

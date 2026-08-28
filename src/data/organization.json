@@ -1,165 +1,138 @@
 {
   "@context": "https://schema.org",
-  "@type": ["ProfessionalService", "LocalBusiness"],
-  "@id": "https://www.devsupai.fr/#organization",
-  "name": "DevSupAi",
-  "url": "https://www.devsupai.fr/",
-  "image": "https://www.devsupai.fr/hero-bg-mockup.webp",
-  "description": "Alexandre Pabst • DevSupAi, développeur web freelance spécialisé dans la création de sites internet modernes, vitrines, e-commerce et applications web sur-mesure pour PME, TPE et associations.",
-  "priceRange": "950€ - 5000€+",
-  "telephone": "+33783666098",
-  "email": "contact@devsupai.fr",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "13 Allée des Roses",
-    "addressLocality": "Saint-Mihiel",
-    "postalCode": "55300",
-    "addressRegion": "Grand Est",
-    "addressCountry": "FR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 48.8897,
-    "longitude": 5.5436
-  },
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "08:00",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "08:00",
-      "closes": "12:00"
-    }
-  ],
-  "areaServed": [
-    { "@type": "City", "name": "Saint-Mihiel" },
-    { "@type": "AdministrativeArea", "name": "Communauté de Communes Côtes de Meuse Woëvre" },
-    { "@type": "City", "name": "Commercy" },
-    { "@type": "City", "name": "Verdun" },
-    { "@type": "City", "name": "Bar-le-Duc" },
-    { "@type": "AdministrativeArea", "name": "Meuse" },
-    { "@type": "AdministrativeArea", "name": "Grand Est" },
-    { "@type": "Country", "name": "France" }
-  ],
-  "founder": {
-    "@type": "Person",
-    "name": "Alexandre Pabst",
-    "jobTitle": "Développeur Web Freelance",
-    "url": "https://www.devsupai.fr/a-propos",
-    "sameAs": [
-      "https://maps.app.goo.gl/8YXpdiyL6YEgEoYe7",
-      "https://www.youtube.com/@devsupai",
-      "https://www.facebook.com/people/Devsupai/61593272035287",
-      "https://www.pagesjaunes.fr/pros/65267281",
-      "https://saint-mihiel.fr/devsupai/"
-    ]
-  },
-  "knowsAbout": [
-    "Développeur Web",
-    "Développement Web Sur-Mesure",
-    "Création de sites vitrines",
-    "Applications SaaS sur-mesure",
-    "E-Commerce",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Core Web Vitals",
-    "SEO Local",
-    "Performance Web",
-    "Static Site Generation"
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "5",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": "https://www.devsupai.fr/#organization",
+      "name": "DevSupAi • Alexandre Pabst",
+      "alternateName": "DevSupAi",
+      "legalName": "DevSupAi - Alexandre Pabst",
+      "url": "https://www.devsupai.fr/",
+      "logo": "https://www.devsupai.fr/logo.webp",
+      "image": "https://www.devsupai.fr/hero-bg-mockup.webp",
+      "description": "Alexandre Pabst • DevSupAi, atelier de développement web sur-mesure basé à Saint-Mihiel (Meuse 55, Grand Est). Création de sites vitrines, e-commerce, applications web métiers et solutions logicielles sans abonnement captif pour PME, artisans, commerçants et associations.",
+      "priceRange": "950€ - 5000€+",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Virement bancaire, Carte bancaire, Stripe",
+      "telephone": "+33783666098",
+      "email": "contact@devsupai.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "13 Allée des Roses",
+        "addressLocality": "Saint-Mihiel",
+        "postalCode": "55300",
+        "addressRegion": "Grand Est",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.8897,
+        "longitude": 5.5436
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Saint-Mihiel", "postalCode": "55300" },
+        { "@type": "City", "name": "Commercy", "postalCode": "55200" },
+        { "@type": "City", "name": "Verdun", "postalCode": "55100" },
+        { "@type": "City", "name": "Bar-le-Duc", "postalCode": "55000" },
+        { "@type": "AdministrativeArea", "name": "Communauté de Communes Côtes de Meuse Woëvre" },
+        { "@type": "AdministrativeArea", "name": "Meuse" },
+        { "@type": "AdministrativeArea", "name": "Grand Est" },
+        { "@type": "Country", "name": "France" }
+      ],
+      "founder": {
         "@type": "Person",
-        "name": "Thomas Mercier"
+        "name": "Alexandre Pabst",
+        "jobTitle": "Développeur Web Indépendant & Fondateur",
+        "url": "https://www.devsupai.fr/a-propos",
+        "sameAs": [
+          "https://maps.app.goo.gl/8YXpdiyL6YEgEoYe7",
+          "https://www.youtube.com/@devsupai",
+          "https://www.facebook.com/people/Devsupai/61593272035287",
+          "https://www.pagesjaunes.fr/pros/65267281",
+          "https://saint-mihiel.fr/devsupai/"
+        ]
       },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
+      "knowsAbout": [
+        "Développement Web Sur-Mesure",
+        "Création de sites vitrines",
+        "Création de sites e-commerce",
+        "Applications SaaS sur-mesure",
+        "Logiciels métiers",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS",
+        "Core Web Vitals",
+        "Référencement SEO Local",
+        "Optimisation de vitesse de chargement",
+        "Static Site Generation"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
-      "reviewBody": "Passer d'un ancien template WordPress lent à un site sur-mesure développé par Alexandre a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement."
-    },
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Dr. Sophie Laurent"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Alexandre a su concevoir un site à la fois épuré, rassurant et ultra-rapide pour nos patients. La navigation sur smartphone est parfaite, les informations sont claires et nous avons d'excellents retours au quotidien."
-    },
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Claire Dubosc"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Le résultat dépasse largement mes attentes. Les demandes de contact sont régulières et mes clients me complimentent sur le site à chaque échange."
-    }
-  ],
-  "sameAs": [
-    "https://maps.app.goo.gl/8YXpdiyL6YEgEoYe7",
-    "https://www.youtube.com/@devsupai",
-    "https://www.facebook.com/people/Devsupai/61593272035287",
-    "https://www.pagesjaunes.fr/pros/65267281",
-    "https://saint-mihiel.fr/devsupai/"
-  ],
-  "makesOffer": [
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Création de sites vitrines sur-mesure",
-        "description": "Conception de sites internet vitrines modernes, rapides et optimisés pour le référencement local des PME, artisans et commerçants."
+      "sameAs": [
+        "https://maps.app.goo.gl/8YXpdiyL6YEgEoYe7",
+        "https://www.youtube.com/@devsupai",
+        "https://www.facebook.com/people/Devsupai/61593272035287",
+        "https://www.pagesjaunes.fr/pros/65267281",
+        "https://saint-mihiel.fr/devsupai/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestations & Forfaits Web DevSupAi",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Pack Présence (One-Page)",
+            "price": "950",
+            "priceCurrency": "EUR",
+            "description": "Site vitrine one-page ultra-rapide (< 0.4s), optimisé pour le référencement Google local, hébergement et nom de domaine inclus la 1ère année."
+          },
+          {
+            "@type": "Offer",
+            "name": "Pack Croissance PME & Commerce",
+            "price": "1850",
+            "priceCurrency": "EUR",
+            "description": "Architecture 3 à 5 pages sur-mesure, galerie dynamique de chantiers, avis vérifiés et formulaires adaptés."
+          },
+          {
+            "@type": "Offer",
+            "name": "Pack SaaS & Application Métier",
+            "price": "3200",
+            "priceCurrency": "EUR",
+            "description": "Logiciel sur-mesure, gestion de parc matériel, extranet adhérents, facturation PDF et bases de données SQL."
+          },
+          {
+            "@type": "Offer",
+            "name": "Gestion Google Business Profile",
+            "price": "29",
+            "priceCurrency": "EUR",
+            "description": "Animation mensuelle de la fiche Google Maps, publications, réponses aux avis et suivi statistique local."
+          }
+        ]
       }
     },
     {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Développement d'applications web & outils SaaS sur-mesure",
-        "description": "Développement d'outils métiers, tableaux de bord, plateformes de gestion et solutions logicielles en React et TypeScript."
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Création de sites e-commerce & réservation en ligne",
-        "description": "Boutiques en ligne sans abonnement logiciel captif, catalogues interactifs et systèmes de réservation directe avec paiement sécurisé Stripe."
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Maintenance, audit de performance & SEO local",
-        "description": "Optimisation de la vitesse de chargement Core Web Vitals, dépannage, infogérance et animation de fiches Google Business Profile."
-      }
+      "@type": "WebSite",
+      "@id": "https://www.devsupai.fr/#website",
+      "url": "https://www.devsupai.fr/",
+      "name": "DevSupAi",
+      "description": "L'Atelier Web d'Alexandre Pabst • Création de sites internet et applications web sur-mesure en Meuse (55) et France.",
+      "publisher": {
+        "@id": "https://www.devsupai.fr/#organization"
+      },
+      "inLanguage": ["fr-FR", "en-US"]
     }
   ]
 }

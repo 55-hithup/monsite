@@ -52,58 +52,66 @@ export default function ArticleAssociationPme() {
   useJsonLd(schemaMarkup, `article-association-pme-schema-${language}`);
 
   return (
-    <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-      <div className="wrap max-w-2xl">
-        <Link to={language === 'en' ? '/en/blog' : '/blog'} className="text-xs label-mono text-accent hover:text-text-primary transition-colors inline-flex items-center gap-1.5 mb-8">
-          <span>←</span> {t.backBtn}
-        </Link>
-        
-        <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
-          <span>{t.meta.date}</span>
-          <span>•</span>
-          <span>{t.meta.readTime}</span>
-          <span>•</span>
-          <span>{t.meta.tag}</span>
-        </div>
-        
-        <h1 className="text-3xl md:text-4xl font-extrabold text-text-primary mb-8 leading-tight">
-          {t.title}
-        </h1>
-        
-        <div className="prose text-text-secondary leading-relaxed space-y-6 text-sm">
-          <p className="text-base text-text-primary font-medium">
-            {t.intro}
-          </p>
+    <div className="w-full bg-white text-[#4A4A4A] min-h-screen py-16 md:py-24">
+      <SectionReveal className="text-left">
+        <div className="container max-w-3xl mx-auto px-6">
+          <Link 
+            to={language === 'en' ? '/en/blog' : '/blog'} 
+            className="text-xs font-bold font-['Montserrat'] text-[#0284C7] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-1.5 mb-8"
+          >
+            <span>←</span> {t.backBtn}
+          </Link>
           
-          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_1}</h2>
-          <p className="p-3 rounded-lg bg-[#2E8FE0]/10 border border-[#2E8FE0]/20 text-text-primary text-xs font-medium">
-            {t.highlight1}
-          </p>
-          <p>
-            {t.p1}
-          </p>
+          <div className="flex items-center gap-3 text-xs font-semibold text-[#888888] mb-4">
+            <span>{t.meta.date}</span>
+            <span>•</span>
+            <span>{t.meta.readTime}</span>
+            <span>•</span>
+            <span className="px-2 py-0.5 rounded bg-[#F1F5F9] text-[#0284C7] font-bold">{t.meta.tag}</span>
+          </div>
+          
+          <h1 className="text-3xl md:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] mb-8 leading-tight">
+            {t.title}
+          </h1>
+          
+          <div className="prose text-[#555555] leading-relaxed space-y-6 text-base font-['Plus_Jakarta_Sans']">
+            <p className="text-lg text-[#1A1A1A] font-medium font-['Playfair_Display'] italic leading-relaxed border-l-2 border-[#0284C7] pl-4">
+              {t.intro}
+            </p>
+            
+            <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] pt-4">{t.h2_1}</h2>
+            <p className="p-4 rounded-xl bg-[#F0F9FF] border border-[#BAE6FD] text-[#0369A1] text-sm font-medium">
+              {t.highlight1}
+            </p>
+            <p>
+              {t.p1}
+            </p>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_2}</h2>
-          <p className="p-3 rounded-lg bg-[#6B4FE0]/10 border border-[#6B4FE0]/20 text-text-primary text-xs font-medium">
-            {t.highlight2}
-          </p>
-          <p>
-            {t.p2}
-          </p>
+            <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] pt-4">{t.h2_2}</h2>
+            <p className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-[#0284C7] text-sm font-medium">
+              {t.highlight2}
+            </p>
+            <p>
+              {t.p2}
+            </p>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_3}</h2>
-          <p>
-            {t.p3}
-          </p>
+            <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] pt-4">{t.h2_3}</h2>
+            <p>
+              {t.p3}
+            </p>
 
-          <h2 className="text-lg font-bold text-text-primary pt-4">{t.h2_4}</h2>
-          <ul className="list-disc pl-5 space-y-1 text-text-secondary">
-            {t.bullets.map((b, idx) => (
-              <li key={idx}>{b}</li>
-            ))}
-          </ul>
+            <h2 className="text-xl font-bold font-['Montserrat'] text-[#1A1A1A] pt-4">{t.h2_4}</h2>
+            <ul className="space-y-3 pt-2">
+              {t.bullets.map((b: string, idx: number) => (
+                <li key={idx} className="flex gap-3 p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <span className="text-[#0284C7] font-bold">•</span>
+                  <span className="text-[#555555]">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </SectionReveal>
+      </SectionReveal>
+    </div>
   );
 }

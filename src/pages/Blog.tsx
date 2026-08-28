@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import { useLanguage } from '../i18n/LanguageContext';
 import { articlesData } from '../i18n/articlesData';
+import { Sparkles, ArrowRight, Calendar, Clock } from 'lucide-react';
 
 export default function Blog() {
   const { language } = useLanguage();
@@ -21,45 +22,62 @@ export default function Blog() {
   );
 
   return (
-    <SectionReveal className="section-pad text-left" style={{ background: 'var(--color-bg-deep)', minHeight: '100vh', paddingTop: '140px' }}>
-      <div className="wrap max-w-4xl">
-        <div className="eyebrow">{t.blogPage.eyebrow}</div>
-        <h1 className="section-title mt-4 mb-12">{t.blogPage.title}</h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {t.blogList.map((article) => (
-            <Link 
-              key={article.slug} 
-              to={language === 'en' ? `/en/blog/${article.slug}` : `/blog/${article.slug}`}
-              className="cursor-target block p-6 rounded-2xl bg-[#121729]/60 border border-[rgba(245,246,250,0.06)] hover:border-accent/40 hover:bg-[#121729]/80 transition-all duration-300 group relative overflow-hidden"
-            >
-              <div className="flex items-center gap-3 text-xs label-mono text-purple-300 mb-4">
-                <span>{article.date}</span>
-                <span>•</span>
-                <span>{article.readTime}</span>
-              </div>
-              
-              <h2 className="text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors leading-tight">
-                {article.title}
-              </h2>
-              
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                {article.excerpt}
-              </p>
-              
-              <div className="flex items-center justify-between mt-auto">
-                <span className="px-3 py-1 text-xs label-mono font-semibold rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-300">
-                  {article.tag}
-                </span>
+    <div className="w-full bg-white text-[#4A4A4A] min-h-screen py-16 md:py-24">
+      <SectionReveal className="text-left">
+        <div className="container max-w-5xl mx-auto px-6">
+          
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-6">
+            <Sparkles size={14} className="text-[#0284C7]" aria-hidden="true" />
+            <span>{t.blogPage.eyebrow}</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-['Montserrat'] text-[#1A1A1A] mb-12 leading-tight max-w-3xl">
+            {t.blogPage.title}
+          </h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {t.blogList.map((article) => (
+              <Link 
+                key={article.slug} 
+                to={language === 'en' ? `/en/blog/${article.slug}` : `/blog/${article.slug}`}
+                className="block p-8 rounded-xl bg-white border border-[#E5E5E5] hover:border-[#0284C7] shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center gap-4 text-xs font-semibold text-[#888888] mb-4">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar size={13} className="text-[#0284C7]" aria-hidden="true" />
+                      {article.date}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock size={13} className="text-[#0284C7]" aria-hidden="true" />
+                      {article.readTime}
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-xl sm:text-2xl font-bold font-['Montserrat'] text-[#1A1A1A] mb-3 group-hover:text-[#0284C7] transition-colors leading-snug">
+                    {article.title}
+                  </h2>
+                  
+                  <p className="text-sm text-[#555555] leading-relaxed mb-6 font-['Plus_Jakarta_Sans']">
+                    {article.excerpt}
+                  </p>
+                </div>
                 
-                <span className="text-xs font-bold text-accent group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                  {t.blogPage.readArticle} <span className="text-sm">→</span>
-                </span>
-              </div>
-            </Link>
-          ))}
+                <div className="flex items-center justify-between pt-4 border-t border-[#F1F5F9] mt-auto">
+                  <span className="px-3 py-1 text-xs font-bold font-['Montserrat'] rounded-md bg-[#F1F5F9] text-[#0284C7] border border-[#E2E8F0]">
+                    {article.tag}
+                  </span>
+                  
+                  <span className="text-xs font-bold font-['Montserrat'] text-[#1A1A1A] group-hover:text-[#0284C7] inline-flex items-center gap-1.5">
+                    {t.blogPage.readArticle}
+                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </SectionReveal>
+      </SectionReveal>
+    </div>
   );
 }

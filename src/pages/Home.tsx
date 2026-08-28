@@ -1,25 +1,24 @@
 import { useEffect, useRef } from 'react';
 import { useLenis } from 'lenis/react';
-import Hero from '../components/Hero';
-import Projects from '../components/Projects';
-import Offers from '../components/Offers';
-import Comparison from '../components/Comparison';
-import Process from '../components/Process';
-import Testimonials from '../components/Testimonials';
-import FAQ from '../components/FAQ';
-import Contact from '../components/Contact';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import StructuredData from '../components/StructuredData';
+import GlacierHero from '../components/glacier/GlacierHero';
+import GlacierOffers from '../components/glacier/GlacierOffers';
+import GlacierParallaxBreak from '../components/glacier/GlacierParallaxBreak';
+import GlacierPromoTiles from '../components/glacier/GlacierPromoTiles';
+import GlacierGallery from '../components/glacier/GlacierGallery';
+import Testimonials from '../components/Testimonials';
+import GlacierContact from '../components/glacier/GlacierContact';
 
 export default function Home() {
   useDocumentMetadata(
     {
-      fr: "DevSupAi | Développeur Web Freelance & Applications Sur-Mesure",
-      en: "DevSupAi | Freelance Web Developer & Custom Web Applications",
+      fr: "DEVSUPAI • Alexandre Pabst | L'Atelier du Web Sur-Mesure",
+      en: "DEVSUPAI • Alexandre Pabst | Custom Web Atelier & Development",
     },
     {
-      fr: "DevSupAi, développeur web freelance basé en Meuse (Grand Est). Sites vitrines, e-commerce et applications sur-mesure pour PME et associations, en France.",
-      en: "DevSupAi, freelance web developer based in France. Custom showcase websites, e-commerce, and bespoke web apps for SMEs and non-profit organizations.",
+      fr: "Alexandre Pabst • Développeur web indépendant à Saint-Mihiel (Meuse 55). Création artisanale de sites internet et applications sur-mesure pour PME et artisans.",
+      en: "Alexandre Pabst • Independent web developer in Saint-Mihiel (Meuse 55, France). Bespoke websites and custom web applications for SMEs and artisans.",
     },
     "/"
   );
@@ -27,77 +26,48 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const lenis = useLenis();
 
+  const handleNavClick = (targetId: string) => {
+    if (typeof window === 'undefined') return;
+    const element = document.getElementById(targetId);
+    if (element) {
+      if (lenis) {
+        lenis.scrollTo(element, { duration: 1.2 });
+      } else {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const reveals = containerRef.current?.querySelectorAll('.reveal');
-    if (reveals && reveals.length > 0) {
-      const fallbackTimer = setTimeout(() => {
-        reveals.forEach((el) => el.classList.add('active'));
-      }, 1000);
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.01, rootMargin: '50px 0px 50px 0px' }
-      );
-
-      reveals.forEach((el) => observer.observe(el));
-
-      const observerDisconnect = () => {
-        clearTimeout(fallbackTimer);
-        observer.disconnect();
-      };
-
-      if (window.location.hash) {
-        const rawId = window.location.hash.replace('#', '').split('?')[0];
-        const element = document.getElementById(rawId);
-        if (element) {
-          setTimeout(() => {
-            if (lenis) {
-              lenis.scrollTo(element, { duration: 1.2 });
-            } else {
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 300);
-        }
+    if (window.location.hash) {
+      const rawId = window.location.hash.replace('#', '').split('?')[0];
+      const element = document.getElementById(rawId);
+      if (element) {
+        setTimeout(() => {
+          if (lenis) {
+            lenis.scrollTo(element, { duration: 1.2 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 300);
       }
-
-      return observerDisconnect;
     }
   }, [lenis]);
 
   return (
-    <main ref={containerRef}>
+    <div ref={containerRef} className="glacier-theme-wrapper w-full bg-white text-[#4A4A4A]">
       <StructuredData />
-      <Hero />
-      <div className="bg-primary-bg border-t border-border-color">
-        <Projects />
-      </div>
-      <div className="bg-raised-bg border-t border-border-color">
-        <Offers />
-      </div>
-      <div className="bg-primary-bg border-t border-border-color">
-        <Comparison />
-      </div>
-      <div className="bg-raised-bg border-t border-border-color">
-        <Process />
-      </div>
-      <div className="bg-primary-bg border-t border-border-color">
+      <main>
+        <GlacierHero onNavClick={handleNavClick} />
+        <GlacierOffers onNavClick={handleNavClick} />
+        <GlacierParallaxBreak />
+        <GlacierPromoTiles onNavClick={handleNavClick} />
+        <GlacierGallery onNavClick={handleNavClick} />
         <Testimonials />
-      </div>
-      <div className="bg-primary-bg border-t border-border-color">
-        <FAQ />
-      </div>
-      <div className="bg-raised-bg border-t border-border-color">
-        <Contact />
-      </div>
-    </main>
+        <GlacierContact />
+      </main>
+    </div>
   );
 }
