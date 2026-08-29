@@ -247,7 +247,7 @@ function TestimonialCard({
 }
 
 export default function Testimonials() {
-  const { language } = useLanguage();
+  const { language, isEn } = useLanguage();
   const t = translations[language].testimonials;
   const [list, setList] = useState<TestimonialItem[]>(defaultTestimonialsData[language] || defaultTestimonialsData.fr);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -589,13 +589,15 @@ export default function Testimonials() {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-4">
             <Star size={14} className="text-[#0284C7] fill-[#0284C7]" aria-hidden="true" />
-            <span>CONFIANCE &amp; TÉMOIGNAGES</span>
+            <span>{isEn ? "TRUST & REVIEWS" : "CONFIANCE & TÉMOIGNAGES"}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] mb-3 tracking-tight">
             {t.title}
           </h2>
           <p className="text-sm sm:text-base text-[#666666] font-['Plus_Jakarta_Sans']">
-            Retours d'expérience et avis vérifiés de nos clients PME, artisans et professions libérales.
+            {isEn
+              ? "Verified feedback and experience from our clients across France and worldwide."
+              : "Retours d'expérience et avis vérifiés de nos clients PME, artisans et professions libérales."}
           </p>
         </div>
         
@@ -649,7 +651,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={handlePrev}
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-[#E5E5E5] text-[#1A1A1A] hover:border-[#0284C7] hover:text-[#0284C7] transition-all cursor-pointer shadow-sm"
-                aria-label="Avis précédent"
+                aria-label={isEn ? "Previous review" : "Avis précédent"}
               >
                 <ChevronLeft size={16} />
               </button>
@@ -664,7 +666,7 @@ export default function Testimonials() {
                       setIsTransitioning(true);
                       setCurrentIndex(idx);
                     }}
-                    aria-label={`Aller au témoignage ${idx + 1}`}
+                    aria-label={isEn ? `Go to review ${idx + 1}` : `Aller au témoignage ${idx + 1}`}
                   />
                 ))}
               </div>
@@ -673,7 +675,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={handleNext}
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-[#E5E5E5] text-[#1A1A1A] hover:border-[#0284C7] hover:text-[#0284C7] transition-all cursor-pointer shadow-sm"
-                aria-label="Avis suivant"
+                aria-label={isEn ? "Next review" : "Avis suivant"}
               >
                 <ChevronRight size={16} />
               </button>

@@ -19,7 +19,7 @@ export const faqData = {
       },
       {
         q: 'Combien de temps dure la réalisation d\'un projet web ?',
-        short: 'Les délais de livraison varient de 1 à 2 semaines pour un Pack Présence, de 2 à 4 semaines pour un Pack Croissance (vitrine 3-5 pages), et de 4 à 8 semaines pour une application SaaS.',
+        short: 'Les délais de livraison varient de 1 à 2 semaines pour un Pack Présence, de 2 à 3 semaines pour un Pack Croissance (vitrine 3-5 pages), et de 4 à 6 semaines pour une application SaaS.',
         detail: 'Un calendrier précis avec des jalons de validation intermédiaire est fixé dès la signature du devis pour garantir le respect des échéances.',
       },
       {
@@ -37,7 +37,7 @@ export const faqData = {
       {
         q: 'Quels sont les frais récurrents à prévoir (hébergement & domaine) ?',
         short: "L'hébergement sécurisé haute performance et votre nom de domaine sont inclus la première année dans chaque forfait.",
-        detail: "Par la suite, le coût technique direct de renouvellement reste minime (généralement entre 40 € et 90 € par an selon l'envergure du projet), sans surcoût imposé.",
+        detail: "Par la suite, le coût technique direct de renouvellement reste minime (généralement entre 39 € et 49 € par an pour l'hébergement et le nom de domaine), sans surcoût imposé.",
       },
       {
         q: 'Puis-je administrer moi-même les contenus ou les données de mon site ?',
@@ -61,11 +61,11 @@ export const faqData = {
       {
         q: 'Why is custom development more cost-effective over time?',
         short: 'Sites built on generic templates often accumulate recurring paid plugin fees (security, forms, theme updates) costing €400 to €1,200 per year.',
-        detail: 'With DevSupAi, you pay zero mandatory third-party software subscriptions. Your code is clean, free of forced obsolescence, and loads instantly to maximize visitor conversions.',
+        detail: 'With DevSupAi, you pay zero mandatory third-party software subscriptions. Your code is clean, free of forced obsolescence, and optimized for smooth visitor conversions.',
       },
       {
         q: 'How long does it take to deliver a web project?',
-        short: 'Turnaround ranges from 1 to 2 weeks for a Presence Pack, 2 to 4 weeks for a Growth Pack (3-5 pages), and 4 to 8 weeks for a SaaS application.',
+        short: 'Turnaround ranges from 1 to 2 weeks for a Presence Pack, 2 to 3 weeks for a Growth Pack (3-5 pages), and 4 to 6 weeks for a custom SaaS application.',
         detail: 'A clear schedule with intermediate validation milestones is established upon quote signature to ensure deadlines are strictly honored.',
       },
       {
@@ -83,7 +83,7 @@ export const faqData = {
       {
         q: 'What recurring costs should be expected (hosting & domain)?',
         short: 'High-performance secure hosting and domain registration are included for the first year with every package.',
-        detail: 'Afterwards, direct technical renewal fees remain minimal (typically €40 to €90 per year depending on project scale), with zero artificial markups.',
+        detail: 'Afterwards, direct technical renewal fees remain minimal (typically €39 to €49 per year for hosting and domain name), with zero artificial markups.',
       },
       {
         q: 'Can I manage website content and data independently?',

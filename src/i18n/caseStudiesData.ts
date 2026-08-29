@@ -269,7 +269,7 @@ export const caseStudiesData = {
           },
           {
             label: 'Vitesse de chargement mobile',
-            custom: 'Instantanée (< 0.8s, score Lighthouse 100/100)',
+            custom: 'Optimisée (chargement fluide et immédiat sans iframe)',
             thirdParty: 'Iframes lourdes qui ralentissent le smartphone et font fuir les clients',
           },
         ],
@@ -615,7 +615,7 @@ export const caseStudiesData = {
           },
           {
             label: 'Mobile page load speed',
-            custom: 'Sub-second (< 0.8s, Lighthouse 100/100 score)',
+            custom: 'Optimized (smooth, instant loading without external iframes)',
             thirdParty: 'Heavy embedded iframes that slow down smartphones and cause drop-offs',
           },
         ],

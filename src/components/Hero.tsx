@@ -15,8 +15,8 @@ export default function Hero() {
           <img
             src="/hero-bg-mockup.webp"
             alt="DevSupAi 3D Showcase Widescreen Background"
-            width="1672"
-            height="941"
+            width="1920"
+            height="1080"
             fetchPriority="high"
             loading="eager"
             decoding="async"

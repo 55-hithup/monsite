@@ -35,8 +35,6 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         services: 'SERVICES',
         realisations: 'PROJECTS',
         avis: 'REVIEWS',
-        atelier: 'ATELIER',
-        occasions: 'BESPOKE',
         contact: 'CONTACT & QUOTE',
         catalog: 'CATALOG',
         catalogPath: '/en/services',
@@ -49,8 +47,6 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         services: 'NOS SERVICES',
         realisations: 'RÉALISATIONS',
         avis: 'AVIS',
-        atelier: "L'ATELIER",
-        occasions: 'SUR-MESURE',
         contact: 'CONTACT & DEVIS',
         catalog: 'PRESTATIONS',
         catalogPath: '/nos-services',
@@ -94,20 +90,6 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
           className="glacier-nav-link"
         >
           {navLinks.avis}
-        </a>
-        <a 
-          href={`${isEn ? '/en' : ''}/#atelier`} 
-          onClick={(e) => handleAnchorClick(e, 'atelier')} 
-          className="glacier-nav-link"
-        >
-          {navLinks.atelier}
-        </a>
-        <a 
-          href={`${isEn ? '/en' : ''}/#occasions`} 
-          onClick={(e) => handleAnchorClick(e, 'occasions')} 
-          className="glacier-nav-link"
-        >
-          {navLinks.occasions}
         </a>
         <a 
           href={`${isEn ? '/en' : ''}/#contact`} 

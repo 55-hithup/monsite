@@ -5,9 +5,9 @@ import StructuredData from '../components/StructuredData';
 import GlacierHero from '../components/glacier/GlacierHero';
 import GlacierOffers from '../components/glacier/GlacierOffers';
 import GlacierParallaxBreak from '../components/glacier/GlacierParallaxBreak';
-import GlacierPromoTiles from '../components/glacier/GlacierPromoTiles';
 import GlacierGallery from '../components/glacier/GlacierGallery';
 import Testimonials from '../components/Testimonials';
+import GlacierFaq from '../components/glacier/GlacierFaq';
 import GlacierContact from '../components/glacier/GlacierContact';
 
 export default function Home() {
@@ -17,8 +17,8 @@ export default function Home() {
       en: "DevSupAi • Alexandre Pabst | Bespoke Web Developer & Engineering",
     },
     {
-      fr: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, vitesse < 0.4s.",
-      en: "Handcrafted showcase websites, e-commerce, and custom SaaS web applications for SMEs, artisans, and non-profits in France and worldwide. Zero recurring software fees, < 0.4s LCP.",
+      fr: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, temps de chargement optimisés.",
+      en: "Handcrafted showcase websites, e-commerce, and custom SaaS web applications for SMEs, artisans, and non-profits in France and worldwide. Zero recurring software fees, optimized loading times.",
     },
     'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
@@ -63,9 +63,9 @@ export default function Home() {
         <GlacierHero onNavClick={handleNavClick} />
         <GlacierOffers onNavClick={handleNavClick} />
         <GlacierParallaxBreak />
-        <GlacierPromoTiles onNavClick={handleNavClick} />
         <GlacierGallery onNavClick={handleNavClick} />
         <Testimonials />
+        <GlacierFaq />
         <GlacierContact />
       </main>
     </div>

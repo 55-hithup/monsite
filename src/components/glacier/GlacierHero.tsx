@@ -1,8 +1,12 @@
+import { useLanguage } from '../../i18n/LanguageContext';
+
 interface GlacierHeroProps {
   onNavClick?: (targetId: string) => void;
 }
 
 export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
+  const { isEn } = useLanguage();
+
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     if (onNavClick) {
@@ -18,7 +22,10 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
   };
 
   return (
-    <section className="glacier-hero-banner" aria-label="Présentation de l'Atelier Web DevSupAi">
+    <section 
+      className="glacier-hero-banner" 
+      aria-label={isEn ? "DevSupAi Web Atelier Overview" : "Présentation de l'Atelier Web DevSupAi"}
+    >
       <div 
         className="hero-parallax-bg" 
         style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
@@ -26,13 +33,34 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
       <div className="hero-tint-overlay" />
       
       <div className="hero-floating-card">
-        <span className="hero-small-tag">DÉVELOPPEUR WEB SUR-MESURE • MEUSE (55) &amp; FRANCE</span>
+        <span className="hero-small-tag">
+          {isEn
+            ? "BESPOKE WEB DEVELOPER • FRANCE & WORLDWIDE"
+            : "DÉVELOPPEUR WEB SUR-MESURE • MEUSE (55) & FRANCE"}
+        </span>
         <h1 className="hero-headline">
-          DES SITES WEB RAFFINÉS, <br />
-          <span className="hero-serif-italic">faits avec passion &amp; précision.</span>
+          {isEn ? (
+            <>
+              REFINED WEBSITES, <br />
+              <span className="hero-serif-italic">crafted with passion &amp; precision.</span>
+            </>
+          ) : (
+            <>
+              DES SITES WEB RAFFINÉS, <br />
+              <span className="hero-serif-italic">faits avec passion &amp; précision.</span>
+            </>
+          )}
         </h1>
         <p className="hero-text-paragraph">
-          Création de sites vitrines, e-commerce et applications web pour les <strong>PME, artisans, commerçants et associations</strong> en Meuse (Saint-Mihiel, Commercy, Verdun, Bar-le-Duc), Grand Est et toute la France. Des architectures ultra-rapides, 100% propriétaires et sans abonnement captif, conçues par Alexandre Pabst.
+          {isEn ? (
+            <>
+              Handcrafted showcase websites, e-commerce stores, and web applications for <strong>SMEs, artisans, and non-profits</strong>. Lightweight, high-performance architectures, 100% proprietary code without recurring software fees, engineered by Alexandre Pabst.
+            </>
+          ) : (
+            <>
+              Création de sites vitrines, e-commerce et applications web pour les <strong>PME, artisans, commerçants et associations</strong> en Meuse (Saint-Mihiel, Commercy, Verdun, Bar-le-Duc), Grand Est et toute la France. Des architectures ultra-légères, 100% propriétaires et sans abonnement captif, conçues par Alexandre Pabst.
+            </>
+          )}
         </p>
         <div className="hero-cta-group">
           <a 
@@ -40,14 +68,14 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
             onClick={(e) => handleAnchorClick(e, 'services')} 
             className="btn-glacier-solid cursor-pointer"
           >
-            DÉCOUVRIR LA CARTE
+            {isEn ? "EXPLORE OFFERS" : "DÉCOUVRIR LES OFFRES"}
           </a>
           <a 
             href="#contact" 
             onClick={(e) => handleAnchorClick(e, 'contact')} 
             className="btn-glacier-outline cursor-pointer"
           >
-            DEMANDER UN DEVIS
+            {isEn ? "REQUEST A QUOTE" : "DEMANDER UN DEVIS"}
           </a>
         </div>
       </div>

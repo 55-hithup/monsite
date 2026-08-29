@@ -35,6 +35,12 @@
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "08:00",
           "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "08:00",
+          "closes": "12:00"
         }
       ],
       "areaServed": [
@@ -97,7 +103,7 @@
             "name": "Pack Présence (One-Page)",
             "price": "950",
             "priceCurrency": "EUR",
-            "description": "Site vitrine one-page ultra-rapide (< 0.4s), optimisé pour le référencement Google local, hébergement et nom de domaine inclus la 1ère année."
+            "description": "Site vitrine one-page à chargement optimisé, référencement Google local, hébergement et nom de domaine inclus la 1ère année."
           },
           {
             "@type": "Offer",

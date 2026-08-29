@@ -8,8 +8,8 @@ export default function GlacierTopBar() {
       <div className="top-bar-inner">
         <div className="top-bar-left">
           {isEn
-            ? '13 ALLÉE DES ROSES, 55300 SAINT-MIHIEL (FRANCE) | OPEN MON-FRI 8AM TO 6PM'
-            : '13 ALLÉE DES ROSES, 55300 SAINT-MIHIEL (MEUSE 55) | OUVERT DU LUNDI AU VENDREDI DE 8H À 18H'}
+            ? '13 ALLÉE DES ROSES, 55300 SAINT-MIHIEL (FRANCE) | OPEN MON-FRI (8AM-6PM) & SAT (8AM-12PM)'
+            : '13 ALLÉE DES ROSES, 55300 SAINT-MIHIEL (MEUSE 55) | OUVERT DU LUN AU VEN (8H-18H) & SAM (8H-12H)'}
         </div>
         <div className="top-bar-right">
           <a href="mailto:contact@devsupai.fr">CONTACT@DEVSUPAI.FR</a>

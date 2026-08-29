@@ -48,3 +48,8 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
   * **Corps de texte / paragraphes courants :** `14px` (`text-sm`) à `16px` (`text-base` / `text-text-primary`) avec un `line-height` aéré (>= 1.6).
   * **Titres & Sous-titres :** Typographie soignée avec tracking calibré (lettrage resserré sur les grands titres `<h1>`/`<h2>`, tracking positif sur les labels mono).
 
+## 10. Standards d'Intégration d'API Gemini (Sélection des Modèles)
+* **Modèle recommandé par défaut :** En cas d'implémentation, de configuration ou d'appel via clé API Google Gemini, utiliser impérativement **`gemini-3.7-flash`** (recommandation officielle Google).
+* **Modèles dépréciés / Interdits :** Ne jamais instancier ni configurer de versions vouées à l'abandon ou en fin de cycle (notamment `gemini-3.5-flash`).
+
+

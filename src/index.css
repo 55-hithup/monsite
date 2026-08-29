@@ -2087,6 +2087,21 @@ footer {
   align-items: center;
 }
 
+@keyframes glacierFadeIn {
+  0% {
+    opacity: 0.3;
+    transform: translateY(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-glacier-fade-in {
+  animation: glacierFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .preview-card-body {
   display: flex;
   flex-direction: column;
@@ -2472,98 +2487,6 @@ footer {
   letter-spacing: 0.05em;
 }
 
-.glacier-promo-tiles {
-  background-color: #FFFFFF;
-}
-
-.tiles-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.promo-tile-card {
-  position: relative;
-  height: 480px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  padding: 40px;
-}
-
-.tile-bg-image {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.6s ease;
-  z-index: 1;
-}
-
-.promo-tile-card:hover .tile-bg-image {
-  transform: scale(1.06);
-}
-
-.tile-tint {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  z-index: 2;
-}
-
-.tile-text-wrap {
-  position: relative;
-  z-index: 3;
-  max-width: 440px;
-}
-
-.tile-eyebrow {
-  font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  color: #38BDF8;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.tile-title {
-  font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
-  font-size: 1.8rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  color: #FFFFFF;
-  line-height: 1.2;
-  margin-bottom: 14px;
-}
-
-.tile-desc {
-  font-family: var(--font-glacier-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.9375rem;
-  color: #E2E8F0;
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-
-.btn-tile-link {
-  display: inline-block;
-  padding: 12px 26px;
-  background: #FFFFFF;
-  color: #1A1A1A !important;
-  font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.btn-tile-link:hover {
-  background: #0284C7;
-  color: #FFFFFF !important;
-}
-
 .glacier-gallery-section {
   padding: 90px 0 0 0;
   background-color: #FFFFFF;
@@ -2686,9 +2609,30 @@ footer {
   transition: all 0.2s ease;
 }
 
-.gal-link-demo:hover {
-  background: rgba(255, 255, 255, 0.35);
-  border-color: #FFFFFF;
+.glacier-faq-header-parallax {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.faq-parallax-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.faq-parallax-tint {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.72);
+  z-index: 2;
 }
 
 .glacier-contact-parallax-section {
@@ -2922,12 +2866,6 @@ footer {
     position: static;
   }
   .tall-photo {
-    height: 380px;
-  }
-  .tiles-grid {
-    grid-template-columns: 1fr;
-  }
-  .promo-tile-card {
     height: 380px;
   }
   .gallery-photos-strip {
