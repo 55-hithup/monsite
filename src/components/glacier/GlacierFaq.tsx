@@ -4,7 +4,7 @@ import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 export default function GlacierFaq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { isEn } = useLanguage();
 
   const toggleFaq = (index: number) => {
