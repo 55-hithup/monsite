@@ -33,14 +33,14 @@ export default function CaseAtelierGourmand() {
 
   useDocumentMetadata(
     {
-      fr: "Étude de cas & Solution : L'Atelier Gourmand — Site Bistronomique & Réservation Directe | DevSupAi",
-      en: "Case Study & Solution: L'Atelier Gourmand — Showcase & Direct Online Booking | DevSupAi",
+      fr: "Étude de cas : L'Atelier Gourmand | Site Vitrine & Réservation Sur-Mesure | DevSupAi",
+      en: "Case Study: L'Atelier Gourmand | Restaurant Showcase & Custom Booking | DevSupAi",
     },
     {
-      fr: "Dossier fonctionnel et technique complet de L'Atelier Gourmand : expérience visiteur fluide, moteur de réservation 4 étapes, 7 langues et dashboard de pilotage sans commission ni abonnement.",
-      en: "Complete functional and technical case study for L'Atelier Gourmand: fluid guest UX, 4-step direct booking engine, 7 native languages, and all-in-one dashboard with zero commissions or software subscriptions.",
+      fr: "Découvrez l'étude de cas complète de L'Atelier Gourmand : création d'un site vitrine restaurant sur-mesure et d'un système de réservation directe sans widget tiers ni commission.",
+      en: "Complete functional and technical case study for L'Atelier Gourmand: fluid guest UX, 4-step direct booking engine, 7 native languages, and zero commission fees.",
     },
-    "/projets/atelier-gourmand"
+    'https://www.devsupai.fr/atelier-gourmand.webp'
   );
 
   const schemaMarkup = {

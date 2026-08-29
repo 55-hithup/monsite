@@ -11,14 +11,14 @@ export default function About() {
 
   useDocumentMetadata(
     {
-      fr: "À Propos | Alexandre Pabst — Développeur Web Sur-Mesure | DevSupAi",
-      en: "About | Alexandre Pabst — Custom Web Developer | DevSupAi",
+      fr: "À Propos | Alexandre Pabst – Développeur Web Sur-Mesure | DevSupAi",
+      en: "About | Alexandre Pabst – Custom Web Developer | DevSupAi",
     },
     {
       fr: "Découvrez le parcours d'Alexandre Pabst, artisan du web et fondateur de DevSupAi à Saint-Mihiel (Meuse). Une méthode sur-mesure sans compromis pour PME et artisans.",
-      en: "Discover the journey of Alexandre Pabst, custom web developer and founder of DevSupAi in Saint-Mihiel (France). Tailor-made web solutions for businesses and organizations.",
+      en: "Discover the background of Alexandre Pabst, founder of DevSupAi in Saint-Mihiel (France), and his uncompromising methodology for crafting bespoke, ultra-fast websites.",
     },
-    "/a-propos"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   return (

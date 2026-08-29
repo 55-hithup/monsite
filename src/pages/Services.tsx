@@ -29,13 +29,13 @@ export default function Services() {
   useDocumentMetadata(
     {
       fr: 'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
-      en: 'Our Custom Web & Software Engineering Services | DevSupAi',
+      en: 'Our Custom Web Services & Digital Solutions | DevSupAi',
     },
     {
-      fr: 'Découvrez les 47 solutions informatiques et web sur-mesure conçues par Alexandre Pabst (DevSupAi) : création de sites vitrines, e-commerce, applications web et mobiles, SaaS et maintenance technique.',
-      en: 'Explore all 47 custom software and web development services by Alexandre Pabst (DevSupAi): showcase websites, e-commerce, web and mobile apps, SaaS, and technical maintenance.',
+      fr: 'Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS sur-mesure et maintenance technique.',
+      en: 'Explore our 47 custom digital services: showcase websites, e-commerce, Android/iOS mobile apps, custom SaaS software, and technical maintenance.',
     },
-    '/nos-services'
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   const [searchQuery, setSearchQuery] = useState('');

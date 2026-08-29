@@ -11,14 +11,14 @@ export default function ArticleTemplates() {
 
   useDocumentMetadata(
     {
-      fr: "Pourquoi éviter les templates ? | Le sur-mesure pour PME & Asso | DevSupAi",
-      en: "Why Avoid Templates in 2026? | Custom Web for SMEs & Non-Profits | DevSupAi",
+      fr: "Pourquoi éviter les templates en 2026 ? | Le sur-mesure pour PME & Asso | DevSupAi",
+      en: "Why Avoid Pre-Made Templates in 2026? | DevSupAi",
     },
     {
       fr: "Les thèmes pré-conçus pénalisent votre vitesse de chargement et nuisent à votre référencement naturel. Découvrez pourquoi le développement sur-mesure est devenu incontournable.",
-      en: "Generic themes slow down page loading and hurt search rankings. Discover why custom web engineering has become critical in 2026.",
+      en: "Generic templates hurt your loading speed and hinder your Google rankings. Discover why custom development has become essential for business growth.",
     },
-    "/blog/pourquoi-eviter-les-templates"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   const schemaMarkup = {

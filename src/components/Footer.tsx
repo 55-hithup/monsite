@@ -92,7 +92,7 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="text-left">
-            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.navTitle}</h4>
+            <h3 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.navTitle}</h3>
             <ul className="flex flex-col gap-3 text-xs text-text-secondary">
               <li>
                 <Link to={language === 'en' ? '/en' : '/'} onClick={() => window.scrollTo(0,0)} className="hover:text-text-primary transition-colors cursor-target">{t.home}</Link>
@@ -117,7 +117,7 @@ export default function Footer() {
 
           {/* Contact & Location */}
           <div className="text-left">
-            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.contactTitle}</h4>
+            <h3 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.contactTitle}</h3>
             <div className="flex flex-col gap-4 text-xs text-text-secondary">
               <div>
                 <span className="text-text-primary block font-medium mb-1">{t.phoneLabel}</span>
@@ -149,7 +149,7 @@ export default function Footer() {
 
           {/* Hours Section */}
           <div className="text-left">
-            <h4 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.hoursTitle}</h4>
+            <h3 className="label-mono text-xs font-bold text-text-primary mb-5 tracking-wider uppercase">{t.hoursTitle}</h3>
             <ul className="flex flex-col gap-2.5 text-xs text-text-secondary">
               <li className="flex justify-between border-b border-[rgba(245,246,250,0.04)] pb-1.5">
                 <span>{t.weekdays}</span>

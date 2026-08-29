@@ -1,4 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { Languages } from 'lucide-react';
 
 interface GlacierHeaderProps {
   onNavClick?: (targetId: string) => void;
@@ -7,6 +9,7 @@ interface GlacierHeaderProps {
 export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
+  const { language, setLanguage, isEn } = useLanguage();
   const isHomePage = location.pathname === '/' || location.pathname === '/en';
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -23,83 +26,144 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         }
       }
     } else {
-      navigate(`/#${targetId}`);
+      navigate(`${isEn ? '/en' : ''}/#${targetId}`);
     }
   };
+
+  const navLinks = isEn
+    ? {
+        services: 'SERVICES',
+        realisations: 'PROJECTS',
+        avis: 'REVIEWS',
+        atelier: 'ATELIER',
+        occasions: 'BESPOKE',
+        contact: 'CONTACT & QUOTE',
+        catalog: 'CATALOG',
+        catalogPath: '/en/services',
+        about: 'ABOUT',
+        aboutPath: '/en/about',
+        blog: 'BLOG',
+        blogPath: '/en/blog',
+      }
+    : {
+        services: 'NOS SERVICES',
+        realisations: 'RÉALISATIONS',
+        avis: 'AVIS',
+        atelier: "L'ATELIER",
+        occasions: 'SUR-MESURE',
+        contact: 'CONTACT & DEVIS',
+        catalog: 'PRESTATIONS',
+        catalogPath: '/nos-services',
+        about: 'À PROPOS',
+        aboutPath: '/a-propos',
+        blog: 'BLOG',
+        blogPath: '/blog',
+      };
 
   return (
     <header className="glacier-main-header">
       <div className="header-logo-block">
-        <Link to="/" className="glacier-logo-text">
+        <Link to={isEn ? '/en' : '/'} className="glacier-logo-text">
           DEVSUPAI
         </Link>
         <span className="glacier-logo-sub">
-          L'Atelier Web d'Alexandre Pabst • Meuse
+          {isEn
+            ? "Alexandre Pabst's Custom Web Atelier • France"
+            : "L'Atelier Web d'Alexandre Pabst • Meuse"}
         </span>
       </div>
 
-      <nav className="glacier-nav-strip" aria-label="Navigation principale">
+      <nav className="glacier-nav-strip" aria-label={isEn ? 'Main navigation' : 'Navigation principale'}>
         <a 
-          href="/#services" 
+          href={`${isEn ? '/en' : ''}/#services`} 
           onClick={(e) => handleAnchorClick(e, 'services')} 
           className="glacier-nav-link"
         >
-          NOS SERVICES
+          {navLinks.services}
         </a>
         <a 
-          href="/#realisations" 
+          href={`${isEn ? '/en' : ''}/#realisations`} 
           onClick={(e) => handleAnchorClick(e, 'realisations')} 
           className="glacier-nav-link"
         >
-          RÉALISATIONS
+          {navLinks.realisations}
         </a>
         <a 
-          href="/#avis" 
+          href={`${isEn ? '/en' : ''}/#avis`} 
           onClick={(e) => handleAnchorClick(e, 'avis')} 
           className="glacier-nav-link"
         >
-          AVIS
+          {navLinks.avis}
         </a>
         <a 
-          href="/#atelier" 
+          href={`${isEn ? '/en' : ''}/#atelier`} 
           onClick={(e) => handleAnchorClick(e, 'atelier')} 
           className="glacier-nav-link"
         >
-          L'ATELIER
+          {navLinks.atelier}
         </a>
         <a 
-          href="/#occasions" 
+          href={`${isEn ? '/en' : ''}/#occasions`} 
           onClick={(e) => handleAnchorClick(e, 'occasions')} 
           className="glacier-nav-link"
         >
-          SUR-MESURE
+          {navLinks.occasions}
         </a>
         <a 
-          href="/#contact" 
+          href={`${isEn ? '/en' : ''}/#contact`} 
           onClick={(e) => handleAnchorClick(e, 'contact')} 
           className="glacier-nav-link"
         >
-          CONTACT &amp; DEVIS
+          {navLinks.contact}
         </a>
         <Link 
-          to="/nos-services" 
-          className={`glacier-nav-link ${location.pathname === '/nos-services' ? 'text-[#0284C7] font-extrabold' : ''}`}
+          to={navLinks.catalogPath} 
+          className={`glacier-nav-link ${location.pathname === navLinks.catalogPath ? 'text-[#0284C7] font-extrabold' : ''}`}
         >
-          PRESTATIONS
+          {navLinks.catalog}
         </Link>
         <Link 
-          to="/a-propos" 
-          className={`glacier-nav-link ${location.pathname === '/a-propos' ? 'text-[#0284C7] font-extrabold' : ''}`}
+          to={navLinks.aboutPath} 
+          className={`glacier-nav-link ${location.pathname === navLinks.aboutPath ? 'text-[#0284C7] font-extrabold' : ''}`}
         >
-          À PROPOS
+          {navLinks.about}
         </Link>
         <Link 
-          to="/blog" 
-          className={`glacier-nav-link ${location.pathname.startsWith('/blog') ? 'text-[#0284C7] font-extrabold' : ''}`}
+          to={navLinks.blogPath} 
+          className={`glacier-nav-link ${location.pathname.startsWith(navLinks.blogPath) ? 'text-[#0284C7] font-extrabold' : ''}`}
         >
-          BLOG
+          {navLinks.blog}
         </Link>
+
+        {/* Language Switcher */}
+        <div className="inline-flex items-center gap-1 ml-2 pl-2 border-l border-[#E5E5E5] text-xs font-['Montserrat'] font-bold">
+          <Languages size={13} className="text-[#0284C7]" aria-hidden="true" />
+          <button
+            type="button"
+            onClick={() => setLanguage('fr')}
+            className={`px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
+              language === 'fr' ? 'text-[#0284C7] font-black' : 'text-[#888888] hover:text-[#1A1A1A]'
+            }`}
+            aria-label="Version Française"
+            aria-current={language === 'fr' ? 'true' : undefined}
+          >
+            FR
+          </button>
+          <span className="text-[#CCCCCC]" aria-hidden="true">/</span>
+          <button
+            type="button"
+            onClick={() => setLanguage('en')}
+            className={`px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
+              language === 'en' ? 'text-[#0284C7] font-black' : 'text-[#888888] hover:text-[#1A1A1A]'
+            }`}
+            aria-label="English Version"
+            aria-current={language === 'en' ? 'true' : undefined}
+          >
+            EN
+          </button>
+        </div>
       </nav>
     </header>
   );
 }
+

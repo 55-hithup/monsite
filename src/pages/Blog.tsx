@@ -12,13 +12,13 @@ export default function Blog() {
   useDocumentMetadata(
     {
       fr: "Blog & Actualités Développement Web Sur-Mesure | DevSupAi",
-      en: "Blog & Technical Insights on Custom Web Engineering | DevSupAi",
+      en: "Blog & Insights on Custom Web Development | DevSupAi",
     },
     {
       fr: "Conseils, guides techniques et bonnes pratiques sur le développement web sur-mesure, la performance, l'accessibilité et le référencement SEO pour PME et Associations.",
-      en: "Actionable guides and technical best practices on custom web engineering, loading performance, accessibility, and SEO for SMEs and Non-Profits.",
+      en: "Actionable guides and technical best practices on custom web engineering, loading performance, accessibility, and SEO for SMEs and non-profits.",
     },
-    "/blog"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   return (

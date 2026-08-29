@@ -13,14 +13,14 @@ export default function CaseLocaTool() {
 
   useDocumentMetadata(
     {
-      fr: "Étude de cas : LocaTool — Logiciel SaaS de Gestion de Parc Matériel | DevSupAi",
-      en: "Case Study: LocaTool — Equipment Fleet Management SaaS Web App | DevSupAi",
+      fr: "Étude de cas : LocaTool | Logiciel SaaS de Gestion de Parc Matériel | DevSupAi",
+      en: "Case Study: LocaTool | Custom SaaS Equipment Management | DevSupAi",
     },
     {
-      fr: "Découvrez le développement sur-mesure de l'application SaaS LocaTool : centralisation de flotte d'équipements, réservations temps réel et facturation.",
-      en: "Discover the custom SaaS development of LocaTool: equipment fleet centralization, real-time booking, and automated contract invoicing.",
+      fr: "Découvrez comment l'application web métier LocaTool a été conçue pour centraliser et simplifier la gestion de location de matériel professionnel et de facturation.",
+      en: "Discover how the LocaTool SaaS web application was engineered to centralize and streamline professional equipment rental, booking, and contract invoicing.",
     },
-    "/projets/locatool"
+    'https://www.devsupai.fr/locatool.webp'
   );
 
   const schemaMarkup = {

@@ -4,115 +4,147 @@ import tailwindcss from '@tailwindcss/vite'
 import sitemap from 'vite-plugin-sitemap'
 import organizationData from './src/data/organization.json' with { type: 'json' }
 
-const pageMetadata: Record<string, { title: string; description: string }> = {
+interface RouteMeta {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const pageMetadata: Record<string, RouteMeta> = {
   // French Pages (FR)
   '/': {
     title: 'DevSupAi • Alexandre Pabst | Développeur Web & Création de Sites Sur-Mesure',
-    description: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, vitesse < 0.4s."
+    description: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, vitesse < 0.4s.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/nos-services': {
     title: 'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
-    description: "Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS sur-mesure et maintenance technique."
+    description: "Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS sur-mesure et maintenance technique.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/a-propos': {
     title: 'À Propos | Alexandre Pabst – Développeur Web Sur-Mesure | DevSupAi',
-    description: "Découvrez le parcours d'Alex, fondateur de DevSupAi, et sa méthode de développement sans compromis pour concevoir des sites web rapides et entièrement sur-mesure."
+    description: "Découvrez le parcours d'Alexandre Pabst, artisan du web et fondateur de DevSupAi à Saint-Mihiel (Meuse). Une méthode sur-mesure sans compromis pour PME et artisans.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/blog': {
     title: 'Blog & Actualités Développement Web Sur-Mesure | DevSupAi',
-    description: "Conseils, guides techniques et bonnes pratiques sur le développement web sur-mesure, la performance, l'accessibilité et le référencement SEO pour PME et Associations."
+    description: "Conseils, guides techniques et bonnes pratiques sur le développement web sur-mesure, la performance, l'accessibilité et le référencement SEO pour PME et Associations.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/blog/site-web-pme-association': {
-    title: 'Quel site web créer pour une PME ou une Association ? | DevSupAi',
-    description: "Découvrez comment concevoir un site internet performant et sur-mesure adapté aux besoins spécifiques des PME, TPE et Associations loi 1901."
+    title: 'Créer un site web pour PME & Association | Guide Pratique DevSupAi',
+    description: "Découvrez les étapes indispensables pour concevoir un site internet performant, moderne et sans abonnement récurrent pour une PME ou une association loi 1901.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/blog/pourquoi-eviter-les-templates': {
-    title: 'Pourquoi éviter les templates ? | Le sur-mesure pour PME & Asso | DevSupAi',
-    description: "Les thèmes pré-conçus pénalisent votre vitesse de chargement et nuisent à votre référencement naturel. Découvrez pourquoi le développement sur-mesure est devenu incontournable."
+    title: 'Pourquoi éviter les templates en 2026 ? | Le sur-mesure pour PME & Asso | DevSupAi',
+    description: "Les thèmes pré-conçus pénalisent votre vitesse de chargement et nuisent à votre référencement naturel. Découvrez pourquoi le développement sur-mesure est devenu incontournable.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/blog/performance-web-sur-mesure': {
-    title: 'Performance Web & SEO Sur-Mesure : Le Guide | DevSupAi',
-    description: "Découvrez les piliers de la vitesse web et de l'optimisation SEO pour propulser votre site internet PME ou association au sommet des résultats Google."
+    title: 'Vitesse de chargement & Taux de conversion | Guide DevSupAi',
+    description: "Chaque milliseconde compte pour votre chiffre d'affaires. Découvrez les piliers de la vitesse web et de l'optimisation SEO pour propulser votre site au sommet des résultats Google.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/projets/atelier-gourmand': {
     title: "Étude de cas : L'Atelier Gourmand | Site Vitrine & Réservation Sur-Mesure | DevSupAi",
-    description: "Découvrez l'étude de cas de L'Atelier Gourmand : création d'un site vitrine restaurant sur-mesure et d'un système de réservation directe sans widget tiers ni commission."
+    description: "Découvrez l'étude de cas complète de L'Atelier Gourmand : création d'un site vitrine restaurant sur-mesure et d'un système de réservation directe sans widget tiers ni commission.",
+    image: 'https://www.devsupai.fr/atelier-gourmand.webp'
   },
   '/projets/locatool': {
-    title: 'Étude de cas : LocaTool | Application Web SaaS Sur-Mesure | DevSupAi',
-    description: "Découvrez comment l'application web métier LocaTool a été conçue pour centraliser et simplifier la gestion de location de matériel professionnel."
+    title: 'Étude de cas : LocaTool | Logiciel SaaS de Gestion de Parc Matériel | DevSupAi',
+    description: "Découvrez comment l'application web métier LocaTool a été conçue pour centraliser et simplifier la gestion de location de matériel professionnel et de facturation.",
+    image: 'https://www.devsupai.fr/locatool.webp'
   },
   '/projets/abogame': {
-    title: 'Étude de cas : Abogame | Plateforme Web Interactive Live | DevSupAi',
-    description: "Découvrez comment la plateforme interactive mobile-first Abogame dynamise les animations en direct grâce à une roue de tirage visuelle et interactive en temps réel."
+    title: 'Étude de cas : Abogame | Plateforme Mobile-First Live & Tirage | DevSupAi',
+    description: "Découvrez comment la plateforme interactive mobile-first Abogame dynamise les animations en direct grâce à une roue de tirage visuelle et interactive à 60 FPS.",
+    image: 'https://www.devsupai.fr/abogame.webp'
   },
   '/mentions-legales': {
-    title: 'Mentions Légales | DevSupAi',
-    description: "Consultez les informations légales et les mentions réglementaires de l'entreprise individuelle DevSupAi dirigée par Alexandre."
+    title: 'Mentions Légales | DevSupAi — Alexandre Pabst',
+    description: "Mentions légales, informations sur l'éditeur et l'hébergement du site internet devsupai.fr édité par Alexandre Pabst EI (DevSupAi).",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/politique-de-confidentialite': {
-    title: 'Politique de Confidentialité | DevSupAi',
-    description: "Découvrez notre politique de confidentialité, le traitement de vos données personnelles et vos droits relatifs aux RGPD."
+    title: 'Politique de Confidentialité | DevSupAi — Protection des Données',
+    description: "Découvrez notre politique de confidentialité, le traitement de vos données personnelles et vos droits relatifs aux RGPD sur devsupai.fr.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
 
   // English Pages (EN)
   '/en': {
     title: 'DevSupAi • Alexandre Pabst | Bespoke Web Developer & Engineering',
-    description: 'Handcrafted showcase websites, e-commerce, and custom SaaS web applications for SMEs, artisans, and non-profits in France and worldwide. Zero recurring software fees, < 0.4s LCP.'
+    description: 'Handcrafted showcase websites, e-commerce, and custom SaaS web applications for SMEs, artisans, and non-profits in France and worldwide. Zero recurring software fees, < 0.4s LCP.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/services': {
     title: 'Our Custom Web Services & Digital Solutions | DevSupAi',
-    description: 'Explore our 47 custom digital services: showcase websites, e-commerce, Android/iOS mobile apps, custom SaaS software, and technical maintenance.'
+    description: 'Explore our 47 custom digital services: showcase websites, e-commerce, Android/iOS mobile apps, custom SaaS software, and technical maintenance.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/about': {
-    title: 'About | Alexandre Pabst – Bespoke Web Developer | DevSupAi',
-    description: "Discover the background of Alex, founder of DevSupAi, and his uncompromising development methodology for crafting lightning-fast, custom websites."
+    title: 'About | Alexandre Pabst – Custom Web Developer | DevSupAi',
+    description: "Discover the background of Alexandre Pabst, founder of DevSupAi in Saint-Mihiel (France), and his uncompromising methodology for crafting bespoke, ultra-fast websites.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/blog': {
     title: 'Blog & Insights on Custom Web Development | DevSupAi',
-    description: 'Guides, technical best practices, and expert advice on bespoke web development, performance, accessibility, and SEO for SMEs and non-profits.'
+    description: 'Actionable guides and technical best practices on custom web engineering, loading performance, accessibility, and SEO for SMEs and non-profits.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/blog/site-web-pme-association': {
-    title: 'How to Build a Successful Website for an SME or Non-Profit? | DevSupAi',
-    description: 'Comprehensive guide to designing an effective, high-speed custom website without recurring software subscriptions for SMEs and Non-Profits.'
+    title: 'Building a Website for SMEs & Non-Profits | Practical Guide DevSupAi',
+    description: 'Essential steps to create a high-performance, modern custom website without recurring platform subscriptions for SMEs and non-profit organizations.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/blog/pourquoi-eviter-les-templates': {
     title: 'Why Avoid Pre-Made Templates in 2026? | DevSupAi',
-    description: 'Generic templates hurt your loading speed and hinder your Google rankings. Discover why custom development has become essential.'
+    description: 'Generic templates hurt your loading speed and hinder your Google rankings. Discover why custom development has become essential for business growth.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/blog/performance-web-sur-mesure': {
-    title: 'Page Speed & Conversion Rates: The Guide | DevSupAi',
-    description: 'Every millisecond of delay costs revenue. Data-backed analysis of how top-tier web performance directly drives business growth.'
+    title: 'Page Speed & Conversion Rates | Technical Guide DevSupAi',
+    description: 'Every millisecond of delay costs revenue. Data-backed analysis of how top-tier web performance directly drives business growth and lowers acquisition costs.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/projects/atelier-gourmand': {
     title: "Case Study: L'Atelier Gourmand | Restaurant Showcase & Custom Booking | DevSupAi",
-    description: "Discover how restaurant L'Atelier Gourmand operates with a custom showcase website and direct table booking system without third-party commissions."
+    description: "Complete functional and technical case study for L'Atelier Gourmand: fluid guest UX, 4-step direct booking engine, 7 native languages, and zero commission fees.",
+    image: 'https://www.devsupai.fr/atelier-gourmand.webp'
   },
   '/en/projects/locatool': {
     title: 'Case Study: LocaTool | Custom SaaS Equipment Management | DevSupAi',
-    description: 'Discover how the LocaTool SaaS web application was engineered to centralize and streamline professional equipment rental and fleet tracking.'
+    description: 'Discover how the LocaTool SaaS web application was engineered to centralize and streamline professional equipment rental, booking, and contract invoicing.',
+    image: 'https://www.devsupai.fr/locatool.webp'
   },
   '/en/projects/abogame': {
     title: 'Case Study: Abogame | Interactive Real-Time Web Platform | DevSupAi',
-    description: 'Discover how the Abogame mobile-first interactive platform powers live animations and real-time streaming with an interactive giveaway wheel.'
+    description: 'Discover how the Abogame mobile-first interactive platform powers live animations and real-time audience engagement with an interactive giveaway wheel.',
+    image: 'https://www.devsupai.fr/abogame.webp'
   },
   '/en/legal-notices': {
-    title: 'Legal Notices | DevSupAi',
-    description: 'Consult the legal information and regulatory notices of the sole proprietorship DevSupAi managed by Alexandre Pabst.'
+    title: 'Legal Notices | DevSupAi — Alexandre Pabst',
+    description: 'Consult the legal information and regulatory disclosures of the sole proprietorship DevSupAi managed by Alexandre Pabst.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/privacy-policy': {
-    title: 'Privacy Policy | DevSupAi',
-    description: 'Read our privacy policy, personal data processing terms, and your GDPR data protection rights.'
+    title: 'Privacy Policy | DevSupAi — Data Protection & Privacy',
+    description: 'Read our privacy policy, personal data processing terms, and GDPR compliance standards on devsupai.fr.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
 
   // Admin Pages
   '/admin/login': {
     title: 'Connexion Administration | DevSupAi',
-    description: "Espace de connexion sécurisé pour l'administration de la modération des avis sur le site DevSupAi."
+    description: "Espace de connexion sécurisé pour l'administration de la modération des avis sur le site DevSupAi.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/admin/avis': {
     title: 'Tableau de Bord Administration | DevSupAi',
-    description: "Tableau de bord de modération des avis clients de DevSupAi."
+    description: "Tableau de bord de modération des avis clients de DevSupAi.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   }
 };
 
@@ -130,6 +162,69 @@ const routePairs = [
   { fr: '/mentions-legales', en: '/en/legal-notices' },
   { fr: '/politique-de-confidentialite', en: '/en/privacy-policy' },
 ];
+
+function buildBreadcrumbSchema(cleanRoute: string, isEnglish: boolean, pageTitle: string) {
+  const homeUrl = isEnglish ? 'https://www.devsupai.fr/en' : 'https://www.devsupai.fr/';
+  const homeName = isEnglish ? 'Home' : 'Accueil';
+  const currentUrl = `https://www.devsupai.fr${cleanRoute === '/' ? '/' : cleanRoute}`;
+
+  if (cleanRoute === '/' || cleanRoute === '/en') {
+    return null;
+  }
+
+  const items: Array<{ '@type': 'ListItem'; position: number; name: string; item: string }> = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: homeName,
+      item: homeUrl,
+    },
+  ];
+
+  if (cleanRoute.startsWith('/blog/') || cleanRoute.startsWith('/en/blog/')) {
+    const blogUrl = isEnglish ? 'https://www.devsupai.fr/en/blog' : 'https://www.devsupai.fr/blog';
+    items.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Blog',
+      item: blogUrl,
+    });
+    items.push({
+      '@type': 'ListItem',
+      position: 3,
+      name: pageTitle,
+      item: currentUrl,
+    });
+  } else if (cleanRoute.startsWith('/projets/') || cleanRoute.startsWith('/en/projects/')) {
+    const projectsUrl = isEnglish ? 'https://www.devsupai.fr/en#realisations' : 'https://www.devsupai.fr/#realisations';
+    const projectsName = isEnglish ? 'Case Studies' : 'Réalisations';
+    items.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: projectsName,
+      item: projectsUrl,
+    });
+    items.push({
+      '@type': 'ListItem',
+      position: 3,
+      name: pageTitle,
+      item: currentUrl,
+    });
+  } else {
+    items.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: pageTitle,
+      item: currentUrl,
+    });
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items,
+  };
+}
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -207,6 +302,7 @@ export default defineConfig({
       const meta = pageMetadata[cleanRoute] || pageMetadata['/'];
       const isEnglish = cleanRoute === '/en' || cleanRoute.startsWith('/en/');
       const canonicalUrl = `https://www.devsupai.fr${cleanRoute === '/' ? '/' : cleanRoute}`;
+      const ogImageUrl = meta.image || 'https://www.devsupai.fr/hero-bg-mockup.webp';
       
       // Calculate hreflang paths
       const matchedPair = routePairs.find((p) => p.fr === cleanRoute || p.en === cleanRoute);
@@ -232,7 +328,12 @@ export default defineConfig({
         return `${openTag}${cleanedInner}${closeTag}`;
       });
 
-      // Inject structured data
+      // -----------------------------------------------------------------------
+      // Comprehensive JSON-LD Structured Data per Route Type
+      // -----------------------------------------------------------------------
+      const injectedScripts: string[] = [];
+
+      // 1. Homepage Structured Data (Organization + LocalBusiness + WebSite + FAQ)
       if (cleanRoute === '/' || cleanRoute === '/en') {
         const localizedOrg = isEnglish
           ? {
@@ -241,7 +342,20 @@ export default defineConfig({
             }
           : organizationData;
 
-        const orgScript = `<script type="application/ld+json" id="structured-data-org-ssg">${JSON.stringify(localizedOrg)}</script>`;
+        injectedScripts.push(`<script type="application/ld+json" id="structured-data-org-ssg">${JSON.stringify(localizedOrg)}</script>`);
+
+        const webSiteData = {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "DevSupAi",
+          "url": "https://www.devsupai.fr",
+          "inLanguage": isEnglish ? "en" : "fr",
+          "author": {
+            "@type": "Person",
+            "name": "Alexandre Pabst"
+          }
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="website-schema-ssg">${JSON.stringify(webSiteData)}</script>`);
 
         const faqData = isEnglish
           ? {
@@ -385,8 +499,163 @@ export default defineConfig({
               ]
             };
 
-        const faqScript = `<script type="application/ld+json" id="faq-schema-ssg">${JSON.stringify(faqData)}</script>`;
-        cleanHtml = cleanHtml.replace('</head>', `${orgScript}${faqScript}</head>`);
+        injectedScripts.push(`<script type="application/ld+json" id="faq-schema-ssg">${JSON.stringify(faqData)}</script>`);
+      }
+
+      // 2. BreadcrumbList for all subpages
+      const breadcrumb = buildBreadcrumbSchema(cleanRoute, isEnglish, meta.title.split('|')[0].trim());
+      if (breadcrumb) {
+        injectedScripts.push(`<script type="application/ld+json" id="breadcrumb-schema-ssg">${JSON.stringify(breadcrumb)}</script>`);
+      }
+
+      // 3. Services Page Schemas (Service + ItemList + FAQ)
+      if (cleanRoute === '/nos-services' || cleanRoute === '/en/services') {
+        const servicesSchema = {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": isEnglish ? "Custom Web & Software Development Services" : "Prestations de Développement Web & Logiciel Sur-Mesure",
+          "description": meta.description,
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "position": 1,
+              "name": isEnglish ? "Showcase Websites & Custom Portals" : "Sites Vitrines & Portails Professionnels",
+              "description": isEnglish ? "Ultra-fast custom showcase websites for SMEs and artisans." : "Conception de sites vitrines haut de gamme et portails d'information sans CMS lourd.",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "950",
+                "priceCurrency": "EUR"
+              }
+            },
+            {
+              "@type": "Offer",
+              "position": 2,
+              "name": isEnglish ? "E-Commerce & Online Booking Systems" : "E-Commerce & Systèmes de Réservation",
+              "description": isEnglish ? "Direct online sales and booking systems with zero transaction commissions." : "Boutiques et modules de réservation directe 100% sur-mesure sans commission."
+            },
+            {
+              "@type": "Offer",
+              "position": 3,
+              "name": isEnglish ? "Custom SaaS & Mobile Applications" : "Applications Web Métier & Logiciels SaaS",
+              "description": isEnglish ? "Custom internal software, fleet management, and real-time platforms." : "Logiciels de gestion interne, tableaux de bord et plateformes temps réel.",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "3200",
+                "priceCurrency": "EUR"
+              }
+            },
+            {
+              "@type": "Offer",
+              "position": 4,
+              "name": isEnglish ? "Maintenance, Core Web Vitals & Redesign" : "Maintenance, Performance Web & Refonte",
+              "description": isEnglish ? "Technical maintenance, speed optimization, and secure infrastructure monitoring." : "Audits de vitesse, sécurisation et optimisation de la vitesse d'affichage."
+            }
+          ]
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="services-schema-ssg">${JSON.stringify(servicesSchema)}</script>`);
+      }
+
+      // 4. About Page Schema (AboutPage / Person)
+      if (cleanRoute === '/a-propos' || cleanRoute === '/en/about') {
+        const aboutSchema = {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "mainEntity": {
+            "@type": "Person",
+            "name": "Alexandre Pabst",
+            "jobTitle": isEnglish ? "Custom Web Developer & Founder" : "Développeur Web Indépendant & Fondateur",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "DevSupAi",
+              "url": "https://www.devsupai.fr"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Saint-Mihiel",
+              "postalCode": "55300",
+              "addressCountry": "FR"
+            }
+          }
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="about-schema-ssg">${JSON.stringify(aboutSchema)}</script>`);
+      }
+
+      // 5. Blog Posting Schemas
+      if (cleanRoute.startsWith('/blog/') || cleanRoute.startsWith('/en/blog/')) {
+        const isTemplates = cleanRoute.includes('pourquoi-eviter-les-templates');
+        const isPerf = cleanRoute.includes('performance-web-sur-mesure');
+
+        const articleDates: Record<string, { published: string; modified: string }> = {
+          templates: { published: "2026-08-04T08:00:00+02:00", modified: "2026-08-14T00:00:00+02:00" },
+          perf: { published: "2026-08-02T09:00:00+02:00", modified: "2026-08-14T00:00:00+02:00" },
+          asso: { published: "2026-08-10T10:00:00+02:00", modified: "2026-08-14T00:00:00+02:00" },
+        };
+
+        const dates = isTemplates ? articleDates.templates : isPerf ? articleDates.perf : articleDates.asso;
+
+        const blogPostingSchema = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": meta.title.split('|')[0].trim(),
+          "description": meta.description,
+          "image": ogImageUrl,
+          "datePublished": dates.published,
+          "dateModified": dates.modified,
+          "author": {
+            "@type": "Person",
+            "name": "Alexandre Pabst",
+            "url": isEnglish ? "https://www.devsupai.fr/en/about" : "https://www.devsupai.fr/a-propos"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevSupAi",
+            "url": "https://www.devsupai.fr",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.devsupai.fr/logo.webp"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": canonicalUrl
+          }
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="blog-posting-ssg">${JSON.stringify(blogPostingSchema)}</script>`);
+      }
+
+      // 6. Case Study / Project Schemas
+      if (cleanRoute.startsWith('/projets/') || cleanRoute.startsWith('/en/projects/')) {
+        const caseStudySchema = {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": meta.title.split('|')[0].trim(),
+          "description": meta.description,
+          "image": ogImageUrl,
+          "datePublished": "2026-08-14T00:00:00+02:00",
+          "author": {
+            "@type": "Person",
+            "name": "Alexandre Pabst",
+            "url": isEnglish ? "https://www.devsupai.fr/en/about" : "https://www.devsupai.fr/a-propos"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevSupAi",
+            "url": "https://www.devsupai.fr",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.devsupai.fr/logo.webp"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": canonicalUrl
+          }
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="case-study-ssg">${JSON.stringify(caseStudySchema)}</script>`);
+      }
+
+      if (injectedScripts.length > 0) {
+        cleanHtml = cleanHtml.replace('</head>', `${injectedScripts.join('')}</head>`);
       }
       
       // Replace title
@@ -402,21 +671,24 @@ export default defineConfig({
       const hreflangTags = `<link rel="alternate" hreflang="fr" href="${frHref}" /><link rel="alternate" hreflang="en" href="${enHref}" /><link rel="alternate" hreflang="x-default" href="${xDefaultHref}" />`;
       cleanHtml = cleanHtml.replace('</head>', `${hreflangTags}</head>`);
 
-      // Replace Open Graph title, description, URL, and locale
+      // Replace Open Graph title, description, URL, image, and locale
       cleanHtml = cleanHtml.replace(/<meta property="og:title" content=".*?"\s*\/?>/, `<meta property="og:title" content="${meta.title}" />`);
       cleanHtml = cleanHtml.replace(/<meta property="og:description" content=".*?"\s*\/?>/, `<meta property="og:description" content="${meta.description}" />`);
       cleanHtml = cleanHtml.replace(/<meta property="og:url" content=".*?"\s*\/?>/, `<meta property="og:url" content="${canonicalUrl}" />`);
+      cleanHtml = cleanHtml.replace(/<meta property="og:image" content=".*?"\s*\/?>/, `<meta property="og:image" content="${ogImageUrl}" />`);
       
       const ogLocaleTag = `<meta property="og:locale" content="${isEnglish ? 'en_US' : 'fr_FR'}" /><meta property="og:locale:alternate" content="${isEnglish ? 'fr_FR' : 'en_US'}" />`;
       cleanHtml = cleanHtml.replace('</head>', `${ogLocaleTag}</head>`);
 
-      // Replace Twitter title, description, and URL
+      // Replace Twitter title, description, URL, and image
       cleanHtml = cleanHtml.replace(/<meta property="twitter:title" content=".*?"\s*\/?>/g, `<meta property="twitter:title" content="${meta.title}" />`);
       cleanHtml = cleanHtml.replace(/<meta property="twitter:description" content=".*?"\s*\/?>/g, `<meta property="twitter:description" content="${meta.description}" />`);
       cleanHtml = cleanHtml.replace(/<meta property="twitter:url" content=".*?"\s*\/?>/g, `<meta property="twitter:url" content="${canonicalUrl}" />`);
+      cleanHtml = cleanHtml.replace(/<meta property="twitter:image" content=".*?"\s*\/?>/g, `<meta property="twitter:image" content="${ogImageUrl}" />`);
       cleanHtml = cleanHtml.replace(/<meta name="twitter:title" content=".*?"\s*\/?>/g, `<meta name="twitter:title" content="${meta.title}" />`);
       cleanHtml = cleanHtml.replace(/<meta name="twitter:description" content=".*?"\s*\/?>/g, `<meta name="twitter:description" content="${meta.description}" />`);
       cleanHtml = cleanHtml.replace(/<meta name="twitter:url" content=".*?"\s*\/?>/g, `<meta name="twitter:url" content="${canonicalUrl}" />`);
+      cleanHtml = cleanHtml.replace(/<meta name="twitter:image" content=".*?"\s*\/?>/g, `<meta name="twitter:image" content="${ogImageUrl}" />`);
       
       return cleanHtml;
     },

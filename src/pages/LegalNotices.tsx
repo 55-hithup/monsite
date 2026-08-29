@@ -14,9 +14,9 @@ export default function LegalNotices() {
     },
     {
       fr: "Mentions légales, informations sur l'éditeur et l'hébergement du site internet devsupai.fr édité par Alexandre Pabst EI (DevSupAi).",
-      en: "Legal notices, publisher identification, and hosting infrastructure details for website devsupai.fr by Alexandre Pabst EI (DevSupAi).",
+      en: "Consult the legal information and regulatory disclosures of the sole proprietorship DevSupAi managed by Alexandre Pabst.",
     },
-    "/mentions-legales"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   return (

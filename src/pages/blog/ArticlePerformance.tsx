@@ -15,10 +15,10 @@ export default function ArticlePerformance() {
       en: "Page Speed & Conversion Rates | Technical Guide DevSupAi",
     },
     {
-      fr: "Chaque milliseconde compte pour votre chiffre d'affaires. Découvrez comment les performances web d'élite augmentent drastiquement vos ventes.",
-      en: "Every millisecond of latency counts for business revenue. Learn how elite web performance directly increases sales and lowers acquisition costs.",
+      fr: "Chaque milliseconde compte pour votre chiffre d'affaires. Découvrez les piliers de la vitesse web et de l'optimisation SEO pour propulser votre site au sommet des résultats Google.",
+      en: "Every millisecond of delay costs revenue. Data-backed analysis of how top-tier web performance directly drives business growth and lowers acquisition costs.",
     },
-    "/blog/performance-web-sur-mesure"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   const schemaMarkup = {

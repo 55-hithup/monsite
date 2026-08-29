@@ -15,10 +15,10 @@ export default function ArticleAssociationPme() {
       en: "Building a Website for SMEs & Non-Profits | Practical Guide DevSupAi",
     },
     {
-      fr: "Découvrez les étapes indispensables pour créer un site internet performant, moderne et sans abonnement récurrent pour une PME ou une association.",
+      fr: "Découvrez les étapes indispensables pour concevoir un site internet performant, moderne et sans abonnement récurrent pour une PME ou une association loi 1901.",
       en: "Essential steps to create a high-performance, modern custom website without recurring platform subscriptions for SMEs and non-profit organizations.",
     },
-    "/blog/site-web-pme-association"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   const schemaMarkup = {

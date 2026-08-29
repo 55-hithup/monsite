@@ -13,14 +13,14 @@ import GlacierContact from '../components/glacier/GlacierContact';
 export default function Home() {
   useDocumentMetadata(
     {
-      fr: "DEVSUPAI • Alexandre Pabst | L'Atelier du Web Sur-Mesure",
-      en: "DEVSUPAI • Alexandre Pabst | Custom Web Atelier & Development",
+      fr: "DevSupAi • Alexandre Pabst | Développeur Web & Création de Sites Sur-Mesure",
+      en: "DevSupAi • Alexandre Pabst | Bespoke Web Developer & Engineering",
     },
     {
-      fr: "Alexandre Pabst • Développeur web indépendant à Saint-Mihiel (Meuse 55). Création artisanale de sites internet et applications sur-mesure pour PME et artisans.",
-      en: "Alexandre Pabst • Independent web developer in Saint-Mihiel (Meuse 55, France). Bespoke websites and custom web applications for SMEs and artisans.",
+      fr: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, vitesse < 0.4s.",
+      en: "Handcrafted showcase websites, e-commerce, and custom SaaS web applications for SMEs, artisans, and non-profits in France and worldwide. Zero recurring software fees, < 0.4s LCP.",
     },
-    "/"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   const containerRef = useRef<HTMLDivElement>(null);

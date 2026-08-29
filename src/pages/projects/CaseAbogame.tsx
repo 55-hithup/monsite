@@ -13,14 +13,14 @@ export default function CaseAbogame() {
 
   useDocumentMetadata(
     {
-      fr: "Étude de cas : Abogame — Plateforme Mobile-First Live & Tirage | DevSupAi",
-      en: "Case Study: Abogame — Mobile-First Live & Giveaway Web App | DevSupAi",
+      fr: "Étude de cas : Abogame | Plateforme Mobile-First Live & Tirage | DevSupAi",
+      en: "Case Study: Abogame | Interactive Real-Time Web Platform | DevSupAi",
     },
     {
-      fr: "Découvrez la conception de la web app mobile-first Abogame : animations interactives en temps réel, roue de tirage au sort et synchronisation live.",
-      en: "Explore the development of the mobile-first Abogame platform: real-time audience engagement, animated spinning wheel, and live synchronization.",
+      fr: "Découvrez comment la plateforme interactive mobile-first Abogame dynamise les animations en direct grâce à une roue de tirage visuelle et interactive à 60 FPS.",
+      en: "Discover how the Abogame mobile-first interactive platform powers live animations and real-time audience engagement with an interactive giveaway wheel.",
     },
-    "/projets/abogame"
+    'https://www.devsupai.fr/abogame.webp'
   );
 
   const schemaMarkup = {

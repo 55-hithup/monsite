@@ -13,10 +13,10 @@ export default function PrivacyPolicy() {
       en: "Privacy Policy | DevSupAi — Data Protection & Privacy",
     },
     {
-      fr: "Politique de confidentialité et protection des données personnelles sur le site devsupai.fr, en stricte conformité avec le RGPD.",
-      en: "Privacy policy and personal data protection principles for devsupai.fr in full compliance with GDPR regulations.",
+      fr: "Découvrez notre politique de confidentialité, le traitement de vos données personnelles et vos droits relatifs aux RGPD sur devsupai.fr.",
+      en: "Read our privacy policy, personal data processing terms, and GDPR compliance standards on devsupai.fr.",
     },
-    "/politique-de-confidentialite"
+    'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
   return (
