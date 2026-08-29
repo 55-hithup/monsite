@@ -2691,9 +2691,41 @@ footer {
   border-color: #FFFFFF;
 }
 
+.glacier-contact-parallax-section {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 90px 0;
+}
+
+.contact-parallax-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.contact-parallax-tint {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.76);
+  z-index: 2;
+}
+
 .glacier-footer-contact-section {
   padding: 90px 0 70px 0;
-  background-color: #F8F8F8;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E5E5E5;
+}
+
+.glacier-footer-info-section {
+  padding: 60px 0 60px 0;
+  background-color: #FFFFFF;
   border-top: 1px solid #E5E5E5;
 }
 
@@ -2742,10 +2774,13 @@ footer {
 }
 
 .glacier-intake-box {
+  position: relative;
+  z-index: 3;
   background: #FFFFFF;
   padding: 48px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.22);
   border: 1px solid #E5E5E5;
+  border-radius: 0px;
   max-width: 900px;
   width: 100%;
   margin-left: auto;
