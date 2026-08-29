@@ -5,7 +5,13 @@ Ces règles s'appliquent automatiquement à chaque tâche de modification, d'ajo
 ## 0. Architecture Static Site Generation (SSG)
 Le projet est configuré en SSG hybride via `vite-react-ssg` combiné à `react-router-dom` v7.
 * **Dépendances :** Toujours conserver `.npmrc` avec `legacy-peer-deps=true` pour résoudre le conflit nominal de dépendances entre React 19 et React Router v7.
-* **Patch Post-installation :** Le package `vite-react-ssg` cherche à importer `react-router-dom/server` ou `react-router-dom/server.js` (qui ne sont pas exportés sous cette forme en v7). Le script de post-installation `scripts/patch-ssg.js` doit être configuré dans `package.json` et maintenu pour corriger l'import dynamiquement vers `react-router`.
+* **Patch Post-installation (`scripts/patch-ssg.js`) :**
+  * Le package `vite-react-ssg` cherche à importer `react-router-dom/server` ou `react-router-dom/server.js` (non exportés sous cette forme en v7) ; le script de patch corrige dynamiquement cet import vers `react-router`.
+  * **Intégrité de l'Hydratation & Fallback React 19 :** Dans les fonctions `render` et `hydrate` du bundle client `vite-react-ssg`, tout montage `createRoot` ou fallback d'hydratation doit impérativement exécuter `container.innerHTML = ''` avant le rendu pour éliminer tout risque de dédoublement de l'arbre DOM.
+  * **HydrationData Router :** `createRouter` doit être instancié avec `hydrationData: typeof window !== 'undefined' ? window.__staticRouterHydrationData : void 0`.
+* **Post-processing SSG (`vite.config.ts` - `onPageRendered`) :**
+  * **Hoisting des Preloads :** Toutes les balises `<link rel="preload">` générées par React 19 dans le `<body>` doivent être extraites et hissées dans `<head>` pour garantir la validité HTML5 et un conteneur `#root` propre.
+  * **Hoisting des Scripts de Routeur :** La balise `<script>window.__staticRouterHydrationData = ...</script>` doit impérativement être placée en dehors de `<div id="root">` (juste après la fermeture `</div>`) afin que `#root` ne contienne que l'élément React racine (1:1 avec le JSX).
 * **Sécurisation SSR (Server-Side Rendering) :**
   * Interdiction d'accéder directement à `window`, `document`, ou aux API navigateurs au niveau du module ou dans les constructeurs/corps de composants. Tous les accès doivent se faire dans un hook `useEffect` ou être gardés par un test `typeof window !== 'undefined'`.
   * Les hooks d'appels réseau (ex : Firestore dans `Testimonials.tsx` ou localStorage dans `firebase.ts`) doivent être immédiatement court-circuités avec `if (typeof window === 'undefined') return;` pour éviter des blocages ou ralentissements pendant le build.
