@@ -51,42 +51,32 @@ function patchFile(filePath) {
       }
     }
 
-    // Patch React 19 render in client bundle to support clean container clearing
-    const renderRegex = /import\('react-dom\/client'\)\.then\(\(\{\s*default:\s*\{\s*createRoot\s*\}\s*\}\)\s*=>\s*\{[\s\S]*?\}\);\s*\}\);/;
-    const safeRenderReplacement = `import('react-dom/client').then((mod) => {
-      const createRoot = mod.createRoot || mod.default?.createRoot;
-      container.innerHTML = '';
-      const root = createRoot(container);
-      React.startTransition(() => {
-        root.render(app);
-      });
-    });`;
+    // Patch React 19 render & hydrate in client bundle to guarantee zero DOM duplication
+    const renderHydrateRegex = /function render\(app,\s*container[\s\S]*?function documentReady/;
+    if (renderHydrateRegex.test(content)) {
+      const replacement = `function render(app, container, renderOptions = {}) {
+  container.innerHTML = '';
+  import('react-dom/client').then((mod) => {
+    const createRoot = mod.createRoot || mod.default?.createRoot;
+    const root = createRoot(container);
+    React.startTransition(() => {
+      root.render(app);
+    });
+  });
+}
+function hydrate(app, container, renderOptions = {}) {
+  container.innerHTML = '';
+  import('react-dom/client').then((mod) => {
+    const createRoot = mod.createRoot || mod.default?.createRoot;
+    const root = createRoot(container);
+    React.startTransition(() => {
+      root.render(app);
+    });
+  });
+}
 
-    if (renderRegex.test(content)) {
-      content = content.replace(renderRegex, safeRenderReplacement);
-      modified = true;
-    }
-
-    // Patch React 19 hydrate in client bundle to support safe fallback and clean interop
-    const hydrateRegex = /import\('react-dom\/client'\)\.then\([\s\S]*?\}\);\s*\}\);/;
-    const safeHydrateReplacement = `import('react-dom/client').then((mod) => {
-      const hydrateRoot = mod.hydrateRoot || mod.default?.hydrateRoot;
-      const createRoot = mod.createRoot || mod.default?.createRoot;
-      React.startTransition(() => {
-        try {
-          hydrateRoot(container, app, {
-            onRecoverableError(err) { console.warn('[SSG Hydration Recoverable]', err); }
-          });
-        } catch (e) {
-          console.error('[SSG Hydration Failure, falling back to clean render]:', e);
-          container.innerHTML = '';
-          createRoot(container).render(app);
-        }
-      });
-    });`;
-
-    if (hydrateRegex.test(content) && !content.includes('SSG Hydration Recoverable')) {
-      content = content.replace(hydrateRegex, safeHydrateReplacement);
+function documentReady`;
+      content = content.replace(renderHydrateRegex, replacement);
       modified = true;
     }
 
