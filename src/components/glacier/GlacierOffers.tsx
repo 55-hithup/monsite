@@ -329,7 +329,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               </span>
             </div>
 
-            <div className="offers-reassurance-note flex items-start gap-2.5 p-3.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-[#4A4A4A] leading-relaxed">
+            <div className="offers-reassurance-note flex items-start gap-2.5 p-3.5 bg-slate-50 border border-slate-200 text-xs text-[#4A4A4A] leading-relaxed">
               <ShieldCheck className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <strong className="font-bold text-[#1A1A1A]">Transparence totale dès l&apos;an 2 : </strong>
