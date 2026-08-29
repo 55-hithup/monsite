@@ -51,6 +51,22 @@ function patchFile(filePath) {
       }
     }
 
+    // Patch React 19 render in client bundle to support clean container clearing
+    const renderRegex = /import\('react-dom\/client'\)\.then\(\(\{\s*default:\s*\{\s*createRoot\s*\}\s*\}\)\s*=>\s*\{[\s\S]*?\}\);\s*\}\);/;
+    const safeRenderReplacement = `import('react-dom/client').then((mod) => {
+      const createRoot = mod.createRoot || mod.default?.createRoot;
+      container.innerHTML = '';
+      const root = createRoot(container);
+      React.startTransition(() => {
+        root.render(app);
+      });
+    });`;
+
+    if (renderRegex.test(content)) {
+      content = content.replace(renderRegex, safeRenderReplacement);
+      modified = true;
+    }
+
     // Patch React 19 hydrate in client bundle to support safe fallback and clean interop
     const hydrateRegex = /import\('react-dom\/client'\)\.then\([\s\S]*?\}\);\s*\}\);/;
     const safeHydrateReplacement = `import('react-dom/client').then((mod) => {
@@ -71,6 +87,14 @@ function patchFile(filePath) {
 
     if (hydrateRegex.test(content) && !content.includes('SSG Hydration Recoverable')) {
       content = content.replace(hydrateRegex, safeHydrateReplacement);
+      modified = true;
+    }
+
+    // Patch createRouter to pass hydrationData from server SSR if present
+    const searchRouterHydration = "{ basename: BASE_URL, future: routerFeature }";
+    const replaceRouterHydration = "{ basename: BASE_URL, future: routerFeature, hydrationData: typeof window !== 'undefined' ? window.__staticRouterHydrationData : void 0 }";
+    if (content.includes(searchRouterHydration) && !content.includes('window.__staticRouterHydrationData')) {
+      content = content.replace(searchRouterHydration, replaceRouterHydration);
       modified = true;
     }
     

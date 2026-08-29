@@ -315,18 +315,23 @@ export default defineConfig({
       // Update <html lang="..."> attribute
       cleanHtml = cleanHtml.replace(/<html\s+lang="[^"]*"/, `<html lang="${isEnglish ? 'en' : 'fr'}"`);
 
-      // Extract hoisted preload links or scripts from root container
-      cleanHtml = cleanHtml.replace(/(<div id="root"[^>]*>)([\s\S]*?)(<\/div>)/, (_match: string, openTag: string, innerHtml: string, closeTag: string) => {
-        let extractedHeadTags = '';
-        let cleanedInner = innerHtml.replace(/<link rel="preload"[^>]*>/g, (tagMatch: string) => {
-          extractedHeadTags += tagMatch;
+      // Extract any <link rel="preload" ...> tags from <body> and hoist them into <head>
+      const bodyIndex = cleanHtml.indexOf('<body');
+      if (bodyIndex !== -1) {
+        const headPart = cleanHtml.slice(0, bodyIndex);
+        let bodyPart = cleanHtml.slice(bodyIndex);
+        let hoistedPreloads = '';
+        bodyPart = bodyPart.replace(/<link rel="preload"[^>]*>/g, (linkMatch: string) => {
+          hoistedPreloads += linkMatch;
           return '';
         });
-        if (extractedHeadTags) {
-          cleanHtml = cleanHtml.replace('</head>', `${extractedHeadTags}</head>`);
+        if (hoistedPreloads) {
+          cleanHtml = headPart.replace('</head>', `${hoistedPreloads}</head>`) + bodyPart;
         }
-        return `${openTag}${cleanedInner}${closeTag}`;
-      });
+      }
+
+      // Move any __staticRouterHydrationData scripts from inside #root to outside #root to ensure 1:1 clean DOM structure for React 19 hydration
+      cleanHtml = cleanHtml.replace(/(<script>window\.__staticRouterHydrationData[\s\S]*?<\/script>)\s*<\/div>/g, '</div>$1');
 
       // -----------------------------------------------------------------------
       // Comprehensive JSON-LD Structured Data per Route Type
