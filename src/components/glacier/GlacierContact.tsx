@@ -8,8 +8,8 @@ export default function GlacierContact() {
   const location = useLocation();
 
   const defaultProjectType = isEn
-    ? 'SME Growth Pack (from €1,850)'
-    : 'Pack Croissance PME (dès 1 850 €)';
+    ? 'Bespoke Showcase Website (SME, Craftsman, Non-Profit)'
+    : 'Site vitrine sur-mesure (PME, Artisan, Association)';
 
   const [formData, setFormData] = useState({
     name: '',
@@ -34,31 +34,26 @@ export default function GlacierContact() {
         const decodedService = decodeURIComponent(serviceParam);
         setFormData((prev) => ({
           ...prev,
-          projectType: isEn ? 'Other Custom Project' : 'Autre projet sur-mesure',
+          projectType: isEn ? 'Other Project / Initial Discussion' : 'Autre projet / Premier échange',
           message: isEn
-            ? `Hello Alexandre, I would like to get information and a quote regarding the service: "${decodedService}".`
-            : `Bonjour Alexandre, je souhaite obtenir des informations et un devis pour la prestation : "${decodedService}".`,
+            ? `Hello Alexandre, I would like to discuss and get information regarding: "${decodedService}".`
+            : `Bonjour Alexandre, je souhaite obtenir des informations et échanger au sujet de la prestation : "${decodedService}".`,
         }));
       } else if (packParam) {
-        if (packParam === 'presence') {
+        if (packParam === 'presence' || packParam === 'croissance') {
           setFormData((prev) => ({
             ...prev,
-            projectType: isEn ? 'Presence Pack One-Page (from €950)' : 'Pack Présence One-Page (dès 950 €)',
-          }));
-        } else if (packParam === 'croissance') {
-          setFormData((prev) => ({
-            ...prev,
-            projectType: isEn ? 'SME Growth Pack (from €1,850)' : 'Pack Croissance PME (dès 1 850 €)',
+            projectType: isEn ? 'Bespoke Showcase Website (SME, Craftsman, Non-Profit)' : 'Site vitrine sur-mesure (PME, Artisan, Association)',
           }));
         } else if (packParam === 'saas') {
           setFormData((prev) => ({
             ...prev,
-            projectType: isEn ? 'SaaS & Custom Web App (from €3,200)' : 'Pack SaaS & Outil Métier (dès 3 200 €)',
+            projectType: isEn ? 'Custom Web App, SaaS or Business Software' : 'Application web, SaaS ou Logiciel métier',
           }));
         } else if (packParam === 'google') {
           setFormData((prev) => ({
             ...prev,
-            projectType: isEn ? 'Google Business Profile Option (€29/month)' : 'Option Google Business Profile (29 €/mois)',
+            projectType: isEn ? 'Website Redesign & Speed Optimization' : 'Refonte, Modernisation ou Optimisation de vitesse',
           }));
         }
       }
@@ -147,8 +142,8 @@ export default function GlacierContact() {
               </h3>
               <p className="intake-desc">
                 {isEn
-                  ? "Fill out this form to receive a detailed proposal tailored to your business goals and budget."
-                  : "Remplissez ce formulaire pour recevoir une proposition adaptée à vos objectifs et à votre budget."}
+                  ? "Fill out this form to discuss your project and receive a tailored proposal adapted to your goals."
+                  : "Remplissez ce formulaire pour échanger sur vos besoins et recevoir une proposition adaptée à votre projet."}
               </p>
             </div>
 
@@ -187,12 +182,12 @@ export default function GlacierContact() {
                 </div>
 
                 <div>
-                  <label htmlFor="client-package" className="sr-only">
-                    {isEn ? "Project package or service type" : "Forfait ou type de projet souhaité"}
+                  <label htmlFor="client-project-type" className="sr-only">
+                    {isEn ? "Select your project type" : "Type de projet souhaité"}
                   </label>
                   <select 
                     name="projectType"
-                    id="client-package" 
+                    id="client-project-type" 
                     value={formData.projectType}
                     onChange={handleChange}
                     required 
@@ -200,19 +195,21 @@ export default function GlacierContact() {
                   >
                     {isEn ? (
                       <>
-                        <option value="SME Growth Pack (from €1,850)">SME Growth Pack (from €1,850)</option>
-                        <option value="Presence Pack One-Page (from €950)">Presence Pack One-Page (from €950)</option>
-                        <option value="SaaS & Custom Web App (from €3,200)">SaaS &amp; Custom Web App (from €3,200)</option>
-                        <option value="Google Business Profile Option (€29/month)">Google Business Profile Option (€29/month)</option>
-                        <option value="Other Custom Project">Other Custom Project</option>
+                        <option value="Bespoke Showcase Website (SME, Craftsman, Non-Profit)">Bespoke Showcase Website (SME, Craftsman, Non-Profit)</option>
+                        <option value="E-Commerce & Online Booking System">E-Commerce &amp; Online Booking System</option>
+                        <option value="Custom Web App, SaaS or Business Software">Custom Web App, SaaS or Business Software</option>
+                        <option value="Website Redesign & Speed Optimization">Website Redesign &amp; Speed Optimization</option>
+                        <option value="Technical Maintenance & Support">Technical Maintenance &amp; Support</option>
+                        <option value="Other Project / Initial Discussion">Other Project / Initial Discussion</option>
                       </>
                     ) : (
                       <>
-                        <option value="Pack Croissance PME (dès 1 850 €)">Pack Croissance PME (dès 1 850 €)</option>
-                        <option value="Pack Présence One-Page (dès 950 €)">Pack Présence One-Page (dès 950 €)</option>
-                        <option value="Pack SaaS & Outil Métier (dès 3 200 €)">Pack SaaS &amp; Outil Métier (dès 3 200 €)</option>
-                        <option value="Option Google Business Profile (29 €/mois)">Option Google Business Profile (29 €/mois)</option>
-                        <option value="Autre projet sur-mesure">Autre projet sur-mesure</option>
+                        <option value="Site vitrine sur-mesure (PME, Artisan, Association)">Site vitrine sur-mesure (PME, Artisan, Association)</option>
+                        <option value="E-commerce & Système de réservation">E-commerce &amp; Système de réservation</option>
+                        <option value="Application web, SaaS ou Logiciel métier">Application web, SaaS ou Logiciel métier</option>
+                        <option value="Refonte, Modernisation ou Optimisation de vitesse">Refonte, Modernisation ou Optimisation de vitesse</option>
+                        <option value="Maintenance technique & Dépannage">Maintenance technique &amp; Dépannage</option>
+                        <option value="Autre projet / Premier échange">Autre projet / Premier échange</option>
                       </>
                     )}
                   </select>
