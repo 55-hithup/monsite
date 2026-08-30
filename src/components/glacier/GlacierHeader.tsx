@@ -78,8 +78,8 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         </Link>
         <span className={`glacier-logo-sub transition-all duration-700 ease-out ${isSubtitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
           {isEn
-            ? "Alexandre Pabst's Custom Web Atelier • France"
-            : "L'Atelier Web d'Alexandre Pabst • Meuse"}
+            ? "Custom Web Atelier • France"
+            : "L'Atelier Web Sur-Mesure • Meuse"}
         </span>
       </div>
 

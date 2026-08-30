@@ -36,8 +36,8 @@ export default function GlacierContact() {
           ...prev,
           projectType: isEn ? 'Other Project / Initial Discussion' : 'Autre projet / Premier échange',
           message: isEn
-            ? `Hello Alexandre, I would like to discuss and get information regarding: "${decodedService}".`
-            : `Bonjour Alexandre, je souhaite obtenir des informations et échanger au sujet de la prestation : "${decodedService}".`,
+            ? `Hello, I would like to discuss and get information regarding: "${decodedService}".`
+            : `Bonjour, je souhaite obtenir des informations et échanger au sujet de la prestation : "${decodedService}".`,
         }));
       } else if (packParam) {
         if (packParam === 'presence' || packParam === 'croissance') {
@@ -248,7 +248,7 @@ export default function GlacierContact() {
                   </>
                 ) : (
                   <>
-                    {isEn ? "SEND MY REQUEST TO ALEXANDRE" : "ENVOYER MA DEMANDE À ALEXANDRE"}
+                    {isEn ? "SEND MY REQUEST" : "ENVOYER MA DEMANDE"}
                     <ArrowRight className="w-4 h-4 inline" aria-hidden="true" />
                   </>
                 )}
@@ -259,8 +259,8 @@ export default function GlacierContact() {
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" aria-hidden="true" />
                   <span>
                     {isEn
-                      ? "Message successfully transmitted! Alexandre Pabst will personally get back to you within 24 business hours."
-                      : "Message bien transmis ! Alexandre Pabst vous recontactera personnellement sous 24h ouvrées."}
+                      ? "Message successfully transmitted! We will get back to you within 24 business hours."
+                      : "Message bien transmis ! Une réponse personnalisée vous sera apportée sous 24h ouvrées."}
                   </span>
                 </div>
               )}

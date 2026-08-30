@@ -36,7 +36,7 @@ export const servicesData = {
       valPillars: "4 Pôles d'Expertise",
       valPillarsSub: '47 Solutions ciblées',
       valContact: 'Interlocuteur Dédié',
-      valContactSub: 'Alexandre Pabst (Fondateur)',
+      valContactSub: 'Fondateur & Développeur',
       directAccess: 'Accès direct :',
       anchorPillars: '1. Les 4 Grands Pôles',
       anchorCatalog: '2. Moteur de Recherche (47 prestations)',
@@ -108,7 +108,7 @@ export const servicesData = {
     banner: {
       title: 'Vous avez un projet spécifique en tête ?',
       desc: 'Obtenez une étude de faisabilité technique gratuite et un devis personnalisé sous 24 heures.',
-      cta: 'Contacter Alexandre Pabst',
+      cta: 'Échanger sur mon projet',
     },
   },
   en: {
@@ -123,7 +123,7 @@ export const servicesData = {
       valPillars: '4 Core Pillars',
       valPillarsSub: '47 Targeted solutions',
       valContact: 'Dedicated Expert',
-      valContactSub: 'Alexandre Pabst (Founder)',
+      valContactSub: 'Founder & Developer',
       directAccess: 'Direct access:',
       anchorPillars: '1. The 4 Core Pillars',
       anchorCatalog: '2. Search Engine (47 Services)',
@@ -195,7 +195,7 @@ export const servicesData = {
     banner: {
       title: 'Do you have a specific digital project in mind?',
       desc: 'Get a free technical feasibility study and a clear custom quote within 24 hours.',
-      cta: 'Contact Alexandre Pabst',
+      cta: 'Discuss my project',
     },
   },
 };

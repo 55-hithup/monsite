@@ -54,11 +54,11 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
         <p className="hero-text-paragraph">
           {isEn ? (
             <>
-              Handcrafted showcase websites, e-commerce stores, and web applications for <strong>SMEs, artisans, and non-profits</strong>. Lightweight, high-performance architectures, 100% proprietary code without recurring software fees, engineered by Alexandre Pabst.
+              Handcrafted showcase websites, e-commerce stores, and web applications for <strong>SMEs, artisans, and non-profits</strong>. Lightweight, high-performance architectures, 100% proprietary code without recurring software fees, engineered with precision by DevSupAi.
             </>
           ) : (
             <>
-              Création de sites vitrines, e-commerce et applications web pour les <strong>PME, artisans, commerçants et associations</strong> en Meuse (Saint-Mihiel, Commercy, Verdun, Bar-le-Duc), Grand Est et toute la France. Des architectures ultra-légères, 100% propriétaires et sans abonnement captif, conçues par Alexandre Pabst.
+              Création de sites vitrines, e-commerce et applications web pour les <strong>PME, artisans, commerçants et associations</strong> en Meuse (Saint-Mihiel, Commercy, Verdun, Bar-le-Duc), Grand Est et toute la France. Des architectures ultra-légères, 100% propriétaires et sans abonnement captif, conçues sur-mesure par DevSupAi.
             </>
           )}
         </p>

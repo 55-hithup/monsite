@@ -23,7 +23,7 @@ export const translations = {
       titleLine1: 'Création de sites web',
       titleHighlight: 'sur-mesure',
       titleLine2: 'pour PME & Associations',
-      boxTitle: 'Alexandre Pabst • Développeur Web à Saint-Mihiel (Meuse 55) :',
+      boxTitle: 'DevSupAi • Développeur Web à Saint-Mihiel (Meuse 55) :',
       boxDesc: "Développeur web freelance basé à Saint-Mihiel (55), je conçois des sites vitrines, e-commerce et applications sur-mesure pour PME, artisans et associations à Saint-Mihiel, Commercy, Verdun, Bar-le-Duc, dans le Grand Est et toute la France.",
       ctaQuote: 'Demander un devis PME / Asso →',
       ctaProjects: 'Découvrir les réalisations →',
@@ -49,7 +49,7 @@ export const translations = {
         {
           tag: 'Contact direct',
           title: 'Qui réalise votre projet ?',
-          desc: 'Un interlocuteur unique : vous échangez directement avec Alexandre Pabst, créateur et développeur de votre site.',
+          desc: 'Un interlocuteur unique : vous échangez directement avec le concepteur et développeur de votre site.',
         },
       ],
     },
@@ -157,7 +157,7 @@ export const translations = {
         },
         {
           title: 'Interlocuteur unique :',
-          text: 'Alexandre Pabst, développeur freelance dédié, réponse sous 24h.',
+          text: 'Un développeur dédié à votre écoute, réponse sous 24h.',
         },
       ],
       monthlyOption: {
@@ -328,7 +328,7 @@ export const translations = {
         submitBtn: 'Envoyer mon avis',
         submitting: 'Envoi...',
         successTitle: 'Avis enregistré !',
-        successText: 'Merci pour votre retour. Votre témoignage sera visible sur le site dès sa modération par Alexandre.',
+        successText: 'Merci pour votre retour. Votre témoignage sera visible sur le site dès sa modération et validation.',
       },
     },
     faq: {
@@ -372,7 +372,7 @@ export const translations = {
       sendAnother: 'envoyer un autre message',
     },
     footer: {
-      brandDesc: 'Alexandre Pabst • Développeur web freelance spécialisé dans la création de sites internet et applications sur-mesure de haute performance pour PME, artisans et associations.',
+      brandDesc: 'DevSupAi • Atelier de développement web sur-mesure spécialisé dans la création de sites internet et applications de haute performance pour PME, artisans et associations.',
       status: 'Disponible pour vos projets',
       navTitle: 'Navigation',
       home: 'Accueil',
@@ -454,7 +454,7 @@ export const translations = {
         {
           tag: 'Direct Contact',
           title: 'Who builds your project?',
-          desc: 'A dedicated single point of contact: you work directly with Alexandre Pabst, founder and developer of your site.',
+          desc: 'A dedicated single point of contact: you work directly with the founder and developer of your site.',
         },
       ],
     },
@@ -562,7 +562,7 @@ export const translations = {
         },
         {
           title: 'Single Point of Contact:',
-          text: 'Alexandre Pabst, dedicated freelance developer, reply within 24h.',
+          text: 'A dedicated developer at your service, reply within 24h.',
         },
       ],
       monthlyOption: {
@@ -733,7 +733,7 @@ export const translations = {
         submitBtn: 'Submit my review',
         submitting: 'Submitting...',
         successTitle: 'Review recorded!',
-        successText: 'Thank you for your feedback. Your testimonial will appear on the site once reviewed by Alexandre.',
+        successText: 'Thank you for your feedback. Your testimonial will appear on the site once reviewed and approved.',
       },
     },
     faq: {
@@ -777,7 +777,7 @@ export const translations = {
       sendAnother: 'send another message',
     },
     footer: {
-      brandDesc: 'Alexandre Pabst • Freelance web developer specializing in high-performance custom websites and web applications for SMEs, artisans, and non-profit organizations.',
+      brandDesc: 'DevSupAi • Bespoke web development atelier specializing in high-performance custom websites and web applications for SMEs, artisans, and non-profit organizations.',
       status: 'Available for new projects',
       navTitle: 'Navigation',
       home: 'Home',

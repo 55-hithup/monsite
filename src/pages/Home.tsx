@@ -13,8 +13,8 @@ import GlacierContact from '../components/glacier/GlacierContact';
 export default function Home() {
   useDocumentMetadata(
     {
-      fr: "DevSupAi • Alexandre Pabst | Développeur Web & Création de Sites Sur-Mesure",
-      en: "DevSupAi • Alexandre Pabst | Bespoke Web Developer & Engineering",
+      fr: "DevSupAi | Développeur Web & Création de Sites Sur-Mesure",
+      en: "DevSupAi | Bespoke Web Developer & Engineering",
     },
     {
       fr: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, temps de chargement optimisés.",

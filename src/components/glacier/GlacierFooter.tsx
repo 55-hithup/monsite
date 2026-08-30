@@ -29,7 +29,7 @@ export default function GlacierFooter() {
           </Link>
         </div>
         <div className="copyright-text">
-          &copy; {currentYear} {isEn ? 'by DevSupAi • Alexandre Pabst. Handcrafted without CMS.' : 'par DevSupAi • Alexandre Pabst. Créé sur-mesure sans CMS.'}
+          &copy; {currentYear} {isEn ? 'DevSupAi. Handcrafted without CMS.' : 'DevSupAi. Créé sur-mesure sans CMS.'}
         </div>
       </div>
     </footer>
