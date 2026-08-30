@@ -1824,9 +1824,25 @@ footer {
 
 .header-logo-block {
   margin-bottom: 24px;
+  position: relative;
 }
 
-.glacier-logo-text {
+.glacier-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  line-height: 1;
+}
+
+.glacier-logo-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.glacier-logo-text,
+.glacier-logo-text-reveal {
   font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
   font-size: clamp(2.2rem, 5vw, 2.8rem);
   font-weight: 900;
@@ -1835,6 +1851,21 @@ footer {
   text-decoration: none;
   display: inline-block;
   line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.glacier-logo-reveal-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: clamp(3.0rem, 6.5vw, 4.0rem);
+  width: auto;
+  transform: translate(-9999px, -50%);
+  pointer-events: none;
+  will-change: transform;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.12));
+  z-index: 2;
 }
 
 .glacier-logo-sub {

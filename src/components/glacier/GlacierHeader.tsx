@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { Languages } from 'lucide-react';
+import GlacierLogoReveal from './GlacierLogoReveal';
 
 interface GlacierHeaderProps {
   onNavClick?: (targetId: string) => void;
@@ -11,6 +13,11 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   const navigate = useNavigate();
   const { language, setLanguage, isEn } = useLanguage();
   const isHomePage = location.pathname === '/' || location.pathname === '/en';
+  const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
+
+  useEffect(() => {
+    setIsSubtitleVisible(false);
+  }, [location.pathname]);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -59,10 +66,17 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   return (
     <header className="glacier-main-header">
       <div className="header-logo-block">
-        <Link to={isEn ? '/en' : '/'} className="glacier-logo-text">
-          DEVSUPAI
+        <Link 
+          to={isEn ? '/en' : '/'} 
+          className="glacier-logo-link"
+          aria-label={isEn ? 'DevSupAi - Home' : 'DevSupAi - Accueil'}
+        >
+          <GlacierLogoReveal 
+            isEn={isEn} 
+            onComplete={() => setIsSubtitleVisible(true)} 
+          />
         </Link>
-        <span className="glacier-logo-sub">
+        <span className={`glacier-logo-sub transition-all duration-700 ease-out ${isSubtitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
           {isEn
             ? "Alexandre Pabst's Custom Web Atelier • France"
             : "L'Atelier Web d'Alexandre Pabst • Meuse"}
