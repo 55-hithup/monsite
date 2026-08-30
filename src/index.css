@@ -2892,6 +2892,12 @@ footer {
   .split-container {
     grid-template-columns: 1fr;
     gap: 40px;
+    overflow-x: hidden;
+  }
+  .split-content-col,
+  .split-photo-col {
+    min-width: 0;
+    overflow: hidden;
   }
   .photo-frame-sticky {
     position: static;
@@ -2935,5 +2941,36 @@ footer {
   }
   .item-dots {
     display: none;
+  }
+  .item-name {
+    white-space: normal;
+    word-break: break-word;
+    font-size: 1rem;
+  }
+  .item-price {
+    font-size: 1rem;
+  }
+  .item-desc {
+    font-size: 0.875rem;
+  }
+  .menu-item-row {
+    padding: 14px 16px;
+    overflow: hidden;
+  }
+  .item-subtags {
+    word-break: break-word;
+  }
+  .col-main-title {
+    font-size: 1.5rem;
+    word-break: break-word;
+  }
+  .col-lead-desc {
+    font-size: 0.9375rem;
+  }
+  .glacier-split-section {
+    padding: 60px 0;
+  }
+  .split-container {
+    padding: 0 16px;
   }
 }
