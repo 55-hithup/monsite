@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
 
@@ -9,9 +9,10 @@ export default function GlacierFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { isEn } = useLanguage();
   const headerRef = useRef<HTMLDivElement>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !headerRef.current) return;
+    if (typeof window === 'undefined') return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
@@ -20,30 +21,73 @@ export default function GlacierFaq() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      const targets = headerRef.current ? Array.from(headerRef.current.children) : [];
-      if (targets.length > 0) {
-        gsap.fromTo(
-          targets,
-          { opacity: 0, y: 30, scale: 0.95 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: 'power3.out',
-            delay: 0.05,
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: 'top 85%',
-              once: true,
-            },
-          }
-        );
+      // 1. Animation En-tête
+      if (headerRef.current) {
+        const targets = Array.from(headerRef.current.children);
+        if (targets.length > 0) {
+          gsap.fromTo(
+            targets,
+            { opacity: 0, y: 30, scale: 0.95 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.7,
+              stagger: 0.12,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: headerRef.current,
+                start: 'top 85%',
+                end: 'bottom top',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
       }
-    }, headerRef);
 
-    return () => ctx.revert();
+      // 2. Animation des questions FAQ : Relais dynamique en cascade (départ pendant le ralentissement de la précédente)
+      if (cardsContainerRef.current) {
+        const cards = Array.from(cardsContainerRef.current.children);
+        const faqTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: cardsContainerRef.current,
+            start: 'top 80%',
+            end: 'bottom top',
+            toggleActions: 'play none none reverse',
+          },
+        });
+
+        cards.forEach((card, idx) => {
+          const fromLeft = idx % 2 === 0;
+          faqTimeline.fromTo(
+            card,
+            {
+              opacity: 0,
+              x: fromLeft ? -100 : 100,
+              filter: 'blur(6px)',
+            },
+            {
+              opacity: 1,
+              x: 0,
+              filter: 'blur(0px)',
+              duration: 0.5,
+              ease: 'power3.out',
+            },
+            idx === 0 ? 0 : '-=0.32'
+          );
+        });
+      }
+    });
+
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
   }, []);
 
   const toggleFaq = (index: number) => {
@@ -145,46 +189,59 @@ export default function GlacierFaq() {
 
       {/* 2. Questions & Réponses sur Fond Blanc Épuré */}
       <section 
-        className="py-16 md:py-24 bg-white text-left border-b border-[#E5E5E5]" 
+        className="py-16 md:py-24 bg-white text-center border-b border-[#E5E5E5] overflow-hidden" 
         aria-label={isEn ? "Frequently Asked Questions" : "Questions fréquentes"}
       >
         <div className="container mx-auto px-6 max-w-4xl">
-          <div className="space-y-4">
+          <div ref={cardsContainerRef} className="space-y-4">
             {homeFaqItems.map((item, idx) => {
               const isOpen = openIndex === idx;
               return (
                 <div
                   key={idx}
-                  className={`p-6 rounded-xl bg-[#F8F8F8] border transition-all duration-200 ${
-                    isOpen ? 'border-[#0284C7] bg-white shadow-sm' : 'border-[#E5E5E5] hover:border-[#CCCCCC]'
+                  className={`p-6 rounded-xl border transition-all duration-300 ease-out text-center ${
+                    isOpen
+                      ? 'border-[#0284C7] bg-white shadow-md'
+                      : 'border-[#E5E5E5] bg-[#F8F8F8] hover:border-[#CCCCCC]'
                   }`}
                 >
                   <button
                     type="button"
                     onClick={() => toggleFaq(idx)}
-                    className="w-full flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none"
+                    className="w-full flex items-center justify-between text-center gap-4 cursor-pointer focus:outline-none group"
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${idx}`}
                     id={`faq-question-${idx}`}
                   >
-                    <h3 className="text-sm sm:text-base font-bold font-['Montserrat'] text-[#1A1A1A] leading-snug">
+                    <span className="w-[30px] shrink-0 invisible" aria-hidden="true" />
+                    <h3 className="text-sm sm:text-base font-bold font-['Montserrat'] text-[#1A1A1A] leading-snug text-center transition-colors duration-200 group-hover:text-[#0284C7] flex-1">
                       {item.question}
                     </h3>
-                    <span className="text-[#0284C7] shrink-0 p-1 rounded-full bg-white border border-[#E5E5E5]">
-                      {isOpen ? <ChevronUp size={16} aria-hidden="true" /> : <ChevronDown size={16} aria-hidden="true" />}
+                    <span className={`shrink-0 p-1.5 rounded-full bg-white border transition-all duration-300 ${
+                      isOpen ? 'border-[#0284C7] text-[#0284C7] bg-sky-50' : 'border-[#E5E5E5] text-[#555555]'
+                    }`}>
+                      <ChevronDown
+                        size={16}
+                        aria-hidden="true"
+                        className={`transition-transform duration-300 ease-out ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                      />
                     </span>
                   </button>
 
-                  {isOpen && (
-                    <div
-                      id={`faq-answer-${idx}`}
-                      role="region"
-                      aria-labelledby={`faq-question-${idx}`}
-                      className="mt-4 pt-4 border-t border-[#E5E5E5] text-xs sm:text-sm text-[#555555] leading-relaxed font-['Plus_Jakarta_Sans']"
-                    >
-                      {item.answer}
+                  <div
+                    id={`faq-answer-${idx}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${idx}`}
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="mt-4 pt-4 border-t border-[#E5E5E5] text-xs sm:text-sm text-[#555555] leading-relaxed font-['Plus_Jakarta_Sans'] text-center">
+                        {item.answer}
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

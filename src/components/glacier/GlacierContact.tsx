@@ -1,11 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Check, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 export default function GlacierContact() {
   const { isEn } = useLanguage();
   const location = useLocation();
+  const boxRef = useRef<HTMLDivElement>(null);
+  const addressRef = useRef<HTMLDivElement>(null);
+  const directContactRef = useRef<HTMLDivElement>(null);
+  const hoursRef = useRef<HTMLDivElement>(null);
 
   const defaultProjectType = isEn
     ? 'Bespoke Showcase Website (SME, Craftsman, Non-Profit)'
@@ -20,6 +26,130 @@ export default function GlacierContact() {
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Animations au scroll : Formulaire 3D + Glissé adresse (gauche) + Émergence contact (centre/retard) + Glissé horaires (droite)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      if (boxRef.current) {
+        gsap.fromTo(
+          boxRef.current,
+          {
+            opacity: 0,
+            scale: 0.82,
+            y: 50,
+            filter: 'blur(16px)',
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: boxRef.current,
+              start: 'top 75%',
+              end: 'bottom top',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      if (addressRef.current) {
+        gsap.fromTo(
+          addressRef.current,
+          {
+            opacity: 0,
+            x: -120,
+            filter: 'blur(8px)',
+          },
+          {
+            opacity: 1,
+            x: 0,
+            filter: 'blur(0px)',
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: addressRef.current,
+              start: 'top 85%',
+              end: 'bottom top',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      if (directContactRef.current) {
+        gsap.fromTo(
+          directContactRef.current,
+          {
+            opacity: 0,
+            scale: 0.75,
+            y: 30,
+            filter: 'blur(12px)',
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 1.2,
+            delay: 0.25,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: directContactRef.current,
+              start: 'top 85%',
+              end: 'bottom top',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      if (hoursRef.current) {
+        gsap.fromTo(
+          hoursRef.current,
+          {
+            opacity: 0,
+            x: 120,
+            filter: 'blur(8px)',
+          },
+          {
+            opacity: 1,
+            x: 0,
+            filter: 'blur(0px)',
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: hoursRef.current,
+              start: 'top 85%',
+              end: 'bottom top',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+    });
+
+    // Actualiser les positions des triggers une fois le layout stabilisé
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
+  }, []);
 
   // Handle URL query parameters for dynamic pre-fill (e.g. from /nos-services?service=...)
   useEffect(() => {
@@ -132,13 +262,13 @@ export default function GlacierContact() {
 
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <h2 id="contact-heading" className="sr-only">
-            {isEn ? "Contact & Bespoke Quote Request" : "Contact et Demande de Devis Personnalisé"}
+            {isEn ? "Contact & Inquiries" : "Contact et Demande de Renseignements"}
           </h2>
           
-          <div className="glacier-intake-box mx-auto">
+          <div ref={boxRef} className="glacier-intake-box mx-auto">
             <div className="intake-header">
               <h3 className="intake-title">
-                {isEn ? "REQUEST A BESPOKE QUOTE" : "DEMANDER UN DEVIS PERSONNALISÉ"}
+                {isEn ? "HAVE A QUESTION OR A PROJECT?" : "UNE QUESTION ? UN PROJET ?"}
               </h3>
               <p className="intake-desc">
                 {isEn
@@ -278,14 +408,14 @@ export default function GlacierContact() {
 
       {/* 2. Coordonnées & Horaires (Section Blanche Distincte) */}
       <section 
-        className="glacier-footer-info-section w-full" 
+        className="glacier-footer-info-section w-full overflow-hidden" 
         aria-label={isEn ? "Atelier Contact Details & Opening Hours" : "Coordonnées et Horaires de l'Atelier"}
       >
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="contact-columns-3">
             
             {/* Colonne 1 : Adresse */}
-            <div className="contact-col-block">
+            <div ref={addressRef} className="contact-col-block">
               <h3 className="block-title">{isEn ? "ATELIER ADDRESS" : "ADRESSE DE L'ATELIER"}</h3>
               <p className="block-text">
                 13 Allée des Roses<br />
@@ -300,7 +430,7 @@ export default function GlacierContact() {
             </div>
 
             {/* Colonne 2 : Contact Direct */}
-            <div className="contact-col-block">
+            <div ref={directContactRef} className="contact-col-block">
               <h3 className="block-title">{isEn ? "DIRECT CONTACT" : "CONTACT DIRECT"}</h3>
               <p className="block-text">
                 <strong>Alexandre Pabst</strong><br />
@@ -313,7 +443,7 @@ export default function GlacierContact() {
             </div>
 
             {/* Colonne 3 : Horaires */}
-            <div className="contact-col-block">
+            <div ref={hoursRef} className="contact-col-block">
               <h3 className="block-title">{isEn ? "OPENING HOURS" : "HORAIRES D'OUVERTURE"}</h3>
               <p className="block-text">
                 <strong>{isEn ? "MONDAY TO FRIDAY" : "DU LUNDI AU VENDREDI"}</strong><br />

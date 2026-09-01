@@ -1,5 +1,8 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, BookOpen, ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 interface GlacierGalleryProps {
@@ -8,6 +11,94 @@ interface GlacierGalleryProps {
 
 export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
   const { isEn } = useLanguage();
+  const headerRef = useRef<HTMLDivElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
+
+  // Animation au scroll : Éventail 3D depuis le centre vers les côtés
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // 1. Animation de l'en-tête
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: 'top 85%',
+              end: 'bottom top',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      // 2. Animation des 4 réalisations en Éventail 3D + 2 Flips Verticaux (720°)
+      // Ordre demandé : Extrême Gauche (0) -> Extrême Droite (3) -> Centre Gauche (1) -> Centre Droit (2)
+      if (stripRef.current) {
+        const items = Array.from(stripRef.current.children);
+        const initialX = [140, 45, -45, -140];
+        const sequenceOrder = [0, 3, 1, 2];
+
+        const galleryTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: stripRef.current,
+            start: 'top 80%',
+            end: 'bottom top',
+            toggleActions: 'play none none reverse',
+          },
+        });
+
+        sequenceOrder.forEach((itemIdx, stepIndex) => {
+          const item = items[itemIdx];
+          if (!item) return;
+
+          galleryTimeline.fromTo(
+            item,
+            {
+              opacity: 0,
+              x: initialX[itemIdx] || 0,
+              scale: 0.8,
+              filter: 'blur(10px)',
+              rotateX: 720,
+              transformPerspective: 1000,
+            },
+            {
+              opacity: 1,
+              x: 0,
+              scale: 1,
+              filter: 'blur(0px)',
+              rotateX: 0,
+              duration: 1.1,
+              ease: 'power2.out',
+            },
+            stepIndex === 0 ? 0 : '-=0.75'
+          );
+        });
+      }
+    });
+
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
+  }, []);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -25,11 +116,11 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
 
   return (
     <section 
-      className="glacier-gallery-section" 
+      className="glacier-gallery-section overflow-hidden" 
       id="realisations" 
       aria-labelledby="gallery-title"
     >
-      <div className="gallery-header">
+      <div ref={headerRef} className="gallery-header">
         <h2 id="gallery-title" className="gallery-tag-title">
           {isEn ? "#DEVSUPAI PROJECTS" : "#RÉALISATIONS DEVSUPAI"}
         </h2>
@@ -40,7 +131,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
         </p>
       </div>
 
-      <div className="gallery-photos-strip">
+      <div ref={stripRef} className="gallery-photos-strip">
         
         {/* Item 1 : L'Atelier Gourmand */}
         <div className="gallery-photo-item group">
