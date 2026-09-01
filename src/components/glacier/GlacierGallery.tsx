@@ -45,8 +45,8 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
         );
       }
 
-      // 2. Animation des 4 réalisations en Éventail 3D + 2 Flips Verticaux (720°)
-      // Ordre demandé : Extrême Gauche (0) -> Extrême Droite (3) -> Centre Gauche (1) -> Centre Droit (2)
+      // 2. Animation des 4 réalisations en Éventail 3D + Simple Flip Vertical (360°)
+      // Ordre : Extrême Gauche (0) -> Extrême Droite (3) -> Centre Gauche (1) -> Centre Droit (2)
       if (stripRef.current) {
         const items = Array.from(stripRef.current.children);
         const initialX = [140, 45, -45, -140];
@@ -72,7 +72,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
               x: initialX[itemIdx] || 0,
               scale: 0.8,
               filter: 'blur(10px)',
-              rotateX: 720,
+              rotateX: 360,
               transformPerspective: 1000,
             },
             {
@@ -81,10 +81,10 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
               scale: 1,
               filter: 'blur(0px)',
               rotateX: 0,
-              duration: 1.1,
+              duration: 0.9,
               ease: 'power2.out',
             },
-            stepIndex === 0 ? 0 : '-=0.75'
+            stepIndex === 0 ? 0 : '-=0.65'
           );
         });
       }
