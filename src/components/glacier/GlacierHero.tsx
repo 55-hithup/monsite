@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 interface GlacierHeroProps {
@@ -6,6 +8,33 @@ interface GlacierHeroProps {
 
 export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
   const { isEn } = useLanguage();
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !cardRef.current) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        cardRef.current,
+        { opacity: 0, y: 35, filter: 'blur(8px)' },
+        {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 0.8,
+          delay: 0.1,
+          ease: 'power2.out',
+          clearProps: 'filter',
+        }
+      );
+    }, cardRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -32,7 +61,10 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
       />
       <div className="hero-tint-overlay" />
       
-      <div className="hero-floating-card">
+      <div 
+        ref={cardRef} 
+        className="hero-floating-card"
+      >
         <span className="hero-small-tag">
           {isEn
             ? "BESPOKE WEB DEVELOPER • FRANCE & WORLDWIDE"

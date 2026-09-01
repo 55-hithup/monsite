@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -6,6 +8,43 @@ import { useLanguage } from '../../i18n/LanguageContext';
 export default function GlacierFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { isEn } = useLanguage();
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !headerRef.current) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const targets = headerRef.current ? Array.from(headerRef.current.children) : [];
+      if (targets.length > 0) {
+        gsap.fromTo(
+          targets,
+          { opacity: 0, y: 30, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power3.out',
+            delay: 0.05,
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+          }
+        );
+      }
+    }, headerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -84,7 +123,10 @@ export default function GlacierFaq() {
         />
         <div className="faq-parallax-tint" />
 
-        <div className="container mx-auto px-6 max-w-3xl relative z-10">
+        <div 
+          ref={headerRef}
+          className="container mx-auto px-6 max-w-3xl relative z-10"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-400/40 bg-sky-500/20 text-xs font-bold font-['Montserrat'] text-sky-300 mb-4">
             <HelpCircle size={14} className="text-sky-300" aria-hidden="true" />
             <span>{isEn ? "ANSWERS & ADVICE" : "RÉPONSES & CONSEILS"}</span>
