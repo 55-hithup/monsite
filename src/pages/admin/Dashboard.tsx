@@ -225,12 +225,17 @@ export default function Dashboard() {
             if (list.length === 0 && !autoSeededRef.current) {
               autoSeededRef.current = true;
               try {
+                const { updateDoc } = await import('firebase/firestore');
                 for (const item of initialDefaultReviews) {
-                  await addDoc(collection(db, 'testimonials'), {
+                  const newDocRef = await addDoc(collection(db, 'testimonials'), {
                     ...item,
+                    approved: false,
                     avatar: null,
                     created_at: new Date(),
                   });
+                  if (item.approved) {
+                    await updateDoc(newDocRef, { approved: true });
+                  }
                 }
                 return;
               } catch (err) {
@@ -330,6 +335,13 @@ export default function Dashboard() {
 
     setIsSaving(true);
     try {
+      const auth = await getFirebaseAuth();
+      if (!auth || !auth.currentUser) {
+        alert("Votre session a expiré ou vous n'êtes pas authentifié. Veuillez vous reconnecter.");
+        navigate('/admin/login');
+        return;
+      }
+
       const db = await getFirebaseDb();
       if (!db) throw new Error("Base de données indisponible.");
 
@@ -346,7 +358,9 @@ export default function Dashboard() {
         }
       }
 
-      const formattedQuote = `« ${formQuote.trim()} »`;
+      const cleanQuote = formQuote.replace(/^[«"]\s*|\s*[»"]$/g, '').trim();
+      const formattedQuote = `« ${cleanQuote} »`;
+
       if (editingReview) {
         // Update existing review
         const docRef = doc(db, 'testimonials', editingReview.id);
@@ -358,24 +372,32 @@ export default function Dashboard() {
           approved: formApproved,
           avatar: finalAvatar || null,
         });
-        showNotification('Avis et photo enregistrés avec succès !');
+        showNotification(formApproved ? 'Avis et photo enregistrés et mis en ligne avec succès !' : 'Avis et photo enregistrés (en attente) !');
       } else {
         // Create new review
-        await addDoc(collection(db, 'testimonials'), {
+        // Firestore security rules enforce `allow create: if request.resource.data.approved == false;`
+        // We create with approved: false first, then immediately update to true if published immediately.
+        const newDocRef = await addDoc(collection(db, 'testimonials'), {
           name: formName.trim(),
           role: formRole.trim(),
           quote: formattedQuote,
           rating: formRating,
-          approved: formApproved,
+          approved: false,
           avatar: finalAvatar || null,
           created_at: new Date(),
         });
-        showNotification('Nouvel avis ajouté avec succès !');
+
+        if (formApproved) {
+          await updateDoc(newDocRef, { approved: true });
+        }
+
+        showNotification(formApproved ? 'Nouvel avis créé et publié en ligne avec succès !' : 'Nouvel avis créé (en attente de modération) !');
       }
       handleCloseModal();
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error saving review:', err);
-      alert("Une erreur est survenue lors de l'enregistrement.");
+      const errorMsg = err?.message || err?.code || "Une erreur est survenue lors de l'enregistrement.";
+      alert(`Erreur lors de l'enregistrement de l'avis : ${errorMsg}`);
     } finally {
       setIsSaving(false);
     }
@@ -384,15 +406,22 @@ export default function Dashboard() {
   // Toggle approval
   const handleToggleApprove = async (id: string, currentApproved: boolean) => {
     try {
+      const auth = await getFirebaseAuth();
+      if (!auth || !auth.currentUser) {
+        alert("Votre session a expiré. Veuillez vous reconnecter.");
+        navigate('/admin/login');
+        return;
+      }
       const db = await getFirebaseDb();
       if (!db) return;
       const { doc, updateDoc } = await import('firebase/firestore');
       const docRef = doc(db, 'testimonials', id);
       await updateDoc(docRef, { approved: !currentApproved });
       showNotification(!currentApproved ? 'Avis publié sur le site !' : 'Avis masqué du site.');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error updating review:', err);
-      alert('Une erreur est survenue lors de la mise à jour.');
+      const errorMsg = err?.message || err?.code || "Une erreur est survenue lors de la mise à jour.";
+      alert(`Impossible de modifier le statut de publication : ${errorMsg}`);
     }
   };
 
@@ -400,15 +429,22 @@ export default function Dashboard() {
   const handleDelete = async (id: string) => {
     if (!window.confirm('Voulez-vous vraiment supprimer définitivement cet avis ?')) return;
     try {
+      const auth = await getFirebaseAuth();
+      if (!auth || !auth.currentUser) {
+        alert("Votre session a expiré. Veuillez vous reconnecter.");
+        navigate('/admin/login');
+        return;
+      }
       const db = await getFirebaseDb();
       if (!db) return;
       const { doc, deleteDoc } = await import('firebase/firestore');
       const docRef = doc(db, 'testimonials', id);
       await deleteDoc(docRef);
       showNotification('Avis supprimé définitivement.');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error deleting review:', err);
-      alert('Une erreur est survenue lors de la suppression.');
+      const errorMsg = err?.message || err?.code || "Une erreur est survenue lors de la suppression.";
+      alert(`Impossible de supprimer l'avis : ${errorMsg}`);
     }
   };
 
@@ -416,6 +452,12 @@ export default function Dashboard() {
   const handleSyncThreeReviews = async () => {
     setIsImporting(true);
     try {
+      const auth = await getFirebaseAuth();
+      if (!auth || !auth.currentUser) {
+        alert("Votre session a expiré. Veuillez vous reconnecter.");
+        navigate('/admin/login');
+        return;
+      }
       const db = await getFirebaseDb();
       if (!db) throw new Error("Base de données indisponible.");
       const { doc, updateDoc, collection, addDoc } = await import('firebase/firestore');
@@ -439,9 +481,10 @@ export default function Dashboard() {
       }
       setFilter('pending');
       showNotification('3 avis placés dans l\'onglet « En attente » !');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error syncing 3 reviews:', err);
-      alert("Une erreur est survenue lors de l'ajout des avis.");
+      const errorMsg = err?.message || err?.code || "Une erreur est survenue lors de l'ajout des avis.";
+      alert(`Erreur lors de l'injection des avis : ${errorMsg}`);
     } finally {
       setIsImporting(false);
     }
@@ -453,21 +496,32 @@ export default function Dashboard() {
     
     setIsImporting(true);
     try {
+      const auth = await getFirebaseAuth();
+      if (!auth || !auth.currentUser) {
+        alert("Votre session a expiré. Veuillez vous reconnecter.");
+        navigate('/admin/login');
+        return;
+      }
       const db = await getFirebaseDb();
       if (!db) throw new Error("Base de données indisponible.");
-      const { collection, addDoc } = await import('firebase/firestore');
+      const { collection, addDoc, updateDoc } = await import('firebase/firestore');
 
       for (const item of initialDefaultReviews) {
-        await addDoc(collection(db, 'testimonials'), {
+        const newDocRef = await addDoc(collection(db, 'testimonials'), {
           ...item,
+          approved: false,
           avatar: null,
           created_at: new Date(),
         });
+        if (item.approved) {
+          await updateDoc(newDocRef, { approved: true });
+        }
       }
       showNotification('Les avis initiaux ont été importés avec succès dans Firestore !');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error importing default reviews:', err);
-      alert("Une erreur est survenue lors de l'import des avis initiaux.");
+      const errorMsg = err?.message || err?.code || "Une erreur est survenue lors de l'import des avis initiaux.";
+      alert(`Erreur lors de l'import des avis initiaux : ${errorMsg}`);
     } finally {
       setIsImporting(false);
     }

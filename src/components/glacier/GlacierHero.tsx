@@ -17,23 +17,45 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
       return;
     }
 
+    let hasPlayed = false;
+    let fallbackTimer: ReturnType<typeof setTimeout> | undefined;
+
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        cardRef.current,
-        { opacity: 0, y: 35, filter: 'blur(8px)' },
-        {
+      // Masquer la carte avec son état initial dès le montage client
+      gsap.set(cardRef.current, { opacity: 0, y: 35, filter: 'blur(8px)' });
+    }, cardRef);
+
+    const playHeroAnimation = () => {
+      if (hasPlayed || !cardRef.current) return;
+      hasPlayed = true;
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+
+      ctx.add(() => {
+        gsap.to(cardRef.current, {
           opacity: 1,
           y: 0,
           filter: 'blur(0px)',
-          duration: 0.8,
-          delay: 0.1,
+          duration: 0.85,
           ease: 'power2.out',
           clearProps: 'filter',
-        }
-      );
-    }, cardRef);
+        });
+      });
+    };
 
-    return () => ctx.revert();
+    // Si le logo DEVSUPAI a déjà atteint le déclenchement
+    if ((window as any).__devsupai_card_trigger) {
+      playHeroAnimation();
+    } else {
+      window.addEventListener('devsupai:hero-card-start', playHeroAnimation, { once: true });
+      // Fallback au cas où le header n'émettrait pas d'événement
+      fallbackTimer = setTimeout(playHeroAnimation, 1800);
+    }
+
+    return () => {
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+      window.removeEventListener('devsupai:hero-card-start', playHeroAnimation);
+      ctx.revert();
+    };
   }, []);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {

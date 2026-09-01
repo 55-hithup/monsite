@@ -12,9 +12,13 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
   const textRevealRef = useRef<HTMLSpanElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
   const [isReady, setIsReady] = useState(false);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+
+    (window as any).__devsupai_card_trigger = false;
 
     let animationFrameId: number;
     let isCancelled = false;
@@ -48,7 +52,11 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
         logo.style.transform = `translate(${endX}px, -50%)`;
         logo.style.opacity = '1';
         setIsReady(true);
-        if (onComplete) onComplete();
+        if (typeof window !== 'undefined') {
+          (window as any).__devsupai_card_trigger = true;
+          window.dispatchEvent(new CustomEvent('devsupai:hero-card-start'));
+        }
+        onCompleteRef.current?.();
         return;
       }
 
@@ -61,6 +69,7 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
 
       const duration = 1600; // 1.6 secondes
       const startTime = performance.now();
+      let heroTriggerSent = false;
 
       // Courbe easeOutCubic : départ dynamique, ralentissement soigné vers la fin
       const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
@@ -83,6 +92,15 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
         textReveal.style.clipPath = `inset(0 ${clipRight}px 0 0)`;
         (textReveal.style as unknown as Record<string, string>).webkitClipPath = `inset(0 ${clipRight}px 0 0)`;
 
+        // Déclenchement de l'animation de la carte un tout petit peu avant la fin (~82% de l'animation DEVSUPAI)
+        if (!heroTriggerSent && t >= 0.82) {
+          heroTriggerSent = true;
+          if (typeof window !== 'undefined') {
+            (window as any).__devsupai_card_trigger = true;
+            window.dispatchEvent(new CustomEvent('devsupai:hero-card-start'));
+          }
+        }
+
         if (t < 1) {
           animationFrameId = requestAnimationFrame(frame);
         } else {
@@ -90,9 +108,14 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
           textReveal.style.clipPath = 'inset(0 0 0 0)';
           (textReveal.style as unknown as Record<string, string>).webkitClipPath = 'inset(0 0 0 0)';
           logo.style.transform = `translate(${endX}px, -50%)`;
-          if (onComplete) {
-            onComplete();
+          if (!heroTriggerSent) {
+            heroTriggerSent = true;
+            if (typeof window !== 'undefined') {
+              (window as any).__devsupai_card_trigger = true;
+              window.dispatchEvent(new CustomEvent('devsupai:hero-card-start'));
+            }
           }
+          onCompleteRef.current?.();
         }
       };
 
