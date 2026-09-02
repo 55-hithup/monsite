@@ -224,18 +224,38 @@ small {
 
 /* --- Scrollbar Styling --- */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsla(0, 0%, 100%, 0.1);
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--color-bg);
+  background: #94A3B8;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsla(0, 0%, 100%, 0.25);
+  background: #0284C7;
+}
+
+/* Custom scrollbar pour les cartes claires */
+.custom-card-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #94A3B8 #F1F5F9;
+}
+.custom-card-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-card-scrollbar::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 9999px;
+}
+.custom-card-scrollbar::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 9999px;
+}
+.custom-card-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0284C7;
 }
 
 a {
@@ -2033,6 +2053,46 @@ footer {
 .btn-glacier-outline:hover {
   background: #1A1A1A;
   color: #FFFFFF !important;
+}
+
+/* --- Glacier 3D Flip Card System --- */
+.glacier-flip-card-wrapper {
+  perspective: 1200px;
+  height: 100%;
+}
+
+.glacier-flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+.glacier-flip-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.glacier-flip-card-front,
+.glacier-flip-card-back {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.glacier-flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glacier-flip-card-inner {
+    transition: transform 0.01ms !important;
+  }
 }
 
 .glacier-split-section {

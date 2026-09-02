@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react'
 import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { Area, Point } from 'react-easy-crop';
 import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
@@ -279,6 +281,7 @@ export default function Testimonials() {
 
   const lenis = useLenis();
   const sectionRef = useRef<HTMLElement>(null);
+  const headerWrapRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
   const touchDeltaX = useRef<number>(0);
@@ -287,6 +290,130 @@ export default function Testimonials() {
   useEffect(() => {
     setList(defaultTestimonialsData[language] || defaultTestimonialsData.fr);
   }, [language]);
+
+  // Animation d'apparition par élément avec ScrollTrigger dédiés et replay au scroll
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // 1. ANIMATION DE L'EN-TÊTE
+      if (headerWrapRef.current) {
+        const headerChildren = Array.from(headerWrapRef.current.children) as HTMLElement[];
+        if (headerChildren.length > 0) {
+          gsap.fromTo(
+            headerChildren,
+            { opacity: 0, y: 35, scale: 0.95 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.75,
+              stagger: 0.15,
+              ease: 'power3.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: headerWrapRef.current,
+                start: 'top 85%',
+                end: 'bottom top',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
+      }
+
+      // 2. ANIMATION DES CARTES D'AVIS DU CARROUSEL
+      const cards = sectionRef.current?.querySelectorAll('.testi-card');
+      const testiWrap = sectionRef.current?.querySelector('.testi-wrap');
+      if (cards && cards.length > 0 && testiWrap) {
+        const visibleCards = Array.from(cards).slice(0, 3) as HTMLElement[];
+        const isDesktop = window.innerWidth >= 1024;
+
+        const cardsTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: testiWrap,
+            start: 'top 78%',
+            end: 'bottom top',
+            toggleActions: 'play none none reverse',
+          }
+        });
+
+        if (isDesktop && visibleCards.length >= 3) {
+          // Carte 1 (Gauche) : arrivée de gauche avec légère impulsion
+          cardsTl.fromTo(
+            visibleCards[0],
+            { x: -70, y: 35, opacity: 0, scale: 0.92 },
+            { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
+            0
+          );
+
+          // Carte 2 (Centre) : élévation verticale
+          cardsTl.fromTo(
+            visibleCards[1],
+            { y: 65, opacity: 0, scale: 0.90 },
+            { y: 0, opacity: 1, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
+            0.12
+          );
+
+          // Carte 3 (Droite) : arrivée de droite en miroir
+          cardsTl.fromTo(
+            visibleCards[2],
+            { x: 70, y: 35, opacity: 0, scale: 0.92 },
+            { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
+            0.24
+          );
+        } else {
+          // Mobile / Tablette : montée échelonnée
+          cardsTl.fromTo(
+            visibleCards,
+            { y: 55, opacity: 0, scale: 0.94 },
+            { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power3.out', stagger: 0.15, clearProps: 'transform,opacity' }
+          );
+        }
+      }
+
+      // 3. ANIMATION DES CONTRÔLES & DU BOUTON "LAISSER UN AVIS"
+      const dotsEl = sectionRef.current?.querySelector('.testi-dots')?.parentElement;
+      const submitBtnEl = sectionRef.current?.querySelector('.btn-glacier-outline')?.parentElement;
+      const bottomElements = [dotsEl, submitBtnEl].filter(Boolean) as HTMLElement[];
+
+      if (bottomElements.length > 0) {
+        gsap.fromTo(
+          bottomElements,
+          { y: 30, opacity: 0, scale: 0.92 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: 'back.out(1.2)',
+            clearProps: 'transform,opacity',
+            scrollTrigger: {
+              trigger: dotsEl || submitBtnEl,
+              start: 'top 88%',
+              end: 'bottom top',
+              toggleActions: 'play none none reverse',
+            }
+          }
+        );
+      }
+
+      // Recalibration
+      ScrollTrigger.refresh();
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 250);
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // Responsive items count calculation
   useEffect(() => {
@@ -586,7 +713,7 @@ export default function Testimonials() {
   return (
     <section ref={sectionRef} id="avis" className="py-20 md:py-28 bg-[#F8F8F8] border-t border-[#E5E5E5] text-left relative">
       <div className="container mx-auto px-6 max-w-6xl">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div ref={headerWrapRef} className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-4">
             <Star size={14} className="text-[#0284C7] fill-[#0284C7]" aria-hidden="true" />
             <span>{isEn ? "TRUST & REVIEWS" : "CONFIANCE & TÉMOIGNAGES"}</span>
