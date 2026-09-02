@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { Languages } from 'lucide-react';
@@ -44,71 +44,6 @@ function GlacierNavLinks({
   onLogoClick,
   onLinkClick,
 }: GlacierNavLinksProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<Map<string, HTMLElement>>(new Map());
-  const [pillStyle, setPillStyle] = useState<{
-    left: number;
-    top: number;
-    width: number;
-    height: number;
-    opacity: number;
-    ready: boolean;
-  }>({
-    left: 0,
-    top: 0,
-    width: 0,
-    height: 0,
-    opacity: 0,
-    ready: false,
-  });
-
-  const updatePill = useCallback(() => {
-    const activeEl = itemsRef.current.get(activeTab);
-    if (!activeEl || !containerRef.current) {
-      setPillStyle((prev) => ({ ...prev, opacity: 0 }));
-      return;
-    }
-
-    const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = activeEl;
-    setPillStyle((prev) => ({
-      left: offsetLeft,
-      top: offsetTop,
-      width: offsetWidth,
-      height: offsetHeight,
-      opacity: 1,
-      ready: prev.ready,
-    }));
-  }, [activeTab]);
-
-  useEffect(() => {
-    updatePill();
-    const timer = requestAnimationFrame(() => {
-      setPillStyle((prev) => ({ ...prev, ready: true }));
-    });
-    return () => cancelAnimationFrame(timer);
-  }, [updatePill]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const container = containerRef.current;
-    if (!container) return;
-
-    let rafId: number;
-    const observer = new ResizeObserver(() => {
-      rafId = requestAnimationFrame(() => {
-        updatePill();
-      });
-    });
-
-    observer.observe(container);
-    itemsRef.current.forEach((el) => observer.observe(el));
-
-    return () => {
-      observer.disconnect();
-      cancelAnimationFrame(rafId);
-    };
-  }, [updatePill]);
-
   const navItems = [
     { id: 'services', label: navLinks.services, isAnchor: true, href: `${isEn ? '/en' : ''}/#services` },
     { id: 'realisations', label: navLinks.realisations, isAnchor: true, href: `${isEn ? '/en' : ''}/#realisations` },
@@ -120,25 +55,7 @@ function GlacierNavLinks({
   ];
 
   return (
-    <div 
-      ref={containerRef}
-      className="relative flex items-center justify-center gap-[clamp(4px,0.8vw,14px)] flex-nowrap whitespace-nowrap mx-auto"
-    >
-      {/* CAPSULE EFFET VERRE PERSISTANTE SUR LE GPU COMPOSITOR (60/120 FPS) */}
-      <span
-        aria-hidden="true"
-        className="glacier-nav-capsule"
-        style={{
-          transform: `translate3d(${pillStyle.left}px, ${pillStyle.top}px, 0)`,
-          width: `${pillStyle.width}px`,
-          height: `${pillStyle.height}px`,
-          opacity: pillStyle.opacity,
-          transition: pillStyle.ready
-            ? 'transform 320ms cubic-bezier(0.16, 1, 0.3, 1), width 320ms cubic-bezier(0.16, 1, 0.3, 1), height 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease'
-            : 'opacity 200ms ease',
-        }}
-      />
-
+    <div className="relative flex items-center justify-center gap-[clamp(4px,0.8vw,14px)] flex-nowrap whitespace-nowrap mx-auto">
       {isSticky && (
         <Link 
           key={isScrolled ? 'sticky-logo-active' : 'sticky-logo-idle'}
@@ -164,7 +81,7 @@ function GlacierNavLinks({
 
       {navItems.map((item) => {
         const isActive = activeTab === item.id;
-        const linkClasses = `glacier-nav-link relative z-10 px-3 sm:px-3.5 py-1.5 rounded-full transition-colors duration-200 cursor-pointer inline-flex items-center justify-center ${
+        const linkClasses = `glacier-nav-link relative z-10 px-3 sm:px-3.5 py-1.5 rounded-full transition-colors duration-150 cursor-pointer inline-flex items-center justify-center ${
           isActive ? 'text-[#0284C7] font-black' : 'text-[#475569] hover:text-[#0F172A]'
         }`;
 
@@ -172,15 +89,12 @@ function GlacierNavLinks({
           return (
             <a
               key={item.id}
-              ref={(el) => {
-                if (el) itemsRef.current.set(item.id, el);
-                else itemsRef.current.delete(item.id);
-              }}
               href={item.href}
               onClick={(e) => onAnchorClick(e, item.id)}
               className={linkClasses}
             >
-              <span>{item.label}</span>
+              {isActive && <span aria-hidden="true" className="glacier-nav-capsule" />}
+              <span className="relative z-10">{item.label}</span>
             </a>
           );
         }
@@ -188,15 +102,12 @@ function GlacierNavLinks({
         return (
           <Link
             key={item.id}
-            ref={(el) => {
-              if (el) itemsRef.current.set(item.id, el);
-              else itemsRef.current.delete(item.id);
-            }}
             to={item.path!}
             onClick={() => onLinkClick(item.id)}
             className={linkClasses}
           >
-            <span>{item.label}</span>
+            {isActive && <span aria-hidden="true" className="glacier-nav-capsule" />}
+            <span className="relative z-10">{item.label}</span>
           </Link>
         );
       })}

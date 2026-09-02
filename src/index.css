@@ -718,11 +718,10 @@ h1, h2, h3 {
   user-select: none;
 }
 
-/* Capsule effet verre dépoli (Glassmorphism) avec glissement GPU 60/120fps */
+/* Capsule effet verre dépoli (Glassmorphism) directe sans effet slide */
 .glacier-nav-capsule {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   border-radius: 9999px;
   background: rgba(240, 249, 255, 0.90);
   border: 1px solid rgba(56, 189, 248, 0.45);
@@ -731,7 +730,6 @@ h1, h2, h3 {
   -webkit-backdrop-filter: blur(10px);
   z-index: 0;
   pointer-events: none;
-  will-change: transform, width;
 }
 
 .glacier-hero-banner {
