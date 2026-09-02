@@ -20,64 +20,60 @@ export default function GlacierParallaxBreak() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 0. Badge : Fade-Up & Défloutage (0.8s, power2.out)
+      // 0. Badge : Fade-In & translation
       if (tagRef.current) {
         gsap.fromTo(
           tagRef.current,
-          { opacity: 0, y: 25, filter: 'blur(8px)' },
+          { opacity: 0, y: -15 },
           {
             opacity: 1,
             y: 0,
-            filter: 'blur(0px)',
-            duration: 0.8,
+            duration: 0.4,
             ease: 'power2.out',
-            clearProps: 'filter',
             scrollTrigger: {
               trigger: tagRef.current,
-              start: 'top 85%',
-              once: true,
+              start: 'top 88%',
+              toggleActions: 'play none none reverse',
             },
           }
         );
       }
 
-      // 1. Titre : Rebond Élastique Pop (0.9s, back.out(1.7))
+      // 1. Titre : Rebond Élastique & Fade
       if (quoteRef.current) {
         gsap.fromTo(
           quoteRef.current,
-          { opacity: 0, scale: 0.75, y: 20 },
+          { opacity: 0, scale: 0.88, y: 25 },
           {
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 0.9,
-            ease: 'back.out(1.7)',
+            duration: 0.45,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: quoteRef.current,
               start: 'top 85%',
-              once: true,
+              toggleActions: 'play none none reverse',
             },
           }
         );
       }
 
-      // 2. Prix / Sous-titre : Fade-Up & Défloutage (0.8s, power2.out)
+      // 2. Prix / Sous-titre : Fade-Up & Défloutage
       if (subRef.current) {
         gsap.fromTo(
           subRef.current,
-          { opacity: 0, y: 35, filter: 'blur(8px)' },
+          { opacity: 0, y: 25, filter: 'blur(4px)' },
           {
             opacity: 1,
             y: 0,
             filter: 'blur(0px)',
-            duration: 0.8,
-            delay: 0.15,
+            duration: 0.4,
             ease: 'power2.out',
-            clearProps: 'filter',
             scrollTrigger: {
               trigger: subRef.current,
-              start: 'top 90%',
-              once: true,
+              start: 'top 88%',
+              toggleActions: 'play none none reverse',
             },
           }
         );
