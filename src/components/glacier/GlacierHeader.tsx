@@ -243,6 +243,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
 
   useEffect(() => {
     setIsSubtitleVisible(false);
+    setIsScrolled(false);
   }, [location.pathname]);
 
   const navLinks = useMemo(() => isEn
@@ -271,56 +272,60 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         blogPath: '/blog',
       }, [isEn]);
 
-  // Suivi de l'onglet actif : par URL sur les sous-pages, par position de scroll sur la landing page (optimisé requestAnimationFrame)
+  // 1. Définition de l'onglet actif sur les pages dédiées
+  useEffect(() => {
+    if (isHomePage) return;
+
+    if (location.pathname === navLinks.catalogPath || location.pathname.startsWith('/nos-services') || location.pathname.startsWith('/en/services')) {
+      setActiveTab('catalog');
+    } else if (location.pathname === navLinks.aboutPath || location.pathname.startsWith('/a-propos') || location.pathname.startsWith('/en/about')) {
+      setActiveTab('about');
+    } else if (location.pathname === navLinks.blogPath || location.pathname.startsWith('/blog') || location.pathname.startsWith('/en/blog')) {
+      setActiveTab('blog');
+    } else {
+      setActiveTab('');
+    }
+  }, [isHomePage, location.pathname, navLinks]);
+
+  // 2. Écouteur de scroll universel (gère isScrolled sur toutes les pages et le scroll spy sur la landing page)
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
-    if (!isHomePage) {
-      if (location.pathname === navLinks.catalogPath || location.pathname.startsWith('/nos-services') || location.pathname.startsWith('/en/services')) {
-        setActiveTab('catalog');
-      } else if (location.pathname === navLinks.aboutPath || location.pathname.startsWith('/a-propos') || location.pathname.startsWith('/en/about')) {
-        setActiveTab('about');
-      } else if (location.pathname === navLinks.blogPath || location.pathname.startsWith('/blog') || location.pathname.startsWith('/en/blog')) {
-        setActiveTab('blog');
-      } else {
-        setActiveTab('');
-      }
-      return;
-    }
-
-    const sections = ['services', 'realisations', 'avis', 'contact'];
 
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY || document.documentElement.scrollTop;
+          // La barre flottante ne descend QUE si on a scrollé au-delà de 220px
           setIsScrolled(scrollY > 220);
 
-          // Si tout en haut dans le hero
-          if (scrollY < 180) {
-            setActiveTab('');
-            ticking = false;
-            return;
-          }
+          // Si on est sur la page d'accueil, mettre à jour la section visible
+          if (isHomePage) {
+            if (scrollY < 180) {
+              setActiveTab('');
+              ticking = false;
+              return;
+            }
 
-          // Si proche du bas de page, activer le contact
-          if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 140) {
-            setActiveTab('contact');
-            ticking = false;
-            return;
-          }
+            if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 140) {
+              setActiveTab('contact');
+              ticking = false;
+              return;
+            }
 
-          for (const id of sections) {
-            const el = document.getElementById(id);
-            if (el) {
-              const rect = el.getBoundingClientRect();
-              if (rect.top <= window.innerHeight * 0.42 && rect.bottom >= window.innerHeight * 0.15) {
-                setActiveTab(id);
-                break;
+            const sections = ['services', 'realisations', 'avis', 'contact'];
+            for (const id of sections) {
+              const el = document.getElementById(id);
+              if (el) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.42 && rect.bottom >= window.innerHeight * 0.15) {
+                  setActiveTab(id);
+                  break;
+                }
               }
             }
           }
+
           ticking = false;
         });
         ticking = true;
@@ -331,7 +336,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHomePage, location.pathname, navLinks]);
+  }, [isHomePage]);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
