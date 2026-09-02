@@ -507,17 +507,16 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                       </div>
                     </div>
 
-                    {/* Bas de la carte : Bouton Flip 3D + CTA (Fonds pleins & texte 100% blanc) */}
-                    <div className="pt-2 flex flex-col gap-2.5">
+                    {/* Bas de la carte : Lien Ciselé Flip 3D + Bouton CTA Principal */}
+                    <div className="pt-2 flex flex-col gap-2">
                       <button
                         type="button"
                         onClick={() => toggleFlip(pack.id)}
-                        className="w-full py-2.5 px-3.5 rounded-xl bg-slate-800 hover:bg-slate-900 border border-slate-700 text-white text-xs font-black font-['Montserrat'] flex items-center justify-center gap-2 transition-all cursor-pointer group shadow-sm"
-                        style={{ color: '#FFFFFF' }}
-                        aria-label={isEn ? "Flip card for detailed specifications" : "Retourner la carte pour voir les détails précis"}
+                        className="glacier-flip-text-link group cursor-pointer"
+                        aria-label={isEn ? "Flip card to view technical specifications" : "Retourner la carte pour voir la fiche technique complète"}
                       >
-                        <RotateCw className="w-3.5 h-3.5 text-white group-hover:rotate-180 transition-transform duration-500" aria-hidden="true" />
-                        <span style={{ color: '#FFFFFF' }}>{isEn ? "Detailed specifications (Flip ⟲)" : "Détails précis (Retourner ⟲)"}</span>
+                        <RotateCw className="w-3.5 h-3.5 text-sky-600 group-hover:rotate-180 transition-transform duration-500 shrink-0" aria-hidden="true" />
+                        <span>{isEn ? "Detailed specifications & stack (Flip ⟲)" : "Voir la fiche technique complète (Verso ⟲)"}</span>
                       </button>
 
                       <a
@@ -555,12 +554,11 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                         <button
                           type="button"
                           onClick={() => toggleFlip(pack.id)}
-                          className="px-3 py-1 bg-slate-800 hover:bg-slate-900 border border-slate-700 text-white rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 text-[11px] font-black font-['Montserrat'] shadow-xs"
-                          style={{ color: '#FFFFFF' }}
+                          className="px-2.5 py-1 bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 text-slate-700 hover:text-sky-700 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 text-[11px] font-bold font-['Montserrat'] shadow-xs"
                           title={isEn ? "Flip back to presentation" : "Retourner au recto"}
                         >
-                          <RotateCcw className="w-3.5 h-3.5 text-white" aria-hidden="true" />
-                          <span style={{ color: '#FFFFFF' }}>{isEn ? "Back" : "Retour"}</span>
+                          <RotateCcw className="w-3.5 h-3.5 text-sky-600" aria-hidden="true" />
+                          <span>{isEn ? "Back" : "Retour"}</span>
                         </button>
                       </div>
 

@@ -2078,6 +2078,33 @@ footer {
   color: #FFFFFF !important;
 }
 
+.btn-glacier-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0px;
+  font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-glacier-outline-white:hover {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border-color: #FFFFFF !important;
+}
+
+.btn-glacier-outline-white:hover * {
+  color: #1A1A1A !important;
+}
+
 /* --- Glacier 3D Flip Card System --- */
 .glacier-flip-card-wrapper {
   perspective: 1200px;
@@ -2110,6 +2137,48 @@ footer {
   top: 0;
   left: 0;
   transform: rotateY(180deg);
+}
+
+.glacier-flip-text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  width: 100%;
+}
+
+.glacier-flip-text-link:hover {
+  color: #0284C7;
+}
+
+.glacier-flip-text-link span {
+  position: relative;
+}
+
+.glacier-flip-text-link span::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: #0284C7;
+  transition: width 0.25s ease;
+}
+
+.glacier-flip-text-link:hover span::after {
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2754,6 +2823,34 @@ footer {
   inset: 0;
   background: rgba(15, 23, 42, 0.76);
   z-index: 2;
+}
+
+/* --- Services Parallax System (Identique à la landing page) --- */
+.services-parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.services-parallax-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.services-parallax-tint {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.74);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .services-parallax-bg {
+    background-attachment: scroll;
+  }
 }
 
 .glacier-footer-contact-section {
