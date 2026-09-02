@@ -267,10 +267,10 @@ export default function GlacierContact() {
           
           <div ref={boxRef} className="glacier-intake-box mx-auto">
             <div className="intake-header">
-              <h3 className="intake-title">
+              <h3 className="intake-title" style={{ color: '#FFFFFF' }}>
                 {isEn ? "HAVE A QUESTION OR A PROJECT?" : "UNE QUESTION ? UN PROJET ?"}
               </h3>
-              <p className="intake-desc">
+              <p className="intake-desc" style={{ color: '#FFFFFF' }}>
                 {isEn
                   ? "Fill out this form to discuss your project and receive a tailored proposal adapted to your goals."
                   : "Remplissez ce formulaire pour échanger sur vos besoins et recevoir une proposition adaptée à votre projet."}
@@ -369,7 +369,8 @@ export default function GlacierContact() {
               <button 
                 type="submit" 
                 disabled={status === 'submitting'}
-                className="btn-glacier-submit inline-flex items-center justify-center gap-2"
+                className="btn-glacier-submit inline-flex items-center justify-center gap-2.5 active:scale-95 transition-all duration-200"
+                style={{ color: '#FFFFFF' }}
               >
                 {status === 'submitting' ? (
                   <>
@@ -378,7 +379,7 @@ export default function GlacierContact() {
                   </>
                 ) : (
                   <>
-                    {isEn ? "SEND MY REQUEST" : "ENVOYER MA DEMANDE"}
+                    <span style={{ color: '#FFFFFF' }}>{isEn ? "SEND MY REQUEST" : "ENVOYER MA DEMANDE"}</span>
                     <ArrowRight className="w-4 h-4 inline" aria-hidden="true" />
                   </>
                 )}
