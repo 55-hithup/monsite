@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { 
   type LucideIcon,
   Star, 
@@ -12,7 +13,6 @@ import {
   Smartphone, 
   Layers, 
   CheckCircle2, 
-  ArrowRight,
   Clock,
   Laptop
 } from 'lucide-react';
@@ -43,23 +43,12 @@ interface OfferData {
   };
 }
 
-export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
+export default function GlacierOffers({ onNavClick: _onNavClick }: GlacierOffersProps) {
   const [activeOfferId, setActiveOfferId] = useState<OfferId>('croissance');
+  const [direction, setDirection] = useState<number>(0);
+  const prevIndexRef = useRef<number>(1);
+  const shouldReduceMotion = useReducedMotion();
   const { isEn } = useLanguage();
-
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    if (onNavClick) {
-      onNavClick(targetId);
-      return;
-    }
-    if (typeof window !== 'undefined') {
-      const el = document.getElementById(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
 
   const offers: OfferData[] = isEn ? [
     {
@@ -272,6 +261,105 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
   const activeOffer = offers.find((o) => o.id === activeOfferId) || offers[1];
   const ActiveIcon = activeOffer.preview.icon;
 
+  const handleSelectOffer = (newId: OfferId) => {
+    if (newId === activeOfferId) return;
+    const prevIndex = offers.findIndex((o) => o.id === activeOfferId);
+    const newIndex = offers.findIndex((o) => o.id === newId);
+    setDirection(newIndex > prevIndex ? 1 : -1);
+    prevIndexRef.current = newIndex;
+    setActiveOfferId(newId);
+  };
+
+  const cardVariants: Variants = {
+    enter: (dir: number) => ({
+      x: shouldReduceMotion ? 0 : (dir > 0 ? 28 : dir < 0 ? -28 : 0),
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: 'spring' as const, stiffness: 350, damping: 30 },
+        opacity: { duration: 0.2 },
+        staggerChildren: 0.045,
+        delayChildren: 0.02,
+      },
+    },
+    exit: (dir: number) => ({
+      x: shouldReduceMotion ? 0 : (dir > 0 ? -28 : dir < 0 ? 28 : 0),
+      opacity: 0,
+      transition: {
+        x: { duration: 0.14, ease: 'easeIn' as const },
+        opacity: { duration: 0.12 },
+      },
+    }),
+  };
+
+  const titleVariants: Variants = {
+    enter: { opacity: 0, y: shouldReduceMotion ? 0 : 8 },
+    center: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  };
+
+  const metricsContainerVariants: Variants = {
+    enter: { opacity: 0 },
+    center: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.04,
+        delayChildren: 0.02,
+      },
+    },
+  };
+
+  const metricItemVariants: Variants = {
+    enter: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : 10,
+      scale: shouldReduceMotion ? 1 : 0.95,
+    },
+    center: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: 'spring' as const,
+        stiffness: 420,
+        damping: 26,
+      },
+    },
+  };
+
+  const featuresBoxVariants: Variants = {
+    enter: { opacity: 0, y: shouldReduceMotion ? 0 : 8 },
+    center: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  };
+
+  const featureListVariants: Variants = {
+    enter: {},
+    center: {
+      transition: {
+        staggerChildren: 0.035,
+        delayChildren: 0.02,
+      },
+    },
+  };
+
+  const featureItemVariants: Variants = {
+    enter: {
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : -8,
+    },
+    center: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: 'spring' as const,
+        stiffness: 380,
+        damping: 26,
+      },
+    },
+  };
+
   return (
     <section className="glacier-split-section" id="services" aria-labelledby="services-title">
       <div className="split-container">
@@ -283,60 +371,74 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               
               {/* En-tête de la fenêtre d'aperçu */}
               <div className="preview-card-header">
-                <div className="preview-browser-dots" aria-hidden="true">
-                  <span className="dot dot-red"></span>
-                  <span className="dot dot-yellow"></span>
-                  <span className="dot dot-green"></span>
-                </div>
-                <div className="preview-card-badge">
-                  <ActiveIcon className="w-3.5 h-3.5 text-sky-600 inline mr-1.5" aria-hidden="true" />
-                  <span>{activeOffer.preview.categoryBadge}</span>
-                </div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeOffer.id}
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
+                    transition={{ duration: 0.15 }}
+                    className="preview-card-badge"
+                  >
+                    <ActiveIcon className="w-3.5 h-3.5 text-sky-600 inline mr-1.5" aria-hidden="true" />
+                    <span>{activeOffer.preview.categoryBadge}</span>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              {/* Contenu visuel interactif avec micro-transition fluide au survol */}
-              <div key={activeOffer.id} className="preview-card-body animate-glacier-fade-in">
-                <div className="preview-title-area">
-                  <span className="preview-price-tag">{activeOffer.price}</span>
-                  <div className="preview-main-headline">{activeOffer.preview.headline}</div>
-                  <p className="preview-subheadline">{activeOffer.preview.subheadline}</p>
-                </div>
+              {/* Contenu visuel interactif avec transition directionnelle et cascade */}
+              <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                  key={activeOffer.id}
+                  custom={direction}
+                  variants={cardVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="preview-card-body"
+                >
+                  <motion.div variants={titleVariants} className="preview-title-area">
+                    <span className="preview-price-tag">{activeOffer.price}</span>
+                    <div className="preview-main-headline">{activeOffer.preview.headline}</div>
+                    <p className="preview-subheadline">{activeOffer.preview.subheadline}</p>
+                  </motion.div>
 
-                {/* Métriques clés */}
-                <div className="preview-metrics-grid">
-                  {activeOffer.preview.metrics.map((metric, idx) => {
-                    const MetricIcon = metric.icon;
-                    return (
-                      <div key={idx} className="preview-metric-box">
-                        <div className="metric-icon-wrap">
-                          <MetricIcon className="w-3.5 h-3.5 text-sky-600" aria-hidden="true" />
-                        </div>
-                        <div className="metric-text-wrap">
-                          <span className="metric-label">{metric.label}</span>
-                          <span className="metric-value">{metric.value}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                  {/* Métriques clés en cascade */}
+                  <motion.div variants={metricsContainerVariants} className="preview-metrics-grid">
+                    {activeOffer.preview.metrics.map((metric, idx) => {
+                      const MetricIcon = metric.icon;
+                      return (
+                        <motion.div key={idx} variants={metricItemVariants} className="preview-metric-box">
+                          <div className="metric-icon-wrap">
+                            <MetricIcon className="w-3.5 h-3.5 text-sky-600" aria-hidden="true" />
+                          </div>
+                          <div className="metric-text-wrap">
+                            <span className="metric-label">{metric.label}</span>
+                            <span className="metric-value">{metric.value}</span>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </motion.div>
 
-                {/* Liste des livrables inclus */}
-                <div className="preview-features-box">
-                  <div className="preview-features-title">
-                    {isEn ? 'DELIVERABLES INCLUDED IN THIS PACKAGE:' : 'LIVRABLES INCLUS DANS CE FORFAIT :'}
-                  </div>
-                  <ul className="preview-features-list">
-                    {activeOffer.preview.features.map((feature, idx) => (
-                      <li key={idx} className="preview-feature-item">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                  {/* Liste des livrables inclus en cascade séquentielle */}
+                  <motion.div variants={featuresBoxVariants} className="preview-features-box">
+                    <div className="preview-features-title">
+                      {isEn ? 'DELIVERABLES INCLUDED IN THIS PACKAGE:' : 'LIVRABLES INCLUS DANS CE FORFAIT :'}
+                    </div>
+                    <motion.ul variants={featureListVariants} className="preview-features-list">
+                      {activeOffer.preview.features.map((feature, idx) => (
+                        <motion.li key={idx} variants={featureItemVariants} className="preview-feature-item">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
+                          <span>{feature}</span>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
 
-              {/* Navigation rapide entre forfaits (accessible tactile et clavier) */}
+              {/* Navigation rapide entre forfaits (accessible tactile et clavier) avec LayoutId fluide */}
               <div className="preview-nav-tabs" role="tablist" aria-label={isEn ? "Select package to preview" : "Sélectionner un forfait à prévisualiser"}>
                 {offers.map((offer, index) => {
                   const isActive = offer.id === activeOfferId;
@@ -346,9 +448,16 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                       type="button"
                       role="tab"
                       aria-selected={isActive}
-                      onClick={() => setActiveOfferId(offer.id)}
+                      onClick={() => handleSelectOffer(offer.id)}
                       className={`preview-tab-pill ${isActive ? 'active-pill' : ''}`}
                     >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeGlacierTabPill"
+                          className="active-pill-bg"
+                          transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                        />
+                      )}
                       <span className="pill-num">0{index + 1}</span>
                       <span className="pill-name">
                         {offer.id === 'croissance' ? (isEn ? 'Growth' : 'PME') : offer.id === 'presence' ? (isEn ? 'Showcase' : 'Vitrine') : offer.id === 'saas' ? 'SaaS' : 'Google'}
@@ -359,12 +468,35 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               </div>
 
               {/* Bandeau inférieur de synthèse */}
-              <div className="photo-caption-tag">
-                <Sparkles className="w-3.5 h-3.5 text-sky-600 inline mr-1.5" aria-hidden="true" />
-                {activeOffer.preview.tagBottom}
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeOffer.id}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.15 }}
+                  className="photo-caption-tag"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-sky-600 inline mr-1.5" aria-hidden="true" />
+                  <span>{activeOffer.preview.tagBottom}</span>
+                </motion.div>
+              </AnimatePresence>
 
             </div>
+
+            {/* Bloc Réassurance au niveau de la dernière offre */}
+            <div className="offers-reassurance-note mt-5 flex items-start gap-2.5 p-3.5 bg-slate-50 border border-slate-200 text-xs text-[#4A4A4A] leading-relaxed">
+              <ShieldCheck className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" aria-hidden="true" />
+              <div>
+                <strong className="font-bold text-[#1A1A1A]">
+                  {isEn ? "Total transparency from Year 2: " : "Transparence totale dès l'an 2 : "}
+                </strong>
+                {isEn
+                  ? "High-speed hosting and domain name included for the 1st year. From Year 2 onwards, technical renewal at cost price (~€39 to €49/year) without mandatory maintenance contracts, or free transfer."
+                  : "Nom de domaine et hébergement haute vitesse offerts la 1ère année. Dès la 2ème année, renouvellement technique à prix coûtant (~39 € à 49 € / an) sans marge de maintenance imposée, ou transfert libre si vous souhaitez gérer vous-même."}
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -391,9 +523,9 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                   key={offer.id}
                   role="listitem"
                   tabIndex={0}
-                  onMouseEnter={() => setActiveOfferId(offer.id)}
-                  onFocus={() => setActiveOfferId(offer.id)}
-                  onClick={() => setActiveOfferId(offer.id)}
+                  onMouseEnter={() => handleSelectOffer(offer.id)}
+                  onFocus={() => handleSelectOffer(offer.id)}
+                  onClick={() => handleSelectOffer(offer.id)}
                   className={`menu-item-row interactive-menu-row ${offer.isPopular ? 'featured-menu-row' : ''} ${isActive ? 'row-is-active' : ''}`}
                 >
                   <div className="menu-item-head">
@@ -427,33 +559,6 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               );
             })}
 
-          </div>
-
-          <div className="menu-footer-cta flex flex-col gap-4">
-            <div className="flex items-center flex-wrap gap-4">
-              <a 
-                href="#contact" 
-                onClick={(e) => handleAnchorClick(e, 'contact')} 
-                className="btn-glacier-solid cursor-pointer inline-flex items-center gap-2"
-              >
-                {isEn ? "CHOOSE A PACKAGE" : "CHOISIR UN FORFAIT"} <ArrowRight className="w-4 h-4 inline" aria-hidden="true" />
-              </a>
-              <span className="text-xs font-semibold text-[#666666] tracking-wide">
-                {isEn ? "Free detailed quote within 24h • No obligation" : "Devis détaillé gratuit sous 24h • Sans engagement"}
-              </span>
-            </div>
-
-            <div className="offers-reassurance-note flex items-start gap-2.5 p-3.5 bg-slate-50 border border-slate-200 text-xs text-[#4A4A4A] leading-relaxed">
-              <ShieldCheck className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" aria-hidden="true" />
-              <div>
-                <strong className="font-bold text-[#1A1A1A]">
-                  {isEn ? "Total transparency from Year 2: " : "Transparence totale dès l'an 2 : "}
-                </strong>
-                {isEn
-                  ? "High-speed hosting and domain name included for the 1st year. From Year 2 onwards, technical renewal at cost price (~€39 to €49/year) without mandatory maintenance contracts, or free transfer."
-                  : "Nom de domaine et hébergement haute vitesse offerts la 1ère année. Dès la 2ème année, renouvellement technique à prix coûtant (~39 € à 49 € / an) sans marge de maintenance imposée, ou transfert libre si vous souhaitez gérer vous-même."}
-              </div>
-            </div>
           </div>
         </div>
 

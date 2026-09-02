@@ -46,7 +46,7 @@ export default function GlacierFaq() {
         }
       }
 
-      // 2. Animation des questions FAQ : Relais dynamique en cascade (départ pendant le ralentissement de la précédente)
+      // 2. Animation des questions FAQ : Arrivée dynamique depuis l'extérieur de l'écran avec cascade resserrée
       if (cardsContainerRef.current) {
         const cards = Array.from(cardsContainerRef.current.children);
         const faqTimeline = gsap.timeline({
@@ -58,24 +58,78 @@ export default function GlacierFaq() {
           },
         });
 
+        const offscreenX = typeof window !== 'undefined' ? window.innerWidth + 100 : 1200;
+
         cards.forEach((card, idx) => {
           const fromLeft = idx % 2 === 0;
+          const questionTitle = card.querySelector('.faq-question-title');
+          const chevronBadge = card.querySelector('.faq-chevron-badge');
+          // Délai resserré entre chaque question pour un enchaînement dynamique sans temps mort
+          const insertPosition = idx === 0 ? 0 : '-=0.52';
+
+          // Animation du conteneur de la carte (départ depuis l'extérieur de l'écran avec fond bleu identité)
           faqTimeline.fromTo(
             card,
             {
               opacity: 0,
-              x: fromLeft ? -100 : 100,
-              filter: 'blur(6px)',
+              x: fromLeft ? -offscreenX : offscreenX,
+              filter: 'blur(8px)',
+              backgroundColor: '#0284C7',
+              borderColor: '#0284C7',
+              transition: 'none',
             },
             {
               opacity: 1,
               x: 0,
               filter: 'blur(0px)',
-              duration: 0.5,
+              backgroundColor: '#F8F8F8',
+              borderColor: '#E5E5E5',
+              duration: 0.62,
               ease: 'power3.out',
+              clearProps: 'backgroundColor,borderColor,transition',
             },
-            idx === 0 ? 0 : '-=0.32'
+            insertPosition
           );
+
+          // Animation du texte de la question (du blanc vers le noir foncé d'origine)
+          if (questionTitle) {
+            faqTimeline.fromTo(
+              questionTitle,
+              {
+                color: '#FFFFFF',
+                transition: 'none',
+              },
+              {
+                color: '#1A1A1A',
+                duration: 0.62,
+                ease: 'power3.out',
+                clearProps: 'color,transition',
+              },
+              insertPosition
+            );
+          }
+
+          // Animation de la pastille du chevron (de la pastille transparente blanche vers le bouton neutre d'origine)
+          if (chevronBadge) {
+            faqTimeline.fromTo(
+              chevronBadge,
+              {
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderColor: 'rgba(255, 255, 255, 0.4)',
+                color: '#FFFFFF',
+                transition: 'none',
+              },
+              {
+                backgroundColor: '#FFFFFF',
+                borderColor: '#E5E5E5',
+                color: '#555555',
+                duration: 0.62,
+                ease: 'power3.out',
+                clearProps: 'backgroundColor,borderColor,color,transition',
+              },
+              insertPosition
+            );
+          }
         });
       }
     });
@@ -214,10 +268,10 @@ export default function GlacierFaq() {
                     id={`faq-question-${idx}`}
                   >
                     <span className="w-[30px] shrink-0 invisible" aria-hidden="true" />
-                    <h3 className="text-sm sm:text-base font-bold font-['Montserrat'] text-[#1A1A1A] leading-snug text-center transition-colors duration-200 group-hover:text-[#0284C7] flex-1">
+                    <h3 className="faq-question-title text-sm sm:text-base font-bold font-['Montserrat'] text-[#1A1A1A] leading-snug text-center transition-colors duration-200 group-hover:text-[#0284C7] flex-1">
                       {item.question}
                     </h3>
-                    <span className={`shrink-0 p-1.5 rounded-full bg-white border transition-all duration-300 ${
+                    <span className={`faq-chevron-badge shrink-0 p-1.5 rounded-full bg-white border transition-all duration-300 ${
                       isOpen ? 'border-[#0284C7] text-[#0284C7] bg-sky-50' : 'border-[#E5E5E5] text-[#555555]'
                     }`}>
                       <ChevronDown

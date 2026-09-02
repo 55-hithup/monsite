@@ -2087,23 +2087,6 @@ footer {
   margin-bottom: 20px;
 }
 
-.preview-browser-dots {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.preview-browser-dots .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot-red { background: #EF4444; }
-.dot-yellow { background: #F59E0B; }
-.dot-green { background: #10B981; }
-
 .preview-card-badge {
   font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
   font-size: 0.75rem;
@@ -2116,21 +2099,6 @@ footer {
   border-radius: 0px;
   display: inline-flex;
   align-items: center;
-}
-
-@keyframes glacierFadeIn {
-  0% {
-    opacity: 0.3;
-    transform: translateY(3px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-glacier-fade-in {
-  animation: glacierFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .preview-card-body {
@@ -2268,32 +2236,45 @@ footer {
   font-size: 0.75rem;
   font-weight: 800;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+  position: relative;
+  overflow: hidden;
 }
 
-.preview-tab-pill:hover {
+.preview-tab-pill:hover:not(.active-pill) {
   background: #F1F5F9;
   color: #1A1A1A;
   border-color: #94A3B8;
 }
 
 .preview-tab-pill.active-pill {
-  background: #1A1A1A;
+  background: transparent;
   color: #FFFFFF;
   border-color: #1A1A1A;
   box-shadow: none;
 }
 
+.active-pill-bg {
+  position: absolute;
+  inset: 0;
+  background: #1A1A1A;
+  z-index: 0;
+}
+
 .pill-num {
+  position: relative;
+  z-index: 1;
   opacity: 0.7;
   font-size: 0.75rem;
 }
 
 .pill-name {
+  position: relative;
+  z-index: 1;
   letter-spacing: 0.05em;
 }
 
@@ -2343,7 +2324,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .menu-item-row {

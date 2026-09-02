@@ -32,8 +32,8 @@ export default function Services() {
       en: 'Our Custom Web Services & Digital Solutions | DevSupAi',
     },
     {
-      fr: 'Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS sur-mesure et maintenance technique.',
-      en: 'Explore our 47 custom digital services: showcase websites, e-commerce, Android/iOS mobile apps, custom SaaS software, and technical maintenance.',
+      fr: 'Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications Android & PWA, SaaS sur-mesure et maintenance technique.',
+      en: 'Explore our 47 custom digital services: showcase websites, e-commerce, Android & PWA apps, custom SaaS software, and technical maintenance.',
     },
     'https://www.devsupai.fr/hero-bg-mockup.webp'
   );

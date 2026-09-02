@@ -76,7 +76,7 @@
 - Outils de gestion de flotte et suivi de matériel (LocaTool).
 - Plateformes événementielles interactives en temps réel à 60 FPS (Abogame).
 - Portails adhérents, extranets et espaces membres protégés.
-- Applications Web Progressives (PWA) installables sur smartphones iOS et Android.
+- Applications Web Progressives (PWA) installables sur smartphones et applications Android.
 - Intégration d'APIs REST, webhooks et automatisation de processus d'entreprise.
 - Génération automatique de devis et factures PDF.
 
