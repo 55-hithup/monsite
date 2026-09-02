@@ -3,7 +3,7 @@ import SectionReveal from '../components/SectionReveal';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import { useLanguage } from '../i18n/LanguageContext';
 import { pagesData } from '../i18n/pagesData';
-import { MapPin, Mail, Sparkles, ArrowRight } from 'lucide-react';
+import { MapPin, Mail, Sparkles, ArrowRight, ExternalLink, Database } from 'lucide-react';
 
 export default function About() {
   const { language } = useLanguage();
@@ -63,6 +63,72 @@ export default function About() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* Projets nés du terrain & SaaS */}
+              <div className="pt-10">
+                <h2 className="text-xl sm:text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-3">
+                  {t.realWorldProjectsTitle}
+                </h2>
+                <p className="text-sm sm:text-base text-[#666666] font-['Plus_Jakarta_Sans'] leading-relaxed mb-6">
+                  {t.realWorldProjectsDesc}
+                </p>
+
+                <div className="space-y-6">
+                  {t.projects?.map((project) => (
+                    <div 
+                      key={project.id} 
+                      className="p-6 sm:p-7 rounded-2xl bg-[#F8F8F8] border border-[#E5E5E5] hover:border-[#0284C7]/50 transition-all duration-300 shadow-sm"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2.5 py-1 rounded-md font-['Montserrat'] inline-flex items-center gap-1.5">
+                          {project.id === 'locatool' ? <Database size={13} className="text-sky-600" aria-hidden="true" /> : <Sparkles size={13} className="text-sky-600" aria-hidden="true" />}
+                          <span>{project.tag}</span>
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg sm:text-xl font-black font-['Montserrat'] text-[#1A1A1A] mb-4 tracking-tight">
+                        {project.title}
+                      </h3>
+
+                      <div className="space-y-2.5 text-xs sm:text-sm text-[#555555] font-['Plus_Jakarta_Sans'] leading-relaxed mb-5">
+                        <div className="p-3.5 rounded-xl bg-white border border-[#E5E5E5]">
+                          <strong className="text-[#1A1A1A] font-bold block mb-1 font-['Montserrat'] text-xs uppercase tracking-wider text-sky-700">
+                            {project.originLabel}
+                          </strong>
+                          <p className="text-slate-700">{project.origin}</p>
+                        </div>
+                        <div className="p-3.5 rounded-xl bg-white border border-[#E5E5E5]">
+                          <strong className="text-[#1A1A1A] font-bold block mb-1 font-['Montserrat'] text-xs uppercase tracking-wider text-emerald-700">
+                            {project.evolutionLabel}
+                          </strong>
+                          <p className="text-slate-700">{project.evolution}</p>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-[#E5E5E5]">
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-sky-600 text-white text-xs font-bold font-['Montserrat'] transition-all inline-flex items-center gap-2 shadow-xs cursor-pointer"
+                          style={{ color: '#FFFFFF' }}
+                        >
+                          <span style={{ color: '#FFFFFF' }}>{project.liveBtnText}</span>
+                          <ExternalLink size={13} className="text-white" aria-hidden="true" />
+                        </a>
+
+                        <Link
+                          to={project.caseStudyUrl}
+                          className="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 border border-[#CCCCCC] text-[#1A1A1A] text-xs font-bold font-['Montserrat'] transition-all inline-flex items-center gap-1.5 cursor-pointer"
+                        >
+                          <span>{project.caseStudyBtnText}</span>
+                          <ArrowRight size={13} aria-hidden="true" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             

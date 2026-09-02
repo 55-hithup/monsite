@@ -37,11 +37,11 @@
    - Formation à la prise en main incluse.
 
 3. **Pack SaaS & Application Métier Sur-Mesure** : Dès **3 200 €** (Base TJM **400 € / jour**)
-   - Logiciels de gestion interne (ex: gestion de parc matériel LocaTool).
+   - Logiciels de gestion et applications SaaS multi-tenant (ex: LocaTool, né pour l'association Le Caf'Tiers à Saint-Mihiel puis déployé en SaaS multi-tenant : https://locatool.devsupai.fr).
    - Portails d'adhésion pour associations et espaces extranet sécurisés.
    - Tunnels de réservation en ligne directe sans commission (ex: L'Atelier Gourmand).
-   - Plateformes événementielles et interactives temps réel (ex: Abogame).
-   - Bases de données SQL, authentification sécurisée, génération de factures PDF conformes.
+   - Plateformes événementielles et interactives temps réel (ex: AboGame, conçu pour un streameur TikTok puis ouvert au grand public : https://abogame.devsupai.fr).
+   - Bases de données SQL relationnelles, authentification sécurisée, signature tactile de contrats et génération de factures PDF conformes.
 
 4. **Gestion Google Business Profile & SEO Local (Option mensuelle)** : Dès **29 € / mois**
    - Optimisation et animation de la fiche Google Maps d'établissement.

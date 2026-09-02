@@ -21,8 +21,8 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
     let fallbackTimer: ReturnType<typeof setTimeout> | undefined;
 
     const ctx = gsap.context(() => {
-      // Masquer la carte avec son état initial dès le montage client
-      gsap.set(cardRef.current, { opacity: 0, y: 35, filter: 'blur(8px)' });
+      // Masquer la carte avec un léger décalage dès le montage client
+      gsap.set(cardRef.current, { opacity: 0, y: 20, filter: 'blur(4px)' });
     }, cardRef);
 
     const playHeroAnimation = () => {
@@ -35,9 +35,9 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
           opacity: 1,
           y: 0,
           filter: 'blur(0px)',
-          duration: 0.85,
+          duration: 0.5,
           ease: 'power2.out',
-          clearProps: 'filter',
+          clearProps: 'filter,transform,opacity',
         });
       });
     };
@@ -47,8 +47,8 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
       playHeroAnimation();
     } else {
       window.addEventListener('devsupai:hero-card-start', playHeroAnimation, { once: true });
-      // Fallback au cas où le header n'émettrait pas d'événement
-      fallbackTimer = setTimeout(playHeroAnimation, 1800);
+      // Fallback ultra-rapide (200ms) pour garantir une apparition immédiate
+      fallbackTimer = setTimeout(playHeroAnimation, 200);
     }
 
     return () => {

@@ -67,7 +67,7 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
       logo.style.opacity = '1';
       setIsReady(true);
 
-      const duration = 1600; // 1.6 secondes
+      const duration = 1200; // 1.2 secondes
       const startTime = performance.now();
       let heroTriggerSent = false;
 
@@ -92,8 +92,8 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
         textReveal.style.clipPath = `inset(0 ${clipRight}px 0 0)`;
         (textReveal.style as unknown as Record<string, string>).webkitClipPath = `inset(0 ${clipRight}px 0 0)`;
 
-        // Déclenchement de l'animation de la carte un tout petit peu avant la fin (~82% de l'animation DEVSUPAI)
-        if (!heroTriggerSent && t >= 0.82) {
+        // Déclenchement de l'animation de la carte dès le début (~10% de l'animation DEVSUPAI, soit ~120ms)
+        if (!heroTriggerSent && t >= 0.1) {
           heroTriggerSent = true;
           if (typeof window !== 'undefined') {
             (window as any).__devsupai_card_trigger = true;
