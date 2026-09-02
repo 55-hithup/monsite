@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { Languages } from 'lucide-react';
 import GlacierLogoReveal from './GlacierLogoReveal';
@@ -15,45 +16,13 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   const isHomePage = location.pathname === '/' || location.pathname === '/en';
   const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeTab, setActiveTab] = useState<string>('');
 
   useEffect(() => {
     setIsSubtitleVisible(false);
   }, [location.pathname]);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      // Ne descend que lorsque le premier header est complètement sorti de l'écran (220px)
-      setIsScrolled(scrollY > 220);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    if (isHomePage) {
-      if (onNavClick) {
-        onNavClick(targetId);
-        return;
-      }
-      if (typeof window !== 'undefined') {
-        const el = document.getElementById(targetId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    } else {
-      navigate(`${isEn ? '/en' : ''}/#${targetId}`);
-    }
-  };
-
-  const navLinks = isEn
+  const navLinks = useMemo(() => isEn
     ? {
         services: 'SERVICES',
         realisations: 'PROJECTS',
@@ -77,19 +46,102 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         aboutPath: '/a-propos',
         blog: 'BLOG',
         blogPath: '/blog',
-      };
+      }, [isEn]);
+
+  // Suivi de l'onglet actif : par URL sur les sous-pages, par position de scroll sur la landing page
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (!isHomePage) {
+      if (location.pathname === navLinks.catalogPath || location.pathname.startsWith('/nos-services') || location.pathname.startsWith('/en/services')) {
+        setActiveTab('catalog');
+      } else if (location.pathname === navLinks.aboutPath || location.pathname.startsWith('/a-propos') || location.pathname.startsWith('/en/about')) {
+        setActiveTab('about');
+      } else if (location.pathname === navLinks.blogPath || location.pathname.startsWith('/blog') || location.pathname.startsWith('/en/blog')) {
+        setActiveTab('blog');
+      } else {
+        setActiveTab('');
+      }
+      return;
+    }
+
+    const sections = ['services', 'realisations', 'avis', 'contact'];
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      setIsScrolled(scrollY > 220);
+
+      // Si tout en haut dans le hero
+      if (scrollY < 180) {
+        setActiveTab('');
+        return;
+      }
+
+      // Si proche du bas de page, activer le contact
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 140) {
+        setActiveTab('contact');
+        return;
+      }
+
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.42 && rect.bottom >= window.innerHeight * 0.15) {
+            setActiveTab(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHomePage, location.pathname, navLinks]);
+
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    setActiveTab(targetId);
+    if (isHomePage) {
+      if (onNavClick) {
+        onNavClick(targetId);
+        return;
+      }
+      if (typeof window !== 'undefined') {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    } else {
+      navigate(`${isEn ? '/en' : ''}/#${targetId}`);
+    }
+  };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (isHomePage) {
       e.preventDefault();
+      setActiveTab('');
       if (typeof window !== 'undefined') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   };
 
+  const navItems = [
+    { id: 'services', label: navLinks.services, isAnchor: true, href: `${isEn ? '/en' : ''}/#services` },
+    { id: 'realisations', label: navLinks.realisations, isAnchor: true, href: `${isEn ? '/en' : ''}/#realisations` },
+    { id: 'avis', label: navLinks.avis, isAnchor: true, href: `${isEn ? '/en' : ''}/#avis` },
+    { id: 'contact', label: navLinks.contact, isAnchor: true, href: `${isEn ? '/en' : ''}/#contact` },
+    { id: 'catalog', label: navLinks.catalog, isAnchor: false, path: navLinks.catalogPath },
+    { id: 'about', label: navLinks.about, isAnchor: false, path: navLinks.aboutPath },
+    { id: 'blog', label: navLinks.blog, isAnchor: false, path: navLinks.blogPath },
+  ];
+
   const renderNavLinks = (isSticky = false) => (
-    <div className="flex items-center justify-center gap-[clamp(8px,1.8vw,28px)] flex-nowrap whitespace-nowrap mx-auto">
+    <div className="flex items-center justify-center gap-[clamp(4px,0.8vw,14px)] flex-nowrap whitespace-nowrap mx-auto">
       {isSticky && (
         <Link 
           key={isScrolled ? 'sticky-logo-active' : 'sticky-logo-idle'}
@@ -113,52 +165,50 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         </Link>
       )}
 
-      <a 
-        href={`${isEn ? '/en' : ''}/#services`} 
-        onClick={(e) => handleAnchorClick(e, 'services')} 
-        className="glacier-nav-link"
-      >
-        {navLinks.services}
-      </a>
-      <a 
-        href={`${isEn ? '/en' : ''}/#realisations`} 
-        onClick={(e) => handleAnchorClick(e, 'realisations')} 
-        className="glacier-nav-link"
-      >
-        {navLinks.realisations}
-      </a>
-      <a 
-        href={`${isEn ? '/en' : ''}/#avis`} 
-        onClick={(e) => handleAnchorClick(e, 'avis')} 
-        className="glacier-nav-link"
-      >
-        {navLinks.avis}
-      </a>
-      <a 
-        href={`${isEn ? '/en' : ''}/#contact`} 
-        onClick={(e) => handleAnchorClick(e, 'contact')} 
-        className="glacier-nav-link"
-      >
-        {navLinks.contact}
-      </a>
-      <Link 
-        to={navLinks.catalogPath} 
-        className={`glacier-nav-link ${location.pathname === navLinks.catalogPath ? 'text-[#0284C7] font-extrabold' : ''}`}
-      >
-        {navLinks.catalog}
-      </Link>
-      <Link 
-        to={navLinks.aboutPath} 
-        className={`glacier-nav-link ${location.pathname === navLinks.aboutPath ? 'text-[#0284C7] font-extrabold' : ''}`}
-      >
-        {navLinks.about}
-      </Link>
-      <Link 
-        to={navLinks.blogPath} 
-        className={`glacier-nav-link ${location.pathname.startsWith(navLinks.blogPath) ? 'text-[#0284C7] font-extrabold' : ''}`}
-      >
-        {navLinks.blog}
-      </Link>
+      {navItems.map((item) => {
+        const isActive = activeTab === item.id;
+        const linkClasses = `glacier-nav-link relative z-10 px-3 sm:px-3.5 py-1.5 rounded-full transition-colors duration-200 cursor-pointer inline-flex items-center justify-center ${
+          isActive ? 'text-[#0284C7] font-black' : 'text-[#475569] hover:text-[#0F172A]'
+        }`;
+
+        const capsuleElement = isActive ? (
+          <motion.span
+            layoutId={`active-nav-capsule-${isSticky ? 'sticky' : 'static'}`}
+            className="glacier-nav-capsule"
+            transition={{
+              type: 'spring',
+              stiffness: 380,
+              damping: 32,
+            }}
+          />
+        ) : null;
+
+        if (item.isAnchor) {
+          return (
+            <a
+              key={item.id}
+              href={item.href}
+              onClick={(e) => handleAnchorClick(e, item.id)}
+              className={linkClasses}
+            >
+              {capsuleElement}
+              <span className="relative z-10">{item.label}</span>
+            </a>
+          );
+        }
+
+        return (
+          <Link
+            key={item.id}
+            to={item.path!}
+            onClick={() => setActiveTab(item.id)}
+            className={linkClasses}
+          >
+            {capsuleElement}
+            <span className="relative z-10">{item.label}</span>
+          </Link>
+        );
+      })}
 
       {/* Language Switcher */}
       <div className="inline-flex items-center gap-1 ml-1 pl-2 border-l border-[#E5E5E5] text-xs font-['Montserrat'] font-bold">
