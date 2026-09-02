@@ -1927,6 +1927,55 @@ footer {
   transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 320ms ease;
   will-change: transform, opacity;
   box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.glacier-fixed-floating-nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* Logo entreprise dans la barre flottante : glissement depuis l'extérieur gauche avec décélération */
+.sticky-nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  will-change: transform, opacity;
+}
+
+.sticky-logo-enter {
+  animation: stickyLogoSlideIn 680ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+
+.sticky-logo-exit {
+  opacity: 0;
+  transform: translateX(-100vw);
+  pointer-events: none;
+}
+
+@keyframes stickyLogoSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky-logo-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .glacier-nav-link {

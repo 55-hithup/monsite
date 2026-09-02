@@ -79,8 +79,40 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         blogPath: '/blog',
       };
 
-  const renderNavLinks = () => (
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHomePage) {
+      e.preventDefault();
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const renderNavLinks = (isSticky = false) => (
     <div className="flex items-center justify-center gap-[clamp(8px,1.8vw,28px)] flex-nowrap whitespace-nowrap mx-auto">
+      {isSticky && (
+        <Link 
+          key={isScrolled ? 'sticky-logo-active' : 'sticky-logo-idle'}
+          to={isEn ? '/en' : '/'} 
+          onClick={handleLogoClick}
+          className={`sticky-nav-logo inline-flex items-center gap-2 group cursor-pointer mr-1 sm:mr-3 ${
+            isScrolled ? 'sticky-logo-enter' : 'sticky-logo-exit'
+          }`}
+          aria-label={isEn ? 'DevSupAi - Back to top' : 'DevSupAi - Retour en haut'}
+        >
+          <img 
+            src="/logo.webp" 
+            alt="DevSupAi" 
+            width={28} 
+            height={28} 
+            className="w-7 h-7 object-contain transition-transform duration-300 group-hover:scale-110 shrink-0" 
+          />
+          <span className="font-['Montserrat'] font-black text-xs sm:text-sm tracking-widest text-[#1A1A1A] group-hover:text-[#0284C7] transition-colors hidden md:inline">
+            DEVSUPAI
+          </span>
+        </Link>
+      )}
+
       <a 
         href={`${isEn ? '/en' : ''}/#services`} 
         onClick={(e) => handleAnchorClick(e, 'services')} 
@@ -181,7 +213,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         </div>
 
         <nav className="glacier-nav-strip" aria-label={isEn ? 'Main navigation' : 'Navigation principale'}>
-          {renderNavLinks()}
+          {renderNavLinks(false)}
         </nav>
       </header>
 
@@ -195,7 +227,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         aria-hidden={!isScrolled}
       >
         <nav className="w-full flex items-center justify-center" aria-label={isEn ? 'Floating navigation' : 'Navigation flottante'}>
-          {renderNavLinks()}
+          {renderNavLinks(true)}
         </nav>
       </div>
     </>
