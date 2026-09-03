@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Fragment } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { Languages } from 'lucide-react';
@@ -84,31 +84,36 @@ function GlacierNavLinks({
         const linkClasses = `glacier-nav-link relative z-10 px-3 sm:px-3.5 py-1.5 rounded-full transition-colors duration-150 cursor-pointer inline-flex items-center justify-center ${
           isActive ? 'text-[#0284C7] font-black' : 'text-[#475569] hover:text-[#0F172A]'
         }`;
-
-        if (item.isAnchor) {
-          return (
-            <a
-              key={item.id}
-              href={item.href}
-              onClick={(e) => onAnchorClick(e, item.id)}
-              className={linkClasses}
-            >
-              {isActive && <span aria-hidden="true" className="glacier-nav-capsule" />}
-              <span className="relative z-10">{item.label}</span>
-            </a>
-          );
-        }
+        const isFirstPageLink = item.id === 'catalog';
 
         return (
-          <Link
-            key={item.id}
-            to={item.path!}
-            onClick={() => onLinkClick(item.id)}
-            className={linkClasses}
-          >
-            {isActive && <span aria-hidden="true" className="glacier-nav-capsule" />}
-            <span className="relative z-10">{item.label}</span>
-          </Link>
+          <Fragment key={item.id}>
+            {isFirstPageLink && (
+              <span
+                aria-hidden="true"
+                className="h-3.5 w-px bg-[#CBD5E1] mx-0.5 sm:mx-1 opacity-75 flex-shrink-0 self-center pointer-events-none"
+              />
+            )}
+            {item.isAnchor ? (
+              <a
+                href={item.href}
+                onClick={(e) => onAnchorClick(e, item.id)}
+                className={linkClasses}
+              >
+                {isActive && <span aria-hidden="true" className="glacier-nav-capsule" />}
+                <span className="relative z-10">{item.label}</span>
+              </a>
+            ) : (
+              <Link
+                to={item.path!}
+                onClick={() => onLinkClick(item.id)}
+                className={linkClasses}
+              >
+                {isActive && <span aria-hidden="true" className="glacier-nav-capsule" />}
+                <span className="relative z-10">{item.label}</span>
+              </Link>
+            )}
+          </Fragment>
         );
       })}
 

@@ -430,7 +430,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
             return (
               <div 
                 key={pack.id} 
-                className="glacier-flip-card-wrapper min-h-[490px]"
+                className="glacier-flip-card-wrapper min-h-[550px]"
               >
                 <div className={`glacier-flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
                   
@@ -475,18 +475,25 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                         {pack.shortDesc}
                       </p>
 
-                      {/* Ligne compacte de métriques (Badges horizontaux) */}
-                      <div className="flex items-center flex-wrap gap-1.5 mb-3.5 py-2 border-y border-slate-100">
+                      {/* Grille de métriques : 3 petites cards 1:1 carrées */}
+                      <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-4 py-2.5 border-y border-slate-100">
                         {pack.metrics.map((metric, mIdx) => {
                           const MetricIcon = metric.icon;
                           return (
-                            <span 
+                            <div 
                               key={mIdx} 
-                              className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200/80 text-slate-700 px-2 py-0.5 rounded text-[11px] font-medium"
+                              className="aspect-square rounded-xl bg-slate-50/90 hover:bg-white border border-slate-200/80 hover:border-sky-300 transition-all duration-200 p-2 flex flex-col items-center justify-center text-center group shadow-2xs hover:shadow-xs"
                             >
-                              <MetricIcon className="w-3 h-3 text-sky-600 shrink-0" aria-hidden="true" />
-                              <span>{metric.value}</span>
-                            </span>
+                              <div className="w-7 h-7 rounded-lg bg-white group-hover:bg-sky-50 border border-slate-200/60 group-hover:border-sky-200 flex items-center justify-center mb-1 transition-colors shrink-0 shadow-2xs">
+                                <MetricIcon className="w-3.5 h-3.5 text-sky-600 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
+                              </div>
+                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 group-hover:text-sky-600 font-['Montserrat'] mb-0.5 line-clamp-1 transition-colors">
+                                {metric.label}
+                              </span>
+                              <span className="text-[11px] sm:text-xs font-bold text-slate-800 leading-tight line-clamp-2">
+                                {metric.value}
+                              </span>
+                            </div>
                           );
                         })}
                       </div>
@@ -631,12 +638,12 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                       <button
                         type="button"
                         onClick={() => toggleFlip(pack.id)}
-                        className="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-900 border border-slate-700 text-white text-xs font-black font-['Montserrat'] transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1.5 shadow-xs"
-                        style={{ color: '#FFFFFF' }}
+                        className="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 text-xs font-black font-['Montserrat'] transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1.5 shadow-xs"
+                        style={{ backgroundColor: '#F1F5F9', color: '#0F172A', borderColor: '#CBD5E1' }}
                         aria-label={isEn ? "Flip back to presentation" : "Retourner le forfait au recto"}
                       >
-                        <RotateCcw className="w-3.5 h-3.5 text-white" aria-hidden="true" />
-                        <span style={{ color: '#FFFFFF' }}>{isEn ? "Back" : "Retour"}</span>
+                        <RotateCcw className="w-3.5 h-3.5 text-[#0284C7] shrink-0" aria-hidden="true" />
+                        <span style={{ color: '#0F172A' }}>{isEn ? "Back" : "Recto"}</span>
                       </button>
 
                       <a
