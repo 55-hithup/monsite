@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { Area, Point } from 'react-easy-crop';
@@ -16,6 +16,7 @@ interface TestimonialItem {
   role: string;
   rating: number;
   avatar?: string;
+  source?: 'google' | 'direct';
   created_at?: any;
 }
 
@@ -148,12 +149,16 @@ function TestimonialCard({
   onToggleExpand,
   readMoreText,
   showLessText,
+  googleBadgeText,
+  verifiedBadgeText,
 }: {
   testi: TestimonialItem;
   isExpanded: boolean;
   onToggleExpand: () => void;
   readMoreText: string;
   showLessText: string;
+  googleBadgeText: string;
+  verifiedBadgeText: string;
 }) {
   const quoteRef = useRef<HTMLParagraphElement>(null);
   const [canExpand, setCanExpand] = useState(false);
@@ -171,17 +176,36 @@ function TestimonialCard({
   return (
     <div className="testi-card h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-xl bg-white border border-[#E5E5E5] hover:border-[#0284C7] transition-all duration-300 shadow-sm hover:shadow-md">
       <div>
-        {/* Rating Stars */}
-        <div className="flex gap-1 mb-3.5 items-center" role="img" aria-label={`Rating: ${testi.rating} / 5`}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              key={i}
-              size={14}
-              fill={i < testi.rating ? '#F59E0B' : 'transparent'}
-              stroke={i < testi.rating ? '#F59E0B' : '#CBD5E1'}
-              aria-hidden="true"
-            />
-          ))}
+        {/* Rating Stars & Source Badge */}
+        <div className="flex items-center justify-between gap-2 mb-3.5">
+          <div className="flex gap-1 items-center" role="img" aria-label={`Rating: ${testi.rating} / 5`}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star
+                key={i}
+                size={14}
+                fill={i < testi.rating ? '#F59E0B' : 'transparent'}
+                stroke={i < testi.rating ? '#F59E0B' : '#CBD5E1'}
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+
+          {testi.source === 'direct' ? (
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold font-['Montserrat'] bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs">
+              <CheckCircle2 size={12} className="text-emerald-600 flex-shrink-0" />
+              <span>{verifiedBadgeText}</span>
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold font-['Montserrat'] bg-[#F8FAFC] text-[#334155] border border-[#E2E8F0] shadow-2xs">
+              <svg viewBox="0 0 24 24" width="12" height="12" className="flex-shrink-0" aria-hidden="true">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <span>{googleBadgeText}</span>
+            </span>
+          )}
         </div>
 
         {/* Quote text */}
@@ -484,6 +508,7 @@ export default function Testimonials() {
             role: data.role,
             rating: data.rating || 5,
             avatar: data.avatar || undefined,
+            source: data.source || 'google',
             created_at: data.created_at || null,
           });
         });
@@ -686,6 +711,7 @@ export default function Testimonials() {
         role,
         quote: `« ${quote.replace(/[«»]/g, '').trim()} »`,
         rating,
+        source: 'direct',
         avatar: croppedImage || null,
         approved: false,
         created_at: new Date(),
@@ -765,6 +791,8 @@ export default function Testimonials() {
                     }}
                     readMoreText={t.readMore}
                     showLessText={t.showLess}
+                    googleBadgeText={t.badgeGoogle}
+                    verifiedBadgeText={t.badgeVerified}
                   />
                 </div>
               ))}

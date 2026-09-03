@@ -307,6 +307,9 @@ export const translations = {
       readMore: 'Lire la suite',
       showLess: 'Voir moins',
       leaveReview: 'Laisser un avis',
+      leaveGoogleReview: 'Laisser un avis Google',
+      badgeGoogle: 'Avis Google',
+      badgeVerified: 'Avis vérifié',
       form: {
         title: 'Partagez votre expérience',
         subtitle: "Votre avis sera relu et validé avant d'être publié.",
@@ -712,6 +715,9 @@ export const translations = {
       readMore: 'Read more',
       showLess: 'Show less',
       leaveReview: 'Leave a review',
+      leaveGoogleReview: 'Leave a Google review',
+      badgeGoogle: 'Google Review',
+      badgeVerified: 'Verified Review',
       form: {
         title: 'Share your experience',
         subtitle: 'Your testimonial will be reviewed and approved before publication.',

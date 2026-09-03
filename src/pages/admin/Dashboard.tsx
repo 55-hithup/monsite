@@ -30,6 +30,7 @@ interface TestimonialDoc {
   rating: number;
   approved: boolean;
   avatar?: string | null;
+  source?: 'google' | 'direct';
   created_at?: any;
 }
 
@@ -39,6 +40,7 @@ const initialDefaultReviews = [
     role: "Fondateur, Mercier Rénovation & Bois",
     quote: "« Passer d'un ancien template WordPress lent à un site sur-mesure développé par DevSupAi a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement. Un investissement très vite rentabilisé. »",
     rating: 5,
+    source: 'google' as const,
     approved: false,
   },
   {
@@ -46,6 +48,7 @@ const initialDefaultReviews = [
     role: "Chirurgien-Dentiste, Cabinet Dentaire",
     quote: "« DevSupAi a su concevoir un site à la fois épuré, rassurant et ultra-rapide pour nos patients. La navigation sur smartphone est parfaite, les informations sont claires et nous avons d'excellents retours au quotidien. Un professionnalisme rare et un suivi exemplaire. »",
     rating: 5,
+    source: 'google' as const,
     approved: false,
   },
   {
@@ -53,6 +56,7 @@ const initialDefaultReviews = [
     role: "Directeur Général, LogiMat Outils",
     quote: "« Nous avions besoin d'une interface sur-mesure performante et d'une vitrine moderne pour nos clients professionnels. Le site charge en un clin d'œil et nos équipes gagnent un temps précieux dans le suivi des demandes. DevSupAi a parfaitement cerné nos enjeux. »",
     rating: 5,
+    source: 'google' as const,
     approved: false,
   },
   {
@@ -60,6 +64,7 @@ const initialDefaultReviews = [
     role: "Fondatrice, Studio Verrière",
     quote: "« Le résultat dépasse largement mes attentes. Les demandes de contact sont régulières et mes clients me complimentent sur le site à chaque échange. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne. »",
     rating: 5,
+    source: 'google' as const,
     approved: true,
   },
   {
@@ -67,6 +72,7 @@ const initialDefaultReviews = [
     role: "CEO, Neuron Labs",
     quote: "« Un vrai partenaire, pas juste un prestataire. Chaque détail a été pensé pour ma marque, avec un sens de la performance et une réactivité exemplaires. Le site est un véritable levier de croissance. »",
     rating: 5,
+    source: 'google' as const,
     approved: true,
   },
   {
@@ -74,6 +80,7 @@ const initialDefaultReviews = [
     role: "Directrice, Maison Lucine",
     quote: "« Rapide, réactif et incroyablement précis. Le site est aujourd'hui mon meilleur commercial, disponible 24h/24 avec des temps de chargement instantanés. Je recommande sans la moindre hésitation. »",
     rating: 5,
+    source: 'google' as const,
     approved: true,
   },
 ];
@@ -137,6 +144,7 @@ export default function Dashboard() {
   const [formRole, setFormRole] = useState('');
   const [formQuote, setFormQuote] = useState('');
   const [formRating, setFormRating] = useState(5);
+  const [formSource, setFormSource] = useState<'google' | 'direct'>('google');
   const [formApproved, setFormApproved] = useState(true);
   const [formAvatar, setFormAvatar] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -271,6 +279,7 @@ export default function Dashboard() {
     setFormRole(review.role);
     setFormQuote(review.quote.replace(/^[«"]\s*|\s*[»"]$/g, ''));
     setFormRating(review.rating || 5);
+    setFormSource(review.source || 'google');
     setFormApproved(review.approved ?? true);
     setFormAvatar(review.avatar || null);
     setImageSrc(null);
@@ -284,6 +293,7 @@ export default function Dashboard() {
     setFormRole('');
     setFormQuote('');
     setFormRating(5);
+    setFormSource('google');
     setFormApproved(true);
     setFormAvatar(null);
     setImageSrc(null);
@@ -369,6 +379,7 @@ export default function Dashboard() {
           role: formRole.trim(),
           quote: formattedQuote,
           rating: formRating,
+          source: formSource,
           approved: formApproved,
           avatar: finalAvatar || null,
         });
@@ -382,6 +393,7 @@ export default function Dashboard() {
           role: formRole.trim(),
           quote: formattedQuote,
           rating: formRating,
+          source: formSource,
           approved: false,
           avatar: finalAvatar || null,
           created_at: new Date(),
@@ -728,13 +740,31 @@ export default function Dashboard() {
                     </div>
 
                     <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider border ${
-                        review.approved 
-                          ? 'bg-emerald-100 text-emerald-900 border-emerald-300' 
-                          : 'bg-amber-100 text-amber-900 border-amber-300'
-                      }`}>
-                        {review.approved ? 'En ligne' : 'En attente'}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        {review.source === 'direct' ? (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold font-['Montserrat'] bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs">
+                            <CheckCircle2 size={11} className="text-emerald-600 flex-shrink-0" />
+                            <span>Vérifié</span>
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold font-['Montserrat'] bg-white text-[#334155] border border-[#E2E8F0] shadow-2xs">
+                            <svg viewBox="0 0 24 24" width="11" height="11" className="flex-shrink-0" aria-hidden="true">
+                              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                            </svg>
+                            <span>Google</span>
+                          </span>
+                        )}
+                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider border ${
+                          review.approved 
+                            ? 'bg-emerald-100 text-emerald-900 border-emerald-300' 
+                            : 'bg-amber-100 text-amber-900 border-amber-300'
+                        }`}>
+                          {review.approved ? 'En ligne' : 'En attente'}
+                        </span>
+                      </div>
                       <div className="flex gap-1 items-center" role="img" aria-label={`Note : ${review.rating || 5} sur 5 étoiles`}>
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star 
@@ -876,6 +906,45 @@ export default function Dashboard() {
                     </button>
                   ))}
                   <span className="text-xs text-[#666666] ml-2 font-mono font-bold">({formRating}/5)</span>
+                </div>
+              </div>
+
+              {/* Source selection */}
+              <div>
+                <label className="block text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                  Origine / Source de l'avis
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setFormSource('google')}
+                    className={`flex items-center justify-center gap-2.5 px-3.5 py-2.5 rounded-xl border text-xs font-bold font-['Montserrat'] transition-all cursor-pointer ${
+                      formSource === 'google'
+                        ? 'bg-blue-50/80 border-[#0284C7] text-[#0284C7] shadow-xs ring-1 ring-[#0284C7]'
+                        : 'bg-white border-[#CCCCCC] text-[#666666] hover:border-[#999999]'
+                    }`}
+                  >
+                    <svg viewBox="0 0 24 24" width="15" height="15" className="flex-shrink-0" aria-hidden="true">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                    <span>Avis Google</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setFormSource('direct')}
+                    className={`flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl border text-xs font-bold font-['Montserrat'] transition-all cursor-pointer ${
+                      formSource === 'direct'
+                        ? 'bg-emerald-50/80 border-emerald-600 text-emerald-700 shadow-xs ring-1 ring-emerald-600'
+                        : 'bg-white border-[#CCCCCC] text-[#666666] hover:border-[#999999]'
+                    }`}
+                  >
+                    <CheckCircle2 size={15} className="text-emerald-600 flex-shrink-0" />
+                    <span>Avis vérifié (Site)</span>
+                  </button>
                 </div>
               </div>
 
