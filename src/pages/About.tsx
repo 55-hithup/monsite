@@ -330,7 +330,7 @@ export default function About() {
         />
         <div className="services-parallax-tint" />
 
-        <div className="container max-w-5xl mx-auto px-6 relative z-10">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div 
             ref={heroEyebrowRef}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-sky-400/40 bg-sky-500/20 text-xs sm:text-sm font-bold font-['Montserrat'] text-sky-300 mb-6 shadow-sm"
@@ -341,7 +341,7 @@ export default function About() {
 
           <h1 
             ref={heroTitleRef}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-['Montserrat'] text-white mb-8 leading-[1.15] tracking-tight max-w-4xl whitespace-pre-line"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-['Montserrat'] text-white mb-8 leading-[1.15] tracking-tight max-w-5xl whitespace-pre-line"
             style={{ color: '#FFFFFF' }}
           >
             {t.title}
@@ -350,7 +350,7 @@ export default function About() {
           {/* Accroche forte mise en exergue avec bordure cyan et grande typographie lisible */}
           <div 
             ref={heroDescRef}
-            className="p-6 md:p-8 rounded-none bg-slate-900/65 backdrop-blur-xl border border-white/20 border-l-4 border-l-sky-400 shadow-xl max-w-4xl"
+            className="p-6 md:p-8 rounded-none bg-slate-900/65 backdrop-blur-xl border border-white/20 border-l-4 border-l-sky-400 shadow-xl max-w-5xl"
           >
             <p 
               className="text-lg sm:text-xl md:text-2xl text-white font-medium font-['Playfair_Display'] italic leading-relaxed"
@@ -362,125 +362,46 @@ export default function About() {
         </div>
       </section>
 
-      {/* 2. MAIN CONTENT SECTION (Histoire, Principes & Projets SaaS) */}
+      {/* 2. MAIN CONTENT SECTION (Histoire, Principes & Projets SaaS étalés sur toute la largeur) */}
       <section className="py-16 md:py-24 bg-[#F8F8F8] border-b border-[#E5E5E5] text-left">
-        <div className="container max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* BLOC 1 : HISTOIRE & PROFIL FONDATEUR (Grille spacieuse 12 colonnes) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-16 md:mb-24">
             
-            {/* Colonne Principale (Histoire + Principes + Projets) */}
-            <div className="md:col-span-2 space-y-10">
+            {/* Colonne Gauche : Histoire Fondatrice & Vision Technique */}
+            <div className="lg:col-span-7 xl:col-span-8 space-y-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7]">
+                <span>{language === 'en' ? "VISION & COMMITMENT" : "NOTRE VISION & ENGAGEMENT"}</span>
+              </div>
               
-              {/* Récit fondateur avec typographie agrandie et aérée */}
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight leading-tight">
+                {language === 'en' 
+                  ? "Bespoke web architectures engineered for durability and performance" 
+                  : "Créer un web rapide, pérenne et taillé pour le terrain"}
+              </h2>
+
+              {/* Récit fondateur avec typographie aérée */}
               <div ref={storyTextRef} className="space-y-6 text-base sm:text-lg text-[#333333] leading-relaxed font-['Plus_Jakarta_Sans']">
                 <p>{t.p2}</p>
                 <p>{t.p3}</p>
               </div>
 
-              {/* Principes Fondateurs */}
-              <div className="pt-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] mb-4">
-                  <span>VALEURS & ENGAGEMENTS</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-[#1A1A1A] mb-6 tracking-tight">
-                  {t.principlesTitle}
-                </h2>
-
-                {/* Chaque carte de principe avec typographie confortable */}
-                <div ref={principlesGridRef} className="space-y-4">
-                  {t.principles.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex gap-4 p-6 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-md transition-all duration-200 group"
-                    >
-                      <span className="text-[#0284C7] font-black font-['Montserrat'] text-lg sm:text-xl shrink-0 group-hover:scale-110 transition-transform duration-200">
-                        {item.num}
-                      </span>
-                      <div>
-                        <strong className="text-[#1A1A1A] font-bold block mb-1.5 font-['Montserrat'] text-base sm:text-lg group-hover:text-[#0284C7] transition-colors">
-                          {item.title}
-                        </strong>
-                        <span className="text-sm sm:text-base text-[#4A4A4A] leading-relaxed font-['Plus_Jakarta_Sans'] block">
-                          {item.desc}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Projets nés du terrain & SaaS */}
-              <div className="pt-10">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] mb-3">
-                  <span>RÉALISATIONS TERRAIN</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-[#1A1A1A] mb-3 tracking-tight">
-                  {t.realWorldProjectsTitle}
-                </h2>
-                <p className="text-base sm:text-lg text-[#555555] font-['Plus_Jakarta_Sans'] leading-relaxed mb-8">
-                  {t.realWorldProjectsDesc}
+              {/* Encadré d'engagement qualité sans faux chiffres */}
+              <div className="p-6 sm:p-7 rounded-none bg-white border border-[#E5E5E5] border-l-4 border-l-[#0284C7] shadow-sm">
+                <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-2">
+                  {language === 'en' ? "Direct craftmanship, zero outsourcing" : "Artisanat direct, zéro sous-traitance"}
+                </h3>
+                <p className="text-sm sm:text-base text-[#555555] font-['Plus_Jakarta_Sans'] leading-relaxed">
+                  {language === 'en' 
+                    ? "Every project is conceived, developed, and deployed directly by Alexandre Pabst. You benefit from a single, dedicated technical specialist guaranteeing direct communication and long-term maintainability."
+                    : "Chaque projet est pensé, codé et mis en ligne personnellement par Alexandre Pabst. Vous bénéficiez d'un interlocuteur technique unique et réactif, sans intermédiaire ni dilution de responsabilité."}
                 </p>
-
-                {/* Chaque carte projet avec typographie agrandie */}
-                <div ref={projectsGridRef} className="space-y-8">
-                  {t.projects?.map((project) => (
-                    <div
-                      key={project.id}
-                      className="p-7 sm:p-9 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-lg transition-all duration-300"
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                        <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200 px-3.5 py-1.5 rounded-none font-['Montserrat'] inline-flex items-center gap-1.5">
-                          {project.id === 'locatool' ? <Database size={15} className="text-sky-600" aria-hidden="true" /> : <Sparkles size={15} className="text-sky-600" aria-hidden="true" />}
-                          <span>{project.tag}</span>
-                        </span>
-                      </div>
-
-                      <h3 className="text-xl sm:text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-4 tracking-tight">
-                        {project.title}
-                      </h3>
-
-                      <div className="space-y-4 text-sm sm:text-base font-['Plus_Jakarta_Sans'] leading-relaxed mb-6">
-                        <div className="p-4 sm:p-5 rounded-none bg-[#F8FAFC] border border-[#E2E8F0]">
-                          <strong className="text-sky-900 font-bold block mb-1.5 font-['Montserrat'] text-xs sm:text-sm uppercase tracking-wider">
-                            {project.originLabel}
-                          </strong>
-                          <p className="text-slate-800 leading-relaxed">{project.origin}</p>
-                        </div>
-                        <div className="p-4 sm:p-5 rounded-none bg-[#F8FAFC] border border-[#E2E8F0]">
-                          <strong className="text-emerald-900 font-bold block mb-1.5 font-['Montserrat'] text-xs sm:text-sm uppercase tracking-wider">
-                            {project.evolutionLabel}
-                          </strong>
-                          <p className="text-slate-800 leading-relaxed">{project.evolution}</p>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-[#E5E5E5]">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-6 py-3 rounded-none bg-[#1A1A1A] hover:bg-[#0284C7] text-white text-sm font-bold font-['Montserrat'] transition-all inline-flex items-center gap-2 active:scale-95 shadow-sm cursor-pointer"
-                          style={{ color: '#FFFFFF' }}
-                        >
-                          <span style={{ color: '#FFFFFF' }}>{project.liveBtnText}</span>
-                          <ExternalLink size={15} className="text-white" aria-hidden="true" />
-                        </a>
-
-                        <Link
-                          to={project.caseStudyUrl}
-                          className="px-6 py-3 rounded-none bg-white hover:bg-slate-100 border border-[#CCCCCC] text-[#1A1A1A] text-sm font-bold font-['Montserrat'] transition-all inline-flex items-center gap-2 active:scale-95 cursor-pointer"
-                        >
-                          <span>{project.caseStudyBtnText}</span>
-                          <ArrowRight size={15} aria-hidden="true" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
 
-            {/* Sidebar / Profile Card & Discuss Box (Typographie confortable) */}
-            <div ref={sidebarRef} className="space-y-8">
+            {/* Colonne Droite : Carte Profil Fondateur (avec Flip 3D) & Box Échange */}
+            <div ref={sidebarRef} className="lg:col-span-5 xl:col-span-4 space-y-8">
               
               {/* Carte Profil Fondateur (Point d'ancrage : devient 100% invisible quand détachée) */}
               <div 
@@ -596,7 +517,7 @@ export default function About() {
                           </button>
                         </div>
 
-                        {/* Corps narratif : texte confortable (13px-13.5px) avec scrollbar fine discrète et écouteur de molette natif */}
+                        {/* Corps narratif : texte confortable avec scrollbar fine discrète et écouteur de molette natif */}
                         <div 
                           className="space-y-3 text-[13px] sm:text-[13.5px] text-slate-700 font-['Plus_Jakarta_Sans'] leading-[1.6] text-left overflow-y-auto pr-2 bio-card-scroll flex-1 overscroll-contain"
                           tabIndex={0}
@@ -659,6 +580,115 @@ export default function About() {
             </div>
 
           </div>
+
+          {/* BLOC 2 : VALEURS & PRINCIPES FONDATEURS (3 cartes côte à côte sur toute la largeur) */}
+          <div className="mb-16 md:mb-24 pt-12 border-t border-[#E5E5E5]">
+            <div className="max-w-3xl mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] mb-4">
+                <span>{language === 'en' ? "CORE PRINCIPLES" : "VALEURS & ENGAGEMENTS"}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight">
+                {t.principlesTitle}
+              </h2>
+            </div>
+
+            {/* Les 3 cartes de principes côte à côte */}
+            <div ref={principlesGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+              {t.principles.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-col justify-between p-7 sm:p-8 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-lg transition-all duration-300 group h-full"
+                >
+                  <div>
+                    <span className="text-[#0284C7] font-black font-['Montserrat'] text-2xl sm:text-3xl block mb-4 group-hover:scale-105 transition-transform duration-200">
+                      {item.num}
+                    </span>
+                    <h3 className="text-[#1A1A1A] font-bold block mb-3 font-['Montserrat'] text-lg sm:text-xl group-hover:text-[#0284C7] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-[#555555] leading-relaxed font-['Plus_Jakarta_Sans']">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* BLOC 3 : APPLICATIONS NÉES DU TERRAIN & SAAS (2 cartes côte à côte sur toute la largeur) */}
+          <div className="pt-12 border-t border-[#E5E5E5]">
+            <div className="max-w-3xl mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] mb-3">
+                <span>{language === 'en' ? "FIELD ACHIEVEMENTS" : "RÉALISATIONS TERRAIN"}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] mb-3 tracking-tight">
+                {t.realWorldProjectsTitle}
+              </h2>
+              <p className="text-base sm:text-lg text-[#555555] font-['Plus_Jakarta_Sans'] leading-relaxed">
+                {t.realWorldProjectsDesc}
+              </p>
+            </div>
+
+            {/* Les 2 cartes projets côte à côte */}
+            <div ref={projectsGridRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+              {t.projects?.map((project) => (
+                <div
+                  key={project.id}
+                  className="p-7 sm:p-9 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full"
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                      <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200 px-3.5 py-1.5 rounded-none font-['Montserrat'] inline-flex items-center gap-1.5">
+                        {project.id === 'locatool' ? <Database size={15} className="text-sky-600" aria-hidden="true" /> : <Sparkles size={15} className="text-sky-600" aria-hidden="true" />}
+                        <span>{project.tag}</span>
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-4 tracking-tight">
+                      {project.title}
+                    </h3>
+
+                    <div className="space-y-4 text-sm sm:text-base font-['Plus_Jakarta_Sans'] leading-relaxed mb-8">
+                      <div className="p-4 sm:p-5 rounded-none bg-[#F8FAFC] border border-[#E2E8F0]">
+                        <strong className="text-sky-900 font-bold block mb-1.5 font-['Montserrat'] text-xs sm:text-sm uppercase tracking-wider">
+                          {project.originLabel}
+                        </strong>
+                        <p className="text-slate-800 leading-relaxed">{project.origin}</p>
+                      </div>
+                      <div className="p-4 sm:p-5 rounded-none bg-[#F8FAFC] border border-[#E2E8F0]">
+                        <strong className="text-emerald-900 font-bold block mb-1.5 font-['Montserrat'] text-xs sm:text-sm uppercase tracking-wider">
+                          {project.evolutionLabel}
+                        </strong>
+                        <p className="text-slate-800 leading-relaxed">{project.evolution}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-[#E5E5E5] mt-auto">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 rounded-none bg-[#1A1A1A] hover:bg-[#0284C7] text-white text-sm font-bold font-['Montserrat'] transition-all inline-flex items-center gap-2 active:scale-95 shadow-sm cursor-pointer"
+                      style={{ color: '#FFFFFF' }}
+                    >
+                      <span style={{ color: '#FFFFFF' }}>{project.liveBtnText}</span>
+                      <ExternalLink size={15} className="text-white" aria-hidden="true" />
+                    </a>
+
+                    <Link
+                      to={project.caseStudyUrl}
+                      className="px-6 py-3 rounded-none bg-white hover:bg-slate-100 border border-[#CCCCCC] text-[#1A1A1A] text-sm font-bold font-['Montserrat'] transition-all inline-flex items-center gap-2 active:scale-95 cursor-pointer"
+                    >
+                      <span>{project.caseStudyBtnText}</span>
+                      <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -670,10 +700,10 @@ export default function About() {
         />
         <div className="services-parallax-tint" />
 
-        <div className="container max-w-4xl mx-auto px-6 relative z-10">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div 
             ref={bannerCardRef}
-            className="p-8 sm:p-14 rounded-none bg-slate-900/65 backdrop-blur-xl border border-white/25 text-white text-center space-y-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] ring-1 ring-white/10 transition-all duration-300 hover:border-white/40 group"
+            className="p-8 sm:p-14 rounded-none bg-slate-900/65 backdrop-blur-xl border border-white/25 text-white text-center space-y-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] ring-1 ring-white/10 transition-all duration-300 hover:border-white/40 group max-w-5xl mx-auto"
           >
             <h2 
               className="text-2xl sm:text-3xl md:text-4xl font-black font-['Montserrat'] text-white tracking-tight"
