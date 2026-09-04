@@ -130,7 +130,10 @@ export default function About() {
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
   const heroDescRef = useRef<HTMLDivElement>(null);
   const storyTextRef = useRef<HTMLDivElement>(null);
+  const unifiedCardRef = useRef<HTMLDivElement>(null);
+  const principlesHeaderRef = useRef<HTMLDivElement>(null);
   const principlesGridRef = useRef<HTMLDivElement>(null);
+  const projectsHeaderRef = useRef<HTMLDivElement>(null);
   const projectsGridRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const bannerCardRef = useRef<HTMLDivElement>(null);
@@ -142,44 +145,66 @@ export default function About() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. HERO ELEMENTS (Apparition rapide au chargement)
+      // 1. HERO ELEMENTS (Élévation lumineuse et entrée en douceur)
       if (heroEyebrowRef.current) {
         gsap.fromTo(
           heroEyebrowRef.current,
-          { opacity: 0, y: -15 },
-          { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', clearProps: 'transform,opacity' }
+          { opacity: 0, y: -20, scale: 0.92 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity' }
         );
       }
 
       if (heroTitleRef.current) {
         gsap.fromTo(
           heroTitleRef.current,
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.45, delay: 0.1, ease: 'power2.out', clearProps: 'transform,opacity' }
+          { opacity: 0, y: 35, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.75, delay: 0.1, ease: 'power3.out', clearProps: 'transform,opacity' }
         );
       }
 
       if (heroDescRef.current) {
         gsap.fromTo(
           heroDescRef.current,
-          { opacity: 0, y: 25, scale: 0.98 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.45, delay: 0.2, ease: 'power2.out', clearProps: 'transform,opacity' }
+          { opacity: 0, y: 30, scale: 0.97, filter: 'blur(4px)' },
+          { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.8, delay: 0.2, ease: 'power3.out', clearProps: 'transform,opacity,filter' }
         );
       }
 
-      // 2. STORY TEXT REVEAL
+      // 2. STORY TEXT & UNIFIED CARD REVEAL (Cascade progressive)
       if (storyTextRef.current) {
+        const paragraphs = Array.from(storyTextRef.current.children) as HTMLElement[];
         gsap.fromTo(
-          storyTextRef.current,
-          { opacity: 0, y: 20 },
+          paragraphs,
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.4,
-            ease: 'power2.out',
+            duration: 0.75,
+            stagger: 0.15,
+            ease: 'power3.out',
             clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: storyTextRef.current,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      if (unifiedCardRef.current) {
+        gsap.fromTo(
+          unifiedCardRef.current,
+          { opacity: 0, y: 40, scale: 0.97 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: {
+              trigger: unifiedCardRef.current,
               start: 'top 88%',
               toggleActions: 'play none none reverse',
             },
@@ -187,108 +212,216 @@ export default function About() {
         );
       }
 
-      // 3. PRINCIPLES CARDS (Chaque carte animée individuellement au scroll)
-      if (principlesGridRef.current) {
-        const items = Array.from(principlesGridRef.current.children) as HTMLElement[];
-        items.forEach((item) => {
+      // 3. PROFILE CARD (Arrivée studio avec légère perspective 3D depuis la droite)
+      if (sourceCardRef.current) {
+        const isDesktop = window.innerWidth >= 1024;
+        if (isDesktop) {
           gsap.fromTo(
-            item,
-            { opacity: 0, y: 20, filter: 'blur(3px)' },
+            sourceCardRef.current,
+            { opacity: 0, x: 50, y: 20, rotateY: -12, scale: 0.94, transformPerspective: 1200 },
             {
               opacity: 1,
+              x: 0,
               y: 0,
-              filter: 'blur(0px)',
-              duration: 0.35,
-              ease: 'power2.out',
-              clearProps: 'transform,opacity,filter',
+              rotateY: 0,
+              scale: 1,
+              duration: 0.85,
+              ease: 'power3.out',
+              clearProps: 'transform,opacity',
               scrollTrigger: {
-                trigger: item,
-                start: 'top 90%',
-                end: 'bottom top',
+                trigger: sourceCardRef.current,
+                start: 'top 85%',
                 toggleActions: 'play none none reverse',
               },
             }
           );
-        });
-      }
-
-      // 4. PROJECTS CARDS (Chaque projet animé individuellement au scroll)
-      if (projectsGridRef.current) {
-        const cards = Array.from(projectsGridRef.current.children) as HTMLElement[];
-        cards.forEach((card) => {
+        } else {
           gsap.fromTo(
-            card,
-            { opacity: 0, y: 25, scale: 0.97, filter: 'blur(3px)' },
+            sourceCardRef.current,
+            { opacity: 0, y: 40, scale: 0.95 },
             {
               opacity: 1,
               y: 0,
               scale: 1,
-              filter: 'blur(0px)',
-              duration: 0.38,
-              ease: 'power2.out',
-              clearProps: 'transform,opacity,filter',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top 88%',
-                end: 'bottom top',
-                toggleActions: 'play none none reverse',
-              },
-            }
-          );
-        });
-      }
-
-      // 5. SIDEBAR BLOCKS (Profil & Box Contact)
-      if (sidebarRef.current) {
-        const blocks = Array.from(sidebarRef.current.children) as HTMLElement[];
-        blocks.forEach((block) => {
-          gsap.fromTo(
-            block,
-            { opacity: 0, y: 20 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              ease: 'power2.out',
+              duration: 0.75,
+              ease: 'power3.out',
               clearProps: 'transform,opacity',
               scrollTrigger: {
-                trigger: block,
+                trigger: sourceCardRef.current,
                 start: 'top 88%',
-                end: 'bottom top',
                 toggleActions: 'play none none reverse',
               },
             }
           );
-        });
+        }
       }
 
-      // 6. BOTTOM CONTACT BANNER (Rapide, percutant et réactif)
-      if (bannerCardRef.current) {
+      // 4. PRINCIPLES HEADER & 3D FAN-OUT (Éventail 3D signature - inspiré de GlacierOffers)
+      if (principlesHeaderRef.current) {
+        const headerItems = Array.from(principlesHeaderRef.current.children) as HTMLElement[];
         gsap.fromTo(
-          bannerCardRef.current,
-          { opacity: 0, scale: 0.96, y: 20, filter: 'blur(3px)' },
+          headerItems,
+          { opacity: 0, y: 30, scale: 0.95 },
           {
             opacity: 1,
-            scale: 1,
             y: 0,
-            filter: 'blur(0px)',
-            duration: 0.35,
-            ease: 'power2.out',
-            clearProps: 'filter,transform,opacity',
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: {
-              trigger: bannerCardRef.current,
-              start: 'top 92%',
-              end: 'bottom top',
+              trigger: principlesHeaderRef.current,
+              start: 'top 85%',
               toggleActions: 'play none none reverse',
             },
           }
         );
       }
+
+      if (principlesGridRef.current) {
+        const items = Array.from(principlesGridRef.current.children) as HTMLElement[];
+        const isDesktop = window.innerWidth >= 1024;
+
+        if (items.length >= 3) {
+          const principlesTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: principlesGridRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+
+          if (isDesktop) {
+            // Carte 01 (Gauche) : Arrive avec rotation 3D depuis la gauche
+            principlesTl.fromTo(
+              items[0],
+              { opacity: 0, x: -60, y: 30, rotateY: 14, scale: 0.93 },
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
+              0
+            );
+
+            // Carte 02 (Centre) : S'élève de face
+            principlesTl.fromTo(
+              items[1],
+              { opacity: 0, y: 55, scale: 0.91 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
+              0.12
+            );
+
+            // Carte 03 (Droite) : Arrive avec rotation 3D miroir depuis la droite
+            principlesTl.fromTo(
+              items[2],
+              { opacity: 0, x: 60, y: 30, rotateY: -14, scale: 0.93 },
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
+              0.24
+            );
+          } else {
+            // Mobile : Cascade verticale fluide
+            principlesTl.fromTo(
+              items,
+              { opacity: 0, y: 45, scale: 0.95 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.75, stagger: 0.15, ease: 'power3.out', clearProps: 'transform,opacity' }
+            );
+          }
+        }
+      }
+
+      // 5. PROJECTS HEADER & LATERAL CONVERGENCE (Convergence en étau - inspirée de GlacierGallery)
+      if (projectsHeaderRef.current) {
+        const headerItems = Array.from(projectsHeaderRef.current.children) as HTMLElement[];
+        gsap.fromTo(
+          headerItems,
+          { opacity: 0, y: 30, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: {
+              trigger: projectsHeaderRef.current,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      if (projectsGridRef.current) {
+        const cards = Array.from(projectsGridRef.current.children) as HTMLElement[];
+        const isDesktop = window.innerWidth >= 1024;
+
+        if (cards.length >= 2) {
+          const projectsTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: projectsGridRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+
+          if (isDesktop) {
+            // Carte Gauche (LocaTool) : Glisse depuis la gauche avec léger tilt 3D et flou cinétique discret
+            projectsTl.fromTo(
+              cards[0],
+              { opacity: 0, x: -70, y: 25, rotateY: 8, scale: 0.94, filter: 'blur(4px)' },
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity,filter' },
+              0
+            );
+
+            // Carte Droite (AboGame) : Glisse depuis la droite en convergence
+            projectsTl.fromTo(
+              cards[1],
+              { opacity: 0, x: 70, y: 25, rotateY: -8, scale: 0.94, filter: 'blur(4px)' },
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity,filter' },
+              0.15
+            );
+          } else {
+            // Mobile : Cascade progressive
+            projectsTl.fromTo(
+              cards,
+              { opacity: 0, y: 50, scale: 0.95, filter: 'blur(3px)' },
+              { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.75, stagger: 0.2, ease: 'power3.out', clearProps: 'transform,opacity,filter' }
+            );
+          }
+        }
+      }
+
+      // 6. BOTTOM CONTACT BANNER (Déploiement volumétrique glassy)
+      if (bannerCardRef.current) {
+        const bannerChildren = Array.from(bannerCardRef.current.children) as HTMLElement[];
+        const bannerTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: bannerCardRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+
+        bannerTl.fromTo(
+          bannerCardRef.current,
+          { opacity: 0, scale: 0.93, y: 40, filter: 'blur(6px)' },
+          { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 0.85, ease: 'power3.out', clearProps: 'filter,transform,opacity' },
+          0
+        );
+
+        if (bannerChildren.length > 0) {
+          bannerTl.fromTo(
+            bannerChildren,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity' },
+            0.2
+          );
+        }
+      }
     }, pageContainerRef);
 
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 100);
+    }, 150);
 
     return () => {
       clearTimeout(timer);
@@ -390,7 +523,7 @@ export default function About() {
               </div>
 
               {/* Encadré unifié : Artisanat direct + Appel à l'action "Discuter d'un projet" */}
-              <div className="p-6 sm:p-8 rounded-none bg-white border border-[#E5E5E5] border-l-4 border-l-[#0284C7] shadow-sm flex flex-col justify-between mt-8 lg:mt-auto">
+              <div ref={unifiedCardRef} className="p-6 sm:p-8 rounded-none bg-white border border-[#E5E5E5] border-l-4 border-l-[#0284C7] shadow-sm flex flex-col justify-between mt-8 lg:mt-auto">
                 <div>
                   <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-2">
                     {language === 'en' ? "Direct craftmanship, zero outsourcing" : "Artisanat direct, zéro sous-traitance"}
@@ -592,7 +725,7 @@ export default function About() {
 
           {/* BLOC 2 : VALEURS & PRINCIPES FONDATEURS (3 cartes côte à côte sur toute la largeur) */}
           <div className="mb-16 md:mb-24 pt-12 border-t border-[#E5E5E5]">
-            <div className="max-w-3xl mb-10">
+            <div ref={principlesHeaderRef} className="max-w-3xl mb-10">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] mb-4">
                 <span>{language === 'en' ? "CORE PRINCIPLES" : "VALEURS & ENGAGEMENTS"}</span>
               </div>
@@ -626,7 +759,7 @@ export default function About() {
 
           {/* BLOC 3 : APPLICATIONS NÉES DU TERRAIN & SAAS (2 cartes côte à côte sur toute la largeur) */}
           <div className="pt-12 border-t border-[#E5E5E5]">
-            <div className="max-w-3xl mb-10">
+            <div ref={projectsHeaderRef} className="max-w-3xl mb-10">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] mb-3">
                 <span>{language === 'en' ? "FIELD ACHIEVEMENTS" : "RÉALISATIONS TERRAIN"}</span>
               </div>
