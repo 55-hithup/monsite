@@ -284,49 +284,45 @@ export default function About() {
       if (principlesGridRef.current) {
         const items = Array.from(principlesGridRef.current.children) as HTMLElement[];
         const isDesktop = window.innerWidth >= 1024;
+        const initialX = isDesktop ? [120, 0, -120] : [0, 0, 0];
+        const sequenceOrder = isDesktop ? [0, 2, 1] : [0, 1, 2];
 
-        if (items.length >= 3) {
-          const principlesTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: principlesGridRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse',
+        const principlesTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: principlesGridRef.current,
+            start: 'top 80%',
+            end: 'bottom top',
+            toggleActions: 'play none none reverse',
+          },
+        });
+
+        sequenceOrder.forEach((itemIdx, stepIndex) => {
+          const item = items[itemIdx];
+          if (!item) return;
+
+          principlesTl.fromTo(
+            item,
+            {
+              opacity: 0,
+              x: initialX[itemIdx] || 0,
+              scale: 0.8,
+              filter: 'blur(10px)',
+              rotateX: 360,
+              transformPerspective: 1000,
             },
-          });
-
-          if (isDesktop) {
-            // Carte 01 (Gauche) : Arrive avec rotation 3D depuis la gauche
-            principlesTl.fromTo(
-              items[0],
-              { opacity: 0, x: -60, y: 30, rotateY: 14, scale: 0.93 },
-              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0
-            );
-
-            // Carte 02 (Centre) : S'élève de face
-            principlesTl.fromTo(
-              items[1],
-              { opacity: 0, y: 55, scale: 0.91 },
-              { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0.12
-            );
-
-            // Carte 03 (Droite) : Arrive avec rotation 3D miroir depuis la droite
-            principlesTl.fromTo(
-              items[2],
-              { opacity: 0, x: 60, y: 30, rotateY: -14, scale: 0.93 },
-              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0.24
-            );
-          } else {
-            // Mobile : Cascade verticale fluide
-            principlesTl.fromTo(
-              items,
-              { opacity: 0, y: 45, scale: 0.95 },
-              { opacity: 1, y: 0, scale: 1, duration: 0.75, stagger: 0.15, ease: 'power3.out', clearProps: 'transform,opacity' }
-            );
-          }
-        }
+            {
+              opacity: 1,
+              x: 0,
+              scale: 1,
+              filter: 'blur(0px)',
+              rotateX: 0,
+              duration: 0.9,
+              ease: 'power2.out',
+              clearProps: 'transform,filter',
+            },
+            stepIndex === 0 ? 0 : '-=0.65'
+          );
+        });
       }
 
       // 5. PROJECTS HEADER & LATERAL CONVERGENCE (Convergence en étau - inspirée de GlacierGallery)
