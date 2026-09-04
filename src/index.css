@@ -1640,32 +1640,12 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  will-change: transform, opacity, filter;
-}
-
-.parallax-logo-voyager-float {
-  animation: logoIdleFloat 6s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-@keyframes logoIdleFloat {
-  0% {
-    transform: translateY(-6px);
-  }
-  50% {
-    transform: translateY(2px);
-  }
-  100% {
-    transform: translateY(7px);
-  }
+  will-change: transform, opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .parallax-logo-voyager-container {
     display: none !important;
-  }
-  .parallax-logo-voyager-float {
-    animation: none !important;
   }
 }
 
@@ -1974,4 +1954,92 @@ h1, h2, h3 {
   .split-container {
     padding: 0 16px;
   }
-}
+}
+
+/* ==========================================================================
+   Profile Card Flip & Expand (GSAP-driven 3D, CSS overlay only)
+   ========================================================================== */
+
+/* Overlay fade in / out */
+@keyframes flipOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes flipOverlayOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.flip-overlay-enter {
+  animation: flipOverlayIn 0.35s ease-out forwards;
+}
+.flip-overlay-exit {
+  animation: flipOverlayOut 0.35s ease-in forwards;
+  pointer-events: none;
+}
+
+/* 3D Flip Card Architecture */
+.flip-card-3d-wrapper {
+  perspective: 1600px;
+  transform-style: preserve-3d;
+}
+
+.flip-card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.flip-card-3d-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.flip-card-3d-front {
+  transform: rotateY(0deg) translateZ(1px);
+}
+
+.flip-card-3d-back {
+  transform: rotateY(180deg) translateZ(1px);
+}
+
+/* Ombre portée réaliste pour carte détachée en premier plan (sans fond sombre) */
+.flip-card-drop-shadow {
+  box-shadow: 
+    0 30px 60px -12px rgba(15, 23, 42, 0.28),
+    0 18px 36px -18px rgba(15, 23, 42, 0.22),
+    0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+/* Scrollbar fine, discrète et élégante pour la carte bio */
+.bio-card-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(2, 132, 199, 0.4) transparent;
+}
+
+.bio-card-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.bio-card-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bio-card-scroll::-webkit-scrollbar-thumb {
+  background: rgba(2, 132, 199, 0.4);
+  border-radius: 4px;
+}
+
+.bio-card-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(2, 132, 199, 0.7);
+}
+
+
+

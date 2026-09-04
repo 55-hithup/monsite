@@ -1,15 +1,116 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import { useLanguage } from '../i18n/LanguageContext';
 import { pagesData } from '../i18n/pagesData';
-import { MapPin, Mail, Sparkles, ArrowRight, ExternalLink, Database, PhoneCall } from 'lucide-react';
+import { MapPin, Mail, Sparkles, ArrowRight, ExternalLink, Database, PhoneCall, RotateCcw, X, BookOpen } from 'lucide-react';
 
 export default function About() {
   const { language } = useLanguage();
   const t = pagesData[language]?.about || pagesData.fr.about;
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const sourceCardRef = useRef<HTMLDivElement>(null);
+  const flyingCardRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Déclenche l'animation de détachement, agrandissement et rotation 3D
+  const openFlip = () => {
+    if (isFlipped || isClosing) return;
+    setIsFlipped(true);
+  };
+
+  // Ferme avec animation inverse vers la sidebar
+  const closeFlip = () => {
+    if (isClosing || !isFlipped) return;
+    setIsClosing(true);
+
+    const sourceEl = sourceCardRef.current;
+    const flyingEl = flyingCardRef.current;
+    const overlayEl = overlayRef.current;
+
+    if (sourceEl && flyingEl) {
+      const sourceRect = sourceEl.getBoundingClientRect();
+      const currentRect = flyingEl.getBoundingClientRect();
+
+      // Delta pour retourner exactement à l'emplacement de départ
+      const dx = sourceRect.left + sourceRect.width / 2 - (currentRect.left + currentRect.width / 2);
+      const dy = sourceRect.top + sourceRect.height / 2 - (currentRect.top + currentRect.height / 2);
+      const scaleX = sourceRect.width / currentRect.width;
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setIsFlipped(false);
+          setIsClosing(false);
+        }
+      });
+
+      if (overlayEl) {
+        tl.to(overlayEl, { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, 0);
+      }
+
+      tl.to(flyingEl, {
+        x: `+=${dx}`,
+        y: `+=${dy}`,
+        scale: scaleX,
+        rotateY: 0, // Retourne sur la face recto
+        duration: 0.55,
+        ease: 'power3.inOut'
+      }, 0);
+    } else {
+      setIsFlipped(false);
+      setIsClosing(false);
+    }
+  };
+
+  // Animation d'ouverture : part exactement de la position de la sourceCard vers le centre en pivotant à 180deg
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (!isFlipped || isClosing) return;
+
+    const sourceEl = sourceCardRef.current;
+    const flyingEl = flyingCardRef.current;
+    const overlayEl = overlayRef.current;
+
+    if (!sourceEl || !flyingEl) return;
+
+    // Calculer les positions écran
+    const sourceRect = sourceEl.getBoundingClientRect();
+    const targetRect = flyingEl.getBoundingClientRect();
+
+    // Déplacement initial depuis la carte source jusqu'au centre
+    const initialDx = sourceRect.left + sourceRect.width / 2 - (targetRect.left + targetRect.width / 2);
+    const initialDy = sourceRect.top + sourceRect.height / 2 - (targetRect.top + targetRect.height / 2);
+    const initialScale = sourceRect.width / targetRect.width;
+
+    // Timeline GSAP propre
+    const tl = gsap.timeline();
+
+    if (overlayEl) {
+      tl.fromTo(overlayEl, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0);
+    }
+
+    tl.fromTo(
+      flyingEl,
+      {
+        x: initialDx,
+        y: initialDy,
+        scale: initialScale,
+        rotateY: 0, // Commence sur la face avant
+      },
+      {
+        x: 0,
+        y: 0,
+        scale: 1,
+        rotateY: 180, // Se retourne à 180° pour afficher le verso (bio)
+        duration: 0.65,
+        ease: 'power3.out',
+      },
+      0
+    );
+  }, [isFlipped]);
 
   useDocumentMetadata(
     {
@@ -195,6 +296,29 @@ export default function About() {
     };
   }, []);
 
+  // Gestion de la touche Echap pour refermer la carte biographie
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isFlipped && !isClosing) {
+        closeFlip();
+      }
+    };
+
+    if (isFlipped) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isFlipped, isClosing]);
+
   return (
     <div ref={pageContainerRef} className="w-full bg-white text-[#4A4A4A] min-h-screen">
       
@@ -358,9 +482,12 @@ export default function About() {
             {/* Sidebar / Profile Card & Discuss Box (Typographie confortable) */}
             <div ref={sidebarRef} className="space-y-8">
               
-              {/* Carte Profil Fondateur */}
-              <div className="p-8 rounded-none bg-white border border-[#E5E5E5] shadow-sm text-center">
-                <div className="w-24 h-24 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center font-black font-['Montserrat'] text-3xl mx-auto mb-4 border-2 border-[#0284C7] shadow-md">
+              {/* Carte Profil Fondateur (Point d'ancrage : devient 100% invisible quand détachée) */}
+              <div 
+                ref={sourceCardRef}
+                className={`p-8 rounded-none bg-white border border-[#E5E5E5] shadow-sm text-center relative group transition-opacity duration-200 ${isFlipped ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}
+              >
+                <div className="w-24 h-24 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center font-black font-['Montserrat'] text-3xl mx-auto mb-4 border-2 border-[#0284C7] shadow-md transition-transform duration-300 group-hover:scale-105">
                   AP
                 </div>
                 <h3 className="text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-1">Alexandre Pabst</h3>
@@ -376,13 +503,138 @@ export default function About() {
                   {t.founderBio}
                 </p>
 
-                <div className="mt-6 pt-5 border-t border-[#E5E5E5] text-left">
+                {/* Bouton / Badge pour retourner la carte */}
+                <div className="pt-5 border-t border-[#E5E5E5] mt-5">
+                  <button
+                    type="button"
+                    onClick={openFlip}
+                    aria-expanded={isFlipped}
+                    className="w-full px-4 py-3 rounded-none bg-sky-50 hover:bg-[#0284C7] text-[#0284C7] hover:text-white border border-sky-300/60 font-['Montserrat'] text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 group/btn cursor-pointer shadow-sm active:scale-98"
+                  >
+                    <BookOpen size={16} className="text-[#0284C7] group-hover/btn:text-white transition-colors" aria-hidden="true" />
+                    <span>{t.flipBtnText || "Découvrir mon parcours"}</span>
+                    <RotateCcw size={14} className="text-[#0284C7] group-hover/btn:text-white group-hover/btn:rotate-180 transition-all duration-300 ml-1" aria-hidden="true" />
+                  </button>
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-[#E5E5E5] text-left">
                   <a href="mailto:contact@devsupai.fr" className="text-sm font-bold text-[#0284C7] hover:underline inline-flex items-center gap-2">
                     <Mail size={15} aria-hidden="true" />
                     <span>contact@devsupai.fr</span>
                   </a>
                 </div>
               </div>
+
+              {/* OVERLAY & CARTE VOLANTE QUI SE DÉTACHE ET PIVOTE EN 3D SANS FOND SOMBRE */}
+              {isFlipped && (
+                <div
+                  ref={overlayRef}
+                  className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-transparent"
+                  onClick={closeFlip}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Parcours d'Alexandre Pabst"
+                >
+                  {/* Wrapper 3D perspective : proportions strictes calquées sur la carte originale (ratio 1:1.36) */}
+                  <div className="flip-card-3d-wrapper relative z-10 w-full max-w-[440px]">
+                    
+                    {/* Element volant pivotant animé par GSAP conservant exactement les proportions d'origine */}
+                    <div
+                      ref={flyingCardRef}
+                      className="flip-card-3d-inner w-full"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+
+                      {/* FACE RECTO (Exactement la carte d'origine pendant le décollage avec ombre portée réaliste) */}
+                      <div className={`flip-card-3d-face flip-card-3d-front rounded-none bg-white border border-[#E5E5E5] flip-card-drop-shadow p-8 text-center flex flex-col justify-between ${isFlipped ? 'pointer-events-none' : 'pointer-events-auto'}`}>
+                        <div>
+                          <div className="w-24 h-24 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center font-black font-['Montserrat'] text-3xl mx-auto mb-4 border-2 border-[#0284C7] shadow-md">
+                            AP
+                          </div>
+                          <h3 className="text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-1">Alexandre Pabst</h3>
+                          <span className="text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] block uppercase tracking-wider mb-2">
+                            {t.founderRole}
+                          </span>
+                          <span className="text-sm text-slate-600 inline-flex items-center gap-1.5 mb-4">
+                            <MapPin size={14} className="text-[#0284C7]" aria-hidden="true" />
+                            {t.founderLocation}
+                          </span>
+                          <p className="text-sm text-slate-700 leading-relaxed pt-4 border-t border-[#E5E5E5] text-left font-['Plus_Jakarta_Sans']">
+                            {t.founderBio}
+                          </p>
+                        </div>
+                        <div className="pt-3 border-t border-[#E5E5E5] text-left text-xs text-slate-500 font-['Montserrat']">
+                          {t.founderLocation}
+                        </div>
+                      </div>
+
+                      {/* FACE VERSO (La biographie complète avec ombre portée en élévation, sans fond sombre) */}
+                      <div className="flip-card-3d-face flip-card-3d-back rounded-none bg-white border border-[#E5E5E5] flip-card-drop-shadow p-6 sm:p-7 flex flex-col justify-between overflow-hidden pointer-events-auto">
+                        
+                        {/* En-tête du Verso */}
+                        <div className="border-b border-slate-200 pb-3 mb-3 flex items-start justify-between gap-3 shrink-0">
+                          <div>
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-sky-500/20 bg-sky-50 text-[11px] font-bold font-['Montserrat'] text-[#0284C7] mb-1 uppercase tracking-wider">
+                              <Sparkles size={12} className="text-[#0284C7]" aria-hidden="true" />
+                              <span>{t.bioEyebrow || "PARCOURS & RACINES"}</span>
+                            </div>
+                            <h3 className="text-lg sm:text-xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight leading-tight">
+                              Alexandre Pabst
+                            </h3>
+                            <p className="text-xs font-semibold text-[#0284C7] font-['Montserrat'] uppercase tracking-wider">
+                              {t.founderRole}
+                            </p>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={closeFlip}
+                            aria-label="Fermer la biographie et retourner la carte"
+                            className="p-1.5 rounded-none bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer shrink-0 border border-slate-200 active:scale-95"
+                          >
+                            <X size={16} aria-hidden="true" />
+                          </button>
+                        </div>
+
+                        {/* Corps narratif : texte confortable (13px-13.5px) avec scrollbar fine discrète et écouteur de molette natif */}
+                        <div 
+                          className="space-y-3 text-[13px] sm:text-[13.5px] text-slate-700 font-['Plus_Jakarta_Sans'] leading-[1.6] text-left overflow-y-auto pr-2 bio-card-scroll flex-1 overscroll-contain"
+                          tabIndex={0}
+                          onWheel={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
+                          {t.bioExtended?.map((paragraph: string, idx: number) => (
+                            <p key={idx}>
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
+
+                        {/* Pied de carte fixe toujours visible avec bouton stylé et lisible */}
+                        <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between gap-2 shrink-0">
+                          <span className="text-xs text-slate-500 font-['Montserrat'] inline-flex items-center gap-1">
+                            <MapPin size={12} className="text-[#0284C7]" aria-hidden="true" />
+                            {t.founderLocation}
+                          </span>
+
+                          <button
+                            type="button"
+                            onClick={closeFlip}
+                            className="px-4 py-2 rounded-none bg-[#1A1A1A] hover:bg-[#0284C7] text-white text-xs font-bold font-['Montserrat'] transition-all inline-flex items-center gap-1.5 cursor-pointer shadow-sm active:scale-95 border border-[#1A1A1A]"
+                            style={{ color: '#FFFFFF' }}
+                          >
+                            <RotateCcw size={13} className="text-white" aria-hidden="true" />
+                            <span style={{ color: '#FFFFFF' }}>{t.flipBackBtnText || "Retourner la carte"}</span>
+                          </button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              )}
               
               {/* Box Contact Rapide */}
               <div className="p-8 rounded-none bg-slate-900 text-white border border-slate-800 space-y-4 shadow-md text-left">
