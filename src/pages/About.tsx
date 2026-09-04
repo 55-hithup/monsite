@@ -212,27 +212,49 @@ export default function About() {
         );
       }
 
-      // 3. PROFILE CARD (Slide venant de l'extérieur droit avec léger ralentissement à la fin)
+      // 3. PROFILE CARD (Animation identique à la carte droite Pack SaaS de la landing page)
       if (sourceCardRef.current) {
         const isDesktop = window.innerWidth >= 1024;
-        const slideOffset = isDesktop ? Math.min(window.innerWidth * 0.35, 300) : 100;
 
-        gsap.fromTo(
-          sourceCardRef.current,
-          { opacity: 0, x: slideOffset },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.9,
-            ease: 'power3.out', // Ralentissement doux et progressif en fin de course
-            clearProps: 'transform,opacity',
-            scrollTrigger: {
-              trigger: sourceCardRef.current,
-              start: 'top 86%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
+        if (isDesktop) {
+          gsap.fromTo(
+            sourceCardRef.current,
+            { x: 80, y: 35, rotateY: -18, opacity: 0, scale: 0.92 },
+            {
+              x: 0,
+              y: 0,
+              rotateY: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.85,
+              ease: 'power3.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: sourceCardRef.current,
+                start: 'top 82%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        } else {
+          gsap.fromTo(
+            sourceCardRef.current,
+            { y: 55, opacity: 0, scale: 0.94 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.75,
+              ease: 'power3.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: sourceCardRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
       }
 
 
@@ -539,7 +561,7 @@ export default function About() {
             </div>
 
             {/* Colonne Droite : Carte Profil Fondateur (avec Flip 3D) */}
-            <div ref={sidebarRef} className="lg:col-span-5 xl:col-span-4 flex flex-col">
+            <div ref={sidebarRef} className="lg:col-span-5 xl:col-span-4 flex flex-col [perspective:1200px]">
               
               {/* Carte Profil Fondateur (Point d'ancrage : devient 100% invisible quand détachée) */}
               <div 
