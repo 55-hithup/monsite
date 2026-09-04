@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
+import ParallaxLogoVoyager from './ParallaxLogoVoyager';
 
 export default function GlacierFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -220,6 +221,7 @@ export default function GlacierFaq() {
           style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
         />
         <div className="faq-parallax-tint" />
+        <ParallaxLogoVoyager variant="curve-left" />
 
         <div 
           ref={headerRef}

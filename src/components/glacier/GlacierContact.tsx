@@ -4,6 +4,7 @@ import { Check, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../../i18n/LanguageContext';
+import ParallaxLogoVoyager from './ParallaxLogoVoyager';
 
 export default function GlacierContact() {
   const { isEn } = useLanguage();
@@ -259,6 +260,7 @@ export default function GlacierContact() {
           style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
         />
         <div className="contact-parallax-tint" />
+        <ParallaxLogoVoyager variant="ascend" />
 
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <h2 id="contact-heading" className="sr-only">

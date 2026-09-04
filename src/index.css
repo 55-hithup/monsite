@@ -1630,6 +1630,45 @@ h1, h2, h3 {
   }
 }
 
+/* --- Parallax Logo Voyager System --- */
+.parallax-logo-voyager-container {
+  pointer-events: none;
+  contain: layout style paint;
+}
+
+.parallax-logo-voyager-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity, filter;
+}
+
+.parallax-logo-voyager-float {
+  animation: logoIdleFloat 6s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes logoIdleFloat {
+  0% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(7px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-logo-voyager-container {
+    display: none !important;
+  }
+  .parallax-logo-voyager-float {
+    animation: none !important;
+  }
+}
+
 .glacier-footer-contact-section {
   padding: 90px 0 70px 0;
   background-color: #FFFFFF;

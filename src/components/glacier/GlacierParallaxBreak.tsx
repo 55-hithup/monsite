@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../../i18n/LanguageContext';
+import ParallaxLogoVoyager from './ParallaxLogoVoyager';
 
 export default function GlacierParallaxBreak() {
   const { isEn } = useLanguage();
@@ -94,6 +95,7 @@ export default function GlacierParallaxBreak() {
         style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
       />
       <div className="break-tint" />
+      <ParallaxLogoVoyager variant="curve-right" />
       <div className="break-content">
         <span 
           ref={tagRef} 
