@@ -366,29 +366,31 @@ export default function About() {
       <section className="py-16 md:py-24 bg-[#F8F8F8] border-b border-[#E5E5E5] text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* BLOC 1 : HISTOIRE & PROFIL FONDATEUR (Grille spacieuse 12 colonnes) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-16 md:mb-24">
+          {/* BLOC 1 : HISTOIRE & PROFIL FONDATEUR (Grille spacieuse 12 colonnes avec alignement strict) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch mb-16 md:mb-24">
             
-            {/* Colonne Gauche : Histoire Fondatrice & Vision Technique */}
-            <div className="lg:col-span-7 xl:col-span-8 space-y-8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7]">
-                <span>{language === 'en' ? "VISION & COMMITMENT" : "NOTRE VISION & ENGAGEMENT"}</span>
-              </div>
-              
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight leading-tight">
-                {language === 'en' 
-                  ? "Bespoke web architectures engineered for durability and performance" 
-                  : "Créer un web rapide, pérenne et taillé pour le terrain"}
-              </h2>
+            {/* Colonne Gauche : Histoire Fondatrice & Encadré unifié (aligné en bas) */}
+            <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-between space-y-8 lg:space-y-0">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/20 bg-sky-50 text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7]">
+                  <span>{language === 'en' ? "VISION & COMMITMENT" : "NOTRE VISION & ENGAGEMENT"}</span>
+                </div>
+                
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight leading-tight">
+                  {language === 'en' 
+                    ? "Bespoke web architectures engineered for durability and performance" 
+                    : "Créer un web rapide, pérenne et taillé pour le terrain"}
+                </h2>
 
-              {/* Récit fondateur avec typographie aérée */}
-              <div ref={storyTextRef} className="space-y-6 text-base sm:text-lg text-[#333333] leading-relaxed font-['Plus_Jakarta_Sans']">
-                <p>{t.p2}</p>
-                <p>{t.p3}</p>
+                {/* Récit fondateur avec typographie aérée */}
+                <div ref={storyTextRef} className="space-y-6 text-base sm:text-lg text-[#333333] leading-relaxed font-['Plus_Jakarta_Sans']">
+                  <p>{t.p2}</p>
+                  <p>{t.p3}</p>
+                </div>
               </div>
 
               {/* Encadré unifié : Artisanat direct + Appel à l'action "Discuter d'un projet" */}
-              <div className="p-6 sm:p-8 rounded-none bg-white border border-[#E5E5E5] border-l-4 border-l-[#0284C7] shadow-sm">
+              <div className="p-6 sm:p-8 rounded-none bg-white border border-[#E5E5E5] border-l-4 border-l-[#0284C7] shadow-sm flex flex-col justify-between mt-8 lg:mt-auto">
                 <div>
                   <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-2">
                     {language === 'en' ? "Direct craftmanship, zero outsourcing" : "Artisanat direct, zéro sous-traitance"}
@@ -424,48 +426,52 @@ export default function About() {
             </div>
 
             {/* Colonne Droite : Carte Profil Fondateur (avec Flip 3D) */}
-            <div ref={sidebarRef} className="lg:col-span-5 xl:col-span-4">
+            <div ref={sidebarRef} className="lg:col-span-5 xl:col-span-4 flex flex-col">
               
               {/* Carte Profil Fondateur (Point d'ancrage : devient 100% invisible quand détachée) */}
               <div 
                 ref={sourceCardRef}
-                className={`p-8 rounded-none bg-white border border-[#E5E5E5] shadow-sm text-center relative group transition-opacity duration-200 ${isFlipped ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}
+                className={`h-full flex flex-col justify-between p-8 rounded-none bg-white border border-[#E5E5E5] shadow-sm text-center relative group transition-opacity duration-200 ${isFlipped ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}
               >
-                <div className="w-24 h-24 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center font-black font-['Montserrat'] text-3xl mx-auto mb-4 border-2 border-[#0284C7] shadow-md transition-transform duration-300 group-hover:scale-105">
-                  AP
-                </div>
-                <h3 className="text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-1">Alexandre Pabst</h3>
-                <span className="text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] block uppercase tracking-wider mb-2">
-                  {t.founderRole}
-                </span>
-                <span className="text-sm text-slate-600 inline-flex items-center gap-1.5 mb-5">
-                  <MapPin size={15} className="text-[#0284C7]" aria-hidden="true" />
-                  {t.founderLocation}
-                </span>
-                
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed pt-5 border-t border-[#E5E5E5] text-left font-['Plus_Jakarta_Sans']">
-                  {t.founderBio}
-                </p>
-
-                {/* Bouton / Badge pour retourner la carte */}
-                <div className="pt-5 border-t border-[#E5E5E5] mt-5">
-                  <button
-                    type="button"
-                    onClick={openFlip}
-                    aria-expanded={isFlipped}
-                    className="w-full px-4 py-3 rounded-none bg-sky-50 hover:bg-[#0284C7] text-[#0284C7] hover:text-white border border-sky-300/60 font-['Montserrat'] text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 group/btn cursor-pointer shadow-sm active:scale-98"
-                  >
-                    <BookOpen size={16} className="text-[#0284C7] group-hover/btn:text-white transition-colors" aria-hidden="true" />
-                    <span>{t.flipBtnText || "Découvrir mon parcours"}</span>
-                    <RotateCcw size={14} className="text-[#0284C7] group-hover/btn:text-white group-hover/btn:rotate-180 transition-all duration-300 ml-1" aria-hidden="true" />
-                  </button>
+                <div>
+                  <div className="w-24 h-24 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center font-black font-['Montserrat'] text-3xl mx-auto mb-4 border-2 border-[#0284C7] shadow-md transition-transform duration-300 group-hover:scale-105">
+                    AP
+                  </div>
+                  <h3 className="text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-1">Alexandre Pabst</h3>
+                  <span className="text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] block uppercase tracking-wider mb-2">
+                    {t.founderRole}
+                  </span>
+                  <span className="text-sm text-slate-600 inline-flex items-center gap-1.5 mb-5">
+                    <MapPin size={15} className="text-[#0284C7]" aria-hidden="true" />
+                    {t.founderLocation}
+                  </span>
+                  
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed pt-5 border-t border-[#E5E5E5] text-left font-['Plus_Jakarta_Sans']">
+                    {t.founderBio}
+                  </p>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-[#E5E5E5] text-left">
-                  <a href="mailto:contact@devsupai.fr" className="text-sm font-bold text-[#0284C7] hover:underline inline-flex items-center gap-2">
-                    <Mail size={15} aria-hidden="true" />
-                    <span>contact@devsupai.fr</span>
-                  </a>
+                <div>
+                  {/* Bouton / Badge pour retourner la carte */}
+                  <div className="pt-5 border-t border-[#E5E5E5] mt-5">
+                    <button
+                      type="button"
+                      onClick={openFlip}
+                      aria-expanded={isFlipped}
+                      className="w-full px-4 py-3 rounded-none bg-sky-50 hover:bg-[#0284C7] text-[#0284C7] hover:text-white border border-sky-300/60 font-['Montserrat'] text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 group/btn cursor-pointer shadow-sm active:scale-98"
+                    >
+                      <BookOpen size={16} className="text-[#0284C7] group-hover/btn:text-white transition-colors" aria-hidden="true" />
+                      <span>{t.flipBtnText || "Découvrir mon parcours"}</span>
+                      <RotateCcw size={14} className="text-[#0284C7] group-hover/btn:text-white group-hover/btn:rotate-180 transition-all duration-300 ml-1" aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  <div className="mt-5 pt-4 border-t border-[#E5E5E5] text-left">
+                    <a href="mailto:contact@devsupai.fr" className="text-sm font-bold text-[#0284C7] hover:underline inline-flex items-center gap-2">
+                      <Mail size={15} aria-hidden="true" />
+                      <span>contact@devsupai.fr</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
