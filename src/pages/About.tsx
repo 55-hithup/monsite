@@ -48,7 +48,7 @@ export default function About() {
       });
 
       if (overlayEl) {
-        tl.to(overlayEl, { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, 0);
+        tl.to(overlayEl, { opacity: 0, duration: 0.5, ease: 'power4.out' }, 0);
       }
 
       tl.to(flyingEl, {
@@ -56,8 +56,8 @@ export default function About() {
         y: `+=${dy}`,
         scale: scaleX,
         rotateY: 0, // Retourne sur la face recto
-        duration: 0.55,
-        ease: 'power3.inOut'
+        duration: 0.6,
+        ease: 'power4.out'
       }, 0);
     } else {
       setIsFlipped(false);
@@ -89,7 +89,7 @@ export default function About() {
     const tl = gsap.timeline();
 
     if (overlayEl) {
-      tl.fromTo(overlayEl, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0);
+      tl.fromTo(overlayEl, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power4.out' }, 0);
     }
 
     tl.fromTo(
@@ -105,8 +105,8 @@ export default function About() {
         y: 0,
         scale: 1,
         rotateY: 180, // Se retourne à 180° pour afficher le verso (bio)
-        duration: 0.65,
-        ease: 'power3.out',
+        duration: 0.75,
+        ease: 'power4.out',
       },
       0
     );
@@ -145,47 +145,52 @@ export default function About() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. HERO ELEMENTS (Élévation lumineuse et entrée en douceur)
+      // 1. HERO ELEMENTS (Départ vif et franc, décélération longue et progressive à la fin)
+      const heroTl = gsap.timeline();
+
       if (heroEyebrowRef.current) {
-        gsap.fromTo(
+        heroTl.fromTo(
           heroEyebrowRef.current,
-          { opacity: 0, y: -20, scale: 0.92 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity' }
+          { opacity: 0, y: -20, scale: 0.94 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'power4.out', clearProps: 'transform,opacity' },
+          0
         );
       }
 
       if (heroTitleRef.current) {
-        gsap.fromTo(
+        heroTl.fromTo(
           heroTitleRef.current,
-          { opacity: 0, y: 35, scale: 0.96 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.75, delay: 0.1, ease: 'power3.out', clearProps: 'transform,opacity' }
+          { opacity: 0, y: 30, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: 'power4.out', clearProps: 'transform,opacity' },
+          0.06
         );
       }
 
       if (heroDescRef.current) {
-        gsap.fromTo(
+        heroTl.fromTo(
           heroDescRef.current,
-          { opacity: 0, y: 30, scale: 0.97, filter: 'blur(4px)' },
-          { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.8, delay: 0.2, ease: 'power3.out', clearProps: 'transform,opacity,filter' }
+          { opacity: 0, y: 25, scale: 0.97, filter: 'blur(5px)' },
+          { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' },
+          0.12
         );
       }
 
-      // 2. STORY TEXT & UNIFIED CARD REVEAL (Cascade progressive)
+      // 2. STORY TEXT & UNIFIED CARD REVEAL (Départ réactif, ralentissement doux en fin de course)
       if (storyTextRef.current) {
         const paragraphs = Array.from(storyTextRef.current.children) as HTMLElement[];
         gsap.fromTo(
           paragraphs,
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 35 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.75,
-            stagger: 0.15,
-            ease: 'power3.out',
+            duration: 0.95,
+            stagger: 0.08,
+            ease: 'power4.out',
             clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: storyTextRef.current,
-              start: 'top 85%',
+              start: 'top 88%',
               toggleActions: 'play none none reverse',
             },
           }
@@ -195,13 +200,13 @@ export default function About() {
       if (unifiedCardRef.current) {
         gsap.fromTo(
           unifiedCardRef.current,
-          { opacity: 0, y: 40, scale: 0.97 },
+          { opacity: 0, y: 40, scale: 0.96 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.8,
-            ease: 'power3.out',
+            duration: 1.05,
+            ease: 'power4.out',
             clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: unifiedCardRef.current,
@@ -212,7 +217,7 @@ export default function About() {
         );
       }
 
-      // 3. PROFILE CARD (Animation identique à la carte droite Pack SaaS de la landing page)
+      // 3. PROFILE CARD (Impulsion vive au départ, freinage magnétique progressif à l'arrivée)
       if (sourceCardRef.current) {
         const isDesktop = window.innerWidth >= 1024;
 
@@ -226,12 +231,12 @@ export default function About() {
               rotateY: 0,
               opacity: 1,
               scale: 1,
-              duration: 0.85,
-              ease: 'power3.out',
+              duration: 1.1,
+              ease: 'power4.out',
               clearProps: 'transform,opacity',
               scrollTrigger: {
                 trigger: sourceCardRef.current,
-                start: 'top 82%',
+                start: 'top 85%',
                 toggleActions: 'play none none reverse',
               },
             }
@@ -244,12 +249,12 @@ export default function About() {
               y: 0,
               opacity: 1,
               scale: 1,
-              duration: 0.75,
-              ease: 'power3.out',
+              duration: 0.9,
+              ease: 'power4.out',
               clearProps: 'transform,opacity',
               scrollTrigger: {
                 trigger: sourceCardRef.current,
-                start: 'top 85%',
+                start: 'top 88%',
                 toggleActions: 'play none none reverse',
               },
             }
@@ -257,24 +262,23 @@ export default function About() {
         }
       }
 
-
-      // 4. PRINCIPLES HEADER & 3D FAN-OUT (Éventail 3D signature - inspiré de GlacierOffers)
+      // 4. PRINCIPLES HEADER & CARDS (Inspiré de #RÉALISATIONS DEVSUPAI : départ instantané, long ralentissement final)
       if (principlesHeaderRef.current) {
         const headerItems = Array.from(principlesHeaderRef.current.children) as HTMLElement[];
         gsap.fromTo(
           headerItems,
-          { opacity: 0, y: 30, scale: 0.95 },
+          { opacity: 0, y: 25, scale: 0.96 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: 'power3.out',
+            duration: 0.85,
+            stagger: 0.08,
+            ease: 'power4.out',
             clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: principlesHeaderRef.current,
-              start: 'top 85%',
+              start: 'top 88%',
               toggleActions: 'play none none reverse',
             },
           }
@@ -290,7 +294,7 @@ export default function About() {
         const principlesTl = gsap.timeline({
           scrollTrigger: {
             trigger: principlesGridRef.current,
-            start: 'top 80%',
+            start: 'top 82%',
             end: 'bottom top',
             toggleActions: 'play none none reverse',
           },
@@ -305,8 +309,8 @@ export default function About() {
             {
               opacity: 0,
               x: initialX[itemIdx] || 0,
-              scale: 0.8,
-              filter: 'blur(10px)',
+              scale: 0.82,
+              filter: 'blur(8px)',
               rotateX: 360,
               transformPerspective: 1000,
             },
@@ -316,32 +320,32 @@ export default function About() {
               scale: 1,
               filter: 'blur(0px)',
               rotateX: 0,
-              duration: 0.9,
-              ease: 'power2.out',
+              duration: 1.1,
+              ease: 'power4.out',
               clearProps: 'transform,filter',
             },
-            stepIndex === 0 ? 0 : '-=0.65'
+            stepIndex === 0 ? 0 : 0.12
           );
         });
       }
 
-      // 5. PROJECTS HEADER & LATERAL CONVERGENCE (Convergence en étau - inspirée de GlacierGallery)
+      // 5. PROJECTS HEADER & LATERAL CONVERGENCE (Convergence avec départ immédiat et ralentissement soigné)
       if (projectsHeaderRef.current) {
         const headerItems = Array.from(projectsHeaderRef.current.children) as HTMLElement[];
         gsap.fromTo(
           headerItems,
-          { opacity: 0, y: 30, scale: 0.95 },
+          { opacity: 0, y: 25, scale: 0.96 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: 'power3.out',
+            duration: 0.85,
+            stagger: 0.08,
+            ease: 'power4.out',
             clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: projectsHeaderRef.current,
-              start: 'top 85%',
+              start: 'top 88%',
               toggleActions: 'play none none reverse',
             },
           }
@@ -356,53 +360,53 @@ export default function About() {
           const projectsTl = gsap.timeline({
             scrollTrigger: {
               trigger: projectsGridRef.current,
-              start: 'top 80%',
+              start: 'top 82%',
               toggleActions: 'play none none reverse',
             },
           });
 
           if (isDesktop) {
-            // Carte Gauche (LocaTool) : Glisse depuis la gauche avec léger tilt 3D et flou cinétique discret
+            // Carte Gauche (LocaTool) : Départ vif, ralentissement progressif à l'arrivée
             projectsTl.fromTo(
               cards[0],
               { opacity: 0, x: -70, y: 25, rotateY: 8, scale: 0.94, filter: 'blur(4px)' },
-              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity,filter' },
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' },
               0
             );
 
-            // Carte Droite (AboGame) : Glisse depuis la droite en convergence
+            // Carte Droite (AboGame) : Départ vif, ralentissement progressif à l'arrivée
             projectsTl.fromTo(
               cards[1],
               { opacity: 0, x: 70, y: 25, rotateY: -8, scale: 0.94, filter: 'blur(4px)' },
-              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity,filter' },
-              0.15
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' },
+              0.1
             );
           } else {
             // Mobile : Cascade progressive
             projectsTl.fromTo(
               cards,
-              { opacity: 0, y: 50, scale: 0.95, filter: 'blur(3px)' },
-              { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.75, stagger: 0.2, ease: 'power3.out', clearProps: 'transform,opacity,filter' }
+              { opacity: 0, y: 45, scale: 0.95, filter: 'blur(3px)' },
+              { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.95, stagger: 0.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' }
             );
           }
         }
       }
 
-      // 6. BOTTOM CONTACT BANNER (Déploiement volumétrique glassy)
+      // 6. BOTTOM CONTACT BANNER (Départ vif, décélération douce et élégante à la fin)
       if (bannerCardRef.current) {
         const bannerChildren = Array.from(bannerCardRef.current.children) as HTMLElement[];
         const bannerTl = gsap.timeline({
           scrollTrigger: {
             trigger: bannerCardRef.current,
-            start: 'top 85%',
+            start: 'top 88%',
             toggleActions: 'play none none reverse',
           },
         });
 
         bannerTl.fromTo(
           bannerCardRef.current,
-          { opacity: 0, scale: 0.93, y: 40, filter: 'blur(6px)' },
-          { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 0.85, ease: 'power3.out', clearProps: 'filter,transform,opacity' },
+          { opacity: 0, scale: 0.94, y: 35, filter: 'blur(6px)' },
+          { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'filter,transform,opacity' },
           0
         );
 
@@ -410,8 +414,8 @@ export default function About() {
           bannerTl.fromTo(
             bannerChildren,
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity' },
-            0.2
+            { opacity: 1, y: 0, duration: 0.75, stagger: 0.08, ease: 'power4.out', clearProps: 'transform,opacity' },
+            0.1
           );
         }
       }
