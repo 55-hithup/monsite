@@ -145,14 +145,14 @@ export default function About() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. HERO ELEMENTS (Départ vif et franc, décélération longue et progressive à la fin)
+      // 1. HERO ELEMENTS (Départ vif et net, décélération douce à l'arrivée)
       const heroTl = gsap.timeline();
 
       if (heroEyebrowRef.current) {
         heroTl.fromTo(
           heroEyebrowRef.current,
-          { opacity: 0, y: -20, scale: 0.94 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'power4.out', clearProps: 'transform,opacity' },
+          { opacity: 0, y: -20, scale: 0.95 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
           0
         );
       }
@@ -160,31 +160,31 @@ export default function About() {
       if (heroTitleRef.current) {
         heroTl.fromTo(
           heroTitleRef.current,
-          { opacity: 0, y: 30, scale: 0.96 },
-          { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: 'power4.out', clearProps: 'transform,opacity' },
-          0.06
+          { opacity: 0, y: 30, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power4.out', clearProps: 'transform,opacity' },
+          0.05
         );
       }
 
       if (heroDescRef.current) {
         heroTl.fromTo(
           heroDescRef.current,
-          { opacity: 0, y: 25, scale: 0.97, filter: 'blur(5px)' },
-          { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' },
-          0.12
+          { opacity: 0, y: 25, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power4.out', clearProps: 'transform,opacity' },
+          0.1
         );
       }
 
-      // 2. STORY TEXT & UNIFIED CARD REVEAL (Départ réactif, ralentissement doux en fin de course)
+      // 2. STORY TEXT & UNIFIED CARD REVEAL (Départ vif, glisse et freinage soigné)
       if (storyTextRef.current) {
         const paragraphs = Array.from(storyTextRef.current.children) as HTMLElement[];
         gsap.fromTo(
           paragraphs,
-          { opacity: 0, y: 35 },
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.95,
+            duration: 0.8,
             stagger: 0.08,
             ease: 'power4.out',
             clearProps: 'transform,opacity',
@@ -200,12 +200,12 @@ export default function About() {
       if (unifiedCardRef.current) {
         gsap.fromTo(
           unifiedCardRef.current,
-          { opacity: 0, y: 40, scale: 0.96 },
+          { opacity: 0, y: 35, scale: 0.96 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1.05,
+            duration: 0.85,
             ease: 'power4.out',
             clearProps: 'transform,opacity',
             scrollTrigger: {
@@ -217,7 +217,7 @@ export default function About() {
         );
       }
 
-      // 3. PROFILE CARD (Impulsion vive au départ, freinage magnétique progressif à l'arrivée)
+      // 3. PROFILE CARD (Vitesse initiale immédiate, décélération progressive en fin de course)
       if (sourceCardRef.current) {
         const isDesktop = window.innerWidth >= 1024;
 
@@ -231,7 +231,7 @@ export default function About() {
               rotateY: 0,
               opacity: 1,
               scale: 1,
-              duration: 1.1,
+              duration: 0.85,
               ease: 'power4.out',
               clearProps: 'transform,opacity',
               scrollTrigger: {
@@ -244,12 +244,12 @@ export default function About() {
         } else {
           gsap.fromTo(
             sourceCardRef.current,
-            { y: 55, opacity: 0, scale: 0.94 },
+            { y: 45, opacity: 0, scale: 0.95 },
             {
               y: 0,
               opacity: 1,
               scale: 1,
-              duration: 0.9,
+              duration: 0.75,
               ease: 'power4.out',
               clearProps: 'transform,opacity',
               scrollTrigger: {
@@ -262,17 +262,17 @@ export default function About() {
         }
       }
 
-      // 4. PRINCIPLES HEADER & CARDS (Inspiré de #RÉALISATIONS DEVSUPAI : départ instantané, long ralentissement final)
+      // 4. PRINCIPLES HEADER & CARDS (Éventail 3D vif dès le départ, freinage doux à l'arrivée)
       if (principlesHeaderRef.current) {
         const headerItems = Array.from(principlesHeaderRef.current.children) as HTMLElement[];
         gsap.fromTo(
           headerItems,
-          { opacity: 0, y: 25, scale: 0.96 },
+          { opacity: 0, y: 25, scale: 0.97 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.85,
+            duration: 0.75,
             stagger: 0.08,
             ease: 'power4.out',
             clearProps: 'transform,opacity',
@@ -288,13 +288,13 @@ export default function About() {
       if (principlesGridRef.current) {
         const items = Array.from(principlesGridRef.current.children) as HTMLElement[];
         const isDesktop = window.innerWidth >= 1024;
-        const initialX = isDesktop ? [120, 0, -120] : [0, 0, 0];
+        const initialX = isDesktop ? [100, 0, -100] : [0, 0, 0];
         const sequenceOrder = isDesktop ? [0, 2, 1] : [0, 1, 2];
 
         const principlesTl = gsap.timeline({
           scrollTrigger: {
             trigger: principlesGridRef.current,
-            start: 'top 82%',
+            start: 'top 85%',
             end: 'bottom top',
             toggleActions: 'play none none reverse',
           },
@@ -309,37 +309,37 @@ export default function About() {
             {
               opacity: 0,
               x: initialX[itemIdx] || 0,
-              scale: 0.82,
-              filter: 'blur(8px)',
-              rotateX: 360,
+              y: 35,
+              scale: 0.92,
+              rotateX: 25,
               transformPerspective: 1000,
             },
             {
               opacity: 1,
               x: 0,
+              y: 0,
               scale: 1,
-              filter: 'blur(0px)',
               rotateX: 0,
-              duration: 1.1,
+              duration: 0.85,
               ease: 'power4.out',
-              clearProps: 'transform,filter',
+              clearProps: 'transform',
             },
-            stepIndex === 0 ? 0 : 0.12
+            stepIndex === 0 ? 0 : 0.1
           );
         });
       }
 
-      // 5. PROJECTS HEADER & LATERAL CONVERGENCE (Convergence avec départ immédiat et ralentissement soigné)
+      // 5. PROJECTS HEADER & LATERAL CONVERGENCE (Convergence avec départ immédiat et arrêt progressif)
       if (projectsHeaderRef.current) {
         const headerItems = Array.from(projectsHeaderRef.current.children) as HTMLElement[];
         gsap.fromTo(
           headerItems,
-          { opacity: 0, y: 25, scale: 0.96 },
+          { opacity: 0, y: 25, scale: 0.97 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.85,
+            duration: 0.75,
             stagger: 0.08,
             ease: 'power4.out',
             clearProps: 'transform,opacity',
@@ -360,7 +360,7 @@ export default function About() {
           const projectsTl = gsap.timeline({
             scrollTrigger: {
               trigger: projectsGridRef.current,
-              start: 'top 82%',
+              start: 'top 85%',
               toggleActions: 'play none none reverse',
             },
           });
@@ -369,30 +369,30 @@ export default function About() {
             // Carte Gauche (LocaTool) : Départ vif, ralentissement progressif à l'arrivée
             projectsTl.fromTo(
               cards[0],
-              { opacity: 0, x: -70, y: 25, rotateY: 8, scale: 0.94, filter: 'blur(4px)' },
-              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' },
+              { opacity: 0, x: -70, y: 25, rotateY: 8, scale: 0.94 },
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, duration: 0.85, ease: 'power4.out', clearProps: 'transform,opacity' },
               0
             );
 
             // Carte Droite (AboGame) : Départ vif, ralentissement progressif à l'arrivée
             projectsTl.fromTo(
               cards[1],
-              { opacity: 0, x: 70, y: 25, rotateY: -8, scale: 0.94, filter: 'blur(4px)' },
-              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' },
-              0.1
+              { opacity: 0, x: 70, y: 25, rotateY: -8, scale: 0.94 },
+              { opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1, duration: 0.85, ease: 'power4.out', clearProps: 'transform,opacity' },
+              0.08
             );
           } else {
             // Mobile : Cascade progressive
             projectsTl.fromTo(
               cards,
-              { opacity: 0, y: 45, scale: 0.95, filter: 'blur(3px)' },
-              { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.95, stagger: 0.1, ease: 'power4.out', clearProps: 'transform,opacity,filter' }
+              { opacity: 0, y: 40, scale: 0.95 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.75, stagger: 0.1, ease: 'power4.out', clearProps: 'transform,opacity' }
             );
           }
         }
       }
 
-      // 6. BOTTOM CONTACT BANNER (Départ vif, décélération douce et élégante à la fin)
+      // 6. BOTTOM CONTACT BANNER (Départ vif, décélération douce à la fin)
       if (bannerCardRef.current) {
         const bannerChildren = Array.from(bannerCardRef.current.children) as HTMLElement[];
         const bannerTl = gsap.timeline({
@@ -405,17 +405,17 @@ export default function About() {
 
         bannerTl.fromTo(
           bannerCardRef.current,
-          { opacity: 0, scale: 0.94, y: 35, filter: 'blur(6px)' },
-          { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', clearProps: 'filter,transform,opacity' },
+          { opacity: 0, scale: 0.95, y: 30 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.85, ease: 'power4.out', clearProps: 'transform,opacity' },
           0
         );
 
         if (bannerChildren.length > 0) {
           bannerTl.fromTo(
             bannerChildren,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.75, stagger: 0.08, ease: 'power4.out', clearProps: 'transform,opacity' },
-            0.1
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.65, stagger: 0.06, ease: 'power4.out', clearProps: 'transform,opacity' },
+            0.08
           );
         }
       }
@@ -566,7 +566,7 @@ export default function About() {
               {/* Carte Profil Fondateur (Point d'ancrage : devient 100% invisible quand détachée) */}
               <div 
                 ref={sourceCardRef}
-                className={`h-full flex flex-col justify-between p-8 rounded-none bg-white border border-[#E5E5E5] shadow-sm text-center relative group transition-opacity duration-200 ${isFlipped ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}
+                className={`h-full flex flex-col justify-between p-8 rounded-none bg-white border border-[#E5E5E5] shadow-sm text-center relative group ${isFlipped ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}
               >
                 <div>
                   <div className="w-24 h-24 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center font-black font-['Montserrat'] text-3xl mx-auto mb-4 border-2 border-[#0284C7] shadow-md transition-transform duration-300 group-hover:scale-105">
@@ -741,7 +741,7 @@ export default function About() {
               {t.principles.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col justify-between p-7 sm:p-8 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-lg transition-all duration-300 group h-full"
+                  className="flex flex-col justify-between p-7 sm:p-8 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-lg transition-[border-color,box-shadow] duration-300 group h-full"
                 >
                   <div>
                     <span className="text-[#0284C7] font-black font-['Montserrat'] text-2xl sm:text-3xl block mb-4 group-hover:scale-105 transition-transform duration-200">
@@ -778,7 +778,7 @@ export default function About() {
               {t.projects?.map((project) => (
                 <div
                   key={project.id}
-                  className="p-7 sm:p-9 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full"
+                  className="p-7 sm:p-9 rounded-none bg-white border border-[#E5E5E5] hover:border-[#0284C7] hover:shadow-xl transition-[border-color,box-shadow] duration-300 flex flex-col justify-between h-full"
                 >
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
@@ -847,7 +847,7 @@ export default function About() {
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div 
             ref={bannerCardRef}
-            className="p-8 sm:p-14 rounded-none bg-slate-900/65 backdrop-blur-xl border border-white/25 text-white text-center space-y-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] ring-1 ring-white/10 transition-all duration-300 hover:border-white/40 group max-w-5xl mx-auto"
+            className="p-8 sm:p-14 rounded-none bg-slate-900/65 backdrop-blur-xl border border-white/25 text-white text-center space-y-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] ring-1 ring-white/10 transition-[border-color,box-shadow] duration-300 hover:border-white/40 group max-w-5xl mx-auto"
           >
             <h2 
               className="text-2xl sm:text-3xl md:text-4xl font-black font-['Montserrat'] text-white tracking-tight"
