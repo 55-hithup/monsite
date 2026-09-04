@@ -387,36 +387,37 @@ export default function About() {
                 <p>{t.p3}</p>
               </div>
 
-              {/* Encadré d'engagement qualité sans faux chiffres */}
-              <div className="p-6 sm:p-7 rounded-none bg-white border border-[#E5E5E5] border-l-4 border-l-[#0284C7] shadow-sm">
-                <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-2">
-                  {language === 'en' ? "Direct craftmanship, zero outsourcing" : "Artisanat direct, zéro sous-traitance"}
-                </h3>
-                <p className="text-sm sm:text-base text-[#555555] font-['Plus_Jakarta_Sans'] leading-relaxed">
-                  {language === 'en' 
-                    ? "Every project is conceived, developed, and deployed directly by Alexandre Pabst. You benefit from a single, dedicated technical specialist guaranteeing direct communication and long-term maintainability."
-                    : "Chaque projet est pensé, codé et mis en ligne personnellement par Alexandre Pabst. Vous bénéficiez d'un interlocuteur technique unique et réactif, sans intermédiaire ni dilution de responsabilité."}
-                </p>
-              </div>
-
-              {/* Box Contact Rapide / Discuter d'un projet (Étalée en largeur sous Artisanat direct) */}
-              <div className="p-6 sm:p-8 rounded-none bg-slate-900 text-white border border-slate-800 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                <div className="space-y-1.5 max-w-xl text-left">
-                  <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-white uppercase tracking-wider" style={{ color: '#FFFFFF' }}>
-                    {t.discussTitle}
+              {/* Encadré unifié : Artisanat direct + Appel à l'action "Discuter d'un projet" */}
+              <div className="p-6 sm:p-8 rounded-none bg-white border border-[#E5E5E5] border-l-4 border-l-[#0284C7] shadow-sm">
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-2">
+                    {language === 'en' ? "Direct craftmanship, zero outsourcing" : "Artisanat direct, zéro sous-traitance"}
                   </h3>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-['Plus_Jakarta_Sans']" style={{ color: '#FFFFFF' }}>
-                    {t.discussText}
+                  <p className="text-sm sm:text-base text-[#555555] font-['Plus_Jakarta_Sans'] leading-relaxed mb-6">
+                    {language === 'en' 
+                      ? "Every project is conceived, developed, and deployed directly by Alexandre Pabst. You benefit from a single, dedicated technical specialist guaranteeing direct communication and long-term maintainability."
+                      : "Chaque projet est pensé, codé et mis en ligne personnellement par Alexandre Pabst. Vous bénéficiez d'un interlocuteur technique unique et réactif, sans intermédiaire ni dilution de responsabilité."}
                   </p>
                 </div>
-                <div className="shrink-0 w-full sm:w-auto">
+
+                {/* Section Action intégrée harmonieusement avec bouton cyan visible et lisible */}
+                <div className="pt-5 border-t border-[#E5E5E5] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="space-y-0.5">
+                    <strong className="text-xs sm:text-sm font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider block">
+                      {t.discussTitle}
+                    </strong>
+                    <span className="text-xs sm:text-sm text-[#666666] font-['Plus_Jakarta_Sans'] block">
+                      {t.discussText}
+                    </span>
+                  </div>
+
                   <Link 
                     to="/#contact" 
-                    className="btn-glacier-solid rounded-none w-full sm:w-auto inline-flex items-center justify-center gap-2 text-sm font-bold bg-[#0284C7] hover:bg-sky-500 text-white px-7 py-3.5 active:scale-95 transition-all shadow-sm"
-                    style={{ color: '#FFFFFF' }}
+                    className="shrink-0 w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-bold font-['Montserrat'] hover:bg-[#0369A1] text-white px-6 py-3 transition-all active:scale-95 shadow-sm cursor-pointer"
+                    style={{ color: '#FFFFFF', backgroundColor: '#0284C7' }}
                   >
                     <span style={{ color: '#FFFFFF' }}>{t.startProjectBtn}</span>
-                    <ArrowRight size={15} aria-hidden="true" />
+                    <ArrowRight size={14} className="text-white" aria-hidden="true" />
                   </Link>
                 </div>
               </div>
