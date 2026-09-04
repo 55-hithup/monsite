@@ -398,10 +398,32 @@ export default function About() {
                     : "Chaque projet est pensé, codé et mis en ligne personnellement par Alexandre Pabst. Vous bénéficiez d'un interlocuteur technique unique et réactif, sans intermédiaire ni dilution de responsabilité."}
                 </p>
               </div>
+
+              {/* Box Contact Rapide / Discuter d'un projet (Étalée en largeur sous Artisanat direct) */}
+              <div className="p-6 sm:p-8 rounded-none bg-slate-900 text-white border border-slate-800 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                <div className="space-y-1.5 max-w-xl text-left">
+                  <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-white uppercase tracking-wider" style={{ color: '#FFFFFF' }}>
+                    {t.discussTitle}
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-['Plus_Jakarta_Sans']" style={{ color: '#FFFFFF' }}>
+                    {t.discussText}
+                  </p>
+                </div>
+                <div className="shrink-0 w-full sm:w-auto">
+                  <Link 
+                    to="/#contact" 
+                    className="btn-glacier-solid rounded-none w-full sm:w-auto inline-flex items-center justify-center gap-2 text-sm font-bold bg-[#0284C7] hover:bg-sky-500 text-white px-7 py-3.5 active:scale-95 transition-all shadow-sm"
+                    style={{ color: '#FFFFFF' }}
+                  >
+                    <span style={{ color: '#FFFFFF' }}>{t.startProjectBtn}</span>
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            {/* Colonne Droite : Carte Profil Fondateur (avec Flip 3D) & Box Échange */}
-            <div ref={sidebarRef} className="lg:col-span-5 xl:col-span-4 space-y-8">
+            {/* Colonne Droite : Carte Profil Fondateur (avec Flip 3D) */}
+            <div ref={sidebarRef} className="lg:col-span-5 xl:col-span-4">
               
               {/* Carte Profil Fondateur (Point d'ancrage : devient 100% invisible quand détachée) */}
               <div 
@@ -556,26 +578,6 @@ export default function About() {
                   </div>
                 </div>
               )}
-              
-              {/* Box Contact Rapide */}
-              <div className="p-8 rounded-none bg-slate-900 text-white border border-slate-800 space-y-4 shadow-md text-left">
-                <h3 className="text-sm sm:text-base font-bold font-['Montserrat'] text-white uppercase tracking-wider" style={{ color: '#FFFFFF' }}>
-                  {t.discussTitle}
-                </h3>
-                <p className="text-sm sm:text-base text-slate-100 leading-relaxed font-['Plus_Jakarta_Sans']" style={{ color: '#FFFFFF' }}>
-                  {t.discussText}
-                </p>
-                <div className="pt-2">
-                  <Link 
-                    to="/#contact" 
-                    className="btn-glacier-solid rounded-none w-full text-center inline-flex items-center justify-center gap-2 text-sm font-bold bg-[#0284C7] text-white py-3.5 active:scale-95 transition-all shadow-sm"
-                    style={{ color: '#FFFFFF' }}
-                  >
-                    <span style={{ color: '#FFFFFF' }}>{t.startProjectBtn}</span>
-                    <ArrowRight size={15} aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
 
             </div>
 
