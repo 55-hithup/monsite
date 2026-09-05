@@ -992,6 +992,72 @@ export default defineConfig({
           }
         };
         injectedScripts.push(`<script type="application/ld+json" id="trade-service-ssg">${JSON.stringify(tradeServiceSchema)}</script>`);
+
+        const tradeFaqQuestions = isCommerce
+          ? (isEnglish
+              ? [
+                  { q: "How much does a bespoke e-commerce store cost with DevSupAi?", a: "Our Boutique E-Commerce Pack starts at €2,600 turnkey, including bespoke development, secure Stripe gateway, Click & Collect pickup module, and training with zero vendor lock-in." },
+                  { q: "Are there any sales commissions or monthly subscription fees?", a: "DevSupAi charges 0% commission on your sales. Only standard Stripe merchant processing fees (approx 1.5% + €0.25 per transaction) apply directly, with zero platform markup." },
+                  { q: "How easily can I add products and manage inventory?", a: "Very easily. You receive a dedicated, secure dashboard enabling you to create products, update prices, or adjust stock levels in seconds from any smartphone or computer." }
+                ]
+              : [
+                  { q: "Combien coûte une boutique e-commerce pour commerce local chez DevSupAi ?", a: "Notre Pack Boutique E-Commerce démarre à 2 600 € clés en main, incluant la conception sur-mesure, la passerelle de paiement sécurisée Stripe, le module Click & Collect et la formation complète sans aucun abonnement captif." },
+                  { q: "Y a-t-il une commission prélevée sur mes ventes ou un abonnement mensuel ?", a: "Aucune commission n'est prélevée par DevSupAi sur votre chiffre d'affaires (0%). Seuls les frais bancaires standards de Stripe (environ 1,5% + 0,25 € par transaction) s'appliquent directement, sans surcoût intermédiaire." },
+                  { q: "Est-il facile d'ajouter de nouveaux produits et de gérer les stocks ?", a: "Oui. Vous disposez d'une interface d'administration sécurisée et ultra-simple qui vous permet d'ajouter un produit, modifier un prix ou ajuster vos stocks en quelques secondes depuis votre smartphone ou votre ordinateur." }
+                ]
+            )
+          : isRestaurant
+          ? (isEnglish
+              ? [
+                  { q: "How much does a restaurant website with booking cost?", a: "Packages start from €1,850 for a complete platform with interactive menu, photo gallery, and direct commission-free reservation engine." },
+                  { q: "How easy is it to update daily specials and menu items?", a: "A streamlined administration interface lets you update prices, modify dishes, or announce holiday menus in under two minutes from your phone." },
+                  { q: "Do online booking confirmations arrive directly via email or SMS?", a: "Yes. Every confirmed reservation automatically sends an immediate alert to your phone and a detailed booking summary to your customer." }
+                ]
+              : [
+                  { q: "Combien coûte la création d'un site de restaurant avec réservation ?", a: "Nos forfaits démarrent à 1 850 € pour un site complet avec carte interactive, galerie photos et moteur de réservation directe sans commission sur vos couverts." },
+                  { q: "Comment modifier la carte ou le plat du jour facilement ?", a: "Un panneau d'administration simplifié vous permet de modifier vos prix, changer un plat ou annoncer un menu de fête en moins de deux minutes depuis votre smartphone." },
+                  { q: "Les réservations arrivent-elles directement par email ou SMS ?", a: "Oui. Chaque demande validée vous envoie une notification instantanée et confirme la réservation au client avec un récapitulatif clair." }
+                ]
+            )
+          : isLiberal
+          ? (isEnglish
+              ? [
+                  { q: "Does the website respect professional ethics and regulations?", a: "Yes, absolutely. We ensure all copywriting, layout, and visual presentation strictly adhere to the guidelines of professional associations and regulatory bodies." },
+                  { q: "Can I link directly to my online booking calendar?", a: "Yes, direct booking integration (Doctolib, Calendly, or custom booking links) is prominently and elegantly integrated across key pages." },
+                  { q: "Are client submissions securely protected?", a: "Yes. All data is transmitted over HTTPS/TLS encryption and delivered directly to your secure professional inbox without insecure intermediate database storage." }
+                ]
+              : [
+                  { q: "Mon site respecte-t-il la déontologie de mon ordre professionnel ?", a: "Absolument. Nous veillons scrupuleusement à ce que le contenu, le ton et la présentation soient strictement informatifs et conformes aux recommandations des ordres professionnels (Ordre des Médecins, Barreaux d'Avocats, etc.)." },
+                  { q: "Puis-je intégrer un lien direct vers mon agenda Doctolib ou Calendly ?", a: "Oui, un bouton de prise de rendez-vous direct vers votre plateforme habituelle est intégré de façon fluide sur toutes les pages clés de votre site." },
+                  { q: "Les données transmises via le formulaire sont-elles protégées ?", a: "Oui. Les formulaires sont chiffrés via protocole HTTPS/TLS, ne stockent aucune donnée médicale sensible en clair et sont directement transmis sur votre messagerie professionnelle sécurisée." }
+                ]
+            )
+          : (isEnglish
+              ? [
+                  { q: "How much does a contractor website cost with DevSupAi?", a: "Packages start from €950 for the Presence Pack (one-page showcase) and €1,850 for the Growth Pack (3-5 pages with categorized portfolio). All quotes are transparent and itemized." },
+                  { q: "Can I add new project photos myself?", a: "Yes. A personalized video walkthrough teaches you how to upload new photos and text easily from your smartphone or computer." },
+                  { q: "What are typical delivery timelines?", a: "Typically 1 to 2 weeks for a one-page site and 2 to 3 weeks for a multi-page portfolio site." }
+                ]
+              : [
+                  { q: "Combien coûte un site internet pour artisan chez DevSupAi ?", a: "Nos solutions démarrent à 950 € pour le Pack Présence (One-Page complète et percutante) et 1 850 € pour le Pack Croissance (3 à 5 pages avec galerie de chantiers catégorisée). Chaque devis est gratuit, détaillé et sans aucun abonnement captif." },
+                  { q: "Puis-je ajouter moi-même des photos de mes chantiers terminés ?", a: "Oui. Une formation vidéo personnalisée vous est offerte à la livraison pour vous apprendre à insérer de nouvelles photos et textes facilement depuis votre smartphone ou votre ordinateur." },
+                  { q: "Combien de temps faut-il pour concevoir et mettre en ligne le site ?", a: "Comptez généralement 1 à 2 semaines pour un site One-Page, et 2 à 3 semaines pour un site multi-pages complet avec galerie de réalisations." }
+                ]
+            );
+
+        const tradeFaqSchema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": tradeFaqQuestions.map(item => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.a
+            }
+          }))
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="trade-faq-ssg">${JSON.stringify(tradeFaqSchema)}</script>`);
       }
 
       if (injectedScripts.length > 0) {

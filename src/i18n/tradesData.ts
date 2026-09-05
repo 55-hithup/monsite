@@ -381,11 +381,11 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         linkLabel: "Découvrir le Pack E-Commerce",
       },
       caseStudy: {
-        title: 'Maison Lucine : Vente directe et expérience marchande fluide',
-        desc: 'Découvrez comment une boutique indépendante développe son chiffre d\'affaires grâce à une interface épurée, un catalogue réactif et zéro commission prélevée.',
-        link: '/#offres',
-        linkLabel: 'Découvrir la solution e-commerce',
-        tag: 'Commerce & Vente en Ligne',
+        title: 'Abogame : Plateforme interactive d’animation commerciale',
+        desc: 'Découvrez comment DevSupAi a conçu une application web interactive temps réel à 60 FPS avec tirage au sort live pour stimuler l\'engagement client et la fidélisation.',
+        link: '/projets/abogame',
+        linkLabel: 'Voir l\'étude de cas Abogame',
+        tag: 'Étude de Cas Révélatrice',
       },
       faqTitle: 'Questions fréquentes des commerçants et boutiques',
       faq: [
@@ -727,11 +727,11 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         linkLabel: "View E-Commerce Pack",
       },
       caseStudy: {
-        title: 'Maison Lucine: Direct Sales & Effortless Checkout',
-        desc: 'Discover how an independent retail store boosts revenue through an ultra-fast product catalog and zero commission taken on transactions.',
-        link: '/en#offres',
-        linkLabel: 'Explore e-commerce solution',
-        tag: 'Retail & E-Commerce',
+        title: 'Abogame: Interactive Real-Time Commercial Platform',
+        desc: 'Discover how DevSupAi engineered a 60 FPS real-time interactive web application to boost audience engagement and customer retention.',
+        link: '/en/projects/abogame',
+        linkLabel: 'View Abogame case study',
+        tag: 'Real-World Case Study',
       },
       faqTitle: 'Frequently asked questions from local retailers',
       faq: [

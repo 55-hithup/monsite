@@ -1,6 +1,6 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -153,6 +153,33 @@ export default function CaseAbogame() {
               </p>
               <p>{t.a3}</p>
             </section>
+          </div>
+
+          {/* Internal Linking Trade Bridge */}
+          <div className="mt-12 p-6 rounded-2xl bg-sky-50/70 border border-sky-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="space-y-1">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0284C7]">
+                {language === 'en' ? 'RETAIL & LOCAL COMMERCE' : 'COMMERCE DE PROXIMITÉ & BOUTIQUES'}
+              </span>
+              <h3 className="text-base font-bold font-['Montserrat'] text-[#1A1A1A]">
+                {language === 'en' 
+                  ? "Looking to sell products online with zero commission and Click & Collect?" 
+                  : "Vous souhaitez vendre en ligne avec 0% de commission et Click & Collect pour votre boutique ?"}
+              </h3>
+              <p className="text-xs text-slate-600 max-w-xl">
+                {language === 'en'
+                  ? "Discover our dedicated retail solution: bespoke e-commerce store, Stripe & Apple Pay integration, and high-impact local SEO."
+                  : "Découvrez notre offre e-commerce dédiée aux commerçants : boutique sur-mesure ultra-rapide, paiement Stripe sécurisé et SEO local."}
+              </p>
+            </div>
+            <Link
+              to={language === 'en' ? '/en/websites/retail-shop' : '/sites-internet/commerce-boutique'}
+              className="btn-glacier-solid text-xs py-2.5 px-4 font-bold font-['Montserrat'] shrink-0 inline-flex items-center gap-2 rounded-none bg-[#0284C7] hover:bg-sky-500 text-white shadow-sm"
+              style={{ color: '#FFFFFF' }}
+            >
+              <span style={{ color: '#FFFFFF' }}>{language === 'en' ? 'View Retail Solution' : 'Découvrir l\'offre commerce'}</span>
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
 
           {/* Live CTA Box */}
