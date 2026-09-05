@@ -61,4 +61,16 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
 * **Modèle recommandé par défaut :** En cas d'implémentation, de configuration ou d'appel via clé API Google Gemini, utiliser impérativement **`gemini-3.7-flash`** (recommandation officielle Google).
 * **Modèles dépréciés / Interdits :** Ne jamais instancier ni configurer de versions vouées à l'abandon ou en fin de cycle (notamment `gemini-3.5-flash`).
 
+## 11. Stratégie SEO / AEO Fan-Out & Maillage Interne Bidirectionnel
+* **Séparation de l'intention commerciale vs informationnelle :**
+  * La page d'accueil et les pages d'offres doivent être exclusivement réservées aux questions d'achat, de réassurance, de tarifs et de faisabilité projet.
+  * Les questions génériques, pédagogiques ou définitionnelles (ex : définitions de métiers, explications de langages, guides débutants) doivent impérativement être traitées dans des articles de blog dédiés pour capter la longue traîne (fan-out) sans dégrader le taux de conversion de la landing page.
+* **Maillage interne croisé systématique (Études de cas ⟷ Pages métier) :**
+  * Toute page métier sectorielle (`/sites-internet/*` ou `/en/websites/*`) doit obligatoirement comporter un encart liant vers une étude de cas concrète correspondante (`/projets/*` ou `/en/projects/*`).
+  * Réciproquement, toute page d'étude de cas (`/projets/*`) doit impérativement intégrer un pont de conversion (« Trade Bridge ») contextualisé renvoyant vers la page métier correspondante avant le bloc de contact final.
+* **Injection statique multi-schémas SSG :**
+  * Ne jamais se reposer uniquement sur les hooks React clients (`useJsonLd`) pour le SEO.
+  * Chaque nouvelle route (page métier, blog, projet) doit avoir ses balises Schema.org (`Service`, `FAQPage`, `BlogPosting`, `BreadcrumbList`) injectées statiquement dans le `<head>` HTML dans `vite.config.ts` (`onPageRendered`) pour garantir l'indexation instantanée par Google et les moteurs de réponse IA.
+
+
 
