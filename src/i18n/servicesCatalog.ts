@@ -29,6 +29,12 @@ export interface RawServiceItem {
   category: 'vitrines' | 'ecommerce' | 'apps' | 'maintenance';
   profiles: string[];
   icon: any;
+  pillarPath?: {
+    fr: string;
+    en: string;
+    labelFr: string;
+    labelEn: string;
+  };
   fr: {
     title: string;
     description: string;
@@ -112,6 +118,12 @@ export const servicesCatalog: RawServiceItem[] = [
     category: 'vitrines',
     profiles: ['restaurants', 'commerces'],
     icon: Utensils,
+    pillarPath: {
+      fr: '/sites-internet/restaurant',
+      en: '/en/websites/restaurant',
+      labelFr: 'Découvrir la solution restaurant',
+      labelEn: 'Explore restaurant solution',
+    },
     fr: {
       title: 'Création de sites pour restaurants',
       description: 'Menu en ligne interactif, galerie photos soignée, intégration de la réservation de tables et géolocalisation.',
@@ -128,6 +140,12 @@ export const servicesCatalog: RawServiceItem[] = [
     category: 'vitrines',
     profiles: ['artisans'],
     icon: Store,
+    pillarPath: {
+      fr: '/sites-internet/artisan-renovation',
+      en: '/en/websites/artisan-construction',
+      labelFr: 'Découvrir la solution artisan',
+      labelEn: 'Explore contractor solution',
+    },
     fr: {
       title: 'Création de sites pour artisans',
       description: 'Vitrine digitale sur-mesure pour maçons, électriciens, plombiers, menuisiers. Mise en avant de vos réalisations et demande de devis express.',
@@ -144,6 +162,12 @@ export const servicesCatalog: RawServiceItem[] = [
     category: 'vitrines',
     profiles: ['commerces'],
     icon: Store,
+    pillarPath: {
+      fr: '/sites-internet/commerce-boutique',
+      en: '/en/websites/retail-shop',
+      labelFr: 'Découvrir la solution commerce',
+      labelEn: 'Explore retail solution',
+    },
     fr: {
       title: 'Création de sites pour commerces',
       description: 'Renforcez votre visibilité locale, présentez vos produits en magasin et attirez de nouveaux clients en boutique.',
@@ -160,6 +184,12 @@ export const servicesCatalog: RawServiceItem[] = [
     category: 'vitrines',
     profiles: ['professions-liberales'],
     icon: Briefcase,
+    pillarPath: {
+      fr: '/sites-internet/profession-liberale',
+      en: '/en/websites/professional-services',
+      labelFr: 'Découvrir la solution libérale',
+      labelEn: 'Explore practice solution',
+    },
     fr: {
       title: 'Création de sites pour professions libérales',
       description: 'Sites épurés et sécurisés pour avocats, médecins, comptables, consultants. Prise de rendez-vous en ligne intégrée.',
@@ -946,15 +976,15 @@ export const servicesFaqData = {
     },
     {
       question: 'Suis-je réellement 100% propriétaire de mon site et de mon code ?',
-      answer: 'Absolument. Contrairement aux agences traditionnelles qui vous enferment dans des abonnements mensuels captifs ou des plateformes propriétaires, vous êtes l\'unique propriétaire de l\'intégralité du code source, du nom de domaine et de vos contenus dès la livraison finale.',
+      answer: 'Absolument. Vous êtes l\'unique propriétaire de l\'intégralité du code source, du nom de domaine et de vos données dès la livraison, sans aucun abonnement logiciel captif. Retrouvez l\'ensemble de nos engagements juridiques et techniques dans la FAQ complète de la page d\'accueil.',
     },
     {
-      question: 'Quels sont les délais moyens de réalisation ?',
-      answer: 'Pour un site vitrine One-Page ou 3 à 5 pages, le délai moyen de livraison est de 1 à 3 semaines après validation du cadrage et réception de vos contenus. Pour une application web ou un projet SaaS plus complexe, le calendrier est défini précisément dans le cahier des charges initial (généralement 4 à 6 semaines).',
+      question: 'Quels sont les délais moyens de réalisation selon la prestation ?',
+      answer: 'Les délais s\'échelonnent de 1 à 2 semaines pour un site One-Page, de 2 à 3 semaines pour un site multi-pages, et de 4 à 6 semaines pour une application SaaS sur-mesure. Un calendrier de validation jalonné est fixé dès la signature du devis.',
     },
     {
-      question: 'Proposez-vous un accompagnement après la mise en ligne ?',
-      answer: 'Oui. Chaque livraison s\'accompagne d\'une période de garantie technique pour valider le bon fonctionnement de tous les formulaires et modules. De plus, une prise en main personnalisée vous permet de modifier vos textes et médias en toute autonomie.',
+      question: 'Proposez-vous un accompagnement et une maintenance après la mise en ligne ?',
+      answer: 'Oui. Chaque livraison inclut une garantie technique et une prise en main personnalisée, avec des forfaits de maintenance préventive et de sauvegardes disponibles dès 29 €/mois. Consultez notre FAQ principale pour découvrir le détail des garanties.',
     },
     {
       question: 'Comment obtenir un devis détaillé sans engagement ?',
@@ -968,15 +998,15 @@ export const servicesFaqData = {
     },
     {
       question: 'Do I truly own 100% of my website and source code?',
-      answer: 'Absolutely. Unlike agencies that lock you into monthly proprietary platform fees, you are the sole, total owner of all source code, domain names, database records, and media from the moment of final delivery.',
+      answer: 'Absolutely. You are the sole, full owner of all source code, domain names, and data from final delivery, with zero captive software subscriptions. View our full transparency policies in our homepage FAQ.',
     },
     {
-      question: 'What are the typical project delivery timelines?',
-      answer: 'For a One-Page or 3-5 page showcase website, average turnaround is 1 to 3 weeks following scope validation and content receipt. For a web application or SaaS project, a clear milestone schedule is defined in the initial agreement (typically 4 to 6 weeks).',
+      question: 'What are typical project delivery timelines?',
+      answer: 'Turnaround typically ranges from 1 to 2 weeks for a one-page showcase, 2 to 3 weeks for a multi-page site, and 4 to 6 weeks for a custom SaaS application. A precise milestone calendar is agreed upon prior to kickoff.',
     },
     {
-      question: 'Do you provide ongoing support after deployment?',
-      answer: 'Yes. Every project includes a technical warranty period ensuring that all forms and features operate flawlessly. In addition, 1-on-1 onboarding teaches you how to update your content independently.',
+      question: 'Do you provide ongoing support and maintenance after deployment?',
+      answer: 'Yes. Every delivery includes a technical warranty and personalized onboarding, with optional maintenance plans starting at €29/month. Check our main FAQ on the homepage for complete support terms.',
     },
     {
       question: 'How can I receive a free, detailed quote?',

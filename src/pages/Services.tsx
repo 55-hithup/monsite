@@ -30,12 +30,12 @@ export default function Services() {
 
   useDocumentMetadata(
     {
-      fr: 'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
-      en: 'Our Custom Web Services & Digital Solutions | DevSupAi',
+      fr: 'Catalogue des Prestations & Solutions Web Sur-Mesure | DevSupAi',
+      en: 'Custom Web Development Services Catalog & Solutions | DevSupAi',
     },
     {
-      fr: 'Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications Android & PWA, SaaS sur-mesure et maintenance technique.',
-      en: 'Explore our 47 custom digital services: showcase websites, e-commerce, Android & PWA apps, custom SaaS software, and technical maintenance.',
+      fr: "Consultez l'ensemble de nos 47 prestations de développement web : sites vitrines, e-commerce, applications sur-mesure, refonte technique et maintenance.",
+      en: 'Explore our comprehensive catalog of 47 custom digital services: showcase websites, e-commerce platforms, SaaS web applications, and technical maintenance.',
     },
     'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
@@ -1034,9 +1034,16 @@ export default function Services() {
                         <div className="w-10 h-10 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center text-[#0284C7] group-hover:scale-110 group-hover:bg-[#0284C7]/10 transition-all duration-300">
                           <IconComp size={20} aria-hidden="true" />
                         </div>
-                        <span className="text-xs font-bold font-['Montserrat'] px-2.5 py-0.5 rounded-full bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0] uppercase">
-                          {service.category}
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          {service.pillarPath && (
+                            <span className="text-[11px] font-bold font-['Montserrat'] px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 border border-sky-200 uppercase">
+                              {language === 'en' ? 'Pillar' : 'Pilier'}
+                            </span>
+                          )}
+                          <span className="text-xs font-bold font-['Montserrat'] px-2.5 py-0.5 rounded-full bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0] uppercase">
+                            {service.category}
+                          </span>
+                        </div>
                       </div>
 
                       <h3 className="text-base font-bold font-['Montserrat'] text-[#1A1A1A] mb-2 leading-snug group-hover:text-[#0284C7] transition-colors duration-200">
@@ -1061,13 +1068,37 @@ export default function Services() {
                         ))}
                       </div>
 
-                      <Link
-                        to={`/#contact?service=${encodeURIComponent(itemData.title)}`}
-                        className="text-xs font-['Montserrat'] font-bold text-[#0284C7] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-1 cursor-pointer group/link active:scale-95"
-                      >
-                        <span>{t.explorer.contactCtaText}</span>
-                        <ArrowRight size={12} className="group-hover/link:translate-x-1 transition-transform duration-200" aria-hidden="true" />
-                      </Link>
+                      {service.pillarPath ? (
+                        <div className="space-y-2">
+                          <Link
+                            to={language === 'en' ? service.pillarPath.en : service.pillarPath.fr}
+                            className="btn-glacier-solid text-xs py-2 px-3 font-bold font-['Montserrat'] inline-flex items-center justify-between w-full rounded-md bg-[#0284C7] hover:bg-sky-500 text-white shadow-sm transition-all"
+                            style={{ color: '#FFFFFF' }}
+                          >
+                            <span style={{ color: '#FFFFFF' }}>
+                              {language === 'en' ? service.pillarPath.labelEn : service.pillarPath.labelFr}
+                            </span>
+                            <ArrowRight size={13} aria-hidden="true" />
+                          </Link>
+                          <div className="text-right">
+                            <Link
+                              to={`/#contact?service=${encodeURIComponent(itemData.title)}`}
+                              className="text-[11px] font-['Montserrat'] font-medium text-[#64748B] hover:text-[#0284C7] transition-colors inline-flex items-center gap-1 cursor-pointer"
+                            >
+                              <span>{t.explorer.contactCtaText}</span>
+                              <ArrowRight size={11} aria-hidden="true" />
+                            </Link>
+                          </div>
+                        </div>
+                      ) : (
+                        <Link
+                          to={`/#contact?service=${encodeURIComponent(itemData.title)}`}
+                          className="text-xs font-['Montserrat'] font-bold text-[#0284C7] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-1 cursor-pointer group/link active:scale-95"
+                        >
+                          <span>{t.explorer.contactCtaText}</span>
+                          <ArrowRight size={12} className="group-hover/link:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 );
@@ -1212,6 +1243,22 @@ export default function Services() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Redirection vers la FAQ générale pour approfondir */}
+          <div className="mt-10 pt-8 border-t border-[#E5E5E5] text-center max-w-xl mx-auto">
+            <p className="text-xs text-[#525252] mb-4 font-['Plus_Jakarta_Sans']">
+              {language === 'en'
+                ? 'Looking for more details on pricing structure, hosting guarantees, or AI development workflow?'
+                : 'Vous avez d\'autres questions sur nos tarifs, l\'hébergement inclus ou notre méthode de développement ?'}
+            </p>
+            <Link
+              to={language === 'en' ? '/en#faq' : '/#faq'}
+              className="btn-glacier-outline text-xs py-2.5 px-5 font-bold font-['Montserrat'] inline-flex items-center gap-2 hover:border-[#0284C7] hover:text-[#0284C7] transition-all"
+            >
+              <span>{language === 'en' ? 'Explore our Complete Homepage FAQ' : 'Consulter la FAQ générale complète'}</span>
+              <ArrowRight size={13} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>

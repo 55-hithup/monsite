@@ -106,13 +106,24 @@ export default function TradePageTemplate({ tradeKey }: TradePageTemplateProps) 
       {/* 1. HERO BANNER */}
       <section className="py-16 md:py-24 border-b border-[#E5E5E5] bg-[#F8F8F8]">
         <div className="container max-w-5xl mx-auto px-6 text-left">
-          {/* Breadcrumb link */}
-          <Link 
-            to={isEn ? "/en" : "/"}
-            className="text-xs font-bold font-['Montserrat'] text-[#0284C7] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-1.5 mb-6"
-          >
-            <span>←</span> {isEn ? "Back to home" : "Retour à l'accueil"}
-          </Link>
+          {/* Breadcrumb navigation */}
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 mb-6 text-xs font-bold font-['Montserrat']">
+            <Link 
+              to={isEn ? "/en" : "/"}
+              className="text-[#0284C7] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-1"
+            >
+              <span>{isEn ? "Home" : "Accueil"}</span>
+            </Link>
+            <span className="text-slate-400" aria-hidden="true">/</span>
+            <Link 
+              to={isEn ? "/en/services" : "/nos-services"}
+              className="text-[#525252] hover:text-[#0284C7] transition-colors"
+            >
+              <span>{isEn ? "Services Catalog" : "Catalogue des 47 Prestations"}</span>
+            </Link>
+            <span className="text-slate-400" aria-hidden="true">/</span>
+            <span className="text-[#1A1A1A]">{data.meta.badge}</span>
+          </nav>
 
           {/* Eyebrow badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-4">
@@ -419,6 +430,32 @@ export default function TradePageTemplate({ tradeKey }: TradePageTemplateProps) 
                 </div>
               );
             })}
+          </div>
+
+          {/* Exploration du catalogue complet */}
+          <div className="mt-12 p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-left">
+            <div className="space-y-1">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0284C7]">
+                {isEn ? "EXPAND YOUR REACH" : "AUTRES PRESTATIONS WEB"}
+              </span>
+              <h3 className="text-base font-bold font-['Montserrat'] text-[#1A1A1A]">
+                {isEn 
+                  ? "Looking for specialized digital solutions or additional features?" 
+                  : "Besoin d'un module spécifique ou d'une prestation complémentaire ?"}
+              </h3>
+              <p className="text-xs text-[#525252] max-w-xl font-['Plus_Jakarta_Sans']">
+                {isEn
+                  ? "Explore our full catalog of 47 custom web development services: booking engines, e-commerce, custom SaaS, and speed audits."
+                  : "Découvrez notre catalogue complet de 47 prestations informatiques sur-mesure : réservation directe, e-commerce, outils SaaS et maintenance technique."}
+              </p>
+            </div>
+            <Link
+              to={isEn ? "/en/services" : "/nos-services"}
+              className="btn-glacier-outline py-2.5 px-4 text-xs font-bold font-['Montserrat'] shrink-0 inline-flex items-center gap-2 hover:border-[#0284C7] hover:text-[#0284C7] transition-all"
+            >
+              <span>{isEn ? "Browse All 47 Services" : "Consulter tout le catalogue"}</span>
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>

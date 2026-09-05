@@ -18,8 +18,8 @@ const pageMetadata: Record<string, RouteMeta> = {
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/nos-services': {
-    title: 'Nos Prestations & Solutions Web Sur-Mesure | DevSupAi',
-    description: "Découvrez nos 47 prestations informatiques : création de sites vitrines, e-commerce, applications mobiles Android/iOS, SaaS sur-mesure et maintenance technique.",
+    title: 'Catalogue des Prestations & Solutions Web Sur-Mesure | DevSupAi',
+    description: "Consultez l'ensemble de nos 47 prestations de développement web : sites vitrines, e-commerce, applications sur-mesure, refonte technique et maintenance.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/a-propos': {
@@ -134,8 +134,8 @@ const pageMetadata: Record<string, RouteMeta> = {
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/services': {
-    title: 'Our Custom Web Services & Digital Solutions | DevSupAi',
-    description: 'Explore our 47 custom digital services: showcase websites, e-commerce, Android/iOS mobile apps, custom SaaS software, and technical maintenance.',
+    title: 'Custom Web Development Services Catalog & Solutions | DevSupAi',
+    description: 'Explore our comprehensive catalog of 47 custom digital services: showcase websites, e-commerce platforms, SaaS web applications, and technical maintenance.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
   '/en/about': {
