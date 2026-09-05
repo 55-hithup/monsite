@@ -8,6 +8,23 @@ export interface TradeFeature {
   desc: string;
 }
 
+export interface TradeTestimonial {
+  quote: string;
+  name: string;
+  role: string;
+  rating: number;
+  tag: string;
+}
+
+export interface TradeRecommendedPack {
+  name: string;
+  badge: string;
+  price: string;
+  description: string;
+  link: string;
+  linkLabel: string;
+}
+
 export interface TradePageContent {
   slug: string;
   meta: {
@@ -27,6 +44,8 @@ export interface TradePageContent {
   challenges: TradeFeature[];
   deliverablesTitle: string;
   deliverables: string[];
+  testimonial: TradeTestimonial;
+  recommendedPack: TradeRecommendedPack;
   caseStudy: {
     title: string;
     desc: string;
@@ -88,6 +107,21 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         'Intégration de votre fiche Google Business Profile et des avis clients certifiés',
         'Propriété totale du code source et des fichiers : aucun abonnement mensuel imposé',
       ],
+      testimonial: {
+        quote: "Passer d'un ancien template WordPress lent à un site sur-mesure développé par DevSupAi a tout changé. Mon planning de chantiers est complet plusieurs mois à l'avance grâce aux demandes de devis qualifiées qui arrivent régulièrement. Un investissement très vite rentabilisé.",
+        name: "Thomas Mercier",
+        role: "Fondateur, Mercier Rénovation & Bois",
+        rating: 5,
+        tag: "Avis Client Vérifié • Meuse (55)",
+      },
+      recommendedPack: {
+        name: "Pack Croissance PME",
+        badge: "RECOMMANDÉ POUR ARTISANS DU BÂTIMENT",
+        price: "Dès 1 850 €",
+        description: "Site multi-pages complet avec galerie de réalisations chantiers haute définition, formulaire de devis détaillé et SEO local géociblé.",
+        link: "/#offres",
+        linkLabel: "Découvrir le Pack Croissance",
+      },
       caseStudy: {
         title: 'LocaTool : Gestion de matériel pour artisans et chantiers',
         desc: 'Découvrez comment DevSupAi a également développé un logiciel SaaS sur-mesure pour suivre le parc de matériel et éditer des contrats de mise à disposition en un clic.',
@@ -159,6 +193,21 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         'Plan d\'accès interactif, transports en commun à proximité et accessibilité PMR',
         'Hébergement haute sécurité sur serveurs européens avec certificat SSL renforcé',
       ],
+      testimonial: {
+        quote: "DevSupAi a su concevoir un site à la fois épuré, rassurant et ultra-rapide pour nos patients. La navigation sur smartphone est parfaite, les informations sont claires et nous avons d'excellents retours au quotidien. Un professionnalisme rare et un suivi exemplaire.",
+        name: "Dr. Sophie Laurent",
+        role: "Chirurgien-Dentiste, Cabinet Dentaire",
+        rating: 5,
+        tag: "Avis Client Vérifié • Santé & Médical",
+      },
+      recommendedPack: {
+        name: "Pack Présence ou Pack Croissance",
+        badge: "RECOMMANDÉ POUR CABINETS & PROFESSIONS LIBÉRALES",
+        price: "Dès 950 €",
+        description: "Une vitrine déontologique, sobre et rapide pour valoriser vos expertises, honoraires et orienter facilement vers votre système de prise de rendez-vous.",
+        link: "/#offres",
+        linkLabel: "Consulter nos forfaits",
+      },
       caseStudy: {
         title: 'Atelier Gourmand : Présentation claire et parcours fluide',
         desc: 'Découvrez notre démarche d\'ingénierie UX appliquée à la réservation directe et à la clarté de l\'information sur-mesure.',
@@ -230,6 +279,21 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         'Balisage SEO Local Restaurant (Google Maps, géolocalisation, avis clients)',
         'Code 100% propriétaire sans abonnement mensuel logiciel obligatoire',
       ],
+      testimonial: {
+        quote: "Le résultat dépasse largement mes attentes. Les demandes de contact et les réservations sont régulières et nos convives nous complimentent sur la clarté du site à chaque service. Un travail d'une qualité remarquable du premier pixel jusqu'à la mise en ligne.",
+        name: "Claire Dubosc",
+        role: "Gérante & Fondatrice, Table & Terroir",
+        rating: 5,
+        tag: "Avis Client Vérifié • Restauration",
+      },
+      recommendedPack: {
+        name: "Pack Croissance Restauration",
+        badge: "RECOMMANDÉ POUR RESTAURANTS & BISTROS",
+        price: "Dès 1 850 €",
+        description: "Carte interactive dynamique sans PDF, galerie photos et moteur de réservation directe 100% gratuit sans commission sur vos couverts.",
+        link: "/#offres",
+        linkLabel: "Découvrir le Pack Restauration",
+      },
       caseStudy: {
         title: 'L\'Atelier Gourmand : Réservation directe sans commission',
         desc: 'Découvrez l\'étude de cas réelle d\'un restaurant bistronomique équipé d\'un moteur de réservation 4 étapes en 7 langues et d\'un tableau de bord sans commission.',
@@ -256,6 +320,92 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         title: 'Développez vos réservations directes sans commission',
         desc: 'Discutons de votre établissement et découvrez une démo interactive en direct.',
         btn: 'Demander un devis restaurant',
+      },
+    },
+    commerceBoutique: {
+      slug: 'sites-internet/commerce-boutique',
+      meta: {
+        title: 'Création de Site E-Commerce pour Commerce de Proximité & Boutique | DevSupAi',
+        description: 'Site e-commerce sur-mesure pour commerçants de proximité, boutiques et producteurs locaux en Meuse et Grand Est. Vente en ligne et Click & Collect sans commission.',
+        badge: 'COMMERCES DE PROXIMITÉ & BOUTIQUES',
+      },
+      hero: {
+        title: 'Création de site e-commerce & vitrine pour commerce de proximité',
+        subtitle: 'Vendez vos articles en direct et développez votre clientèle locale sans céder votre marge aux plateformes tierces : boutique sur-mesure ultra-rapide, Click & Collect sans frais, paiement sécurisé Stripe et SEO de proximité.',
+        ctaPrimary: 'Demander un devis e-commerce',
+        ctaSecondary: 'Appeler au 07 83 66 60 98',
+        proofPill: '0% de commission sur vos ventes • Paiement sécurisé Stripe • Hébergement inclus An 1',
+      },
+      challengesTitle: 'Les piliers d\'une boutique locale en ligne rentable',
+      challengesSubtitle: 'Offrez une expérience d\'achat digne des grands sites marchands avec la proximité et l\'authenticité de votre commerce.',
+      challenges: [
+        {
+          title: 'Vente directe & Click & Collect sans commission',
+          desc: 'Permettez à vos clients de commander en ligne et de retirer leurs articles en boutique ou de se faire livrer, sans prélever le moindre pourcentage sur votre chiffre d\'affaires.',
+        },
+        {
+          title: 'Catalogue produits clair & navigation mobile instantanée',
+          desc: 'Vos fiches produits se chargent en un clin d\'œil avec photos haute définition, gestion des tailles, coloris et état des stocks en temps réel.',
+        },
+        {
+          title: 'Paiement sécurisé par carte & Apple Pay',
+          desc: 'Intégration bancaire certifiée via Stripe pour des transactions fluides et chiffrées avec virement direct vers votre compte bancaire professionnel.',
+        },
+        {
+          title: 'Référencement local puissant en Meuse & Grand Est',
+          desc: 'Captez les acheteurs de votre bassin de vie recherchant vos produits en ligne avant de se déplacer en magasin.',
+        },
+      ],
+      deliverablesTitle: 'Ce qui est inclus dans votre solution e-commerce',
+      deliverables: [
+        'Boutique en ligne 100% sur-mesure sans abonnement mensuel logiciel obligatoire',
+        'Passerelle de paiement Stripe configurée avec virement bancaire direct',
+        'Tunnel de commande optimisé en 3 étapes sans création de compte obligatoire',
+        'Module Click & Collect et retrait en magasin avec créneaux paramétrables',
+        'Interface d\'administration intuitive pour ajouter produits, photos et stocks',
+        'Facturation automatique PDF conforme et alertes email instantanées',
+      ],
+      testimonial: {
+        quote: "Rapide, réactif et incroyablement précis. Le site est aujourd'hui mon meilleur commercial, disponible 24h/24 avec des temps de chargement instantanés. Je recommande sans la moindre hésitation.",
+        name: "Léa Fontaine",
+        role: "Directrice, Maison Lucine",
+        rating: 5,
+        tag: "Avis Client Vérifié • Commerce & Boutique",
+      },
+      recommendedPack: {
+        name: "Pack Boutique E-Commerce",
+        badge: "RECOMMANDÉ POUR COMMERÇANTS & BOUTIQUES",
+        price: "Dès 2 600 €",
+        description: "Votre boutique en ligne complète avec paiement sécurisé Stripe, 0% de commission sur vos ventes, catalogue illimité et formation incluse.",
+        link: "/#offres",
+        linkLabel: "Découvrir le Pack E-Commerce",
+      },
+      caseStudy: {
+        title: 'Maison Lucine : Vente directe et expérience marchande fluide',
+        desc: 'Découvrez comment une boutique indépendante développe son chiffre d\'affaires grâce à une interface épurée, un catalogue réactif et zéro commission prélevée.',
+        link: '/#offres',
+        linkLabel: 'Découvrir la solution e-commerce',
+        tag: 'Commerce & Vente en Ligne',
+      },
+      faqTitle: 'Questions fréquentes des commerçants et boutiques',
+      faq: [
+        {
+          q: 'Combien coûte une boutique e-commerce pour commerce local chez DevSupAi ?',
+          a: 'Notre Pack Boutique E-Commerce démarre à 2 600 € clés en main, incluant la conception sur-mesure, la passerelle de paiement sécurisée Stripe, le module Click & Collect et la formation complète sans aucun abonnement captif.',
+        },
+        {
+          q: 'Y a-t-il une commission prélevée sur mes ventes ou un abonnement mensuel ?',
+          a: 'Aucune commission n\'est prélevée par DevSupAi sur votre chiffre d\'affaires (0%). Seuls les frais bancaires standards de Stripe (environ 1,5% + 0,25 € par transaction) s\'appliquent directement, sans surcoût intermédiaire.',
+        },
+        {
+          q: 'Est-il facile d\'ajouter de nouveaux produits et de gérer les stocks ?',
+          a: 'Oui. Vous disposez d\'une interface d\'administration sécurisée et ultra-simple qui vous permet d\'ajouter un produit, modifier un prix ou ajuster vos stocks en quelques secondes depuis votre smartphone ou votre ordinateur.',
+        },
+      ],
+      contactCta: {
+        title: 'Prêt à développer vos ventes en direct sans commission ?',
+        desc: 'Échangeons sur votre catalogue de produits et recevez une proposition chiffrée détaillée sous 24 heures ouvrées.',
+        btn: 'Demander mon devis e-commerce',
       },
     },
   },
@@ -303,6 +453,21 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         'Google Business Profile integration and verified customer reviews',
         'Complete ownership of all source code with zero ongoing software fees',
       ],
+      testimonial: {
+        quote: "Transitioning from a slow WordPress template to a custom website engineered by DevSupAi changed everything. Our project schedule is booked months in advance thanks to qualified quote requests coming in steadily. An investment that paid for itself very quickly.",
+        name: "Thomas Mercier",
+        role: "Founder, Mercier Renovation & Wood",
+        rating: 5,
+        tag: "Verified Client Review • France",
+      },
+      recommendedPack: {
+        name: "Growth SME Pack",
+        badge: "RECOMMENDED FOR CONTRACTORS",
+        price: "From €1,850",
+        description: "Complete multi-page website featuring a high-definition project gallery, structured quote inquiry form, and local SEO targeted across your territory.",
+        link: "/en#offres",
+        linkLabel: "View Growth Pack",
+      },
       caseStudy: {
         title: 'LocaTool: Custom Tool & Equipment Management SaaS',
         desc: 'Explore how DevSupAi engineered a custom web software to manage rental fleets, contracts, and PDF invoices with one click.',
@@ -374,6 +539,21 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         'Interactive location map, public transport directions, and accessibility details',
         'High-security edge cloud hosting with enterprise SSL certification',
       ],
+      testimonial: {
+        quote: "DevSupAi designed a clean, reassuring, and ultra-fast website for our patients. Mobile navigation is flawless, information is crystal clear, and patient feedback has been fantastic. Rare professionalism and exemplary support.",
+        name: "Dr. Sophie Laurent",
+        role: "Dental Surgeon, Dental Clinic",
+        rating: 5,
+        tag: "Verified Client Review • Healthcare",
+      },
+      recommendedPack: {
+        name: "Presence or Growth Pack",
+        badge: "RECOMMENDED FOR PRACTICES",
+        price: "From €950",
+        description: "A refined, compliant, and secure showcase presenting your expertise, fee schedule, and seamless integration with your scheduling platform.",
+        link: "/en#offres",
+        linkLabel: "View Packages",
+      },
       caseStudy: {
         title: 'L\'Atelier Gourmand: Clear UX & frictionless interaction',
         desc: 'See how our UX engineering principles deliver clarity, readability, and effortless user journeys.',
@@ -445,6 +625,21 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         'Local SEO optimization for Google Maps, culinary keywords, and reviews',
         '100% proprietary code with zero ongoing software lock-in',
       ],
+      testimonial: {
+        quote: "The result exceeded my expectations by far. Inquiries and reservations arrive steadily, and our guests praise the clarity and speed of the website every day. Exceptional craftsmanship from the first pixel to final deployment.",
+        name: "Claire Dubosc",
+        role: "Owner & Founder, Table & Terroir",
+        rating: 5,
+        tag: "Verified Client Review • Dining & Bistro",
+      },
+      recommendedPack: {
+        name: "Restaurant Growth Pack",
+        badge: "RECOMMENDED FOR RESTAURANTS",
+        price: "From €1,850",
+        description: "Interactive dynamic digital menu without heavy PDFs, culinary photography gallery, and direct table reservation engine with 0% commission.",
+        link: "/en#offres",
+        linkLabel: "View Restaurant Pack",
+      },
       caseStudy: {
         title: 'L\'Atelier Gourmand: Real-World Commission-Free Booking',
         desc: 'Explore the complete case study of a bistro equipped with a 4-step direct booking engine in 7 languages and an owner dashboard.',
@@ -471,6 +666,92 @@ export const tradesData: Record<string, Record<string, TradePageContent>> = {
         title: 'Grow direct restaurant bookings without third-party commissions',
         desc: 'Let us discuss your establishment and explore a live interactive demo.',
         btn: 'Request your restaurant quote',
+      },
+    },
+    commerceBoutique: {
+      slug: 'en/websites/retail-shop',
+      meta: {
+        title: 'Bespoke E-Commerce Website for Local Retailers & Shops | DevSupAi',
+        description: 'Custom e-commerce websites for independent retailers, local shops, and regional producers in Grand Est and France. Zero sales commissions, Stripe checkout & Click & Collect.',
+        badge: 'LOCAL RETAILERS & BOUTIQUES',
+      },
+      hero: {
+        title: 'Custom e-commerce & showcase websites for local retailers',
+        subtitle: 'Sell your products directly and grow your local customer base without losing margins to third-party marketplaces: bespoke online store, zero-commission Click & Collect, secure Stripe checkout, and high-impact local SEO.',
+        ctaPrimary: 'Request an e-commerce quote',
+        ctaSecondary: 'Call +33 7 83 66 60 98',
+        proofPill: '0% Commission on Sales • Stripe & Apple Pay • Domain & Hosting Included Yr 1',
+      },
+      challengesTitle: 'Key pillars of a profitable local e-commerce store',
+      challengesSubtitle: 'Offer an effortless shopping experience matching big retailers, combined with the warmth of local retail.',
+      challenges: [
+        {
+          title: 'Direct sales & zero-commission Click & Collect',
+          desc: 'Allow your shoppers to buy online and pick up in store or receive local delivery, without giving up any percentage of your gross sales.',
+        },
+        {
+          title: 'Instant mobile shopping & clear catalog',
+          desc: 'Product pages load in the blink of an eye with crisp photography, sizes, color variants, and real-time inventory management.',
+        },
+        {
+          title: 'Bank-grade secure checkout with Stripe & Apple Pay',
+          desc: 'Frictionless, encrypted card payments with immediate bank payouts directly to your business account.',
+        },
+        {
+          title: 'High-intent local SEO rankings',
+          desc: 'Capture nearby shoppers searching for products online before visiting physical stores in your region.',
+        },
+      ],
+      deliverablesTitle: 'What is included in your custom e-commerce solution',
+      deliverables: [
+        '100% bespoke online boutique with zero mandatory monthly software subscriptions',
+        'Stripe payment gateway configured with direct automated bank deposits',
+        'Frictionless 3-step checkout without forced customer account creation',
+        'Store pickup / Click & Collect scheduling module',
+        'Intuitive administration portal to manage items, images, and inventory',
+        'Automated compliant PDF invoicing and instant email order notifications',
+      ],
+      testimonial: {
+        quote: "Fast, responsive, and incredibly precise. Today our website acts as our best salesperson, working 24/7 with instant load times. I recommend DevSupAi without hesitation.",
+        name: "Léa Fontaine",
+        role: "Director, Maison Lucine",
+        rating: 5,
+        tag: "Verified Client Review • Retail & Fashion",
+      },
+      recommendedPack: {
+        name: "Boutique E-Commerce Pack",
+        badge: "RECOMMENDED FOR RETAILERS & PRODUCERS",
+        price: "From €2,600",
+        description: "Your complete custom online store with bank-grade Stripe payment, 0% commission on your sales, unlimited products, and comprehensive training.",
+        link: "/en#offres",
+        linkLabel: "View E-Commerce Pack",
+      },
+      caseStudy: {
+        title: 'Maison Lucine: Direct Sales & Effortless Checkout',
+        desc: 'Discover how an independent retail store boosts revenue through an ultra-fast product catalog and zero commission taken on transactions.',
+        link: '/en#offres',
+        linkLabel: 'Explore e-commerce solution',
+        tag: 'Retail & E-Commerce',
+      },
+      faqTitle: 'Frequently asked questions from local retailers',
+      faq: [
+        {
+          q: 'How much does a bespoke e-commerce store cost with DevSupAi?',
+          a: 'Our Boutique E-Commerce Pack starts at €2,600 turnkey, including bespoke development, secure Stripe gateway, Click & Collect pickup module, and training with zero vendor lock-in.',
+        },
+        {
+          q: 'Are there any sales commissions or monthly subscription fees?',
+          a: 'DevSupAi charges 0% commission on your sales. Only standard Stripe merchant processing fees (approx 1.5% + €0.25 per transaction) apply directly, with zero platform markup.',
+        },
+        {
+          q: 'How easily can I add products and manage inventory?',
+          a: 'Very easily. You receive a dedicated, secure dashboard enabling you to create products, update prices, or adjust stock levels in seconds from any smartphone or computer.',
+        },
+      ],
+      contactCta: {
+        title: 'Ready to grow direct online sales with zero platform fees?',
+        desc: 'Let us discuss your product catalog and business goals. Free itemized proposal within 24 business hours.',
+        btn: 'Request e-commerce quote',
       },
     },
   },

@@ -1,5 +1,6 @@
-import ArticleTemplatePlaceholder from './ArticleTemplatePlaceholder';
+import ArticleTemplate from './ArticleTemplate';
+import { articleSiteVsGoogleData } from './articlesContent';
 
 export default function ArticleSiteVsGoogle() {
-  return <ArticleTemplatePlaceholder articleSlug="site-internet-vs-google-business" />;
+  return <ArticleTemplate {...articleSiteVsGoogleData} />;
 }

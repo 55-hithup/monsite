@@ -18,12 +18,13 @@ import CaseAbogame from './pages/projects/CaseAbogame';
 import TradeArtisan from './pages/trades/TradeArtisan';
 import TradeProfessionLiberale from './pages/trades/TradeProfessionLiberale';
 import TradeRestaurant from './pages/trades/TradeRestaurant';
+import TradeCommerceBoutique from './pages/trades/TradeCommerceBoutique';
 import ArticleSiteVsGoogle from './pages/blog/ArticleSiteVsGoogle';
 import ArticlePourquoiEviterWordpress from './pages/blog/ArticlePourquoiEviterWordpress';
 import ArticleArtisanConvertirDevis from './pages/blog/ArticleArtisanConvertirDevis';
-import ArticleCoutReelSite3Ans from './pages/blog/ArticleCoutReelSite3Ans';
-import ArticleReservationRestaurant from './pages/blog/ArticleReservationRestaurant';
-import ArticleIaCreationWeb from './pages/blog/ArticleIaCreationWeb';
+import ArticleBoutiqueSansCommission from './pages/blog/ArticleBoutiqueSansCommission';
+import ArticleAccessibiliteRgaa from './pages/blog/ArticleAccessibiliteRgaa';
+import ArticleIaDeveloppementWeb from './pages/blog/ArticleIaDeveloppementWeb';
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
 
@@ -241,26 +242,26 @@ export const routes = [
         ),
       },
       {
-        path: 'blog/cout-reel-site-internet-3-ans',
+        path: 'blog/boutique-en-ligne-sans-commission',
         element: (
           <ErrorBoundary>
-            <ArticleCoutReelSite3Ans />
+            <ArticleBoutiqueSansCommission />
           </ErrorBoundary>
         ),
       },
       {
-        path: 'blog/reservation-directe-restaurant-sans-commission',
+        path: 'blog/accessibilite-web-rgaa-pme',
         element: (
           <ErrorBoundary>
-            <ArticleReservationRestaurant />
+            <ArticleAccessibiliteRgaa />
           </ErrorBoundary>
         ),
       },
       {
-        path: 'blog/ia-creation-site-web-opportunites-pieges',
+        path: 'blog/ia-et-developpement-web-ce-qui-change',
         element: (
           <ErrorBoundary>
-            <ArticleIaCreationWeb />
+            <ArticleIaDeveloppementWeb />
           </ErrorBoundary>
         ),
       },
@@ -285,6 +286,14 @@ export const routes = [
         element: (
           <ErrorBoundary>
             <TradeRestaurant />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'sites-internet/commerce-boutique',
+        element: (
+          <ErrorBoundary>
+            <TradeCommerceBoutique />
           </ErrorBoundary>
         ),
       },
@@ -410,26 +419,26 @@ export const routes = [
         ),
       },
       {
-        path: 'en/blog/cout-reel-site-internet-3-ans',
+        path: 'en/blog/boutique-en-ligne-sans-commission',
         element: (
           <ErrorBoundary>
-            <ArticleCoutReelSite3Ans />
+            <ArticleBoutiqueSansCommission />
           </ErrorBoundary>
         ),
       },
       {
-        path: 'en/blog/reservation-directe-restaurant-sans-commission',
+        path: 'en/blog/accessibilite-web-rgaa-pme',
         element: (
           <ErrorBoundary>
-            <ArticleReservationRestaurant />
+            <ArticleAccessibiliteRgaa />
           </ErrorBoundary>
         ),
       },
       {
-        path: 'en/blog/ia-creation-site-web-opportunites-pieges',
+        path: 'en/blog/ia-et-developpement-web-ce-qui-change',
         element: (
           <ErrorBoundary>
-            <ArticleIaCreationWeb />
+            <ArticleIaDeveloppementWeb />
           </ErrorBoundary>
         ),
       },
@@ -454,6 +463,14 @@ export const routes = [
         element: (
           <ErrorBoundary>
             <TradeRestaurant />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/websites/retail-shop',
+        element: (
+          <ErrorBoundary>
+            <TradeCommerceBoutique />
           </ErrorBoundary>
         ),
       },

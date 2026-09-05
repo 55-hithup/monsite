@@ -171,18 +171,6 @@ export default function GlacierFaq() {
       answer: "Yes, absolutely. Upon project completion, you retain 100% exclusive ownership of your source code, design assets, database, and domain name. There are no compulsory maintenance contracts or recurring software lock-ins.",
     },
     {
-      question: "What is a web developer?",
-      answer: "A web developer is a software professional who designs, programs, and maintains websites, web applications, and digital platforms. Working from client specifications and UI designs, they write clean, secure, and performant code to bring interfaces and interactive features to life. The profession divides into Front-End developers (user interfaces and browser interactions), Back-End developers (server logic, databases, security, and APIs), and Full-Stack developers who master end-to-end web architecture.",
-    },
-    {
-      question: "What skills are needed to become a web developer?",
-      answer: "Becoming a web developer requires a balance of core technical competencies (hard skills) and problem-solving qualities (soft skills). On the technical side, essential foundations include proficiency in the web trio (HTML, CSS, modern JavaScript), modern frameworks (such as React, TypeScript, and Tailwind CSS), version control with Git, along with databases (SQL) and REST APIs. Methodologically, strong analytical rigor, debugging persistence, continuous learning, and clear communication with clients are essential for delivering resilient web solutions.",
-    },
-    {
-      question: "What are the 3 core languages of the web?",
-      answer: "The 3 foundational languages that form the universal cornerstone of every website on the Internet are: HTML (HyperText Markup Language) to semantically structure content and page architecture, CSS (Cascading Style Sheets) to handle visual layout, typography, colors, and mobile responsiveness, and JavaScript (JS) to power dynamic interactivity, user actions, and real-time asynchronous data fetching. Every modern browser runs this standard trio natively, which is frequently combined with TypeScript for maximum code reliability and scalability.",
-    },
-    {
       question: "How does artificial intelligence integrate into your DevSupAi projects?",
       answer: "Artificial intelligence is utilized at DevSupAi as a specialized technical accelerator under the direct supervision of an experienced human engineer. It assists during rapid prototyping, code refactoring, and automated performance testing. Unlike generic no-code AI builders that output opaque and heavy codebases, every single line of production code is manually audited, optimized, and secured to ensure lightning-fast loading speeds and flawless reliability.",
     },
@@ -214,18 +202,6 @@ export default function GlacierFaq() {
     {
       question: "Suis-je propriétaire de mon site internet et de mon nom de domaine ?",
       answer: "Oui, absolument. Dès le règlement de la facture finale, vous êtes l'unique propriétaire du code source, des identifiants, des visuels et du nom de domaine. Vous ne subissez aucun engagement de maintenance obligatoire.",
-    },
-    {
-      question: "Développeur web, c'est quoi ?",
-      answer: "Un développeur web est un professionnel de l'informatique chargé de concevoir, programmer et maintenir des sites internet, des outils en ligne et des applications sur-mesure. À partir d'un besoin client ou de maquettes graphiques, il écrit du code propre, sécurisé et performant pour donner vie aux fonctionnalités. On distingue le développeur Front-End (dédié à l'interface visuelle et l'expérience utilisateur), le développeur Back-End (qui gère la logique serveur, la sécurité, les bases de données et les API), et le développeur Full-Stack, capable de maîtriser l'ensemble de la chaîne technique de bout en bout.",
-    },
-    {
-      question: "Quelles compétences pour devenir développeur web ?",
-      answer: "Devenir développeur web demande un équilibre entre compétences techniques (hard skills) et qualités méthodologiques (soft skills). Côté technique, il est indispensable de maîtriser le socle standard du web (HTML, CSS, JavaScript), des frameworks modernes (comme React, TypeScript et Tailwind CSS), la gestion de versions avec Git, ainsi que les bases de données (SQL) et les API REST. Côté méthodologique, la rigueur logique, la patience face au débogage, la veille technologique continue et la capacité à écouter et traduire les besoins métiers des clients sont primordiales pour réussir.",
-    },
-    {
-      question: "Quels sont les 3 langages du web ?",
-      answer: "Les 3 langages fondamentaux qui constituent le socle universel de tout site internet sont : HTML (HyperText Markup Language) pour structurer le contenu sémantique et l'architecture des pages, CSS (Cascading Style Sheets) pour gérer la présentation visuelle, les styles, les couleurs et l'adaptabilité sur mobiles (responsive design), et JavaScript (JS) pour apporter du dynamisme, gérer les interactions utilisateur et traiter des données en temps réel sans recharger la page. Tous les navigateurs modernes exécutent nativement ce trio, aujourd'hui souvent enrichi par TypeScript pour garantir une robustesse logicielle maximale.",
     },
     {
       question: "Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ?",

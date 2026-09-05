@@ -89,6 +89,11 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: "Site web sur-mesure pour restaurants, brasseries et traiteurs en Meuse et Grand Est. Menus en ligne réactifs sans PDF lourd, moteur de réservation directe sans commission et photos HD.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
+  '/sites-internet/commerce-boutique': {
+    title: 'Création de Site E-Commerce pour Commerce de Proximité & Boutique | DevSupAi',
+    description: "Site e-commerce sur-mesure pour commerçants de proximité, boutiques et producteurs locaux en Meuse et Grand Est. Vente en ligne et Click & Collect sans commission.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
 
   // French Blog Outline Pages
   '/blog/site-internet-vs-google-business': {
@@ -106,19 +111,19 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: "Guide méthodologique pour les professionnels du bâtiment : structure de page idéale, preuves de réassurance décennale, photos avant/après et formulaires de demande simplifiés.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
-  '/blog/cout-reel-site-internet-3-ans': {
-    title: "Quel est le coût réel d'un site internet sur 3 ans ? (Coûts cachés vs sur-mesure) | Blog DevSupAi",
-    description: "Calcul complet du coût total de possession (TCO) d'un site web d'entreprise sur 36 mois : création initiale, hébergement, licences de plugins et infogérance.",
+  '/blog/boutique-en-ligne-sans-commission': {
+    title: 'Boutique en ligne sans commission : combien économise un commerçant local ? | Blog DevSupAi',
+    description: "Comparatif chiffré des coûts réels entre plateformes e-commerce à commission (Shopify, marketplaces) et une boutique sur-mesure propriétaire sans frais cachés.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
-  '/blog/reservation-directe-restaurant-sans-commission': {
-    title: 'Réservation directe pour restaurants : comment se libérer des commissions de plateformes | Blog DevSupAi',
-    description: "Pourquoi et comment reprendre la main sur vos réservations de table en direct. Économisez des milliers d'euros de commissions annuelles tout en fidélisant votre clientèle.",
+  '/blog/accessibilite-web-rgaa-pme': {
+    title: "Accessibilité web (RGAA / WCAG) : pourquoi c'est un enjeu pour les PME | Blog DevSupAi",
+    description: "Pourquoi l'accessibilité numérique concerne toutes les PME et artisans : conformité légale européenne, SEO renforcé, élargissement de clientèle et confort mobile.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
-  '/blog/ia-creation-site-web-opportunites-pieges': {
-    title: "L'intelligence artificielle dans la création web : opportunités réelles et pièges à éviter | Blog DevSupAi",
-    description: "Démystification de l'IA dans le développement web : pourquoi les générateurs automatiques no-code échouent sur la durée et comment le pilotage humain par agents produit un code d'élite.",
+  '/blog/ia-et-developpement-web-ce-qui-change': {
+    title: "IA et développement web : ce qui change (et ce qui ne change pas) pour un client | Blog DevSupAi",
+    description: "Démystification de l'intelligence artificielle dans la création web : gain de rapidité d'exécution, rôle de l'ingénieur humain et pièges des générateurs no-code.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
 
@@ -200,6 +205,11 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: 'Bespoke websites for restaurants, bistros, and catering businesses. Responsive digital menus without heavy PDFs, direct commission-free booking engine, and HD food photography.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
+  '/en/websites/retail-shop': {
+    title: 'Bespoke E-Commerce Website for Local Retailers & Shops | DevSupAi',
+    description: 'Custom e-commerce websites for independent retailers, local shops, and regional producers in Grand Est and France. Zero sales commissions, Stripe checkout & Click & Collect.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
 
   // English Blog Outline Pages
   '/en/blog/site-internet-vs-google-business': {
@@ -217,19 +227,19 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: 'Methodological guide for building trades: ideal page structure, liability insurance badges, before/after photography, and streamlined inquiry forms.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
-  '/en/blog/cout-reel-site-internet-3-ans': {
-    title: 'What Is the Real 3-Year Cost of a Website? (Hidden Fees vs Bespoke) | DevSupAi Blog',
-    description: 'Complete breakdown of the Total Cost of Ownership (TCO) for a business website over 36 months: initial build, hosting, plugin licenses, and maintenance.',
+  '/en/blog/boutique-en-ligne-sans-commission': {
+    title: 'Zero-Commission Online Shop: How Much Can a Local Retailer Save? | DevSupAi Blog',
+    description: 'Cost comparison between commission-based e-commerce platforms (Shopify, marketplaces) and a custom zero-commission online shop.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
-  '/en/blog/reservation-directe-restaurant-sans-commission': {
-    title: 'Direct Restaurant Reservations: Freeing Yourself from Platform Commissions | DevSupAi Blog',
-    description: 'Why and how restaurateurs should regain direct control over their bookings. Save thousands in annual fees while building loyal customer relationships.',
+  '/en/blog/accessibilite-web-rgaa-pme': {
+    title: 'Web Accessibility (WCAG / RGAA): Why It Matters for Small Businesses | DevSupAi Blog',
+    description: 'Why web accessibility (WCAG) matters for small businesses: legal compliance, SEO benefits, broader customer reach, and superior mobile usability.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
-  '/en/blog/ia-creation-site-web-opportunites-pieges': {
-    title: 'AI in Web Development: Real Opportunities and Pitfalls to Avoid | DevSupAi Blog',
-    description: 'Demystifying AI in software craftsmanship: why automated no-code generators fail over time and how human-supervised agentic engineering produces elite code.',
+  '/en/blog/ia-et-developpement-web-ce-qui-change': {
+    title: "AI & Web Development: What Changes (and What Doesn't) for Clients | DevSupAi Blog",
+    description: "Demystifying artificial intelligence in web development: rapid execution, the human engineer's vital role, and pitfalls of no-code AI generators.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
 
@@ -262,12 +272,13 @@ const routePairs = [
   { fr: '/sites-internet/artisan-renovation', en: '/en/websites/artisan-construction' },
   { fr: '/sites-internet/profession-liberale', en: '/en/websites/professional-services' },
   { fr: '/sites-internet/restaurant', en: '/en/websites/restaurant' },
+  { fr: '/sites-internet/commerce-boutique', en: '/en/websites/retail-shop' },
   { fr: '/blog/site-internet-vs-google-business', en: '/en/blog/site-internet-vs-google-business' },
   { fr: '/blog/pourquoi-eviter-wordpress-petit-budget', en: '/en/blog/pourquoi-eviter-wordpress-petit-budget' },
   { fr: '/blog/artisan-convertir-plus-de-devis', en: '/en/blog/artisan-convertir-plus-de-devis' },
-  { fr: '/blog/cout-reel-site-internet-3-ans', en: '/en/blog/cout-reel-site-internet-3-ans' },
-  { fr: '/blog/reservation-directe-restaurant-sans-commission', en: '/en/blog/reservation-directe-restaurant-sans-commission' },
-  { fr: '/blog/ia-creation-site-web-opportunites-pieges', en: '/en/blog/ia-creation-site-web-opportunites-pieges' },
+  { fr: '/blog/boutique-en-ligne-sans-commission', en: '/en/blog/boutique-en-ligne-sans-commission' },
+  { fr: '/blog/accessibilite-web-rgaa-pme', en: '/en/blog/accessibilite-web-rgaa-pme' },
+  { fr: '/blog/ia-et-developpement-web-ce-qui-change', en: '/en/blog/ia-et-developpement-web-ce-qui-change' },
 ];
 
 function buildBreadcrumbSchema(cleanRoute: string, isEnglish: boolean, pageTitle: string) {
@@ -372,12 +383,13 @@ export default defineConfig({
         '/sites-internet/artisan-renovation',
         '/sites-internet/profession-liberale',
         '/sites-internet/restaurant',
+        '/sites-internet/commerce-boutique',
         '/blog/site-internet-vs-google-business',
         '/blog/pourquoi-eviter-wordpress-petit-budget',
         '/blog/artisan-convertir-plus-de-devis',
-        '/blog/cout-reel-site-internet-3-ans',
-        '/blog/reservation-directe-restaurant-sans-commission',
-        '/blog/ia-creation-site-web-opportunites-pieges',
+        '/blog/boutique-en-ligne-sans-commission',
+        '/blog/accessibilite-web-rgaa-pme',
+        '/blog/ia-et-developpement-web-ce-qui-change',
 
         // English Routes
         '/en',
@@ -390,12 +402,13 @@ export default defineConfig({
         '/en/blog/site-internet-vs-google-business',
         '/en/blog/pourquoi-eviter-wordpress-petit-budget',
         '/en/blog/artisan-convertir-plus-de-devis',
-        '/en/blog/cout-reel-site-internet-3-ans',
-        '/en/blog/reservation-directe-restaurant-sans-commission',
-        '/en/blog/ia-creation-site-web-opportunites-pieges',
+        '/en/blog/boutique-en-ligne-sans-commission',
+        '/en/blog/accessibilite-web-rgaa-pme',
+        '/en/blog/ia-et-developpement-web-ce-qui-change',
         '/en/websites/artisan-construction',
         '/en/websites/professional-services',
         '/en/websites/restaurant',
+        '/en/websites/retail-shop',
         '/en/projects/atelier-gourmand',
         '/en/projects/locatool',
         '/en/projects/abogame',
@@ -572,30 +585,6 @@ export default defineConfig({
                 },
                 {
                   "@type": "Question",
-                  "name": "What is a web developer?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A web developer is a software professional who designs, programs, and maintains websites, web applications, and digital platforms. Working from client specifications and UI designs, they write clean, secure, and performant code to bring interfaces and interactive features to life. The profession divides into Front-End developers (user interfaces and browser interactions), Back-End developers (server logic, databases, security, and APIs), and Full-Stack developers who master end-to-end web architecture."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What skills are needed to become a web developer?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Becoming a web developer requires a balance of core technical competencies (hard skills) and problem-solving qualities (soft skills). On the technical side, essential foundations include proficiency in the web trio (HTML, CSS, modern JavaScript), modern frameworks (such as React, TypeScript, and Tailwind CSS), version control with Git, along with databases (SQL) and REST APIs. Methodologically, strong analytical rigor, debugging persistence, continuous learning, and clear communication with clients are essential for delivering resilient web solutions."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What are the 3 core languages of the web?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The 3 foundational languages that form the universal cornerstone of every website on the Internet are: HTML (HyperText Markup Language) to semantically structure content and page architecture, CSS (Cascading Style Sheets) to handle visual layout, typography, colors, and mobile responsiveness, and JavaScript (JS) to power dynamic interactivity, user actions, and real-time asynchronous data fetching. Every modern browser runs this standard trio natively, which is frequently combined with TypeScript for maximum code reliability and scalability."
-                  }
-                },
-                {
-                  "@type": "Question",
                   "name": "How does artificial intelligence integrate into your DevSupAi projects?",
                   "acceptedAnswer": {
                     "@type": "Answer",
@@ -686,30 +675,6 @@ export default defineConfig({
                   "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Chaque livraison s'accompagne d'une période de garantie technique et d'une assistance à la prise en main. Des forfaits d'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles dès 29 €/mois pour assurer votre sérénité."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Développeur web, c'est quoi ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Un développeur web est un professionnel de l'informatique chargé de concevoir, programmer et maintenir des sites internet, des outils en ligne et des applications sur-mesure. À partir d'un besoin client ou de maquettes graphiques, il écrit du code propre, sécurisé et performant pour donner vie aux fonctionnalités. On distingue le développeur Front-End (dédié à l'interface visuelle et l'expérience utilisateur), le développeur Back-End (qui gère la logique serveur, la sécurité, les bases de données et les API), et le développeur Full-Stack, capable de maîtriser l'ensemble de la chaîne technique de bout en bout."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Quelles compétences pour devenir développeur web ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Devenir développeur web demande un équilibre entre compétences techniques (hard skills) et qualités méthodologiques (soft skills). Côté technique, il est indispensable de maîtriser le socle standard du web (HTML, CSS, JavaScript), des frameworks modernes (comme React, TypeScript et Tailwind CSS), la gestion de versions avec Git, ainsi que les bases de données (SQL) et les API REST. Côté méthodologique, la rigueur logique, la patience face au débogage, la veille technologique continue et la capacité à écouter et traduire les besoins métiers des clients sont primordiales pour réussir."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Quels sont les 3 langages du web ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Les 3 langages fondamentaux qui constituent le socle universel de tout site internet sont : HTML (HyperText Markup Language) pour structurer le contenu sémantique et l'architecture des pages, CSS (Cascading Style Sheets) pour gérer la présentation visuelle, les styles, les couleurs et l'adaptabilité sur mobiles (responsive design), et JavaScript (JS) pour apporter du dynamisme, gérer les interactions utilisateur et traiter des données en temps réel sans recharger la page. Tous les navigateurs modernes exécutent nativement ce trio, aujourd'hui souvent enrichi par TypeScript pour garantir une robustesse logicielle maximale."
                   }
                 },
                 {
@@ -820,7 +785,69 @@ export default defineConfig({
         injectedScripts.push(`<script type="application/ld+json" id="about-schema-ssg">${JSON.stringify(aboutSchema)}</script>`);
       }
 
-      // 5. Blog Posting Schemas
+      // 5. Blog Index FAQPage Schema (Pedagogical Web Development Questions)
+      if (cleanRoute === '/blog' || cleanRoute === '/en/blog') {
+        const blogFaqSchema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": isEnglish
+            ? [
+                {
+                  "@type": "Question",
+                  "name": "What is a web developer exactly?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A web developer is a software engineering professional who builds, programs, and maintains websites, web applications, and digital platforms. Working from client specifications and UI designs, they write clean, secure, and performant code to bring interfaces and interactive features to life. The profession divides into Front-End developers (user interfaces and browser interactions), Back-End developers (server logic, databases, security, and APIs), and Full-Stack developers who master end-to-end web architecture."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What skills are needed to become a web developer?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Becoming a web developer requires mastering core web standards (HTML, CSS, JavaScript), modern frameworks (React, TypeScript), Git version control, databases, and REST APIs. Beyond technical competencies (hard skills), strong problem-solving habits are vital: analytical rigor, debugging persistence, continuous technical learning, and clear communication with clients."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What are the 3 foundational languages of the web?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The 3 foundational languages of the web are HTML (semantic structure), CSS (styling and responsive layout), and JavaScript (dynamic client-side interactivity). Every modern browser runs this standard trio natively, which is frequently combined with TypeScript for maximum code reliability and enterprise scalability."
+                  }
+                }
+              ]
+            : [
+                {
+                  "@type": "Question",
+                  "name": "Développeur web, c'est quoi ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un développeur web est un professionnel de l'informatique spécialisé dans la conception, la programmation et la maintenance de sites internet et d'applications en ligne. À partir d'un besoin client ou de maquettes graphiques, il écrit du code propre, sécurisé et performant pour donner vie aux fonctionnalités. On distingue le développeur Front-End (dédié à l'interface visuelle et l'expérience utilisateur), le développeur Back-End (qui gère la logique serveur, la sécurité, les bases de données et les API), et le développeur Full-Stack, capable de maîtriser l'ensemble de la chaîne technique de bout en bout."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quelles compétences pour devenir développeur web ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Devenir développeur web exige la maîtrise du socle standard (HTML, CSS, JavaScript), de frameworks modernes (React, TypeScript), de Git, des bases de données et des API REST. Au-delà des compétences techniques (hard skills), des qualités méthodologiques et humaines sont indispensables : la rigueur logique, la patience face au débogage, une veille technologique continue et une excellente écoute pour traduire fidèlement les besoins métiers des clients."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quels sont les 3 langages du web ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Les 3 langages fondamentaux du web sont HTML (structure sémantique), CSS (mise en page et design) et JavaScript (interactivité et logique dynamique). Ces trois standards sont exécutés nativement par tous les navigateurs internet modernes sans aucun plugin tiers. Aujourd'hui, JavaScript est très souvent enrichi par TypeScript pour apporter un typage statique rigoureux et garantir une robustesse logicielle maximale."
+                  }
+                }
+              ]
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="blog-faq-schema-ssg">${JSON.stringify(blogFaqSchema)}</script>`);
+      }
+
+      // 6. Blog Posting Schemas
       if (cleanRoute.startsWith('/blog/') || cleanRoute.startsWith('/en/blog/')) {
         const articleDates: Record<string, { published: string; modified: string }> = {
           templates: { published: "2026-08-04T08:00:00+02:00", modified: "2026-08-14T00:00:00+02:00" },
@@ -829,8 +856,8 @@ export default defineConfig({
           google: { published: "2026-09-10T08:00:00+02:00", modified: "2026-09-10T08:00:00+02:00" },
           wordpress: { published: "2026-09-15T08:00:00+02:00", modified: "2026-09-15T08:00:00+02:00" },
           artisan: { published: "2026-09-20T08:00:00+02:00", modified: "2026-09-20T08:00:00+02:00" },
-          cout: { published: "2026-09-25T08:00:00+02:00", modified: "2026-09-25T08:00:00+02:00" },
-          resto: { published: "2026-09-30T08:00:00+02:00", modified: "2026-09-30T08:00:00+02:00" },
+          boutique: { published: "2026-09-25T08:00:00+02:00", modified: "2026-09-25T08:00:00+02:00" },
+          accessibilite: { published: "2026-09-30T08:00:00+02:00", modified: "2026-09-30T08:00:00+02:00" },
           ia: { published: "2026-10-05T08:00:00+02:00", modified: "2026-10-05T08:00:00+02:00" },
         };
 
@@ -846,11 +873,11 @@ export default defineConfig({
           ? articleDates.wordpress
           : cleanRoute.includes('artisan-convertir-plus-de-devis')
           ? articleDates.artisan
-          : cleanRoute.includes('cout-reel-site-internet-3-ans')
-          ? articleDates.cout
-          : cleanRoute.includes('reservation-directe-restaurant-sans-commission')
-          ? articleDates.resto
-          : cleanRoute.includes('ia-creation-site-web-opportunites-pieges')
+          : cleanRoute.includes('boutique-en-ligne-sans-commission')
+          ? articleDates.boutique
+          : cleanRoute.includes('accessibilite-web-rgaa-pme')
+          ? articleDates.accessibilite
+          : cleanRoute.includes('ia-et-developpement-web-ce-qui-change')
           ? articleDates.ia
           : articleDates.asso;
 
@@ -884,7 +911,7 @@ export default defineConfig({
         injectedScripts.push(`<script type="application/ld+json" id="blog-posting-ssg">${JSON.stringify(blogPostingSchema)}</script>`);
       }
 
-      // 6. Case Study / Project Schemas
+      // 7. Case Study / Project Schemas
       if (cleanRoute.startsWith('/projets/') || cleanRoute.startsWith('/en/projects/')) {
         const caseStudySchema = {
           "@context": "https://schema.org",
@@ -915,10 +942,11 @@ export default defineConfig({
         injectedScripts.push(`<script type="application/ld+json" id="case-study-ssg">${JSON.stringify(caseStudySchema)}</script>`);
       }
 
-      // 7. Trade / Sector Pages Schemas (Service)
+      // 8. Trade / Sector Pages Schemas (Service)
       if (cleanRoute.startsWith('/sites-internet/') || cleanRoute.startsWith('/en/websites/')) {
         const isRestaurant = cleanRoute.includes('restaurant');
         const isLiberal = cleanRoute.includes('profession-liberale') || cleanRoute.includes('professional-services');
+        const isCommerce = cleanRoute.includes('commerce-boutique') || cleanRoute.includes('retail-shop');
         const tradeServiceSchema = {
           "@context": "https://schema.org",
           "@type": "Service",
@@ -938,12 +966,28 @@ export default defineConfig({
               "addressCountry": "FR"
             }
           },
-          "serviceType": isRestaurant ? "Création Site Restaurant" : isLiberal ? "Création Site Profession Libérale" : "Création Site Artisan",
-          "areaServed": ["FR", "Grand Est", "Meuse"],
+          "serviceType": isCommerce 
+            ? (isEnglish ? "E-Commerce Website Development" : "Création de Boutique E-Commerce") 
+            : isRestaurant 
+            ? (isEnglish ? "Restaurant Website Development" : "Création Site Restaurant") 
+            : isLiberal 
+            ? (isEnglish ? "Professional Services Website" : "Création Site Profession Libérale") 
+            : (isEnglish ? "Craftsmen Website Development" : "Création Site Artisan"),
+          "areaServed": [
+            { "@type": "City", "name": "Saint-Mihiel", "postalCode": "55300" },
+            { "@type": "City", "name": "Commercy", "postalCode": "55200" },
+            { "@type": "City", "name": "Verdun", "postalCode": "55100" },
+            { "@type": "City", "name": "Bar-le-Duc", "postalCode": "55000" },
+            { "@type": "City", "name": "Nancy", "postalCode": "54000" },
+            { "@type": "City", "name": "Metz", "postalCode": "57000" },
+            { "@type": "AdministrativeArea", "name": "Meuse" },
+            { "@type": "AdministrativeArea", "name": "Grand Est" },
+            { "@type": "Country", "name": "France" }
+          ],
           "offers": {
             "@type": "Offer",
             "priceCurrency": "EUR",
-            "price": isRestaurant ? "1850" : isLiberal ? "1850" : "950",
+            "price": isCommerce ? "2600" : isRestaurant ? "1850" : isLiberal ? "950" : "1850",
             "description": meta.description
           }
         };

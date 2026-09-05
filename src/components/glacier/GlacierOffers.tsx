@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type React from 'react';
+import { Link } from 'react-router-dom';
 import {
   type LucideIcon,
   Star,
@@ -16,7 +17,11 @@ import {
   ArrowRight,
   RotateCw,
   RotateCcw,
-  ShoppingCart
+  ShoppingCart,
+  Hammer,
+  Building2,
+  UtensilsCrossed,
+  Store
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -50,6 +55,8 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const headerContainerRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
+  const tradesHeaderRef = useRef<HTMLDivElement>(null);
+  const tradesGridRef = useRef<HTMLDivElement>(null);
 
   // Animation GSAP ScrollTrigger : Déploiement en éventail 3D au scroll (Rejeu garanti)
   useEffect(() => {
@@ -62,20 +69,19 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. Animation de l'En-tête élément par élément (Surtitre, Titre, Paragraphe)
+      // 1. Animation de l'En-tête élément par élément (Arrivée vive, décélération douce)
       if (headerContainerRef.current) {
         const headerChildren = Array.from(headerContainerRef.current.children) as HTMLElement[];
         if (headerChildren.length > 0) {
           gsap.fromTo(
             headerChildren,
-            { opacity: 0, y: 35, scale: 0.95 },
+            { opacity: 0, y: 30 },
             {
               opacity: 1,
               y: 0,
-              scale: 1,
-              duration: 0.75,
-              stagger: 0.15,
-              ease: 'power3.out',
+              duration: 0.7,
+              stagger: 0.08,
+              ease: 'power4.out',
               clearProps: 'transform,opacity',
               scrollTrigger: {
                 trigger: headerContainerRef.current,
@@ -88,7 +94,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         }
       }
 
-      // 2. Animation des 4 Cartes (Déploiement en éventail 3D au scroll)
+      // 2. Animation des 4 Cartes Forfaits (Arrivée vive dès le début, amorti doux à la fin)
       if (cardsGridRef.current) {
         const cards = Array.from(cardsGridRef.current.children) as HTMLElement[];
         const isDesktop = window.innerWidth >= 1024;
@@ -97,52 +103,146 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
           const cardsTl = gsap.timeline({
             scrollTrigger: {
               trigger: cardsGridRef.current,
-              start: 'top 78%',
+              start: 'top 80%',
               end: 'bottom top',
               toggleActions: 'play none none reverse',
             },
           });
 
           if (isDesktop && cards.length >= 4) {
-            // Carte 1 (Gauche) : arrive depuis la gauche avec rotation 3D
+            // Carte 1 (Gauche) : impulsion vive depuis la gauche, décélération douce
             cardsTl.fromTo(
               cards[0],
-              { x: -60, y: 35, rotateY: 14, opacity: 0, scale: 0.94 },
-              { x: 0, y: 0, rotateY: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
+              { x: -50, y: 30, opacity: 0, scale: 0.96 },
+              { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
               0
             );
 
-            // Carte 2 (Centre-Gauche Populaire) : s'élève de face
+            // Carte 2 (Centre-Gauche Populaire) : élévation vive, décélération douce
             cardsTl.fromTo(
               cards[1],
-              { y: 55, opacity: 0, scale: 0.92 },
-              { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0.1
+              { y: 45, opacity: 0, scale: 0.96 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
+              0.08
             );
 
-            // Carte 3 (Centre-Droit E-Commerce) : s'élève de face
+            // Carte 3 (Centre-Droit E-Commerce) : élévation vive, décélération douce
             cardsTl.fromTo(
               cards[2],
-              { y: 55, opacity: 0, scale: 0.92 },
-              { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0.2
+              { y: 45, opacity: 0, scale: 0.96 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
+              0.16
             );
 
-            // Carte 4 (Droite SaaS) : arrive depuis la droite en miroir
+            // Carte 4 (Droite SaaS) : impulsion vive depuis la droite, décélération douce
             cardsTl.fromTo(
               cards[3],
-              { x: 60, y: 35, rotateY: -14, opacity: 0, scale: 0.94 },
-              { x: 0, y: 0, rotateY: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0.3
+              { x: 50, y: 30, opacity: 0, scale: 0.96 },
+              { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
+              0.24
             );
           } else {
-            // Mobile et tablettes : cascade ascendante
+            // Mobile et tablettes : cascade vive avec décélération douce
             cardsTl.fromTo(
               cards,
-              { y: 50, opacity: 0, scale: 0.94 },
-              { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power3.out', stagger: 0.12, clearProps: 'transform,opacity' }
+              { y: 40, opacity: 0, scale: 0.96 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power4.out', stagger: 0.1, clearProps: 'transform,opacity' }
             );
           }
+        }
+      }
+
+      // 3. Animation de l'En-tête Solutions par Métier au scroll (Arrivée vive, décélération douce)
+      if (tradesHeaderRef.current) {
+        const tradeHeaderChildren = Array.from(tradesHeaderRef.current.children) as HTMLElement[];
+        if (tradeHeaderChildren.length > 0) {
+          gsap.fromTo(
+            tradeHeaderChildren,
+            { opacity: 0, y: 25 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.08,
+              ease: 'power4.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: tradesHeaderRef.current,
+                start: 'top 85%',
+                end: 'bottom top',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
+      }
+
+      // 4. Animation des 4 Cartes Métiers au scroll (Départ vif et rapide, décélération douce vers l'arrêt)
+      if (tradesGridRef.current) {
+        const tradeCards = Array.from(tradesGridRef.current.children) as HTMLElement[];
+        const isDesktop = window.innerWidth >= 1024;
+
+        if (isDesktop && tradeCards.length === 4) {
+          const tradesTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: tradesGridRef.current,
+              start: 'top 85%',
+              end: 'bottom top',
+              toggleActions: 'play none none reverse',
+            },
+          });
+
+          // Carte 1 (Artisans - gauche) : Jaillit vite depuis la gauche puis décélère doucement
+          tradesTl.fromTo(
+            tradeCards[0],
+            { opacity: 0, x: -80, y: 20 },
+            { opacity: 1, x: 0, y: 0, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
+            0
+          );
+
+          // Carte 2 (Professions Libérales - centre gauche) : Jaillit vite de face puis décélère doucement
+          tradesTl.fromTo(
+            tradeCards[1],
+            { opacity: 0, y: 45, scale: 0.96 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
+            0.08
+          );
+
+          // Carte 3 (Restaurants - centre droit) : Jaillit vite de face puis décélère doucement
+          tradesTl.fromTo(
+            tradeCards[2],
+            { opacity: 0, y: 45, scale: 0.96 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
+            0.16
+          );
+
+          // Carte 4 (Commerces - droite) : Jaillit vite depuis la droite puis décélère doucement
+          tradesTl.fromTo(
+            tradeCards[3],
+            { opacity: 0, x: 80, y: 20 },
+            { opacity: 1, x: 0, y: 0, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
+            0.24
+          );
+        } else {
+          // Mobile et tablettes : cascade vive avec décélération douce
+          gsap.fromTo(
+            tradeCards,
+            { opacity: 0, y: 35 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power4.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: tradesGridRef.current,
+                start: 'top 85%',
+                end: 'bottom top',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
         }
       }
 
@@ -472,7 +572,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
       id="services" 
       aria-labelledby="services-title"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
         
         {/* En-tête centré avec animations distinctes par élément */}
         <div ref={headerContainerRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
@@ -507,7 +607,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         {/* Grille des 4 packs avec 3D Flip et animation d'éventail 3D au scroll */}
         <div 
           ref={cardsGridRef}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6 items-stretch"
         >
           {packs.map((pack) => {
             const isPopular = pack.isPopular;
@@ -517,13 +617,13 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
             return (
               <div 
                 key={pack.id} 
-                className="glacier-flip-card-wrapper min-h-[550px]"
+                className="glacier-flip-card-wrapper min-h-[490px]"
               >
                 <div className={`glacier-flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
                   
                   {/* --- FACE AVANT (RECTO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
                   <div
-                    className={`glacier-flip-card-front p-5 sm:p-6 flex flex-col justify-between relative transition-all duration-300 ${
+                    className={`glacier-flip-card-front p-5 flex flex-col justify-between relative transition-all duration-300 ${
                       isPopular
                         ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.22),0_6px_16px_-3px_rgba(15,23,42,0.08)] hover:shadow-[0_24px_50px_-8px_rgba(2,132,199,0.30)] lg:-translate-y-1.5'
                         : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.12),0_4px_12px_-2px_rgba(15,23,42,0.06)] hover:shadow-[0_20px_44px_-8px_rgba(15,23,42,0.18)] hover:border-slate-300'
@@ -541,7 +641,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
 
                     {/* Haut de la carte : Badge catégorie + Titre + Prix + Description */}
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-2.5">
+                      <div className="flex items-center justify-between gap-2 mb-2">
                         <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5">
                           <CategoryIcon className="w-3.5 h-3.5 text-sky-600" aria-hidden="true" />
                           {pack.categoryBadge}
@@ -558,39 +658,32 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                         </span>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-3.5 min-h-[36px]">
+                      <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-3 sm:min-h-[28px]">
                         {pack.shortDesc}
                       </p>
 
-                      {/* Grille de métriques : 3 petites cards 1:1 carrées */}
-                      <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-4 py-2.5 border-y border-slate-100">
+                      {/* Ligne compacte de métriques (Badges horizontaux) */}
+                      <div className="flex items-center flex-wrap gap-1.5 mb-3 py-1.5 border-y border-slate-100">
                         {pack.metrics.map((metric, mIdx) => {
                           const MetricIcon = metric.icon;
                           return (
-                            <div 
+                            <span 
                               key={mIdx} 
-                              className="aspect-square rounded-xl bg-slate-50/90 hover:bg-white border border-slate-200/80 hover:border-sky-300 transition-all duration-200 p-2 flex flex-col items-center justify-center text-center group shadow-2xs hover:shadow-xs"
+                              className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-medium"
                             >
-                              <div className="w-7 h-7 rounded-lg bg-white group-hover:bg-sky-50 border border-slate-200/60 group-hover:border-sky-200 flex items-center justify-center mb-1 transition-colors shrink-0 shadow-2xs">
-                                <MetricIcon className="w-3.5 h-3.5 text-sky-600 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
-                              </div>
-                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 group-hover:text-sky-600 font-['Montserrat'] mb-0.5 line-clamp-1 transition-colors">
-                                {metric.label}
-                              </span>
-                              <span className="text-[11px] sm:text-xs font-bold text-slate-800 leading-tight line-clamp-2">
-                                {metric.value}
-                              </span>
-                            </div>
+                              <MetricIcon className="w-3.5 h-3.5 text-sky-600 shrink-0" aria-hidden="true" />
+                              <span>{metric.value}</span>
+                            </span>
                           );
                         })}
                       </div>
 
                       {/* Livrables inclus */}
-                      <div className="mb-3.5">
-                        <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 font-['Montserrat'] mb-2">
+                      <div className="mb-3">
+                        <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 font-['Montserrat'] mb-1.5">
                           {isEn ? "DELIVERABLES INCLUDED:" : "LIVRABLES INCLUS :"}
                         </div>
-                        <ul className="space-y-2">
+                        <ul className="space-y-1.5">
                           {pack.features.map((feature, fIdx) => (
                             <li key={fIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700 leading-snug">
                               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
@@ -616,7 +709,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                       <a
                         href="#contact"
                         onClick={(e) => handleAnchorClick(e, 'contact')}
-                        className={`w-full py-3 px-4 rounded-xl font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-md text-white ${
+                        className={`w-full py-2.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-md text-white ${
                           isPopular
                             ? 'bg-sky-600 hover:bg-sky-700'
                             : 'bg-slate-950 hover:bg-sky-600'
@@ -631,7 +724,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
 
                   {/* --- FACE ARRIÈRE (VERSO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
                   <div
-                    className={`glacier-flip-card-back p-5 sm:p-6 flex flex-col justify-between ${
+                    className={`glacier-flip-card-back p-5 flex flex-col justify-between ${
                       isPopular
                         ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.26),0_6px_16px_-3px_rgba(15,23,42,0.10)]'
                         : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.14),0_4px_12px_-2px_rgba(15,23,42,0.08)]'
@@ -750,6 +843,121 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               </div>
             );
           })}
+        </div>
+
+        {/* Sélecteur de métiers : Vous recherchez une solution adaptée à votre secteur ? */}
+        <div className="mt-16 pt-12 border-t border-slate-200 text-left">
+          <div ref={tradesHeaderRef} className="max-w-3xl mb-8">
+            <span className="text-xs font-extrabold tracking-[0.2em] text-sky-600 uppercase font-['Montserrat'] block mb-1">
+              {isEn ? "INDUSTRY-SPECIFIC SOLUTIONS" : "SOLUTIONS PAR MÉTIER"}
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black font-['Montserrat'] text-slate-900 mb-2">
+              {isEn ? "Looking for a tailored solution for your specific profession?" : "Vous recherchez une solution adaptée à votre secteur d'activité ?"}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans']">
+              {isEn 
+                ? "Discover our dedicated architectures designed specifically for local trades, medical practices, restaurants, and retail stores."
+                : "Découvrez nos pages et fonctionnalités pensées sur-mesure pour les artisans du bâtiment, praticiens de santé, restaurateurs et commerçants."}
+            </p>
+          </div>
+
+          <div ref={tradesGridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* 1. Artisan */}
+            <Link
+              to={isEn ? "/en/websites/artisan-construction" : "/sites-internet/artisan-renovation"}
+              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                  <Hammer size={18} aria-hidden="true" />
+                </div>
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                  {isEn ? "Contractors & Craftsmen" : "Artisans & Rénovation"}
+                </h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {isEn 
+                    ? "Before/after photo gallery, structured quote requests, and local SEO in Grand Est."
+                    : "Galerie chantiers avant/après, formulaires de devis géolocalisés et SEO en Meuse."}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+                <span>{isEn ? "View solutions" : "Découvrir"}</span>
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </div>
+            </Link>
+
+            {/* 2. Profession Libérale */}
+            <Link
+              to={isEn ? "/en/websites/professional-services" : "/sites-internet/profession-liberale"}
+              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                  <Building2 size={18} aria-hidden="true" />
+                </div>
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                  {isEn ? "Professional Practices" : "Professions Libérales"}
+                </h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {isEn
+                    ? "Ethical compliance, transparent fee presentation, and appointment booking links."
+                    : "Présentation déontologique, clarté des honoraires et prise de rendez-vous fluide."}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+                <span>{isEn ? "View solutions" : "Découvrir"}</span>
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </div>
+            </Link>
+
+            {/* 3. Restaurant */}
+            <Link
+              to={isEn ? "/en/websites/restaurant" : "/sites-internet/restaurant"}
+              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                  <UtensilsCrossed size={18} aria-hidden="true" />
+                </div>
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                  {isEn ? "Restaurants & Bistros" : "Restaurants & Bistros"}
+                </h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {isEn
+                    ? "Interactive mobile menus without PDF, direct booking engine with 0% commission."
+                    : "Carte interactive sur mobile sans PDF lourd et réservation directe sans commission."}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+                <span>{isEn ? "View solutions" : "Découvrir"}</span>
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </div>
+            </Link>
+
+            {/* 4. Commerce & Boutique */}
+            <Link
+              to={isEn ? "/en/websites/retail-shop" : "/sites-internet/commerce-boutique"}
+              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                  <Store size={18} aria-hidden="true" />
+                </div>
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                  {isEn ? "Local Shops & Retail" : "Commerces & Boutiques"}
+                </h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {isEn
+                    ? "Custom online store, Click & Collect pickup, Stripe checkout with 0% sales fee."
+                    : "Boutique en ligne sur-mesure, Click & Collect, paiement Stripe et 0% de commission."}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+                <span>{isEn ? "View solutions" : "Découvrir"}</span>
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </div>
+            </Link>
+          </div>
         </div>
 
       </div>

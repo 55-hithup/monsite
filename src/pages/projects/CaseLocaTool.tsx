@@ -1,6 +1,6 @@
 import SectionReveal from '../../components/SectionReveal';
 import { Link } from 'react-router-dom';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -153,6 +153,33 @@ export default function CaseLocaTool() {
               </p>
               <p>{t.a3}</p>
             </section>
+          </div>
+
+          {/* Internal Linking Trade Bridge */}
+          <div className="mt-12 p-6 rounded-2xl bg-sky-50/70 border border-sky-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="space-y-1">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0284C7]">
+                {language === 'en' ? 'CONTRACTORS & ARTISANS' : 'ARTISANS DU BÂTIMENT & CHANTIERS'}
+              </span>
+              <h3 className="text-base font-bold font-['Montserrat'] text-[#1A1A1A]">
+                {language === 'en' 
+                  ? "Are you a contractor or building craftsman seeking to showcase your work?" 
+                  : "Vous êtes artisan du bâtiment ou entreprise de rénovation ?"}
+              </h3>
+              <p className="text-xs text-slate-600 max-w-xl">
+                {language === 'en'
+                  ? "Explore our dedicated showcase package: high-definition project gallery, quote inquiry forms, and local SEO in Grand Est."
+                  : "Découvrez notre offre dédiée aux artisans : vitrine chantiers avant/après, formulaires de devis géolocalisés et SEO local en Meuse."}
+              </p>
+            </div>
+            <Link
+              to={language === 'en' ? '/en/websites/artisan-construction' : '/sites-internet/artisan-renovation'}
+              className="btn-glacier-solid text-xs py-2.5 px-4 font-bold font-['Montserrat'] shrink-0 inline-flex items-center gap-2 rounded-none bg-[#0284C7] hover:bg-sky-500 text-white shadow-sm"
+              style={{ color: '#FFFFFF' }}
+            >
+              <span style={{ color: '#FFFFFF' }}>{language === 'en' ? 'View Contractor Solution' : 'Découvrir l\'offre artisan'}</span>
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
 
           {/* Live CTA Box */}

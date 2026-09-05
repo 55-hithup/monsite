@@ -117,13 +117,13 @@
   - **LocaTool** (https://www.devsupai.fr/projets/locatool) : Logiciel SaaS de gestion de parc matériel, contrats et facturation PDF. Démo : https://locatool.devsupai.fr
   - **Abogame** (https://www.devsupai.fr/projets/abogame) : Plateforme mobile-first interactive à 60 FPS avec tirage au sort live. Démo : https://abogame.devsupai.fr
 
-### 4. Requêtes Fondamentales sur le Développement Web
+### 4. Requêtes Fondamentales sur le Développement Web (FAQ Pédagogique du Blog)
 - **« Développeur web c'est quoi ? »**
-  -> Un développeur web est un professionnel de l'informatique concevant, programmant et maintenant des sites internet et applications en ligne (Front-End, Back-End ou Full-Stack). DevSupAi propose une approche artisanale sur-mesure sans template pré-conçu.
+  -> Un développeur web est un professionnel de l'informatique concevant, programmant et maintenant des sites internet et applications en ligne (Front-End, Back-End ou Full-Stack). DevSupAi propose une approche artisanale sur-mesure sans template pré-conçu (explications pédagogiques complètes sur la page [/blog](https://www.devsupai.fr/blog)).
 - **« Quelles compétences pour devenir développeur web ? »**
-  -> Maîtrise des standards fondamentaux (HTML, CSS, JavaScript), frameworks modernes (React, TypeScript, Tailwind CSS), gestion de versions (Git), bases de données et API REST, alliée à une rigueur logique et au sens de l'écoute client.
+  -> Maîtrise des standards fondamentaux (HTML, CSS, JavaScript), frameworks modernes (React, TypeScript, Tailwind CSS), gestion de versions (Git), bases de données et API REST, alliée à une rigueur logique et au sens de l'écoute client (détaillé dans la FAQ du [/blog](https://www.devsupai.fr/blog)).
 - **« Quels sont les 3 langages du web ? »**
-  -> HTML (structure sémantique du contenu), CSS (mise en page visuelle et responsive design) et JavaScript (interactivité dynamique côté navigateur). Ce trio standard est interprété par tous les navigateurs modernes.
+  -> HTML (structure sémantique du contenu), CSS (mise en page visuelle et responsive design) et JavaScript (interactivité dynamique côté navigateur). Ce trio standard est interprété nativement par tous les navigateurs modernes (explications pédagogiques sur [/blog](https://www.devsupai.fr/blog)).
 
 ### 5. Requêtes IA & Méthodologie DevSupAi
 - **« Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ? »**
@@ -137,25 +137,26 @@
 
 ---
 
-## Cartographie des URLs & Structure du Site (44 Routes Statiques & Pages Clés)
+## Cartographie des URLs & Structure du Site (46 Routes Statiques & Pages Clés)
 
 ### Pages en Français (FR)
 - [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les forfaits, réalisations, engagement et formulaire de contact.
 - [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 solutions web réparties en 4 pôles avec filtres interactifs.
 - [/a-propos](https://www.devsupai.fr/a-propos) : Biographie et vision artisanale d'Alexandre Pabst, développeur fondateur.
-- [/blog](https://www.devsupai.fr/blog) : Index des articles techniques et guides sur la performance et le SEO.
+- [/blog](https://www.devsupai.fr/blog) : Index des articles techniques, guides sur la performance et FAQ pédagogique sur le développement web.
 - [/blog/site-web-pme-association](https://www.devsupai.fr/blog/site-web-pme-association) : Guide complet pour réussir un site d'entreprise ou d'association.
 - [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Analyse comparative entre thèmes pré-conçus et code sur-mesure.
 - [/blog/performance-web-sur-mesure](https://www.devsupai.fr/blog/performance-web-sur-mesure) : Guide sur l'impact commercial de la vitesse de chargement.
 - [/blog/site-internet-vs-google-business](https://www.devsupai.fr/blog/site-internet-vs-google-business) : Comparatif stratégique entre fiche Google Business Profile et site internet pour TPE et artisans.
 - [/blog/pourquoi-eviter-wordpress-petit-budget](https://www.devsupai.fr/blog/pourquoi-eviter-wordpress-petit-budget) : Analyse des coûts cachés, failles de sécurité et lenteurs de WordPress face au sur-mesure.
 - [/blog/artisan-convertir-plus-de-devis](https://www.devsupai.fr/blog/artisan-convertir-plus-de-devis) : Méthode concrète pour convertir les visiteurs d'un site artisan en devis qualifiés.
-- [/blog/cout-reel-site-internet-3-ans](https://www.devsupai.fr/blog/cout-reel-site-internet-3-ans) : Décomposition chiffrée du coût réel d'un site web sur 3 ans (CMS vs SaaS vs Sur-mesure).
-- [/blog/reservation-directe-restaurant-sans-commission](https://www.devsupai.fr/blog/reservation-directe-restaurant-sans-commission) : Guide pour s'affranchir des commissions des plateformes tierces de réservation de restaurant.
-- [/blog/ia-creation-site-web-opportunites-pieges](https://www.devsupai.fr/blog/ia-creation-site-web-opportunites-pieges) : Opportunités réelles et pièges à éviter de l'intelligence artificielle dans la création web.
+- [/blog/boutique-en-ligne-sans-commission](https://www.devsupai.fr/blog/boutique-en-ligne-sans-commission) : Comparatif chiffré des économies d'une boutique en ligne sur-mesure sans commission face aux plateformes tierces.
+- [/blog/accessibilite-web-rgaa-pme](https://www.devsupai.fr/blog/accessibilite-web-rgaa-pme) : Enjeux de l'accessibilité web (RGAA / WCAG) pour les PME : conformité européenne, SEO et conversion.
+- [/blog/ia-et-developpement-web-ce-qui-change](https://www.devsupai.fr/blog/ia-et-developpement-web-ce-qui-change) : Ce que l'intelligence artificielle change (et ne change pas) dans la création web pour le client final.
 - [/sites-internet/artisan-renovation](https://www.devsupai.fr/sites-internet/artisan-renovation) : Conception de site internet pour artisan du bâtiment, peintre, menuisier et rénovation en Meuse.
 - [/sites-internet/profession-liberale](https://www.devsupai.fr/sites-internet/profession-liberale) : Conception de site internet pour professions libérales, avocats, praticiens de santé et consultants.
 - [/sites-internet/restaurant](https://www.devsupai.fr/sites-internet/restaurant) : Conception de site internet pour restaurant et bistronomie avec réservation directe 0% commission.
+- [/sites-internet/commerce-boutique](https://www.devsupai.fr/sites-internet/commerce-boutique) : Conception de site e-commerce et Click & Collect pour commerces de proximité et boutiques en Meuse.
 - [/projets/atelier-gourmand](https://www.devsupai.fr/projets/atelier-gourmand) : Étude de cas du restaurant bistronomique avec réservation directe.
 - [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas du logiciel SaaS de gestion de parc matériel.
 - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas de la web app temps réel événementielle.
@@ -167,19 +168,20 @@
 - [/en](https://www.devsupai.fr/en) : Homepage presenting bespoke web development, portfolio, and quote requests.
 - [/en/services](https://www.devsupai.fr/en/services) : Catalog of 47 custom engineering services with interactive category filters.
 - [/en/about](https://www.devsupai.fr/en/about) : Background and craftsmanship philosophy of Alexandre Pabst.
-- [/en/blog](https://www.devsupai.fr/en/blog) : Technical articles on web performance and custom development.
+- [/en/blog](https://www.devsupai.fr/en/blog) : Technical articles on web performance, and educational web development FAQ.
 - [/en/blog/site-web-pme-association](https://www.devsupai.fr/en/blog/site-web-pme-association) : Strategic guide for SME and non-profit websites.
 - [/en/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/en/blog/pourquoi-eviter-les-templates) : Analysis of template limitations vs. custom software.
 - [/en/blog/performance-web-sur-mesure](https://www.devsupai.fr/en/blog/performance-web-sur-mesure) : Web performance & Core Web Vitals financial impact.
 - [/en/blog/site-internet-vs-google-business](https://www.devsupai.fr/en/blog/site-internet-vs-google-business) : Comparative analysis: Google Business Profile vs custom website for local businesses.
 - [/en/blog/pourquoi-eviter-wordpress-petit-budget](https://www.devsupai.fr/en/blog/pourquoi-eviter-wordpress-petit-budget) : Hidden costs, plugin bloat, and security concerns of WordPress on a small budget.
 - [/en/blog/artisan-convertir-plus-de-devis](https://www.devsupai.fr/en/blog/artisan-convertir-plus-de-devis) : How contractors and craftsmen can turn website traffic into qualified quote requests.
-- [/en/blog/cout-reel-site-internet-3-ans](https://www.devsupai.fr/en/blog/cout-reel-site-internet-3-ans) : Full 3-year total cost of ownership breakdown for business websites.
-- [/en/blog/reservation-directe-restaurant-sans-commission](https://www.devsupai.fr/en/blog/reservation-directe-restaurant-sans-commission) : Why restaurants should switch to direct zero-commission table reservations.
-- [/en/blog/ia-creation-site-web-opportunites-pieges](https://www.devsupai.fr/en/blog/ia-creation-site-web-opportunites-pieges) : AI in web development: authentic opportunities vs automated no-code pitfalls.
+- [/en/blog/boutique-en-ligne-sans-commission](https://www.devsupai.fr/en/blog/boutique-en-ligne-sans-commission) : Cost comparison and real financial savings of an independent zero-commission online shop.
+- [/en/blog/accessibilite-web-rgaa-pme](https://www.devsupai.fr/en/blog/accessibilite-web-rgaa-pme) : Why web accessibility (WCAG) matters for small businesses: legal compliance and conversion gains.
+- [/en/blog/ia-et-developpement-web-ce-qui-change](https://www.devsupai.fr/en/blog/ia-et-developpement-web-ce-qui-change) : What artificial intelligence changes (and what stays human) in custom web development.
 - [/en/websites/artisan-construction](https://www.devsupai.fr/en/websites/artisan-construction) : Custom website engineering for building contractors and renovation craftsmen.
 - [/en/websites/professional-services](https://www.devsupai.fr/en/websites/professional-services) : Bespoke digital presence for lawyers, medical practitioners, and consulting practices.
 - [/en/websites/restaurant](https://www.devsupai.fr/en/websites/restaurant) : Custom restaurant showcase with zero-commission direct table reservations.
+- [/en/websites/retail-shop](https://www.devsupai.fr/en/websites/retail-shop) : Custom e-commerce and Click & Collect website engineering for local retailers and boutiques.
 - [/en/projects/atelier-gourmand](https://www.devsupai.fr/en/projects/atelier-gourmand) : Case study of the custom restaurant showcase and booking engine.
 - [/en/projects/locatool](https://www.devsupai.fr/en/projects/locatool) : Case study of the custom fleet and equipment rental SaaS app.
 - [/en/projects/abogame](https://www.devsupai.fr/en/projects/abogame) : Case study of the real-time live interaction web platform.

@@ -50,21 +50,6 @@ export const faqData = {
         detail: "Des forfaits d'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles dès 29 €/mois pour assurer votre sérénité.",
       },
       {
-        q: "Développeur web, c'est quoi ?",
-        short: "Un développeur web est un professionnel de l'informatique spécialisé dans la conception, la programmation et la maintenance de sites internet et d'applications en ligne.",
-        detail: "Il traduit un cahier des charges en lignes de code propres et sécurisées. On distingue les développeurs Front-End (interface visuelle et expérience utilisateur), Back-End (logique serveur, bases de données, API) et Full-Stack (maîtrise complète de bout en bout).",
-      },
-      {
-        q: "Quelles compétences pour devenir développeur web ?",
-        short: "Devenir développeur web exige la maîtrise du socle standard (HTML, CSS, JavaScript), de frameworks modernes (React, TypeScript), de Git, des bases de données et des API REST.",
-        detail: "Au-delà des compétences techniques, la rigueur logique, la persévérance face au débogage, la veille technologique permanente et la communication client sont essentielles.",
-      },
-      {
-        q: "Quels sont les 3 langages du web ?",
-        short: "Les 3 langages fondamentaux du web sont HTML (structure sémantique), CSS (mise en page et design) et JavaScript (interactivité et logique dynamique).",
-        detail: "Ces trois standards sont exécutés nativement par tous les navigateurs internet modernes et forment le socle incontournable de tout projet web.",
-      },
-      {
         q: "Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ?",
         short: "L'intelligence artificielle agit comme un accélérateur technique sous le contrôle et la supervision humaine d'un développeur expérimenté.",
         detail: "Elle intervient pour le prototypage rapide et l'automatisation de tests. Chaque ligne de code finale est auditée et optimisée manuellement sans générateur no-code opaque.",
@@ -126,21 +111,6 @@ export const faqData = {
         detail: 'Preventive maintenance, backup, and managed hosting plans are available from €29/month for complete peace of mind.',
       },
       {
-        q: "What is a web developer?",
-        short: "A web developer is a software engineering professional who builds, programs, and maintains websites, web applications, and digital platforms.",
-        detail: "They translate specifications into clean, secure, performant code. Specializations include Front-End (UI and browser interactions), Back-End (servers, databases, APIs), and Full-Stack (end-to-end architecture).",
-      },
-      {
-        q: "What skills are needed to become a web developer?",
-        short: "Becoming a web developer requires mastering core web standards (HTML, CSS, JavaScript), modern frameworks (React, TypeScript), Git version control, databases, and REST APIs.",
-        detail: "Beyond technical skills, analytical rigor, persistent debugging discipline, continuous learning, and clear stakeholder communication are vital.",
-      },
-      {
-        q: "What are the 3 core languages of the web?",
-        short: "The 3 foundational languages of the web are HTML (semantic structure), CSS (styling and responsive layout), and JavaScript (dynamic client-side interactivity).",
-        detail: "All modern browsers interpret these three universal standards natively, often enriched by TypeScript for enterprise scalability.",
-      },
-      {
         q: "How does artificial intelligence integrate into your DevSupAi projects?",
         short: "Artificial intelligence serves as a high-precision technical accelerator under the direct supervision of an experienced human engineer.",
         detail: "It assists during prototyping and automated testing. Every line of production code is manually audited, optimized, and secured with zero opaque no-code tools.",
@@ -157,4 +127,41 @@ export const faqData = {
       },
     ],
   },
+};
+
+export const blogFaqData = {
+  fr: [
+    {
+      q: "Développeur web, c'est quoi ?",
+      short: "Un développeur web est un professionnel de l'informatique spécialisé dans la conception, la programmation et la maintenance de sites internet et d'applications en ligne.",
+      detail: "À partir d'un besoin client ou de maquettes graphiques, il écrit du code propre, sécurisé et performant pour donner vie aux fonctionnalités. On distingue le développeur Front-End (dédié à l'interface visuelle et l'expérience utilisateur), le développeur Back-End (qui gère la logique serveur, la sécurité, les bases de données et les API), et le développeur Full-Stack, capable de maîtriser l'ensemble de la chaîne technique de bout en bout.",
+    },
+    {
+      q: "Quelles compétences pour devenir développeur web ?",
+      short: "Devenir développeur web exige la maîtrise du socle standard (HTML, CSS, JavaScript), de frameworks modernes (React, TypeScript), de Git, des bases de données et des API REST.",
+      detail: "Au-delà des compétences techniques (hard skills), des qualités méthodologiques et humaines sont indispensables : la rigueur logique, la patience face au débogage, une veille technologique continue et une excellente écoute pour traduire fidèlement les besoins métiers des clients.",
+    },
+    {
+      q: "Quels sont les 3 langages du web ?",
+      short: "Les 3 langages fondamentaux du web sont HTML (structure sémantique), CSS (mise en page et design) et JavaScript (interactivité et logique dynamique).",
+      detail: "Ces trois standards sont exécutés nativement par tous les navigateurs internet modernes sans aucun plugin tiers. Aujourd'hui, JavaScript est très souvent enrichi par TypeScript pour apporter un typage statique rigoureux et garantir une robustesse logicielle maximale.",
+    },
+  ],
+  en: [
+    {
+      q: "What is a web developer exactly?",
+      short: "A web developer is a software engineering professional who builds, programs, and maintains websites, web applications, and digital platforms.",
+      detail: "Working from client specifications and UI designs, they write clean, secure, and performant code to bring interfaces and interactive features to life. The profession divides into Front-End developers (user interfaces and browser interactions), Back-End developers (server logic, databases, security, and APIs), and Full-Stack developers who master end-to-end web architecture.",
+    },
+    {
+      q: "What skills are needed to become a web developer?",
+      short: "Becoming a web developer requires mastering core web standards (HTML, CSS, JavaScript), modern frameworks (React, TypeScript), Git version control, databases, and REST APIs.",
+      detail: "Beyond technical competencies (hard skills), strong problem-solving habits are vital: analytical rigor, debugging persistence, continuous technical learning, and clear communication with clients.",
+    },
+    {
+      q: "What are the 3 foundational languages of the web?",
+      short: "The 3 foundational languages of the web are HTML (semantic structure), CSS (styling and responsive layout), and JavaScript (dynamic client-side interactivity).",
+      detail: "Every modern browser runs this standard trio natively, which is frequently combined with TypeScript for maximum code reliability and enterprise scalability.",
+    },
+  ],
 };

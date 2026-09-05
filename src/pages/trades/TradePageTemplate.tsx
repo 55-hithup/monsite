@@ -8,7 +8,8 @@ import {
   HelpCircle, 
   PhoneCall, 
   ShieldCheck, 
-  Sparkles 
+  Sparkles,
+  Star
 } from 'lucide-react';
 import SectionReveal from '../../components/SectionReveal';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
@@ -17,7 +18,7 @@ import { useLanguage } from '../../i18n/LanguageContext';
 import { tradesData, type TradePageContent } from '../../i18n/tradesData';
 
 interface TradePageTemplateProps {
-  tradeKey: 'artisan' | 'professionLiberale' | 'restaurant';
+  tradeKey: 'artisan' | 'professionLiberale' | 'restaurant' | 'commerceBoutique';
 }
 
 export default function TradePageTemplate({ tradeKey }: TradePageTemplateProps) {
@@ -60,9 +61,23 @@ export default function TradePageTemplate({ tradeKey }: TradePageTemplateProps) 
         "addressCountry": "FR"
       }
     },
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Grand Est & France"
+    "serviceType": data.meta.badge,
+    "areaServed": [
+      { "@type": "City", "name": "Saint-Mihiel", "postalCode": "55300" },
+      { "@type": "City", "name": "Commercy", "postalCode": "55200" },
+      { "@type": "City", "name": "Verdun", "postalCode": "55100" },
+      { "@type": "City", "name": "Bar-le-Duc", "postalCode": "55000" },
+      { "@type": "City", "name": "Nancy", "postalCode": "54000" },
+      { "@type": "City", "name": "Metz", "postalCode": "57000" },
+      { "@type": "AdministrativeArea", "name": "Meuse" },
+      { "@type": "AdministrativeArea", "name": "Grand Est" },
+      { "@type": "Country", "name": "France" }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": data.recommendedPack.price.replace(/[^0-9]/g, ''),
+      "description": data.recommendedPack.description
     }
   };
 
@@ -175,7 +190,115 @@ export default function TradePageTemplate({ tradeKey }: TradePageTemplateProps) 
         </div>
       </section>
 
-      {/* 3. DELIVERABLES & ACCESSIBILITY GUARANTEE */}
+      {/* 3. REAL CLIENT TESTIMONIAL BLOCK */}
+      <section className="py-16 md:py-20 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+        <div className="container max-w-4xl mx-auto px-6 text-left">
+          <SectionReveal className="text-left mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-200 bg-sky-50 text-xs font-bold text-[#0284C7] mb-3">
+              <Star size={13} className="text-amber-500 fill-amber-400" aria-hidden="true" />
+              <span>{isEn ? "VERIFIED CLIENT TESTIMONIAL" : "RETOUR D'EXPÉRIENCE VÉRIFIÉ"}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-[#1A1A1A] mb-2">
+              {isEn ? "What our clients say about our collaboration" : "Ce que nos clients disent de notre accompagnement"}
+            </h2>
+            <p className="text-sm text-[#555555]">
+              {isEn 
+                ? "Concrete business feedback, zero invented statistics, and 100% human craftsmanship." 
+                : "Des résultats concrets, sans chiffres marketing inventés et avec un artisanat 100% humain."}
+            </p>
+          </SectionReveal>
+
+          <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#CBD5E1] shadow-sm relative overflow-hidden">
+            <div className="flex items-center gap-1 mb-6">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={18} className="text-amber-400 fill-amber-400" aria-hidden="true" />
+              ))}
+              <span className="ml-2 text-xs font-bold text-slate-700 font-['Montserrat']">5.0 / 5</span>
+              <span className="ml-auto text-[11px] font-semibold text-slate-500 bg-slate-100 py-1 px-3 rounded-full border border-slate-200">
+                {data.testimonial.tag}
+              </span>
+            </div>
+
+            <blockquote className="text-base sm:text-lg text-slate-800 font-['Plus_Jakarta_Sans'] leading-relaxed italic mb-6">
+              "{data.testimonial.quote.replace(/^«\s*|\s*»$/g, '')}"
+            </blockquote>
+
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+              <div>
+                <h3 className="text-base font-bold font-['Montserrat'] text-[#1A1A1A]">
+                  {data.testimonial.name}
+                </h3>
+                <p className="text-xs text-[#555555]">
+                  {data.testimonial.role}
+                </p>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                <CheckCircle2 size={13} className="text-emerald-600" aria-hidden="true" />
+                <span>{isEn ? "Verified Review" : "Avis Vérifié"}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. RECOMMENDED PACK BLOCK */}
+      <section className="py-16 md:py-20 bg-white border-b border-[#E5E5E5]">
+        <div className="container max-w-4xl mx-auto px-6 text-left">
+          <SectionReveal className="text-left mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-200 bg-sky-50 text-xs font-bold text-[#0284C7] mb-3">
+              <Sparkles size={13} className="text-[#0284C7]" aria-hidden="true" />
+              <span>{isEn ? "RECOMMENDED PACKAGE" : "FORFAIT CONSEILLÉ"}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-[#1A1A1A] mb-2">
+              {isEn ? "The optimal package for your profession" : "La solution la plus adaptée à votre activité"}
+            </h2>
+            <p className="text-sm text-[#555555]">
+              {isEn 
+                ? "Transparent pricing, zero monthly software subscription, domain and high-speed hosting included year 1." 
+                : "Tarif clair et transparent, 0 € d'abonnement logiciel captif, nom de domaine et hébergement haute vitesse inclus l'an 1."}
+            </p>
+          </SectionReveal>
+
+          <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-[#F8FAFC] to-[#F1F5F9] border-2 border-sky-200 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="space-y-3 max-w-xl">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0284C7] bg-sky-100/70 border border-sky-300/60 px-3 py-1 rounded-full inline-block">
+                {data.recommendedPack.badge}
+              </span>
+              <h3 className="text-2xl font-black font-['Montserrat'] text-[#1A1A1A]">
+                {data.recommendedPack.name}
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed font-['Plus_Jakarta_Sans']">
+                {data.recommendedPack.description}
+              </p>
+              <div className="pt-1">
+                <span className="text-xs font-medium text-slate-500 block">{isEn ? "Starting from" : "Tarif indicatif"}</span>
+                <span className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-[#0284C7]">
+                  {data.recommendedPack.price}
+                </span>
+              </div>
+            </div>
+
+            <div className="shrink-0 flex flex-col sm:flex-row md:flex-col gap-3">
+              <Link
+                to={`/#contact?service=${encodeURIComponent(data.recommendedPack.name)}`}
+                className="btn-glacier-solid rounded-none bg-[#0284C7] hover:bg-sky-500 text-white font-bold py-3.5 px-6 inline-flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md text-xs font-['Montserrat'] uppercase tracking-wider"
+                style={{ color: '#FFFFFF' }}
+              >
+                <span style={{ color: '#FFFFFF' }}>{isEn ? "Select this package" : "Choisir ce forfait"}</span>
+                <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+              <Link
+                to={data.recommendedPack.link}
+                className="btn-glacier-outline py-3 px-5 text-xs font-bold font-['Montserrat'] inline-flex items-center justify-center gap-2 border border-slate-300 hover:border-slate-800 text-slate-800 transition-all"
+              >
+                <span>{data.recommendedPack.linkLabel}</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. DELIVERABLES & ACCESSIBILITY GUARANTEE */}
       <section className="py-16 md:py-20 bg-[#F8F8F8] border-b border-[#E5E5E5]">
         <div className="container max-w-5xl mx-auto px-6 text-left">
           <div className="max-w-3xl mb-10">
@@ -202,9 +325,16 @@ export default function TradePageTemplate({ tradeKey }: TradePageTemplateProps) 
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Related Case Study Bridge */}
-          <div className="p-6 rounded-xl bg-white border-2 border-sky-600/30 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      {/* 6. RELATED CASE STUDY BRIDGE */}
+      <section className="py-14 bg-white border-b border-[#E5E5E5]">
+        <div className="container max-w-5xl mx-auto px-6 text-left">
+          <h2 className="text-xl sm:text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-6">
+            {isEn ? "Associated Real-World Case Study" : "Projet concret & Étude de cas associée"}
+          </h2>
+          <div className="p-6 rounded-xl bg-[#F8FAFC] border-2 border-sky-600/30 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
               <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0284C7] block mb-1">
                 {data.caseStudy.tag}
@@ -212,7 +342,7 @@ export default function TradePageTemplate({ tradeKey }: TradePageTemplateProps) 
               <h3 className="text-lg font-bold font-['Montserrat'] text-[#1A1A1A] mb-1">
                 {data.caseStudy.title}
               </h3>
-              <p className="text-xs text-[#555555] max-w-xl">
+              <p className="text-xs sm:text-sm text-[#555555] max-w-xl">
                 {data.caseStudy.desc}
               </p>
             </div>

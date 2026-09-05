@@ -19,12 +19,13 @@ export const ROUTE_PAIRS: RoutePair[] = [
   { fr: '/sites-internet/artisan-renovation', en: '/en/websites/artisan-construction' },
   { fr: '/sites-internet/profession-liberale', en: '/en/websites/professional-services' },
   { fr: '/sites-internet/restaurant', en: '/en/websites/restaurant' },
+  { fr: '/sites-internet/commerce-boutique', en: '/en/websites/retail-shop' },
   { fr: '/blog/site-internet-vs-google-business', en: '/en/blog/site-internet-vs-google-business' },
   { fr: '/blog/pourquoi-eviter-wordpress-petit-budget', en: '/en/blog/pourquoi-eviter-wordpress-petit-budget' },
   { fr: '/blog/artisan-convertir-plus-de-devis', en: '/en/blog/artisan-convertir-plus-de-devis' },
-  { fr: '/blog/cout-reel-site-internet-3-ans', en: '/en/blog/cout-reel-site-internet-3-ans' },
-  { fr: '/blog/reservation-directe-restaurant-sans-commission', en: '/en/blog/reservation-directe-restaurant-sans-commission' },
-  { fr: '/blog/ia-creation-site-web-opportunites-pieges', en: '/en/blog/ia-creation-site-web-opportunites-pieges' },
+  { fr: '/blog/boutique-en-ligne-sans-commission', en: '/en/blog/boutique-en-ligne-sans-commission' },
+  { fr: '/blog/accessibilite-web-rgaa-pme', en: '/en/blog/accessibilite-web-rgaa-pme' },
+  { fr: '/blog/ia-et-developpement-web-ce-qui-change', en: '/en/blog/ia-et-developpement-web-ce-qui-change' },
 ];
 
 export function normalizePath(path: string): string {

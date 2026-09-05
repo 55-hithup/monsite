@@ -1,15 +1,23 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useJsonLd } from '../hooks/useJsonLd';
 import { articlesData } from '../i18n/articlesData';
-import { Sparkles, ArrowRight, Calendar, Clock, PhoneCall } from 'lucide-react';
+import { blogFaqData } from '../i18n/faqData';
+import { Sparkles, ArrowRight, Calendar, Clock, PhoneCall, ChevronDown } from 'lucide-react';
 
 export default function Blog() {
   const { language } = useLanguage();
   const t = articlesData[language] || articlesData.fr;
+  const faqItems = blogFaqData[language] || blogFaqData.fr;
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaqIndex((prev) => (prev === index ? null : index));
+  };
 
   useDocumentMetadata(
     {
@@ -23,10 +31,27 @@ export default function Blog() {
     'https://www.devsupai.fr/hero-bg-mockup.webp'
   );
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${item.short} ${item.detail}`,
+      },
+    })),
+  };
+
+  useJsonLd(faqSchema, `blog-faqpage-schema-${language}`);
+
   const pageContainerRef = useRef<HTMLDivElement>(null);
   const heroEyebrowRef = useRef<HTMLDivElement>(null);
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
   const articlesGridRef = useRef<HTMLDivElement>(null);
+  const faqHeaderRef = useRef<HTMLDivElement>(null);
+  const faqContainerRef = useRef<HTMLDivElement>(null);
   const bannerCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,7 +103,119 @@ export default function Blog() {
         });
       }
 
-      // 3. Bottom Contact Banner
+      // 3. Animation En-tête FAQ (exactement comme sur la landing page)
+      if (faqHeaderRef.current) {
+        const targets = Array.from(faqHeaderRef.current.children);
+        if (targets.length > 0) {
+          gsap.fromTo(
+            targets,
+            { opacity: 0, y: 30, scale: 0.95 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.7,
+              stagger: 0.12,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: faqHeaderRef.current,
+                start: 'top 85%',
+                end: 'bottom top',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
+      }
+
+      // 4. Animation des questions FAQ : Arrivée dynamique depuis l'extérieur de l'écran avec cascade resserrée (exactement comme sur la landing page)
+      if (faqContainerRef.current) {
+        const cards = Array.from(faqContainerRef.current.children);
+        const faqTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: faqContainerRef.current,
+            start: 'top 80%',
+            end: 'bottom top',
+            toggleActions: 'play none none reverse',
+          },
+        });
+
+        const offscreenX = typeof window !== 'undefined' ? window.innerWidth + 100 : 1200;
+
+        cards.forEach((card, idx) => {
+          const fromLeft = idx % 2 === 0;
+          const questionTitle = card.querySelector('.faq-question-title');
+          const chevronBadge = card.querySelector('.faq-chevron-badge');
+          // Délai resserré entre chaque question pour un enchaînement dynamique sans temps mort
+          const insertPosition = idx === 0 ? 0 : '-=0.52';
+
+          // Animation du conteneur de la carte (départ depuis l'extérieur de l'écran avec fond bleu identité)
+          faqTimeline.fromTo(
+            card,
+            {
+              opacity: 0,
+              x: fromLeft ? -offscreenX : offscreenX,
+              filter: 'blur(8px)',
+              backgroundColor: '#0284C7',
+              borderColor: '#0284C7',
+              transition: 'none',
+            },
+            {
+              opacity: 1,
+              x: 0,
+              filter: 'blur(0px)',
+              backgroundColor: '#F8F8F8',
+              borderColor: '#E5E5E5',
+              duration: 0.62,
+              ease: 'power3.out',
+              clearProps: 'backgroundColor,borderColor,transition',
+            },
+            insertPosition
+          );
+
+          // Animation du texte de la question (du blanc vers le noir foncé d'origine)
+          if (questionTitle) {
+            faqTimeline.fromTo(
+              questionTitle,
+              {
+                color: '#FFFFFF',
+                transition: 'none',
+              },
+              {
+                color: '#1A1A1A',
+                duration: 0.62,
+                ease: 'power3.out',
+                clearProps: 'color,transition',
+              },
+              insertPosition
+            );
+          }
+
+          // Animation de la pastille du chevron (de la pastille transparente blanche vers le bouton neutre d'origine)
+          if (chevronBadge) {
+            faqTimeline.fromTo(
+              chevronBadge,
+              {
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderColor: 'rgba(255, 255, 255, 0.4)',
+                color: '#FFFFFF',
+                transition: 'none',
+              },
+              {
+                backgroundColor: '#FFFFFF',
+                borderColor: '#E5E5E5',
+                color: '#555555',
+                duration: 0.62,
+                ease: 'power3.out',
+                clearProps: 'backgroundColor,borderColor,color,transition',
+              },
+              insertPosition
+            );
+          }
+        });
+      }
+
+      // 4. Bottom Contact Banner
       if (bannerCardRef.current) {
         gsap.fromTo(
           bannerCardRef.current,
@@ -197,7 +334,82 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* 3. BOTTOM CONTACT BANNER (Fond Parallaxe Signature & Card Glassy sans bords arrondis) */}
+      {/* 3. FOIRE AUX QUESTIONS PÉDAGOGIQUE (Comprendre le Développement Web) */}
+      <section className="py-16 md:py-24 bg-white border-b border-[#E5E5E5] text-left overflow-hidden" aria-label={language === 'en' ? "Educational FAQ" : "FAQ Pédagogique"}>
+        <div className="container max-w-4xl mx-auto px-6">
+          <div ref={faqHeaderRef} className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs sm:text-sm font-bold font-['Montserrat'] tracking-widest text-[#0284C7] uppercase bg-sky-50 border border-sky-200 mb-4">
+              {language === 'en' ? "Educational FAQ" : "FAQ Pédagogique"}
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight uppercase mb-4">
+              {language === 'en' ? "Understanding Web Development" : "Comprendre le Développement Web"}
+            </h2>
+            <p className="text-sm sm:text-base text-[#555555] max-w-2xl mx-auto font-['Plus_Jakarta_Sans'] leading-relaxed">
+              {language === 'en'
+                ? "Clear, documented, and technical answers to foundational questions about web engineering roles, required skills, and core programming languages."
+                : "Des réponses claires, documentées et techniques aux questions fondamentales sur les métiers de la programmation, les compétences requises et les langages du web."}
+            </p>
+          </div>
+
+          <div ref={faqContainerRef} className="space-y-4">
+            {faqItems.map((item, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <div
+                  key={idx}
+                  className={`p-6 border transition-all duration-300 ease-out rounded-none text-left ${
+                    isOpen ? 'border-[#0284C7] bg-white shadow-md' : 'border-[#E5E5E5] bg-[#F8F8F8] hover:border-[#CCCCCC]'
+                  }`}
+                >
+                  <h3>
+                    <button
+                      type="button"
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none group"
+                      aria-expanded={isOpen}
+                      aria-controls={`blog-faq-answer-${idx}`}
+                      id={`blog-faq-question-${idx}`}
+                    >
+                      <span className="faq-question-title text-base sm:text-lg font-bold font-['Montserrat'] text-[#1A1A1A] group-hover:text-[#0284C7] transition-colors pr-4 flex-1">
+                        {item.q}
+                      </span>
+                      <span
+                        className={`faq-chevron-badge shrink-0 p-1.5 border transition-all duration-300 ${
+                          isOpen ? 'border-[#0284C7] text-[#0284C7] bg-sky-50' : 'border-[#E5E5E5] text-[#555555] bg-white'
+                        }`}
+                      >
+                        <ChevronDown
+                          size={18}
+                          aria-hidden="true"
+                          className={`transition-transform duration-300 ease-out ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                        />
+                      </span>
+                    </button>
+                  </h3>
+
+                  <div
+                    id={`blog-faq-answer-${idx}`}
+                    role="region"
+                    aria-labelledby={`blog-faq-question-${idx}`}
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="mt-4 pt-4 border-t border-[#E5E5E5] text-sm sm:text-base text-[#555555] leading-relaxed font-['Plus_Jakarta_Sans'] space-y-2">
+                        <p className="font-semibold text-[#1A1A1A]">{item.short}</p>
+                        <p>{item.detail}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. BOTTOM CONTACT BANNER (Fond Parallaxe Signature & Card Glassy sans bords arrondis) */}
       <section className="services-parallax-section py-20 md:py-32 relative overflow-hidden border-t border-slate-800">
         <div 
           className="services-parallax-bg" 

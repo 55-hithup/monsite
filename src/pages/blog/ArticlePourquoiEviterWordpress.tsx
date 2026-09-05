@@ -1,5 +1,6 @@
-import ArticleTemplatePlaceholder from './ArticleTemplatePlaceholder';
+import ArticleTemplate from './ArticleTemplate';
+import { articlePourquoiEviterWordpressData } from './articlesContent';
 
 export default function ArticlePourquoiEviterWordpress() {
-  return <ArticleTemplatePlaceholder articleSlug="pourquoi-eviter-wordpress-petit-budget" />;
+  return <ArticleTemplate {...articlePourquoiEviterWordpressData} />;
 }

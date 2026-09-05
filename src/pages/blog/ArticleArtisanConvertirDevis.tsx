@@ -1,5 +1,6 @@
-import ArticleTemplatePlaceholder from './ArticleTemplatePlaceholder';
+import ArticleTemplate from './ArticleTemplate';
+import { articleArtisanConvertirDevisData } from './articlesContent';
 
 export default function ArticleArtisanConvertirDevis() {
-  return <ArticleTemplatePlaceholder articleSlug="artisan-convertir-plus-de-devis" />;
+  return <ArticleTemplate {...articleArtisanConvertirDevisData} />;
 }

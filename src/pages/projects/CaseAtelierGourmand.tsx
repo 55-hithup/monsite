@@ -15,7 +15,8 @@ import {
   Activity, 
   Layers, 
   Smartphone, 
-  Check
+  Check,
+  ArrowRight
 } from 'lucide-react';
 import { useDocumentMetadata } from '../../hooks/useDocumentMetadata';
 import { useJsonLd } from '../../hooks/useJsonLd';
@@ -553,6 +554,33 @@ export default function CaseAtelierGourmand() {
               </p>
               <p>{t.a3}</p>
             </section>
+          </div>
+
+          {/* Internal Linking Trade Bridge */}
+          <div className="mt-12 p-6 rounded-2xl bg-sky-50/70 border border-sky-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="space-y-1">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0284C7]">
+                {language === 'en' ? 'RESTAURATEURS & BISTROS' : 'RESTAURATEURS & BISTRONOMIE'}
+              </span>
+              <h3 className="text-base font-bold font-['Montserrat'] text-[#1A1A1A]">
+                {language === 'en' 
+                  ? "Looking to launch a custom restaurant website with direct booking?" 
+                  : "Vous souhaitez créer un site vitrine avec réservation directe pour votre restaurant ?"}
+              </h3>
+              <p className="text-xs text-slate-600 max-w-xl">
+                {language === 'en'
+                  ? "Explore our dedicated restaurant development package: mobile menus, zero booking commissions, and local SEO."
+                  : "Découvrez notre solution sur-mesure dédiée aux métiers de bouche : carte dynamique, zéro commission sur vos couverts et SEO local."}
+              </p>
+            </div>
+            <Link
+              to={language === 'en' ? '/en/websites/restaurant' : '/sites-internet/restaurant'}
+              className="btn-glacier-solid text-xs py-2.5 px-4 font-bold font-['Montserrat'] shrink-0 inline-flex items-center gap-2 rounded-none bg-[#0284C7] hover:bg-sky-500 text-white shadow-sm"
+              style={{ color: '#FFFFFF' }}
+            >
+              <span style={{ color: '#FFFFFF' }}>{language === 'en' ? 'View Restaurant Solution' : 'Découvrir l\'offre restaurant'}</span>
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
 
           {/* Bottom CTA Box */}
