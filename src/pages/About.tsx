@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,7 +23,7 @@ export default function About() {
   };
 
   // Ferme avec animation inverse vers la sidebar
-  const closeFlip = () => {
+  const closeFlip = useCallback(() => {
     if (isClosing || !isFlipped) return;
     setIsClosing(true);
 
@@ -63,7 +63,7 @@ export default function About() {
       setIsFlipped(false);
       setIsClosing(false);
     }
-  };
+  }, [isClosing, isFlipped]);
 
   // Animation d'ouverture : part exactement de la position de la sourceCard vers le centre en pivotant à 180deg
   useEffect(() => {
@@ -110,7 +110,7 @@ export default function About() {
       },
       0
     );
-  }, [isFlipped]);
+  }, [isFlipped, isClosing]);
 
   useDocumentMetadata(
     {
@@ -452,7 +452,7 @@ export default function About() {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isFlipped, isClosing]);
+  }, [isFlipped, isClosing, closeFlip]);
 
   return (
     <div ref={pageContainerRef} className="w-full bg-white text-[#4A4A4A] min-h-screen">

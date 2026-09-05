@@ -15,6 +15,15 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CaseAtelierGourmand from './pages/projects/CaseAtelierGourmand';
 import CaseLocaTool from './pages/projects/CaseLocaTool';
 import CaseAbogame from './pages/projects/CaseAbogame';
+import TradeArtisan from './pages/trades/TradeArtisan';
+import TradeProfessionLiberale from './pages/trades/TradeProfessionLiberale';
+import TradeRestaurant from './pages/trades/TradeRestaurant';
+import ArticleSiteVsGoogle from './pages/blog/ArticleSiteVsGoogle';
+import ArticlePourquoiEviterWordpress from './pages/blog/ArticlePourquoiEviterWordpress';
+import ArticleArtisanConvertirDevis from './pages/blog/ArticleArtisanConvertirDevis';
+import ArticleCoutReelSite3Ans from './pages/blog/ArticleCoutReelSite3Ans';
+import ArticleReservationRestaurant from './pages/blog/ArticleReservationRestaurant';
+import ArticleIaCreationWeb from './pages/blog/ArticleIaCreationWeb';
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
 
@@ -208,6 +217,78 @@ export const routes = [
         ),
       },
       {
+        path: 'blog/site-internet-vs-google-business',
+        element: (
+          <ErrorBoundary>
+            <ArticleSiteVsGoogle />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'blog/pourquoi-eviter-wordpress-petit-budget',
+        element: (
+          <ErrorBoundary>
+            <ArticlePourquoiEviterWordpress />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'blog/artisan-convertir-plus-de-devis',
+        element: (
+          <ErrorBoundary>
+            <ArticleArtisanConvertirDevis />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'blog/cout-reel-site-internet-3-ans',
+        element: (
+          <ErrorBoundary>
+            <ArticleCoutReelSite3Ans />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'blog/reservation-directe-restaurant-sans-commission',
+        element: (
+          <ErrorBoundary>
+            <ArticleReservationRestaurant />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'blog/ia-creation-site-web-opportunites-pieges',
+        element: (
+          <ErrorBoundary>
+            <ArticleIaCreationWeb />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'sites-internet/artisan-renovation',
+        element: (
+          <ErrorBoundary>
+            <TradeArtisan />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'sites-internet/profession-liberale',
+        element: (
+          <ErrorBoundary>
+            <TradeProfessionLiberale />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'sites-internet/restaurant',
+        element: (
+          <ErrorBoundary>
+            <TradeRestaurant />
+          </ErrorBoundary>
+        ),
+      },
+      {
         path: 'projets/atelier-gourmand',
         element: (
           <ErrorBoundary>
@@ -301,6 +382,78 @@ export const routes = [
         element: (
           <ErrorBoundary>
             <ArticlePerformance />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/site-internet-vs-google-business',
+        element: (
+          <ErrorBoundary>
+            <ArticleSiteVsGoogle />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/pourquoi-eviter-wordpress-petit-budget',
+        element: (
+          <ErrorBoundary>
+            <ArticlePourquoiEviterWordpress />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/artisan-convertir-plus-de-devis',
+        element: (
+          <ErrorBoundary>
+            <ArticleArtisanConvertirDevis />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/cout-reel-site-internet-3-ans',
+        element: (
+          <ErrorBoundary>
+            <ArticleCoutReelSite3Ans />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/reservation-directe-restaurant-sans-commission',
+        element: (
+          <ErrorBoundary>
+            <ArticleReservationRestaurant />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/blog/ia-creation-site-web-opportunites-pieges',
+        element: (
+          <ErrorBoundary>
+            <ArticleIaCreationWeb />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/websites/artisan-construction',
+        element: (
+          <ErrorBoundary>
+            <TradeArtisan />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/websites/professional-services',
+        element: (
+          <ErrorBoundary>
+            <TradeProfessionLiberale />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'en/websites/restaurant',
+        element: (
+          <ErrorBoundary>
+            <TradeRestaurant />
           </ErrorBoundary>
         ),
       },

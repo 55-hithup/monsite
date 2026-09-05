@@ -16,6 +16,15 @@ export const ROUTE_PAIRS: RoutePair[] = [
   { fr: '/projets/abogame', en: '/en/projects/abogame' },
   { fr: '/mentions-legales', en: '/en/legal-notices' },
   { fr: '/politique-de-confidentialite', en: '/en/privacy-policy' },
+  { fr: '/sites-internet/artisan-renovation', en: '/en/websites/artisan-construction' },
+  { fr: '/sites-internet/profession-liberale', en: '/en/websites/professional-services' },
+  { fr: '/sites-internet/restaurant', en: '/en/websites/restaurant' },
+  { fr: '/blog/site-internet-vs-google-business', en: '/en/blog/site-internet-vs-google-business' },
+  { fr: '/blog/pourquoi-eviter-wordpress-petit-budget', en: '/en/blog/pourquoi-eviter-wordpress-petit-budget' },
+  { fr: '/blog/artisan-convertir-plus-de-devis', en: '/en/blog/artisan-convertir-plus-de-devis' },
+  { fr: '/blog/cout-reel-site-internet-3-ans', en: '/en/blog/cout-reel-site-internet-3-ans' },
+  { fr: '/blog/reservation-directe-restaurant-sans-commission', en: '/en/blog/reservation-directe-restaurant-sans-commission' },
+  { fr: '/blog/ia-creation-site-web-opportunites-pieges', en: '/en/blog/ia-creation-site-web-opportunites-pieges' },
 ];
 
 export function normalizePath(path: string): string {

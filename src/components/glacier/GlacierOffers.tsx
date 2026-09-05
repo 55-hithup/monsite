@@ -15,7 +15,8 @@ import {
   Laptop,
   ArrowRight,
   RotateCw,
-  RotateCcw
+  RotateCcw,
+  ShoppingCart
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -26,7 +27,7 @@ interface GlacierOffersProps {
 }
 
 interface PackData {
-  id: 'presence' | 'croissance' | 'saas';
+  id: 'presence' | 'croissance' | 'ecommerce' | 'saas';
   name: string;
   categoryBadge: string;
   price: string;
@@ -87,7 +88,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         }
       }
 
-      // 2. Animation des 3 Cartes (Déploiement en éventail 3D au scroll)
+      // 2. Animation des 4 Cartes (Déploiement en éventail 3D au scroll)
       if (cardsGridRef.current) {
         const cards = Array.from(cardsGridRef.current.children) as HTMLElement[];
         const isDesktop = window.innerWidth >= 1024;
@@ -102,36 +103,44 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
             },
           });
 
-          if (isDesktop) {
-            // Carte Gauche : arrive depuis la gauche avec rotation 3D
+          if (isDesktop && cards.length >= 4) {
+            // Carte 1 (Gauche) : arrive depuis la gauche avec rotation 3D
             cardsTl.fromTo(
               cards[0],
-              { x: -80, y: 35, rotateY: 18, opacity: 0, scale: 0.92 },
-              { x: 0, y: 0, rotateY: 0, opacity: 1, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
+              { x: -60, y: 35, rotateY: 14, opacity: 0, scale: 0.94 },
+              { x: 0, y: 0, rotateY: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
               0
             );
 
-            // Carte Centre (Populaire) : s'élève de face
+            // Carte 2 (Centre-Gauche Populaire) : s'élève de face
             cardsTl.fromTo(
               cards[1],
-              { y: 65, opacity: 0, scale: 0.90 },
-              { y: 0, opacity: 1, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0.12
+              { y: 55, opacity: 0, scale: 0.92 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
+              0.1
             );
 
-            // Carte Droite : arrive depuis la droite en miroir
+            // Carte 3 (Centre-Droit E-Commerce) : s'élève de face
             cardsTl.fromTo(
               cards[2],
-              { x: 80, y: 35, rotateY: -18, opacity: 0, scale: 0.92 },
-              { x: 0, y: 0, rotateY: 0, opacity: 1, scale: 1, duration: 0.85, ease: 'power3.out', clearProps: 'transform,opacity' },
-              0.24
+              { y: 55, opacity: 0, scale: 0.92 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
+              0.2
+            );
+
+            // Carte 4 (Droite SaaS) : arrive depuis la droite en miroir
+            cardsTl.fromTo(
+              cards[3],
+              { x: 60, y: 35, rotateY: -14, opacity: 0, scale: 0.94 },
+              { x: 0, y: 0, rotateY: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity' },
+              0.3
             );
           } else {
-            // Mobile : cascade ascendante
+            // Mobile et tablettes : cascade ascendante
             cardsTl.fromTo(
               cards,
-              { y: 55, opacity: 0, scale: 0.94 },
-              { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power3.out', stagger: 0.15, clearProps: 'transform,opacity' }
+              { y: 50, opacity: 0, scale: 0.94 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power3.out', stagger: 0.12, clearProps: 'transform,opacity' }
             );
           }
         }
@@ -238,7 +247,42 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         'Verified Google customer reviews integration with star rating markup',
         'Tailored quote request form with specialized business field inputs',
         'Comprehensive regional SEO optimization (keywords, internal linking)',
-        'Personalized video tutorial to easily edit texts and photos autonomously'
+        'WCAG 2.1 AA accessibility compliance across all layouts and interactive elements'
+      ]
+    },
+    {
+      id: 'ecommerce',
+      name: 'E-COMMERCE STORE PACK',
+      categoryBadge: 'DIRECT SALES & 0% COMMISSION',
+      price: 'FROM €2,600',
+      shortDesc: 'A tailor-made online store with seamless card checkout, zero sales commissions, and complete order management.',
+      icon: ShoppingCart,
+      metrics: [
+        { label: 'Commission', value: '0% on sales', icon: ShieldCheck },
+        { label: 'Delivery', value: '3 to 5 weeks', icon: Clock },
+        { label: 'Catalog', value: 'Unlimited items', icon: Layout }
+      ],
+      features: [
+        'Frictionless checkout funnel via Stripe, CB & Apple Pay',
+        'Intuitive inventory, options (sizes, colors), and order tracking',
+        'Automated order confirmation emails and compliant PDF invoices',
+        '100% proprietary code without monthly third-party platform fees'
+      ],
+      ctaText: 'Choose E-Commerce Pack',
+      targetAudience: 'Merchants, local producers, craftsmen, and direct-to-consumer brands looking to sell products without surrendering margins to third-party marketplaces.',
+      techSpecs: [
+        { label: 'Stack', value: 'React 19 & Stripe API' },
+        { label: 'Payment', value: 'Stripe & Cards (0% Fee)' },
+        { label: 'Security', value: 'SSL & Secure Webhooks' },
+        { label: 'Hosting', value: 'Edge CDN Included (Yr 1)' }
+      ],
+      detailedDeliverables: [
+        'Bespoke, ultra-fast online storefront crafted without heavy paid plugins',
+        'Secure Stripe payment gateway setup with automatic direct bank payouts',
+        'Intuitive administration panel to update products, stock levels, and discounts',
+        'Automatic compliant PDF invoice generation and instant customer email alerts',
+        '3-step frictionless checkout funnel tested across all smartphone screens',
+        'WCAG 2.1 AA accessibility compliance across all checkout inputs and forms'
       ]
     },
     {
@@ -273,7 +317,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         'Live inventory, customer ticket, or member directory tracking',
         'Granular role-based user permissions (SuperAdmin, Manager, Member)',
         'Full data export tools (CSV, Excel, JSON) with automated backups',
-        'Complete transfer of intellectual property, code, and SQL schema'
+        'WCAG 2.1 AA accessible back-office controls and keyboard navigation'
       ]
     }
   ] : [
@@ -309,7 +353,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         'Formulaire de contact sécurisé avec protection honeypot anti-spam',
         'Plan Google Maps interactif, coordonnées complètes et appel direct',
         'Configuration SEO complète : Open Graph, balises meta et robots.txt',
-        'Propriété intégrale du code : aucun abonnement récurrent obligatoire'
+        'Accessibilité WCAG 2.1 AA : contrastes rigoureux et cibles tactiles 32px+'
       ]
     },
     {
@@ -346,7 +390,42 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         'Intégration des avis Google certifiés avec balisage d\'étoiles enrichies',
         'Module de demande de devis guidé personnalisé selon votre métier',
         'Optimisation SEO locale et régionale poussée (mots-clés, maillage)',
-        'Tutoriel vidéo personnalisé pour modifier vos textes en toute autonomie'
+        'Conformité accessibilité WCAG AA (lisibilité senior, contrastes >= 4.5:1)'
+      ]
+    },
+    {
+      id: 'ecommerce',
+      name: 'PACK BOUTIQUE E-COMMERCE',
+      categoryBadge: 'VENTE EN LIGNE SANS COMMISSION',
+      price: 'DÈS 2 600 €',
+      shortDesc: "Boutique en ligne sur-mesure avec tunnel de commande fluide, 0% de commission sur vos ventes et gestion autonome.",
+      icon: ShoppingCart,
+      metrics: [
+        { label: 'Commission', value: '0% sur vos ventes', icon: ShieldCheck },
+        { label: 'Délais', value: '3 à 5 semaines', icon: Clock },
+        { label: 'Catalogue', value: 'Articles illimités', icon: Layout }
+      ],
+      features: [
+        'Tunnel d\'achat fluide et sécurisé par carte bancaire (Stripe, Apple Pay)',
+        'Gestion autonome des stocks, variantes (tailles, coloris) et commandes',
+        'Alertes automatiques par email et génération de factures PDF conformes',
+        'Code 100% propriétaire sans commissions prélevées sur votre chiffre d\'affaires'
+      ],
+      ctaText: 'Choisir le Pack E-Commerce',
+      targetAudience: 'Commerçants, producteurs locaux, artisans et marques souhaitant vendre leurs créations ou produits en direct sans intermédiaire prélevant des commissions sur leur marge.',
+      techSpecs: [
+        { label: 'Stack', value: 'React 19 & Stripe API' },
+        { label: 'Paiement', value: 'Stripe & CB (0% Prélèvement)' },
+        { label: 'Sécurité', value: 'Chiffrement SSL & Webhooks' },
+        { label: 'Hébergement', value: 'Edge CDN Inclus (An 1)' }
+      ],
+      detailedDeliverables: [
+        'Boutique en ligne sur-mesure ultra-rapide sans plugin tiers payant',
+        'Passerelle de paiement sécurisée Stripe avec virement bancaire automatique',
+        'Interface d\'administration intuitive pour ajouter produits, stocks et promotions',
+        'Facturation automatique PDF conforme et notifications email client/marchand',
+        'Tunnel de commande optimisé sans friction sur smartphone et ordinateur',
+        'Accessibilité WCAG 2.1 AA : formulaires d\'achat étiquetés et navigation clavier fluide'
       ]
     },
     {
@@ -381,7 +460,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         'Suivi des stocks, inventaire ou gestion de dossiers en temps réel',
         'Espace membres sécurisé avec rôles (SuperAdmin, Gestionnaire, Membre)',
         'Export complet des données (CSV, Excel, JSON) et sauvegardes auto',
-        'Cession intégrale de la propriété intellectuelle, des codes et de la base'
+        'Accessibilité WCAG AA et commandes clavier adaptées pour tous les collaborateurs'
       ]
     }
   ];
@@ -415,12 +494,20 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               ? "Each website is an original creation engineered without heavy CMS. 100% proprietary code, fast hosting, local SEO, and domain name included for the first year."
               : "Chaque site est une création originale conçue sans CMS lourd. Code source 100% propriétaire, hébergement optimisé, référencement SEO local et nom de domaine inclus la première année."}
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">
+            <ShieldCheck size={14} className="text-sky-600 shrink-0" aria-hidden="true" />
+            <span>
+              {isEn 
+                ? "WCAG 2.1 AA & RGAA Accessibility Compliance • Touch Targets 32px+ • 100/100 Standards"
+                : "Conformité Accessibilité Numérique WCAG 2.1 AA & RGAA • Contrastes 4.5:1 • Cibles tactiles 32px+"}
+            </span>
+          </div>
         </div>
 
-        {/* Grille des 3 packs avec 3D Flip et animation d'éventail 3D au scroll */}
+        {/* Grille des 4 packs avec 3D Flip et animation d'éventail 3D au scroll */}
         <div 
           ref={cardsGridRef}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch"
         >
           {packs.map((pack) => {
             const isPopular = pack.isPopular;

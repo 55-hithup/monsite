@@ -182,6 +182,18 @@ export default function GlacierFaq() {
       question: "What are the 3 core languages of the web?",
       answer: "The 3 foundational languages that form the universal cornerstone of every website on the Internet are: HTML (HyperText Markup Language) to semantically structure content and page architecture, CSS (Cascading Style Sheets) to handle visual layout, typography, colors, and mobile responsiveness, and JavaScript (JS) to power dynamic interactivity, user actions, and real-time asynchronous data fetching. Every modern browser runs this standard trio natively, which is frequently combined with TypeScript for maximum code reliability and scalability.",
     },
+    {
+      question: "How does artificial intelligence integrate into your DevSupAi projects?",
+      answer: "Artificial intelligence is utilized at DevSupAi as a specialized technical accelerator under the direct supervision of an experienced human engineer. It assists during rapid prototyping, code refactoring, and automated performance testing. Unlike generic no-code AI builders that output opaque and heavy codebases, every single line of production code is manually audited, optimized, and secured to ensure lightning-fast loading speeds and flawless reliability.",
+    },
+    {
+      question: "Will my website be coded by an AI or by a human developer?",
+      answer: "Your website is architected, hand-coded, and delivered by a human developer (Alexandre Pabst). AI serves exclusively as a high-precision workshop tool (generating boilerplate scaffolds, regression tests, and type checking), while the creative craft, UX design, semantic SEO hierarchy, form security, and WCAG accessibility remain 100% human-engineered and verified. You benefit from a dedicated direct human partner without any opaque black box.",
+    },
+    {
+      question: "What happens regarding hosting and domain registration after the first included year?",
+      answer: "High-performance secure edge hosting and your custom domain name are fully included for the first year with every package. Upon annual renewal, you retain 100% freedom: you can renew through DevSupAi at direct cost (typically between €39 and €49 per year depending on the domain extension, with zero hidden markup), or choose to host your project with any provider of your choice. You are the sole owner of all source code, assets, and DNS records with zero forced lock-in.",
+    },
   ] : [
     {
       question: "Combien coûte la création d'un site internet sur-mesure avec DevSupAi ?",
@@ -214,6 +226,18 @@ export default function GlacierFaq() {
     {
       question: "Quels sont les 3 langages du web ?",
       answer: "Les 3 langages fondamentaux qui constituent le socle universel de tout site internet sont : HTML (HyperText Markup Language) pour structurer le contenu sémantique et l'architecture des pages, CSS (Cascading Style Sheets) pour gérer la présentation visuelle, les styles, les couleurs et l'adaptabilité sur mobiles (responsive design), et JavaScript (JS) pour apporter du dynamisme, gérer les interactions utilisateur et traiter des données en temps réel sans recharger la page. Tous les navigateurs modernes exécutent nativement ce trio, aujourd'hui souvent enrichi par TypeScript pour garantir une robustesse logicielle maximale.",
+    },
+    {
+      question: "Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ?",
+      answer: "L'intelligence artificielle est utilisée chez DevSupAi comme un accélérateur technique de haute précision, sous la supervision exclusive d'un développeur humain expérimenté. Elle intervient lors des phases de prototypage, de refactorisation de code et d'automatisation de tests de performance. Contrairement aux générateurs automatiques « no-code » qui produisent des architectures lourdes et opaques, chaque ligne de code finale est auditée, optimisée et validée manuellement pour garantir une sécurité sans compromis et des temps de chargement instantanés.",
+    },
+    {
+      question: "Est-ce que mon site sera codé par une IA ou par un humain ?",
+      answer: "Votre site est conçu, architecturé et livré par un développeur humain (Alexandre Pabst). L'IA agit uniquement comme un assistant d'atelier (génération de squelettes techniques, tests de non-régression, vérification de typage), mais la direction artistique, l'ergonomie UX, la hiérarchie sémantique SEO, la sécurité des formulaires et l'accessibilité restent 100% pilotées et vérifiées par l'humain. Vous bénéficiez ainsi d'un interlocuteur direct dédié, sans boîte noire.",
+    },
+    {
+      question: "Que se passe-t-il pour l'hébergement et le nom de domaine après la première année incluse ?",
+      answer: "L'hébergement sécurisé haute performance et votre nom de domaine personnalisé sont intégralement inclus la première année dans chaque forfait. À l'échéance annuelle, vous conservez une liberté totale : vous pouvez renouveler votre infrastructure via DevSupAi à prix coûtant direct (généralement entre 39 € et 49 € par an selon l'extension choisie, sans aucune marge cachée), ou choisir d'héberger votre site où vous le souhaitez. Vous êtes le propriétaire exclusif de l'intégralité du code source et de vos identifiants, sans aucun contrat d'engagement captif.",
     },
   ];
 

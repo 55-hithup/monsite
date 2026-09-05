@@ -73,6 +73,55 @@ const pageMetadata: Record<string, RouteMeta> = {
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
 
+  // French Trade Pages
+  '/sites-internet/artisan-renovation': {
+    title: 'Création de Site Internet pour Artisan du Bâtiment & Rénovation en Meuse | DevSupAi',
+    description: "Conception sur-mesure de sites vitrines pour artisans du bâtiment, menuisiers, électriciens et peintres en Meuse (55) et Grand Est. Galerie chantiers HD, formulaires de devis et SEO local.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/sites-internet/profession-liberale': {
+    title: 'Création de Site Internet pour Profession Libérale & Médicale | DevSupAi',
+    description: "Site web professionnel sur-mesure pour professions libérales, avocats, architectes, consultants et praticiens de santé. Présentation soignée, prise de contact sécurisée et conformité déontologique.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/sites-internet/restaurant': {
+    title: 'Création de Site Internet pour Restaurant & Bistronomie en Meuse | DevSupAi',
+    description: "Site web sur-mesure pour restaurants, brasseries et traiteurs en Meuse et Grand Est. Menus en ligne réactifs sans PDF lourd, moteur de réservation directe sans commission et photos HD.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+
+  // French Blog Outline Pages
+  '/blog/site-internet-vs-google-business': {
+    title: 'Site internet vs Fiche Google Business : lequel choisir pour votre entreprise locale ? | Blog DevSupAi',
+    description: "Analyse comparative détaillée entre site internet sur-mesure et fiche Google Maps d'établissement pour PME et artisans. Découvrez pourquoi ces deux canaux sont indissociables.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/blog/pourquoi-eviter-wordpress-petit-budget': {
+    title: 'Pourquoi éviter WordPress pour un petit budget en 2026 ? | Blog DevSupAi',
+    description: "L'illusion du CMS gratuit décryptée : abonnements récurrents de plugins, failles de sécurité régulières et lenteurs techniques. Pourquoi le sur-mesure est plus rentable dès la 1ère année.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/blog/artisan-convertir-plus-de-devis': {
+    title: 'Comment un artisan du bâtiment peut convertir 2x plus de devis grâce à son site | Blog DevSupAi',
+    description: "Guide méthodologique pour les professionnels du bâtiment : structure de page idéale, preuves de réassurance décennale, photos avant/après et formulaires de demande simplifiés.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/blog/cout-reel-site-internet-3-ans': {
+    title: "Quel est le coût réel d'un site internet sur 3 ans ? (Coûts cachés vs sur-mesure) | Blog DevSupAi",
+    description: "Calcul complet du coût total de possession (TCO) d'un site web d'entreprise sur 36 mois : création initiale, hébergement, licences de plugins et infogérance.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/blog/reservation-directe-restaurant-sans-commission': {
+    title: 'Réservation directe pour restaurants : comment se libérer des commissions de plateformes | Blog DevSupAi',
+    description: "Pourquoi et comment reprendre la main sur vos réservations de table en direct. Économisez des milliers d'euros de commissions annuelles tout en fidélisant votre clientèle.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/blog/ia-creation-site-web-opportunites-pieges': {
+    title: "L'intelligence artificielle dans la création web : opportunités réelles et pièges à éviter | Blog DevSupAi",
+    description: "Démystification de l'IA dans le développement web : pourquoi les générateurs automatiques no-code échouent sur la durée et comment le pilotage humain par agents produit un code d'élite.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+
   // English Pages (EN)
   '/en': {
     title: 'DevSupAi • Alexandre Pabst | Bespoke Web Developer & Engineering',
@@ -135,6 +184,55 @@ const pageMetadata: Record<string, RouteMeta> = {
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
 
+  // English Trade Pages
+  '/en/websites/artisan-construction': {
+    title: 'Website Development for Construction Craftsmen & Contractors | DevSupAi',
+    description: 'Bespoke showcase websites for construction craftsmen, carpenters, electricians, and painters in Grand Est and France. High-definition portfolio, custom quote forms, and local SEO.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/en/websites/professional-services': {
+    title: 'Website Development for Legal, Medical & Professional Services | DevSupAi',
+    description: 'Bespoke websites for legal, medical, and professional consulting practices. Elegant design, secure inquiries, GDPR compliance, and professional distinction.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/en/websites/restaurant': {
+    title: 'Custom Website Development for Restaurants & Bistros | DevSupAi',
+    description: 'Bespoke websites for restaurants, bistros, and catering businesses. Responsive digital menus without heavy PDFs, direct commission-free booking engine, and HD food photography.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+
+  // English Blog Outline Pages
+  '/en/blog/site-internet-vs-google-business': {
+    title: 'Website vs Google Business Profile: Which One for Your Local Business? | DevSupAi Blog',
+    description: 'In-depth comparison between a custom website and a Google Maps profile for SMEs and contractors. Discover why both channels must work in tandem.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/en/blog/pourquoi-eviter-wordpress-petit-budget': {
+    title: 'Why Avoid WordPress on a Small Budget in 2026? | DevSupAi Blog',
+    description: 'The hidden costs of "free" CMS: recurring plugin subscriptions, frequent security vulnerabilities, and slow page loads. Why bespoke code is more profitable from year one.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/en/blog/artisan-convertir-plus-de-devis': {
+    title: 'How Contractors Can Double Quote Conversion Rates with Their Website | DevSupAi Blog',
+    description: 'Methodological guide for building trades: ideal page structure, liability insurance badges, before/after photography, and streamlined inquiry forms.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/en/blog/cout-reel-site-internet-3-ans': {
+    title: 'What Is the Real 3-Year Cost of a Website? (Hidden Fees vs Bespoke) | DevSupAi Blog',
+    description: 'Complete breakdown of the Total Cost of Ownership (TCO) for a business website over 36 months: initial build, hosting, plugin licenses, and maintenance.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/en/blog/reservation-directe-restaurant-sans-commission': {
+    title: 'Direct Restaurant Reservations: Freeing Yourself from Platform Commissions | DevSupAi Blog',
+    description: 'Why and how restaurateurs should regain direct control over their bookings. Save thousands in annual fees while building loyal customer relationships.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+  '/en/blog/ia-creation-site-web-opportunites-pieges': {
+    title: 'AI in Web Development: Real Opportunities and Pitfalls to Avoid | DevSupAi Blog',
+    description: 'Demystifying AI in software craftsmanship: why automated no-code generators fail over time and how human-supervised agentic engineering produces elite code.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
+
   // Admin Pages
   '/admin/login': {
     title: 'Connexion Administration | DevSupAi',
@@ -161,6 +259,15 @@ const routePairs = [
   { fr: '/projets/abogame', en: '/en/projects/abogame' },
   { fr: '/mentions-legales', en: '/en/legal-notices' },
   { fr: '/politique-de-confidentialite', en: '/en/privacy-policy' },
+  { fr: '/sites-internet/artisan-renovation', en: '/en/websites/artisan-construction' },
+  { fr: '/sites-internet/profession-liberale', en: '/en/websites/professional-services' },
+  { fr: '/sites-internet/restaurant', en: '/en/websites/restaurant' },
+  { fr: '/blog/site-internet-vs-google-business', en: '/en/blog/site-internet-vs-google-business' },
+  { fr: '/blog/pourquoi-eviter-wordpress-petit-budget', en: '/en/blog/pourquoi-eviter-wordpress-petit-budget' },
+  { fr: '/blog/artisan-convertir-plus-de-devis', en: '/en/blog/artisan-convertir-plus-de-devis' },
+  { fr: '/blog/cout-reel-site-internet-3-ans', en: '/en/blog/cout-reel-site-internet-3-ans' },
+  { fr: '/blog/reservation-directe-restaurant-sans-commission', en: '/en/blog/reservation-directe-restaurant-sans-commission' },
+  { fr: '/blog/ia-creation-site-web-opportunites-pieges', en: '/en/blog/ia-creation-site-web-opportunites-pieges' },
 ];
 
 function buildBreadcrumbSchema(cleanRoute: string, isEnglish: boolean, pageTitle: string) {
@@ -210,6 +317,21 @@ function buildBreadcrumbSchema(cleanRoute: string, isEnglish: boolean, pageTitle
       name: pageTitle,
       item: currentUrl,
     });
+  } else if (cleanRoute.startsWith('/sites-internet/') || cleanRoute.startsWith('/en/websites/')) {
+    const servicesUrl = isEnglish ? 'https://www.devsupai.fr/en/services' : 'https://www.devsupai.fr/nos-services';
+    const servicesName = isEnglish ? 'Services' : 'Prestations';
+    items.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: servicesName,
+      item: servicesUrl,
+    });
+    items.push({
+      '@type': 'ListItem',
+      position: 3,
+      name: pageTitle,
+      item: currentUrl,
+    });
   } else {
     items.push({
       '@type': 'ListItem',
@@ -247,6 +369,15 @@ export default defineConfig({
         '/projets/abogame',
         '/mentions-legales',
         '/politique-de-confidentialite',
+        '/sites-internet/artisan-renovation',
+        '/sites-internet/profession-liberale',
+        '/sites-internet/restaurant',
+        '/blog/site-internet-vs-google-business',
+        '/blog/pourquoi-eviter-wordpress-petit-budget',
+        '/blog/artisan-convertir-plus-de-devis',
+        '/blog/cout-reel-site-internet-3-ans',
+        '/blog/reservation-directe-restaurant-sans-commission',
+        '/blog/ia-creation-site-web-opportunites-pieges',
 
         // English Routes
         '/en',
@@ -256,6 +387,15 @@ export default defineConfig({
         '/en/blog/site-web-pme-association',
         '/en/blog/pourquoi-eviter-les-templates',
         '/en/blog/performance-web-sur-mesure',
+        '/en/blog/site-internet-vs-google-business',
+        '/en/blog/pourquoi-eviter-wordpress-petit-budget',
+        '/en/blog/artisan-convertir-plus-de-devis',
+        '/en/blog/cout-reel-site-internet-3-ans',
+        '/en/blog/reservation-directe-restaurant-sans-commission',
+        '/en/blog/ia-creation-site-web-opportunites-pieges',
+        '/en/websites/artisan-construction',
+        '/en/websites/professional-services',
+        '/en/websites/restaurant',
         '/en/projects/atelier-gourmand',
         '/en/projects/locatool',
         '/en/projects/abogame',
@@ -453,6 +593,30 @@ export default defineConfig({
                     "@type": "Answer",
                     "text": "The 3 foundational languages that form the universal cornerstone of every website on the Internet are: HTML (HyperText Markup Language) to semantically structure content and page architecture, CSS (Cascading Style Sheets) to handle visual layout, typography, colors, and mobile responsiveness, and JavaScript (JS) to power dynamic interactivity, user actions, and real-time asynchronous data fetching. Every modern browser runs this standard trio natively, which is frequently combined with TypeScript for maximum code reliability and scalability."
                   }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How does artificial intelligence integrate into your DevSupAi projects?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Artificial intelligence is utilized at DevSupAi as a specialized technical accelerator under the direct supervision of an experienced human engineer. It assists during rapid prototyping, code refactoring, and automated performance testing. Unlike generic no-code AI builders that output opaque and heavy codebases, every single line of production code is manually audited, optimized, and secured to ensure lightning-fast loading speeds and flawless reliability."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Will my website be coded by an AI or by a human developer?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your website is architected, hand-coded, and delivered by a human developer (Alexandre Pabst). AI serves exclusively as a high-precision workshop tool (generating boilerplate scaffolds, regression tests, and type checking), while the creative craft, UX design, semantic SEO hierarchy, form security, and WCAG accessibility remain 100% human-engineered and verified. You benefit from a dedicated direct human partner without any opaque black box."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What happens regarding hosting and domain registration after the first included year?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "High-performance secure edge hosting and your custom domain name are fully included for the first year with every package. Upon annual renewal, you retain 100% freedom: you can renew through DevSupAi at direct cost (typically between €39 and €49 per year depending on the domain extension, with zero hidden markup), or choose to host your project with any provider of your choice. You are the sole owner of all source code, assets, and DNS records with zero forced lock-in."
+                  }
                 }
               ]
             }
@@ -547,6 +711,30 @@ export default defineConfig({
                     "@type": "Answer",
                     "text": "Les 3 langages fondamentaux qui constituent le socle universel de tout site internet sont : HTML (HyperText Markup Language) pour structurer le contenu sémantique et l'architecture des pages, CSS (Cascading Style Sheets) pour gérer la présentation visuelle, les styles, les couleurs et l'adaptabilité sur mobiles (responsive design), et JavaScript (JS) pour apporter du dynamisme, gérer les interactions utilisateur et traiter des données en temps réel sans recharger la page. Tous les navigateurs modernes exécutent nativement ce trio, aujourd'hui souvent enrichi par TypeScript pour garantir une robustesse logicielle maximale."
                   }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "L'intelligence artificielle est utilisée chez DevSupAi comme un accélérateur technique de haute précision, sous la supervision exclusive d'un développeur humain expérimenté. Elle intervient lors des phases de prototypage, de refactorisation de code et d'automatisation de tests de performance. Contrairement aux générateurs automatiques « no-code » qui produisent des architectures lourdes et opaques, chaque ligne de code finale est auditée, optimisée et validée manuellement pour garantir une sécurité sans compromis et des temps de chargement instantanés."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Est-ce que mon site sera codé par une IA ou par un humain ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Votre site est conçu, architecturé et livré par un développeur humain (Alexandre Pabst). L'IA agit uniquement comme un assistant d'atelier (génération de squelettes techniques, tests de non-régression, vérification de typage), mais la direction artistique, l'ergonomie UX, la hiérarchie sémantique SEO, la sécurité des formulaires et l'accessibilité restent 100% pilotées et vérifiées par l'humain. Vous bénéficiez ainsi d'un interlocuteur direct dédié, sans boîte noire."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Que se passe-t-il pour l'hébergement et le nom de domaine après la première année incluse ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "L'hébergement sécurisé haute performance et votre nom de domaine personnalisé sont intégralement inclus la première année dans chaque forfait. À l'échéance annuelle, vous conservez une liberté totale : vous pouvez renouveler votre infrastructure via DevSupAi à prix coûtant direct (généralement entre 39 € et 49 € par an selon l'extension choisie, sans aucune marge cachée), ou choisir d'héberger votre site où vous le souhaitez. Vous êtes le propriétaire exclusif de l'intégralité du code source et de vos identifiants, sans aucun contrat d'engagement captif."
+                  }
                 }
               ]
             };
@@ -634,16 +822,37 @@ export default defineConfig({
 
       // 5. Blog Posting Schemas
       if (cleanRoute.startsWith('/blog/') || cleanRoute.startsWith('/en/blog/')) {
-        const isTemplates = cleanRoute.includes('pourquoi-eviter-les-templates');
-        const isPerf = cleanRoute.includes('performance-web-sur-mesure');
-
         const articleDates: Record<string, { published: string; modified: string }> = {
           templates: { published: "2026-08-04T08:00:00+02:00", modified: "2026-08-14T00:00:00+02:00" },
           perf: { published: "2026-08-02T09:00:00+02:00", modified: "2026-08-14T00:00:00+02:00" },
           asso: { published: "2026-08-10T10:00:00+02:00", modified: "2026-08-14T00:00:00+02:00" },
+          google: { published: "2026-09-10T08:00:00+02:00", modified: "2026-09-10T08:00:00+02:00" },
+          wordpress: { published: "2026-09-15T08:00:00+02:00", modified: "2026-09-15T08:00:00+02:00" },
+          artisan: { published: "2026-09-20T08:00:00+02:00", modified: "2026-09-20T08:00:00+02:00" },
+          cout: { published: "2026-09-25T08:00:00+02:00", modified: "2026-09-25T08:00:00+02:00" },
+          resto: { published: "2026-09-30T08:00:00+02:00", modified: "2026-09-30T08:00:00+02:00" },
+          ia: { published: "2026-10-05T08:00:00+02:00", modified: "2026-10-05T08:00:00+02:00" },
         };
 
-        const dates = isTemplates ? articleDates.templates : isPerf ? articleDates.perf : articleDates.asso;
+        const dates = cleanRoute.includes('pourquoi-eviter-les-templates')
+          ? articleDates.templates
+          : cleanRoute.includes('performance-web-sur-mesure')
+          ? articleDates.perf
+          : cleanRoute.includes('site-web-pme-association')
+          ? articleDates.asso
+          : cleanRoute.includes('site-internet-vs-google-business')
+          ? articleDates.google
+          : cleanRoute.includes('pourquoi-eviter-wordpress-petit-budget')
+          ? articleDates.wordpress
+          : cleanRoute.includes('artisan-convertir-plus-de-devis')
+          ? articleDates.artisan
+          : cleanRoute.includes('cout-reel-site-internet-3-ans')
+          ? articleDates.cout
+          : cleanRoute.includes('reservation-directe-restaurant-sans-commission')
+          ? articleDates.resto
+          : cleanRoute.includes('ia-creation-site-web-opportunites-pieges')
+          ? articleDates.ia
+          : articleDates.asso;
 
         const blogPostingSchema = {
           "@context": "https://schema.org",
@@ -704,6 +913,41 @@ export default defineConfig({
           }
         };
         injectedScripts.push(`<script type="application/ld+json" id="case-study-ssg">${JSON.stringify(caseStudySchema)}</script>`);
+      }
+
+      // 7. Trade / Sector Pages Schemas (Service)
+      if (cleanRoute.startsWith('/sites-internet/') || cleanRoute.startsWith('/en/websites/')) {
+        const isRestaurant = cleanRoute.includes('restaurant');
+        const isLiberal = cleanRoute.includes('profession-liberale') || cleanRoute.includes('professional-services');
+        const tradeServiceSchema = {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": meta.title.split('|')[0].trim(),
+          "description": meta.description,
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "DevSupAi",
+            "url": "https://www.devsupai.fr",
+            "telephone": "+33783666098",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "13 Allée des Roses",
+              "addressLocality": "Saint-Mihiel",
+              "postalCode": "55300",
+              "addressRegion": "Grand Est",
+              "addressCountry": "FR"
+            }
+          },
+          "serviceType": isRestaurant ? "Création Site Restaurant" : isLiberal ? "Création Site Profession Libérale" : "Création Site Artisan",
+          "areaServed": ["FR", "Grand Est", "Meuse"],
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": isRestaurant ? "1850" : isLiberal ? "1850" : "950",
+            "description": meta.description
+          }
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="trade-service-ssg">${JSON.stringify(tradeServiceSchema)}</script>`);
       }
 
       if (injectedScripts.length > 0) {

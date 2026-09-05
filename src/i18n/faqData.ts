@@ -64,6 +64,21 @@ export const faqData = {
         short: "Les 3 langages fondamentaux du web sont HTML (structure sémantique), CSS (mise en page et design) et JavaScript (interactivité et logique dynamique).",
         detail: "Ces trois standards sont exécutés nativement par tous les navigateurs internet modernes et forment le socle incontournable de tout projet web.",
       },
+      {
+        q: "Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ?",
+        short: "L'intelligence artificielle agit comme un accélérateur technique sous le contrôle et la supervision humaine d'un développeur expérimenté.",
+        detail: "Elle intervient pour le prototypage rapide et l'automatisation de tests. Chaque ligne de code finale est auditée et optimisée manuellement sans générateur no-code opaque.",
+      },
+      {
+        q: "Est-ce que mon site sera codé par une IA ou par un humain ?",
+        short: "Votre site est 100% conçu, architecturé et livré par un développeur humain (Alexandre Pabst).",
+        detail: "L'IA n'est qu'un outil d'atelier : la créativité, la direction UX, la structure SEO sémantique, la sécurité et l'accessibilité restent intégralement gérées par l'humain.",
+      },
+      {
+        q: "Que se passe-t-il pour l'hébergement et le nom de domaine après la première année incluse ?",
+        short: "L'hébergement et le nom de domaine sont inclus la 1ère année. Ensuite, vous êtes libre de renouveler au prix coûtant (39 € à 49 €/an) ou de migrer.",
+        detail: "Vous êtes le propriétaire exclusif de l'intégralité du code et de votre nom de domaine, sans aucun abonnement captif ni frais de sortie imposés.",
+      },
     ],
   },
   en: {
@@ -124,6 +139,21 @@ export const faqData = {
         q: "What are the 3 core languages of the web?",
         short: "The 3 foundational languages of the web are HTML (semantic structure), CSS (styling and responsive layout), and JavaScript (dynamic client-side interactivity).",
         detail: "All modern browsers interpret these three universal standards natively, often enriched by TypeScript for enterprise scalability.",
+      },
+      {
+        q: "How does artificial intelligence integrate into your DevSupAi projects?",
+        short: "Artificial intelligence serves as a high-precision technical accelerator under the direct supervision of an experienced human engineer.",
+        detail: "It assists during prototyping and automated testing. Every line of production code is manually audited, optimized, and secured with zero opaque no-code tools.",
+      },
+      {
+        q: "Will my website be coded by an AI or by a human developer?",
+        short: "Your website is 100% architected, coded, and delivered by a human developer (Alexandre Pabst).",
+        detail: "AI is strictly a workshop tool: visual craft, UX direction, semantic SEO, form security, and WCAG accessibility remain entirely engineered by a human.",
+      },
+      {
+        q: "What happens regarding hosting and domain registration after the first included year?",
+        short: "Hosting and custom domain are included for the 1st year. Afterwards, you are free to renew at direct cost (€39 to €49/yr) or migrate.",
+        detail: "You are the exclusive owner of all source code, assets, and domain records with zero forced retention or hidden transfer fees.",
       },
     ],
   },

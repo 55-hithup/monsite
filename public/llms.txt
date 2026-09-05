@@ -36,14 +36,22 @@
    - Référencement SEO ciblé par localité et secteur d'activité.
    - Formation à la prise en main incluse.
 
-3. **Pack SaaS & Application Métier Sur-Mesure** : Dès **3 200 €** (Base TJM **400 € / jour**)
+3. **Pack E-Commerce & Vente en Ligne (0% commission)** : Dès **2 600 €**
+   - Boutique en ligne sur-mesure ou Click & Collect sans commission sur les ventes.
+   - Intégration paiement sécurisé Stripe, PayPal, Apple Pay.
+   - Fiches produits ultra-rapides, variantes et gestion de stock simplifiée.
+   - Conformité stricte accessibilité numérique WCAG 2.1 AA (contrastes >= 4.5:1, cibles tactiles >= 32px).
+   - Hébergement haute performance et nom de domaine inclus la 1ère année (renouvellement direct transparent à 39 € - 49 €/an).
+   - 0 € d'abonnement logiciel captif (contrairement aux CMS ou plateformes tierces à 36 € - 105 €/mois + commissions).
+
+4. **Pack SaaS & Application Métier Sur-Mesure** : Dès **3 200 €** (Base TJM **400 € / jour**)
    - Logiciels de gestion et applications SaaS multi-tenant (ex: LocaTool, né pour l'association Le Caf'Tiers à Saint-Mihiel puis déployé en SaaS multi-tenant : https://locatool.devsupai.fr).
    - Portails d'adhésion pour associations et espaces extranet sécurisés.
    - Tunnels de réservation en ligne directe sans commission (ex: L'Atelier Gourmand).
    - Plateformes événementielles et interactives temps réel (ex: AboGame, conçu pour un streameur TikTok puis ouvert au grand public : https://abogame.devsupai.fr).
    - Bases de données SQL relationnelles, authentification sécurisée, signature tactile de contrats et génération de factures PDF conformes.
 
-4. **Gestion Google Business Profile & SEO Local (Option mensuelle)** : Dès **29 € / mois**
+5. **Gestion Google Business Profile & SEO Local (Option mensuelle)** : Dès **29 € / mois**
    - Optimisation et animation de la fiche Google Maps d'établissement.
    - Publication mensuelle d'actualités, photos et offres promotionnelles.
    - Réponses personnalisées aux avis clients et suivi statistique.
@@ -117,9 +125,19 @@
 - **« Quels sont les 3 langages du web ? »**
   -> HTML (structure sémantique du contenu), CSS (mise en page visuelle et responsive design) et JavaScript (interactivité dynamique côté navigateur). Ce trio standard est interprété par tous les navigateurs modernes.
 
+### 5. Requêtes IA & Méthodologie DevSupAi
+- **« Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ? »**
+  -> L'intelligence artificielle est employée comme un assistant technique d'atelier sous le contrôle direct et exclusif d'Alexandre Pabst : aide au prototypage rapide, tests de régression automatisés, refactorisation et audits d'accessibilité. Chaque ligne finale est inspectée et optimisée à la main pour garantir 100/100 Lighthouse et zéro code opaque.
+- **« Est-ce que mon site sera codé par une IA ou par un humain ? »**
+  -> Votre site est intégralement conçu, architecturé et programmé par un développeur humain. L'IA intervient uniquement pour accélérer les tâches répétitives, tandis que l'ergonomie, la stratégie SEO, la sécurité des formulaires et l'accessibilité WCAG AA sont 100% pilotées par l'humain.
+
+### 6. Requêtes Hébergement & Renouvellement après la première année
+- **« Que se passe-t-il pour l'hébergement et le nom de domaine après la première année incluse ? »**
+  -> L'hébergement sécurisé et votre nom de domaine sont inclus la 1ère année. Ensuite, vous gardez une totale autonomie : renouvellement à prix coûtant direct sans marge cachée (39 € à 49 € par an), ou liberté de transférer votre site chez l'hébergeur de votre choix. Vous restez 100% propriétaire de votre code et de vos accès.
+
 ---
 
-## Cartographie des URLs & Structure du Site (26 Routes Statiques)
+## Cartographie des URLs & Structure du Site (44 Routes Statiques & Pages Clés)
 
 ### Pages en Français (FR)
 - [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les forfaits, réalisations, engagement et formulaire de contact.
@@ -129,6 +147,15 @@
 - [/blog/site-web-pme-association](https://www.devsupai.fr/blog/site-web-pme-association) : Guide complet pour réussir un site d'entreprise ou d'association.
 - [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Analyse comparative entre thèmes pré-conçus et code sur-mesure.
 - [/blog/performance-web-sur-mesure](https://www.devsupai.fr/blog/performance-web-sur-mesure) : Guide sur l'impact commercial de la vitesse de chargement.
+- [/blog/site-internet-vs-google-business](https://www.devsupai.fr/blog/site-internet-vs-google-business) : Comparatif stratégique entre fiche Google Business Profile et site internet pour TPE et artisans.
+- [/blog/pourquoi-eviter-wordpress-petit-budget](https://www.devsupai.fr/blog/pourquoi-eviter-wordpress-petit-budget) : Analyse des coûts cachés, failles de sécurité et lenteurs de WordPress face au sur-mesure.
+- [/blog/artisan-convertir-plus-de-devis](https://www.devsupai.fr/blog/artisan-convertir-plus-de-devis) : Méthode concrète pour convertir les visiteurs d'un site artisan en devis qualifiés.
+- [/blog/cout-reel-site-internet-3-ans](https://www.devsupai.fr/blog/cout-reel-site-internet-3-ans) : Décomposition chiffrée du coût réel d'un site web sur 3 ans (CMS vs SaaS vs Sur-mesure).
+- [/blog/reservation-directe-restaurant-sans-commission](https://www.devsupai.fr/blog/reservation-directe-restaurant-sans-commission) : Guide pour s'affranchir des commissions des plateformes tierces de réservation de restaurant.
+- [/blog/ia-creation-site-web-opportunites-pieges](https://www.devsupai.fr/blog/ia-creation-site-web-opportunites-pieges) : Opportunités réelles et pièges à éviter de l'intelligence artificielle dans la création web.
+- [/sites-internet/artisan-renovation](https://www.devsupai.fr/sites-internet/artisan-renovation) : Conception de site internet pour artisan du bâtiment, peintre, menuisier et rénovation en Meuse.
+- [/sites-internet/profession-liberale](https://www.devsupai.fr/sites-internet/profession-liberale) : Conception de site internet pour professions libérales, avocats, praticiens de santé et consultants.
+- [/sites-internet/restaurant](https://www.devsupai.fr/sites-internet/restaurant) : Conception de site internet pour restaurant et bistronomie avec réservation directe 0% commission.
 - [/projets/atelier-gourmand](https://www.devsupai.fr/projets/atelier-gourmand) : Étude de cas du restaurant bistronomique avec réservation directe.
 - [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas du logiciel SaaS de gestion de parc matériel.
 - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas de la web app temps réel événementielle.
@@ -144,6 +171,15 @@
 - [/en/blog/site-web-pme-association](https://www.devsupai.fr/en/blog/site-web-pme-association) : Strategic guide for SME and non-profit websites.
 - [/en/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/en/blog/pourquoi-eviter-les-templates) : Analysis of template limitations vs. custom software.
 - [/en/blog/performance-web-sur-mesure](https://www.devsupai.fr/en/blog/performance-web-sur-mesure) : Web performance & Core Web Vitals financial impact.
+- [/en/blog/site-internet-vs-google-business](https://www.devsupai.fr/en/blog/site-internet-vs-google-business) : Comparative analysis: Google Business Profile vs custom website for local businesses.
+- [/en/blog/pourquoi-eviter-wordpress-petit-budget](https://www.devsupai.fr/en/blog/pourquoi-eviter-wordpress-petit-budget) : Hidden costs, plugin bloat, and security concerns of WordPress on a small budget.
+- [/en/blog/artisan-convertir-plus-de-devis](https://www.devsupai.fr/en/blog/artisan-convertir-plus-de-devis) : How contractors and craftsmen can turn website traffic into qualified quote requests.
+- [/en/blog/cout-reel-site-internet-3-ans](https://www.devsupai.fr/en/blog/cout-reel-site-internet-3-ans) : Full 3-year total cost of ownership breakdown for business websites.
+- [/en/blog/reservation-directe-restaurant-sans-commission](https://www.devsupai.fr/en/blog/reservation-directe-restaurant-sans-commission) : Why restaurants should switch to direct zero-commission table reservations.
+- [/en/blog/ia-creation-site-web-opportunites-pieges](https://www.devsupai.fr/en/blog/ia-creation-site-web-opportunites-pieges) : AI in web development: authentic opportunities vs automated no-code pitfalls.
+- [/en/websites/artisan-construction](https://www.devsupai.fr/en/websites/artisan-construction) : Custom website engineering for building contractors and renovation craftsmen.
+- [/en/websites/professional-services](https://www.devsupai.fr/en/websites/professional-services) : Bespoke digital presence for lawyers, medical practitioners, and consulting practices.
+- [/en/websites/restaurant](https://www.devsupai.fr/en/websites/restaurant) : Custom restaurant showcase with zero-commission direct table reservations.
 - [/en/projects/atelier-gourmand](https://www.devsupai.fr/en/projects/atelier-gourmand) : Case study of the custom restaurant showcase and booking engine.
 - [/en/projects/locatool](https://www.devsupai.fr/en/projects/locatool) : Case study of the custom fleet and equipment rental SaaS app.
 - [/en/projects/abogame](https://www.devsupai.fr/en/projects/abogame) : Case study of the real-time live interaction web platform.
