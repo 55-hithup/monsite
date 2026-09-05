@@ -569,15 +569,23 @@ export default function About() {
                 className={`h-full flex flex-col justify-between p-8 rounded-none bg-white border border-[#E5E5E5] shadow-sm text-center relative group ${isFlipped ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}
               >
                 <div>
-                  <img
-                    src="/alexandre-pabst.webp"
-                    alt={language === 'en' ? "Alexandre Pabst – Freelance Web Developer & Founder of DevSupAi" : "Alexandre Pabst – Développeur Web Indépendant & Fondateur DevSupAi"}
-                    width="96"
-                    height="96"
-                    className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-[#0284C7] shadow-md transition-transform duration-300 group-hover:scale-105"
-                    loading="eager"
-                    decoding="async"
-                  />
+                  <div 
+                    className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-[#0284C7] shadow-md transition-transform duration-300 group-hover:scale-105 select-none"
+                    onContextMenu={(e) => e.preventDefault()}
+                  >
+                    <img
+                      src="/alexandre-pabst.webp"
+                      alt={language === 'en' ? "Alexandre Pabst – Freelance Web Developer & Founder of DevSupAi" : "Alexandre Pabst – Développeur Web Indépendant & Fondateur DevSupAi"}
+                      width="96"
+                      height="96"
+                      className="w-full h-full object-cover pointer-events-none select-none"
+                      loading="eager"
+                      decoding="async"
+                      draggable={false}
+                    />
+                    {/* Calque transparent protecteur interceptant tout clic droit */}
+                    <div className="absolute inset-0 z-10 bg-transparent rounded-full cursor-default" aria-hidden="true" />
+                  </div>
                   <h3 className="text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-1">Alexandre Pabst</h3>
                   <span className="text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] block uppercase tracking-wider mb-2">
                     {t.founderRole}
@@ -639,15 +647,23 @@ export default function About() {
                       {/* FACE RECTO (Exactement la carte d'origine pendant le décollage avec ombre portée réaliste) */}
                       <div className={`flip-card-3d-face flip-card-3d-front rounded-none bg-white border border-[#E5E5E5] flip-card-drop-shadow p-8 text-center flex flex-col justify-between ${isFlipped ? 'pointer-events-none' : 'pointer-events-auto'}`}>
                         <div>
-                          <img
-                            src="/alexandre-pabst.webp"
-                            alt={language === 'en' ? "Alexandre Pabst – Freelance Web Developer & Founder of DevSupAi" : "Alexandre Pabst – Développeur Web Indépendant & Fondateur DevSupAi"}
-                            width="96"
-                            height="96"
-                            className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-[#0284C7] shadow-md"
-                            loading="eager"
-                            decoding="async"
-                          />
+                          <div 
+                            className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-[#0284C7] shadow-md select-none"
+                            onContextMenu={(e) => e.preventDefault()}
+                          >
+                            <img
+                              src="/alexandre-pabst.webp"
+                              alt={language === 'en' ? "Alexandre Pabst – Freelance Web Developer & Founder of DevSupAi" : "Alexandre Pabst – Développeur Web Indépendant & Fondateur DevSupAi"}
+                              width="96"
+                              height="96"
+                              className="w-full h-full object-cover pointer-events-none select-none"
+                              loading="eager"
+                              decoding="async"
+                              draggable={false}
+                            />
+                            {/* Calque transparent protecteur interceptant tout clic droit */}
+                            <div className="absolute inset-0 z-10 bg-transparent rounded-full cursor-default" aria-hidden="true" />
+                          </div>
                           <h3 className="text-2xl font-black font-['Montserrat'] text-[#1A1A1A] mb-1">Alexandre Pabst</h3>
                           <span className="text-xs sm:text-sm font-bold font-['Montserrat'] text-[#0284C7] block uppercase tracking-wider mb-2">
                             {t.founderRole}
