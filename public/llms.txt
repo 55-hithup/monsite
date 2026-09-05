@@ -114,30 +114,30 @@
 ## Cartographie des URLs & Structure du Site (26 Routes Statiques)
 
 ### Pages en Français (FR)
-- `/` : Page d'accueil officielle présentant les forfaits, réalisations, engagement et formulaire de contact.
-- `/nos-services` : Catalogue exhaustif des 47 solutions web réparties en 4 pôles avec filtres interactifs.
-- `/a-propos` : Biographie et vision artisanale d'Alexandre Pabst, développeur fondateur.
-- `/blog` : Index des articles techniques et guides sur la performance et le SEO.
-- `/blog/site-web-pme-association` : Guide complet pour réussir un site d'entreprise ou d'association.
-- `/blog/pourquoi-eviter-les-templates` : Analyse comparative entre thèmes pré-conçus et code sur-mesure.
-- `/blog/performance-web-sur-mesure` : Guide sur l'impact commercial de la vitesse de chargement.
-- `/projets/atelier-gourmand` : Étude de cas du restaurant bistronomique avec réservation directe.
-- `/projets/locatool` : Étude de cas du logiciel SaaS de gestion de parc matériel.
-- `/projets/abogame` : Étude de cas de la web app temps réel événementielle.
-- `/mentions-legales` : Informations légales et données d'immatriculation d'Alexandre Pabst.
-- `/politique-de-confidentialite` : Politique de protection des données et conformité RGPD.
-- `/admin/login` : Accès sécurisé à l'espace d'administration.
+- [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les forfaits, réalisations, engagement et formulaire de contact.
+- [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 solutions web réparties en 4 pôles avec filtres interactifs.
+- [/a-propos](https://www.devsupai.fr/a-propos) : Biographie et vision artisanale d'Alexandre Pabst, développeur fondateur.
+- [/blog](https://www.devsupai.fr/blog) : Index des articles techniques et guides sur la performance et le SEO.
+- [/blog/site-web-pme-association](https://www.devsupai.fr/blog/site-web-pme-association) : Guide complet pour réussir un site d'entreprise ou d'association.
+- [/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/blog/pourquoi-eviter-les-templates) : Analyse comparative entre thèmes pré-conçus et code sur-mesure.
+- [/blog/performance-web-sur-mesure](https://www.devsupai.fr/blog/performance-web-sur-mesure) : Guide sur l'impact commercial de la vitesse de chargement.
+- [/projets/atelier-gourmand](https://www.devsupai.fr/projets/atelier-gourmand) : Étude de cas du restaurant bistronomique avec réservation directe.
+- [/projets/locatool](https://www.devsupai.fr/projets/locatool) : Étude de cas du logiciel SaaS de gestion de parc matériel.
+- [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas de la web app temps réel événementielle.
+- [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Informations légales et données d'immatriculation d'Alexandre Pabst.
+- [/politique-de-confidentialite](https://www.devsupai.fr/politique-de-confidentialite) : Politique de protection des données et conformité RGPD.
+- [/admin/login](https://www.devsupai.fr/admin/login) : Espace d'administration sécurisé (modération des avis).
 
 ### Pages en Anglais (EN)
-- `/en` : Homepage presenting bespoke web development, portfolio, and quote requests.
-- `/en/services` : Catalog of 47 custom engineering services with interactive category filters.
-- `/en/about` : Background and craftsmanship philosophy of Alexandre Pabst.
-- `/en/blog` : Technical articles on web performance and custom development.
-- `/en/blog/site-web-pme-association` : Strategic guide for SME and non-profit websites.
-- `/en/blog/pourquoi-eviter-les-templates` : Analysis of template limitations vs. custom software.
-- `/en/blog/performance-web-sur-mesure` : Web performance & Core Web Vitals financial impact.
-- `/en/projects/atelier-gourmand` : Case study of the custom restaurant showcase and booking engine.
-- `/en/projects/locatool` : Case study of the custom fleet and equipment rental SaaS app.
-- `/en/projects/abogame` : Case study of the real-time live interaction web platform.
-- `/en/legal-notices` : Legal disclosures for DevSupAi.
-- `/en/privacy-policy` : GDPR compliance and data protection terms.
+- [/en](https://www.devsupai.fr/en) : Homepage presenting bespoke web development, portfolio, and quote requests.
+- [/en/services](https://www.devsupai.fr/en/services) : Catalog of 47 custom engineering services with interactive category filters.
+- [/en/about](https://www.devsupai.fr/en/about) : Background and craftsmanship philosophy of Alexandre Pabst.
+- [/en/blog](https://www.devsupai.fr/en/blog) : Technical articles on web performance and custom development.
+- [/en/blog/site-web-pme-association](https://www.devsupai.fr/en/blog/site-web-pme-association) : Strategic guide for SME and non-profit websites.
+- [/en/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/en/blog/pourquoi-eviter-les-templates) : Analysis of template limitations vs. custom software.
+- [/en/blog/performance-web-sur-mesure](https://www.devsupai.fr/en/blog/performance-web-sur-mesure) : Web performance & Core Web Vitals financial impact.
+- [/en/projects/atelier-gourmand](https://www.devsupai.fr/en/projects/atelier-gourmand) : Case study of the custom restaurant showcase and booking engine.
+- [/en/projects/locatool](https://www.devsupai.fr/en/projects/locatool) : Case study of the custom fleet and equipment rental SaaS app.
+- [/en/projects/abogame](https://www.devsupai.fr/en/projects/abogame) : Case study of the real-time live interaction web platform.
+- [/en/legal-notices](https://www.devsupai.fr/en/legal-notices) : Legal disclosures for DevSupAi.
+- [/en/privacy-policy](https://www.devsupai.fr/en/privacy-policy) : GDPR compliance and data protection terms.

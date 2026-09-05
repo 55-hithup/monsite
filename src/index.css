@@ -624,7 +624,7 @@ h1, h2, h3 {
   font-family: var(--font-glacier-serif, 'Playfair Display', Georgia, serif);
   font-style: italic;
   font-size: 0.9375rem;
-  color: #777777;
+  color: #525252;
   margin-top: 6px;
 }
 
@@ -1842,7 +1842,7 @@ h1, h2, h3 {
   padding: 24px 0;
   border-top: 1px solid #E5E5E5;
   font-size: 0.8125rem;
-  color: #888888;
+  color: #4B5563;
 }
 
 .footer-bottom-flex {
@@ -1860,13 +1860,13 @@ h1, h2, h3 {
 }
 
 .legal-links a {
-  color: #888888;
+  color: #4B5563;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .legal-links a:hover {
-  color: #1A1A1A;
+  color: #0284C7;
 }
 
 @media (max-width: 1024px) {

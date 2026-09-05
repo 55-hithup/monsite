@@ -329,6 +329,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
             : '-translate-y-full opacity-0 pointer-events-none'
         }`}
         aria-hidden={!isScrolled}
+        inert={!isScrolled ? true : undefined}
       >
         <nav className="w-full flex items-center justify-center" aria-label={isEn ? 'Floating navigation' : 'Navigation flottante'}>
           <GlacierNavLinks 

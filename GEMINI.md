@@ -23,8 +23,9 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
 * Mettre à jour `public/robots.txt` si de nouvelles routes doivent être bloquées ou autorisées.
 * S'assurer de la présence d'une balise canonique `<link rel="canonical">` pointant vers la version `www.` de l'URL.
 
-## 2. Synchronisation de la documentation globale (Overview)
+## 2. Synchronisation de la documentation globale (Overview & LLMs)
 * Mettre systématiquement à jour le fichier `public/llms.txt` avec les nouvelles routes publiques ou les changements structurels du projet.
+* **Formatage strict des liens `llms.txt` (Standard Lighthouse Agentic Browsing) :** Toutes les routes répertoriées dans `public/llms.txt` doivent impérativement être formatées sous la forme de liens Markdown complets (`- [/route](https://www.devsupai.fr/route) : Description`). Ne jamais utiliser de simples backticks sans lien hypertexte (`- `/route` : ...`), sous peine d'échec direct de l'audit Lighthouse `llms-txt` ("File does not appear to contain any links").
 
 ## 3. Optimisation des images & Médias
 * Les images doivent impérativement être converties au format `.webp` (ou `.svg` pour les logos/icones vectorielles) et compressées à des dimensions réalistes pour éviter les surcharges de bande passante. Aucun format `.png` ou `.jpg` non compressé ne doit être introduit.
@@ -35,6 +36,8 @@ Pour toute modification affectant les routes du site ou le contenu d'une page :
 
 ## 5. Règles d'accessibilité (A11y) & Contraste
 * **Spécificité et contraste des liens :** Pour tout bouton ou lien interactif sur fond de couleur vive (ex: `bg-accent`), s'assurer que la couleur du texte n'est pas surchargée par une règle globale (comme `a { color: #fff }`). Utiliser des styles en ligne explicites (ex: `style={{ color: '#020617' }}`) ou des classes hautement spécifiques pour garantir un ratio de contraste >= 4.5:1 (conforme aux normes WCAG AA).
+* **Contraste strict sur fond blanc (Seuil WCAG AA >= 4.5:1) :** Interdiction formelle d'utiliser des gris clairs type `#888888` (3.54:1) ou `#777777` (4.48:1) pour des textes courants, sous-titres ou liens du footer. Utiliser exclusivement des teintes calibrées avec un ratio supérieur ou égal à 4.5:1 (ex : `#525252` à 7.8:1 ou `#4B5563` à 7.0:1).
+* **Navigation masquée & Isolation ARIA (`inert`) :** Tout conteneur interactif conditionnellement masqué (ex : barre de navigation flottante, tiroir, overlay mobile portant `aria-hidden="true"`) doit impérativement porter l'attribut HTML5 standard `inert={!isVisible ? true : undefined}`. Cela neutralise complètement les descendants focusables (`<a>`, `<button>`) de l'arbre d'accessibilité et élimine les violations `[aria-hidden-focus]` et `[agent-accessibility-tree]` (critique pour le SEO IA / Agentic Browsing).
 * **Pagination & Zones tactiles (Carrousels) :** Les boutons de pagination circulaires (ex: `.testi-dot`) doivent conserver leur design visuel minimaliste (8x8px) mais avoir une zone cliquable agrandie à au moins 24x24px (recommandé 32x32px) à l'aide d'un pseudo-élément `::after` transparent positionné en absolu. L'espacement (`gap`) entre ces boutons voisins doit être de 16px minimum pour éviter les chevauchements tactiles.
 * **Contrôles de formulaires :** Tous les champs de saisie (y compris les cases à cocher type `checkbox`) doivent impérativement posséder une association d'identifiant unique (`id` sur l'input et `htmlFor` sur le `label`) ou un attribut `aria-label` descriptif pour les lecteurs d'écran.
 
