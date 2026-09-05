@@ -90,6 +90,7 @@ export const articleSiteVsGoogleData: FullArticleData = {
       ],
       relatedLinks: [
         { title: "Pack Présence One-Page (dès 950 €)", href: "/#services", description: "Vitrine web épurée sans abonnement logiciel mensuel." },
+        { title: "Catalogue des 47 Prestations", href: "/nos-services", description: "Consultez l'ensemble de nos solutions web et tarifs transparents." },
         { title: "Page Métier Artisan du Bâtiment", href: "/sites-internet/artisan-renovation", description: "Conception de site internet pensé pour la conversion de devis artisan." },
         { title: "Option Gestion Google Business Profile", href: "/#services", description: "Animation, avis et référencement Maps dès 29 €/mois." },
       ],
@@ -225,7 +226,7 @@ export const articlePourquoiEviterWordpressData: FullArticleData = {
       relatedLinks: [
         { title: "Pack Présence One-Page (950 €)", href: "/#services", description: "Architecture sur-mesure ultra-légère sans aucun abonnement." },
         { title: "Guide de la Vitesse Web & Conversion", href: "/blog/performance-web-sur-mesure", description: "Pourquoi la vitesse de chargement est un multiplicateur de ventes." },
-        { title: "FAQ Propriété du Code & CMS", href: "/#faq-atelier", description: "Comprendre les différences concrètes entre CMS et développement sur-mesure." },
+        { title: "FAQ Propriété du Code & CMS", href: "/#faq", description: "Comprendre les différences concrètes entre CMS et développement sur-mesure." },
       ],
     },
     en: {
@@ -297,7 +298,7 @@ export const articleArtisanConvertirDevisData: FullArticleData = {
       category: 'Conversion Artisan',
       date: '20 Septembre 2026',
       readTime: '6 min read',
-      title: "Comment un artisan du bâtiment peut convertir 2x plus de devis grâce à son site internet",
+      title: "Comment un artisan du bâtiment peut convertir plus de devis grâce à son site internet",
       intro: "Dans le bâtiment et la rénovation, avoir un site internet ne suffit plus : ce qui compte, c'est sa capacité à transformer un visiteur hésitant en demande de devis qualifiée. Découvrez les méthodes concrètes éprouvées pour maximiser votre taux de transformation.",
       keyTakeaway: "Un particulier choisit l'artisan qui le rassure le plus vite : clarté des assurances, photos réelles de chantiers locaux et réactivité du premier contact font toute la décision.",
       sections: [
@@ -350,7 +351,7 @@ export const articleArtisanConvertirDevisData: FullArticleData = {
       category: 'Trades Conversion',
       date: 'September 20, 2026',
       readTime: '6 min read',
-      title: "How Building Contractors Can Double Quote Conversion Rates",
+      title: "How Building Contractors Can Convert More Quotes With a Website",
       intro: "In the building and home renovation trades, merely having a website is no longer sufficient. What counts is its ability to turn hesitant visitors into booked, qualified quote requests. Here are proven methods to maximize your inbound quote volume.",
       keyTakeaway: "Homeowners choose the contractor who reassures them fastest: clear insurance proofs, authentic local project photos, and effortless initial inquiry steps.",
       sections: [
@@ -685,7 +686,7 @@ export const articleIaDeveloppementWebData: FullArticleData = {
         },
       ],
       relatedLinks: [
-        { title: "FAQ Atelier sur l'IA et le Développement", href: "/#faq-atelier", description: "Réponses détaillées sur notre méthode de conception assistée." },
+        { title: "FAQ Atelier sur l'IA et le Développement", href: "/#faq", description: "Réponses détaillées sur notre méthode de conception assistée." },
         { title: "Étude de Cas L'Atelier Gourmand", href: "/projets/atelier-gourmand", description: "Découvrir la réservation directe sur-mesure développée pour un restaurant." },
         { title: "À Propos d'Alexandre Pabst", href: "/a-propos", description: "Échangez directement avec le développeur fondateur de DevSupAi." },
       ],
@@ -737,7 +738,7 @@ export const articleIaDeveloppementWebData: FullArticleData = {
         },
       ],
       relatedLinks: [
-        { title: "DevSupAi Craftsmanship & AI FAQ", href: "/en/#faq-atelier", description: "Detailed answers regarding our supervised development methodology." },
+        { title: "DevSupAi Craftsmanship & AI FAQ", href: "/en/#faq", description: "Detailed answers regarding our supervised development methodology." },
         { title: "L'Atelier Gourmand Case Study", href: "/en/projects/atelier-gourmand", description: "Explore the custom zero-commission restaurant booking platform." },
         { title: "About Alexandre Pabst", href: "/en/about", description: "Connect directly with the developer and founder of DevSupAi." },
       ],
