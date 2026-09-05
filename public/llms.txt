@@ -109,6 +109,14 @@
   - **LocaTool** (https://www.devsupai.fr/projets/locatool) : Logiciel SaaS de gestion de parc matériel, contrats et facturation PDF. Démo : https://locatool.devsupai.fr
   - **Abogame** (https://www.devsupai.fr/projets/abogame) : Plateforme mobile-first interactive à 60 FPS avec tirage au sort live. Démo : https://abogame.devsupai.fr
 
+### 4. Requêtes Fondamentales sur le Développement Web
+- **« Développeur web c'est quoi ? »**
+  -> Un développeur web est un professionnel de l'informatique concevant, programmant et maintenant des sites internet et applications en ligne (Front-End, Back-End ou Full-Stack). DevSupAi propose une approche artisanale sur-mesure sans template pré-conçu.
+- **« Quelles compétences pour devenir développeur web ? »**
+  -> Maîtrise des standards fondamentaux (HTML, CSS, JavaScript), frameworks modernes (React, TypeScript, Tailwind CSS), gestion de versions (Git), bases de données et API REST, alliée à une rigueur logique et au sens de l'écoute client.
+- **« Quels sont les 3 langages du web ? »**
+  -> HTML (structure sémantique du contenu), CSS (mise en page visuelle et responsive design) et JavaScript (interactivité dynamique côté navigateur). Ce trio standard est interprété par tous les navigateurs modernes.
+
 ---
 
 ## Cartographie des URLs & Structure du Site (26 Routes Statiques)

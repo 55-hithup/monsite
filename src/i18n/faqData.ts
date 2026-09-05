@@ -49,6 +49,21 @@ export const faqData = {
         short: "Chaque livraison s'accompagne d'une période de garantie technique et d'une assistance à la prise en main.",
         detail: "Des forfaits d'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles dès 29 €/mois pour assurer votre sérénité.",
       },
+      {
+        q: "Développeur web, c'est quoi ?",
+        short: "Un développeur web est un professionnel de l'informatique spécialisé dans la conception, la programmation et la maintenance de sites internet et d'applications en ligne.",
+        detail: "Il traduit un cahier des charges en lignes de code propres et sécurisées. On distingue les développeurs Front-End (interface visuelle et expérience utilisateur), Back-End (logique serveur, bases de données, API) et Full-Stack (maîtrise complète de bout en bout).",
+      },
+      {
+        q: "Quelles compétences pour devenir développeur web ?",
+        short: "Devenir développeur web exige la maîtrise du socle standard (HTML, CSS, JavaScript), de frameworks modernes (React, TypeScript), de Git, des bases de données et des API REST.",
+        detail: "Au-delà des compétences techniques, la rigueur logique, la persévérance face au débogage, la veille technologique permanente et la communication client sont essentielles.",
+      },
+      {
+        q: "Quels sont les 3 langages du web ?",
+        short: "Les 3 langages fondamentaux du web sont HTML (structure sémantique), CSS (mise en page et design) et JavaScript (interactivité et logique dynamique).",
+        detail: "Ces trois standards sont exécutés nativement par tous les navigateurs internet modernes et forment le socle incontournable de tout projet web.",
+      },
     ],
   },
   en: {
@@ -94,6 +109,21 @@ export const faqData = {
         q: 'What ongoing support is provided following deployment?',
         short: 'Every delivery includes a technical warranty period and dedicated onboarding assistance.',
         detail: 'Preventive maintenance, backup, and managed hosting plans are available from €29/month for complete peace of mind.',
+      },
+      {
+        q: "What is a web developer?",
+        short: "A web developer is a software engineering professional who builds, programs, and maintains websites, web applications, and digital platforms.",
+        detail: "They translate specifications into clean, secure, performant code. Specializations include Front-End (UI and browser interactions), Back-End (servers, databases, APIs), and Full-Stack (end-to-end architecture).",
+      },
+      {
+        q: "What skills are needed to become a web developer?",
+        short: "Becoming a web developer requires mastering core web standards (HTML, CSS, JavaScript), modern frameworks (React, TypeScript), Git version control, databases, and REST APIs.",
+        detail: "Beyond technical skills, analytical rigor, persistent debugging discipline, continuous learning, and clear stakeholder communication are vital.",
+      },
+      {
+        q: "What are the 3 core languages of the web?",
+        short: "The 3 foundational languages of the web are HTML (semantic structure), CSS (styling and responsive layout), and JavaScript (dynamic client-side interactivity).",
+        detail: "All modern browsers interpret these three universal standards natively, often enriched by TypeScript for enterprise scalability.",
       },
     ],
   },
