@@ -271,7 +271,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
         {/* Item 4 : Performance & Architecture */}
         <div className="gallery-photo-item group">
           <img 
-            src="/hero-bg-mockup.webp" 
+            src="/gallery-architecture.webp" 
             alt={isEn 
               ? "Technical excellence and optimized React 19 architecture for bespoke websites" 
               : "Excellence technique et architecture légère React 19 pour site sur-mesure"} 

@@ -263,7 +263,7 @@ function TestimonialCard({
           <div className="testi-name text-xs sm:text-sm font-bold font-['Montserrat'] text-[#1A1A1A] truncate">
             {testi.name}
           </div>
-          <div className="testi-role text-xs text-[#777777] font-['Plus_Jakarta_Sans'] truncate">
+          <div className="testi-role text-xs text-[#525252] font-['Plus_Jakarta_Sans'] truncate">
             {testi.role}
           </div>
         </div>

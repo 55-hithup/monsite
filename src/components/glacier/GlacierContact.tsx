@@ -253,10 +253,7 @@ export default function GlacierContact() {
         id="contact" 
         aria-labelledby="contact-heading"
       >
-        <div 
-          className="contact-parallax-bg" 
-          style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
-        />
+        <div className="contact-parallax-bg" />
         <div className="contact-parallax-tint" />
         <ParallaxLogoVoyager variant="ascend" />
 

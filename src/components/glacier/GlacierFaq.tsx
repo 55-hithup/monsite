@@ -239,10 +239,7 @@ export default function GlacierFaq() {
         className="glacier-faq-header-parallax py-16 md:py-24 text-center relative overflow-hidden" 
         aria-labelledby="faq-title"
       >
-        <div 
-          className="faq-parallax-bg" 
-          style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
-        />
+        <div className="faq-parallax-bg" />
         <div className="faq-parallax-tint" />
         <ParallaxLogoVoyager variant="curve-left" />
 

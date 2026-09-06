@@ -576,7 +576,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         {/* En-tête centré avec animations distinctes par élément */}
         <div ref={headerContainerRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <span 
-            className="text-xs font-extrabold tracking-[0.2em] text-sky-600 uppercase font-['Montserrat'] block mb-2"
+            className="text-xs font-extrabold tracking-[0.2em] text-sky-700 uppercase font-['Montserrat'] block mb-2"
           >
             {isEn ? "BESPOKE WEB ENGINEERING • FRANCE & WORLDWIDE" : "DÉVELOPPEMENT WEB LOCAL & NATIONAL"}
           </span>
@@ -594,7 +594,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               : "Chaque site est une création originale conçue sans CMS lourd. Code source 100% propriétaire, hébergement optimisé, référencement SEO local et nom de domaine inclus la première année."}
           </p>
           <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">
-            <ShieldCheck size={14} className="text-sky-600 shrink-0" aria-hidden="true" />
+            <ShieldCheck size={14} className="text-sky-700 shrink-0" aria-hidden="true" />
             <span>
               {isEn 
                 ? "WCAG 2.1 AA & RGAA Accessibility Compliance • Touch Targets 32px+ • 100/100 Standards"
@@ -642,7 +642,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5">
-                          <CategoryIcon className="w-3.5 h-3.5 text-sky-600" aria-hidden="true" />
+                          <CategoryIcon className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
                           {pack.categoryBadge}
                         </span>
                       </div>
@@ -652,7 +652,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                       </h3>
 
                       <div className="mb-2">
-                        <span className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-sky-600 tracking-tight">
+                        <span className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-sky-700 tracking-tight">
                           {pack.price}
                         </span>
                       </div>
@@ -670,7 +670,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                               key={mIdx} 
                               className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-medium"
                             >
-                              <MetricIcon className="w-3.5 h-3.5 text-sky-600 shrink-0" aria-hidden="true" />
+                              <MetricIcon className="w-3.5 h-3.5 text-sky-700 shrink-0" aria-hidden="true" />
                               <span>{metric.value}</span>
                             </span>
                           );
@@ -699,9 +699,8 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                         type="button"
                         onClick={() => toggleFlip(pack.id)}
                         className="glacier-flip-text-link group cursor-pointer"
-                        aria-label={isEn ? "Flip card to view technical specifications" : "Retourner la carte pour voir la fiche technique complète"}
                       >
-                        <RotateCw className="w-3.5 h-3.5 text-sky-600 group-hover:rotate-180 transition-transform duration-500 shrink-0" aria-hidden="true" />
+                        <RotateCw className="w-3.5 h-3.5 text-sky-700 group-hover:rotate-180 transition-transform duration-500 shrink-0" aria-hidden="true" />
                         <span>{isEn ? "Detailed specifications & stack (Flip ⟲)" : "Voir la fiche technique complète (Verso ⟲)"}</span>
                       </button>
 
@@ -733,7 +732,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                     <div className="shrink-0">
                       <div className="flex items-center justify-between gap-2 mb-1.5 pb-1.5 border-b border-slate-100">
                         <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5">
-                          <CategoryIcon className="w-3.5 h-3.5 text-sky-600" aria-hidden="true" />
+                          <CategoryIcon className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
                           {isEn ? "DETAILED SPECS" : "FICHE TECHNIQUE"}
                         </span>
 
@@ -743,7 +742,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                           className="px-2.5 py-1 bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 text-slate-700 hover:text-sky-700 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 text-[11px] font-bold font-['Montserrat'] shadow-xs"
                           title={isEn ? "Flip back to presentation" : "Retourner au recto"}
                         >
-                          <RotateCcw className="w-3.5 h-3.5 text-sky-600" aria-hidden="true" />
+                          <RotateCcw className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
                           <span>{isEn ? "Back" : "Retour"}</span>
                         </button>
                       </div>
@@ -752,7 +751,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                         <h4 className="text-base sm:text-lg font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight">
                           {pack.name}
                         </h4>
-                        <span className="text-base sm:text-lg font-black font-['Montserrat'] text-sky-600 shrink-0">
+                        <span className="text-base sm:text-lg font-black font-['Montserrat'] text-sky-700 shrink-0">
                           {pack.price}
                         </span>
                       </div>
@@ -803,7 +802,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
 
                       {/* Note transparence */}
                       <div className="p-2 rounded-lg bg-sky-50/70 border border-sky-200/70 text-[11px] text-sky-950 flex items-start gap-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" aria-hidden="true" />
+                        <ShieldCheck className="w-3.5 h-3.5 text-sky-700 shrink-0 mt-0.5" aria-hidden="true" />
                         <span>
                           {isEn 
                             ? "Domain & hosting included Yr 1. Zero mandatory monthly maintenance."
@@ -847,7 +846,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         {/* Sélecteur de métiers : Vous recherchez une solution adaptée à votre secteur ? */}
         <div className="mt-16 pt-12 border-t border-slate-200 text-left">
           <div ref={tradesHeaderRef} className="max-w-3xl mb-8">
-            <span className="text-xs font-extrabold tracking-[0.2em] text-sky-600 uppercase font-['Montserrat'] block mb-1">
+            <span className="text-xs font-extrabold tracking-[0.2em] text-sky-700 uppercase font-['Montserrat'] block mb-1">
               {isEn ? "INDUSTRY-SPECIFIC SOLUTIONS" : "SOLUTIONS PAR MÉTIER"}
             </span>
             <h3 className="text-xl sm:text-2xl font-black font-['Montserrat'] text-slate-900 mb-2">
@@ -867,10 +866,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                   <Hammer size={18} aria-hidden="true" />
                 </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
                   {isEn ? "Contractors & Craftsmen" : "Artisans & Rénovation"}
                 </h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
@@ -879,7 +878,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                     : "Galerie chantiers avant/après, formulaires de devis géolocalisés et SEO en Meuse."}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
                 <span>{isEn ? "View solutions" : "Découvrir"}</span>
                 <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </div>
@@ -891,10 +890,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                   <Building2 size={18} aria-hidden="true" />
                 </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
                   {isEn ? "Professional Practices" : "Professions Libérales"}
                 </h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
@@ -903,7 +902,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                     : "Présentation déontologique, clarté des honoraires et prise de rendez-vous fluide."}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
                 <span>{isEn ? "View solutions" : "Découvrir"}</span>
                 <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </div>
@@ -915,10 +914,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                   <UtensilsCrossed size={18} aria-hidden="true" />
                 </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
                   {isEn ? "Restaurants & Bistros" : "Restaurants & Bistros"}
                 </h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
@@ -927,7 +926,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                     : "Carte interactive sur mobile sans PDF lourd et réservation directe sans commission."}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
                 <span>{isEn ? "View solutions" : "Découvrir"}</span>
                 <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </div>
@@ -939,10 +938,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                   <Store size={18} aria-hidden="true" />
                 </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">
+                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
                   {isEn ? "Local Shops & Retail" : "Commerces & Boutiques"}
                 </h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
@@ -951,7 +950,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                     : "Boutique en ligne sur-mesure, Click & Collect, paiement Stripe et 0% de commission."}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-600 font-['Montserrat']">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
                 <span>{isEn ? "View solutions" : "Découvrir"}</span>
                 <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </div>
