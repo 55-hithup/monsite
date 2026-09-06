@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ExternalLink, BookOpen, ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../../utils/scrollTriggerRefresh';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 interface GlacierGalleryProps {
@@ -112,12 +113,9 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
       }
     });
 
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 150);
+    debouncedScrollTriggerRefresh(200);
 
     return () => {
-      clearTimeout(refreshTimer);
       ctx.revert();
     };
   }, []);

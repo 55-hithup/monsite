@@ -71,6 +71,7 @@ function GlacierNavLinks({
             alt="DevSupAi" 
             width={28} 
             height={28} 
+            decoding="async"
             className="w-7 h-7 object-contain transition-transform duration-300 group-hover:scale-110 shrink-0" 
           />
           <span className="font-['Montserrat'] font-black text-xs sm:text-sm tracking-widest text-[#1A1A1A] group-hover:text-[#0284C7] transition-colors hidden md:inline">

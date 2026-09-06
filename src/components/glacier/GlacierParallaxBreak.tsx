@@ -90,10 +90,7 @@ export default function GlacierParallaxBreak() {
       className="glacier-parallax-break" 
       aria-label={isEn ? "DevSupAi Commitment and Philosophy" : "Engagement et Philosophie DevSupAi"}
     >
-      <div 
-        className="break-parallax-bg" 
-        style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
-      />
+      <div className="break-parallax-bg" />
       <div className="break-tint" />
       <ParallaxLogoVoyager variant="curve-right" />
       <div className="break-content">

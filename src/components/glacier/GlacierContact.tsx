@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Check, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../../utils/scrollTriggerRefresh';
 import { useLanguage } from '../../i18n/LanguageContext';
 import ParallaxLogoVoyager from './ParallaxLogoVoyager';
 
@@ -141,13 +142,9 @@ export default function GlacierContact() {
       }
     });
 
-    // Actualiser les positions des triggers une fois le layout stabilisé
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 150);
+    debouncedScrollTriggerRefresh(200);
 
     return () => {
-      clearTimeout(refreshTimer);
       ctx.revert();
     };
   }, []);

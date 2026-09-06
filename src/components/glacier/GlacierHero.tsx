@@ -83,10 +83,7 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
       className="glacier-hero-banner" 
       aria-label={isEn ? "DevSupAi Web Atelier Overview" : "Présentation de l'Atelier Web DevSupAi"}
     >
-      <div 
-        className="hero-parallax-bg" 
-        style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
-      />
+      <div className="hero-parallax-bg" />
       <div className="hero-tint-overlay" />
       
       <div 

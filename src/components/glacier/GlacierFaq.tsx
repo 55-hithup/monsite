@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../../utils/scrollTriggerRefresh';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -135,12 +136,9 @@ export default function GlacierFaq() {
       }
     });
 
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 150);
+    debouncedScrollTriggerRefresh(200);
 
     return () => {
-      clearTimeout(refreshTimer);
       ctx.revert();
     };
   }, []);

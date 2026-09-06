@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../../utils/scrollTriggerRefresh';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 interface GlacierOffersProps {
@@ -246,11 +247,8 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         }
       }
 
-      // Recalibration des offsets après le montage
-      ScrollTrigger.refresh();
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 250);
+      // Recalibration optimisée et dédoublonnée des offsets
+      debouncedScrollTriggerRefresh(200);
     }, sectionRef);
 
     return () => ctx.revert();

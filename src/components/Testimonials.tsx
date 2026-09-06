@@ -3,6 +3,7 @@ import { useLenis } from 'lenis/react';
 import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../utils/scrollTriggerRefresh';
 import type { Area, Point } from 'react-easy-crop';
 import { useLanguage } from '../i18n/LanguageContext';
 import { translations } from '../i18n/translations';
@@ -429,10 +430,7 @@ export default function Testimonials() {
       }
 
       // Recalibration
-      ScrollTrigger.refresh();
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 250);
+      debouncedScrollTriggerRefresh(200);
     }, sectionRef);
 
     return () => ctx.revert();

@@ -3,7 +3,6 @@ import { useLocation, Outlet } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import GlacierHeader from './glacier/GlacierHeader';
 import GlacierFooter from './glacier/GlacierFooter';
-import 'lenis/dist/lenis.css';
 
 interface LayoutProps {
   children?: React.ReactNode;
