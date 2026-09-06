@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { useLenis } from 'lenis/react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Star, PenSquare, X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -867,16 +866,14 @@ export default function Testimonials() {
       </div>
 
       {/* Review Submission Inline Card */}
-      <AnimatePresence>
-        {showForm && (
-          <motion.div
-            ref={formRef}
-            initial={{ opacity: 0, height: 0, marginTop: 0 }}
-            animate={{ opacity: 1, height: 'auto', marginTop: 40 }}
-            exit={{ opacity: 0, height: 0, marginTop: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden w-full max-w-lg mx-auto"
-          >
+      <div
+        ref={formRef}
+        inert={!showForm ? true : undefined}
+        className={`transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden w-full max-w-lg mx-auto ${
+          showForm ? 'max-h-[1600px] opacity-100 mt-10' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
+        }`}
+        aria-hidden={!showForm}
+      >
             <div className="w-full rounded-2xl bg-white border border-[#E5E5E5] shadow-2xl p-6 sm:p-8 text-left relative mb-12">
               <button 
                 type="button"
@@ -1103,9 +1100,7 @@ export default function Testimonials() {
                 </form>
               )}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </section>
   );
 }

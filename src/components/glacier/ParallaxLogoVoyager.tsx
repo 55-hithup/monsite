@@ -26,6 +26,7 @@ export default function ParallaxLogoVoyager({
   useEffect(() => {
     if (typeof window === 'undefined' || !trackRef.current) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.innerWidth <= 768 || window.matchMedia('(max-width: 768px)').matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -137,13 +138,12 @@ export default function ParallaxLogoVoyager({
   return (
     <div
       aria-hidden="true"
-      className={`parallax-logo-voyager-container pointer-events-none select-none ${className}`}
+      className={`parallax-logo-voyager-container pointer-events-none select-none hidden md:flex ${className}`}
       style={{
         position: 'absolute',
         inset: 0,
         overflow: 'hidden',
         zIndex: 2,
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import GlacierHeader from './glacier/GlacierHeader';
@@ -11,6 +11,17 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const { pathname, hash } = useLocation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || ('ontouchstart' in window && window.innerWidth <= 1024));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Scroll to top or to hash on page change
   useEffect(() => {
@@ -29,15 +40,23 @@ export default function Layout({ children }: LayoutProps) {
     }
   }, [pathname, hash]);
 
+  const content = (
+    <div className="min-h-screen bg-white text-[#4A4A4A] selection:bg-[#0284C7]/20 relative z-10 flex flex-col">
+      <GlacierHeader />
+      <div className="flex-grow">
+        {children || <Outlet />}
+      </div>
+      <GlacierFooter />
+    </div>
+  );
+
+  if (isMobile) {
+    return content;
+  }
+
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
-      <div className="min-h-screen bg-white text-[#4A4A4A] selection:bg-[#0284C7]/20 relative z-10 flex flex-col">
-        <GlacierHeader />
-        <div className="flex-grow">
-          {children || <Outlet />}
-        </div>
-        <GlacierFooter />
-      </div>
+      {content}
     </ReactLenis>
   );
 }

@@ -20,15 +20,21 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
     let hasPlayed = false;
     let fallbackTimer: ReturnType<typeof setTimeout> | undefined;
 
+    const isMobile = window.innerWidth <= 768;
+
     const ctx = gsap.context(() => {
-      // Masquer la carte avec un léger décalage dès le montage client
-      gsap.set(cardRef.current, { opacity: 0, y: 20, filter: 'blur(4px)' });
+      // Masquer la carte avec un léger décalage dès le montage client (uniquement sur Desktop)
+      if (!isMobile) {
+        gsap.set(cardRef.current, { opacity: 0, y: 20, filter: 'blur(4px)' });
+      }
     }, cardRef);
 
     const playHeroAnimation = () => {
       if (hasPlayed || !cardRef.current) return;
       hasPlayed = true;
       if (fallbackTimer) clearTimeout(fallbackTimer);
+
+      if (isMobile) return;
 
       ctx.add(() => {
         gsap.to(cardRef.current, {

@@ -429,7 +429,6 @@ export default defineConfig({
           if (id.includes('node_modules')) {
             if (id.includes('lucide-react')) return 'vendor-lucide';
             if (id.includes('firebase')) return 'vendor-firebase';
-            if (id.includes('framer-motion')) return 'vendor-motion';
             if (id.includes('gsap') || id.includes('lenis')) return 'vendor-animation';
           }
         },
@@ -484,6 +483,11 @@ export default defineConfig({
 
       // Move any __staticRouterHydrationData scripts from inside #root to outside #root to ensure 1:1 clean DOM structure for React 19 hydration
       cleanHtml = cleanHtml.replace(/(<script>window\.__staticRouterHydrationData[\s\S]*?<\/script>)\s*<\/div>/g, '</div>$1');
+
+      // On subpages, remove homepage hero background preloads to save mobile bandwidth
+      if (cleanRoute !== '/' && cleanRoute !== '/en') {
+        cleanHtml = cleanHtml.replace(/<link rel="preload" href="\/hero-bg-mockup[^"]*"[^>]*>\s*/g, '');
+      }
 
       // -----------------------------------------------------------------------
       // Comprehensive JSON-LD Structured Data per Route Type

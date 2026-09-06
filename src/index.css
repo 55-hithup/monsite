@@ -755,6 +755,7 @@ h1, h2, h3 {
 @media (max-width: 768px) {
   .hero-parallax-bg {
     background-image: url('/hero-bg-mockup-mobile.webp') !important;
+    background-attachment: scroll !important;
   }
 }
 
@@ -1386,6 +1387,13 @@ h1, h2, h3 {
   background-position: center;
   background-attachment: fixed;
   z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .break-parallax-bg {
+    background-image: url('/hero-bg-mockup-mobile.webp') !important;
+    background-attachment: scroll !important;
+  }
 }
 
 .break-tint {

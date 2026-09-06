@@ -37,7 +37,7 @@ lg_draw = ImageDraw.Draw(logo_glow)
 lg_draw.ellipse([15, 15, logo_size + 65, logo_size + 65], fill=(2, 132, 199, 95))
 logo_glow = logo_glow.filter(ImageFilter.GaussianBlur(24))
 
-font_dir = r'C:/Users/Alex/Desktop/Pro/devsupai new site/public/fonts'
+font_dir = r'C:/Users/Alex/Desktop/Pro/devsupai new site/scripts/fonts'
 font_title = ImageFont.truetype(os.path.join(font_dir, 'Montserrat-Black.ttf'), 102)
 font_serif = ImageFont.truetype(os.path.join(font_dir, 'PlayfairDisplay-Italic.ttf'), 38)
 font_tags = ImageFont.truetype(os.path.join(font_dir, 'Montserrat-Bold.ttf'), 17)

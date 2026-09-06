@@ -4,29 +4,42 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Services from './pages/Services';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import ArticleTemplates from './pages/blog/ArticleTemplates';
-import ArticlePerformance from './pages/blog/ArticlePerformance';
-import ArticleAssociationPme from './pages/blog/ArticleAssociationPme';
-import LegalNotices from './pages/LegalNotices';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import CaseAtelierGourmand from './pages/projects/CaseAtelierGourmand';
-import CaseLocaTool from './pages/projects/CaseLocaTool';
-import CaseAbogame from './pages/projects/CaseAbogame';
-import TradeArtisan from './pages/trades/TradeArtisan';
-import TradeProfessionLiberale from './pages/trades/TradeProfessionLiberale';
-import TradeRestaurant from './pages/trades/TradeRestaurant';
-import TradeCommerceBoutique from './pages/trades/TradeCommerceBoutique';
-import ArticleSiteVsGoogle from './pages/blog/ArticleSiteVsGoogle';
-import ArticlePourquoiEviterWordpress from './pages/blog/ArticlePourquoiEviterWordpress';
-import ArticleArtisanConvertirDevis from './pages/blog/ArticleArtisanConvertirDevis';
-import ArticleBoutiqueSansCommission from './pages/blog/ArticleBoutiqueSansCommission';
-import ArticleAccessibiliteRgaa from './pages/blog/ArticleAccessibiliteRgaa';
-import ArticleIaDeveloppementWeb from './pages/blog/ArticleIaDeveloppementWeb';
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
+
+const lazyPage = (importer: () => Promise<{ default: React.ComponentType<any> }>) => async () => {
+  const mod = await importer();
+  const PageComp = mod.default;
+  return {
+    Component: () => (
+      <ErrorBoundary>
+        <PageComp />
+      </ErrorBoundary>
+    ),
+  };
+};
+
+const ServicesPage = lazyPage(() => import('./pages/Services'));
+const AboutPage = lazyPage(() => import('./pages/About'));
+const BlogPage = lazyPage(() => import('./pages/Blog'));
+const ArticleTemplatesPage = lazyPage(() => import('./pages/blog/ArticleTemplates'));
+const ArticlePerformancePage = lazyPage(() => import('./pages/blog/ArticlePerformance'));
+const ArticleAssociationPmePage = lazyPage(() => import('./pages/blog/ArticleAssociationPme'));
+const ArticleSiteVsGooglePage = lazyPage(() => import('./pages/blog/ArticleSiteVsGoogle'));
+const ArticlePourquoiEviterWordpressPage = lazyPage(() => import('./pages/blog/ArticlePourquoiEviterWordpress'));
+const ArticleArtisanConvertirDevisPage = lazyPage(() => import('./pages/blog/ArticleArtisanConvertirDevis'));
+const ArticleBoutiqueSansCommissionPage = lazyPage(() => import('./pages/blog/ArticleBoutiqueSansCommission'));
+const ArticleAccessibiliteRgaaPage = lazyPage(() => import('./pages/blog/ArticleAccessibiliteRgaa'));
+const ArticleIaDeveloppementWebPage = lazyPage(() => import('./pages/blog/ArticleIaDeveloppementWeb'));
+const TradeArtisanPage = lazyPage(() => import('./pages/trades/TradeArtisan'));
+const TradeProfessionLiberalePage = lazyPage(() => import('./pages/trades/TradeProfessionLiberale'));
+const TradeRestaurantPage = lazyPage(() => import('./pages/trades/TradeRestaurant'));
+const TradeCommerceBoutiquePage = lazyPage(() => import('./pages/trades/TradeCommerceBoutique'));
+const CaseAtelierGourmandPage = lazyPage(() => import('./pages/projects/CaseAtelierGourmand'));
+const CaseLocaToolPage = lazyPage(() => import('./pages/projects/CaseLocaTool'));
+const CaseAbogamePage = lazyPage(() => import('./pages/projects/CaseAbogame'));
+const LegalNoticesPage = lazyPage(() => import('./pages/LegalNotices'));
+const PrivacyPolicyPage = lazyPage(() => import('./pages/PrivacyPolicy'));
 
 // Global Error Boundary to catch any rendering errors without crashing the entire app
 interface ErrorBoundaryProps {
@@ -140,6 +153,7 @@ const renderLazy = (Component: React.ComponentType) => (
   </Suspense>
 );
 
+
 export const routes = [
   {
     path: '/',
@@ -171,171 +185,87 @@ export const routes = [
       },
       {
         path: 'nos-services',
-        element: (
-          <ErrorBoundary>
-            <Services />
-          </ErrorBoundary>
-        ),
+        lazy: ServicesPage,
       },
       {
         path: 'a-propos',
-        element: (
-          <ErrorBoundary>
-            <About />
-          </ErrorBoundary>
-        ),
+        lazy: AboutPage,
       },
       {
         path: 'blog',
-        element: (
-          <ErrorBoundary>
-            <Blog />
-          </ErrorBoundary>
-        ),
+        lazy: BlogPage,
       },
       {
         path: 'blog/pourquoi-eviter-les-templates',
-        element: (
-          <ErrorBoundary>
-            <ArticleTemplates />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleTemplatesPage,
       },
       {
         path: 'blog/performance-web-sur-mesure',
-        element: (
-          <ErrorBoundary>
-            <ArticlePerformance />
-          </ErrorBoundary>
-        ),
+        lazy: ArticlePerformancePage,
       },
       {
         path: 'blog/site-web-pme-association',
-        element: (
-          <ErrorBoundary>
-            <ArticleAssociationPme />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleAssociationPmePage,
       },
       {
         path: 'blog/site-internet-vs-google-business',
-        element: (
-          <ErrorBoundary>
-            <ArticleSiteVsGoogle />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleSiteVsGooglePage,
       },
       {
         path: 'blog/pourquoi-eviter-wordpress-petit-budget',
-        element: (
-          <ErrorBoundary>
-            <ArticlePourquoiEviterWordpress />
-          </ErrorBoundary>
-        ),
+        lazy: ArticlePourquoiEviterWordpressPage,
       },
       {
         path: 'blog/artisan-convertir-plus-de-devis',
-        element: (
-          <ErrorBoundary>
-            <ArticleArtisanConvertirDevis />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleArtisanConvertirDevisPage,
       },
       {
         path: 'blog/boutique-en-ligne-sans-commission',
-        element: (
-          <ErrorBoundary>
-            <ArticleBoutiqueSansCommission />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleBoutiqueSansCommissionPage,
       },
       {
         path: 'blog/accessibilite-web-rgaa-pme',
-        element: (
-          <ErrorBoundary>
-            <ArticleAccessibiliteRgaa />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleAccessibiliteRgaaPage,
       },
       {
         path: 'blog/ia-et-developpement-web-ce-qui-change',
-        element: (
-          <ErrorBoundary>
-            <ArticleIaDeveloppementWeb />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleIaDeveloppementWebPage,
       },
       {
         path: 'sites-internet/artisan-renovation',
-        element: (
-          <ErrorBoundary>
-            <TradeArtisan />
-          </ErrorBoundary>
-        ),
+        lazy: TradeArtisanPage,
       },
       {
         path: 'sites-internet/profession-liberale',
-        element: (
-          <ErrorBoundary>
-            <TradeProfessionLiberale />
-          </ErrorBoundary>
-        ),
+        lazy: TradeProfessionLiberalePage,
       },
       {
         path: 'sites-internet/restaurant',
-        element: (
-          <ErrorBoundary>
-            <TradeRestaurant />
-          </ErrorBoundary>
-        ),
+        lazy: TradeRestaurantPage,
       },
       {
         path: 'sites-internet/commerce-boutique',
-        element: (
-          <ErrorBoundary>
-            <TradeCommerceBoutique />
-          </ErrorBoundary>
-        ),
+        lazy: TradeCommerceBoutiquePage,
       },
       {
         path: 'projets/atelier-gourmand',
-        element: (
-          <ErrorBoundary>
-            <CaseAtelierGourmand />
-          </ErrorBoundary>
-        ),
+        lazy: CaseAtelierGourmandPage,
       },
       {
         path: 'projets/locatool',
-        element: (
-          <ErrorBoundary>
-            <CaseLocaTool />
-          </ErrorBoundary>
-        ),
+        lazy: CaseLocaToolPage,
       },
       {
         path: 'projets/abogame',
-        element: (
-          <ErrorBoundary>
-            <CaseAbogame />
-          </ErrorBoundary>
-        ),
+        lazy: CaseAbogamePage,
       },
       {
         path: 'mentions-legales',
-        element: (
-          <ErrorBoundary>
-            <LegalNotices />
-          </ErrorBoundary>
-        ),
+        lazy: LegalNoticesPage,
       },
       {
         path: 'politique-de-confidentialite',
-        element: (
-          <ErrorBoundary>
-            <PrivacyPolicy />
-          </ErrorBoundary>
-        ),
+        lazy: PrivacyPolicyPage,
       },
       /* English Routes (Bilingual International SEO) */
       {
@@ -348,171 +278,87 @@ export const routes = [
       },
       {
         path: 'en/services',
-        element: (
-          <ErrorBoundary>
-            <Services />
-          </ErrorBoundary>
-        ),
+        lazy: ServicesPage,
       },
       {
         path: 'en/about',
-        element: (
-          <ErrorBoundary>
-            <About />
-          </ErrorBoundary>
-        ),
+        lazy: AboutPage,
       },
       {
         path: 'en/blog',
-        element: (
-          <ErrorBoundary>
-            <Blog />
-          </ErrorBoundary>
-        ),
+        lazy: BlogPage,
       },
       {
         path: 'en/blog/site-web-pme-association',
-        element: (
-          <ErrorBoundary>
-            <ArticleAssociationPme />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleAssociationPmePage,
       },
       {
         path: 'en/blog/pourquoi-eviter-les-templates',
-        element: (
-          <ErrorBoundary>
-            <ArticleTemplates />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleTemplatesPage,
       },
       {
         path: 'en/blog/performance-web-sur-mesure',
-        element: (
-          <ErrorBoundary>
-            <ArticlePerformance />
-          </ErrorBoundary>
-        ),
+        lazy: ArticlePerformancePage,
       },
       {
         path: 'en/blog/site-internet-vs-google-business',
-        element: (
-          <ErrorBoundary>
-            <ArticleSiteVsGoogle />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleSiteVsGooglePage,
       },
       {
         path: 'en/blog/pourquoi-eviter-wordpress-petit-budget',
-        element: (
-          <ErrorBoundary>
-            <ArticlePourquoiEviterWordpress />
-          </ErrorBoundary>
-        ),
+        lazy: ArticlePourquoiEviterWordpressPage,
       },
       {
         path: 'en/blog/artisan-convertir-plus-de-devis',
-        element: (
-          <ErrorBoundary>
-            <ArticleArtisanConvertirDevis />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleArtisanConvertirDevisPage,
       },
       {
         path: 'en/blog/boutique-en-ligne-sans-commission',
-        element: (
-          <ErrorBoundary>
-            <ArticleBoutiqueSansCommission />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleBoutiqueSansCommissionPage,
       },
       {
         path: 'en/blog/accessibilite-web-rgaa-pme',
-        element: (
-          <ErrorBoundary>
-            <ArticleAccessibiliteRgaa />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleAccessibiliteRgaaPage,
       },
       {
         path: 'en/blog/ia-et-developpement-web-ce-qui-change',
-        element: (
-          <ErrorBoundary>
-            <ArticleIaDeveloppementWeb />
-          </ErrorBoundary>
-        ),
+        lazy: ArticleIaDeveloppementWebPage,
       },
       {
         path: 'en/websites/artisan-construction',
-        element: (
-          <ErrorBoundary>
-            <TradeArtisan />
-          </ErrorBoundary>
-        ),
+        lazy: TradeArtisanPage,
       },
       {
         path: 'en/websites/professional-services',
-        element: (
-          <ErrorBoundary>
-            <TradeProfessionLiberale />
-          </ErrorBoundary>
-        ),
+        lazy: TradeProfessionLiberalePage,
       },
       {
         path: 'en/websites/restaurant',
-        element: (
-          <ErrorBoundary>
-            <TradeRestaurant />
-          </ErrorBoundary>
-        ),
+        lazy: TradeRestaurantPage,
       },
       {
         path: 'en/websites/retail-shop',
-        element: (
-          <ErrorBoundary>
-            <TradeCommerceBoutique />
-          </ErrorBoundary>
-        ),
+        lazy: TradeCommerceBoutiquePage,
       },
       {
         path: 'en/projects/atelier-gourmand',
-        element: (
-          <ErrorBoundary>
-            <CaseAtelierGourmand />
-          </ErrorBoundary>
-        ),
+        lazy: CaseAtelierGourmandPage,
       },
       {
         path: 'en/projects/locatool',
-        element: (
-          <ErrorBoundary>
-            <CaseLocaTool />
-          </ErrorBoundary>
-        ),
+        lazy: CaseLocaToolPage,
       },
       {
         path: 'en/projects/abogame',
-        element: (
-          <ErrorBoundary>
-            <CaseAbogame />
-          </ErrorBoundary>
-        ),
+        lazy: CaseAbogamePage,
       },
       {
         path: 'en/legal-notices',
-        element: (
-          <ErrorBoundary>
-            <LegalNotices />
-          </ErrorBoundary>
-        ),
+        lazy: LegalNoticesPage,
       },
       {
         path: 'en/privacy-policy',
-        element: (
-          <ErrorBoundary>
-            <PrivacyPolicy />
-          </ErrorBoundary>
-        ),
+        lazy: PrivacyPolicyPage,
       },
       {
         path: 'admin/login',

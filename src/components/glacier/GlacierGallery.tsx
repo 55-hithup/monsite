@@ -61,31 +61,53 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
           },
         });
 
+        const isMobile = window.innerWidth <= 768;
+
         sequenceOrder.forEach((itemIdx, stepIndex) => {
           const item = items[itemIdx];
           if (!item) return;
 
-          galleryTimeline.fromTo(
-            item,
-            {
-              opacity: 0,
-              x: initialX[itemIdx] || 0,
-              scale: 0.8,
-              filter: 'blur(10px)',
-              rotateX: 360,
-              transformPerspective: 1000,
-            },
-            {
-              opacity: 1,
-              x: 0,
-              scale: 1,
-              filter: 'blur(0px)',
-              rotateX: 0,
-              duration: 0.9,
-              ease: 'power2.out',
-            },
-            stepIndex === 0 ? 0 : '-=0.65'
-          );
+          if (isMobile) {
+            galleryTimeline.fromTo(
+              item,
+              {
+                opacity: 0,
+                y: 20,
+                scale: 0.96,
+              },
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.5,
+                ease: 'power2.out',
+                clearProps: 'transform,opacity',
+              },
+              stepIndex === 0 ? 0 : '-=0.3'
+            );
+          } else {
+            galleryTimeline.fromTo(
+              item,
+              {
+                opacity: 0,
+                x: initialX[itemIdx] || 0,
+                scale: 0.8,
+                filter: 'blur(10px)',
+                rotateX: 360,
+                transformPerspective: 1000,
+              },
+              {
+                opacity: 1,
+                x: 0,
+                scale: 1,
+                filter: 'blur(0px)',
+                rotateX: 0,
+                duration: 0.9,
+                ease: 'power2.out',
+              },
+              stepIndex === 0 ? 0 : '-=0.65'
+            );
+          }
         });
       }
     });
@@ -143,6 +165,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
             width="400"
             height="280"
             loading="lazy"
+            decoding="async"
             className="gal-img"
           />
           <div className="gal-hover-overlay">
@@ -180,6 +203,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
             width="400"
             height="280"
             loading="lazy"
+            decoding="async"
             className="gal-img"
           />
           <div className="gal-hover-overlay">
@@ -217,6 +241,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
             width="400"
             height="280"
             loading="lazy"
+            decoding="async"
             className="gal-img"
           />
           <div className="gal-hover-overlay">
@@ -254,6 +279,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
             width="400"
             height="280"
             loading="lazy"
+            decoding="async"
             className="gal-img"
           />
           <div className="gal-hover-overlay">
