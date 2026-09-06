@@ -488,40 +488,58 @@ export default function Testimonials() {
       if (hasFetched) return;
       hasFetched = true;
       try {
-        const { getFirebaseDb } = await import('../lib/firebase');
-        const db = await getFirebaseDb();
-        if (!db) return;
-        const { collection, query, where, getDocs } = await import('firebase/firestore');
-        const q = query(
-          collection(db, 'testimonials'),
-          where('approved', '==', true)
-        );
-        const snapshot = await getDocs(q);
+        const apiKey = import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyAiuLFD7qoQIP7V2Dd5bqIPv49fcmZ48O4';
+        const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || 'site-devsupai';
+        const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents:runQuery?key=${apiKey}`;
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            structuredQuery: {
+              from: [{ collectionId: 'testimonials' }],
+              where: {
+                fieldFilter: {
+                  field: { fieldPath: 'approved' },
+                  op: 'EQUAL',
+                  value: { booleanValue: true },
+                },
+              },
+            },
+          }),
+        });
+
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!Array.isArray(data)) return;
+
         const dynamicList: TestimonialItem[] = [];
-        snapshot.forEach((doc) => {
-          const data = doc.data();
+        data.forEach((item: any) => {
+          const doc = item.document;
+          if (!doc || !doc.fields) return;
+          const f = doc.fields;
           dynamicList.push({
-            quote: data.quote,
-            name: data.name,
-            role: data.role,
-            rating: data.rating || 5,
-            avatar: data.avatar || undefined,
-            source: data.source || 'google',
-            created_at: data.created_at || null,
+            quote: f.quote?.stringValue || '',
+            name: f.name?.stringValue || '',
+            role: f.role?.stringValue || '',
+            rating: f.rating?.integerValue ? parseInt(f.rating.integerValue, 10) : (f.rating?.doubleValue || 5),
+            avatar: f.avatar?.stringValue || undefined,
+            source: (f.source?.stringValue as 'google' | 'direct') || 'google',
+            created_at: f.created_at?.timestampValue ? { seconds: Math.floor(new Date(f.created_at.timestampValue).getTime() / 1000) } : null,
           });
         });
-        
+
         dynamicList.sort((a, b) => {
           const timeA = a.created_at?.seconds || 0;
           const timeB = b.created_at?.seconds || 0;
           return timeB - timeA;
         });
-        
+
         if (dynamicList.length > 0) {
           setList(dynamicList);
         }
       } catch (err) {
-        console.error('Error fetching testimonials from Firestore:', err);
+        console.error('Error fetching testimonials from Firestore REST:', err);
       }
     };
 
@@ -696,24 +714,31 @@ export default function Testimonials() {
 
     setSubmitting(true);
     try {
-      const { getFirebaseDb } = await import('../lib/firebase');
-      const db = await getFirebaseDb();
-      if (!db) {
-        alert(language === 'en' ? "The database is not initialized at the moment." : "La base de données n'est pas initialisée pour le moment.");
-        setSubmitting(false);
-        return;
-      }
-      const { collection, addDoc } = await import('firebase/firestore');
-      await addDoc(collection(db, 'testimonials'), {
-        name,
-        role,
-        quote: `« ${quote.replace(/[«»]/g, '').trim()} »`,
-        rating,
-        source: 'direct',
-        avatar: croppedImage || null,
-        approved: false,
-        created_at: new Date(),
+      const apiKey = import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyAiuLFD7qoQIP7V2Dd5bqIPv49fcmZ48O4';
+      const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || 'site-devsupai';
+      const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/testimonials?key=${apiKey}`;
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: {
+            name: { stringValue: name },
+            role: { stringValue: role },
+            quote: { stringValue: `« ${quote.replace(/[«»]/g, '').trim()} »` },
+            rating: { integerValue: String(rating) },
+            source: { stringValue: 'direct' },
+            avatar: croppedImage ? { stringValue: croppedImage } : { nullValue: null },
+            approved: { booleanValue: false },
+            created_at: { timestampValue: new Date().toISOString() },
+          },
+        }),
       });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error ${res.status}`);
+      }
+
       setSubmitted(true);
       setTimeout(() => {
         handleCloseForm();
