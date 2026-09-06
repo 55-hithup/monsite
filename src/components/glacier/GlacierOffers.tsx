@@ -631,7 +631,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                     {/* Badge Populaire / Recommandé en haut */}
                     {isPopular && (
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                        <span className="bg-sky-600 text-white text-[11px] font-extrabold uppercase tracking-widest px-3 py-0.5 rounded-full shadow-md inline-flex items-center gap-1">
+                        <span className="bg-sky-700 text-white text-[11px] font-extrabold uppercase tracking-widest px-3 py-0.5 rounded-full shadow-md inline-flex items-center gap-1">
                           <Star className="w-3 h-3 fill-white text-white" aria-hidden="true" />
                           {pack.badge}
                         </span>
@@ -709,8 +709,8 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                         onClick={(e) => handleAnchorClick(e, 'contact')}
                         className={`w-full py-2.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-md text-white ${
                           isPopular
-                            ? 'bg-sky-600 hover:bg-sky-700'
-                            : 'bg-slate-950 hover:bg-sky-600'
+                            ? 'bg-sky-700 hover:bg-sky-700'
+                            : 'bg-slate-950 hover:bg-sky-700'
                         }`}
                         style={{ color: '#FFFFFF' }}
                       >
@@ -827,7 +827,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                       <a
                         href="#contact"
                         onClick={(e) => handleAnchorClick(e, 'contact')}
-                        className="flex-1 py-3 px-4 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-md"
+                        className="flex-1 py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-700 text-white font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-md"
                         style={{ color: '#FFFFFF' }}
                       >
                         <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
@@ -866,7 +866,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
                   <Hammer size={18} aria-hidden="true" />
                 </div>
                 <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
@@ -890,7 +890,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
                   <Building2 size={18} aria-hidden="true" />
                 </div>
                 <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
@@ -914,7 +914,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
                   <UtensilsCrossed size={18} aria-hidden="true" />
                 </div>
                 <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
@@ -938,7 +938,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
                   <Store size={18} aria-hidden="true" />
                 </div>
                 <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
