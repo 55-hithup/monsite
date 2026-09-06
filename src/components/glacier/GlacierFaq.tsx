@@ -15,6 +15,7 @@ export default function GlacierFaq() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (window.innerWidth <= 768) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;

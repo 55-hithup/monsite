@@ -12,6 +12,7 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
 
   useEffect(() => {
     if (typeof window === 'undefined' || !cardRef.current) return;
+    if (window.innerWidth <= 768) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;

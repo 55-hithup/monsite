@@ -32,6 +32,7 @@ export default function GlacierContact() {
   // Animations au scroll : Formulaire 3D + Glissé adresse (gauche) + Émergence contact (centre/retard) + Glissé horaires (droite)
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (window.innerWidth <= 768) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;

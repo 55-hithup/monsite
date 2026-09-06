@@ -747,16 +747,21 @@ h1, h2, h3 {
   inset: 0;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  background-image: url('/hero-bg-mockup.webp');
   z-index: 1;
   transform: scale(1.05);
 }
 
+@media (min-width: 769px) {
+  .hero-parallax-bg {
+    background-image: url('/hero-bg-mockup.webp');
+    background-attachment: fixed;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-parallax-bg {
-    background-image: url('/hero-bg-mockup-mobile.webp') !important;
-    background-attachment: scroll !important;
+    background-image: url('/hero-bg-mockup-mobile.webp');
+    background-attachment: scroll;
   }
 }
 
@@ -1386,15 +1391,20 @@ h1, h2, h3 {
   inset: 0;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  background-image: url('/hero-bg-mockup.webp');
   z-index: 1;
+}
+
+@media (min-width: 769px) {
+  .break-parallax-bg {
+    background-image: url('/hero-bg-mockup.webp');
+    background-attachment: fixed;
+  }
 }
 
 @media (max-width: 768px) {
   .break-parallax-bg {
-    background-image: url('/hero-bg-mockup-mobile.webp') !important;
-    background-attachment: scroll !important;
+    background-image: url('/hero-bg-mockup-mobile.webp');
+    background-attachment: scroll;
   }
 }
 

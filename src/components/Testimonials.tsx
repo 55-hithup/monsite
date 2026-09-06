@@ -318,6 +318,7 @@ export default function Testimonials() {
   // Animation d'apparition par élément avec ScrollTrigger dédiés et replay au scroll
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (window.innerWidth <= 768) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;

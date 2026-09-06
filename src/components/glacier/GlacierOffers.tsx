@@ -62,6 +62,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
   // Animation GSAP ScrollTrigger : Déploiement en éventail 3D au scroll (Rejeu garanti)
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (window.innerWidth <= 768) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
