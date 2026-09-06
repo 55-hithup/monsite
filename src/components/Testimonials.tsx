@@ -232,7 +232,7 @@ function TestimonialCard({
               e.stopPropagation();
               onToggleExpand();
             }}
-            className="mt-2.5 text-xs font-bold font-['Montserrat'] text-[#0284C7] hover:text-[#1A1A1A] inline-flex items-center gap-1 cursor-pointer transition-colors focus:outline-none focus:underline"
+            className="mt-2.5 text-xs font-bold font-['Montserrat'] text-[#0369A1] hover:text-[#1A1A1A] inline-flex items-center gap-1 cursor-pointer transition-colors focus:outline-none focus:underline"
             aria-expanded={isExpanded}
           >
             <span>{isExpanded ? showLessText : readMoreText}</span>
@@ -738,8 +738,8 @@ export default function Testimonials() {
     <section ref={sectionRef} id="avis" className="py-20 md:py-28 bg-[#F8F8F8] border-t border-[#E5E5E5] text-left relative">
       <div className="container mx-auto px-6 max-w-6xl">
         <div ref={headerWrapRef} className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 text-xs font-bold font-['Montserrat'] text-[#0284C7] mb-4">
-            <Star size={14} className="text-[#0284C7] fill-[#0284C7]" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-300 bg-sky-50 text-xs font-bold font-['Montserrat'] text-[#0369A1] mb-4">
+            <Star size={14} className="text-[#0369A1] fill-[#0369A1]" aria-hidden="true" />
             <span>{isEn ? "TRUST & REVIEWS" : "CONFIANCE & TÉMOIGNAGES"}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] mb-3 tracking-tight">
