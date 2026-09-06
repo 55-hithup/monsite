@@ -157,15 +157,18 @@ export default function ParallaxLogoVoyager({
           position: 'relative',
         }}
       >
-        <img
-          src="/logo.webp"
-          alt=""
-          width={size}
-          height={size}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-contain rounded-full parallax-logo-img drop-shadow-[0_0_35px_rgba(56,189,248,0.3)]"
-        />
+        <picture>
+          <source media="(min-width: 769px)" srcSet="/logo.webp" />
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
+            alt=""
+            width={size}
+            height={size}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-contain rounded-full parallax-logo-img drop-shadow-[0_0_35px_rgba(56,189,248,0.3)]"
+          />
+        </picture>
       </div>
     </div>
   );

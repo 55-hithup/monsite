@@ -17,6 +17,9 @@ export default function GlacierParallaxBreak() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
+    if (window.innerWidth <= 768) {
+      return;
+    }
 
     gsap.registerPlugin(ScrollTrigger);
 
