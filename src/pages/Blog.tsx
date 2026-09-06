@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../utils/scrollTriggerRefresh';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import { useLanguage } from '../i18n/LanguageContext';
 import { useJsonLd } from '../hooks/useJsonLd';
@@ -239,12 +240,9 @@ export default function Blog() {
       }
     }, pageContainerRef);
 
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+    debouncedScrollTriggerRefresh(100);
 
     return () => {
-      clearTimeout(timer);
       ctx.revert();
     };
   }, []);

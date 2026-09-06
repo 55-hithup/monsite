@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../utils/scrollTriggerRefresh';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import SectionReveal from '../components/SectionReveal';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -493,12 +494,9 @@ export default function Services() {
       }
     }, pageContainerRef);
 
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 150);
+    debouncedScrollTriggerRefresh(150);
 
     return () => {
-      clearTimeout(refreshTimer);
       ctx.revert();
     };
   }, []);
@@ -540,12 +538,9 @@ export default function Services() {
       });
     }, catalogGridRef);
 
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 80);
+    debouncedScrollTriggerRefresh(100);
 
     return () => {
-      clearTimeout(refreshTimer);
       ctx.revert();
     };
   }, [filteredServices]);

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { debouncedScrollTriggerRefresh } from '../utils/scrollTriggerRefresh';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import { useLanguage } from '../i18n/LanguageContext';
 import { pagesData } from '../i18n/pagesData';
@@ -421,12 +422,9 @@ export default function About() {
       }
     }, pageContainerRef);
 
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 150);
+    debouncedScrollTriggerRefresh(150);
 
     return () => {
-      clearTimeout(timer);
       ctx.revert();
     };
   }, []);

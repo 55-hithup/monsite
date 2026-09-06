@@ -67,7 +67,8 @@ function GlacierNavLinks({
           aria-label={isEn ? 'DevSupAi - Back to top' : 'DevSupAi - Retour en haut'}
         >
           <img 
-            src="/logo.webp" 
+            src="/logo-48.webp" 
+            srcSet="/logo-48.webp 1x, /logo-64.webp 2x"
             alt="DevSupAi" 
             width={28} 
             height={28} 

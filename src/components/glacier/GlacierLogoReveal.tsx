@@ -158,11 +158,14 @@ export default function GlacierLogoReveal({ isEn = false, onComplete }: GlacierL
       </span>
       <img
         ref={logoRef}
-        src="/logo.webp"
+        src="/logo-64.webp"
+        srcSet="/logo-48.webp 48w, /logo-64.webp 64w, /logo.webp 128w"
+        sizes="(max-width: 768px) 48px, 64px"
         alt=""
         aria-hidden="true"
         width={64}
         height={64}
+        decoding="async"
         className="glacier-logo-reveal-icon"
       />
     </span>
