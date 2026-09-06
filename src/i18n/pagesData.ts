@@ -120,6 +120,118 @@ export const pagesData = {
       s5_title: '5. Sécurité des données',
       s5_desc: 'Toutes les connexions vers le site sont cryptées via le protocole SSL/TLS (HTTPS). Vos messages sont acheminés de manière sécurisée vers ma boîte de réception OVH protégée, afin de prévenir tout accès non autorisé à vos données.',
     },
+    cgv: {
+      eyebrow: 'Juridique & Vente',
+      title: 'Conditions Générales de Vente (CGV)',
+      lastUpdated: 'Dernière mise à jour : Mars 2026',
+      intro: "Les présentes Conditions Générales de Vente (ci-après « CGV ») régissent les relations contractuelles entre Alexandre PABST EI (opérant sous le nom commercial DevSupAi), ci-après « le Prestataire », et toute personne physique ou morale, ci-après « le Client », souhaitant bénéficier de prestations de services de développement web, d'ingénierie logicielle ou de conseil digital.",
+      sections: [
+        {
+          title: '1. Identification du Prestataire',
+          paragraphs: [
+            'DevSupAi est une entreprise individuelle (EI) immatriculée au Registre National des Entreprises (RNE) sous le numéro SIRET 106 295 678 00010.',
+            'Fondateur et responsable : Alexandre PABST',
+            'Adresse professionnelle : 13 Allée des Roses, 55300 Saint-Mihiel, France',
+            'Contact email : contact@devsupai.fr — Téléphone : 07 83 66 60 98',
+            'Statut fiscal : TVA non applicable, article 293 B du Code Général des Impôts (franchise en base de TVA).',
+          ],
+        },
+        {
+          title: "2. Champ d'application & Objet",
+          paragraphs: [
+            "Les présentes CGV s'appliquent sans restriction ni réserve à l'ensemble des prestations de services intellectuels, techniques et informatiques proposées par DevSupAi, notamment :",
+          ],
+          items: [
+            'La conception et le développement de sites internet vitrines sur-mesure pour PME, commerçants, artisans, professions libérales et associations.',
+            'La création de boutiques e-commerce et de modules de commande / Click & Collect sans commission.',
+            "Le développement d'applications web métier, extranets et solutions logicielles SaaS sur-mesure.",
+            "L'audit technique, l'optimisation des performances de chargement (Core Web Vitals), l'accessibilité web (WCAG / RGAA) et le référencement naturel (SEO).",
+            "La maintenance préventive et corrective, l'infogérance et l'assistance technique.",
+          ],
+          footer: "Toute commande ou validation de devis implique l'adhésion pleine et entière du Client aux présentes CGV, qui prévalent sur tout autre document commercial ou conditions d'achat du Client, sauf accord écrit préalable de DevSupAi.",
+        },
+        {
+          title: '3. Devis, Commande & Démarrage du projet',
+          paragraphs: [
+            "Chaque projet fait l'objet d'un devis préalable, gratuit et personnalisé émis par DevSupAi, détaillant le périmètre fonctionnel, les livrables techniques, les tarifs et les délais estimés.",
+            "Le devis est valable pendant une durée de 30 jours calendaires à compter de sa date d'émission.",
+            "La commande devient ferme et définitive dès réception par DevSupAi du devis dûment daté et signé (signature manuscrite ou électronique certifiée) portant la mention manuscrite « Bon pour accord », accompagné du versement de l'acompte prévu.",
+            "Le calendrier de réalisation démarre effectivement à compter de la réception conjointe de l'acompte et de l'ensemble des éléments indispensables fournis par le Client (cahier des charges, textes, visuels, accès d'hébergement).",
+          ],
+        },
+        {
+          title: '4. Tarifs, Facturation & Modalités de paiement',
+          paragraphs: [
+            'Les prix sont libellés en euros (€), hors taxes (TVA non applicable, art. 293 B du CGI). Le montant net à payer est celui figurant sur le devis validé.',
+            "Sauf accord dérogatoire mentionné sur le devis, les règlements s'échelonnent comme suit :",
+          ],
+          items: [
+            "Un acompte de 30 % à 40 % à la commande pour engager l'étude et les développements.",
+            "Des jalons intermédiaires éventuels selon l'envergure du projet (notamment pour les applications web complexes et projets SaaS).",
+            "Le solde restant (60 % à 70 %) à la livraison finale, avant la mise en ligne définitive sur le nom de domaine de production du Client.",
+          ],
+          footer: "Les règlements s'effectuent par virement bancaire sur le compte professionnel du Prestataire. En cas de retard de paiement, des pénalités de retard calculées au taux de refinancement de la BCE majoré de 10 points de pourcentage sont exigibles de plein droit sans rappel, ainsi qu'une indemnité forfaitaire légale pour frais de recouvrement de 40 € pour les clients professionnels (art. L. 441-10 et D. 441-5 du Code de commerce).",
+        },
+        {
+          title: "5. Délais d'exécution & Livraison",
+          paragraphs: [
+            "Les délais de livraison figurant sur les devis sont communiqués à titre indicatif et dépendent de la collaboration du Client.",
+            "DevSupAi met en œuvre toute la diligence nécessaire pour respecter les plannings convenus. Tout retard causé par le Client (fourniture tardive des contenus, validations différées des étapes) repousse d'autant le délai de livraison final, sans que le Client ne puisse réclamer d'indemnité, pénalité ou résiliation.",
+          ],
+        },
+        {
+          title: '6. Propriété intellectuelle & Transfert de droits',
+          paragraphs: [
+            "Conformément à l'engagement de DevSupAi pour un code 100 % propriétaire sans abonnement logiciel captif, le transfert de propriété du code source développé sur-mesure intervient au moment du paiement complet et effectif du solde de la facture.",
+            "Dès parfait encaissement du prix total, le Client devient l'unique et total propriétaire de l'intégralité du code source sur-mesure créé pour son compte, des maquettes finalisées et de ses bases de données.",
+            "DevSupAi conserve la propriété exclusive de ses méthodes, de ses outils génériques réutilisables, ainsi que des composants open-source tiers intégrés sous leurs licences respectives (ex : React, Tailwind CSS, TypeScript).",
+            "Sauf refus exprès et écrit notifié par le Client lors de la signature du devis, DevSupAi se réserve le droit de mentionner discrètement la réalisation dans son portfolio professionnel et d'inclure une mention discrète en pied de page (« Site conçu par DevSupAi » pointant vers le site officiel).",
+          ],
+        },
+        {
+          title: '7. Obligations du Client & Phase de Recette',
+          paragraphs: [
+            "Le Client s'engage à collaborer activement avec le Prestataire et à lui fournir en temps utile tous les documents, informations, textes et photographies nécessaires.",
+            "Le Client garantit qu'il est titulaire de l'ensemble des droits de propriété intellectuelle sur tous les contenus (logos, images, textes, marques) qu'il transmet au Prestataire, et garantit DevSupAi contre toute action de tiers à ce titre.",
+            "À l'achèvement des développements, une version de recette (environnement de pré-production) est soumise au Client. Celui-ci dispose d'un délai de 10 jours ouvrés pour formuler par écrit ses réserves éventuelles. En l'absence de réserves formulées dans ce délai, les livrables sont réputés définitivement acceptés et conformes.",
+          ],
+        },
+        {
+          title: '8. Garantie technique & Maintenance',
+          paragraphs: [
+            'DevSupAi assure une garantie de parfait achèvement technique de 30 jours calendaires à compter de la mise en ligne définitive sur le domaine de production.',
+            'Pendant cette période de garantie, DevSupAi corrige gratuitement tout bogue technique ou anomalie reproductible directement imputable au code source livré, sous réserve qu’aucune modification n’ait été effectuée par le Client ou un tiers.',
+            "Cette garantie ne couvre pas les défaillances d'hébergeurs externes, les modifications d'APIs tierces non annoncées, ni les dommages résultant d'une mauvaise utilisation du Client.",
+            "Au-delà de cette garantie de 30 jours, toute assistance technique, évolution ou maintenance préventive fait l'objet d'un contrat de maintenance mensuel ou d'une facturation au temps passé.",
+          ],
+        },
+        {
+          title: '9. Responsabilité & Force majeure',
+          paragraphs: [
+            'DevSupAi est tenu à une obligation de moyens dans le cadre de ses prestations de services intellectuels et de développement web.',
+            'DevSupAi ne saurait être tenu responsable des pertes de chiffre d’affaires, manques à gagner, préjudices d’image ou pertes de données subis par le Client.',
+            'Si la responsabilité de DevSupAi devait néanmoins être retenue, le montant total des indemnités ne pourra en aucun cas excéder la somme hors taxes effectivement perçue par DevSupAi au titre de la prestation commandée.',
+            "Aucune des parties ne pourra être tenue pour responsable d'un retard ou d'une inexécution imputable à un cas de force majeure au sens de l'article 1218 du Code civil.",
+          ],
+        },
+        {
+          title: '10. Droit de rétractation (Consommateurs B2C)',
+          paragraphs: [
+            "Pour les clients personnes physiques agissant en qualité de consommateur au sens du Code de la consommation, un délai de rétractation légal de 14 jours s'applique aux contrats conclus à distance (art. L. 221-18 du Code de la consommation).",
+            "Toutefois, en application de l'article L. 221-28 du même Code, le droit de rétractation ne peut être exercé pour les contrats de services pleinement exécutés avant la fin du délai avec accord préalable du consommateur, ni pour les biens et services nettement personnalisés et confectionnés sur-mesure selon les spécifications précises du Client.",
+          ],
+        },
+        {
+          title: '11. Droit applicable & Règlement des litiges',
+          paragraphs: [
+            'Les présentes CGV et les relations contractuelles entre les parties sont régies exclusivement par le droit français.',
+            'En cas de différend relatif à la validité, l’interprétation ou l’exécution des présentes, les parties s’engagent à rechercher une issue amiable préalablement à toute action judiciaire.',
+            'Pour les clients consommateurs, il est rappelé la possibilité de recourir gratuitement à un médiateur de la consommation conformément aux dispositions des articles L. 612-1 et suivants du Code de la consommation.',
+            'À défaut de règlement amiable, tout litige survenant avec un client professionnel sera soumis à la compétence exclusive des juridictions du ressort du Tribunal de Bar-le-Duc (Meuse, France).',
+          ],
+        },
+      ],
+    },
     admin: {
       badge: 'ADMINISTRATION',
       loginTitle: 'Connexion',
@@ -250,6 +362,118 @@ export const pagesData = {
       s4_footer: 'You can exercise these rights at any time by emailing contact@devsupai.fr. Requests are handled within 30 days.',
       s5_title: '5. Data Security',
       s5_desc: 'All connections to the website are encrypted using modern SSL/TLS (HTTPS) protocols. Inquiries are routed securely to a protected OVH mailbox to prevent unauthorized interception.',
+    },
+    cgv: {
+      eyebrow: 'Legal & Commercial',
+      title: 'General Terms of Sale (GTS)',
+      lastUpdated: 'Last updated: March 2026',
+      intro: 'These General Terms of Sale (hereinafter "GTS") govern the contractual relationships between Alexandre PABST EI (trading under the business name DevSupAi), hereinafter "the Service Provider", and any natural or legal person, hereinafter "the Client", purchasing custom web development, software engineering, or digital consulting services.',
+      sections: [
+        {
+          title: '1. Identification of the Service Provider',
+          paragraphs: [
+            'DevSupAi is a sole proprietorship (Entreprise Individuelle - EI) registered with the French National Register of Enterprises (RNE) under SIRET number 106 295 678 00010.',
+            'Founder and Executive Director: Alexandre PABST',
+            'Business Address: 13 Allée des Roses, 55300 Saint-Mihiel, France',
+            'Contact Email: contact@devsupai.fr — Phone: +33 7 83 66 60 98',
+            'Tax Status: VAT not applicable, article 293 B of the French General Tax Code (CGI base franchise).',
+          ],
+        },
+        {
+          title: '2. Scope & Purpose',
+          paragraphs: [
+            'These GTS apply without restriction or reservation to all intellectual and technical services provided by DevSupAi, including notably:',
+          ],
+          items: [
+            'Design and development of bespoke showcase websites for SMEs, retailers, contractors, and non-profit organizations.',
+            'Creation of custom zero-commission e-commerce platforms and Click & Collect ordering systems.',
+            'Engineering of custom business web applications, extranets, and tailored SaaS software platforms.',
+            'Technical auditing, Core Web Vitals performance optimization, web accessibility (WCAG), and search engine optimization (SEO).',
+            'Preventive and corrective technical maintenance, cloud infrastructure management, and developer support.',
+          ],
+          footer: 'Placing any order or signing an estimate implies full and unreserved acceptance of these GTS by the Client, which take precedence over any other client purchasing documents or terms, unless expressly agreed otherwise in writing by DevSupAi.',
+        },
+        {
+          title: '3. Quotes, Orders & Project Kickoff',
+          paragraphs: [
+            'Each project is preceded by a free, customized quote issued by DevSupAi, specifying the functional scope, technical deliverables, pricing schedule, and estimated delivery timeline.',
+            'Quotes remain valid for a period of 30 calendar days from their date of issuance.',
+            'An order becomes definitive and binding once DevSupAi receives the quote duly dated and signed (handwritten or certified digital signature) bearing the mention "Agreed and accepted", accompanied by the specified initial deposit.',
+            'The development timeline officially begins upon receipt of both the deposit and all necessary project materials provided by the Client (specifications, copy, image assets, hosting credentials).',
+          ],
+        },
+        {
+          title: '4. Pricing, Invoicing & Payment Terms',
+          paragraphs: [
+            'Prices are quoted in Euros (€), exclusive of VAT (VAT exempt under article 293 B of the French CGI). The net amount payable is specified on the accepted quote.',
+            'Unless specifically agreed otherwise on the quote, payments follow this schedule:',
+          ],
+          items: [
+            'A 30% to 40% initial deposit upon signing the quote to initiate architectural design and development.',
+            'Intermediate milestones depending on project scale (notably for SaaS web applications and complex systems).',
+            'The remaining balance (60% to 70%) upon final delivery and acceptance, prior to live deployment on the production domain.',
+          ],
+          footer: 'Payments are made by bank wire transfer to the Service Provider’s designated business bank account. In the event of late payment, late payment penalties calculated at the European Central Bank refinancing rate plus 10 percentage points will be immediately due without prior reminder, together with a statutory fixed recovery indemnity of €40 for commercial clients (articles L. 441-10 and D. 441-5 of the French Commercial Code).',
+        },
+        {
+          title: '5. Execution Timelines & Delivery',
+          paragraphs: [
+            'Delivery timelines indicated on quotes are provided for guidance purposes and rely heavily on proactive client cooperation.',
+            'DevSupAi exercises all reasonable diligence to meet agreed schedules. Any delays attributable to the Client (late content delivery, delayed feedback or approval milestones) will proportionally extend the final delivery deadline, without conferring any entitlement to compensation, penalties, or order cancellation.',
+          ],
+        },
+        {
+          title: '6. Intellectual Property & Transfer of Ownership',
+          paragraphs: [
+            'In line with DevSupAi’s core commitment to 100% proprietary ownership without recurring vendor lock-in, full ownership of bespoke custom code transfers to the Client only upon full and final settlement of all invoices.',
+            'Upon complete payment of the final invoice, the Client becomes the exclusive owner of all custom-developed source code, interface designs, and bespoke database architectures created specifically for the project.',
+            'DevSupAi retains exclusive ownership over its proprietary methods, generic reusable libraries, and third-party open-source components integrated under their respective licenses (e.g., React, Tailwind CSS, TypeScript).',
+            'Unless the Client explicitly objects in writing upon quote signing, DevSupAi reserves the right to discreetly showcase the completed project in its professional portfolio and maintain a subtle credit link in the footer ("Website crafted by DevSupAi" linking to the official agency site).',
+          ],
+        },
+        {
+          title: '7. Client Obligations & Acceptance Testing',
+          paragraphs: [
+            'The Client agrees to actively collaborate with the Service Provider and provide in a timely manner all documents, brand guidelines, texts, and high-resolution assets required for development.',
+            'The Client guarantees holding all intellectual property rights and necessary authorizations for all materials (logos, photos, texts, trademarks) supplied to DevSupAi, and indemnifies DevSupAi against any third-party claims in this regard.',
+            'Upon development completion, a staging environment is provided to the Client for acceptance testing. The Client has 10 business days to submit written feedback or discrepancies relative to the agreed scope. In the absence of written objections within this timeframe, deliverables are deemed definitively accepted and conforming.',
+          ],
+        },
+        {
+          title: '8. Technical Warranty & Maintenance',
+          paragraphs: [
+            'DevSupAi provides a 30-calendar-day technical completion warranty starting on the date of public production deployment.',
+            'During this warranty period, DevSupAi will rectify free of charge any reproducible technical defect or bug directly originating from the delivered codebase, provided that no modifications have been made by the Client or any third party.',
+            'This warranty does not cover third-party API changes, server/hosting outages, or malfunctions resulting from improper client handling or unauthorized codebase tampering.',
+            'Following the expiration of the 30-day warranty, subsequent technical assistance, feature evolutions, or preventive maintenance are provided under a monthly maintenance agreement or billed on a time-and-materials basis.',
+          ],
+        },
+        {
+          title: '9. Limitation of Liability & Force Majeure',
+          paragraphs: [
+            'DevSupAi is bound by an obligation of best endeavors (obligation de moyens) for all custom digital and engineering services.',
+            'DevSupAi cannot be held liable for indirect damages, loss of business, lost profits, loss of data, or reputational harm incurred by the Client.',
+            'In any event, should the Service Provider’s liability be established, the aggregate damages payable shall not exceed the net sum actually received by DevSupAi for the specific service in dispute.',
+            'Neither party shall be held liable for delayed or non-performance caused by an event of Force Majeure as defined by article 1218 of the French Civil Code.',
+          ],
+        },
+        {
+          title: '10. Right of Withdrawal (B2C Consumers)',
+          paragraphs: [
+            'For individual clients acting as consumers under the French Consumer Code, a statutory 14-day right of withdrawal applies to distance contracts (article L. 221-18 of the French Consumer Code).',
+            'However, pursuant to article L. 221-28 of the same Code, the right of withdrawal cannot be exercised for digital services fully executed before the end of the withdrawal period with the consumer’s express prior consent, nor for clearly customized goods and services tailored to the specific bespoke requirements of the Client.',
+          ],
+        },
+        {
+          title: '11. Applicable Law & Dispute Resolution',
+          paragraphs: [
+            'These GTS and any resulting service agreements are governed exclusively by the laws of France.',
+            'In the event of a dispute, the parties undertake to seek an amicable resolution in good faith before initiating formal legal proceedings.',
+            'Consumer clients may access free consumer mediation pursuant to articles L. 612-1 et seq. of the French Consumer Code.',
+            'Failing amicable settlement, any dispute arising with a commercial client concerning the validity, interpretation, or performance of the contract will be submitted to the exclusive jurisdiction of the competent courts of Bar-le-Duc (Meuse, France).',
+          ],
+        },
+      ],
     },
     admin: {
       badge: 'ADMINISTRATION',

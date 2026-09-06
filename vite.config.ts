@@ -72,6 +72,11 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: "Découvrez notre politique de confidentialité, le traitement de vos données personnelles et vos droits relatifs aux RGPD sur devsupai.fr.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
+  '/cgv': {
+    title: 'Conditions Générales de Vente (CGV) | DevSupAi — Alexandre Pabst',
+    description: "Consultez les Conditions Générales de Vente (CGV) régissant les prestations de développement web et logiciel sur-mesure de DevSupAi (Alexandre Pabst EI).",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
 
   // French Trade Pages
   '/sites-internet/artisan-renovation': {
@@ -188,6 +193,11 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: 'Read our privacy policy, personal data processing terms, and GDPR compliance standards on devsupai.fr.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
+  '/en/terms': {
+    title: 'General Terms of Sale (GTS) | DevSupAi — Alexandre Pabst',
+    description: 'Read the General Terms of Sale (GTS) governing bespoke web development and software engineering services by DevSupAi.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
 
   // English Trade Pages
   '/en/websites/artisan-construction': {
@@ -269,6 +279,7 @@ const routePairs = [
   { fr: '/projets/abogame', en: '/en/projects/abogame' },
   { fr: '/mentions-legales', en: '/en/legal-notices' },
   { fr: '/politique-de-confidentialite', en: '/en/privacy-policy' },
+  { fr: '/cgv', en: '/en/terms' },
   { fr: '/sites-internet/artisan-renovation', en: '/en/websites/artisan-construction' },
   { fr: '/sites-internet/profession-liberale', en: '/en/websites/professional-services' },
   { fr: '/sites-internet/restaurant', en: '/en/websites/restaurant' },
@@ -380,6 +391,7 @@ export default defineConfig({
         '/projets/abogame',
         '/mentions-legales',
         '/politique-de-confidentialite',
+        '/cgv',
         '/sites-internet/artisan-renovation',
         '/sites-internet/profession-liberale',
         '/sites-internet/restaurant',
@@ -414,6 +426,7 @@ export default defineConfig({
         '/en/projects/abogame',
         '/en/legal-notices',
         '/en/privacy-policy',
+        '/en/terms',
       ],
     }),
   ],

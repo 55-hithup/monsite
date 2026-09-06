@@ -16,6 +16,7 @@ export const ROUTE_PAIRS: RoutePair[] = [
   { fr: '/projets/abogame', en: '/en/projects/abogame' },
   { fr: '/mentions-legales', en: '/en/legal-notices' },
   { fr: '/politique-de-confidentialite', en: '/en/privacy-policy' },
+  { fr: '/cgv', en: '/en/terms' },
   { fr: '/sites-internet/artisan-renovation', en: '/en/websites/artisan-construction' },
   { fr: '/sites-internet/profession-liberale', en: '/en/websites/professional-services' },
   { fr: '/sites-internet/restaurant', en: '/en/websites/restaurant' },

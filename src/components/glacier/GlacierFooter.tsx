@@ -76,6 +76,9 @@ export default function GlacierFooter() {
           <Link to={isEn ? '/en/privacy-policy' : '/politique-de-confidentialite'}>
             {isEn ? 'Privacy Policy' : 'Politique de confidentialité'}
           </Link>
+          <Link to={isEn ? '/en/terms' : '/cgv'}>
+            {isEn ? 'Terms of Sale' : 'CGV'}
+          </Link>
           <Link to={isEn ? '/en/services' : '/nos-services'}>
             {isEn ? 'Services Catalog' : 'Catalogue complet'}
           </Link>

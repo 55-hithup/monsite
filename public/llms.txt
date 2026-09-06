@@ -137,7 +137,7 @@
 
 ---
 
-## Cartographie des URLs & Structure du Site (46 Routes Statiques & Pages Clés)
+## Cartographie des URLs & Structure du Site (48 Routes Statiques & Pages Clés)
 
 ### Pages en Français (FR)
 - [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les forfaits, réalisations, engagement et formulaire de contact.
@@ -162,6 +162,7 @@
 - [/projets/abogame](https://www.devsupai.fr/projets/abogame) : Étude de cas de la web app temps réel événementielle.
 - [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Informations légales et données d'immatriculation d'Alexandre Pabst.
 - [/politique-de-confidentialite](https://www.devsupai.fr/politique-de-confidentialite) : Politique de protection des données et conformité RGPD.
+- [/cgv](https://www.devsupai.fr/cgv) : Conditions Générales de Vente (CGV) encadrant les prestations de développement web et logiciel.
 - [/admin/login](https://www.devsupai.fr/admin/login) : Espace d'administration sécurisé (modération des avis).
 
 ### Pages en Anglais (EN)
@@ -187,3 +188,4 @@
 - [/en/projects/abogame](https://www.devsupai.fr/en/projects/abogame) : Case study of the real-time live interaction web platform.
 - [/en/legal-notices](https://www.devsupai.fr/en/legal-notices) : Legal disclosures for DevSupAi.
 - [/en/privacy-policy](https://www.devsupai.fr/en/privacy-policy) : GDPR compliance and data protection terms.
+- [/en/terms](https://www.devsupai.fr/en/terms) : General Terms of Sale (GTS) governing custom web development and digital services.
