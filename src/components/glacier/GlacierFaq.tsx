@@ -170,14 +170,6 @@ export default function GlacierFaq() {
       answer: "Yes, absolutely. Upon project completion, you retain 100% exclusive ownership of your source code, design assets, database, and domain name. There are no compulsory maintenance contracts or recurring software lock-ins.",
     },
     {
-      question: "How does artificial intelligence integrate into your DevSupAi projects?",
-      answer: "Artificial intelligence is utilized at DevSupAi as a specialized technical accelerator under the direct supervision of an experienced human engineer. It assists during rapid prototyping, code refactoring, and automated performance testing. Unlike generic no-code AI builders that output opaque and heavy codebases, every single line of production code is manually audited, optimized, and secured to ensure lightning-fast loading speeds and flawless reliability.",
-    },
-    {
-      question: "Will my website be coded by an AI or by a human developer?",
-      answer: "Your website is architected, hand-coded, and delivered by a human developer (Alexandre Pabst). AI serves exclusively as a high-precision workshop tool (generating boilerplate scaffolds, regression tests, and type checking), while the creative craft, UX design, semantic SEO hierarchy, form security, and WCAG accessibility remain 100% human-engineered and verified. You benefit from a dedicated direct human partner without any opaque black box.",
-    },
-    {
       question: "What happens regarding hosting and domain registration after the first included year?",
       answer: "High-performance secure edge hosting and your custom domain name are fully included for the first year with every package. Upon annual renewal, you retain 100% freedom: you can renew through DevSupAi at direct cost (typically between €39 and €49 per year depending on the domain extension, with zero hidden markup), or choose to host your project with any provider of your choice. You are the sole owner of all source code, assets, and DNS records with zero forced lock-in.",
     },
@@ -201,14 +193,6 @@ export default function GlacierFaq() {
     {
       question: "Suis-je propriétaire de mon site internet et de mon nom de domaine ?",
       answer: "Oui, absolument. Dès le règlement de la facture finale, vous êtes l'unique propriétaire du code source, des identifiants, des visuels et du nom de domaine. Vous ne subissez aucun engagement de maintenance obligatoire.",
-    },
-    {
-      question: "Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ?",
-      answer: "L'intelligence artificielle est utilisée chez DevSupAi comme un accélérateur technique de haute précision, sous la supervision exclusive d'un développeur humain expérimenté. Elle intervient lors des phases de prototypage, de refactorisation de code et d'automatisation de tests de performance. Contrairement aux générateurs automatiques « no-code » qui produisent des architectures lourdes et opaques, chaque ligne de code finale est auditée, optimisée et validée manuellement pour garantir une sécurité sans compromis et des temps de chargement instantanés.",
-    },
-    {
-      question: "Est-ce que mon site sera codé par une IA ou par un humain ?",
-      answer: "Votre site est conçu, architecturé et livré par un développeur humain (Alexandre Pabst). L'IA agit uniquement comme un assistant d'atelier (génération de squelettes techniques, tests de non-régression, vérification de typage), mais la direction artistique, l'ergonomie UX, la hiérarchie sémantique SEO, la sécurité des formulaires et l'accessibilité restent 100% pilotées et vérifiées par l'humain. Vous bénéficiez ainsi d'un interlocuteur direct dédié, sans boîte noire.",
     },
     {
       question: "Que se passe-t-il pour l'hébergement et le nom de domaine après la première année incluse ?",

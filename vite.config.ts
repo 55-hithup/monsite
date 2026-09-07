@@ -615,22 +615,6 @@ export default defineConfig({
                 },
                 {
                   "@type": "Question",
-                  "name": "How does artificial intelligence integrate into your DevSupAi projects?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Artificial intelligence is utilized at DevSupAi as a specialized technical accelerator under the direct supervision of an experienced human engineer. It assists during rapid prototyping, code refactoring, and automated performance testing. Unlike generic no-code AI builders that output opaque and heavy codebases, every single line of production code is manually audited, optimized, and secured to ensure lightning-fast loading speeds and flawless reliability."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Will my website be coded by an AI or by a human developer?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Your website is architected, hand-coded, and delivered by a human developer (Alexandre Pabst). AI serves exclusively as a high-precision workshop tool (generating boilerplate scaffolds, regression tests, and type checking), while the creative craft, UX design, semantic SEO hierarchy, form security, and WCAG accessibility remain 100% human-engineered and verified. You benefit from a dedicated direct human partner without any opaque black box."
-                  }
-                },
-                {
-                  "@type": "Question",
                   "name": "What happens regarding hosting and domain registration after the first included year?",
                   "acceptedAnswer": {
                     "@type": "Answer",
@@ -705,22 +689,6 @@ export default defineConfig({
                   "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Chaque livraison s'accompagne d'une période de garantie technique et d'une assistance à la prise en main. Des forfaits d'infogérance, de maintenance préventive et de sauvegardes régulières sont disponibles dès 29 €/mois pour assurer votre sérénité."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "L'intelligence artificielle est utilisée chez DevSupAi comme un accélérateur technique de haute précision, sous la supervision exclusive d'un développeur humain expérimenté. Elle intervient lors des phases de prototypage, de refactorisation de code et d'automatisation de tests de performance. Contrairement aux générateurs automatiques « no-code » qui produisent des architectures lourdes et opaques, chaque ligne de code finale est auditée, optimisée et validée manuellement pour garantir une sécurité sans compromis et des temps de chargement instantanés."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Est-ce que mon site sera codé par une IA ou par un humain ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Votre site est conçu, architecturé et livré par un développeur humain (Alexandre Pabst). L'IA agit uniquement comme un assistant d'atelier (génération de squelettes techniques, tests de non-régression, vérification de typage), mais la direction artistique, l'ergonomie UX, la hiérarchie sémantique SEO, la sécurité des formulaires et l'accessibilité restent 100% pilotées et vérifiées par l'humain. Vous bénéficiez ainsi d'un interlocuteur direct dédié, sans boîte noire."
                   }
                 },
                 {

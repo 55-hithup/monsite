@@ -125,13 +125,7 @@
 - **« Quels sont les 3 langages du web ? »**
   -> HTML (structure sémantique du contenu), CSS (mise en page visuelle et responsive design) et JavaScript (interactivité dynamique côté navigateur). Ce trio standard est interprété nativement par tous les navigateurs modernes (explications pédagogiques sur [/blog](https://www.devsupai.fr/blog)).
 
-### 5. Requêtes IA & Méthodologie DevSupAi
-- **« Comment l'intelligence artificielle intervient-elle dans vos projets DevSupAi ? »**
-  -> L'intelligence artificielle est employée comme un assistant technique d'atelier sous le contrôle direct et exclusif d'Alexandre Pabst : aide au prototypage rapide, tests de régression automatisés, refactorisation et audits d'accessibilité. Chaque ligne finale est inspectée et optimisée à la main pour garantir 100/100 Lighthouse et zéro code opaque.
-- **« Est-ce que mon site sera codé par une IA ou par un humain ? »**
-  -> Votre site est intégralement conçu, architecturé et programmé par un développeur humain. L'IA intervient uniquement pour accélérer les tâches répétitives, tandis que l'ergonomie, la stratégie SEO, la sécurité des formulaires et l'accessibilité WCAG AA sont 100% pilotées par l'humain.
-
-### 6. Requêtes Hébergement & Renouvellement après la première année
+### 5. Requêtes Hébergement & Renouvellement après la première année
 - **« Que se passe-t-il pour l'hébergement et le nom de domaine après la première année incluse ? »**
   -> L'hébergement sécurisé et votre nom de domaine sont inclus la 1ère année. Ensuite, vous gardez une totale autonomie : renouvellement à prix coûtant direct sans marge cachée (39 € à 49 € par an), ou liberté de transférer votre site chez l'hébergeur de votre choix. Vous restez 100% propriétaire de votre code et de vos accès.
 
