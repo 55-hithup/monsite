@@ -1042,7 +1042,7 @@ export default function RegionalLorraine() {
           <div ref={packagesGridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             
             {/* Pack 1 : Présence */}
-            <div className="bg-white p-6 rounded-lg border border-[#E5E5E5] flex flex-col justify-between shadow-sm">
+            <div className="bg-white p-6 rounded-lg border border-[#E5E5E5] flex flex-col justify-between shadow-sm transition-all duration-300 ease-out transform-gpu hover:-translate-y-2 hover:scale-[1.025] hover:shadow-xl hover:border-sky-300 group">
               <div>
                 <span className="text-xs font-bold uppercase text-[#0284C7] tracking-wider font-['Montserrat']">
                   {isEn ? "Starter Pack (One-Page)" : "Pack Présence (One-Page)"}
@@ -1057,15 +1057,15 @@ export default function RegionalLorraine() {
                 </p>
                 <ul className="space-y-2 text-xs text-[#525252] mb-6">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Custom single-page architecture" : "Design épuré sur-mesure"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Local SEO setup & schema markup" : "Référencement local & données structurées"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Secure contact form & anti-spam" : "Formulaire sécurisé anti-spam"}</span>
                   </li>
                 </ul>
@@ -1080,7 +1080,7 @@ export default function RegionalLorraine() {
             </div>
 
             {/* Pack 2 : Croissance */}
-            <div className="bg-white p-6 rounded-lg border-2 border-[#0284C7] flex flex-col justify-between shadow-md relative">
+            <div className="bg-white p-6 rounded-lg border-2 border-[#0284C7] flex flex-col justify-between shadow-md relative transition-all duration-300 ease-out transform-gpu hover:-translate-y-2 hover:scale-[1.025] hover:shadow-2xl hover:border-sky-600 group">
               <span className="absolute -top-3 right-4 bg-[#0284C7] text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full font-['Montserrat'] uppercase">
                 {isEn ? "Recommended for SMEs" : "Recommandé PME"}
               </span>
@@ -1098,15 +1098,15 @@ export default function RegionalLorraine() {
                 </p>
                 <ul className="space-y-2 text-xs text-[#525252] mb-6">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "3 to 5 custom-crafted pages" : "3 à 5 pages conçues sur-mesure"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Dynamic project / photo gallery" : "Galerie dynamique de réalisations"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Multi-city regional SEO targeting" : "Ciblage SEO multi-villes en Lorraine"}</span>
                   </li>
                 </ul>
@@ -1121,7 +1121,7 @@ export default function RegionalLorraine() {
             </div>
 
             {/* Pack 3 : E-Commerce */}
-            <div className="bg-white p-6 rounded-lg border border-[#E5E5E5] flex flex-col justify-between shadow-sm">
+            <div className="bg-white p-6 rounded-lg border border-[#E5E5E5] flex flex-col justify-between shadow-sm transition-all duration-300 ease-out transform-gpu hover:-translate-y-2 hover:scale-[1.025] hover:shadow-xl hover:border-sky-300 group">
               <div>
                 <span className="text-xs font-bold uppercase text-[#0284C7] tracking-wider font-['Montserrat']">
                   {isEn ? "Bespoke E-Commerce" : "Pack Boutique E-Commerce"}
@@ -1136,15 +1136,15 @@ export default function RegionalLorraine() {
                 </p>
                 <ul className="space-y-2 text-xs text-[#525252] mb-6">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "0% commission on your sales" : "0% de commission sur votre CA"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Stripe / Apple Pay checkout" : "Paiement CB sécurisé Stripe"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Autonomous stock & order manager" : "Gestion autonome des stocks & commandes"}</span>
                   </li>
                 </ul>
@@ -1159,7 +1159,7 @@ export default function RegionalLorraine() {
             </div>
 
             {/* Pack 4 : SaaS & Outil Métier */}
-            <div className="bg-white p-6 rounded-lg border border-[#E5E5E5] flex flex-col justify-between shadow-sm">
+            <div className="bg-white p-6 rounded-lg border border-[#E5E5E5] flex flex-col justify-between shadow-sm transition-all duration-300 ease-out transform-gpu hover:-translate-y-2 hover:scale-[1.025] hover:shadow-xl hover:border-sky-300 group">
               <div>
                 <span className="text-xs font-bold uppercase text-[#0284C7] tracking-wider font-['Montserrat']">
                   {isEn ? "SaaS & Custom Web App" : "Pack SaaS & Outil Métier"}
@@ -1174,15 +1174,15 @@ export default function RegionalLorraine() {
                 </p>
                 <ul className="space-y-2 text-xs text-[#525252] mb-6">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Custom SQL databases & secure auth" : "Bases de données & authentification"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "PDF contract & invoice generation" : "Génération de contrats & factures PDF"}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" aria-hidden="true" />
+                    <CheckCircle2 size={14} className="text-[#0284C7] shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
                     <span>{isEn ? "Daily rate basis (€400/day)" : "Base TJM 400 €/jour"}</span>
                   </li>
                 </ul>

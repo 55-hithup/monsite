@@ -616,227 +616,235 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
             return (
               <div 
                 key={pack.id} 
-                className="glacier-flip-card-wrapper min-h-[490px]"
+                className="h-full"
               >
-                <div className={`glacier-flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
-                  
-                  {/* --- FACE AVANT (RECTO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
-                  <div
-                    className={`glacier-flip-card-front p-5 flex flex-col justify-between relative transition-all duration-300 ${
-                      isPopular
-                        ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.22),0_6px_16px_-3px_rgba(15,23,42,0.08)] hover:shadow-[0_24px_50px_-8px_rgba(2,132,199,0.30)] lg:-translate-y-1.5'
-                        : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.12),0_4px_12px_-2px_rgba(15,23,42,0.06)] hover:shadow-[0_20px_44px_-8px_rgba(15,23,42,0.18)] hover:border-slate-300'
-                    }`}
-                  >
-                    {/* Badge Populaire / Recommandé en haut */}
-                    {isPopular && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                        <span className="bg-sky-700 text-white text-[11px] font-extrabold uppercase tracking-widest px-3 py-0.5 rounded-full shadow-md inline-flex items-center gap-1">
-                          <Star className="w-3 h-3 fill-white text-white" aria-hidden="true" />
-                          {pack.badge}
-                        </span>
-                      </div>
-                    )}
-
-                    {/* Haut de la carte : Badge catégorie + Titre + Prix + Description */}
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5">
-                          <CategoryIcon className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
-                          {pack.categoryBadge}
-                        </span>
-                      </div>
-
-                      <h3 className="text-lg sm:text-xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight mb-1">
-                        {pack.name}
-                      </h3>
-
-                      <div className="mb-2">
-                        <span className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-sky-700 tracking-tight">
-                          {pack.price}
-                        </span>
-                      </div>
-
-                      <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-3 sm:min-h-[28px]">
-                        {pack.shortDesc}
-                      </p>
-
-                      {/* Ligne compacte de métriques (Badges horizontaux) */}
-                      <div className="flex items-center flex-wrap gap-1.5 mb-3 py-1.5 border-y border-slate-100">
-                        {pack.metrics.map((metric, mIdx) => {
-                          const MetricIcon = metric.icon;
-                          return (
-                            <span 
-                              key={mIdx} 
-                              className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-medium"
-                            >
-                              <MetricIcon className="w-3.5 h-3.5 text-sky-700 shrink-0" aria-hidden="true" />
-                              <span>{metric.value}</span>
-                            </span>
-                          );
-                        })}
-                      </div>
-
-                      {/* Livrables inclus */}
-                      <div className="mb-3">
-                        <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 font-['Montserrat'] mb-1.5">
-                          {isEn ? "DELIVERABLES INCLUDED:" : "LIVRABLES INCLUS :"}
+                <div 
+                  className={`glacier-flip-card-wrapper min-h-[490px] h-full group/card transition-all duration-300 ease-out transform-gpu hover:scale-[1.025] motion-reduce:hover:transform-none ${
+                    isPopular 
+                      ? 'lg:-translate-y-1.5 hover:-translate-y-2 hover:lg:-translate-y-3.5' 
+                      : 'hover:-translate-y-2'
+                  }`}
+                >
+                  <div className={`glacier-flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
+                    
+                    {/* --- FACE AVANT (RECTO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
+                    <div
+                      className={`glacier-flip-card-front p-5 flex flex-col justify-between relative transition-all duration-300 ${
+                        isPopular
+                          ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.22),0_6px_16px_-3px_rgba(15,23,42,0.08)] group-hover/card:shadow-[0_26px_55px_-8px_rgba(2,132,199,0.32)] group-hover/card:border-sky-500'
+                          : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.12),0_4px_12px_-2px_rgba(15,23,42,0.06)] group-hover/card:shadow-[0_22px_48px_-8px_rgba(15,23,42,0.20)] group-hover/card:border-sky-300'
+                      }`}
+                    >
+                      {/* Badge Populaire / Recommandé en haut */}
+                      {isPopular && (
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 transition-transform duration-300 group-hover/card:scale-105">
+                          <span className="bg-sky-700 text-white text-[11px] font-extrabold uppercase tracking-widest px-3 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 transition-all duration-300 group-hover/card:shadow-lg group-hover/card:bg-sky-600">
+                            <Star className="w-3 h-3 fill-white text-white transition-transform duration-300 group-hover/card:rotate-45" aria-hidden="true" />
+                            {pack.badge}
+                          </span>
                         </div>
-                        <ul className="space-y-1.5">
-                          {pack.features.map((feature, fIdx) => (
-                            <li key={fIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700 leading-snug">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      )}
+
+                      {/* Haut de la carte : Badge catégorie + Titre + Prix + Description */}
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5 transition-all duration-300 group-hover/card:bg-sky-100/90 group-hover/card:border-sky-300">
+                            <CategoryIcon className="w-3.5 h-3.5 text-sky-700 transition-transform duration-300 ease-out group-hover/card:scale-110 group-hover/card:rotate-6" aria-hidden="true" />
+                            {pack.categoryBadge}
+                          </span>
+                        </div>
+
+                        <h3 className="text-lg sm:text-xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight mb-1 transition-colors duration-200 group-hover/card:text-slate-900">
+                          {pack.name}
+                        </h3>
+
+                        <div className="mb-2">
+                          <span className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-sky-700 tracking-tight inline-block transition-transform duration-300 group-hover/card:scale-[1.03] origin-left">
+                            {pack.price}
+                          </span>
+                        </div>
+
+                        <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-3 sm:min-h-[28px]">
+                          {pack.shortDesc}
+                        </p>
+
+                        {/* Ligne compacte de métriques (Badges horizontaux) */}
+                        <div className="flex items-center flex-wrap gap-1.5 mb-3 py-1.5 border-y border-slate-100 transition-colors duration-200 group-hover/card:border-slate-200">
+                          {pack.metrics.map((metric, mIdx) => {
+                            const MetricIcon = metric.icon;
+                            return (
+                              <span 
+                                key={mIdx} 
+                                className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-200 group-hover/card:bg-white group-hover/card:border-slate-300/90 group-hover/card:shadow-xs"
+                              >
+                                <MetricIcon className="w-3.5 h-3.5 text-sky-700 shrink-0 transition-transform duration-200 group-hover/card:scale-110" aria-hidden="true" />
+                                <span>{metric.value}</span>
+                              </span>
+                            );
+                          })}
+                        </div>
+
+                        {/* Livrables inclus */}
+                        <div className="mb-3">
+                          <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 font-['Montserrat'] mb-1.5">
+                            {isEn ? "DELIVERABLES INCLUDED:" : "LIVRABLES INCLUS :"}
+                          </div>
+                          <ul className="space-y-1.5">
+                            {pack.features.map((feature, fIdx) => (
+                              <li key={fIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700 leading-snug">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5 transition-transform duration-200 group-hover/card:scale-115" aria-hidden="true" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Bas de la carte : Lien Ciselé Flip 3D + Bouton CTA Principal */}
-                    <div className="pt-2 flex flex-col gap-2">
-                      <button
-                        type="button"
-                        onClick={() => toggleFlip(pack.id)}
-                        className="glacier-flip-text-link group cursor-pointer"
-                      >
-                        <RotateCw className="w-3.5 h-3.5 text-sky-700 group-hover:rotate-180 transition-transform duration-500 shrink-0" aria-hidden="true" />
-                        <span>{isEn ? "Detailed specifications & stack (Flip ⟲)" : "Voir la fiche technique complète (Verso ⟲)"}</span>
-                      </button>
-
-                      <a
-                        href="#contact"
-                        onClick={(e) => handleAnchorClick(e, 'contact')}
-                        className={`w-full py-2.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-md text-white ${
-                          isPopular
-                            ? 'bg-sky-700 hover:bg-sky-700'
-                            : 'bg-slate-950 hover:bg-sky-700'
-                        }`}
-                        style={{ color: '#FFFFFF' }}
-                      >
-                        <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-white" aria-hidden="true" />
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* --- FACE ARRIÈRE (VERSO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
-                  <div
-                    className={`glacier-flip-card-back p-5 flex flex-col justify-between ${
-                      isPopular
-                        ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.26),0_6px_16px_-3px_rgba(15,23,42,0.10)]'
-                        : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.14),0_4px_12px_-2px_rgba(15,23,42,0.08)]'
-                    }`}
-                  >
-                    {/* En-tête Verso */}
-                    <div className="shrink-0">
-                      <div className="flex items-center justify-between gap-2 mb-1.5 pb-1.5 border-b border-slate-100">
-                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5">
-                          <CategoryIcon className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
-                          {isEn ? "DETAILED SPECS" : "FICHE TECHNIQUE"}
-                        </span>
-
+                      {/* Bas de la carte : Lien Ciselé Flip 3D + Bouton CTA Principal */}
+                      <div className="pt-2 flex flex-col gap-2">
                         <button
                           type="button"
                           onClick={() => toggleFlip(pack.id)}
-                          className="px-2.5 py-1 bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 text-slate-700 hover:text-sky-700 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 text-[11px] font-bold font-['Montserrat'] shadow-xs"
-                          title={isEn ? "Flip back to presentation" : "Retourner au recto"}
+                          className="glacier-flip-text-link group cursor-pointer"
                         >
-                          <RotateCcw className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
-                          <span>{isEn ? "Back" : "Retour"}</span>
+                          <RotateCw className="w-3.5 h-3.5 text-sky-700 group-hover:rotate-180 transition-transform duration-500 shrink-0" aria-hidden="true" />
+                          <span>{isEn ? "Detailed specifications & stack (Flip ⟲)" : "Voir la fiche technique complète (Verso ⟲)"}</span>
                         </button>
-                      </div>
 
-                      <div className="flex items-baseline justify-between gap-2 mb-2">
-                        <h4 className="text-base sm:text-lg font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight">
-                          {pack.name}
-                        </h4>
-                        <span className="text-base sm:text-lg font-black font-['Montserrat'] text-sky-700 shrink-0">
-                          {pack.price}
-                        </span>
+                        <a
+                          href="#contact"
+                          onClick={(e) => handleAnchorClick(e, 'contact')}
+                          className={`w-full py-2.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-md text-white ${
+                            isPopular
+                              ? 'bg-sky-700 hover:bg-sky-800'
+                              : 'bg-slate-950 hover:bg-sky-700'
+                          }`}
+                          style={{ color: '#FFFFFF' }}
+                        >
+                          <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 ease-out group-hover/card:translate-x-1" aria-hidden="true" />
+                        </a>
                       </div>
                     </div>
 
-                    {/* Corps Verso */}
-                    <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 custom-card-scrollbar space-y-2.5 my-1">
-                      
-                      {/* Public cible & Objectif */}
-                      <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/70">
-                        <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-0.5">
-                          {isEn ? "OBJECTIVE & AUDIENCE" : "OBJECTIF & PUBLIC CIBLE"}
-                        </span>
-                        <p className="text-slate-600 leading-relaxed font-['Plus_Jakarta_Sans'] text-[11px]">
-                          {pack.targetAudience}
-                        </p>
-                      </div>
+                    {/* --- FACE ARRIÈRE (VERSO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
+                    <div
+                      className={`glacier-flip-card-back p-5 flex flex-col justify-between transition-all duration-300 ${
+                        isPopular
+                          ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.26),0_6px_16px_-3px_rgba(15,23,42,0.10)] group-hover/card:shadow-[0_26px_55px_-8px_rgba(2,132,199,0.32)] group-hover/card:border-sky-500'
+                          : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.14),0_4px_12px_-2px_rgba(15,23,42,0.08)] group-hover/card:shadow-[0_22px_48px_-8px_rgba(15,23,42,0.20)] group-hover/card:border-sky-300'
+                      }`}
+                    >
+                      {/* En-tête Verso */}
+                      <div className="shrink-0">
+                        <div className="flex items-center justify-between gap-2 mb-1.5 pb-1.5 border-b border-slate-100">
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5">
+                            <CategoryIcon className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
+                            {isEn ? "DETAILED SPECS" : "FICHE TECHNIQUE"}
+                          </span>
 
-                      {/* Spécifications techniques en grille 2x2 compacte */}
-                      <div>
-                        <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-1">
-                          {isEn ? "TECHNICAL SPECIFICATIONS" : "SPÉCIFICATIONS TECHNIQUES"}
-                        </span>
-                        <div className="grid grid-cols-2 gap-1.5">
-                          {pack.techSpecs.map((spec, sIdx) => (
-                            <div key={sIdx} className="p-1.5 px-2 rounded-md bg-slate-50 border border-slate-200/70 text-[11px] flex flex-col">
-                              <span className="font-bold text-slate-500 uppercase text-[10px]">{spec.label}</span>
-                              <span className="font-semibold text-slate-900 leading-tight line-clamp-1">{spec.value}</span>
-                            </div>
-                          ))}
+                          <button
+                            type="button"
+                            onClick={() => toggleFlip(pack.id)}
+                            className="px-2.5 py-1 bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 text-slate-700 hover:text-sky-700 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 text-[11px] font-bold font-['Montserrat'] shadow-xs"
+                            title={isEn ? "Flip back to presentation" : "Retourner au recto"}
+                          >
+                            <RotateCcw className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
+                            <span>{isEn ? "Back" : "Retour"}</span>
+                          </button>
+                        </div>
+
+                        <div className="flex items-baseline justify-between gap-2 mb-2">
+                          <h4 className="text-base sm:text-lg font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight">
+                            {pack.name}
+                          </h4>
+                          <span className="text-base sm:text-lg font-black font-['Montserrat'] text-sky-700 shrink-0">
+                            {pack.price}
+                          </span>
                         </div>
                       </div>
 
-                      {/* Livrables exhaustifs */}
-                      <div>
-                        <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-1">
-                          {isEn ? "EXHAUSTIVE DELIVERABLES" : "LIVRABLES DÉTAILLÉS INCLUS"}
-                        </span>
-                        <ul className="space-y-1">
-                          {pack.detailedDeliverables.map((item, dIdx) => (
-                            <li key={dIdx} className="flex items-start gap-1.5 text-[11px] text-slate-700 leading-snug">
-                              <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      {/* Corps Verso */}
+                      <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 custom-card-scrollbar space-y-2.5 my-1">
+                        
+                        {/* Public cible & Objectif */}
+                        <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/70">
+                          <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-0.5">
+                            {isEn ? "OBJECTIVE & AUDIENCE" : "OBJECTIF & PUBLIC CIBLE"}
+                          </span>
+                          <p className="text-slate-600 leading-relaxed font-['Plus_Jakarta_Sans'] text-[11px]">
+                            {pack.targetAudience}
+                          </p>
+                        </div>
+
+                        {/* Spécifications techniques en grille 2x2 compacte */}
+                        <div>
+                          <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-1">
+                            {isEn ? "TECHNICAL SPECIFICATIONS" : "SPÉCIFICATIONS TECHNIQUES"}
+                          </span>
+                          <div className="grid grid-cols-2 gap-1.5">
+                            {pack.techSpecs.map((spec, sIdx) => (
+                              <div key={sIdx} className="p-1.5 px-2 rounded-md bg-slate-50 border border-slate-200/70 text-[11px] flex flex-col">
+                                <span className="font-bold text-slate-500 uppercase text-[10px]">{spec.label}</span>
+                                <span className="font-semibold text-slate-900 leading-tight line-clamp-1">{spec.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Livrables exhaustifs */}
+                        <div>
+                          <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-1">
+                            {isEn ? "EXHAUSTIVE DELIVERABLES" : "LIVRABLES DÉTAILLÉS INCLUS"}
+                          </span>
+                          <ul className="space-y-1">
+                            {pack.detailedDeliverables.map((item, dIdx) => (
+                              <li key={dIdx} className="flex items-start gap-1.5 text-[11px] text-slate-700 leading-snug">
+                                <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Note transparence */}
+                        <div className="p-2 rounded-lg bg-sky-50/70 border border-sky-200/70 text-[11px] text-sky-950 flex items-start gap-1.5">
+                          <ShieldCheck className="w-3.5 h-3.5 text-sky-700 shrink-0 mt-0.5" aria-hidden="true" />
+                          <span>
+                            {isEn 
+                              ? "Domain & hosting included Yr 1. Zero mandatory monthly maintenance."
+                              : "Domaine & hébergement inclus An 1. Code 100% propriétaire sans abonnement."}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Note transparence */}
-                      <div className="p-2 rounded-lg bg-sky-50/70 border border-sky-200/70 text-[11px] text-sky-950 flex items-start gap-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-sky-700 shrink-0 mt-0.5" aria-hidden="true" />
-                        <span>
-                          {isEn 
-                            ? "Domain & hosting included Yr 1. Zero mandatory monthly maintenance."
-                            : "Domaine & hébergement inclus An 1. Code 100% propriétaire sans abonnement."}
-                        </span>
+                      {/* Bas Verso : Bouton retour + CTA (Fonds pleins & texte 100% blanc) */}
+                      <div className="shrink-0 pt-2 flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => toggleFlip(pack.id)}
+                          className="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 text-xs font-black font-['Montserrat'] transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1.5 shadow-xs"
+                          style={{ backgroundColor: '#F1F5F9', color: '#0F172A', borderColor: '#CBD5E1' }}
+                          aria-label={isEn ? "Flip back to presentation" : "Retourner le forfait au recto"}
+                        >
+                          <RotateCcw className="w-3.5 h-3.5 text-[#0284C7] shrink-0" aria-hidden="true" />
+                          <span style={{ color: '#0F172A' }}>{isEn ? "Back" : "Recto"}</span>
+                        </button>
+
+                        <a
+                          href="#contact"
+                          onClick={(e) => handleAnchorClick(e, 'contact')}
+                          className="flex-1 py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-800 text-white font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-md"
+                          style={{ color: '#FFFFFF' }}
+                        >
+                          <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 ease-out group-hover/card:translate-x-1" aria-hidden="true" />
+                        </a>
                       </div>
-                    </div>
 
-                    {/* Bas Verso : Bouton retour + CTA (Fonds pleins & texte 100% blanc) */}
-                    <div className="shrink-0 pt-2 flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => toggleFlip(pack.id)}
-                        className="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 text-xs font-black font-['Montserrat'] transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1.5 shadow-xs"
-                        style={{ backgroundColor: '#F1F5F9', color: '#0F172A', borderColor: '#CBD5E1' }}
-                        aria-label={isEn ? "Flip back to presentation" : "Retourner le forfait au recto"}
-                      >
-                        <RotateCcw className="w-3.5 h-3.5 text-[#0284C7] shrink-0" aria-hidden="true" />
-                        <span style={{ color: '#0F172A' }}>{isEn ? "Back" : "Recto"}</span>
-                      </button>
-
-                      <a
-                        href="#contact"
-                        onClick={(e) => handleAnchorClick(e, 'contact')}
-                        className="flex-1 py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-700 text-white font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-md"
-                        style={{ color: '#FFFFFF' }}
-                      >
-                        <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-white" aria-hidden="true" />
-                      </a>
                     </div>
 
                   </div>
-
                 </div>
               </div>
             );
