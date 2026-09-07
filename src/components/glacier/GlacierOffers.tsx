@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import type React from 'react';
-import { Link } from 'react-router-dom';
 import {
   type LucideIcon,
   Star,
@@ -17,11 +16,7 @@ import {
   ArrowRight,
   RotateCw,
   RotateCcw,
-  ShoppingCart,
-  Hammer,
-  Building2,
-  UtensilsCrossed,
-  Store
+  ShoppingCart
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -56,8 +51,6 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const headerContainerRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
-  const tradesHeaderRef = useRef<HTMLDivElement>(null);
-  const tradesGridRef = useRef<HTMLDivElement>(null);
 
   // Animation GSAP ScrollTrigger : Déploiement en éventail 3D au scroll (Rejeu garanti)
   useEffect(() => {
@@ -151,100 +144,6 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power4.out', stagger: 0.1, clearProps: 'transform,opacity' }
             );
           }
-        }
-      }
-
-      // 3. Animation de l'En-tête Solutions par Métier au scroll (Arrivée vive, décélération douce)
-      if (tradesHeaderRef.current) {
-        const tradeHeaderChildren = Array.from(tradesHeaderRef.current.children) as HTMLElement[];
-        if (tradeHeaderChildren.length > 0) {
-          gsap.fromTo(
-            tradeHeaderChildren,
-            { opacity: 0, y: 25 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              stagger: 0.08,
-              ease: 'power4.out',
-              clearProps: 'transform,opacity',
-              scrollTrigger: {
-                trigger: tradesHeaderRef.current,
-                start: 'top 85%',
-                end: 'bottom top',
-                toggleActions: 'play none none reverse',
-              },
-            }
-          );
-        }
-      }
-
-      // 4. Animation des 4 Cartes Métiers au scroll (Départ vif et rapide, décélération douce vers l'arrêt)
-      if (tradesGridRef.current) {
-        const tradeCards = Array.from(tradesGridRef.current.children) as HTMLElement[];
-        const isDesktop = window.innerWidth >= 1024;
-
-        if (isDesktop && tradeCards.length === 4) {
-          const tradesTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: tradesGridRef.current,
-              start: 'top 85%',
-              end: 'bottom top',
-              toggleActions: 'play none none reverse',
-            },
-          });
-
-          // Carte 1 (Artisans - gauche) : Jaillit vite depuis la gauche puis décélère doucement
-          tradesTl.fromTo(
-            tradeCards[0],
-            { opacity: 0, x: -80, y: 20 },
-            { opacity: 1, x: 0, y: 0, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
-            0
-          );
-
-          // Carte 2 (Professions Libérales - centre gauche) : Jaillit vite de face puis décélère doucement
-          tradesTl.fromTo(
-            tradeCards[1],
-            { opacity: 0, y: 45, scale: 0.96 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
-            0.08
-          );
-
-          // Carte 3 (Restaurants - centre droit) : Jaillit vite de face puis décélère doucement
-          tradesTl.fromTo(
-            tradeCards[2],
-            { opacity: 0, y: 45, scale: 0.96 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
-            0.16
-          );
-
-          // Carte 4 (Commerces - droite) : Jaillit vite depuis la droite puis décélère doucement
-          tradesTl.fromTo(
-            tradeCards[3],
-            { opacity: 0, x: 80, y: 20 },
-            { opacity: 1, x: 0, y: 0, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
-            0.24
-          );
-        } else {
-          // Mobile et tablettes : cascade vive avec décélération douce
-          gsap.fromTo(
-            tradeCards,
-            { opacity: 0, y: 35 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              stagger: 0.1,
-              ease: 'power4.out',
-              clearProps: 'transform,opacity',
-              scrollTrigger: {
-                trigger: tradesGridRef.current,
-                start: 'top 85%',
-                end: 'bottom top',
-                toggleActions: 'play none none reverse',
-              },
-            }
-          );
         }
       }
 
@@ -849,121 +748,6 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               </div>
             );
           })}
-        </div>
-
-        {/* Sélecteur de métiers : Vous recherchez une solution adaptée à votre secteur ? */}
-        <div className="mt-16 pt-12 border-t border-slate-200 text-left">
-          <div ref={tradesHeaderRef} className="max-w-3xl mb-8">
-            <span className="text-xs font-extrabold tracking-[0.2em] text-sky-700 uppercase font-['Montserrat'] block mb-1">
-              {isEn ? "INDUSTRY-SPECIFIC SOLUTIONS" : "SOLUTIONS PAR MÉTIER"}
-            </span>
-            <h3 className="text-xl sm:text-2xl font-black font-['Montserrat'] text-slate-900 mb-2">
-              {isEn ? "Looking for a tailored solution for your specific profession?" : "Vous recherchez une solution adaptée à votre secteur d'activité ?"}
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans']">
-              {isEn 
-                ? "Discover our dedicated architectures designed specifically for local trades, medical practices, restaurants, and retail stores."
-                : "Découvrez nos pages et fonctionnalités pensées sur-mesure pour les artisans du bâtiment, praticiens de santé, restaurateurs et commerçants."}
-            </p>
-          </div>
-
-          <div ref={tradesGridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* 1. Artisan */}
-            <Link
-              to={isEn ? "/en/websites/artisan-construction" : "/sites-internet/artisan-renovation"}
-              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
-                  <Hammer size={18} aria-hidden="true" />
-                </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
-                  {isEn ? "Contractors & Craftsmen" : "Artisans & Rénovation"}
-                </h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {isEn 
-                    ? "Before/after photo gallery, structured quote requests, and local SEO in Grand Est."
-                    : "Galerie chantiers avant/après, formulaires de devis géolocalisés et SEO en Meuse."}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
-                <span>{isEn ? "View solutions" : "Découvrir"}</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </div>
-            </Link>
-
-            {/* 2. Profession Libérale */}
-            <Link
-              to={isEn ? "/en/websites/professional-services" : "/sites-internet/profession-liberale"}
-              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
-                  <Building2 size={18} aria-hidden="true" />
-                </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
-                  {isEn ? "Professional Practices" : "Professions Libérales"}
-                </h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {isEn
-                    ? "Ethical compliance, transparent fee presentation, and appointment booking links."
-                    : "Présentation déontologique, clarté des honoraires et prise de rendez-vous fluide."}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
-                <span>{isEn ? "View solutions" : "Découvrir"}</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </div>
-            </Link>
-
-            {/* 3. Restaurant */}
-            <Link
-              to={isEn ? "/en/websites/restaurant" : "/sites-internet/restaurant"}
-              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
-                  <UtensilsCrossed size={18} aria-hidden="true" />
-                </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
-                  {isEn ? "Restaurants & Bistros" : "Restaurants & Bistros"}
-                </h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {isEn
-                    ? "Interactive mobile menus without PDF, direct booking engine with 0% commission."
-                    : "Carte interactive sur mobile sans PDF lourd et réservation directe sans commission."}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
-                <span>{isEn ? "View solutions" : "Découvrir"}</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </div>
-            </Link>
-
-            {/* 4. Commerce & Boutique */}
-            <Link
-              to={isEn ? "/en/websites/retail-shop" : "/sites-internet/commerce-boutique"}
-              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-3 group-hover:bg-sky-700 group-hover:text-white transition-colors">
-                  <Store size={18} aria-hidden="true" />
-                </div>
-                <h4 className="text-sm font-bold font-['Montserrat'] text-slate-900 mb-1.5 group-hover:text-sky-700 transition-colors">
-                  {isEn ? "Local Shops & Retail" : "Commerces & Boutiques"}
-                </h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {isEn
-                    ? "Custom online store, Click & Collect pickup, Stripe checkout with 0% sales fee."
-                    : "Boutique en ligne sur-mesure, Click & Collect, paiement Stripe et 0% de commission."}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-sky-700 font-['Montserrat']">
-                <span>{isEn ? "View solutions" : "Découvrir"}</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </div>
-            </Link>
-          </div>
         </div>
 
       </div>

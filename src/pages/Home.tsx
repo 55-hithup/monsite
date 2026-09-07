@@ -3,6 +3,7 @@ import { useLenis } from 'lenis/react';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import StructuredData from '../components/StructuredData';
 import GlacierHero from '../components/glacier/GlacierHero';
+import GlacierTrades from '../components/glacier/GlacierTrades';
 import GlacierOffers from '../components/glacier/GlacierOffers';
 import GlacierParallaxBreak from '../components/glacier/GlacierParallaxBreak';
 import GlacierGallery from '../components/glacier/GlacierGallery';
@@ -61,6 +62,7 @@ export default function Home() {
       <StructuredData />
       <main>
         <GlacierHero onNavClick={handleNavClick} />
+        <GlacierTrades />
         <GlacierParallaxBreak />
         <GlacierGallery onNavClick={handleNavClick} />
         <Testimonials />
