@@ -13,7 +13,7 @@ interface RouteMeta {
 const pageMetadata: Record<string, RouteMeta> = {
   // French Pages (FR)
   '/': {
-    title: 'DevSupAi • Alexandre Pabst | Développeur Web & Création de Sites Sur-Mesure',
+    title: 'DevSupAi • Alexandre Pabst | Développeur Web en Meuse (55) & Grand Est',
     description: "Création de sites vitrines, e-commerce et applications web sur-mesure pour PME, artisans et associations en Meuse (55), Grand Est et France. 0% abonnement captif, temps de chargement optimisés.",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
@@ -139,7 +139,7 @@ const pageMetadata: Record<string, RouteMeta> = {
 
   // English Pages (EN)
   '/en': {
-    title: 'DevSupAi • Alexandre Pabst | Bespoke Web Developer & Engineering',
+    title: 'DevSupAi • Alexandre Pabst | Bespoke Web Developer in Meuse & Grand Est',
     description: 'Handcrafted showcase websites, e-commerce, and custom SaaS web applications for SMEs, artisans, and non-profits in France and worldwide. Zero recurring software fees, optimized loading times.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
