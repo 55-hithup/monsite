@@ -82,6 +82,9 @@ export default function GlacierFooter() {
           <Link to={isEn ? '/en/services' : '/nos-services'}>
             {isEn ? 'Services Catalog' : 'Catalogue complet'}
           </Link>
+          <Link to={isEn ? '/en/web-developer-lorraine' : '/developpeur-web-lorraine'}>
+            {isEn ? 'Lorraine & Grand Est' : 'Lorraine & Grand Est'}
+          </Link>
           <Link 
             to="/admin/login" 
             className="inline-flex items-center gap-1.5 hover:text-[#0284C7] font-bold text-[#1A1A1A] transition-colors"

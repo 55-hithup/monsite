@@ -27,6 +27,7 @@ export const ROUTE_PAIRS: RoutePair[] = [
   { fr: '/blog/boutique-en-ligne-sans-commission', en: '/en/blog/boutique-en-ligne-sans-commission' },
   { fr: '/blog/accessibilite-web-rgaa-pme', en: '/en/blog/accessibilite-web-rgaa-pme' },
   { fr: '/blog/ia-et-developpement-web-ce-qui-change', en: '/en/blog/ia-et-developpement-web-ce-qui-change' },
+  { fr: '/developpeur-web-lorraine', en: '/en/web-developer-lorraine' },
 ];
 
 export function normalizePath(path: string): string {

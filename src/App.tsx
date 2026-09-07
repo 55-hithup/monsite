@@ -41,6 +41,7 @@ const CaseAbogamePage = lazyPage(() => import('./pages/projects/CaseAbogame'));
 const LegalNoticesPage = lazyPage(() => import('./pages/LegalNotices'));
 const PrivacyPolicyPage = lazyPage(() => import('./pages/PrivacyPolicy'));
 const TermsOfSalePage = lazyPage(() => import('./pages/TermsOfSale'));
+const RegionalLorrainePage = lazyPage(() => import('./pages/RegionalLorraine'));
 
 // Global Error Boundary to catch any rendering errors without crashing the entire app
 interface ErrorBoundaryProps {
@@ -272,6 +273,10 @@ export const routes = [
         path: 'cgv',
         lazy: TermsOfSalePage,
       },
+      {
+        path: 'developpeur-web-lorraine',
+        lazy: RegionalLorrainePage,
+      },
       /* English Routes (Bilingual International SEO) */
       {
         path: 'en',
@@ -368,6 +373,10 @@ export const routes = [
       {
         path: 'en/terms',
         lazy: TermsOfSalePage,
+      },
+      {
+        path: 'en/web-developer-lorraine',
+        lazy: RegionalLorrainePage,
       },
       {
         path: 'admin/login',

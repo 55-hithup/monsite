@@ -137,7 +137,7 @@
 
 ---
 
-## Cartographie des URLs & Structure du Site (48 Routes Statiques & Pages Clés)
+## Cartographie des URLs & Structure du Site (50 Routes Statiques & Pages Clés)
 
 ### Pages en Français (FR)
 - [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les forfaits, réalisations, engagement et formulaire de contact.
@@ -163,6 +163,7 @@
 - [/mentions-legales](https://www.devsupai.fr/mentions-legales) : Informations légales et données d'immatriculation d'Alexandre Pabst.
 - [/politique-de-confidentialite](https://www.devsupai.fr/politique-de-confidentialite) : Politique de protection des données et conformité RGPD.
 - [/cgv](https://www.devsupai.fr/cgv) : Conditions Générales de Vente (CGV) encadrant les prestations de développement web et logiciel.
+- [/developpeur-web-lorraine](https://www.devsupai.fr/developpeur-web-lorraine) : Conception de site internet et développement web sur-mesure en Lorraine et Grand Est (Nancy, Metz, Meuse, Vosges).
 - [/admin/login](https://www.devsupai.fr/admin/login) : Espace d'administration sécurisé (modération des avis).
 
 ### Pages en Anglais (EN)
@@ -189,3 +190,4 @@
 - [/en/legal-notices](https://www.devsupai.fr/en/legal-notices) : Legal disclosures for DevSupAi.
 - [/en/privacy-policy](https://www.devsupai.fr/en/privacy-policy) : GDPR compliance and data protection terms.
 - [/en/terms](https://www.devsupai.fr/en/terms) : General Terms of Sale (GTS) governing custom web development and digital services.
+- [/en/web-developer-lorraine](https://www.devsupai.fr/en/web-developer-lorraine) : Custom web development and software engineering in Lorraine and Grand Est (Nancy, Metz, Meuse).

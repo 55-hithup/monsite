@@ -77,6 +77,11 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: "Consultez les Conditions Générales de Vente (CGV) régissant les prestations de développement web et logiciel sur-mesure de DevSupAi (Alexandre Pabst EI).",
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
+  '/developpeur-web-lorraine': {
+    title: 'Développeur Web en Lorraine & Grand Est (Nancy, Metz) | DevSupAi',
+    description: "Développeur web freelance en Lorraine et Grand Est (Nancy, Metz, Meuse). Création sur-mesure de sites vitrines, e-commerce et applications sans abonnement captif.",
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
 
   // French Trade Pages
   '/sites-internet/artisan-renovation': {
@@ -198,6 +203,11 @@ const pageMetadata: Record<string, RouteMeta> = {
     description: 'Read the General Terms of Sale (GTS) governing bespoke web development and software engineering services by DevSupAi.',
     image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
   },
+  '/en/web-developer-lorraine': {
+    title: 'Custom Web Developer in Lorraine & Grand Est (Nancy, Metz) | DevSupAi',
+    description: 'Bespoke freelance web developer serving Lorraine and Grand Est (Nancy, Metz, Meuse). Handcrafted showcase websites, e-commerce, and web applications without recurring fees.',
+    image: 'https://www.devsupai.fr/hero-bg-mockup.webp'
+  },
 
   // English Trade Pages
   '/en/websites/artisan-construction': {
@@ -290,6 +300,7 @@ const routePairs = [
   { fr: '/blog/boutique-en-ligne-sans-commission', en: '/en/blog/boutique-en-ligne-sans-commission' },
   { fr: '/blog/accessibilite-web-rgaa-pme', en: '/en/blog/accessibilite-web-rgaa-pme' },
   { fr: '/blog/ia-et-developpement-web-ce-qui-change', en: '/en/blog/ia-et-developpement-web-ce-qui-change' },
+  { fr: '/developpeur-web-lorraine', en: '/en/web-developer-lorraine' },
 ];
 
 function buildBreadcrumbSchema(cleanRoute: string, isEnglish: boolean, pageTitle: string) {
@@ -402,6 +413,7 @@ export default defineConfig({
         '/blog/boutique-en-ligne-sans-commission',
         '/blog/accessibilite-web-rgaa-pme',
         '/blog/ia-et-developpement-web-ce-qui-change',
+        '/developpeur-web-lorraine',
 
         // English Routes
         '/en',
@@ -427,6 +439,7 @@ export default defineConfig({
         '/en/legal-notices',
         '/en/privacy-policy',
         '/en/terms',
+        '/en/web-developer-lorraine',
       ],
     }),
   ],
@@ -1075,6 +1088,116 @@ export default defineConfig({
           }))
         };
         injectedScripts.push(`<script type="application/ld+json" id="trade-faq-ssg">${JSON.stringify(tradeFaqSchema)}</script>`);
+      }
+
+      // 9. Regional Lorraine & Grand Est Page Schemas (Service + FAQPage)
+      if (cleanRoute === '/developpeur-web-lorraine' || cleanRoute === '/en/web-developer-lorraine') {
+        const regionalServiceSchema = {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": isEnglish
+            ? "Custom Web Development in Lorraine & Grand Est"
+            : "Développement Web Sur-Mesure en Lorraine & Grand Est",
+          "description": meta.description,
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "DevSupAi • Alexandre Pabst",
+            "url": "https://www.devsupai.fr",
+            "telephone": "+33783666098",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "13 Allée des Roses",
+              "addressLocality": "Saint-Mihiel",
+              "postalCode": "55300",
+              "addressRegion": "Grand Est",
+              "addressCountry": "FR"
+            }
+          },
+          "serviceType": isEnglish ? "Web Development & Local SEO" : "Développement Web & Référencement Local",
+          "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Lorraine" },
+            { "@type": "AdministrativeArea", "name": "Grand Est" },
+            { "@type": "AdministrativeArea", "name": "Meuse" },
+            { "@type": "AdministrativeArea", "name": "Meurthe-et-Moselle" },
+            { "@type": "AdministrativeArea", "name": "Moselle" },
+            { "@type": "AdministrativeArea", "name": "Vosges" },
+            { "@type": "City", "name": "Nancy", "postalCode": "54000" },
+            { "@type": "City", "name": "Metz", "postalCode": "57000" },
+            { "@type": "City", "name": "Bar-le-Duc", "postalCode": "55000" },
+            { "@type": "City", "name": "Verdun", "postalCode": "55100" },
+            { "@type": "City", "name": "Épinal", "postalCode": "88000" },
+            { "@type": "Country", "name": "France" }
+          ],
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "950",
+            "description": isEnglish
+              ? "Starter package for local businesses starting from €950."
+              : "Pack Présence One-Page pour entreprise locale dès 950 €."
+          }
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="regional-service-ssg">${JSON.stringify(regionalServiceSchema)}</script>`);
+
+        const regionalFaqQuestions = isEnglish
+          ? [
+              {
+                q: "Why choose an independent web developer in Lorraine rather than a traditional web agency?",
+                a: "Unlike traditional web agencies in Nancy or Metz that often rely on heavy CMS platforms with recurring monthly maintenance contracts, DevSupAi offers direct collaboration with a single dedicated engineer (Alexandre Pabst). You get 100% proprietary code (React 19 / TypeScript), lightning-fast loading speeds under one second, zero mandatory subscription fees, and complete ownership of your digital assets."
+              },
+              {
+                q: "Do you travel on-site to clients across Lorraine and Grand Est?",
+                a: "Yes. Based in Saint-Mihiel (Meuse), I regularly travel on-site for scoping meetings, workshops, and project presentations in Nancy, Metz, Toul, Bar-le-Duc, Verdun, and throughout Lorraine. Video conference meetings are also organized for regular follow-ups and clients situated further across Grand Est and France."
+              },
+              {
+                q: "Are regional grants available in Grand Est to fund website creation?",
+                a: "Yes. The Grand Est Region and local chambers of commerce periodically offer digital transformation vouchers (such as the Chèque Transformation Numérique) for SMEs, craftsmen, and retailers. DevSupAi delivers compliant technical specifications and transparent itemized invoices facilitating your regional subsidy applications."
+              },
+              {
+                q: "How will my website rank on Google in Lorraine and my targeted city?",
+                a: "Every website includes tailored local SEO: semantic HTML5 hierarchy, Schema.org structured data, Core Web Vitals optimization, and Google Business Profile guidance. This dual setup ensures optimal search prominence on local keywords across Nancy, Metz, Meuse, or your specific regional market."
+              },
+              {
+                q: "What is the typical turnaround time for delivering a website in Lorraine?",
+                a: "Turnaround times range from 1 to 2 weeks for a Starter showcase page, 2 to 4 weeks for a multi-page Growth business website (3-5 pages), and 4 to 8 weeks for a bespoke SaaS web application. Milestones and delivery dates are clearly scheduled from day one."
+              }
+            ]
+          : [
+              {
+                q: "Pourquoi choisir un développeur indépendant en Lorraine plutôt qu'une agence web traditionnelle ?",
+                a: "Contrairement aux agences web traditionnelles de Nancy ou Metz qui s'appuient souvent sur des CMS lourds assortis d'abonnements mensuels captifs, DevSupAi vous garantit un interlocuteur direct unique (Alexandre Pabst). Vous bénéficiez d'un code 100% propriétaire (React 19 / TypeScript), d'une vitesse de chargement instantanée inférieure à la seconde, de 0 € d'abonnement logiciel imposé et de la pleine propriété de votre site dès sa livraison."
+              },
+              {
+                q: "Vous déplacez-vous dans les entreprises en Lorraine et dans le Grand Est ?",
+                a: "Oui. Basé à Saint-Mihiel en Meuse, je me déplace régulièrement en présentiel pour les réunions de cadrage, ateliers et présentations à Nancy, Metz, Bar-le-Duc, Verdun, Toul, Épinal et dans toute la Lorraine. Les points d'étape et le suivi régulier peuvent également s'effectuer par visioconférence pour un confort optimal."
+              },
+              {
+                q: "Existe-t-il des aides de la Région Grand Est pour financer la création d'un site internet ?",
+                a: "Oui. La Région Grand Est ainsi que les Chambres de Métiers et de Commerce proposent régulièrement des dispositifs d'aide à la digitalisation (comme le Chèque Transformation Numérique) destinés aux TPE, PME, artisans et commerçants. DevSupAi vous fournit un devis détaillé et un cahier des charges technique conforme pour appuyer votre dossier de subvention."
+              },
+              {
+                q: "Mon site sera-t-il bien positionné sur Google en Lorraine et dans ma ville ?",
+                a: "Chaque projet bénéficie d'une optimisation SEO local approfondie : structure sémantique HTML5 stricte, balisage Schema.org pour les moteurs de recherche, vitesse de chargement optimale (Core Web Vitals) et accompagnement sur votre fiche Google Business Profile. Cela assure une visibilité maximale sur vos requêtes cibles à Nancy, Metz, en Meuse ou dans votre bassin d'activité."
+              },
+              {
+                q: "Quel est le délai de réalisation d'un projet web en Lorraine ?",
+                a: "Les délais constatés sont de 1 à 2 semaines pour un Pack Présence (One-Page), de 2 à 4 semaines pour un Pack Croissance PME (vitrine 3 à 5 pages), et de 4 à 8 semaines pour une application SaaS métier. Un calendrier d'étapes clair est défini dès la signature du devis."
+              }
+            ];
+
+        const regionalFaqSchema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": regionalFaqQuestions.map(item => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.a
+            }
+          }))
+        };
+        injectedScripts.push(`<script type="application/ld+json" id="regional-faq-ssg">${JSON.stringify(regionalFaqSchema)}</script>`);
       }
 
       if (injectedScripts.length > 0) {
