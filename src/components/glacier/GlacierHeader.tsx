@@ -2,16 +2,13 @@ import { useState, useEffect, useMemo, Fragment } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { Languages } from 'lucide-react';
-import GlacierLogoReveal from './GlacierLogoReveal';
 
 interface GlacierHeaderProps {
   onNavClick?: (targetId: string) => void;
 }
 
 interface GlacierNavLinksProps {
-  isSticky?: boolean;
   activeTab: string;
-  isScrolled: boolean;
   navLinks: {
     services: string;
     realisations: string;
@@ -33,9 +30,7 @@ interface GlacierNavLinksProps {
 }
 
 function GlacierNavLinks({
-  isSticky = false,
   activeTab,
-  isScrolled,
   navLinks,
   isEn,
   language,
@@ -56,30 +51,25 @@ function GlacierNavLinks({
 
   return (
     <div className="relative flex items-center justify-center gap-[clamp(4px,0.8vw,14px)] flex-nowrap whitespace-nowrap mx-auto">
-      {isSticky && (
-        <Link 
-          key={isScrolled ? 'sticky-logo-active' : 'sticky-logo-idle'}
-          to={isEn ? '/en' : '/'} 
-          onClick={onLogoClick}
-          className={`sticky-nav-logo inline-flex items-center gap-2 group cursor-pointer mr-1 sm:mr-3 ${
-            isScrolled ? 'sticky-logo-enter' : 'sticky-logo-exit'
-          }`}
-          aria-label={isEn ? 'DevSupAi - Back to top' : 'DevSupAi - Retour en haut'}
-        >
-          <img 
-            src="/logo-48.webp" 
-            srcSet="/logo-48.webp 1x, /logo-64.webp 2x"
-            alt="DevSupAi" 
-            width={28} 
-            height={28} 
-            decoding="async"
-            className="w-7 h-7 object-contain transition-transform duration-300 group-hover:scale-110 shrink-0" 
-          />
-          <span className="font-['Montserrat'] font-black text-xs sm:text-sm tracking-widest text-[#1A1A1A] group-hover:text-[#0284C7] transition-colors hidden md:inline">
-            DEVSUPAI
-          </span>
-        </Link>
-      )}
+      <Link 
+        to={isEn ? '/en' : '/'} 
+        onClick={onLogoClick}
+        className="sticky-nav-logo inline-flex items-center gap-2 group cursor-pointer mr-1 sm:mr-3 shrink-0"
+        aria-label={isEn ? 'DevSupAi - Home' : 'DevSupAi - Accueil'}
+      >
+        <img 
+          src="/logo-48.webp" 
+          srcSet="/logo-48.webp 1x, /logo-64.webp 2x"
+          alt="DevSupAi" 
+          width={28} 
+          height={28} 
+          decoding="async"
+          className="w-7 h-7 object-contain transition-transform duration-300 group-hover:scale-110 shrink-0" 
+        />
+        <span className="font-['Montserrat'] font-black text-xs sm:text-sm tracking-widest text-[#1A1A1A] group-hover:text-[#0284C7] transition-colors hidden md:inline">
+          DEVSUPAI
+        </span>
+      </Link>
 
       {navItems.map((item) => {
         const isActive = activeTab === item.id;
@@ -155,12 +145,10 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   const navigate = useNavigate();
   const { language, setLanguage, isEn } = useLanguage();
   const isHomePage = location.pathname === '/' || location.pathname === '/en';
-  const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('');
 
   useEffect(() => {
-    setIsSubtitleVisible(false);
     setIsScrolled(false);
   }, [location.pathname]);
 
@@ -205,7 +193,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
     }
   }, [isHomePage, location.pathname, navLinks]);
 
-  // 2. Écouteur de scroll universel (gère isScrolled sur toutes les pages et le scroll spy sur la landing page)
+  // 2. Écouteur de scroll universel pour scroll spy sur la landing page
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -214,8 +202,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY || document.documentElement.scrollTop;
-          // La barre flottante ne descend QUE si on a scrollé au-delà de 220px
-          setIsScrolled(scrollY > 220);
+          setIsScrolled(scrollY > 20);
 
           // Si on est sur la page d'accueil, mettre à jour la section visible
           if (isHomePage) {
@@ -286,69 +273,23 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   };
 
   return (
-    <>
-      {/* 1. Header principal d'origine (100% centré, logo + liens) */}
-      <header className="glacier-main-header">
-        <div className="header-logo-block">
-          <Link 
-            to={isEn ? '/en' : '/'} 
-            className="glacier-logo-link"
-            aria-label={isEn ? 'DevSupAi - Home' : 'DevSupAi - Accueil'}
-          >
-            <GlacierLogoReveal 
-              isEn={isEn} 
-              onComplete={() => setIsSubtitleVisible(true)} 
-            />
-          </Link>
-          <span className={`glacier-logo-sub transition-all duration-700 ease-out ${isSubtitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-            {isEn
-              ? "Custom Web Atelier"
-              : "L'Atelier Web Sur-Mesure"}
-          </span>
-        </div>
-
-        <nav className="glacier-nav-strip" aria-label={isEn ? 'Main navigation' : 'Navigation principale'}>
-          <GlacierNavLinks 
-            isSticky={false}
-            activeTab={activeTab}
-            isScrolled={isScrolled}
-            navLinks={navLinks}
-            isEn={isEn}
-            language={language}
-            setLanguage={setLanguage}
-            onAnchorClick={handleAnchorClick}
-            onLogoClick={handleLogoClick}
-            onLinkClick={setActiveTab}
-          />
-        </nav>
-      </header>
-
-      {/* 2. Barre flottante fixée lors du défilement (Pleine largeur, 1 ligne, centré, glissade douce) */}
-      <div 
-        className={`glacier-fixed-floating-nav ${
-          isScrolled 
-            ? 'translate-y-0 opacity-100 pointer-events-auto' 
-            : '-translate-y-full opacity-0 pointer-events-none'
-        }`}
-        aria-hidden={!isScrolled}
-        inert={!isScrolled ? true : undefined}
-      >
-        <nav className="w-full flex items-center justify-center" aria-label={isEn ? 'Floating navigation' : 'Navigation flottante'}>
-          <GlacierNavLinks 
-            isSticky={true}
-            activeTab={activeTab}
-            isScrolled={isScrolled}
-            navLinks={navLinks}
-            isEn={isEn}
-            language={language}
-            setLanguage={setLanguage}
-            onAnchorClick={handleAnchorClick}
-            onLogoClick={handleLogoClick}
-            onLinkClick={setActiveTab}
-          />
-        </nav>
-      </div>
-    </>
+    <header 
+      className={`glacier-navbar ${isScrolled ? 'is-scrolled' : ''}`}
+      aria-label={isEn ? 'Main navigation' : 'Navigation principale'}
+    >
+      <nav className="w-full flex items-center justify-center">
+        <GlacierNavLinks 
+          activeTab={activeTab}
+          navLinks={navLinks}
+          isEn={isEn}
+          language={language}
+          setLanguage={setLanguage}
+          onAnchorClick={handleAnchorClick}
+          onLogoClick={handleLogoClick}
+          onLinkClick={setActiveTab}
+        />
+      </nav>
+    </header>
   );
 }
 

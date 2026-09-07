@@ -565,147 +565,47 @@ h1, h2, h3 {
   color: #0284C7;
 }
 
-.glacier-main-header {
-  background-color: #FFFFFF;
-  padding: 36px 20px 20px 20px;
-  text-align: center;
-  border-bottom: 1px solid #E5E5E5;
-  width: 100%;
-}
-
-.header-logo-block {
-  margin-bottom: 24px;
-  position: relative;
-}
-
-.glacier-logo-link {
-  display: inline-block;
-  text-decoration: none;
-  position: relative;
-  line-height: 1;
-}
-
-.glacier-logo-wrap {
-  position: relative;
-  display: inline-block;
-  line-height: 1;
-  vertical-align: middle;
-}
-
-.glacier-logo-text,
-.glacier-logo-text-reveal {
-  font-family: var(--font-glacier-heading, 'Montserrat', sans-serif);
-  font-size: clamp(2.2rem, 5vw, 2.8rem);
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  color: #1A1A1A;
-  text-decoration: none;
-  display: inline-block;
-  line-height: 1;
-  white-space: nowrap;
-  user-select: none;
-}
-
-.glacier-logo-reveal-icon {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  height: clamp(3.0rem, 6.5vw, 4.0rem);
-  width: auto;
-  transform: translate(-9999px, -50%);
-  pointer-events: none;
-  will-change: transform;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.12));
-  z-index: 2;
-}
-
-.glacier-logo-sub {
-  display: block;
-  font-family: var(--font-glacier-serif, 'Playfair Display', Georgia, serif);
-  font-style: italic;
-  font-size: 0.9375rem;
-  color: #525252;
-  margin-top: 6px;
-}
-
-.glacier-nav-strip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 14px;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  width: 100%;
-  margin: 0 auto;
-}
-
-.glacier-fixed-floating-nav {
-  position: fixed;
+/* --- Glacier Sticky Navbar --- */
+.glacier-navbar {
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 999;
-  background: rgba(255, 255, 255, 0.70);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.75);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
   padding: 10px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 320ms ease;
-  will-change: transform, opacity;
   box-sizing: border-box;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
+  transition: background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
 
-.glacier-fixed-floating-nav::-webkit-scrollbar {
+.glacier-navbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Logo entreprise dans la barre flottante : glissement depuis l'extérieur gauche avec décélération */
+.glacier-navbar.is-scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-bottom-color: rgba(226, 232, 240, 0.95);
+}
+
+/* Logo entreprise dans la barre de navigation */
 .sticky-nav-logo {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   text-decoration: none;
   flex-shrink: 0;
-  will-change: transform, opacity;
-}
-
-.sticky-logo-enter {
-  animation: stickyLogoSlideIn 680ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
-}
-
-.sticky-logo-exit {
-  opacity: 0;
-  transform: translateX(-100vw);
-  pointer-events: none;
-}
-
-@keyframes stickyLogoSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-100vw);
-  }
-  30% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sticky-logo-enter {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
 }
 
 .glacier-nav-link {

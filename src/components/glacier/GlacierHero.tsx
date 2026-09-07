@@ -18,49 +18,27 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
       return;
     }
 
-    let hasPlayed = false;
-    let fallbackTimer: ReturnType<typeof setTimeout> | undefined;
-
     const isMobile = window.innerWidth <= 768;
 
     const ctx = gsap.context(() => {
-      // Masquer la carte avec un léger décalage dès le montage client (uniquement sur Desktop)
-      if (!isMobile) {
-        gsap.set(cardRef.current, { opacity: 0, y: 20, filter: 'blur(4px)' });
+      if (!isMobile && cardRef.current) {
+        gsap.fromTo(
+          cardRef.current,
+          { opacity: 0, y: 20, filter: 'blur(4px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            ease: 'power2.out',
+            clearProps: 'filter,transform,opacity',
+            delay: 0.05,
+          }
+        );
       }
     }, cardRef);
 
-    const playHeroAnimation = () => {
-      if (hasPlayed || !cardRef.current) return;
-      hasPlayed = true;
-      if (fallbackTimer) clearTimeout(fallbackTimer);
-
-      if (isMobile) return;
-
-      ctx.add(() => {
-        gsap.to(cardRef.current, {
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 0.5,
-          ease: 'power2.out',
-          clearProps: 'filter,transform,opacity',
-        });
-      });
-    };
-
-    // Si le logo DEVSUPAI a déjà atteint le déclenchement
-    if ((window as any).__devsupai_card_trigger) {
-      playHeroAnimation();
-    } else {
-      window.addEventListener('devsupai:hero-card-start', playHeroAnimation, { once: true });
-      // Fallback ultra-rapide (200ms) pour garantir une apparition immédiate
-      fallbackTimer = setTimeout(playHeroAnimation, 200);
-    }
-
     return () => {
-      if (fallbackTimer) clearTimeout(fallbackTimer);
-      window.removeEventListener('devsupai:hero-card-start', playHeroAnimation);
       ctx.revert();
     };
   }, []);
