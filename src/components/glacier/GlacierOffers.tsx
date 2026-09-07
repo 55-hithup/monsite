@@ -11,20 +11,18 @@ import {
   Layers,
   Clock,
   Laptop,
-  ArrowRight,
-  ShoppingCart
+  ArrowRight
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { debouncedScrollTriggerRefresh } from '../../utils/scrollTriggerRefresh';
-import { useLanguage } from '../../i18n/LanguageContext';
 
 interface GlacierOffersProps {
   onNavClick?: (targetId: string) => void;
 }
 
 interface PackData {
-  id: 'presence' | 'croissance' | 'ecommerce' | 'saas';
+  id: 'presence' | 'croissance' | 'saas';
   name: string;
   categoryBadge: string;
   price: string;
@@ -41,8 +39,6 @@ interface PackData {
 }
 
 export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
-  const { isEn } = useLanguage();
-
   const sectionRef = useRef<HTMLElement>(null);
   const headerContainerRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
@@ -84,7 +80,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         }
       }
 
-      // 2. Animation des 4 Cartes Forfaits (Arrivée vive dès le début, amorti doux à la fin)
+      // 2. Animation des 3 Cartes Forfaits (Arrivée vive dès le début, amorti doux à la fin)
       if (cardsGridRef.current) {
         const cards = Array.from(cardsGridRef.current.children) as HTMLElement[];
         const isDesktop = window.innerWidth >= 1024;
@@ -99,37 +95,29 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
             },
           });
 
-          if (isDesktop && cards.length >= 4) {
+          if (isDesktop && cards.length >= 3) {
             // Carte 1 (Gauche) : impulsion vive depuis la gauche, décélération douce
             cardsTl.fromTo(
               cards[0],
-              { x: -50, y: 30, opacity: 0, scale: 0.96 },
+              { x: -40, y: 30, opacity: 0, scale: 0.96 },
               { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
               0
             );
 
-            // Carte 2 (Centre-Gauche Populaire) : élévation vive, décélération douce
+            // Carte 2 (Centre) : élévation vive, décélération douce
             cardsTl.fromTo(
               cards[1],
               { y: 45, opacity: 0, scale: 0.96 },
               { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
-              0.08
+              0.1
             );
 
-            // Carte 3 (Centre-Droit E-Commerce) : élévation vive, décélération douce
+            // Carte 3 (Droite SaaS) : impulsion vive depuis la droite, décélération douce
             cardsTl.fromTo(
               cards[2],
-              { y: 45, opacity: 0, scale: 0.96 },
-              { y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
-              0.16
-            );
-
-            // Carte 4 (Droite SaaS) : impulsion vive depuis la droite, décélération douce
-            cardsTl.fromTo(
-              cards[3],
-              { x: 50, y: 30, opacity: 0, scale: 0.96 },
+              { x: 40, y: 30, opacity: 0, scale: 0.96 },
               { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.75, ease: 'power4.out', clearProps: 'transform,opacity' },
-              0.24
+              0.2
             );
           } else {
             // Mobile et tablettes : cascade vive avec décélération douce
@@ -163,150 +151,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
     }
   };
 
-  const packs: PackData[] = isEn ? [
-    {
-      id: 'presence',
-      name: 'PRESENCE PACK (ONE-PAGE)',
-      categoryBadge: 'ARTISANAL SHOWCASE',
-      price: 'FROM €950',
-      shortDesc: 'A fast, high-converting single page designed to turn visitors into direct qualified inquiries.',
-      icon: Smartphone,
-      metrics: [
-        { label: 'Speed', value: 'Optimized speed', icon: Zap },
-        { label: 'Delivery', value: '1 to 2 weeks', icon: Clock },
-        { label: 'Hosting', value: 'Hosting included (Yr 1)', icon: ShieldCheck }
-      ],
-      features: [
-        'Mobile-first design without CMS',
-        'Contact form & instant email alert',
-        'Interactive Google Maps & hours',
-        '100% owned code, zero subscription'
-      ],
-      ctaText: 'Choose Presence Pack',
-      targetAudience: 'Craftsmen, independent professionals, local businesses, and freelancers needing a credible, modern, and high-converting web presence.',
-      techSpecs: [
-        { label: 'Stack', value: 'React 19 & SSG' },
-        { label: 'Speed', value: '< 0.8s (Core Web Vitals)' },
-        { label: 'SEO', value: 'Schema.org Local' },
-        { label: 'Hosting', value: 'CDN & SSL Included (Yr 1)' }
-      ],
-      detailedDeliverables: [
-        'Bespoke visual design crafted from scratch (no templates)',
-        'Fluid responsive layout tested on mobile, tablet, and desktop',
-        'Ultra-secure contact form with anti-spam and instant email dispatch',
-        'Interactive Google Maps location, opening hours, and direct call',
-        'Complete technical SEO setup: Open Graph, meta tags, robots.txt',
-        'Full ownership of source code with zero ongoing software fees'
-      ]
-    },
-    {
-      id: 'croissance',
-      name: 'SME & COMMERCE GROWTH PACK',
-      categoryBadge: 'MULTI-PAGE & SEO',
-      price: 'FROM €1,850',
-      badge: 'POPULAR',
-      isPopular: true,
-      shortDesc: 'Tailor-made multi-page showcase (3 to 5 pages) to rank locally and showcase your work.',
-      icon: Layers,
-      metrics: [
-        { label: 'Pages', value: '3 to 5 pages', icon: Layout },
-        { label: 'Delivery', value: '2 to 3 weeks', icon: Clock },
-        { label: 'SEO', value: 'Local SEO included', icon: Globe }
-      ],
-      features: [
-        'Interactive portfolio gallery',
-        'Verified Google reviews integration',
-        'Local & regional SEO optimization',
-        'Quote request & video training'
-      ],
-      ctaText: 'Choose Growth Pack',
-      targetAudience: 'Growing SMEs, contractors, service providers, and retailers wanting a complete platform to showcase their portfolio and convert local leads.',
-      techSpecs: [
-        { label: 'Pages', value: '3 to 5 Custom Pages' },
-        { label: 'Stack', value: 'React 19 & Tailwind' },
-        { label: 'SEO', value: 'Local & Regional Strategy' },
-        { label: 'Media', value: 'Automated WebP/SVG' }
-      ],
-      detailedDeliverables: [
-        'Bespoke multi-page layout structured to maximize service credibility',
-        'HD interactive project & portfolio gallery with category filters',
-        'Verified Google customer reviews integration with star rating markup',
-        'Tailored quote request form with specialized business field inputs',
-        'Comprehensive regional SEO optimization (keywords, internal linking)',
-        'WCAG 2.1 AA accessibility compliance across all layouts and interactive elements'
-      ]
-    },
-    {
-      id: 'ecommerce',
-      name: 'E-COMMERCE STORE PACK',
-      categoryBadge: 'DIRECT SALES & 0% COMMISSION',
-      price: 'FROM €2,600',
-      shortDesc: 'A tailor-made online store with seamless card checkout, zero sales commissions, and complete order management.',
-      icon: ShoppingCart,
-      metrics: [
-        { label: 'Commission', value: '0% on sales', icon: ShieldCheck },
-        { label: 'Delivery', value: '3 to 5 weeks', icon: Clock },
-        { label: 'Catalog', value: 'Unlimited items', icon: Layout }
-      ],
-      features: [
-        'Stripe, Cards & Apple Pay checkout',
-        'Inventory, options & order tracking',
-        'Automated PDF invoices & alerts',
-        '0% sales commission, 100% owned'
-      ],
-      ctaText: 'Choose E-Commerce Pack',
-      targetAudience: 'Merchants, local producers, craftsmen, and direct-to-consumer brands looking to sell products without surrendering margins to third-party marketplaces.',
-      techSpecs: [
-        { label: 'Stack', value: 'React 19 & Stripe API' },
-        { label: 'Payment', value: 'Stripe & Cards (0% Fee)' },
-        { label: 'Security', value: 'SSL & Secure Webhooks' },
-        { label: 'Hosting', value: 'Edge CDN Included (Yr 1)' }
-      ],
-      detailedDeliverables: [
-        'Bespoke, ultra-fast online storefront crafted without heavy paid plugins',
-        'Secure Stripe payment gateway setup with automatic direct bank payouts',
-        'Intuitive administration panel to update products, stock levels, and discounts',
-        'Automatic compliant PDF invoice generation and instant customer email alerts',
-        '3-step frictionless checkout funnel tested across all smartphone screens',
-        'WCAG 2.1 AA accessibility compliance across all checkout inputs and forms'
-      ]
-    },
-    {
-      id: 'saas',
-      name: 'SAAS & CUSTOM APP PACK',
-      categoryBadge: 'SOFTWARE & DASHBOARD',
-      price: 'FROM €3,200',
-      shortDesc: 'Tailor-made web app and dashboard to automate your internal operations and PDF invoices.',
-      icon: Database,
-      metrics: [
-        { label: 'Stack', value: 'React 19 & SQL', icon: Laptop },
-        { label: 'Delivery', value: '4 to 6 weeks', icon: Clock },
-        { label: 'License', value: '€0 / month', icon: ShieldCheck }
-      ],
-      features: [
-        'Custom operational dashboard',
-        'Automated PDF quotes & invoices',
-        'Secure member portal & permissions',
-        'Proprietary SQL database & code'
-      ],
-      ctaText: 'Choose SaaS Pack',
-      targetAudience: 'Companies, non-profits, web entrepreneurs, and operational teams requiring custom web software, member portals, or automated business management systems.',
-      techSpecs: [
-        { label: 'Frontend', value: 'React 19 Dashboard' },
-        { label: 'Database', value: 'Relational SQL & Secure API' },
-        { label: 'Security', value: 'RBAC Roles & Encryption' },
-        { label: 'License', value: '€0 / month (100% Owned)' }
-      ],
-      detailedDeliverables: [
-        'Bespoke administrative control dashboard built strictly to your workflows',
-        'Compliant PDF quote and invoice generation with automated calculations',
-        'Live inventory, customer ticket, or member directory tracking',
-        'Granular role-based user permissions (SuperAdmin, Manager, Member)',
-        'Full data export tools (CSV, Excel, JSON) with automated backups',
-        'WCAG 2.1 AA accessible back-office controls and keyboard navigation'
-      ]
-    }
-  ] : [
+  const packs: PackData[] = [
     {
       id: 'presence',
       name: 'PACK PRÉSENCE (ONE-PAGE)',
@@ -380,41 +225,6 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
       ]
     },
     {
-      id: 'ecommerce',
-      name: 'PACK BOUTIQUE E-COMMERCE',
-      categoryBadge: 'VENTE EN LIGNE SANS COMMISSION',
-      price: 'DÈS 2 600 €',
-      shortDesc: "Boutique en ligne sur-mesure avec tunnel de commande fluide, 0% de commission sur vos ventes et gestion autonome.",
-      icon: ShoppingCart,
-      metrics: [
-        { label: 'Commission', value: '0% sur vos ventes', icon: ShieldCheck },
-        { label: 'Délais', value: '3 à 5 semaines', icon: Clock },
-        { label: 'Catalogue', value: 'Articles illimités', icon: Layout }
-      ],
-      features: [
-        'Paiement Stripe, CB et Apple Pay',
-        'Gestion autonome stocks et variantes',
-        'Factures PDF et alertes par email',
-        '0% de commission sur votre C.A.'
-      ],
-      ctaText: 'Choisir le Pack E-Commerce',
-      targetAudience: 'Commerçants, producteurs locaux, artisans et marques souhaitant vendre leurs créations ou produits en direct sans intermédiaire prélevant des commissions sur leur marge.',
-      techSpecs: [
-        { label: 'Stack', value: 'React 19 & Stripe API' },
-        { label: 'Paiement', value: 'Stripe & CB (0% Prélèvement)' },
-        { label: 'Sécurité', value: 'Chiffrement SSL & Webhooks' },
-        { label: 'Hébergement', value: 'Edge CDN Inclus (An 1)' }
-      ],
-      detailedDeliverables: [
-        'Boutique en ligne sur-mesure ultra-rapide sans plugin tiers payant',
-        'Passerelle de paiement sécurisée Stripe avec virement bancaire automatique',
-        'Interface d\'administration intuitive pour ajouter produits, stocks et promotions',
-        'Facturation automatique PDF conforme et notifications email client/marchand',
-        'Tunnel de commande optimisé sans friction sur smartphone et ordinateur',
-        'Accessibilité WCAG 2.1 AA : formulaires d\'achat étiquetés et navigation clavier fluide'
-      ]
-    },
-    {
       id: 'saas',
       name: 'PACK SAAS & APPLICATION MÉTIER',
       categoryBadge: 'LOGICIEL & DASHBOARD',
@@ -458,34 +268,32 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
       id="services" 
       aria-labelledby="services-title"
     >
-      <div className="w-full max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* En-tête centré avec animations distinctes par élément */}
         <div ref={headerContainerRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <span 
             className="text-xs font-extrabold tracking-[0.2em] text-sky-700 uppercase font-['Montserrat'] block mb-2"
           >
-            {isEn ? "BESPOKE WEB ENGINEERING • FRANCE & WORLDWIDE" : "DÉVELOPPEMENT WEB LOCAL & NATIONAL"}
+            DÉVELOPPEMENT WEB LOCAL & NATIONAL
           </span>
           <h2 
             id="services-title" 
             className="text-2xl sm:text-3xl md:text-4xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight mb-3"
           >
-            {isEn ? "OUR PACKAGES & CREATIONS" : "NOS FORFAITS & CRÉATIONS"}
+            NOS FORFAITS & CRÉATIONS
           </h2>
           <p 
             className="text-sm sm:text-base text-slate-600 font-['Plus_Jakarta_Sans'] leading-relaxed"
           >
-            {isEn
-              ? "Each website is an original creation engineered without heavy CMS. 100% proprietary code, fast hosting, local SEO, and domain name included for the first year."
-              : "Chaque site est une création originale conçue sans CMS lourd. Code source 100% propriétaire, hébergement optimisé, référencement SEO local et nom de domaine inclus la première année."}
+            Chaque site est une création originale conçue sans CMS lourd. Code source 100% propriétaire, hébergement optimisé, référencement SEO local et nom de domaine inclus la première année.
           </p>
         </div>
 
-        {/* Grille des 4 packs avec animation au scroll */}
+        {/* Grille des 3 packs avec animation au scroll */}
         <div 
           ref={cardsGridRef}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch"
         >
           {packs.map((pack) => (
             <div 
@@ -493,7 +301,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               className="h-full"
             >
               <div
-                className="h-full p-5 sm:p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform-gpu bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.10),0_4px_12px_-2px_rgba(15,23,42,0.05)] hover:shadow-[0_22px_48px_-8px_rgba(15,23,42,0.18)] hover:border-sky-400 hover:scale-[1.025] hover:-translate-y-2 motion-reduce:hover:transform-none"
+                className="h-full p-6 sm:p-7 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform-gpu bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.10),0_4px_12px_-2px_rgba(15,23,42,0.05)] hover:shadow-[0_22px_48px_-8px_rgba(15,23,42,0.18)] hover:border-sky-400 hover:scale-[1.025] hover:-translate-y-2 motion-reduce:hover:transform-none"
               >
                 {/* Haut de la carte : Surtitre catégorie + Titre + Prix + Description */}
                 <div>
@@ -529,7 +337,7 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
                   {/* Livrables inclus */}
                   <div className="mb-3">
                     <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 font-['Montserrat'] mb-2">
-                      {isEn ? "DELIVERABLES INCLUDED:" : "LIVRABLES INCLUS :"}
+                      LIVRABLES INCLUS :
                     </div>
                     <ul className="space-y-1.5">
                       {pack.features.map((feature, fIdx) => (

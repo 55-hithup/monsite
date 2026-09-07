@@ -67,7 +67,8 @@ export default function GlacierFooter() {
   return (
     <footer className="glacier-bottom-footer w-full" role="contentinfo">
       <div className="container mx-auto px-6 max-w-6xl footer-bottom-flex">
-        <div className="legal-links">
+        <div className="legal-links items-center">
+          <span className="text-[#4B5563] font-medium">&copy; {currentYear} DevSupAi.</span>
           <Link to="/mentions-legales">Mentions légales</Link>
           <Link to="/politique-de-confidentialite">Politique de confidentialité</Link>
           <Link to="/cgv">CGV</Link>
@@ -98,10 +99,6 @@ export default function GlacierFooter() {
               {item.icon}
             </a>
           ))}
-        </div>
-
-        <div className="copyright-text">
-          &copy; {currentYear} DevSupAi. Créé sur-mesure sans CMS.
         </div>
       </div>
     </footer>

@@ -1,11 +1,9 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLanguage } from '../../i18n/LanguageContext';
 import ParallaxLogoVoyager from './ParallaxLogoVoyager';
 
 export default function GlacierParallaxBreak() {
-  const { isEn } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const tagRef = useRef<HTMLSpanElement>(null);
   const quoteRef = useRef<HTMLHeadingElement>(null);
@@ -91,7 +89,7 @@ export default function GlacierParallaxBreak() {
     <section 
       ref={sectionRef}
       className="glacier-parallax-break py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center text-center relative overflow-hidden" 
-      aria-label={isEn ? "DevSupAi Commitment and Philosophy" : "Engagement et Philosophie DevSupAi"}
+      aria-label="Engagement et Philosophie DevSupAi"
     >
       <div className="break-parallax-bg" />
       <div className="break-tint" />
@@ -101,31 +99,20 @@ export default function GlacierParallaxBreak() {
           ref={tagRef} 
           className="break-tag"
         >
-          {isEn ? "THE DEVSUPAI COMMITMENT" : "L'ENGAGEMENT DEVSUPAI"}
+          L'ENGAGEMENT DEVSUPAI
         </span>
         <h2 
           ref={quoteRef} 
           className="break-quote"
         >
-          {isEn ? (
-            <>
-              &ldquo;SUSTAINABLE BESPOKE CODE, <br />
-              <span className="hero-serif-italic">free from recurring software lock-in.&rdquo;</span>
-            </>
-          ) : (
-            <>
-              &laquo;&nbsp;UN CODE SUR-MESURE DURABLE, <br />
-              <span className="hero-serif-italic">sans aucun abonnement captif.&nbsp;&raquo;</span>
-            </>
-          )}
+          &laquo;&nbsp;UN CODE SUR-MESURE DURABLE, <br />
+          <span className="hero-headline-accent">sans aucun abonnement captif.&nbsp;&raquo;</span>
         </h2>
         <p 
           ref={subRef} 
           className="break-sub"
         >
-          {isEn
-            ? "€0 annual plugin fees • 100% proprietary code • Lightweight & optimized architecture"
-            : "0 € de plugins payants chaque année • 100% propriétaire • Architecture légère & optimisée"}
+          0 € de plugins payants chaque année • 100% propriétaire • Architecture légère & optimisée
         </p>
       </div>
     </section>
