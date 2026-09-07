@@ -7,6 +7,7 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import { useLanguage } from '../i18n/LanguageContext';
 import { pagesData } from '../i18n/pagesData';
 import { MapPin, Mail, Sparkles, ArrowRight, ExternalLink, Database, PhoneCall, RotateCcw, X, BookOpen } from 'lucide-react';
+import GlacierTechStandards from '../components/glacier/GlacierTechStandards';
 
 export default function About() {
   const { language } = useLanguage();
@@ -861,6 +862,9 @@ export default function About() {
 
         </div>
       </section>
+
+      {/* 2.5 STANDARDS D'EXCELLENCE : ÉCOCONCEPTION, SÉCURITÉ JAMSTACK & ACCESSIBILITÉ RGAA */}
+      <GlacierTechStandards />
 
       {/* 3. BOTTOM CONTACT BANNER (Fond Parallaxe Signature & Card Glassy sans bords arrondis) */}
       <section className="services-parallax-section py-20 md:py-32 relative overflow-hidden border-t border-slate-800">
