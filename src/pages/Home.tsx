@@ -61,11 +61,11 @@ export default function Home() {
       <StructuredData />
       <main>
         <GlacierHero onNavClick={handleNavClick} />
-        <GlacierOffers onNavClick={handleNavClick} />
         <GlacierParallaxBreak />
         <GlacierGallery onNavClick={handleNavClick} />
         <Testimonials />
         <GlacierFaq />
+        <GlacierOffers onNavClick={handleNavClick} />
         <GlacierContact />
       </main>
     </div>

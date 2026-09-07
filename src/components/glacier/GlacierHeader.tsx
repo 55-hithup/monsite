@@ -40,9 +40,9 @@ function GlacierNavLinks({
   onLinkClick,
 }: GlacierNavLinksProps) {
   const navItems = [
-    { id: 'services', label: navLinks.services, isAnchor: true, href: `${isEn ? '/en' : ''}/#services` },
     { id: 'realisations', label: navLinks.realisations, isAnchor: true, href: `${isEn ? '/en' : ''}/#realisations` },
     { id: 'avis', label: navLinks.avis, isAnchor: true, href: `${isEn ? '/en' : ''}/#avis` },
+    { id: 'services', label: navLinks.services, isAnchor: true, href: `${isEn ? '/en' : ''}/#services` },
     { id: 'contact', label: navLinks.contact, isAnchor: true, href: `${isEn ? '/en' : ''}/#contact` },
     { id: 'catalog', label: navLinks.catalog, isAnchor: false, path: navLinks.catalogPath },
     { id: 'about', label: navLinks.about, isAnchor: false, path: navLinks.aboutPath },
@@ -218,7 +218,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
               return;
             }
 
-            const sections = ['services', 'realisations', 'avis', 'contact'];
+            const sections = ['realisations', 'avis', 'services', 'contact'];
             for (const id of sections) {
               const el = document.getElementById(id);
               if (el) {
