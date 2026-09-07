@@ -143,7 +143,7 @@ export default function GlacierGallery({ onNavClick }: GlacierGalleryProps) {
     >
       <div ref={headerRef} className="gallery-header">
         <h2 id="gallery-title" className="gallery-tag-title">
-          {isEn ? "#DEVSUPAI PROJECTS" : "#RÉALISATIONS DEVSUPAI"}
+          {isEn ? "DEVSUPAI PROJECTS" : "RÉALISATIONS DEVSUPAI"}
         </h2>
         <p className="gallery-sub-text">
           {isEn
