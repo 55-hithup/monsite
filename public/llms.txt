@@ -1,5 +1,4 @@
 # DevSupAi - Développeur Web Indépendant & Création de Sites et Applications Sur-Mesure
-# DevSupAi - Independent Web Developer & Bespoke Web Engineering (Bilingual FR / EN)
 
 > DevSupAi est l'atelier de développement web d'Alexandre Pabst, développeur indépendant basé à Saint-Mihiel (Meuse 55, Grand Est). Il conçoit des sites vitrines, boutiques e-commerce, applications web métiers et logiciels SaaS sur-mesure (React 19, TypeScript, Tailwind CSS, GSAP, vite-react-ssg) pour les PME, commerçants, artisans, professions libérales et associations. Sa philosophie : zéro template pré-conçu, 100% de code propriétaire sans abonnement captif, temps de chargement optimisés, accessibilité WCAG AA et respect des standards SEO Google.
 
@@ -15,7 +14,7 @@
   - **Local (Meuse 55)** : Saint-Mihiel (55300), Commercy (55200), Verdun (55100), Bar-le-Duc (55000), Communauté de Communes Côtes de Meuse Woëvre.
   - **Régional (Grand Est & Lorraine)** : Nancy, Metz, Toul, Épinal, Reims, Strasbourg.
   - **National & International** : Toute la France et international en télétravail / remote avec échanges directs et réguliers.
-- **Support bilingue** : Français (FR) et Anglais (EN).
+- **Langue** : Français (FR).
 
 ---
 
@@ -131,9 +130,8 @@
 
 ---
 
-## Cartographie des URLs & Structure du Site (50 Routes Statiques & Pages Clés)
+## Cartographie des URLs & Structure du Site (26 Routes Statiques & Pages Clés)
 
-### Pages en Français (FR)
 - [/](https://www.devsupai.fr/) : Page d'accueil officielle présentant les forfaits, réalisations, engagement et formulaire de contact.
 - [/nos-services](https://www.devsupai.fr/nos-services) : Catalogue exhaustif des 47 solutions web réparties en 4 pôles avec filtres interactifs.
 - [/a-propos](https://www.devsupai.fr/a-propos) : Biographie et vision artisanale d'Alexandre Pabst, développeur fondateur.
@@ -159,29 +157,4 @@
 - [/cgv](https://www.devsupai.fr/cgv) : Conditions Générales de Vente (CGV) encadrant les prestations de développement web et logiciel.
 - [/developpeur-web-lorraine](https://www.devsupai.fr/developpeur-web-lorraine) : Conception de site internet et développement web sur-mesure en Lorraine et Grand Est (Nancy, Metz, Meuse, Vosges).
 - [/admin/login](https://www.devsupai.fr/admin/login) : Espace d'administration sécurisé (modération des avis).
-
-### Pages en Anglais (EN)
-- [/en](https://www.devsupai.fr/en) : Homepage presenting bespoke web development, portfolio, and quote requests.
-- [/en/services](https://www.devsupai.fr/en/services) : Catalog of 47 custom engineering services with interactive category filters.
-- [/en/about](https://www.devsupai.fr/en/about) : Background and craftsmanship philosophy of Alexandre Pabst.
-- [/en/blog](https://www.devsupai.fr/en/blog) : Technical articles on web performance, and educational web development FAQ.
-- [/en/blog/site-web-pme-association](https://www.devsupai.fr/en/blog/site-web-pme-association) : Strategic guide for SME and non-profit websites.
-- [/en/blog/pourquoi-eviter-les-templates](https://www.devsupai.fr/en/blog/pourquoi-eviter-les-templates) : Analysis of template limitations vs. custom software.
-- [/en/blog/performance-web-sur-mesure](https://www.devsupai.fr/en/blog/performance-web-sur-mesure) : Web performance & Core Web Vitals financial impact.
-- [/en/blog/site-internet-vs-google-business](https://www.devsupai.fr/en/blog/site-internet-vs-google-business) : Comparative analysis: Google Business Profile vs custom website for local businesses.
-- [/en/blog/pourquoi-eviter-wordpress-petit-budget](https://www.devsupai.fr/en/blog/pourquoi-eviter-wordpress-petit-budget) : Hidden costs, plugin bloat, and security concerns of WordPress on a small budget.
-- [/en/blog/artisan-convertir-plus-de-devis](https://www.devsupai.fr/en/blog/artisan-convertir-plus-de-devis) : How contractors and craftsmen can turn website traffic into qualified quote requests.
-- [/en/blog/boutique-en-ligne-sans-commission](https://www.devsupai.fr/en/blog/boutique-en-ligne-sans-commission) : Cost comparison and real financial savings of an independent zero-commission online shop.
-- [/en/blog/accessibilite-web-rgaa-pme](https://www.devsupai.fr/en/blog/accessibilite-web-rgaa-pme) : Why web accessibility (WCAG) matters for small businesses: legal compliance and conversion gains.
-- [/en/blog/ia-et-developpement-web-ce-qui-change](https://www.devsupai.fr/en/blog/ia-et-developpement-web-ce-qui-change) : What artificial intelligence changes (and what stays human) in custom web development.
-- [/en/websites/artisan-construction](https://www.devsupai.fr/en/websites/artisan-construction) : Custom website engineering for building contractors and renovation craftsmen.
-- [/en/websites/professional-services](https://www.devsupai.fr/en/websites/professional-services) : Bespoke digital presence for lawyers, medical practitioners, and consulting practices.
-- [/en/websites/restaurant](https://www.devsupai.fr/en/websites/restaurant) : Custom restaurant showcase with zero-commission direct table reservations.
-- [/en/websites/retail-shop](https://www.devsupai.fr/en/websites/retail-shop) : Custom e-commerce and Click & Collect website engineering for local retailers and boutiques.
-- [/en/projects/atelier-gourmand](https://www.devsupai.fr/en/projects/atelier-gourmand) : Case study of the custom restaurant showcase and booking engine.
-- [/en/projects/locatool](https://www.devsupai.fr/en/projects/locatool) : Case study of the custom fleet and equipment rental SaaS app.
-- [/en/projects/abogame](https://www.devsupai.fr/en/projects/abogame) : Case study of the real-time live interaction web platform.
-- [/en/legal-notices](https://www.devsupai.fr/en/legal-notices) : Legal disclosures for DevSupAi.
-- [/en/privacy-policy](https://www.devsupai.fr/en/privacy-policy) : GDPR compliance and data protection terms.
-- [/en/terms](https://www.devsupai.fr/en/terms) : General Terms of Sale (GTS) governing custom web development and digital services.
-- [/en/web-developer-lorraine](https://www.devsupai.fr/en/web-developer-lorraine) : Custom web development and software engineering in Lorraine and Grand Est (Nancy, Metz, Meuse).
+- [/admin/avis](https://www.devsupai.fr/admin/avis) : Tableau de bord d'administration et de modération des avis clients.

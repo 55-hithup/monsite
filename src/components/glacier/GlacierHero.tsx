@@ -87,14 +87,14 @@ export default function GlacierHero({ onNavClick }: GlacierHeroProps) {
             </>
           )}
         </h1>
-        <p className="hero-text-paragraph">
+        <p className="hero-text-paragraph max-w-2xl mx-auto">
           {isEn ? (
             <>
               Handcrafted showcase websites, e-commerce stores, and web applications for <strong>SMEs, artisans, and non-profits</strong>. Lightweight, high-performance architectures, 100% proprietary code without recurring software fees, engineered with precision by DevSupAi.
             </>
           ) : (
             <>
-              Création de sites vitrines, e-commerce et applications web pour les <strong>PME, artisans, commerçants et associations</strong> en Meuse (Saint-Mihiel, Commercy, Verdun, Bar-le-Duc), Grand Est et toute la France. Des architectures ultra-légères, 100% propriétaires et sans abonnement captif, conçues sur-mesure par DevSupAi.
+              Création de sites vitrines, e-commerce et applications web pour les <strong>PME, artisans, commerçants et associations</strong>. Des architectures ultra-légères, 100% propriétaires et sans abonnement captif, conçues sur-mesure par DevSupAi.
             </>
           )}
         </p>

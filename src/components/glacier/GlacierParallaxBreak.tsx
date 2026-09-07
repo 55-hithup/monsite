@@ -90,13 +90,13 @@ export default function GlacierParallaxBreak() {
   return (
     <section 
       ref={sectionRef}
-      className="glacier-parallax-break" 
+      className="glacier-parallax-break py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center text-center relative overflow-hidden" 
       aria-label={isEn ? "DevSupAi Commitment and Philosophy" : "Engagement et Philosophie DevSupAi"}
     >
       <div className="break-parallax-bg" />
       <div className="break-tint" />
       <ParallaxLogoVoyager variant="curve-right" />
-      <div className="break-content">
+      <div className="break-content container mx-auto px-6 max-w-4xl relative z-10">
         <span 
           ref={tagRef} 
           className="break-tag"

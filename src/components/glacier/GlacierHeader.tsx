@@ -1,7 +1,5 @@
-import { useState, useEffect, useMemo, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useLanguage } from '../../i18n/LanguageContext';
-import { Languages } from 'lucide-react';
 
 interface GlacierHeaderProps {
   onNavClick?: (targetId: string) => void;
@@ -21,9 +19,6 @@ interface GlacierNavLinksProps {
     blog: string;
     blogPath: string;
   };
-  isEn: boolean;
-  language: string;
-  setLanguage: (lang: 'fr' | 'en') => void;
   onAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => void;
   onLogoClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   onLinkClick: (id: string) => void;
@@ -32,18 +27,15 @@ interface GlacierNavLinksProps {
 function GlacierNavLinks({
   activeTab,
   navLinks,
-  isEn,
-  language,
-  setLanguage,
   onAnchorClick,
   onLogoClick,
   onLinkClick,
 }: GlacierNavLinksProps) {
   const navItems = [
-    { id: 'realisations', label: navLinks.realisations, isAnchor: true, href: `${isEn ? '/en' : ''}/#realisations` },
-    { id: 'avis', label: navLinks.avis, isAnchor: true, href: `${isEn ? '/en' : ''}/#avis` },
-    { id: 'services', label: navLinks.services, isAnchor: true, href: `${isEn ? '/en' : ''}/#services` },
-    { id: 'contact', label: navLinks.contact, isAnchor: true, href: `${isEn ? '/en' : ''}/#contact` },
+    { id: 'realisations', label: navLinks.realisations, isAnchor: true, href: '/#realisations' },
+    { id: 'avis', label: navLinks.avis, isAnchor: true, href: '/#avis' },
+    { id: 'services', label: navLinks.services, isAnchor: true, href: '/#services' },
+    { id: 'contact', label: navLinks.contact, isAnchor: true, href: '/#contact' },
     { id: 'catalog', label: navLinks.catalog, isAnchor: false, path: navLinks.catalogPath },
     { id: 'about', label: navLinks.about, isAnchor: false, path: navLinks.aboutPath },
     { id: 'blog', label: navLinks.blog, isAnchor: false, path: navLinks.blogPath },
@@ -52,10 +44,10 @@ function GlacierNavLinks({
   return (
     <div className="relative flex items-center justify-center gap-[clamp(4px,0.8vw,14px)] flex-nowrap whitespace-nowrap mx-auto">
       <Link 
-        to={isEn ? '/en' : '/'} 
+        to="/" 
         onClick={onLogoClick}
         className="sticky-nav-logo inline-flex items-center gap-2 group cursor-pointer mr-1 sm:mr-3 shrink-0"
-        aria-label={isEn ? 'DevSupAi - Home' : 'DevSupAi - Accueil'}
+        aria-label="DevSupAi - Accueil"
       >
         <img 
           src="/logo-48.webp" 
@@ -108,34 +100,6 @@ function GlacierNavLinks({
           </Fragment>
         );
       })}
-
-      {/* Language Switcher */}
-      <div className="inline-flex items-center gap-1 ml-1 pl-2 border-l border-[#E5E5E5] text-xs font-['Montserrat'] font-bold relative z-10">
-        <Languages size={13} className="text-[#0284C7]" aria-hidden="true" />
-        <button
-          type="button"
-          onClick={() => setLanguage('fr')}
-          className={`px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
-            language === 'fr' ? 'text-[#0284C7] font-black' : 'text-[#888888] hover:text-[#1A1A1A]'
-          }`}
-          aria-label="Version Française"
-          aria-current={language === 'fr' ? 'true' : undefined}
-        >
-          FR
-        </button>
-        <span className="text-[#CCCCCC]" aria-hidden="true">/</span>
-        <button
-          type="button"
-          onClick={() => setLanguage('en')}
-          className={`px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
-            language === 'en' ? 'text-[#0284C7] font-black' : 'text-[#888888] hover:text-[#1A1A1A]'
-          }`}
-          aria-label="English Version"
-          aria-current={language === 'en' ? 'true' : undefined}
-        >
-          EN
-        </button>
-      </div>
     </div>
   );
 }
@@ -143,8 +107,7 @@ function GlacierNavLinks({
 export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
-  const { language, setLanguage, isEn } = useLanguage();
-  const isHomePage = location.pathname === '/' || location.pathname === '/en';
+  const isHomePage = location.pathname === '/';
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('');
 
@@ -152,41 +115,28 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
     setIsScrolled(false);
   }, [location.pathname]);
 
-  const navLinks = useMemo(() => isEn
-    ? {
-        services: 'SERVICES',
-        realisations: 'PROJECTS',
-        avis: 'REVIEWS',
-        contact: 'CONTACT & QUOTE',
-        catalog: 'CATALOG',
-        catalogPath: '/en/services',
-        about: 'ABOUT',
-        aboutPath: '/en/about',
-        blog: 'BLOG',
-        blogPath: '/en/blog',
-      }
-    : {
-        services: 'NOS SERVICES',
-        realisations: 'RÉALISATIONS',
-        avis: 'AVIS',
-        contact: 'CONTACT & DEVIS',
-        catalog: 'PRESTATIONS',
-        catalogPath: '/nos-services',
-        about: 'À PROPOS',
-        aboutPath: '/a-propos',
-        blog: 'BLOG',
-        blogPath: '/blog',
-      }, [isEn]);
+  const navLinks = {
+    services: 'NOS SERVICES',
+    realisations: 'RÉALISATIONS',
+    avis: 'AVIS',
+    contact: 'CONTACT & DEVIS',
+    catalog: 'PRESTATIONS',
+    catalogPath: '/nos-services',
+    about: 'À PROPOS',
+    aboutPath: '/a-propos',
+    blog: 'BLOG',
+    blogPath: '/blog',
+  };
 
   // 1. Définition de l'onglet actif sur les pages dédiées
   useEffect(() => {
     if (isHomePage) return;
 
-    if (location.pathname === navLinks.catalogPath || location.pathname.startsWith('/nos-services') || location.pathname.startsWith('/en/services')) {
+    if (location.pathname === navLinks.catalogPath || location.pathname.startsWith('/nos-services')) {
       setActiveTab('catalog');
-    } else if (location.pathname === navLinks.aboutPath || location.pathname.startsWith('/a-propos') || location.pathname.startsWith('/en/about')) {
+    } else if (location.pathname === navLinks.aboutPath || location.pathname.startsWith('/a-propos')) {
       setActiveTab('about');
-    } else if (location.pathname === navLinks.blogPath || location.pathname.startsWith('/blog') || location.pathname.startsWith('/en/blog')) {
+    } else if (location.pathname === navLinks.blogPath || location.pathname.startsWith('/blog')) {
       setActiveTab('blog');
     } else {
       setActiveTab('');
@@ -223,7 +173,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
               const el = document.getElementById(id);
               if (el) {
                 const rect = el.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.42 && rect.bottom >= window.innerHeight * 0.15) {
+                if (rect.top <= 250 && rect.bottom >= 150) {
                   setActiveTab(id);
                   break;
                 }
@@ -240,9 +190,12 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [isHomePage]);
 
+  // 3. Gestion unifiée du clic sur les ancres
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     setActiveTab(targetId);
@@ -258,7 +211,7 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
         }
       }
     } else {
-      navigate(`${isEn ? '/en' : ''}/#${targetId}`);
+      navigate(`/#${targetId}`);
     }
   };
 
@@ -275,15 +228,12 @@ export default function GlacierHeader({ onNavClick }: GlacierHeaderProps) {
   return (
     <header 
       className={`glacier-navbar ${isScrolled ? 'is-scrolled' : ''}`}
-      aria-label={isEn ? 'Main navigation' : 'Navigation principale'}
+      aria-label="Navigation principale"
     >
       <nav className="w-full flex items-center justify-center">
         <GlacierNavLinks 
           activeTab={activeTab}
           navLinks={navLinks}
-          isEn={isEn}
-          language={language}
-          setLanguage={setLanguage}
           onAnchorClick={handleAnchorClick}
           onLogoClick={handleLogoClick}
           onLinkClick={setActiveTab}

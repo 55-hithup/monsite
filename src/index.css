@@ -1277,13 +1277,20 @@ h1, h2, h3 {
 
 .glacier-parallax-break {
   position: relative;
-  min-height: 400px;
+  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 24px;
+}
+
+@media (max-width: 768px) {
+  .glacier-parallax-break {
+    min-height: 280px;
+    padding: 64px 20px;
+  }
 }
 
 .break-parallax-bg {
@@ -1472,12 +1479,20 @@ h1, h2, h3 {
 
 .glacier-faq-header-parallax {
   position: relative;
-  min-height: 260px;
+  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   text-align: center;
+  padding: 80px 24px;
+}
+
+@media (max-width: 768px) {
+  .glacier-faq-header-parallax {
+    min-height: 280px;
+    padding: 64px 20px;
+  }
 }
 
 .faq-parallax-bg {
@@ -1511,12 +1526,19 @@ h1, h2, h3 {
 
 .glacier-contact-parallax-section {
   position: relative;
-  min-height: 520px;
+  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 90px 0;
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .glacier-contact-parallax-section {
+    min-height: 280px;
+    padding: 64px 0;
+  }
 }
 
 .contact-parallax-bg {

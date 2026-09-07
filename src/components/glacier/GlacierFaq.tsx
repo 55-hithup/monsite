@@ -220,7 +220,7 @@ export default function GlacierFaq() {
     <div id="faq-atelier">
       {/* 1. Bandeau En-tête avec Fond Parallaxe Fixe */}
       <section 
-        className="glacier-faq-header-parallax py-16 md:py-24 text-center relative overflow-hidden" 
+        className="glacier-faq-header-parallax py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center text-center relative overflow-hidden" 
         aria-labelledby="faq-title"
       >
         <div className="faq-parallax-bg" />

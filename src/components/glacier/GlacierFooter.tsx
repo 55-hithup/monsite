@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Lock } from 'lucide-react';
-import { useLanguage } from '../../i18n/LanguageContext';
 
 export default function GlacierFooter() {
   const currentYear = new Date().getFullYear();
-  const { isEn } = useLanguage();
 
   const socialLinks = [
     {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/in/alexandre-pabst-208360341',
-      label: isEn ? 'Alexandre Pabst on LinkedIn' : "Profil LinkedIn d'Alexandre Pabst",
+      label: "Profil LinkedIn d'Alexandre Pabst",
       hoverBorder: 'hover:border-[#0A66C2] hover:bg-[#F0F7FD]',
       icon: (
         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true">
@@ -21,7 +19,7 @@ export default function GlacierFooter() {
     {
       name: 'YouTube',
       href: 'https://www.youtube.com/@devsupai',
-      label: isEn ? 'DevSupAi YouTube Channel' : 'Chaîne YouTube DevSupAi',
+      label: 'Chaîne YouTube DevSupAi',
       hoverBorder: 'hover:border-[#FF0000] hover:bg-[#FEF2F2]',
       icon: (
         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -33,7 +31,7 @@ export default function GlacierFooter() {
     {
       name: 'TikTok',
       href: 'https://www.tiktok.com/@devsupai',
-      label: isEn ? 'DevSupAi on TikTok' : 'Compte TikTok DevSupAi',
+      label: 'Compte TikTok DevSupAi',
       hoverBorder: 'hover:border-[#FE2C55] hover:bg-[#FFF1F3]',
       icon: (
         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ filter: 'drop-shadow(-0.8px -0.8px 0px #25F4EE) drop-shadow(0.8px 0.8px 0px #FE2C55)' }}>
@@ -44,7 +42,7 @@ export default function GlacierFooter() {
     {
       name: 'Facebook',
       href: 'https://www.facebook.com/people/Devsupai/61593272035287',
-      label: isEn ? 'DevSupAi Facebook Page' : 'Page Facebook DevSupAi',
+      label: 'Page Facebook DevSupAi',
       hoverBorder: 'hover:border-[#1877F2] hover:bg-[#F0F6FF]',
       icon: (
         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
@@ -55,7 +53,7 @@ export default function GlacierFooter() {
     {
       name: 'Google Maps',
       href: 'https://maps.app.goo.gl/8YXpdiyL6YEgEoYe7',
-      label: isEn ? 'Google Business Profile & Verified Reviews' : 'Fiche Google Maps et Avis clients vérifiés',
+      label: 'Fiche Google Maps et Avis clients vérifiés',
       hoverBorder: 'hover:border-[#EA4335] hover:bg-[#FEF2F2]',
       icon: (
         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -70,33 +68,23 @@ export default function GlacierFooter() {
     <footer className="glacier-bottom-footer w-full" role="contentinfo">
       <div className="container mx-auto px-6 max-w-6xl footer-bottom-flex">
         <div className="legal-links">
-          <Link to={isEn ? '/en/legal-notices' : '/mentions-legales'}>
-            {isEn ? 'Legal Notices' : 'Mentions légales'}
-          </Link>
-          <Link to={isEn ? '/en/privacy-policy' : '/politique-de-confidentialite'}>
-            {isEn ? 'Privacy Policy' : 'Politique de confidentialité'}
-          </Link>
-          <Link to={isEn ? '/en/terms' : '/cgv'}>
-            {isEn ? 'Terms of Sale' : 'CGV'}
-          </Link>
-          <Link to={isEn ? '/en/services' : '/nos-services'}>
-            {isEn ? 'Services Catalog' : 'Catalogue complet'}
-          </Link>
-          <Link to={isEn ? '/en/web-developer-lorraine' : '/developpeur-web-lorraine'}>
-            {isEn ? 'Lorraine & Grand Est' : 'Lorraine & Grand Est'}
-          </Link>
+          <Link to="/mentions-legales">Mentions légales</Link>
+          <Link to="/politique-de-confidentialite">Politique de confidentialité</Link>
+          <Link to="/cgv">CGV</Link>
+          <Link to="/nos-services">Catalogue complet</Link>
+          <Link to="/developpeur-web-lorraine">Lorraine & Grand Est</Link>
           <Link 
             to="/admin/login" 
             className="inline-flex items-center gap-1.5 hover:text-[#0284C7] font-bold text-[#1A1A1A] transition-colors"
-            title={isEn ? 'Personal space and review moderation' : "Accès à l'Espace Personnel et Gestion des avis"}
+            title="Accès à l'Espace Personnel et Gestion des avis"
           >
             <Lock className="w-3.5 h-3.5 text-[#0284C7]" aria-hidden="true" />
-            {isEn ? 'Admin Portal' : 'Espace Perso'}
+            Espace Perso
           </Link>
         </div>
 
         {/* Réseaux Sociaux */}
-        <div className="flex items-center gap-2.5 my-1 sm:my-0" aria-label={isEn ? 'Social networks' : 'Réseaux sociaux'}>
+        <div className="flex items-center gap-2.5 my-1 sm:my-0" aria-label="Réseaux sociaux">
           {socialLinks.map((item) => (
             <a
               key={item.name}
@@ -113,7 +101,7 @@ export default function GlacierFooter() {
         </div>
 
         <div className="copyright-text">
-          &copy; {currentYear} {isEn ? 'DevSupAi. Handcrafted without CMS.' : 'DevSupAi. Créé sur-mesure sans CMS.'}
+          &copy; {currentYear} DevSupAi. Créé sur-mesure sans CMS.
         </div>
       </div>
     </footer>

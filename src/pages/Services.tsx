@@ -11,8 +11,7 @@ import {
   Gauge, 
   FileCode, 
   UserCheck,
-  RotateCcw,
-  RotateCw
+  RotateCcw
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -45,14 +44,6 @@ export default function Services() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [activeProfile, setActiveProfile] = useState<string>('all');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [flippedPillars, setFlippedPillars] = useState<Record<string, boolean>>({});
-
-  const togglePillarFlip = (id: string) => {
-    setFlippedPillars((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
 
   // References for coordinated GSAP animations
   const pageContainerRef = useRef<HTMLDivElement>(null);
@@ -714,167 +705,75 @@ export default function Services() {
           <div ref={pillarsGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 text-left">
             {pillars.map((pillar) => {
               const IconComp = pillar.icon;
-              const isFlipped = !!flippedPillars[pillar.id];
               return (
-                <div key={pillar.id} className="glacier-flip-card-wrapper min-h-[520px]">
-                  <div className={`glacier-flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
-                    
-                    {/* --- RECTO (FRONT) --- */}
-                    <div className="glacier-flip-card-front p-8 rounded-xl bg-white border border-[#E5E5E5] hover:border-[#0284C7] transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-xl">
-                      <div>
-                        <div className="flex items-center justify-between gap-4 mb-6">
-                          <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center text-[#0284C7] group-hover:scale-110 group-hover:bg-[#0284C7]/10 transition-all duration-300">
-                              <IconComp size={24} aria-hidden="true" />
-                            </div>
-                            <div>
-                              <span className="text-xs font-bold font-['Montserrat'] text-[#0284C7] block uppercase tracking-wider">
-                                {pillar.badge}
-                              </span>
-                              <span className="text-xs text-[#777777]">{pillar.subtitle}</span>
-                            </div>
-                          </div>
+                <div 
+                  key={pillar.id}
+                  className="p-8 rounded-xl bg-white border border-[#E5E5E5] hover:border-[#0284C7] transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-xl"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-4 mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center text-[#0284C7] group-hover:scale-110 group-hover:bg-[#0284C7]/10 transition-all duration-300">
+                          <IconComp size={24} aria-hidden="true" />
                         </div>
-
-                        <h3 className="text-lg sm:text-xl font-bold font-['Montserrat'] text-[#1A1A1A] mb-3 leading-snug group-hover:text-[#0284C7] transition-colors duration-200">
-                          {pillar.title}
-                        </h3>
-
-                        <p className="text-sm text-[#555555] leading-relaxed mb-6 font-normal">
-                          {pillar.desc}
-                        </p>
-
-                        {/* Deliverables Checklist with subtle hover highlight */}
-                        <div className="space-y-2.5 mb-6 p-5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] group-hover:border-[#0284C7]/30 transition-colors duration-200">
-                          <div className="text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-2">
-                            {t.pillarsSection.deliverablesTitle}
-                          </div>
-                          {pillar.deliverables.map((item, idx) => (
-                            <div key={idx} className="flex items-start gap-2.5 text-xs text-[#555555]">
-                              <CheckCircle2 size={15} className="text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
-                              <span className="leading-snug">{item}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Tech Badges */}
-                        <div className="flex flex-wrap items-center gap-1.5 mb-4">
-                          <span className="text-xs text-[#888888] mr-1">{t.pillarsSection.techLabel}</span>
-                          {pillar.tech.map((techItem, idx) => (
-                            <span
-                              key={idx}
-                              className="text-xs px-2.5 py-0.5 rounded-md bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0] font-semibold transition-colors hover:border-[#0284C7]/40 hover:text-[#0284C7]"
-                            >
-                              {techItem}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Bas de carte : Lien Flip 3D + CTA */}
-                      <div className="pt-4 border-t border-[#E5E5E5] flex flex-col gap-3">
-                        <button
-                          type="button"
-                          onClick={() => togglePillarFlip(pillar.id)}
-                          className="glacier-flip-text-link group cursor-pointer"
-                          aria-label={language === 'en' ? "Flip card to view technical specifications" : "Retourner la carte pour voir la fiche technique complète"}
-                        >
-                          <RotateCw className="w-3.5 h-3.5 text-[#0284C7] group-hover:rotate-180 transition-transform duration-500 shrink-0" aria-hidden="true" />
-                          <span>{language === 'en' ? "Detailed specifications & tech (Flip ⟲)" : "Voir la fiche technique complète (Verso ⟲)"}</span>
-                        </button>
-
-                        <div className="flex flex-wrap items-center justify-between gap-3">
-                          <div className="text-xs">
-                            <span className="text-[#888888] block text-xs">{t.pillarsSection.pricingLabel}</span>
-                            <strong className="text-[#0284C7] font-extrabold font-['Montserrat'] text-sm">{pillar.pricing}</strong>
-                          </div>
-
-                          <button
-                            onClick={() => selectCategoryFromPillar(pillar.id)}
-                            className="text-xs font-['Montserrat'] font-bold text-white bg-[#1A1A1A] hover:bg-[#0284C7] px-4 py-2.5 rounded-md transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-sm"
-                          >
-                            <span>{t.pillarsSection.viewServicesBtn}</span>
-                            <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* --- VERSO (BACK) --- */}
-                    <div className="glacier-flip-card-back p-8 rounded-xl bg-white border-2 border-[#0284C7] shadow-xl flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-[#E5E5E5]">
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#0284C7] bg-[#0284C7]/10 border border-[#0284C7]/30 px-2.5 py-1 rounded-md inline-flex items-center gap-1.5">
-                            <IconComp size={14} aria-hidden="true" />
-                            <span>{language === 'en' ? "DETAILED SPECS" : "FICHE TECHNIQUE"}</span>
-                          </span>
-
-                          <button
-                            type="button"
-                            onClick={() => togglePillarFlip(pillar.id)}
-                            className="px-2.5 py-1 bg-[#F8FAFC] hover:bg-sky-50 border border-[#E2E8F0] hover:border-[#0284C7]/40 text-[#475569] hover:text-[#0284C7] rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 text-xs font-bold font-['Montserrat'] active:scale-95"
-                            title={language === 'en' ? "Flip back" : "Retourner au recto"}
-                          >
-                            <RotateCcw size={13} className="text-[#0284C7]" aria-hidden="true" />
-                            <span>{language === 'en' ? "Back" : "Retour"}</span>
-                          </button>
-                        </div>
-
-                        <div className="flex items-baseline justify-between gap-2 mb-3">
-                          <h3 className="text-base sm:text-lg font-bold font-['Montserrat'] text-[#1A1A1A]">
-                            {pillar.title}
-                          </h3>
-                          <strong className="text-sm font-extrabold font-['Montserrat'] text-[#0284C7] shrink-0">
-                            {pillar.badge}
-                          </strong>
-                        </div>
-
-                        <p className="text-xs text-[#555555] leading-relaxed mb-4 font-normal">
-                          {pillar.desc}
-                        </p>
-
-                        {/* All deliverables */}
-                        <div className="space-y-2 mb-4 p-4 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
-                          <div className="text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-1">
-                            {t.pillarsSection.deliverablesTitle}
-                          </div>
-                          {pillar.deliverables.map((item, idx) => (
-                            <div key={idx} className="flex items-start gap-2 text-xs text-[#555555]">
-                              <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
-                              <span className="leading-snug">{item}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Tech tags */}
-                        <div className="flex flex-wrap gap-1.5 mb-2">
-                          {pillar.tech.map((techItem, idx) => (
-                            <span
-                              key={idx}
-                              className="text-xs px-2.5 py-0.5 rounded-md bg-[#F1F5F9] text-[#0284C7] border border-[#E2E8F0] font-semibold"
-                            >
-                              {techItem}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="pt-4 border-t border-[#E5E5E5] flex items-center justify-between gap-3">
                         <div>
-                          <span className="text-[#888888] block text-xs">{t.pillarsSection.pricingLabel}</span>
-                          <strong className="text-[#0284C7] font-extrabold font-['Montserrat'] text-sm">{pillar.pricing}</strong>
+                          <span className="text-xs font-bold font-['Montserrat'] text-[#0284C7] block uppercase tracking-wider">
+                            {pillar.badge}
+                          </span>
+                          <span className="text-xs text-[#777777]">{pillar.subtitle}</span>
                         </div>
-
-                        <button
-                          onClick={() => selectCategoryFromPillar(pillar.id)}
-                          className="text-xs font-['Montserrat'] font-bold text-white bg-[#0284C7] hover:bg-[#1A1A1A] px-4 py-2.5 rounded-md transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-sm"
-                        >
-                          <span>{t.pillarsSection.viewServicesBtn}</span>
-                          <ArrowRight size={13} aria-hidden="true" />
-                        </button>
                       </div>
                     </div>
 
+                    <h3 className="text-lg sm:text-xl font-bold font-['Montserrat'] text-[#1A1A1A] mb-3 leading-snug group-hover:text-[#0284C7] transition-colors duration-200">
+                      {pillar.title}
+                    </h3>
+
+                    <p className="text-sm text-[#555555] leading-relaxed mb-6 font-normal">
+                      {pillar.desc}
+                    </p>
+
+                    {/* Deliverables Checklist with subtle hover highlight */}
+                    <div className="space-y-2.5 mb-6 p-5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] group-hover:border-[#0284C7]/30 transition-colors duration-200">
+                      <div className="text-xs font-bold font-['Montserrat'] text-[#1A1A1A] uppercase tracking-wider mb-2">
+                        {t.pillarsSection.deliverablesTitle}
+                      </div>
+                      {pillar.deliverables.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-2.5 text-xs text-[#555555]">
+                          <CheckCircle2 size={15} className="text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
+                          <span className="leading-snug">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tech Badges */}
+                    <div className="flex flex-wrap items-center gap-1.5 mb-4">
+                      <span className="text-xs text-[#888888] mr-1">{t.pillarsSection.techLabel}</span>
+                      {pillar.tech.map((techItem, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs px-2.5 py-0.5 rounded-md bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0] font-semibold transition-colors hover:border-[#0284C7]/40 hover:text-[#0284C7]"
+                        >
+                          {techItem}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bas de carte : CTA */}
+                  <div className="pt-4 border-t border-[#E5E5E5] flex flex-wrap items-center justify-between gap-3">
+                    <div className="text-xs">
+                      <span className="text-[#888888] block text-xs">{t.pillarsSection.pricingLabel}</span>
+                      <strong className="text-[#0284C7] font-extrabold font-['Montserrat'] text-sm">{pillar.pricing}</strong>
+                    </div>
+
+                    <button
+                      onClick={() => selectCategoryFromPillar(pillar.id)}
+                      className="text-xs font-['Montserrat'] font-bold text-white bg-[#1A1A1A] hover:bg-[#0284C7] px-4 py-2.5 rounded-md transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-sm"
+                    >
+                      <span>{t.pillarsSection.viewServicesBtn}</span>
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                    </button>
                   </div>
                 </div>
               );
@@ -887,7 +786,7 @@ export default function Services() {
       {/* 3. INTERACTIVE CATALOG & SEARCH ENGINE */}
       <section id="catalogue-explorer" className="border-b border-[#E5E5E5] bg-[#F8F8F8]">
         {/* Bandeau En-tête & Moteur de Recherche avec Fond Parallaxe Fixe */}
-        <div className="services-parallax-section py-14 md:py-20 border-b border-slate-800">
+        <div className="services-parallax-section py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center border-b border-slate-800">
           <div 
             className="services-parallax-bg" 
             style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
@@ -1120,7 +1019,7 @@ export default function Services() {
       {/* 4. METHODOLOGY SECTION (Chronological Steps 01 -> 04 - Exact 3D Flip from GlacierGallery) */}
       <section id="methodologie" className="border-b border-[#E5E5E5] bg-white">
         {/* Bandeau En-tête avec Fond Parallaxe Fixe */}
-        <div className="services-parallax-section py-16 md:py-20 text-center border-b border-slate-800">
+        <div className="services-parallax-section py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center text-center border-b border-slate-800">
           <div 
             className="services-parallax-bg" 
             style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
@@ -1166,7 +1065,7 @@ export default function Services() {
       {/* 5. SERVICES FAQ (Exact Offscreen + Color-Morph from GlacierFaq) */}
       <section id="faq" className="border-b border-[#E5E5E5] bg-[#F8F8F8]">
         {/* Bandeau En-tête avec Fond Parallaxe Fixe (Identique à GlacierFaq) */}
-        <div className="services-parallax-section py-16 md:py-20 text-center border-b border-slate-800">
+        <div className="services-parallax-section py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center text-center border-b border-slate-800">
           <div 
             className="services-parallax-bg" 
             style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}
@@ -1259,7 +1158,7 @@ export default function Services() {
       </section>
 
       {/* 6. BOTTOM CONTACT BANNER (Fond Parallaxe Signature & Card Glassy) */}
-      <section className="services-parallax-section py-20 md:py-28 relative overflow-hidden border-t border-slate-800">
+      <section className="services-parallax-section py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center relative overflow-hidden border-t border-slate-800">
         <div 
           className="services-parallax-bg" 
           style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}

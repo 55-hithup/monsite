@@ -384,7 +384,7 @@ export default function ArticleTemplate({
       </section>
 
       {/* 3. BOTTOM CONTACT BANNER */}
-      <section className="services-parallax-section py-20 md:py-32 relative overflow-hidden border-t border-slate-800">
+      <section className="services-parallax-section py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center relative overflow-hidden border-t border-slate-800">
         <div 
           className="services-parallax-bg" 
           style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}

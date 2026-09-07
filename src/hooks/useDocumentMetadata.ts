@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
-import { getCanonicalAndAlternates } from '../i18n/urlMapping';
 
 export function useDocumentMetadata(
   title: string | { fr: string; en: string },
@@ -34,8 +33,9 @@ export function useDocumentMetadata(
     }
     metaDescription.setAttribute('content', activeDesc);
 
-    // Calculate canonical & hreflang alternate URLs
-    const { canonicalUrl, hreflangFr, hreflangEn, hreflangDefault } = getCanonicalAndAlternates(currentPath);
+    // Canonical URL (version www. unique en français)
+    const normalizedPath = currentPath === '/' ? '/' : currentPath.replace(/\/$/, '');
+    const canonicalUrl = `https://www.devsupai.fr${normalizedPath === '/' ? '/' : normalizedPath}`;
 
     // Update Canonical URL
     let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -46,21 +46,8 @@ export function useDocumentMetadata(
     }
     canonicalLink.setAttribute('href', canonicalUrl);
 
-    // Helper to update or create alternate hreflang links
-    const setHreflang = (lang: string, href: string) => {
-      let link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
-      if (!link) {
-        link = document.createElement('link');
-        link.setAttribute('rel', 'alternate');
-        link.setAttribute('hreflang', lang);
-        document.head.appendChild(link);
-      }
-      link.setAttribute('href', href);
-    };
-
-    setHreflang('fr', hreflangFr);
-    setHreflang('en', hreflangEn);
-    setHreflang('x-default', hreflangDefault);
+    // Remove legacy hreflang tags if any
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
 
     // Update OpenGraph tags
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -86,7 +73,7 @@ export function useDocumentMetadata(
       ogLocale.setAttribute('property', 'og:locale');
       document.head.appendChild(ogLocale);
     }
-    ogLocale.setAttribute('content', isEn ? 'en_US' : 'fr_FR');
+    ogLocale.setAttribute('content', 'fr_FR');
 
     // Update Twitter Card tags
     const twitterTitle = document.querySelector('meta[name="twitter:title"]') || document.querySelector('meta[property="twitter:title"]');

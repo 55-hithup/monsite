@@ -249,7 +249,7 @@ export default function GlacierContact() {
     <>
       {/* 1. Section Formulaire de Demande de Devis avec Fond Parallaxe Fixe */}
       <section 
-        className="glacier-contact-parallax-section w-full" 
+        className="glacier-contact-parallax-section py-16 md:py-20 w-full" 
         id="contact" 
         aria-labelledby="contact-heading"
       >

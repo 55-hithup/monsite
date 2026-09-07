@@ -1202,7 +1202,7 @@ export default function RegionalLorraine() {
 
       {/* 6. FAQ CIBLÉE LORRAINE & GRAND EST (En-tête Parallaxe Signature) */}
       <section 
-        className="glacier-faq-header-parallax py-16 md:py-24 relative overflow-hidden border-b border-slate-800 text-center"
+        className="glacier-faq-header-parallax py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center relative overflow-hidden border-b border-slate-800 text-center"
         aria-labelledby="faq-regional-title"
       >
         <div className="faq-parallax-bg" />
@@ -1291,7 +1291,7 @@ export default function RegionalLorraine() {
       </section>
 
       {/* 7. CONTACT FINAL CALL TO ACTION (Fond Parallaxe Signature & Card Glassy) */}
-      <section id="cta-lorraine" className="services-parallax-section py-20 md:py-32 relative overflow-hidden border-t border-slate-800 text-white">
+      <section id="cta-lorraine" className="services-parallax-section py-16 md:py-20 min-h-[280px] md:min-h-[320px] flex items-center justify-center relative overflow-hidden border-t border-slate-800 text-white">
         <div 
           className="services-parallax-bg" 
           style={{ backgroundImage: "url('/hero-bg-mockup.webp')" }}

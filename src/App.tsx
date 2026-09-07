@@ -68,9 +68,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     if (this.state.hasError) {
       return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-[#070913] text-text-primary px-6 text-center">
-          <h2 className="text-xl font-bold mb-4">Une erreur inattendue est survenue / An unexpected error occurred</h2>
+          <h2 className="text-xl font-bold mb-4">Une erreur inattendue est survenue</h2>
           <p className="text-sm text-text-secondary max-w-md mb-6">
-            La page a rencontré un problème d'affichage temporaire. / The page encountered a temporary display issue.
+            La page a rencontré un problème d'affichage temporaire.
           </p>
           <a
             href="/"
@@ -81,7 +81,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             className="btn btn-primary px-6 py-2.5 rounded-full text-xs font-bold"
             style={{ background: 'linear-gradient(135deg, #2E8FE0, #6B4FE0)', color: '#fff' }}
           >
-            Retourner à l'accueil / Return to Home
+            Retourner à l'accueil
           </a>
         </div>
       );
@@ -143,7 +143,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-[#070913] text-text-secondary font-mono text-xs">
-    Chargement... / Loading...
+    Chargement...
   </div>
 );
 
@@ -275,107 +275,6 @@ export const routes = [
       },
       {
         path: 'developpeur-web-lorraine',
-        lazy: RegionalLorrainePage,
-      },
-      /* English Routes (Bilingual International SEO) */
-      {
-        path: 'en',
-        element: (
-          <ErrorBoundary>
-            <Home />
-          </ErrorBoundary>
-        ),
-      },
-      {
-        path: 'en/services',
-        lazy: ServicesPage,
-      },
-      {
-        path: 'en/about',
-        lazy: AboutPage,
-      },
-      {
-        path: 'en/blog',
-        lazy: BlogPage,
-      },
-      {
-        path: 'en/blog/site-web-pme-association',
-        lazy: ArticleAssociationPmePage,
-      },
-      {
-        path: 'en/blog/pourquoi-eviter-les-templates',
-        lazy: ArticleTemplatesPage,
-      },
-      {
-        path: 'en/blog/performance-web-sur-mesure',
-        lazy: ArticlePerformancePage,
-      },
-      {
-        path: 'en/blog/site-internet-vs-google-business',
-        lazy: ArticleSiteVsGooglePage,
-      },
-      {
-        path: 'en/blog/pourquoi-eviter-wordpress-petit-budget',
-        lazy: ArticlePourquoiEviterWordpressPage,
-      },
-      {
-        path: 'en/blog/artisan-convertir-plus-de-devis',
-        lazy: ArticleArtisanConvertirDevisPage,
-      },
-      {
-        path: 'en/blog/boutique-en-ligne-sans-commission',
-        lazy: ArticleBoutiqueSansCommissionPage,
-      },
-      {
-        path: 'en/blog/accessibilite-web-rgaa-pme',
-        lazy: ArticleAccessibiliteRgaaPage,
-      },
-      {
-        path: 'en/blog/ia-et-developpement-web-ce-qui-change',
-        lazy: ArticleIaDeveloppementWebPage,
-      },
-      {
-        path: 'en/websites/artisan-construction',
-        lazy: TradeArtisanPage,
-      },
-      {
-        path: 'en/websites/professional-services',
-        lazy: TradeProfessionLiberalePage,
-      },
-      {
-        path: 'en/websites/restaurant',
-        lazy: TradeRestaurantPage,
-      },
-      {
-        path: 'en/websites/retail-shop',
-        lazy: TradeCommerceBoutiquePage,
-      },
-      {
-        path: 'en/projects/atelier-gourmand',
-        lazy: CaseAtelierGourmandPage,
-      },
-      {
-        path: 'en/projects/locatool',
-        lazy: CaseLocaToolPage,
-      },
-      {
-        path: 'en/projects/abogame',
-        lazy: CaseAbogamePage,
-      },
-      {
-        path: 'en/legal-notices',
-        lazy: LegalNoticesPage,
-      },
-      {
-        path: 'en/privacy-policy',
-        lazy: PrivacyPolicyPage,
-      },
-      {
-        path: 'en/terms',
-        lazy: TermsOfSalePage,
-      },
-      {
-        path: 'en/web-developer-lorraine',
         lazy: RegionalLorrainePage,
       },
       {

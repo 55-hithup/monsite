@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import type React from 'react';
 import {
   type LucideIcon,
-  Star,
   Zap,
   ShieldCheck,
   Globe,
@@ -10,12 +9,9 @@ import {
   Layout,
   Smartphone,
   Layers,
-  CheckCircle2,
   Clock,
   Laptop,
   ArrowRight,
-  RotateCw,
-  RotateCcw,
   ShoppingCart
 } from 'lucide-react';
 import gsap from 'gsap';
@@ -46,7 +42,6 @@ interface PackData {
 
 export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
   const { isEn } = useLanguage();
-  const [flippedPacks, setFlippedPacks] = useState<Record<string, boolean>>({});
 
   const sectionRef = useRef<HTMLElement>(null);
   const headerContainerRef = useRef<HTMLDivElement>(null);
@@ -154,13 +149,6 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
     return () => ctx.revert();
   }, []);
 
-  const toggleFlip = (id: string) => {
-    setFlippedPacks((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
-
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     if (onNavClick) {
@@ -186,13 +174,13 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
       metrics: [
         { label: 'Speed', value: 'Optimized speed', icon: Zap },
         { label: 'Delivery', value: '1 to 2 weeks', icon: Clock },
-        { label: 'Hosting', value: 'Included (Yr 1)', icon: ShieldCheck }
+        { label: 'Hosting', value: 'Hosting included (Yr 1)', icon: ShieldCheck }
       ],
       features: [
-        'Fluid mobile-first design without bloated CMS',
-        'Secure contact form with instant direct email alert',
-        'Interactive Google Maps location and opening hours',
-        '100% proprietary code with zero subscription lock-in'
+        'Mobile-first design without CMS',
+        'Contact form & instant email alert',
+        'Interactive Google Maps & hours',
+        '100% owned code, zero subscription'
       ],
       ctaText: 'Choose Presence Pack',
       targetAudience: 'Craftsmen, independent professionals, local businesses, and freelancers needing a credible, modern, and high-converting web presence.',
@@ -223,13 +211,13 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
       metrics: [
         { label: 'Pages', value: '3 to 5 pages', icon: Layout },
         { label: 'Delivery', value: '2 to 3 weeks', icon: Clock },
-        { label: 'SEO', value: 'Schema.org Local', icon: Globe }
+        { label: 'SEO', value: 'Local SEO included', icon: Globe }
       ],
       features: [
-        'HD interactive gallery for projects and products',
-        'Integration and display of verified Google reviews',
-        'Targeted local and regional search engine optimization',
-        'Guided quote request module and video training'
+        'Interactive portfolio gallery',
+        'Verified Google reviews integration',
+        'Local & regional SEO optimization',
+        'Quote request & video training'
       ],
       ctaText: 'Choose Growth Pack',
       targetAudience: 'Growing SMEs, contractors, service providers, and retailers wanting a complete platform to showcase their portfolio and convert local leads.',
@@ -261,10 +249,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         { label: 'Catalog', value: 'Unlimited items', icon: Layout }
       ],
       features: [
-        'Frictionless checkout funnel via Stripe, CB & Apple Pay',
-        'Intuitive inventory, options (sizes, colors), and order tracking',
-        'Automated order confirmation emails and compliant PDF invoices',
-        '100% proprietary code without monthly third-party platform fees'
+        'Stripe, Cards & Apple Pay checkout',
+        'Inventory, options & order tracking',
+        'Automated PDF invoices & alerts',
+        '0% sales commission, 100% owned'
       ],
       ctaText: 'Choose E-Commerce Pack',
       targetAudience: 'Merchants, local producers, craftsmen, and direct-to-consumer brands looking to sell products without surrendering margins to third-party marketplaces.',
@@ -296,10 +284,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         { label: 'License', value: '€0 / month', icon: ShieldCheck }
       ],
       features: [
-        'Live operations dashboard and real-time inventory tracking',
-        'Automated generation of compliant PDF quotes and invoices',
-        'Secure members area with role-based permission management',
-        'Full ownership of source code and complete SQL database'
+        'Custom operational dashboard',
+        'Automated PDF quotes & invoices',
+        'Secure member portal & permissions',
+        'Proprietary SQL database & code'
       ],
       ctaText: 'Choose SaaS Pack',
       targetAudience: 'Companies, non-profits, web entrepreneurs, and operational teams requiring custom web software, member portals, or automated business management systems.',
@@ -329,13 +317,13 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
       metrics: [
         { label: 'Vitesse', value: 'Chargement optimisé', icon: Zap },
         { label: 'Délais', value: '1 à 2 semaines', icon: Clock },
-        { label: 'Hébergement', value: 'Inclus (an 1)', icon: ShieldCheck }
+        { label: 'Hébergement', value: 'Hébergement inclus (an 1)', icon: ShieldCheck }
       ],
       features: [
-        'Conception mobile-first ultra-fluide sans CMS lourd',
-        'Formulaire de contact sécurisé avec alerte email directe',
-        'Plan Google Maps interactif et horaires d’ouverture',
-        'Code source 100% propriétaire sans abonnement captif'
+        'Design mobile-first sans CMS lourd',
+        'Formulaire et alertes email directes',
+        'Google Maps interactif et horaires',
+        'Code 100% vôtre, sans abonnement'
       ],
       ctaText: 'Choisir le Pack Présence',
       targetAudience: 'Artisans, indépendants et commerçants souhaitant une présence web crédible, moderne et immédiatement rentable.',
@@ -366,13 +354,13 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
       metrics: [
         { label: 'Pages', value: '3 à 5 pages', icon: Layout },
         { label: 'Délais', value: '2 à 3 semaines', icon: Clock },
-        { label: 'SEO', value: 'Schema.org local', icon: Globe }
+        { label: 'SEO', value: 'SEO local inclus', icon: Globe }
       ],
       features: [
-        'Galerie interactive haute définition pour vos chantiers / produits',
-        'Intégration et mise en valeur des avis Google certifiés',
-        'Optimisation SEO ciblée Meuse, Grand Est et national',
-        'Module de devis guidé et formation vidéo incluse'
+        'Galerie interactive de réalisations',
+        'Intégration des avis Google vérifiés',
+        'Référencement local et régional SEO',
+        'Demande de devis & formation vidéo'
       ],
       ctaText: 'Choisir le Pack Croissance',
       targetAudience: 'PME, artisans et prestataires ayant besoin d\'un écosystème complet pour valoriser leurs réalisations et convertir des prospects.',
@@ -404,10 +392,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         { label: 'Catalogue', value: 'Articles illimités', icon: Layout }
       ],
       features: [
-        'Tunnel d\'achat fluide et sécurisé par carte bancaire (Stripe, Apple Pay)',
-        'Gestion autonome des stocks, variantes (tailles, coloris) et commandes',
-        'Alertes automatiques par email et génération de factures PDF conformes',
-        'Code 100% propriétaire sans commissions prélevées sur votre chiffre d\'affaires'
+        'Paiement Stripe, CB et Apple Pay',
+        'Gestion autonome stocks et variantes',
+        'Factures PDF et alertes par email',
+        '0% de commission sur votre C.A.'
       ],
       ctaText: 'Choisir le Pack E-Commerce',
       targetAudience: 'Commerçants, producteurs locaux, artisans et marques souhaitant vendre leurs créations ou produits en direct sans intermédiaire prélevant des commissions sur leur marge.',
@@ -439,10 +427,10 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
         { label: 'Licence', value: '0 € / mois', icon: ShieldCheck }
       ],
       features: [
-        'Dashboard de pilotage et gestion d’inventaire en direct',
-        'Génération automatique de devis et factures PDF conformes',
-        'Espace membres sécurisé avec gestion des rôles d’accès',
-        'Propriété totale du code source et base de données SQL'
+        'Dashboard de pilotage sur-mesure',
+        'Génération devis & factures PDF',
+        'Espace membres et rôles d\'accès',
+        'Base de données SQL propriétaire'
       ],
       ctaText: 'Choisir le Pack SaaS',
       targetAudience: 'Entreprises, associations et équipes nécessitant une interface logicielle dédiée, un portail adhérents ou des flux automatisés.',
@@ -492,262 +480,82 @@ export default function GlacierOffers({ onNavClick }: GlacierOffersProps) {
               ? "Each website is an original creation engineered without heavy CMS. 100% proprietary code, fast hosting, local SEO, and domain name included for the first year."
               : "Chaque site est une création originale conçue sans CMS lourd. Code source 100% propriétaire, hébergement optimisé, référencement SEO local et nom de domaine inclus la première année."}
           </p>
-          <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">
-            <ShieldCheck size={14} className="text-sky-700 shrink-0" aria-hidden="true" />
-            <span>
-              {isEn 
-                ? "WCAG 2.1 AA & RGAA Accessibility Compliance • Touch Targets 32px+ • 100/100 Standards"
-                : "Conformité Accessibilité Numérique WCAG 2.1 AA & RGAA • Contrastes 4.5:1 • Cibles tactiles 32px+"}
-            </span>
-          </div>
         </div>
 
-        {/* Grille des 4 packs avec 3D Flip et animation d'éventail 3D au scroll */}
+        {/* Grille des 4 packs avec animation au scroll */}
         <div 
           ref={cardsGridRef}
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6 items-stretch"
         >
-          {packs.map((pack) => {
-            const isPopular = pack.isPopular;
-            const isFlipped = !!flippedPacks[pack.id];
-            const CategoryIcon = pack.icon;
-
-            return (
-              <div 
-                key={pack.id} 
-                className="h-full"
+          {packs.map((pack) => (
+            <div 
+              key={pack.id} 
+              className="h-full"
+            >
+              <div
+                className="h-full p-5 sm:p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform-gpu bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.10),0_4px_12px_-2px_rgba(15,23,42,0.05)] hover:shadow-[0_22px_48px_-8px_rgba(15,23,42,0.18)] hover:border-sky-400 hover:scale-[1.025] hover:-translate-y-2 motion-reduce:hover:transform-none"
               >
-                <div 
-                  className={`glacier-flip-card-wrapper min-h-[490px] h-full group/card transition-all duration-300 ease-out transform-gpu hover:scale-[1.025] motion-reduce:hover:transform-none ${
-                    isPopular 
-                      ? 'lg:-translate-y-1.5 hover:-translate-y-2 hover:lg:-translate-y-3.5' 
-                      : 'hover:-translate-y-2'
-                  }`}
-                >
-                  <div className={`glacier-flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
-                    
-                    {/* --- FACE AVANT (RECTO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
-                    <div
-                      className={`glacier-flip-card-front p-5 flex flex-col justify-between relative transition-all duration-300 ${
-                        isPopular
-                          ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.22),0_6px_16px_-3px_rgba(15,23,42,0.08)] group-hover/card:shadow-[0_26px_55px_-8px_rgba(2,132,199,0.32)] group-hover/card:border-sky-500'
-                          : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.12),0_4px_12px_-2px_rgba(15,23,42,0.06)] group-hover/card:shadow-[0_22px_48px_-8px_rgba(15,23,42,0.20)] group-hover/card:border-sky-300'
-                      }`}
-                    >
-                      {/* Badge Populaire / Recommandé en haut */}
-                      {isPopular && (
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 transition-transform duration-300 group-hover/card:scale-105">
-                          <span className="bg-sky-700 text-white text-[11px] font-extrabold uppercase tracking-widest px-3 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 transition-all duration-300 group-hover/card:shadow-lg group-hover/card:bg-sky-600">
-                            <Star className="w-3 h-3 fill-white text-white transition-transform duration-300 group-hover/card:rotate-45" aria-hidden="true" />
-                            {pack.badge}
-                          </span>
-                        </div>
-                      )}
+                {/* Haut de la carte : Surtitre catégorie + Titre + Prix + Description */}
+                <div>
+                  <div className="mb-2">
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-sky-700 font-['Montserrat'] block">
+                      {pack.categoryBadge}
+                    </span>
+                  </div>
 
-                      {/* Haut de la carte : Badge catégorie + Titre + Prix + Description */}
-                      <div>
-                        <div className="flex items-center justify-between gap-2 mb-2">
-                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5 transition-all duration-300 group-hover/card:bg-sky-100/90 group-hover/card:border-sky-300">
-                            <CategoryIcon className="w-3.5 h-3.5 text-sky-700 transition-transform duration-300 ease-out group-hover/card:scale-110 group-hover/card:rotate-6" aria-hidden="true" />
-                            {pack.categoryBadge}
-                          </span>
-                        </div>
+                  <h3 className="text-lg sm:text-xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight mb-1 min-h-[2.75rem] flex items-center transition-colors duration-200 group-hover:text-slate-900">
+                    {pack.name}
+                  </h3>
 
-                        <h3 className="text-lg sm:text-xl font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight mb-1 transition-colors duration-200 group-hover/card:text-slate-900">
-                          {pack.name}
-                        </h3>
+                  <div className="mb-2">
+                    <span className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-sky-700 tracking-tight inline-block transition-transform duration-300 group-hover:scale-[1.03] origin-left">
+                      {pack.price}
+                    </span>
+                  </div>
 
-                        <div className="mb-2">
-                          <span className="text-2xl sm:text-3xl font-black font-['Montserrat'] text-sky-700 tracking-tight inline-block transition-transform duration-300 group-hover/card:scale-[1.03] origin-left">
-                            {pack.price}
-                          </span>
-                        </div>
+                  <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-3.5 min-h-[3rem] sm:min-h-[3.25rem] flex items-center">
+                    {pack.shortDesc}
+                  </p>
 
-                        <p className="text-xs sm:text-sm text-slate-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-3 sm:min-h-[28px]">
-                          {pack.shortDesc}
-                        </p>
+                  {/* Textes clés empilés l'un en dessous de l'autre sans pilule ni puce */}
+                  <div className="mb-3.5 py-2 border-y border-slate-100 space-y-1.5">
+                    {pack.metrics.map((metric, mIdx) => (
+                      <p key={mIdx} className="text-xs sm:text-[13px] text-slate-700 font-medium font-['Plus_Jakarta_Sans'] leading-snug truncate" title={metric.value}>
+                        {metric.value}
+                      </p>
+                    ))}
+                  </div>
 
-                        {/* Ligne compacte de métriques (Badges horizontaux) */}
-                        <div className="flex items-center flex-wrap gap-1.5 mb-3 py-1.5 border-y border-slate-100 transition-colors duration-200 group-hover/card:border-slate-200">
-                          {pack.metrics.map((metric, mIdx) => {
-                            const MetricIcon = metric.icon;
-                            return (
-                              <span 
-                                key={mIdx} 
-                                className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-200 group-hover/card:bg-white group-hover/card:border-slate-300/90 group-hover/card:shadow-xs"
-                              >
-                                <MetricIcon className="w-3.5 h-3.5 text-sky-700 shrink-0 transition-transform duration-200 group-hover/card:scale-110" aria-hidden="true" />
-                                <span>{metric.value}</span>
-                              </span>
-                            );
-                          })}
-                        </div>
-
-                        {/* Livrables inclus */}
-                        <div className="mb-3">
-                          <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 font-['Montserrat'] mb-1.5">
-                            {isEn ? "DELIVERABLES INCLUDED:" : "LIVRABLES INCLUS :"}
-                          </div>
-                          <ul className="space-y-1.5">
-                            {pack.features.map((feature, fIdx) => (
-                              <li key={fIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700 leading-snug">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5 transition-transform duration-200 group-hover/card:scale-115" aria-hidden="true" />
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      {/* Bas de la carte : Lien Ciselé Flip 3D + Bouton CTA Principal */}
-                      <div className="pt-2 flex flex-col gap-2">
-                        <button
-                          type="button"
-                          onClick={() => toggleFlip(pack.id)}
-                          className="glacier-flip-text-link group cursor-pointer"
-                        >
-                          <RotateCw className="w-3.5 h-3.5 text-sky-700 group-hover:rotate-180 transition-transform duration-500 shrink-0" aria-hidden="true" />
-                          <span>{isEn ? "Detailed specifications & stack (Flip ⟲)" : "Voir la fiche technique complète (Verso ⟲)"}</span>
-                        </button>
-
-                        <a
-                          href="#contact"
-                          onClick={(e) => handleAnchorClick(e, 'contact')}
-                          className={`w-full py-2.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-md text-white ${
-                            isPopular
-                              ? 'bg-sky-700 hover:bg-sky-800'
-                              : 'bg-slate-950 hover:bg-sky-700'
-                          }`}
-                          style={{ color: '#FFFFFF' }}
-                        >
-                          <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
-                          <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 ease-out group-hover/card:translate-x-1" aria-hidden="true" />
-                        </a>
-                      </div>
+                  {/* Livrables inclus */}
+                  <div className="mb-3">
+                    <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 font-['Montserrat'] mb-2">
+                      {isEn ? "DELIVERABLES INCLUDED:" : "LIVRABLES INCLUS :"}
                     </div>
-
-                    {/* --- FACE ARRIÈRE (VERSO) AVEC OMBRE PORTÉE SOIGNÉE --- */}
-                    <div
-                      className={`glacier-flip-card-back p-5 flex flex-col justify-between transition-all duration-300 ${
-                        isPopular
-                          ? 'bg-white border-2 border-sky-600 shadow-[0_16px_40px_-6px_rgba(2,132,199,0.26),0_6px_16px_-3px_rgba(15,23,42,0.10)] group-hover/card:shadow-[0_26px_55px_-8px_rgba(2,132,199,0.32)] group-hover/card:border-sky-500'
-                          : 'bg-white border border-slate-200/90 shadow-[0_12px_32px_-6px_rgba(15,23,42,0.14),0_4px_12px_-2px_rgba(15,23,42,0.08)] group-hover/card:shadow-[0_22px_48px_-8px_rgba(15,23,42,0.20)] group-hover/card:border-sky-300'
-                      }`}
-                    >
-                      {/* En-tête Verso */}
-                      <div className="shrink-0">
-                        <div className="flex items-center justify-between gap-2 mb-1.5 pb-1.5 border-b border-slate-100">
-                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200/80 px-2 py-0.5 rounded-md inline-flex items-center gap-1.5">
-                            <CategoryIcon className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
-                            {isEn ? "DETAILED SPECS" : "FICHE TECHNIQUE"}
-                          </span>
-
-                          <button
-                            type="button"
-                            onClick={() => toggleFlip(pack.id)}
-                            className="px-2.5 py-1 bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 text-slate-700 hover:text-sky-700 rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 text-[11px] font-bold font-['Montserrat'] shadow-xs"
-                            title={isEn ? "Flip back to presentation" : "Retourner au recto"}
-                          >
-                            <RotateCcw className="w-3.5 h-3.5 text-sky-700" aria-hidden="true" />
-                            <span>{isEn ? "Back" : "Retour"}</span>
-                          </button>
-                        </div>
-
-                        <div className="flex items-baseline justify-between gap-2 mb-2">
-                          <h4 className="text-base sm:text-lg font-black font-['Montserrat'] text-[#1A1A1A] tracking-tight">
-                            {pack.name}
-                          </h4>
-                          <span className="text-base sm:text-lg font-black font-['Montserrat'] text-sky-700 shrink-0">
-                            {pack.price}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Corps Verso */}
-                      <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 custom-card-scrollbar space-y-2.5 my-1">
-                        
-                        {/* Public cible & Objectif */}
-                        <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/70">
-                          <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-0.5">
-                            {isEn ? "OBJECTIVE & AUDIENCE" : "OBJECTIF & PUBLIC CIBLE"}
-                          </span>
-                          <p className="text-slate-600 leading-relaxed font-['Plus_Jakarta_Sans'] text-[11px]">
-                            {pack.targetAudience}
-                          </p>
-                        </div>
-
-                        {/* Spécifications techniques en grille 2x2 compacte */}
-                        <div>
-                          <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-1">
-                            {isEn ? "TECHNICAL SPECIFICATIONS" : "SPÉCIFICATIONS TECHNIQUES"}
-                          </span>
-                          <div className="grid grid-cols-2 gap-1.5">
-                            {pack.techSpecs.map((spec, sIdx) => (
-                              <div key={sIdx} className="p-1.5 px-2 rounded-md bg-slate-50 border border-slate-200/70 text-[11px] flex flex-col">
-                                <span className="font-bold text-slate-500 uppercase text-[10px]">{spec.label}</span>
-                                <span className="font-semibold text-slate-900 leading-tight line-clamp-1">{spec.value}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Livrables exhaustifs */}
-                        <div>
-                          <span className="block text-[11px] font-extrabold uppercase tracking-wider text-slate-900 font-['Montserrat'] mb-1">
-                            {isEn ? "EXHAUSTIVE DELIVERABLES" : "LIVRABLES DÉTAILLÉS INCLUS"}
-                          </span>
-                          <ul className="space-y-1">
-                            {pack.detailedDeliverables.map((item, dIdx) => (
-                              <li key={dIdx} className="flex items-start gap-1.5 text-[11px] text-slate-700 leading-snug">
-                                <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Note transparence */}
-                        <div className="p-2 rounded-lg bg-sky-50/70 border border-sky-200/70 text-[11px] text-sky-950 flex items-start gap-1.5">
-                          <ShieldCheck className="w-3.5 h-3.5 text-sky-700 shrink-0 mt-0.5" aria-hidden="true" />
-                          <span>
-                            {isEn 
-                              ? "Domain & hosting included Yr 1. Zero mandatory monthly maintenance."
-                              : "Domaine & hébergement inclus An 1. Code 100% propriétaire sans abonnement."}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Bas Verso : Bouton retour + CTA (Fonds pleins & texte 100% blanc) */}
-                      <div className="shrink-0 pt-2 flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => toggleFlip(pack.id)}
-                          className="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 text-xs font-black font-['Montserrat'] transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1.5 shadow-xs"
-                          style={{ backgroundColor: '#F1F5F9', color: '#0F172A', borderColor: '#CBD5E1' }}
-                          aria-label={isEn ? "Flip back to presentation" : "Retourner le forfait au recto"}
-                        >
-                          <RotateCcw className="w-3.5 h-3.5 text-[#0284C7] shrink-0" aria-hidden="true" />
-                          <span style={{ color: '#0F172A' }}>{isEn ? "Back" : "Recto"}</span>
-                        </button>
-
-                        <a
-                          href="#contact"
-                          onClick={(e) => handleAnchorClick(e, 'contact')}
-                          className="flex-1 py-3 px-4 rounded-xl bg-sky-700 hover:bg-sky-800 text-white font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-md"
-                          style={{ color: '#FFFFFF' }}
-                        >
-                          <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
-                          <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 ease-out group-hover/card:translate-x-1" aria-hidden="true" />
-                        </a>
-                      </div>
-
-                    </div>
-
+                    <ul className="space-y-1.5">
+                      {pack.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="text-xs sm:text-[13px] text-slate-700 leading-snug truncate" title={feature}>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
+
+                {/* Bas de la carte : Bouton CTA Principal */}
+                <div className="pt-4">
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleAnchorClick(e, 'contact')}
+                    className="w-full py-2.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider font-['Montserrat'] cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-md text-white bg-slate-950 hover:bg-sky-700"
+                    style={{ color: '#FFFFFF' }}
+                  >
+                    <span style={{ color: '#FFFFFF' }}>{pack.ctaText}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
+                  </a>
+                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
       </div>
